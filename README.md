@@ -4,9 +4,9 @@ This is being developed in my spare time and by no means finished. This is aimed
 
 If you have enjoyed this and it has helped you get started in C++ and SDL2, please feel free to make a small donation via this link below: 
 
-[Donate Here](http://www.brightland-net.co.uk/donate.html)
+[Donate Here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TW9LN5YTRBKL)
 
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TW9LN5YTRBKL
+
 
 You are free to use this source code to make improvements, new games, anything! I just ask that you keep my name in the code as a nod of acknowledgement to all the many hours of work making this.
 
