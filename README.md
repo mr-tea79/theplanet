@@ -14,8 +14,10 @@ You will need the following libraries which can be downloaded. One is for dealin
 https://sites.google.com/site/sdlinvc2010/installation/sdl_image
 
 #SDL_ttf    (For text)
+https://sites.google.com/site/sdlinvc2010/installation/sdl_ttf
 
 #sqlite3    (For inventory)
+https://dcravey.wordpress.com/2011/03/21/using-sqlite-in-a-visual-c-application/
 
 # About thePlanet adventure game engine
 
