@@ -26,3 +26,7 @@ The most challenging part of programming in C++ and SDL2 is from my point of vie
 This project was created in Visual Studio 2019.
 
 Images used in making the scenes were to the best of my knowledge all from google images free to use searches.
+
+# Current known problems that I have yet to overcome
+
+Keeping text on the screen long enough for the player to see it.
