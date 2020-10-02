@@ -11,6 +11,7 @@ You are free to use this source code to make improvements, new games, anything! 
 You will need the following libraries which can be downloaded. One is for dealing with images and the other for text.
 
 #SDL_image   (For images)
+https://sites.google.com/site/sdlinvc2010/installation/sdl_image
 
 #SDL_ttf    (For text)
 
