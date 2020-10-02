@@ -9,8 +9,10 @@ If you have enjoyed this and it has helped you get started in C++ and SDL2, plea
 You are free to use this source code to make improvements, new games, anything! I just ask that you keep my name in the code as a nod of acknowledgement to all the many hours of work making this.
 
 You will need the following libraries which can be downloaded. One is for dealing with images and the other for text.
-**SDL_image**
-**SDL_ttf**
+
+#SDL_image
+
+#SDL_ttf
 
 # About thePlanet adventure game engine
 
