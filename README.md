@@ -40,6 +40,8 @@ Keeping text on the screen long enough for the player to see it.
 
 Occasional sprite flickering
 
-# Thing to be aware of
+# Things to be aware of
 
 1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions.
+
+2. You need to ensure your database is writable to the player by changing the permissions to write for users on the database file. By default when you download a sqlite database it is read only so you need to set the permissions.
