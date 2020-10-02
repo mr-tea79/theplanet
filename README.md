@@ -30,4 +30,5 @@ Images used in making the scenes were to the best of my knowledge all from googl
 # Current known problems that I have yet to overcome
 
 Keeping text on the screen long enough for the player to see it.
+
 Occasional sprite flickering
