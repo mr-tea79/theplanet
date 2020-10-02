@@ -10,9 +10,11 @@ You are free to use this source code to make improvements, new games, anything! 
 
 You will need the following libraries which can be downloaded. One is for dealing with images and the other for text.
 
-#SDL_image
+#SDL_image   (For images)
 
-#SDL_ttf
+#SDL_ttf    (For text)
+
+#sqlite3    (For inventory)
 
 # About thePlanet adventure game engine
 
