@@ -39,3 +39,7 @@ Images used in making the scenes were to the best of my knowledge all from googl
 Keeping text on the screen long enough for the player to see it.
 
 Occasional sprite flickering
+
+# Thing to be aware of
+
+1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions.
