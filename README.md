@@ -4,15 +4,22 @@ This is being developed in my spare time and by no means finished. This is aimed
 
 If you have enjoyed this and it has helped you get started in C++ and SDL2, please feel free to make a small donation via this link below: 
 
-[Donate Here](http://www.brightland-net.co.uk/donate.html)
+[Donate Here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TW9LN5YTRBKL)
+
+
 
 You are free to use this source code to make improvements, new games, anything! I just ask that you keep my name in the code as a nod of acknowledgement to all the many hours of work making this.
 
 You will need the following libraries which can be downloaded. One is for dealing with images and the other for text.
 
-#SDL_image
+#SDL_image   (For images)
+https://sites.google.com/site/sdlinvc2010/installation/sdl_image
 
-#SDL_ttf
+#SDL_ttf    (For text)
+https://sites.google.com/site/sdlinvc2010/installation/sdl_ttf
+
+#sqlite3    (For inventory)
+https://dcravey.wordpress.com/2011/03/21/using-sqlite-in-a-visual-c-application/
 
 # About thePlanet adventure game engine
 
@@ -32,3 +39,12 @@ Images used in making the scenes were to the best of my knowledge all from googl
 Keeping text on the screen long enough for the player to see it.
 
 Occasional sprite flickering
+
+# Things to be aware of
+
+1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions.
+
+2. You need to ensure your database is writable to the player by changing the permissions to write for users on the database file. By default when you download a sqlite database it is read only so you need to set the permissions.
+
+![The Planet Screenshot](https://i.imgur.com/FDw2ddE.jpg)
+
