@@ -20,6 +20,7 @@ SDL_Texture* Textures::rocks2;
 SDL_Texture* Textures::computerScene1;
 SDL_Texture* Textures::computerScene2;
 
+
 SDL_Texture* Textures::invTexture1;
 SDL_Texture* Textures::invTexture2;
 SDL_Texture* Textures::invTexture3;
@@ -79,6 +80,7 @@ void Textures::Scene1Textures() {
     imageSurface7 = IMG_Load("Scenes/rocks2.png");
 
 
+
     //dialog = IMG_Load("Dialog/scene1_intro.png");
    // dialogm = IMG_Load("Dialog/scene1_moon.png");
     pda = IMG_Load("Objects/pda.png");
@@ -132,16 +134,22 @@ void Textures::Scene2Textures() {
     SDL_DestroyTexture(invTexture3);
     SDL_DestroyTexture(sceneTexture);
 
+    //Player Object Textures.
+    Scene1::objectTexture6 = NULL;
+ 
+
     imageSurface8 = NULL;
     imageSurface9 = NULL;
     imageSurface10 = NULL;
     imageSurface11 = NULL;
 
-    imageSurface8 = IMG_Load("Scenes/Scene1f.png");
-    imageSurface9 = IMG_Load("Scenes/Scene1fa.png");
+    imageSurface8 =  IMG_Load("Scenes/Scene1f.png");
+    imageSurface9 =  IMG_Load("Scenes/Scene1fa.png");
     imageSurface10 = IMG_Load("Scenes/Scene1fb.png");
     imageSurface11 = IMG_Load("Scenes/Scene1d.png");
     imageSurface12 = IMG_Load("Scenes/Scene1d2.png");
+    boxOpened =      IMG_Load("Objects/boxopened.png");
+    boxClosed =      IMG_Load("Objects/boxclosed.png");
 
     scene1f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface8);
     scene1fa = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface9);
@@ -149,9 +157,13 @@ void Textures::Scene2Textures() {
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);
     scene1d2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface12);
 
+    Scene1::objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
+
+
     SDL_FreeSurface(imageSurface8);
     SDL_FreeSurface(imageSurface9);
     SDL_FreeSurface(imageSurface10);
     SDL_FreeSurface(imageSurface11);
     SDL_FreeSurface(imageSurface12);
+
 }

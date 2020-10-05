@@ -40,6 +40,8 @@ SDL_Texture* Scene1::objectTexture2;
 SDL_Texture* Scene1::objectTexture3;
 SDL_Texture* Scene1::objectTexture4;
 SDL_Texture* Scene1::objectTexture5;
+SDL_Texture* Scene1::objectTexture6;
+
 SDL_Renderer* Scene1::renderer;
 
 static int tLoader = 0;  //Used to prevent the same textures being loaded in twice.
@@ -58,7 +60,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-     SceneBackground = "1";
+     SceneBackground = "1da";
     
   //  SPRITE_SIZE = 180;
    // xPosition = 10;
@@ -182,7 +184,7 @@ int Scene1::scene1() {
 
     Textures tex;
     tex.Scene1Textures();
-  // Scene2Textures();
+   tex.Scene2Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
@@ -274,6 +276,16 @@ int Scene1::scene1() {
         //Set objectSprite Parameters size, height, width, position etc.
         SDL_Rect srcrect5 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
         SDL_Rect dstrect5 = { objectP3, objectP4, objectP5, objectP6 };
+
+        //Scene Object 6.......
+        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 6, NULL, NULL, NULL);
+        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 6, NULL, NULL, NULL);
+
+        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+        Uint32 object6 = (ticks / 100) % 1;
+        //Set objectSprite Parameters size, height, width, position etc.
+        SDL_Rect srcrect6 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+        SDL_Rect dstrect6 = { objectP3, objectP4, objectP5, objectP6 };
 
 
         //NOTE: Uint32 object3 means that this is object3. Don't forget.
@@ -882,6 +894,11 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);
 
         }
+
+        if (SceneBackground == "1da" || SceneBackground== "1db") {
+                    SDL_RenderCopy(renderer, objectTexture6, &srcrect6, &dstrect6); 
+        }
+        
 
 
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);

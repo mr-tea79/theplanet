@@ -104,6 +104,7 @@
     <ClInclude Include="MenuInteraction.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerObjects.h" />
+    <ClInclude Include="Scene1.h" />
     <ClInclude Include="Textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

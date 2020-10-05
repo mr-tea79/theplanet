@@ -6,8 +6,6 @@
 namespace brightland {
 
 
-
-
 	class Textures {
 	public:
 	
@@ -18,6 +16,8 @@ namespace brightland {
 		static SDL_Texture* rocks2;
 		static SDL_Texture* computerScene1;
 		static SDL_Texture* computerScene2;
+	
+
 		static SDL_Texture* wreakageScene;
 		static SDL_Texture* scene1e;
 		static SDL_Texture* scene1f;
@@ -44,7 +44,9 @@ namespace brightland {
 		SDL_Surface* imageSurface10;
 		SDL_Surface* imageSurface11;
 		SDL_Surface* imageSurface12;
-
+		
+		SDL_Surface* boxClosed;
+		SDL_Surface* boxOpened;
 		SDL_Surface* pda;
 		SDL_Surface* flag;
 		SDL_Surface* stars;

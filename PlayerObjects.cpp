@@ -80,6 +80,14 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Scene Hover Messages
 
+    if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586) {
+        message = "Carboard box";
+    }
+
+    if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482) {
+        message = "Oxygenator 5000";
+    }
+
     if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {
         message = "Leave Sofa";
     }
@@ -201,6 +209,16 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     Inventory inv;
 
     std::string message;
+
+    if(Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435) {
+
+        message = "It's a closed cardboard box.";
+
+    }
+
+    if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482 && playerCurrentLocationX >=600) {
+        message = "This is what I need to top up my suit, but the pipe is missing.";
+    }
 
     if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {
         
@@ -450,6 +468,13 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         //The second value is set to 0 to prevent the animation by setting the speed to 0.
         return  std::make_tuple(1, 0, NULL, 100, 149);
     }
+    if (scene == 1 && objectID == 6) {
+        //Tent
+
+        //The second value is set to 0 to prevent the animation by setting the speed to 0.
+        return  std::make_tuple(1, 0, NULL, 100, 149);
+    }
+
 
 
     return  std::make_tuple(scene, objectID, b, c, d);
@@ -485,6 +510,11 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
         //Coins
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 520, 300, 97, 149);
+    }
+    if (scene == 1 && objectID == 6) {
+        //Closed Box
+        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+        return  std::make_tuple(1, 520, 500, 100, 96);
     }
 
     return  std::make_tuple(scene, objectID, b, c, d);
