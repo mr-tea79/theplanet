@@ -60,7 +60,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-     SceneBackground = "1da";
+     SceneBackground = "1";
     
   //  SPRITE_SIZE = 180;
    // xPosition = 10;
@@ -184,7 +184,7 @@ int Scene1::scene1() {
 
     Textures tex;
     tex.Scene1Textures();
-   tex.Scene2Textures();
+   //tex.Scene2Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;

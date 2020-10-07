@@ -16,6 +16,7 @@ static int xPosition;
 static int yPosition;
 static int playerMessage;
 static int inv3Used;  //Duct Tape
+int PlayerObjects::boxOpened;
 
 
 //HoverObjects will display information about objects of interest when the user hovers over them.
@@ -80,7 +81,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Scene Hover Messages
 
-    if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586) {
+    if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && boxOpened !=1) {
         message = "Carboard box";
     }
 
@@ -213,6 +214,12 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if(Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435) {
 
         message = "It's a closed cardboard box.";
+
+    }
+
+    if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened == 1) {
+
+        message = "Ooh an air pressure pipe";
 
     }
 
