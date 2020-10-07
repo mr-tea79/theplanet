@@ -184,7 +184,7 @@ int Scene1::scene1() {
 
     Textures tex;
     tex.Scene1Textures();
-   //tex.Scene2Textures();
+  // tex.Scene2Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
