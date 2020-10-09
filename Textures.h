@@ -47,11 +47,13 @@ namespace brightland {
 		
 		SDL_Surface* boxClosed;
 		SDL_Surface* boxOpened;
+		SDL_Surface* boxEmpty;
 		SDL_Surface* pda;
 		SDL_Surface* flag;
 		SDL_Surface* stars;
 		SDL_Surface* tape;
 		SDL_Surface* tent;
+		SDL_Surface* pipe;
 
 	public:
 		void Scene1Textures();

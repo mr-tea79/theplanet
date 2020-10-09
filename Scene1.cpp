@@ -5,7 +5,6 @@
 
 */
 
-
 #include "Scene1.h"
 #include <iostream>
 #include <algorithm>
@@ -27,8 +26,10 @@ std::string Scene1::SceneBackground = "1";
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
+
 //Used for ingame player messages.
 int Scene1::playerMessage = 1;
+static int mouseHold = 0;
 
 //Global inventory used variables. This prevents constant database checking which slows the game down.
 int Scene1::inv3Used;  //Duct Tape.
@@ -41,6 +42,7 @@ SDL_Texture* Scene1::objectTexture3;
 SDL_Texture* Scene1::objectTexture4;
 SDL_Texture* Scene1::objectTexture5;
 SDL_Texture* Scene1::objectTexture6;
+SDL_Texture* Scene1::objectTexture7;
 
 SDL_Renderer* Scene1::renderer;
 
@@ -48,7 +50,6 @@ static int tLoader = 0;  //Used to prevent the same textures being loaded in twi
 
 
 int Scene1::scene1() {
-
 
     cout << "Initialize" << endl;
     
@@ -60,7 +61,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-     SceneBackground = "1";
+    SceneBackground = "1";
     
   //  SPRITE_SIZE = 180;
    // xPosition = 10;
@@ -184,7 +185,7 @@ int Scene1::scene1() {
 
     Textures tex;
     tex.Scene1Textures();
-  // tex.Scene2Textures();
+ //  tex.Scene2Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
@@ -378,8 +379,14 @@ int Scene1::scene1() {
 
         keystate = SDL_GetKeyboardState(NULL);
 
+        if (SDL_MOUSEBUTTONUP) {
+            mouseHold = 0;
+            //std::cout << "Mouse button up" << std::endl;
+        }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
            
+            std::cout << mouseHold << std::endl;
+            
             //This will show the scene intro. To skip the scene intro, comment this out.
            // playerMessage = 5;
 
@@ -406,9 +413,12 @@ int Scene1::scene1() {
             cout << "y = " << y << endl;
             cout << "Current Player X Position is: " << gdSprite.x << endl;
             cout << "Current Player Y Position is: " << gdSprite.y << endl;
+        
 
+            if(mouseHold == 0){
+                mouseHold = 1;
+              
             //This will kick in when any story intro messages have been shown.
-           
             gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
             
           
@@ -418,8 +428,10 @@ int Scene1::scene1() {
             
             if (y > gdSprite.y && x < gdSprite.x +75 && x > gdSprite.x)
                 gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture,ftexture, dialogmTexture);
-
-          
+            
+            
+            }
+           
             //Get interaction message.
            
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
@@ -846,6 +858,16 @@ int Scene1::scene1() {
 
             SDL_RenderCopy(renderer, objectTexture5, &srcrect5, &dstrect5);
         }
+
+        //Pipe
+       
+        if (objectToDestroy.find("5") != std::string::npos) {
+           
+                SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);
+            
+        }
+       
+
 
 
         //Display Character

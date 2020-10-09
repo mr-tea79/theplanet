@@ -81,6 +81,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Scene Hover Messages
 
+ 
+    if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
+            message = "Stuffed toy";
+    }
+
     if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && boxOpened !=1) {
         message = "Carboard box";
     }
@@ -199,6 +204,11 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
         objectToDestroy = "4";
     }
 
+    if (gameObject == "Pipe") {
+       
+        objectToDestroy = "5";
+    }
+
 
 
     return objectToDestroy;
@@ -211,7 +221,12 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     std::string message;
 
-    if(Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435) {
+
+    if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
+        message = "That's George";
+    }
+
+    if(Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened !=2) {
 
         message = "It's a closed cardboard box.";
 
@@ -426,6 +441,12 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
         message = "Tent";
 
     }
+
+    if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 500) {
+        message = "Pipe";
+
+    }
+
 
     /*
     if (scene == 1 && playerCurrentLocationX >= 936 && playerCurrentLocationX <= 998) {

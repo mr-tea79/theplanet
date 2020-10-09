@@ -143,6 +143,10 @@ void Textures::Scene2Textures() {
     imageSurface9 = NULL;
     imageSurface10 = NULL;
     imageSurface11 = NULL;
+    pipe = NULL;
+
+    pipe = IMG_Load("Objects/pipe.png");
+
 
     imageSurface8 =  IMG_Load("Scenes/Scene1f.png");
     imageSurface9 =  IMG_Load("Scenes/Scene1fa.png");
@@ -151,6 +155,7 @@ void Textures::Scene2Textures() {
     imageSurface12 = IMG_Load("Scenes/Scene1d2.png");
     boxOpened =      IMG_Load("Objects/boxopened.png");
     boxClosed =      IMG_Load("Objects/boxclosed.png");
+    boxEmpty =       IMG_Load("Objects/boxopenede.png");
 
     scene1f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface8);
     scene1fa = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface9);
@@ -160,7 +165,9 @@ void Textures::Scene2Textures() {
 
     Scene1::objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
     Scene1::objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, boxOpened);
+    Scene1::objectTexture7 = SDL_CreateTextureFromSurface(Scene1::renderer, boxEmpty);
 
+    invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);
 
     SDL_FreeSurface(imageSurface8);
     SDL_FreeSurface(imageSurface9);

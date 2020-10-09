@@ -64,6 +64,7 @@ namespace brightland {
 		static SDL_Texture* objectTexture4;
 		static SDL_Texture* objectTexture5;
 		static SDL_Texture* objectTexture6;
+		static SDL_Texture* objectTexture7;
 
 		SDL_Texture* invTexture1;
 		SDL_Texture* invTexture2;
