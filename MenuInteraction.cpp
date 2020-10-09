@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "Scene1.h"
+#include "Textures.h"
 
 
 using namespace brightland;
@@ -79,6 +80,14 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
      std::cout << Scene1::useStatement << std::endl;
      useMessage = "Use what?";
      }
+
+     else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && useStatement == "Use") {
+         useMessage = "Carboard box";
+        Scene1::objectTexture6 = Scene1::objectTexture5;
+        PlayerObjects::boxOpened = 1;
+      
+     }
+
 
      else if (x > 758 && x < 819 && y > 689 && y < 757 && useStatement == "Use") {
 

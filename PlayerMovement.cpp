@@ -869,7 +869,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         }
 
-        else if (gy <= y - 100 && y < 575 && x > 300) {
+        else if (gy <= y - 100 && y < 565 && x > 300) {
 
             //  Scene1::SPRITE_SIZE = 120;
 

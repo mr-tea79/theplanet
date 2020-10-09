@@ -10,8 +10,10 @@
 namespace brightland {
     class PlayerObjects
     {
+        
 
     public:
+        static int boxOpened;
 
         std::string HoverObjects(int x, int y, int scene, int gd, int gy);
         std::string DestroyObjects(std::string gameObject);

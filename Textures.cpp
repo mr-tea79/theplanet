@@ -101,6 +101,7 @@ void Textures::Scene1Textures() {
     Scene1::objectTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
     Scene1::objectTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
     Scene1:: objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, tent);
+
     sceneTexture = SDL_CreateTextureFromSurface(Scene1::renderer, stars);
 
     invTexture1 = SDL_CreateTextureFromSurface(Scene1::renderer, pda);
@@ -158,6 +159,7 @@ void Textures::Scene2Textures() {
     scene1d2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface12);
 
     Scene1::objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
+    Scene1::objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, boxOpened);
 
 
     SDL_FreeSurface(imageSurface8);
