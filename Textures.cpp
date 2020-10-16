@@ -156,16 +156,22 @@ void Textures::Scene2Textures() {
     boxOpened =      IMG_Load("Objects/boxopened.png");
     boxClosed =      IMG_Load("Objects/boxclosed.png");
     boxEmpty =       IMG_Load("Objects/boxopenede.png");
+    pipeBox =        IMG_Load("Objects/pipec.png");
+    airBox =         IMG_Load("Objects/airBox.png");
 
     scene1f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface8);
     scene1fa = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface9);
     scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);
     scene1d2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface12);
+    
 
     Scene1::objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
     Scene1::objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, boxOpened);
     Scene1::objectTexture7 = SDL_CreateTextureFromSurface(Scene1::renderer, boxEmpty);
+    Scene1::objectTextureAirBox = SDL_CreateTextureFromSurface(Scene1::renderer, airBox);
+    Scene1::objectTexturePipe = SDL_CreateTextureFromSurface(Scene1::renderer, pipeBox);
+    
 
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);
 
@@ -174,5 +180,6 @@ void Textures::Scene2Textures() {
     SDL_FreeSurface(imageSurface10);
     SDL_FreeSurface(imageSurface11);
     SDL_FreeSurface(imageSurface12);
+
 
 }

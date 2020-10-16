@@ -29,6 +29,7 @@ namespace brightland {
 		//Inventory used variables. To check if the item has been used and shouldn't remain in the inventory.
 		static int inv3Used;
 		static int inv4Used;
+		static int inv5Used;
 
 		int colorkey;
 		int count;
@@ -65,6 +66,8 @@ namespace brightland {
 		static SDL_Texture* objectTexture5;
 		static SDL_Texture* objectTexture6;
 		static SDL_Texture* objectTexture7;
+		static SDL_Texture* objectTextureAirBox;
+		static SDL_Texture* objectTexturePipe;
 
 		SDL_Texture* invTexture1;
 		SDL_Texture* invTexture2;
@@ -81,6 +84,7 @@ namespace brightland {
 		SDL_Texture* texture;
 		SDL_Texture* rocks;
 		SDL_Texture* rocks2;
+		SDL_Texture* airBoxT;
 		SDL_Texture* computerScene1;
 		SDL_Texture* computerScene2;
 		SDL_Texture* wreakageScene;

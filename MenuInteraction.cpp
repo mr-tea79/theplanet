@@ -73,6 +73,26 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          PlayerObjects::boxOpened = 1;     
      }
 
+     else if (x > 879 && x < 921 && y > 648 && y < 689 && useStatement == "Use" && Scene1::SceneBackground == "1da") {
+         Scene1::useStatement = "Pipe with";
+         std::cout << Scene1::useStatement << std::endl;
+
+         SDL_DestroyTexture(spriteTexture);
+         SDL_CreateTextureFromSurface(renderer, spriteDown1);
+
+         useMessage = "Ok, where do I connect this pipe?";
+     }
+
+     else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
+         inv.useItem("Pipe");
+         Scene1::inv5Used = 1;
+         Scene1::objectTextureAirBox = Scene1::objectTexturePipe;
+         useMessage = "Ok, connected!";
+       
+     }
+
+
+
      else if (x > 758 && x < 819 && y > 689 && y < 757 && useStatement == "Use") {
          Scene1::useStatement = "Tent with";
          std::cout << Scene1::useStatement << std::endl;
@@ -98,7 +118,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          useMessage = "";
      }
 
-      else if (x > 889 && x < 920 && y > 647 && y < 687 && useStatement == "Use" ) {
+      else if (x > 889 && x < 920 && y > 647 && y < 687 && useStatement == "Use" && Scene1::SceneBackground == "1") {
          Scene1::useStatement = "";
          std::cout << Scene1::useStatement << std::endl;
 
@@ -177,6 +197,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 inv.SQLInsertInventory(gameObject, 0);
 
                 Scene1::objectTexture6 = Scene1::objectTexture7;
+             
                 PlayerObjects::boxOpened = 2;
 
             }

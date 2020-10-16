@@ -34,6 +34,7 @@ static int mouseHold = 0;
 //Global inventory used variables. This prevents constant database checking which slows the game down.
 int Scene1::inv3Used;  //Duct Tape.
 int Scene1::inv4Used;  //Tent
+int Scene1::inv5Used; //Pipe
 
 SDL_Rect Scene1::gdSprite;
 SDL_Texture* Scene1::objectTexture;
@@ -43,6 +44,8 @@ SDL_Texture* Scene1::objectTexture4;
 SDL_Texture* Scene1::objectTexture5;
 SDL_Texture* Scene1::objectTexture6;
 SDL_Texture* Scene1::objectTexture7;
+SDL_Texture* Scene1::objectTextureAirBox;
+SDL_Texture* Scene1::objectTexturePipe;
 
 SDL_Renderer* Scene1::renderer;
 
@@ -63,7 +66,7 @@ int Scene1::scene1() {
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "1";
     
-  //  SPRITE_SIZE = 180;
+    //SPRITE_SIZE = 180;
    // xPosition = 10;
    // yPosition = 300;
 
@@ -122,6 +125,7 @@ int Scene1::scene1() {
     inv2 = { 760, 610, 60, 60 };
     inv3 = { 880, 650, 40, 40 };
     inv4 = { 760, 700, 60, 60 };
+    
 
     //Main background Rect
     background = { 0, 0, 1024, 600 };
@@ -146,7 +150,7 @@ int Scene1::scene1() {
 
     window =         SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
-    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED ); //|| SDL_RENDERER_PRESENTVSYNC
        //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 };
@@ -185,7 +189,7 @@ int Scene1::scene1() {
 
     Textures tex;
     tex.Scene1Textures();
- //  tex.Scene2Textures();
+  // tex.Scene2Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
@@ -287,6 +291,16 @@ int Scene1::scene1() {
         //Set objectSprite Parameters size, height, width, position etc.
         SDL_Rect srcrect6 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
         SDL_Rect dstrect6 = { objectP3, objectP4, objectP5, objectP6 };
+
+        //Scene Object 7 Air Box
+        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 7, NULL, NULL, NULL);
+        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 7, NULL, NULL, NULL);
+
+        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+        Uint32 object7 = (ticks / 100) % 1;
+        //Set objectSprite Parameters size, height, width, position etc.
+        SDL_Rect srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+        SDL_Rect dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
 
 
         //NOTE: Uint32 object3 means that this is object3. Don't forget.
@@ -668,8 +682,9 @@ int Scene1::scene1() {
         }
 
         if (SceneBackground == "1da") {
-
             SDL_RenderCopy(renderer, Textures::scene1d, NULL, &background);
+           
+                    
 
         }
 
@@ -862,12 +877,19 @@ int Scene1::scene1() {
         //Pipe
        
         if (objectToDestroy.find("5") != std::string::npos) {
-           
-                SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);
-            
+           if(inv5Used == 0){
+            SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);
+                         
+           }
+         
         }
-       
+        
+        if (SceneBackground == "1da" || SceneBackground == "1db") {
+            SDL_RenderCopy(renderer, objectTextureAirBox, &srcrect7, &dstrect7);
+          
 
+
+        }
 
 
         //Display Character
@@ -875,7 +897,6 @@ int Scene1::scene1() {
         gdSprite.h = SPRITE_SIZE;
      
        
-
         if(playerMessage > 3){
             SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
         }
@@ -903,6 +924,7 @@ int Scene1::scene1() {
         if (SceneBackground == "1d") {
           
             SDL_RenderCopy(renderer, Textures::computerScene2, NULL, &background);
+
         }
 
         if (SceneBackground == "1e") {
@@ -914,20 +936,21 @@ int Scene1::scene1() {
         if (SceneBackground == "1fa") {
 
             SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);
-
+           
+            
         }
 
         if (SceneBackground == "1da" || SceneBackground== "1db") {
-                    SDL_RenderCopy(renderer, objectTexture6, &srcrect6, &dstrect6); 
+          //  SDL_RenderCopy(renderer, objectTextureAirBox, &srcrect7, &dstrect7);
+            SDL_RenderCopy(renderer, objectTexture6, &srcrect6, &dstrect6); 
+            
+                                
         }
         
-
-
+   
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
 
         SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
-
-
 
 
 

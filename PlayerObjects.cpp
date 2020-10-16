@@ -502,6 +502,12 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         //The second value is set to 0 to prevent the animation by setting the speed to 0.
         return  std::make_tuple(1, 0, NULL, 100, 149);
     }
+    if (scene == 1 && objectID == 7) {
+        //Tent
+
+        //The second value is set to 0 to prevent the animation by setting the speed to 0.
+        return  std::make_tuple(1, 0, NULL, 186, 138);
+    }
 
 
 
@@ -543,6 +549,11 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
         //Closed Box
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 520, 500, 100, 96);
+    }
+    if (scene == 1 && objectID == 7) {
+        //Air Box
+        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+        return  std::make_tuple(1, 838, 380, 140, 118);
     }
 
     return  std::make_tuple(scene, objectID, b, c, d);

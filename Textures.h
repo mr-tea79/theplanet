@@ -16,6 +16,7 @@ namespace brightland {
 		static SDL_Texture* rocks2;
 		static SDL_Texture* computerScene1;
 		static SDL_Texture* computerScene2;
+		
 	
 
 		static SDL_Texture* wreakageScene;
@@ -45,6 +46,8 @@ namespace brightland {
 		SDL_Surface* imageSurface11;
 		SDL_Surface* imageSurface12;
 		
+		SDL_Surface* pipe;
+		SDL_Surface* airBox;
 		SDL_Surface* boxClosed;
 		SDL_Surface* boxOpened;
 		SDL_Surface* boxEmpty;
@@ -53,7 +56,7 @@ namespace brightland {
 		SDL_Surface* stars;
 		SDL_Surface* tape;
 		SDL_Surface* tent;
-		SDL_Surface* pipe;
+		SDL_Surface* pipeBox;
 
 	public:
 		void Scene1Textures();
