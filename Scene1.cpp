@@ -240,7 +240,7 @@ int Scene1::scene1() {
                     break;
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                    if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > gdSprite.x + 100 || event.motion.x < gdSprite.x - 100)  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
+                    if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 100 || event.motion.x < x - 100 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
                       
                         if(playerMessage > 2){
                         //Reset MessageHolder after the message has been hidden. This prevents messages from disappearing too quickly.
@@ -271,7 +271,7 @@ int Scene1::scene1() {
                         }
 
                     else {  
-                  
+                            
                     }
 
             }
