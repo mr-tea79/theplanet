@@ -1,10 +1,12 @@
 #include <iostream>
+#include <tuple>
 #include "PlayerObjects.h"
 #include "Scene1.h"
 #include <tuple>
 #include <string>
 #include "Inventory.h"
 #include "Scene1.h"
+
 
 
 using namespace brightland;
@@ -17,6 +19,22 @@ static int yPosition;
 static int playerMessage;
 static int inv3Used;  //Duct Tape
 int PlayerObjects::boxOpened;
+
+SDL_Rect PlayerObjects::srcrect;
+SDL_Rect PlayerObjects::dstrect;
+SDL_Rect PlayerObjects::srcrect2;
+SDL_Rect PlayerObjects::dstrect2;
+SDL_Rect PlayerObjects::srcrect3;
+SDL_Rect PlayerObjects::dstrect3;
+SDL_Rect PlayerObjects::srcrect4;
+SDL_Rect PlayerObjects::dstrect4;
+SDL_Rect PlayerObjects::srcrect5;
+SDL_Rect PlayerObjects::dstrect5;
+SDL_Rect PlayerObjects::srcrect6;
+SDL_Rect PlayerObjects::dstrect6;
+SDL_Rect PlayerObjects::srcrect7;
+SDL_Rect PlayerObjects::dstrect7;
+
 
 
 //HoverObjects will display information about objects of interest when the user hovers over them.
@@ -447,16 +465,6 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
 
     }
 
-
-    /*
-    if (scene == 1 && playerCurrentLocationX >= 936 && playerCurrentLocationX <= 998) {
-        message = "Halloween Mask";
-    }
-
-    if (scene == 1 && playerCurrentLocationX >= 78 && playerCurrentLocationX <= 112) {
-        message = "Rope";
-    }
-    */
     return message;
 }
 
@@ -559,21 +567,89 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
     return  std::make_tuple(scene, objectID, b, c, d);
 }
 
-/*
-int PlayerObjects::PlayerObject(int x, int y, int scene) {
-    int objectID;
+void PlayerObjects::PlaceObjects() {
 
-    if (scene == 1) {
+    Uint32 ticks = SDL_GetTicks();
+    PlayerObjects pob;
+    /*Scene Objects
+    Below you can add all the objects you want to appear on the scene and then you copy them to the renderer at the bottom of the game loop.*/
+    //Add Scene Objects.
+     //Scene Object variables.
+    int sceneobject = 1, objectP1, objectP2, objectHeight, objectWidth, numberSprites;
+    int objectP3, objectP4, objectP5, objectP6;
 
-        if (x < 200 && y < 200) {
-            return objectID = 1;
-        }
+    //Scene Object 1
+    //Build object parameters.                                                            //1 means object 1
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 1, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 1, NULL, NULL, NULL);
 
-    }
-   
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object1 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect = { object1 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect = { objectP3, objectP4, objectP5, objectP6 };
 
+    //Scene Object 2
+    //Build object parameters.                                                                //2 means object 2
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 2, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 2, NULL, NULL, NULL);
 
-    return 0;
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object2 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect2 = { object2 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect2 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 3.......
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 3, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 3, NULL, NULL, NULL);
+
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object3 = (ticks / 100) % numberSprites;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect3 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect3 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 4.......
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 4, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 4, NULL, NULL, NULL);
+
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object4 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect4 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect4 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 5.......
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 5, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 5, NULL, NULL, NULL);
+
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object5 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect5 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect5 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 6.......
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 6, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 6, NULL, NULL, NULL);
+
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object6 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect6 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect6 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 7 Air Box
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 7, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 7, NULL, NULL, NULL);
+
+    //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
+    int object7 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
+
 
 }
- */
+

@@ -55,9 +55,9 @@ static int tLoader = 0;  //Used to prevent the same textures being loaded in twi
 int Scene1::scene1() {
 
     cout << "Initialize" << endl;
-    
-    //Scene Number.
     scene = 1;
+    //Scene Number.
+    
 
     //Set initial position of game character and the size of the character.
     xPosition = 10;
@@ -101,24 +101,13 @@ int Scene1::scene1() {
     int gy;
     int x =0, y = 0;
 
-    //Initialize SDL components.
-  
-    windowSurface =  NULL;
-    menuSurface =    NULL;
-    ftexture =       NULL;
-    dialogmTexture = NULL;
-
   
     //Text Dialog.
     dialog =         NULL;
-    dialogm =        NULL;
     fsurface =       NULL;
-    renderer =       NULL;
+  
 
-    //Sprite Movement.
-    spriteDown1 =    NULL;
-
-   
+     
     //Image RECTS are used to hold in game images and are set to a given position (x,y,height,width).
     //Inventory RECTS
     inv1 = { 700, 650, 40, 40 };
@@ -136,10 +125,6 @@ int Scene1::scene1() {
     background3 = { 0, 310, 1100, 300 };
 
 
-  //  background3 = { 0, 0, 1024, 600 };
-   // background4 = { 0, 0, 1024, 600 };
-
-
     menu = { 0, 600, 1024, 568 };
     windowRect = { 921 ,460,78,100 };
 
@@ -150,7 +135,7 @@ int Scene1::scene1() {
 
     window =         SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
-    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED ); //|| SDL_RENDERER_PRESENTVSYNC
+    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
        //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 };
@@ -215,96 +200,17 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {   
-      
+        
+        //Place player objects in the game.
+        pob.PlaceObjects();
+
+
         if (inv3Used == 1)
             spriteDown1 = spriteDownp;
 
         //Set this to 1 to show the player messages. 5 will skip them.
         playerMessage = 7;
-        Uint32 ticks = SDL_GetTicks();
-
-        /*Scene Objects
-        Below you can add all the objects you want to appear on the scene and then you copy them to the renderer at the bottom of the game loop.*/
-        //Add Scene Objects.
-         //Scene Object variables.
-        int sceneobject = scene, objectP1, objectP2, objectHeight, objectWidth, numberSprites;
-        int objectP3, objectP4, objectP5, objectP6;
-             
-        //Scene Object 1
-        //Build object parameters.                                                            //1 means object 1
-        tie(numberSprites,objectP1,objectP2,objectHeight,objectWidth) = pob.placeObject(scene, 1, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 1, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object1 = (ticks / 100) % 1;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect = { object1 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect = { objectP3, objectP4, objectP5, objectP6 };
-          
-        //Scene Object 2
-        //Build object parameters.                                                                //2 means object 2
-        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 2, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 2, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object2 = (ticks / 100) % 1;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect2 = { object2 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect2 = { objectP3, objectP4, objectP5, objectP6 };
-      
-        //Scene Object 3.......
-        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 3, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 3, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object3 = (ticks / 100) % numberSprites;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect3 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect3 = { objectP3, objectP4, objectP5, objectP6 };
-
-        //Scene Object 4.......
-        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 4, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 4, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object4 = (ticks / 100) % 1;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect4 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect4 = { objectP3, objectP4, objectP5, objectP6 };
-
-        //Scene Object 5.......
-        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 5, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 5, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object5 = (ticks / 100) % 1;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect5 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect5 = { objectP3, objectP4, objectP5, objectP6 };
-
-        //Scene Object 6.......
-        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 6, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 6, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object6 = (ticks / 100) % 1;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect6 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect6 = { objectP3, objectP4, objectP5, objectP6 };
-
-        //Scene Object 7 Air Box
-        tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(scene, 7, NULL, NULL, NULL);
-        tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(scene, 7, NULL, NULL, NULL);
-
-        //% numberSprites means there are 3 sprites on the spritesheet. This is returned from the function placeObject. Set it to 1 for no animation.
-        Uint32 object7 = (ticks / 100) % 1;
-        //Set objectSprite Parameters size, height, width, position etc.
-        SDL_Rect srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
-        SDL_Rect dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
-
-
-        //NOTE: Uint32 object3 means that this is object3. Don't forget.
-        //..... AND SO ON...
+       
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
         SDL_RenderClear(renderer);
@@ -334,7 +240,7 @@ int Scene1::scene1() {
                     break;
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                    if (event.motion.y < HEIGHT && event.motion.y > 0  && messageHolder != 1 || event.motion.y < 704  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ ) {
+                    if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > gdSprite.x + 100 || event.motion.x < gdSprite.x - 100)  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
                       
                         if(playerMessage > 2){
                         //Reset MessageHolder after the message has been hidden. This prevents messages from disappearing too quickly.
@@ -349,6 +255,8 @@ int Scene1::scene1() {
                         //Find objects that are hoverable.
                        
                         interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                       
+
                                                                 
                         if (interactionMessage != "") {
                           
@@ -359,17 +267,11 @@ int Scene1::scene1() {
                             fsurface = TTF_RenderText_Solid(font, im, fcolor);
                             ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
                             _sleep(100); // pauses briefly to allow text to show.
-                         //   SDL_DestroyTexture(dialogmTexture);
-                           // SDL_DestroyTexture(ftexture);
-                          //  interactionMessage = "";                                                                                 
+                                                                                                      
                         }
 
                     else {  
-                        //I don't think this is necessary but I can't remember why I put it here and the program works so I'll leave it alone.
-                        fsurface = TTF_RenderText_Solid(font, "", fcolor);
-                        ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-                       // SDL_DestroyTexture(dialogmTexture);    
-                   
+                  
                     }
 
             }
@@ -400,7 +302,7 @@ int Scene1::scene1() {
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
            
             std::cout << mouseHold << std::endl;
-            
+          
             //This will show the scene intro. To skip the scene intro, comment this out.
            // playerMessage = 5;
 
@@ -576,15 +478,26 @@ int Scene1::scene1() {
                 //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
                 if(gdSprite.x > 130 && gdSprite.x > WIDTH -100){
                     textRect = { gdSprite.x -300, gdSprite.y - 80, interactionMessagelength *10, 20 };
+                  //  SDL_ShowCursor(0);
+                  
+                  //  SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
+
                    
                 }
                 else if (gdSprite.x > 130 && gdSprite.x < WIDTH - 100) {
                     textRect = { gdSprite.x - 100 , gdSprite.y - 80, interactionMessagelength * 10, 20 };
-                  
+                 //   SDL_ShowCursor(0);
+                    
+                  //  SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
+
                 }
                
                 else if(gdSprite.x < 130){
                     textRect = { gdSprite.x - 60 , gdSprite.y - 80, interactionMessagelength *10, 20 };
+                 //   SDL_ShowCursor(0);
+                   
+                 //   SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
+
                   
                 }  
 
@@ -631,6 +544,7 @@ int Scene1::scene1() {
                      //Render the text on the screen.
                      ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
                     _sleep(100); // pauses briefly to allow text to show.
+
                     SDL_DestroyTexture(dialogmTexture);
                                   
                     //Increase mouseHold variable by one.
@@ -833,7 +747,7 @@ int Scene1::scene1() {
           
         }
     
-        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, objectTexture, &srcrect, &dstrect);}  
+        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}
         
         //Scene1b
 
@@ -845,7 +759,7 @@ int Scene1::scene1() {
 
 
         else if (SceneBackground == "1b") { 
-            SDL_RenderCopy(renderer, objectTexture2, &srcrect2, &dstrect2);       
+            SDL_RenderCopy(renderer, objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
 
         }
        
@@ -857,7 +771,7 @@ int Scene1::scene1() {
         }
         else if (SceneBackground == "1b") {
      
-            SDL_RenderCopy(renderer, objectTexture4, &srcrect4, &dstrect4);
+            SDL_RenderCopy(renderer, objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);
    
         }
 
@@ -871,7 +785,7 @@ int Scene1::scene1() {
         }
         else if (SceneBackground == "1b") {
 
-            SDL_RenderCopy(renderer, objectTexture5, &srcrect5, &dstrect5);
+            SDL_RenderCopy(renderer, objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
         }
 
         //Pipe
@@ -885,7 +799,7 @@ int Scene1::scene1() {
         }
         
         if (SceneBackground == "1da" || SceneBackground == "1db") {
-            SDL_RenderCopy(renderer, objectTextureAirBox, &srcrect7, &dstrect7);
+            SDL_RenderCopy(renderer, objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
           
 
 
@@ -908,7 +822,7 @@ int Scene1::scene1() {
     
         //Display Objects and textures for the current scene background.
         if (SceneBackground == "1") {
-            SDL_RenderCopy(renderer, Textures::sceneTexture, &srcrect3, &dstrect3);
+            SDL_RenderCopy(renderer, Textures::sceneTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
             SDL_RenderCopy(renderer, Textures::rocks, NULL, &background2);
         }
 
@@ -942,26 +856,24 @@ int Scene1::scene1() {
 
         if (SceneBackground == "1da" || SceneBackground== "1db") {
           //  SDL_RenderCopy(renderer, objectTextureAirBox, &srcrect7, &dstrect7);
-            SDL_RenderCopy(renderer, objectTexture6, &srcrect6, &dstrect6); 
+            SDL_RenderCopy(renderer, objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);
             
                                 
         }
         
    
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
-
         SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
-
-
 
         //Ensures text is always on the top.
         if(interactionMessage != "" || gameObject !="")
-            SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
+            SDL_RenderCopy(renderer, ftexture, NULL, &textRect); 
+            
         //Render the screen.
 
        // SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
        
-        interactionMessage = ""; // Clear the interaction message on every loop.
+       // interactionMessage = ""; // Clear the interaction message on every loop.
        
         SDL_RenderPresent(renderer);
       

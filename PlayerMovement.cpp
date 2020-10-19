@@ -80,13 +80,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
       
             SDL_DestroyTexture(spriteTexture);
             spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-            gd -= 1.5;
+            gd -= 3.5;
         }
 
         if (gd == 244 && y <= 500) {
             SDL_DestroyTexture(spriteTexture);
             spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteDownp);
-            gd += 1.5;
+            gd += 3.5;
         }
      
 
@@ -96,19 +96,19 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5; //Speed of sprite movement.
+                gd += 3.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 1.5;
+                gd += 3.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 1.5;
+                gd += 3.5;
                // position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
@@ -122,7 +122,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1.5;
+                gd -= 3.5;
             }
 
             position++;
@@ -137,18 +137,18 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
               //  position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
@@ -160,7 +160,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (gd == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5;
+                gd += 3.5;
             }
 
             position++;
@@ -180,19 +180,19 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5; //Speed of sprite movement.
+                gd += 3.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 1.5;
+                gd += 3.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 1.5;
+                gd += 3.5;
                // position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
@@ -206,7 +206,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1.5;
+                gd -= 3.5;
             }
 
             position++;
@@ -217,18 +217,18 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
               //  position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
@@ -240,7 +240,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (gd == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5;
+                gd += 3.5;
             }
 
             position++;
@@ -258,19 +258,19 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5; //Speed of sprite movement.
+                gd += 3.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 1.5;
+                gd += 3.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 1.5;
+                gd += 3.5;
                // position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
@@ -284,7 +284,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1.5;
+                gd -= 3.5;
             }
 
             position++;
@@ -295,18 +295,18 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
               //  position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
@@ -318,7 +318,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (gd == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5;
+                gd += 3.5;
             }
 
             position++;
@@ -340,19 +340,19 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5; //Speed of sprite movement.
+                gd += 3.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 1.5;
+                gd += 3.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 1.5;
+                gd += 3.5;
             //    position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
@@ -367,7 +367,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1.5;
+                gd -= 3.5;
             }
 
             position++;
@@ -378,18 +378,18 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
               //  position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
@@ -402,7 +402,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (gd == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 1.5;
+                gd += 3.5;
             }
 
             position++;
@@ -428,25 +428,25 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 1.5; //Speed of sprite movement.
+                gd += 3.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);
-                gd += 1.5;
+                gd += 3.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);
-                gd += 1.5;
+                gd += 3.5;
              //   position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -455,7 +455,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 1.5;
+                gd -= 3.5;
             }
 
             position++;
@@ -466,23 +466,23 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft2a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft3a);
               //  position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -490,7 +490,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (gd == 268) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 1.5;
+                gd += 3.5;
             }
 
             position++;
@@ -515,26 +515,26 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 1.5; //Speed of sprite movement.
+                gd += 3.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);
-                gd += 1.5;
+                gd += 3.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);
-                gd += 1.5;
+                gd += 3.5;
                 //position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gd += 1.5;
+                gd += 3.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -542,7 +542,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 1.5;
+                gd -= 3.5;
             }
 
             position++;
@@ -553,30 +553,30 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft2a);
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft3a);
               //  position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
                 position = 0;
-                gd -= 1;
+                gd -= 3.5;
             }
 
             if (gd == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 1.5;
+                gd += 3.5;
             }
 
             position++;
@@ -589,10 +589,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
 int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight, SDL_Texture* spriteTexture, SDL_Texture* ftexture,
     SDL_Texture* dialogmTexture) {
-
-    //SDL_DestroyTexture(spriteTexture);
-   // SDL_DestroyTexture(dialogmTexture);
-  //  SDL_DestroyTexture(ftexture);
 
     if (Scene1::inv3Used == 1) {
 
@@ -613,23 +609,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 1; //Speed of sprite movement.
+                gy -= 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 1;
+                gy -= 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
                // position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -649,23 +645,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 1; //Speed of sprite movement.
+                gy += 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 1;
+                gy += 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                // position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -692,23 +688,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 1; //Speed of sprite movement.
+                gy -= 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 1;
+                gy -= 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
               //  position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -729,23 +725,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 1; //Speed of sprite movement.
+                gy += 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 1;
+                gy += 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
               //  position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -784,23 +780,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 1; //Speed of sprite movement.
+                gy -= 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 1;
+                gy -= 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
               //  position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -821,23 +817,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
                 SDL_DestroyTexture(spriteTexture);
 
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 1; //Speed of sprite movement.
+                gy += 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 1;
+                gy += 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
               //  position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -875,23 +871,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 1; //Speed of sprite movement.
+                gy -= 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 1;
+                gy -= 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
                // position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -913,23 +909,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
                 SDL_DestroyTexture(spriteTexture);
 
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 1; //Speed of sprite movement.
+                gy += 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 1;
+                gy += 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
              //   position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -970,23 +966,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 1; //Speed of sprite movement.
+                gy -= 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 1;
+                gy -= 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
              //   position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -1008,23 +1004,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
                 SDL_DestroyTexture(spriteTexture);
 
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 1; //Speed of sprite movement.
+                gy += 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 1;
+                gy += 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 //position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -1060,23 +1056,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 1; //Speed of sprite movement.
+                gy -= 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 1;
+                gy -= 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
               //  position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 1;
+                gy -= 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
@@ -1098,23 +1094,23 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
                 SDL_DestroyTexture(spriteTexture);
 
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 1; //Speed of sprite movement.
+                gy += 2.5; //Speed of sprite movement.
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 1;
+                gy += 2.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
              //   position = 0; //This achieves the animation effect.
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 1;
+                gy += 2.5;
                 position = 0; //This achieves the animation effect.
             }
 
