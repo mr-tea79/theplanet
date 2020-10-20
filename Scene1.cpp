@@ -64,15 +64,15 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1";
+    SceneBackground = "1da";
     
-    //SPRITE_SIZE = 180;
+    SPRITE_SIZE = 180;
    // xPosition = 10;
    // yPosition = 300;
 
     //THIS IS THE DEFAULT SCENE
     //Normal Size (Uncomment)
-    SPRITE_SIZE = 120;
+  //  SPRITE_SIZE = 120;
 
     
     //Static variables that are updated while the program is running.
@@ -86,6 +86,7 @@ int Scene1::scene1() {
     //Strings used for message handing. Contain returned values from the game loop.
     std::string interactionMessage;
     std::string useMessage;
+    std::string openMessage;
 
     //Used to prevent hover from removing the message on the screen too quickly. This was a real brain teaser to figure out.
     int messageHolder = 0;
@@ -174,7 +175,7 @@ int Scene1::scene1() {
 
     Textures tex;
     tex.Scene1Textures();
-  // tex.Scene2Textures();
+   tex.Scene2Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
@@ -188,7 +189,7 @@ int Scene1::scene1() {
     PlayerMovement player;
     player.LoadMovementTextures();
 
-    
+
  
     //Load player movement class.
     PlayerObjects pob;
@@ -240,7 +241,7 @@ int Scene1::scene1() {
                     break;
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                    if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 100 || event.motion.x < x - 100 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
+                    if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
                       
                         if(playerMessage > 2){
                         //Reset MessageHolder after the message has been hidden. This prevents messages from disappearing too quickly.
@@ -258,8 +259,8 @@ int Scene1::scene1() {
                        
 
                                                                 
-                        if (interactionMessage != "") {
-                          
+                        if (interactionMessage != "" ) {
+                       
                             int interactionMessagelength = interactionMessage.length();
                             const char* im = interactionMessage.c_str();        
                                                   
@@ -271,7 +272,7 @@ int Scene1::scene1() {
                         }
 
                     else {  
-                            
+                            SDL_DestroyTexture(ftexture);
                     }
 
             }
@@ -301,8 +302,7 @@ int Scene1::scene1() {
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
            
-            std::cout << mouseHold << std::endl;
-          
+                     
             //This will show the scene intro. To skip the scene intro, comment this out.
            // playerMessage = 5;
 
@@ -310,13 +310,11 @@ int Scene1::scene1() {
            //Note needs some tweaking. If you remove this your RAM will rocket!                 
   
             SDL_DestroyTexture(spriteTexture);
+            SDL_DestroyTexture(ftexture);
             spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
        
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-        //   SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
-          
-     
+         
             messageHolder = 0;
                          
             Uint8 buttons = SDL_GetMouseState(&x, &y);
@@ -333,10 +331,10 @@ int Scene1::scene1() {
 
             if(mouseHold == 0){
                 mouseHold = 1;
-              
+                ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
             //This will kick in when any story intro messages have been shown.
             gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
-            
+              
           
             //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
             if(y < gdSprite.y && x < gdSprite.x +75 && x >gdSprite.x)
@@ -344,8 +342,7 @@ int Scene1::scene1() {
             
             if (y > gdSprite.y && x < gdSprite.x +75 && x > gdSprite.x)
                 gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture,ftexture, dialogmTexture);
-            
-            
+         
             }
            
             //Get interaction message.
@@ -368,7 +365,8 @@ int Scene1::scene1() {
             }
             //Get object use message.
             useMessage = mob.Use(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
-          
+            openMessage = mob.Open(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
+    
             //Get object use message.
          //   useMessage = mob.MenuSelect(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "", interactionMessage);
                     
@@ -389,16 +387,20 @@ int Scene1::scene1() {
                                 
         
             //Handles all object interaction messages on the game window.          
-             if (interactionMessage != "" || useMessage !="" ) {
-                 SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
-
-               //  SDL_DestroyTexture(spriteTexture);
-               //  spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
-                
+             if (interactionMessage != "" || useMessage !="" || openMessage !="") {
+                 const char* im = interactionMessage.c_str();
+                 const char* imu;
+                 int useMessageLength;
+                 SDL_DestroyTexture(spriteTexture);
+                 spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+             //    SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);                
                 int interactionMessagelength = interactionMessage.length();
-                int useMessageLength = useMessage.length();
-                const char* im = interactionMessage.c_str();
-                const char* imu = useMessage.c_str();             
+                if (useMessage != "") {useMessageLength = useMessage.length(); }
+                if (openMessage != "") { useMessageLength = openMessage.length(); }
+
+             
+                if (useMessage != "") { imu = useMessage.c_str(); }
+                if (openMessage != "") {imu = openMessage.c_str(); }
                 const char* imenu = gameObject.c_str();
                                            
                 dTexture.x = gdSprite.x - 100;  //Set position of text.
@@ -478,6 +480,7 @@ int Scene1::scene1() {
                 //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
                 if(gdSprite.x > 130 && gdSprite.x > WIDTH -100){
                     textRect = { gdSprite.x -300, gdSprite.y - 80, interactionMessagelength *10, 20 };
+                   
                   //  SDL_ShowCursor(0);
                   
                   //  SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
@@ -486,26 +489,22 @@ int Scene1::scene1() {
                 }
                 else if (gdSprite.x > 130 && gdSprite.x < WIDTH - 100) {
                     textRect = { gdSprite.x - 100 , gdSprite.y - 80, interactionMessagelength * 10, 20 };
-                 //   SDL_ShowCursor(0);
-                    
-                  //  SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
+            
+                  
 
                 }
                
                 else if(gdSprite.x < 130){
                     textRect = { gdSprite.x - 60 , gdSprite.y - 80, interactionMessagelength *10, 20 };
-                 //   SDL_ShowCursor(0);
-                   
-                 //   SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
-
+                 
                   
                 }  
 
 
                 }
                 //This helps with keeping the message on the screen long enough for the player to actually read it!
-                if (useMessage != "") {
-                    if (useMessage == "Use" || useMessage == "Pull") {
+                if (useMessage != "" || openMessage != "") {
+                    if (useMessage == "Use" || useMessage == "Pull" || openMessage == "Open") {
                         messageHolder = 0;
                     }
                     else {                     
@@ -523,15 +522,15 @@ int Scene1::scene1() {
                 }
                          
                 //This prevents a memory leak by detecting if the mouse was held down too long. Normally I set this to 5 but I have increased it for testing.
-                if (mouseHold < 20) {
+                if (mouseHold < 2) {
               
                      if(interactionMessage !=""){                       
                         fsurface = TTF_RenderText_Solid(font, im, fcolor);                    
-                
+                       
                      }
                      //This helps with keeping the message on the screen long enough for the player to actually read it!
-                     if (useMessage != "") {     
-                         if (useMessage == "Use" || useMessage == "Pull") {
+                     if (useMessage != "" || openMessage != "") {
+                         if (useMessage == "Use" || useMessage == "Pull" || openMessage == "Open") {
                              messageHolder = 0;
                          }
                          else {                          
@@ -542,10 +541,11 @@ int Scene1::scene1() {
                      }
                      
                      //Render the text on the screen.
+                     
                      ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-                    _sleep(100); // pauses briefly to allow text to show.
-
-                    SDL_DestroyTexture(dialogmTexture);
+                    _sleep(300); // pauses briefly to allow text to show.
+                 
+                   // SDL_DestroyTexture(dialogmTexture);
                                   
                     //Increase mouseHold variable by one.
                     mouseHold++;
@@ -560,7 +560,8 @@ int Scene1::scene1() {
              }
              else {                
                 mouseHold = 1;       
-                                        
+                SDL_DestroyTexture(ftexture);
+                fsurface = NULL;
              }
 }
  
@@ -727,14 +728,11 @@ int Scene1::scene1() {
 
 
         else {
-             //  SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
-            //   SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
-
+       
         }
 
         //This needs to go here, don't move it.
         SDL_RenderCopy(renderer, menuTexture, NULL, &menu);   
-       // SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
  
         //Display Scene Objects if not destroyed (picked up).     
 
@@ -800,8 +798,6 @@ int Scene1::scene1() {
         
         if (SceneBackground == "1da" || SceneBackground == "1db") {
             SDL_RenderCopy(renderer, objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
-          
-
 
         }
 
@@ -866,14 +862,14 @@ int Scene1::scene1() {
         SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
 
         //Ensures text is always on the top.
-        if(interactionMessage != "" || gameObject !="")
-            SDL_RenderCopy(renderer, ftexture, NULL, &textRect); 
-            
+        if (interactionMessage != "" || gameObject != "")
+            SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
+       
         //Render the screen.
 
        // SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
        
-       // interactionMessage = ""; // Clear the interaction message on every loop.
+        interactionMessage = ""; // Clear the interaction message on every loop.
        
         SDL_RenderPresent(renderer);
       
