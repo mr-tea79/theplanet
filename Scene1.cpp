@@ -64,15 +64,15 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1da";
+    SceneBackground = "1";
     
-    SPRITE_SIZE = 180;
+   // SPRITE_SIZE = 180;
    // xPosition = 10;
    // yPosition = 300;
 
     //THIS IS THE DEFAULT SCENE
     //Normal Size (Uncomment)
-  //  SPRITE_SIZE = 120;
+    SPRITE_SIZE = 120;
 
     
     //Static variables that are updated while the program is running.
