@@ -391,8 +391,8 @@ int Scene1::scene1() {
                  const char* im = interactionMessage.c_str();
                  const char* imu;
                  int useMessageLength;
-                 SDL_DestroyTexture(spriteTexture);
-                 spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+                 //SDL_DestroyTexture(spriteTexture);
+                // spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
              //    SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);                
                 int interactionMessagelength = interactionMessage.length();
                 if (useMessage != "") {useMessageLength = useMessage.length(); }
