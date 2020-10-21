@@ -20,6 +20,7 @@ static int inv4used;
 static int playerMessage;
 
 
+
 void MenuInteraction::LoadActionTextures() {
   
     spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
@@ -159,9 +160,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          Scene1::inv3Used = 1;
          useMessage = "That should plug the leak!";
      }
-      else if (useMessage == "Use") {
-         useMessage = "NO";
-     }
+     
 
      else {
          useMessage = "";

@@ -144,28 +144,34 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409) {
         message = "Rocks";
+        
     }
 
 
     if (Scene1::SceneBackground == "1e" && x >= 994  && y >= 0 && y <= 570) {
         message = "Head east";
+        
     }
 
 
     if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111) {
         message = "The moon";
+        
     }
 
     if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
         message = "Enter Wreckage";
+        
     }
 
     if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
         message = "Wreckage";
+        
     }
 
     if (Scene1::SceneBackground == "1" && x >= 609 && x <= 719 && y >= 515 && y <= 542 && inv.checkItem("PDA") != 1) {
         message = "White plastic thingy";
+             
     }
 
 
@@ -246,6 +252,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
         message = "That's George";
+        if (Scene1::useStatement == "Use")
+            message = "I'll have a cuddle later.";
     }
 
     if(Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened !=2) {
@@ -257,6 +265,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened == 1) {
 
         message = "Ooh an air pressure pipe";
+        if (Scene1::useStatement == "Use")
+            message = "Might be worth picking it up first.";
 
     }
 
@@ -365,6 +375,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283 && playerCurrentLocationX <=900 && playerCurrentLocationX >300  && playerCurrentLocationY <= 360) {
         message = "It's very flat here.";
+        if (Scene1::useStatement == "Use")
+            message = "It's a good idea";
     }
 
 
@@ -372,11 +384,15 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 && playerCurrentLocationX <= 800) {
 
         message = "This is one strange looking Place.";
+        if (Scene1::useStatement == "Use")
+            message = "I can't use the moon!";
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409 && playerCurrentLocationX >= 640) {
 
         message = "Some rocks, nothing interesting.";
+        if (Scene1::useStatement == "Use")
+            message = "I'm not a geologist, maybe I should be.";
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482 && playerCurrentLocationX <=13) {
@@ -415,23 +431,30 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 600) {
         message = "Anti matter engine. This ship isn't going nowhere!";
+        if (Scene1::useStatement == "Use")
+            message= "It's broken, what am I supposed to use it for?";
     }
 
     if (Scene1::SceneBackground == "1" && x >= 681 && x <= 700 && y >= 515 && y <= 542 && playerCurrentLocationX >= 622 && playerCurrentLocationX <= 736 && inv.checkItem("PDA") != 1) {
 
         message = "That's my PDA";
+        if (Scene1::useStatement == "Use")
+            message = "I need to pick it up first!";
     }
 
 
     if (Scene1::SceneBackground == "1b" && x >= 320 && x <= 390 && y >= 433 && y <= 474 && playerCurrentLocationX >= 310 && playerCurrentLocationX <= 394 && inv.checkItem("Tape") != 1) {
 
         message = "Oooh Ape Tape!";
+        if (Scene1::useStatement == "Use")
+            message = "I need to pick it up first!";
     }
 
     if (Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && playerCurrentLocationX >= 406 && playerCurrentLocationX <= 496 && inv.checkItem("Tent") != 1) {
 
         message = "Does exactly what it says on the tin";
-
+        if (Scene1::useStatement == "Use")
+            message = "Not in here! That won't end well.";
     }
 
    

@@ -24,7 +24,6 @@ namespace brightland {
 		static std::string useStatement;
 		static std::string SceneBackground;
 		static int playerMessage;
-
 		
 		//Inventory used variables. To check if the item has been used and shouldn't remain in the inventory.
 		static int inv3Used;
