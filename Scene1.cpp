@@ -365,7 +365,7 @@ int Scene1::scene1() {
             }
             //Get object use message.
             useMessage = mob.Use(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
-         
+                 
             openMessage = mob.Open(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
     
             //Get object use message.
@@ -506,7 +506,7 @@ int Scene1::scene1() {
                 //This helps with keeping the message on the screen long enough for the player to actually read it!
                 if (useMessage != "" || openMessage != "") {
                     if (useMessage == "Use" || useMessage == "Pull" || openMessage == "Open") {
-                        SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
+                     
                         messageHolder = 0;
                     }
                     else {                     

@@ -40,7 +40,9 @@ SDL_Rect PlayerObjects::dstrect7;
 //HoverObjects will display information about objects of interest when the user hovers over them.
 std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) {
 
+  
     std::string gameObject;
+
     //std::string pickUp;
     //Check database if item has been picked up.
     Inventory inv;
@@ -80,7 +82,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     //Inventory Hover Messages (Too much overhead on performance. Needs looking at.)
-    /*
+   
 
     if (inv.checkItem("PDA") !=0 && x >= 696 && x <=736 && y >=653 && y <=687  ) {
         message = "PDA";
@@ -97,10 +99,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     if (inv.checkItem("Tape") != 0 && x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         message = "Duct Tape";
     }
+    if (inv.checkItem("Pipe") != 0 && x >= 888 && x <= 915 && y >= 653 && y <= 684) {
+        message = "Pipe";
+    }
 
-    */
-
-
+ 
     //Scene Hover Messages
 
  

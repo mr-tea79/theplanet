@@ -38,7 +38,7 @@ namespace brightland {
       //  std::string ObjectInteractionM(int scene, int x, int y, int playerCurrentLocationx, int playerCurrentLocationy);
         std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY);
         void PlayerObjects::PlaceObjects();
-
+     
     };
 }
 #endif

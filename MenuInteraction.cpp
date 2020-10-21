@@ -97,6 +97,8 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         useStatement = Scene1::useStatement = "Use";
         std::cout << Scene1::useStatement << std::endl;
         useMessage = "Use what?";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteDown1);
      }
 
      else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && useStatement == "Use") {
