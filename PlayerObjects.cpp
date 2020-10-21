@@ -83,24 +83,28 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Inventory Hover Messages (Too much overhead on performance. Needs looking at.)
    
-
-    if (inv.checkItem("PDA") !=0 && x >= 696 && x <=736 && y >=653 && y <=687  ) {
-        message = "PDA";
+    if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
+        if(inv.checkItem("PDA") != 0)
+            message = "PDA";
     }
 
-    if (inv.checkItem("Tent") != 0 && x >= 764 && x <= 817 && y >= 695 && y <= 755) {
-        message = "Self Inflating Tent";
+    if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {
+        if(inv.checkItem("Tent") != 0)
+            message = "Self Inflating Tent";
     }
 
-    if (inv.checkItem("Flag") != 0 && x >= 771 && x <= 821 && y >= 796 && y <= 798) {
-        message = "Flag";
+    if (x >= 771 && x <= 821 && y >= 796 && y <= 798) {
+        if(inv.checkItem("Flag") != 0)
+            message = "Flag";
     }
 
-    if (inv.checkItem("Tape") != 0 && x >= 888 && x <= 915 && y >= 653 && y <= 684) {
-        message = "Duct Tape";
+    if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
+        if(inv.checkItem("Tape") != 0)
+            message = "Duct Tape";
     }
-    if (inv.checkItem("Pipe") != 0 && x >= 888 && x <= 915 && y >= 653 && y <= 684) {
-        message = "Pipe";
+    if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
+        if(inv.checkItem("Pipe") != 0)
+            message = "Pipe";
     }
 
  
