@@ -144,6 +144,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          SDL_CreateTextureFromSurface(renderer, spriteAction3);
 
          inv.useItem("Tent");
+     
          Scene1::inv4Used = 1;
          //Change scene.
          Scene1::SceneBackground = "1fa";

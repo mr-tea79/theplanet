@@ -23,6 +23,7 @@ using namespace brightland;
 //Initialize the global use statement variable accessed by menu Interaction class.
 std::string Scene1::useStatement = "";
 std::string Scene1::SceneBackground = "1";
+SDL_Window* Scene1::window;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
@@ -134,7 +135,7 @@ int Scene1::scene1() {
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
 
-    window =         SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    Scene1::window =         SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
     renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
        //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
@@ -210,7 +211,7 @@ int Scene1::scene1() {
             spriteDown1 = spriteDownp;
 
         //Set this to 1 to show the player messages. 5 will skip them.
-        playerMessage = 7;
+        playerMessage = 10;
        
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
@@ -405,6 +406,7 @@ int Scene1::scene1() {
                 const char* imenu = gameObject.c_str();
                                            
                 dTexture.x = gdSprite.x - 100;  //Set position of text.
+               
 
                 if(interactionMessage !=""){
                  
@@ -423,6 +425,7 @@ int Scene1::scene1() {
                     }
 
                     if (interactionMessage == "Scene1e") {
+
                         interactionMessage = "";
                         xPosition = 100;
                         gdSprite.x = xPosition;
@@ -431,7 +434,6 @@ int Scene1::scene1() {
                     }
 
                     if (interactionMessage == "Scene1f") {
-
                         if (tLoader == 0) {
                             tex.Scene2Textures();
                             tLoader = 1;
@@ -445,6 +447,8 @@ int Scene1::scene1() {
                     }
 
                     if (interactionMessage == "Scene1fb") {
+
+                       
                         interactionMessage = "";
                         xPosition = 10;
                         gdSprite.x = xPosition;
@@ -455,6 +459,7 @@ int Scene1::scene1() {
                     }
 
                     if (interactionMessage == "Scene1fa") {
+                       
                         interactionMessage = "";
                         xPosition = 200;
                         gdSprite.x = xPosition;
@@ -719,12 +724,30 @@ int Scene1::scene1() {
             playerMessage = 7;
 
         }
+        else if (playerMessage == 7) {
+
+        interactionMessage = pi.PlayerMessage(scene, 7);
+        std::cout << interactionMessage << endl;
+        int interactionMessagelength = interactionMessage.length();
+        const char* im = interactionMessage.c_str();
+
+        textRect = { 100, 310, interactionMessagelength * 10, 20 };
+        fsurface = TTF_RenderText_Solid(font, im, fcolor);
+        ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
+        _sleep(100); // pauses briefly to allow text to show.                
+
+        SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
+
+
+        playerMessage = 7;
+
+        }
 
 
         //This is important to allow the last message in the player interaction to be shown.
-        else if (playerMessage == 6) {
+        else if (playerMessage == 7) {
 
-            playerMessage = 7;
+            playerMessage = 8;
             _sleep(3000);
         }
 

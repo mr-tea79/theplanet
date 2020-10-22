@@ -40,6 +40,11 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
 		std::string PlayerMessage = "Wow, these self inflatable tents are pretty nice.";
 		return PlayerMessage;
 	}
+	else if (msgNumber == 7) {
+		std::string PlayerMessage = "Well, it's a Wigwam!";
+		return PlayerMessage;
+	}
+
 
 
 

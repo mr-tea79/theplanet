@@ -192,7 +192,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
 
 
-    if (Scene1::SceneBackground == "1" && x > 0 && x <= 552 && y > 204 && y < 235 && gy <360) {
+    if (Scene1::SceneBackground == "1" && x > 0 && x <= 552 && y > 204 && y < 235 && gy <360 ) {
         message = "Head North";
     }
 
@@ -313,7 +313,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "1fb";
         Scene1::SPRITE_SIZE = 120;
         Scene1::xPosition = 400;
-
+        Scene1::playerMessage = 7;
         message = "Scene1fb";
     }
 

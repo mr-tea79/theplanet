@@ -78,17 +78,12 @@ void Textures::Scene1Textures() {
 void Textures::Scene2Textures() {
 
     //Clear out textures that will no longer be required to free up memory.
-    SDL_DestroyTexture(computerScene1);
-    SDL_DestroyTexture(computerScene2);
-    SDL_DestroyTexture(wreakageScene);
+   
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
-    SDL_DestroyTexture(rocks);
     SDL_DestroyTexture(Scene1::objectTexture5);
     SDL_DestroyTexture(Scene1::objectTexture4);
     SDL_DestroyTexture(invTexture3);
-    SDL_DestroyTexture(sceneTexture);
-
 
     pipe = IMG_Load("Objects/pipe.png");
 

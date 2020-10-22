@@ -142,7 +142,7 @@ namespace brightland {
 
 		static SDL_Renderer* renderer;
 
-		SDL_Window* window;
+		static SDL_Window* window;
 
 		TTF_Font* font;
 
