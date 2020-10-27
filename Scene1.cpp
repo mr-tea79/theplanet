@@ -735,7 +735,7 @@ int Scene1::scene1() {
             ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
             _sleep(100); // pauses briefly to allow text to show.                
 
-            SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
+      //      SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
         
             
                  playerMessage = 6;
