@@ -364,6 +364,7 @@ int Scene1::scene1() {
                 gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture,ftexture, dialogmTexture);
          
             }
+            _sleep(1);  //This makes the animation of the character look a bit more realistic.
            
             //Get interaction message.
            
