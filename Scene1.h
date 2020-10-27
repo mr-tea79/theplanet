@@ -24,6 +24,9 @@ namespace brightland {
 		static std::string useStatement;
 		static std::string SceneBackground;
 		static int playerMessage;
+		static int mouseHold;
+		static int tLoader;
+		static int messageHolder;
 		
 		//Inventory used variables. To check if the item has been used and shouldn't remain in the inventory.
 		static int inv3Used;
@@ -37,9 +40,9 @@ namespace brightland {
 		static int xPosition;
 		static int yPosition;
 
-		SDL_Color fcolor;
+		static SDL_Color fcolor;
 		SDL_Rect background;
-		SDL_Rect background2;
+		static SDL_Rect background2;
 		SDL_Rect background3;
 		SDL_Rect background4;
 
@@ -51,10 +54,10 @@ namespace brightland {
 		
 
 	
-		SDL_Rect dTexture;
+		static SDL_Rect dTexture;
 		SDL_Rect menu;
 		static SDL_Rect gdSprite;
-		SDL_Rect textRect;
+		static SDL_Rect textRect;
 		SDL_Rect menuTextRect;
 		SDL_Rect windowRect;
 		//Player position on start.
@@ -76,7 +79,7 @@ namespace brightland {
 
 
 		//Texture used for displaying text.
-		SDL_Texture* ftexture = NULL;
+		static SDL_Texture* ftexture;
 
 		//Texture used for menu dialog.
 		SDL_Texture* sceneTexture;
@@ -138,13 +141,13 @@ namespace brightland {
 		//Scene Dialog
 		SDL_Surface* dialog;
 		SDL_Surface* dialogm;
-		SDL_Surface* fsurface;
+		static SDL_Surface* fsurface;
 
 		static SDL_Renderer* renderer;
 
 		static SDL_Window* window;
 
-		TTF_Font* font;
+		static TTF_Font* font;
 
 		SDL_Event windowEvent;
 		SDL_Event   event;

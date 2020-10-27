@@ -196,8 +196,8 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
        
       //  std::cout << "You clicked Pick up!" << std::endl;
         items = inv.checkItem(gameObject);
-        SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteDown1);
+     //  SDL_DestroyTexture(spriteTexture);
+      //  SDL_CreateTextureFromSurface(renderer, spriteDown1);
 
        
         if(items < 1 ){

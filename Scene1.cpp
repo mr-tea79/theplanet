@@ -21,16 +21,28 @@ using namespace std;
 using namespace brightland;
 
 //Initialize the global use statement variable accessed by menu Interaction class.
+SDL_Rect Scene1::background2;
 std::string Scene1::useStatement = "";
 std::string Scene1::SceneBackground = "1";
 SDL_Window* Scene1::window;
+SDL_Rect Scene1::textRect;
+TTF_Font* Scene1::font;
+SDL_Surface* Scene1::fsurface;
+SDL_Color Scene1::fcolor;
+SDL_Texture* Scene1::ftexture = NULL;
+SDL_Rect Scene1::dTexture;
+int Scene1::mouseHold = 0;
+//Used to prevent hover from removing the message on the screen too quickly. This was a real brain teaser to figure out.
+int Scene1::messageHolder = 0;
+
+
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 
 //Used for ingame player messages.
 int Scene1::playerMessage = 1;
-static int mouseHold = 0;
+
 
 //Global inventory used variables. This prevents constant database checking which slows the game down.
 int Scene1::inv3Used;  //Duct Tape.
@@ -50,7 +62,7 @@ SDL_Texture* Scene1::objectTexturePipe;
 
 SDL_Renderer* Scene1::renderer;
 
-static int tLoader = 0;  //Used to prevent the same textures being loaded in twice.
+int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice.
 
 
 int Scene1::scene1() {
@@ -89,8 +101,7 @@ int Scene1::scene1() {
     std::string useMessage;
     std::string openMessage;
 
-    //Used to prevent hover from removing the message on the screen too quickly. This was a real brain teaser to figure out.
-    int messageHolder = 0;
+  
   
     //Used to detecting mouse clicks. The program runs really fast!
     static int mouseHold = 0;
@@ -203,7 +214,7 @@ int Scene1::scene1() {
     while (!gameover)
     {   
         
-        //Place player objects in the game.
+        //Place player objects in the game.0o
         pob.PlaceObjects();
 
 
@@ -255,13 +266,20 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
                         //Find objects that are hoverable.
-                       
+                      
+                       // interactionMessage = pi.InteractionController(x, y, gd, gy);
                         interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                        
+                        if(interactionMessage !=""){
+                            pi.InteractionControllerHover(interactionMessage);
+                        }
+                        else {
 
-                                                                
+                            SDL_DestroyTexture(ftexture);
+                        }
+                        /*
                         if (interactionMessage != "" ) {
-                       
+                            SDL_DestroyTexture(ftexture);
                             int interactionMessagelength = interactionMessage.length();
                             const char* im = interactionMessage.c_str();        
                                                   
@@ -275,7 +293,7 @@ int Scene1::scene1() {
                     else {  
                             SDL_DestroyTexture(ftexture);
                     }
-
+                    */
             }
             
                     break;
@@ -309,10 +327,11 @@ int Scene1::scene1() {
 
             //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                 
-  
+         
             SDL_DestroyTexture(spriteTexture);
-            SDL_DestroyTexture(ftexture);
+            SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
             spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+           
        
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
          
@@ -333,8 +352,8 @@ int Scene1::scene1() {
             if(mouseHold == 0){
                 mouseHold = 1;
                 ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            //This will kick in when any story intro messages have been shown.
-            gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
+       
+                gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
               
           
             //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
@@ -351,7 +370,7 @@ int Scene1::scene1() {
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
             if (interactionMessage != "") {
                 SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+               spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
             }
 
             std::string menuMessage;
@@ -359,11 +378,7 @@ int Scene1::scene1() {
       
             //Get object pickup message.
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
-            if (gameObject != "") {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
-               
-            }
+    
             //Get object use message.
             useMessage = mob.Use(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
                  
@@ -384,10 +399,30 @@ int Scene1::scene1() {
                 std::cout << objectToDestroy << std::endl;
                 //Added the following lines to try and prevent the sprite from disappearing sometimes.
                 SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
+               spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
+            
             }
-                                
-        
+            
+         
+                if (interactionMessage != ""){
+                    pi.InteractionControllerObject(interactionMessage, gameObject);
+                  //  SDL_DestroyTexture(spriteTexture);
+                   // spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+                }
+                else if (useMessage != ""){
+                    pi.InteractionControllerUse(useMessage, openMessage, gameObject);
+                  //  SDL_DestroyTexture(spriteTexture);
+                   // spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+                }
+                else
+                    SDL_DestroyTexture(ftexture);
+          
+        //    if (useMessage != "" && interactionMessage == "")
+            //    pi.InteractionControllerUse(useMessage, openMessage, gameObject);
+         //   else
+            //    SDL_DestroyTexture(ftexture);
+
+            /*
             //Handles all object interaction messages on the game window.          
              if (interactionMessage != "" || useMessage !="" || openMessage !="") {
                  const char* im = interactionMessage.c_str();
@@ -570,6 +605,7 @@ int Scene1::scene1() {
                 SDL_DestroyTexture(ftexture);
                 fsurface = NULL;
              }
+             */
 }
  
         //Render the window
@@ -766,7 +802,7 @@ int Scene1::scene1() {
         //PDA Inventory item.
         if (objectToDestroy.find("1") != std::string::npos) {
             SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &inv1);
-           
+   
           
         }
     
@@ -895,6 +931,7 @@ int Scene1::scene1() {
        // SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
        
         interactionMessage = ""; // Clear the interaction message on every loop.
+        useMessage = "";
        
         SDL_RenderPresent(renderer);
       
