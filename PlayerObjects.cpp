@@ -83,7 +83,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Open";
     }
 
-    //Inventory Hover Messages (Too much overhead on performance. Needs looking at.)
+    //Inventory Hover Messages 
    
     if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
         if(inv.checkItem("PDA") != 0)
@@ -145,8 +145,6 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Go west";
     }
 
-
-
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482) {
         message = "Go back to wreckage";
     }
@@ -156,12 +154,9 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         
     }
 
-
     if (Scene1::SceneBackground == "1e" && x >= 994  && y >= 0 && y <= 570) {
-        message = "Head east";
-        
+        message = "Head east";        
     }
-
 
     if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111) {
         message = "The moon";
@@ -211,9 +206,6 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
 
-
-
-
     return message;
 }
 
@@ -246,13 +238,17 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
         objectToDestroy = "5";
     }
 
-
-
     return objectToDestroy;
 }
 
-std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
+/*
+ObjectInteraction
 
+Here is where the interaction with objects and scenes takes place. This is where the player is placed in correct place when transitioning scenes and also the interaction when using objects.
+
+*/
+std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
+    
     //Check database if item has been picked up.
     Inventory inv;
 
@@ -283,31 +279,29 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         message = "This is what I need to top up my suit, but the pipe is missing.";
     }
 
-    if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {
-        
+    if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {     
         Scene1::SceneBackground = "1da";
         Scene1::SPRITE_SIZE = 180;
         Scene1::xPosition = 280;
         Scene1::yPosition = 410;
-        message = "Scene1d";
+    
     }
 
 
     if (Scene1::SceneBackground == "1da" && x >= 245 && x <= 295 && y >= 353 && y <= 414 && playerCurrentLocationX <= 260) {
         Scene1::SceneBackground = "1db";
         Scene1::SPRITE_SIZE = 0;
-      
-
-        message = "Scene1d2";
+    
     }
 
     if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248 && playerCurrentLocationX >= 440 && playerCurrentLocationY <=308) {
         Scene1::SceneBackground = "1da";
         Scene1::SPRITE_SIZE = 180;
-      
+        Scene1::yPosition = 390;
+        Scene1::xPosition = 106;
+        Scene1::gdSprite.x = Scene1::xPosition;
+        Scene1::gdSprite.y = Scene1::yPosition;    
         PlayerInteraction::playerMessage = 6;
-        Scene1::xPosition = 100;
-        message = "Scene1d";
     }
 
     if (Scene1::SceneBackground == "1fa" && x >= 793 && x <= 959 && y >= 474 && y <= 535) {
@@ -354,26 +348,22 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 &&playerCurrentLocationX < 300) {
        
         Scene1::SceneBackground = "1c";
-      //  message = "Computer Screen";
     }
 
     if (Scene1::SceneBackground == "1d" && x > 126 && x <= 238 && y >= 306 && y <= 391) {
 
         Scene1::SceneBackground = "1c";
-     //   message = "Computer Screen";
     }
 
     if (Scene1::SceneBackground == "1c" && x > 345 && x <= 488 && y >= 541 && y <= 585) {
 
         Scene1::SceneBackground = "1d";
-      //  message = "Computer Screen";
     }
 
     if (Scene1::SceneBackground == "1c"  && x > 36 && x <= 172 && y >= 544 && y <= 582) {
 
         Scene1::SceneBackground = "1b";
         Scene1::SPRITE_SIZE = 200;
-      //  message = "Scene1b";
       
     }
 
@@ -397,33 +387,31 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
         message = "This is one strange looking Place.";
         if (Scene1::useStatement == "Use")
-            message = "I can't use the moon!";
+            message = "For what am I going to use the moon for?";
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409 && playerCurrentLocationX >= 640) {
 
         message = "Some rocks, nothing interesting.";
         if (Scene1::useStatement == "Use")
-            message = "I'm not a geologist, maybe I should be.";
+            message = "I'm not a geologist.";
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482 && playerCurrentLocationX <=13) {
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 120;
-        Scene1::yPosition = 10;
-      //  message = "Scene1";
-        
+        Scene1::yPosition = 10;      
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 994 && y >= 0 && y <= 570 && playerCurrentLocationX >=994) {
         Textures tex;
         Scene1::SPRITE_SIZE = 120;
         Scene1::SceneBackground = "1f";
+        //Load in the new textures for scene2
         if (Scene1::tLoader == 0) {
             tex.Scene2Textures();
             Scene1::tLoader = 1;
         }
-
 
         Scene1::xPosition = 10;
         Scene1::gdSprite.x = Scene1::xPosition;
@@ -439,8 +427,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::yPosition = 376;
             Scene1::xPosition = 106;
             Scene1::gdSprite.x = Scene1::xPosition;
-            Scene1::gdSprite.y = Scene1::yPosition;
-           // message = "Scene1e";         
+            Scene1::gdSprite.y = Scene1::yPosition;     
             PlayerInteraction::playerMessage = 5;
         }
             
@@ -477,9 +464,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             message = "Not in here! That won't end well.";
     }
 
-   
-
-
     return message;
 }
 
@@ -490,26 +474,21 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
 
     if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= 609 && playerCurrentLocationX <= 719) {
         message = "PDA";
-
     }
 
     if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 503 && playerCurrentLocationX <= 719) {
         message = "Flag";
-
     }
     if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 310 && playerCurrentLocationX <= 394) {
         message = "Tape";
-
     }
 
     if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 406 && playerCurrentLocationX <= 500) {
         message = "Tent";
-
     }
 
     if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 500) {
         message = "Pipe";
-
     }
 
     return message;
@@ -518,7 +497,6 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
 
 
 std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
-    /**/
 
     if (scene == 1 && objectID == 1) {
         //PDA
@@ -576,27 +554,20 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
        // Object position and size of object (x,y,width,height)
         return  std::make_tuple(3, 685, 523, 20, 14);
     }
-
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 685, 323, 80, 218);
     }
-
     if (scene == 1 && objectID == 3) {
-        //Coins
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(9, 400, 30, 15, 40);
     }
-
-
     if (scene == 1 && objectID == 4) {
-        //Coins
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 300, 430, 60, 60);
     }
-    if (scene == 1 && objectID == 5) {
-        //Coins
+    if (scene == 1 && objectID == 5) {     
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 520, 300, 97, 149);
     }
@@ -696,7 +667,5 @@ void PlayerObjects::PlaceObjects() {
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
-
-
 }
 

@@ -20,7 +20,7 @@
 using namespace std;
 using namespace brightland;
 
-//Initialize the global use statement variable accessed by menu Interaction class.
+//Initialize the global variables accessed by other classes.
 SDL_Rect Scene1::background2;
 std::string Scene1::useStatement = "";
 std::string Scene1::SceneBackground = "1";
@@ -34,15 +34,10 @@ SDL_Rect Scene1::dTexture;
 int Scene1::mouseHold = 0;
 //Used to prevent hover from removing the message on the screen too quickly. This was a real brain teaser to figure out.
 int Scene1::messageHolder = 0;
-
-
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
-
-//Used for ingame player messages.
-//int Scene1::playerMessage = 1;
-std::string gameMessage;
+std::string gameMessage; //Used to display messages that tell the story.
 
 //Global inventory used variables. This prevents constant database checking which slows the game down.
 int Scene1::inv3Used;  //Duct Tape.
@@ -64,14 +59,12 @@ SDL_Renderer* Scene1::renderer;
 
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice.
 
-
 int Scene1::scene1() {
 
     cout << "Initialize" << endl;
     scene = 1;
     //Scene Number.
     
-
     //Set initial position of game character and the size of the character.
     xPosition = 10;
     yPosition = 430;
@@ -101,8 +94,6 @@ int Scene1::scene1() {
     std::string useMessage;
     std::string openMessage;
 
-  
-  
     //Used to detecting mouse clicks. The program runs really fast!
     static int mouseHold = 0;
     
@@ -114,13 +105,10 @@ int Scene1::scene1() {
     int gy;
     int x =0, y = 0;
 
-  
     //Text Dialog.
     dialog =         NULL;
     fsurface =       NULL;
-  
-
-     
+    
     //Image RECTS are used to hold in game images and are set to a given position (x,y,height,width).
     //Inventory RECTS
     inv1 = { 700, 650, 40, 40 };
@@ -128,7 +116,6 @@ int Scene1::scene1() {
     inv3 = { 880, 650, 40, 40 };
     inv4 = { 760, 700, 60, 60 };
     
-
     //Main background Rect
     background = { 0, 0, 1024, 600 };
 
@@ -136,7 +123,6 @@ int Scene1::scene1() {
     background2 = { 0, 200, 1500, 400 };
 
     background3 = { 0, 310, 1100, 300 };
-
 
     menu = { 0, 600, 1024, 568 };
     windowRect = { 921 ,460,78,100 };
@@ -153,9 +139,7 @@ int Scene1::scene1() {
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 };
 
-
     menuSurface =    IMG_Load("menu.png");
-  
     spriteFlat =     IMG_Load("PlayerMovement/ThePlanet/spriteFlat.png");
     spriteDown1 =    IMG_Load("PlayerMovement/ThePlanet/sprite.png");
     spriteDownp =    IMG_Load("PlayerMovement/ThePlanet/spritep.png"); 
@@ -174,7 +158,6 @@ int Scene1::scene1() {
     //Free up the RGB surface.
     SDL_FreeSurface(dialog);
  
-
     //Place the player sprite in the chosen location.
     gdSprite.x = xPosition;
     gdSprite.y = yPosition;
@@ -183,7 +166,6 @@ int Scene1::scene1() {
     dTexture.y = 300;
     dTexture.w = 300;
     dTexture.h = 200; 
-
 
     Textures tex;
     tex.Scene1Textures();
@@ -201,29 +183,20 @@ int Scene1::scene1() {
     PlayerMovement player;
     player.LoadMovementTextures();
 
-
- 
     //Load player movement class.
     PlayerObjects pob;
 
     //Load player message class.
     PlayerInteraction pi;
   
-
     //Game loop.
     while (!gameover)
-    {   
-        
+    {        
         //Place player objects in the game.0o
         pob.PlaceObjects();
 
-
         if (inv3Used == 1)
             spriteDown1 = spriteDownp;
-
-        //Set this to 1 to show the player messages. 5 will skip them.
-        //playerMessage = 10;
-       
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
         SDL_RenderClear(renderer);
@@ -236,14 +209,9 @@ int Scene1::scene1() {
                 switch (event.window.event)
                 {
                 case SDL_WINDOWEVENT_ENTER:
-                   
-
                     break;
 
-                case SDL_WINDOWEVENT_LEAVE:
-                          
-              
-                 
+                case SDL_WINDOWEVENT_LEAVE:   
                     break;
                 }
                 break;
@@ -251,9 +219,11 @@ int Scene1::scene1() {
                 case SDL_QUIT:
                     gameover = 1;
                     break;
+
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                    if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
+                    if (messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 ||event.motion.y > y+150 || event.motion.y < y-150 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
+                      
                         messageHolder = 0;
                      
                         //Event Motion coordinates. Where the mouse moves on the screen.
@@ -272,9 +242,12 @@ int Scene1::scene1() {
                         else {
                             SDL_DestroyTexture(ftexture);
                         }
-                        }
+                    }
                        
                         break;
+                    }
+                    else {
+                    
                     }
 
                 case SDL_KEYDOWN:
@@ -285,11 +258,9 @@ int Scene1::scene1() {
                         gameover = 1;
                         break;
                     }
-                    break;
-
-
-                
+                    break;          
                 }
+                
         }
 
         keystate = SDL_GetKeyboardState(NULL);
@@ -299,20 +270,14 @@ int Scene1::scene1() {
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-           
-                     
-            //This will show the scene intro. To skip the scene intro, comment this out.
-           // playerMessage = 5;
-
             //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                 
-         
             SDL_DestroyTexture(spriteTexture);
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
             spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
          
-        //    messageHolder = 0;
+            //messageHolder = 0;
                          
             Uint8 buttons = SDL_GetMouseState(&x, &y);
             gd = gdSprite.x;
@@ -325,11 +290,9 @@ int Scene1::scene1() {
             cout << "Current Player X Position is: " << gdSprite.x << endl;
             cout << "Current Player Y Position is: " << gdSprite.y << endl;
         
-
             if(mouseHold == 0){
                 mouseHold = 1;
-                ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-                
+                ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);               
                 gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
               
           
@@ -343,14 +306,12 @@ int Scene1::scene1() {
             }
             _sleep(1);  //This makes the animation of the character look a bit more realistic.
            
-            //Get interaction message.
-           
+            //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
             if (interactionMessage != "") {
                 SDL_DestroyTexture(spriteTexture);
                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
             }
-
 
             std::string menuMessage;
             //Clicking objects on the scene.
@@ -366,40 +327,33 @@ int Scene1::scene1() {
             gameMessage = pi.DisplayPlayerMessages();
             if (gameMessage != "") {
                 interactionMessage = gameMessage;
-                PlayerInteraction::playerMessage = 100;
-               
-            }
+                PlayerInteraction::playerMessage = 100;               
+            }     
 
-           
             //Check which objects are picked up.
-            if (gameObject != "") {
-             
+            if (gameObject != "") {            
                 std::string object;
                 object = pob.DestroyObjects(gameObject);
                 objectToDestroy.append(object);
                 std::cout << objectToDestroy << std::endl;
                 //Added the following lines to try and prevent the sprite from disappearing sometimes.
                 SDL_DestroyTexture(spriteTexture);
-               spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
-            
+                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);           
             }
            
           
-                if (interactionMessage != ""){
-                    messageHolder = 1;
-                    pi.InteractionControllerObject(interactionMessage, gameObject);
+            if (interactionMessage != ""){
+                messageHolder = 1;
+                pi.InteractionControllerObject(interactionMessage, gameObject);
                
-                }
-                else if (useMessage != ""){
-                    messageHolder = 1;
-                    pi.InteractionControllerUse(useMessage, openMessage, gameObject);
-                                 
-                }
-                else
-                    SDL_DestroyTexture(ftexture);
-          
-      
-}
+            }
+            else if (useMessage != ""){
+                messageHolder = 1;
+                pi.InteractionControllerUse(useMessage, openMessage, gameObject);                               
+            }
+            else
+                SDL_DestroyTexture(ftexture);            
+        }
  
         //Render the window
         SDL_RenderClear(renderer);
@@ -409,41 +363,29 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::texture, NULL, &background);
         }
        
-        if (SceneBackground == "1b") {
-            
+        if (SceneBackground == "1b") {            
             SDL_RenderCopy(renderer, Textures::wreakageScene, NULL, &background);
         }
 
-        if (SceneBackground == "1e") {
-           
-            SDL_RenderCopy(renderer, Textures::scene1e, NULL, &background);
-  
+        if (SceneBackground == "1e") {          
+            SDL_RenderCopy(renderer, Textures::scene1e, NULL, &background); 
         }
 
         if (SceneBackground == "1f" ) {
-
             SDL_RenderCopy(renderer, Textures::scene1f, NULL, &background);
-
         }
 
         if (SceneBackground == "1fb") {
-
             SDL_RenderCopy(renderer, Textures::scene1fb, NULL, &background);
-
         }
 
         if (SceneBackground == "1da") {
             SDL_RenderCopy(renderer, Textures::scene1d, NULL, &background);
-
         }
 
         if (SceneBackground == "1db") {
-
             SDL_RenderCopy(renderer, Textures::scene1d2, NULL, &background);
-
         }
-
-
 
         //This needs to go here, don't move it.
         SDL_RenderCopy(renderer, menuTexture, NULL, &menu);   
@@ -454,40 +396,29 @@ int Scene1::scene1() {
         //If the object has been picked up
         //PDA Inventory item.
         if (objectToDestroy.find("1") != std::string::npos) {
-            SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &inv1);
-   
-          
+            SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &inv1);        
         }
     
-        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}
-        
-        //Scene1b
-
+        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}        
         //If the object has been picked up.
         //Flag Inventory Item
         if (objectToDestroy.find("2") != std::string::npos ) {    
             SDL_RenderCopy(renderer, Textures::invTexture2, NULL, &inv2); 
         }
-
-
         else if (SceneBackground == "1b") { 
             SDL_RenderCopy(renderer, objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
-
         }
        
-        //Duct Tape Inventory Item.
+        //Ape Tape Inventory Item.
         if (objectToDestroy.find("3") != std::string::npos) {
             if (inv3Used == 0) {             
                     SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                         
             }
         }
-        else if (SceneBackground == "1b") {
-     
-            SDL_RenderCopy(renderer, objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);
-   
+        else if (SceneBackground == "1b") {    
+            SDL_RenderCopy(renderer, objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);  
         }
-
-
+        
         //Tent
         if (objectToDestroy.find("4") != std::string::npos) {
             if (inv4Used == 0) {
@@ -496,18 +427,14 @@ int Scene1::scene1() {
             }
         }
         else if (SceneBackground == "1b") {
-
             SDL_RenderCopy(renderer, objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
         }
 
-        //Pipe
-       
+        //Pipe      
         if (objectToDestroy.find("5") != std::string::npos) {
            if(inv5Used == 0){
-            SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);
-                         
-           }
-         
+            SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                        
+           }        
         }
         
         if (SceneBackground == "1da" || SceneBackground == "1db") {
@@ -515,12 +442,10 @@ int Scene1::scene1() {
 
         }
 
-
         //Display Character
         gdSprite.w = SPRITE_SIZE;
         gdSprite.h = SPRITE_SIZE;
-     
-       
+          
         if(PlayerInteraction::playerMessage > 3){
             SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
         }
@@ -548,7 +473,6 @@ int Scene1::scene1() {
         if (SceneBackground == "1d") {
           
             SDL_RenderCopy(renderer, Textures::computerScene2, NULL, &background);
-
         }
 
         if (SceneBackground == "1e") {
@@ -558,20 +482,13 @@ int Scene1::scene1() {
 
         //This will hide the sprite because it comes after the render of the sprite.
         if (SceneBackground == "1fa") {
-
-            SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);
-           
-            
+            SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);                   
         }
 
-        if (SceneBackground == "1da" || SceneBackground== "1db") {
-          //  SDL_RenderCopy(renderer, objectTextureAirBox, &srcrect7, &dstrect7);
-            SDL_RenderCopy(renderer, objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);
-            
-                                
+        if (SceneBackground == "1da" || SceneBackground== "1db") {        
+            SDL_RenderCopy(renderer, objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);                                       
         }
         
-   
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
         SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
 
@@ -579,10 +496,7 @@ int Scene1::scene1() {
         if (interactionMessage != "" || gameObject != "")
             SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
        
-        //Render the screen.
 
-       // SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
-       
         interactionMessage = ""; // Clear the interaction message on every loop.
         useMessage = "";
         gameMessage = "";
@@ -595,9 +509,7 @@ int Scene1::scene1() {
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
-
-  
-    
+ 
     return 0;
 
     TTF_Quit();
