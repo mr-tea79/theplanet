@@ -25,12 +25,16 @@ namespace brightland {
 		//SDL_Texture* ftexture;
 		const int WIDTH = 1024;
 		const int HEIGHT = 768;
+	public:
+		static int playerMessage;
 
 	public:
 		std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber);
 		void PlayerInteraction::InteractionControllerHover(std::string interactionMessage);
 		void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject);
 		void PlayerInteraction::InteractionControllerUse(std::string useMessage, std::string openMessage, std::string gameObject);
+		std::string PlayerInteraction::DisplayPlayerMessages();
+
 		
 	};
 

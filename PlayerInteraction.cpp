@@ -7,7 +7,7 @@
 
 using namespace brightland;
 
-static int playerMessage;
+int PlayerInteraction::playerMessage = 10;
 
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
     // Textures tex;
@@ -78,14 +78,7 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
                 Scene1::background2 = { 0, 200, 1500, 400 };
             }
 
-            if (interactionMessage == "Scene1e") {
-
-                interactionMessage = "";
-                Scene1::xPosition = 100;
-                Scene1::gdSprite.x = Scene1::xPosition;
-                Scene1::gdSprite.y = Scene1::yPosition;
-                //      SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //This is to try and prevent a crash.
-            }
+         
 
             if (interactionMessage == "Scene1f") {
                 if (Scene1::tLoader == 0) {
@@ -168,45 +161,129 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
         }
  
 
+
 std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
 
-	if (msgNumber == 1) {
-		std::string PlayerMessage = "Bonita Gonzalez finds herself stranded on an Alien planet.";
-		return PlayerMessage;
-	}
-	
-	else if (msgNumber == 2) {
-		std::string PlayerMessage = "TOAD 1000: Bonita WAKE UP!";
-		return PlayerMessage;
-	}
+    if (msgNumber == 1) {
+        std::string PlayerMessage = "Bonita Gonzalez finds herself stranded on an Alien planet.";
+        return PlayerMessage;
+    }
 
-	else if (msgNumber == 3) {
-		std::string PlayerMessage = "TOAD 1000: Bonita.... Your Oxygen Level is critical! BEEP BEEP";
-		return PlayerMessage;
-	}
+    else if (msgNumber == 2) {
+        std::string PlayerMessage = "TOAD 1000: Bonita WAKE UP!";
+        return PlayerMessage;
+    }
 
-	else if (msgNumber == 4) {
-		std::string PlayerMessage = "TOAD 1000: Suit pressure rising";
-		return PlayerMessage;
-	}
+    else if (msgNumber == 3) {
+        std::string PlayerMessage = "TOAD 1000: Bonita.... Your Oxygen Level is critical! BEEP BEEP";
+        return PlayerMessage;
+    }
 
-	else if (msgNumber == 5) {
-		std::string PlayerMessage = "TOAD 1000: Bonita, you need to find a suitable area for base camp. Your Oxygen is limited.";
-		return PlayerMessage;
-	}
+    else if (msgNumber == 4) {
+        std::string PlayerMessage = "TOAD 1000: Suit pressure rising";
+        return PlayerMessage;
+    }
 
-	else if (msgNumber == 6) {
-		std::string PlayerMessage = "Wow, these self inflatable tents are pretty nice.";
-		return PlayerMessage;
-	}
-	else if (msgNumber == 7) {
-		std::string PlayerMessage = "Well, it's a Wigwam!";
-		return PlayerMessage;
-	}
+    else if (msgNumber == 5) {
+      
+        std::string PlayerMessage = "TOAD 1000: Bonita, you need to find a suitable area for base camp. Your Oxygen is limited.";
+        return PlayerMessage;
+    }
 
+    else if (msgNumber == 6) {
+        std::string PlayerMessage = "Wow, these self inflatable tents are pretty nice.";
+        return PlayerMessage;
+    }
+    else if (msgNumber == 7) {
+        std::string PlayerMessage = "Well, it's a Wigwam!";
+        return PlayerMessage;
+    }
 
-
-
-	
-	
 }
+
+
+std::string PlayerInteraction::DisplayPlayerMessages() {
+ 
+    std::string interactionMessage;
+
+    //This will show the scene player messages in sequence.
+    if (playerMessage == 1) {
+
+        interactionMessage = PlayerMessage(1, 1);
+
+    
+        playerMessage = 2;
+
+
+    }
+    else if (playerMessage == 2) {
+
+        interactionMessage = PlayerMessage(1, 2);
+       
+        playerMessage = 3;
+      
+    }
+
+    else if (playerMessage == 3) {
+
+        interactionMessage = PlayerMessage(1, 3);
+                   
+
+        playerMessage = 6;
+      
+    }
+
+    else if (playerMessage == 4) {
+
+        interactionMessage = PlayerMessage(1, 4);
+                 
+
+        playerMessage = 5;
+        //  _sleep(3000);
+    }
+
+
+    //This is important to allow the last message in the player interaction to be shown.
+    else if (playerMessage == 5) {
+
+        interactionMessage = PlayerMessage(1, 5);
+ 
+        playerMessage = 6;
+
+    }
+
+    else if (playerMessage == 6) {
+
+        interactionMessage = PlayerMessage(1, 6);
+     
+
+        playerMessage = 7;
+
+    }
+    else if (playerMessage == 7) {
+
+        interactionMessage = PlayerMessage(1, 7);
+  
+
+        playerMessage = 7;
+
+    }
+
+
+    //This is important to allow the last message in the player interaction to be shown.
+    else if (playerMessage == 7) {
+
+        playerMessage = 8;
+     
+    }
+
+
+    else {
+
+    }
+
+    return interactionMessage;
+
+
+}
+	

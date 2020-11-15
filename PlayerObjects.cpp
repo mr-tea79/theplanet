@@ -1,6 +1,7 @@
 #include <iostream>
 #include <tuple>
 #include "PlayerObjects.h"
+#include "PlayerInteraction.h"
 #include "Scene1.h"
 #include <tuple>
 #include <string>
@@ -302,9 +303,9 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248 && playerCurrentLocationX >= 440 && playerCurrentLocationY <=308) {
         Scene1::SceneBackground = "1da";
         Scene1::SPRITE_SIZE = 180;
-        Scene1::xPosition = 600;
-        Scene1::playerMessage = 6;
-
+      
+        PlayerInteraction::playerMessage = 6;
+        Scene1::xPosition = 100;
         message = "Scene1d";
     }
 
@@ -313,7 +314,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "1fb";
         Scene1::SPRITE_SIZE = 120;
         Scene1::xPosition = 400;
-        Scene1::playerMessage = 7;
+        Scene1::yPosition = 500;
+        PlayerInteraction::playerMessage = 7;
         message = "Scene1fb";
     }
 
@@ -427,8 +429,11 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::SceneBackground = "1e";
             Scene1::SPRITE_SIZE = 50;
             Scene1::yPosition = 376;
-            message = "Scene1e";
-            Scene1::playerMessage = 5;
+            Scene1::xPosition = 106;
+            Scene1::gdSprite.x = Scene1::xPosition;
+            Scene1::gdSprite.y = Scene1::yPosition;
+           // message = "Scene1e";         
+            PlayerInteraction::playerMessage = 5;
         }
             
         else

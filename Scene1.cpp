@@ -1,6 +1,6 @@
 
 /* Adventure Game Creator Engine by Damian Baldry @ Brightland. Written in 2020
-   Very much a work in progress! Testing
+   Very much a work in progress!
    V1.0
 
 */
@@ -42,7 +42,7 @@ int Scene1::SPRITE_SIZE;
 
 //Used for ingame player messages.
 int Scene1::playerMessage = 1;
-
+std::string gameMessage;
 
 //Global inventory used variables. This prevents constant database checking which slows the game down.
 int Scene1::inv3Used;  //Duct Tape.
@@ -269,6 +269,8 @@ int Scene1::scene1() {
                       
                        // interactionMessage = pi.InteractionController(x, y, gd, gy);
                         interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+
+                       
                        
                         if(interactionMessage !=""){
                             pi.InteractionControllerHover(interactionMessage);
@@ -277,23 +279,7 @@ int Scene1::scene1() {
 
                             SDL_DestroyTexture(ftexture);
                         }
-                        /*
-                        if (interactionMessage != "" ) {
-                            SDL_DestroyTexture(ftexture);
-                            int interactionMessagelength = interactionMessage.length();
-                            const char* im = interactionMessage.c_str();        
-                                                  
-                            textRect = { 500, 610, interactionMessagelength * 10, 20 };   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
-                            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-                            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-                            _sleep(100); // pauses briefly to allow text to show.
-                                                                                                      
-                        }
-
-                    else {  
-                            SDL_DestroyTexture(ftexture);
-                    }
-                    */
+                    
             }
             
                     break;
@@ -352,7 +338,7 @@ int Scene1::scene1() {
             if(mouseHold == 0){
                 mouseHold = 1;
                 ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-       
+                
                 gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
               
           
@@ -374,6 +360,7 @@ int Scene1::scene1() {
                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
             }
 
+
             std::string menuMessage;
             //Clicking objects on the scene.
       
@@ -384,7 +371,15 @@ int Scene1::scene1() {
             useMessage = mob.Use(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
                  
             openMessage = mob.Open(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
-    
+
+            gameMessage = pi.DisplayPlayerMessages();
+            if (gameMessage != "") {
+                interactionMessage = gameMessage;
+                PlayerInteraction::playerMessage = 100;
+               
+            }
+
+           
             //Get object use message.
          //   useMessage = mob.MenuSelect(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "", interactionMessage);
                     
@@ -403,8 +398,8 @@ int Scene1::scene1() {
                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
             
             }
-            
-         
+           
+          
                 if (interactionMessage != ""){
                     pi.InteractionControllerObject(interactionMessage, gameObject);
                   //  SDL_DestroyTexture(spriteTexture);
@@ -435,7 +430,7 @@ int Scene1::scene1() {
         }
 
         if (SceneBackground == "1e") {
-          
+           
             SDL_RenderCopy(renderer, Textures::scene1e, NULL, &background);
   
         }
@@ -454,8 +449,6 @@ int Scene1::scene1() {
 
         if (SceneBackground == "1da") {
             SDL_RenderCopy(renderer, Textures::scene1d, NULL, &background);
-           
-                    
 
         }
 
@@ -466,144 +459,6 @@ int Scene1::scene1() {
         }
 
 
-        
-
-        //This will show the scene player messages in sequence.
-        if (playerMessage == 1) {
-
-            interactionMessage = pi.PlayerMessage(scene, 1);
-
-            std::cout << interactionMessage << endl;
-            int interactionMessagelength = interactionMessage.length();
-            const char* im = interactionMessage.c_str();
-            textRect = { 100, 310, interactionMessagelength * 10, 20 };
-            _sleep(100); // pauses briefly to allow text to show.                
-
-            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            // SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
-            playerMessage = 2;
-
-
-        }
-        else if (playerMessage == 2) {
-
-            interactionMessage = pi.PlayerMessage(scene, 2);
-            std::cout << interactionMessage << endl;
-            int interactionMessagelength = interactionMessage.length();
-            const char* im = interactionMessage.c_str();
-
-            textRect = { 100, 310, interactionMessagelength * 10, 20 };
-            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            _sleep(100); // pauses briefly to allow text to show.  
-
-            playerMessage = 3;
-            _sleep(3000);
-        }
-
-        else if (playerMessage == 3) {
-
-            interactionMessage = pi.PlayerMessage(scene, 3);
-            std::cout << interactionMessage << endl;
-            int interactionMessagelength = interactionMessage.length();
-            const char* im = interactionMessage.c_str();
-
-            textRect = { 100, 310, interactionMessagelength * 10, 20 };
-            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            _sleep(100); // pauses briefly to allow text to show.                
-
-            playerMessage = 6;
-            _sleep(3000);
-        }
-
-        else if (playerMessage == 4) {
-
-            interactionMessage = pi.PlayerMessage(scene, 4);
-            std::cout << interactionMessage << endl;
-            int interactionMessagelength = interactionMessage.length();
-            const char* im = interactionMessage.c_str();
-
-            textRect = { 100, 310, interactionMessagelength * 10, 20 };
-            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            _sleep(100); // pauses briefly to allow text to show.                
-
-            playerMessage = 5;
-          //  _sleep(3000);
-        }
-
-
-        //This is important to allow the last message in the player interaction to be shown.
-        else if (playerMessage == 5) {
-
-            interactionMessage = pi.PlayerMessage(scene, 5);
-            std::cout << interactionMessage << endl;
-            int interactionMessagelength = interactionMessage.length();
-            const char* im = interactionMessage.c_str();
-
-            textRect = { 100, 310, interactionMessagelength * 10, 20 };
-            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            _sleep(100); // pauses briefly to allow text to show.                
-
-      //      SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
-        
-            
-                 playerMessage = 6;
-        
-        }
-
-        else if (playerMessage == 6) {
-
-            interactionMessage = pi.PlayerMessage(scene, 6);
-            std::cout << interactionMessage << endl;
-            int interactionMessagelength = interactionMessage.length();
-            const char* im = interactionMessage.c_str();
-
-            textRect = { 100, 310, interactionMessagelength * 10, 20 };
-            fsurface = TTF_RenderText_Solid(font, im, fcolor);
-            ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-            _sleep(100); // pauses briefly to allow text to show.                
-
-            SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
-
-
-            playerMessage = 7;
-
-        }
-        else if (playerMessage == 7) {
-
-        interactionMessage = pi.PlayerMessage(scene, 7);
-        std::cout << interactionMessage << endl;
-        int interactionMessagelength = interactionMessage.length();
-        const char* im = interactionMessage.c_str();
-
-        textRect = { 100, 310, interactionMessagelength * 10, 20 };
-        fsurface = TTF_RenderText_Solid(font, im, fcolor);
-        ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-        _sleep(100); // pauses briefly to allow text to show.                
-
-        SDL_WarpMouseInWindow(window, WIDTH, HEIGHT); //Move mouse out of focus to keep text on screen.
-
-
-        playerMessage = 7;
-
-        }
-
-
-        //This is important to allow the last message in the player interaction to be shown.
-        else if (playerMessage == 7) {
-
-            playerMessage = 8;
-            _sleep(3000);
-        }
-
-
-        else {
-       
-        }
 
         //This needs to go here, don't move it.
         SDL_RenderCopy(renderer, menuTexture, NULL, &menu);   
@@ -712,7 +567,7 @@ int Scene1::scene1() {
         }
 
         if (SceneBackground == "1e") {
-
+           
             SDL_RenderCopy(renderer, Textures::rocks2, NULL, &background3);
         }
 
@@ -745,6 +600,7 @@ int Scene1::scene1() {
        
         interactionMessage = ""; // Clear the interaction message on every loop.
         useMessage = "";
+        gameMessage = "";
        
         SDL_RenderPresent(renderer);
       
