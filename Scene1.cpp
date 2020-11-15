@@ -222,7 +222,7 @@ int Scene1::scene1() {
 
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                    if (messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 ||event.motion.y > y+150 || event.motion.y < y-150 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
+                    if (messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 || event.motion.y > y+150 || event.motion.y < y-150) {
                       
                         messageHolder = 0;
                      
@@ -247,7 +247,7 @@ int Scene1::scene1() {
                         break;
                     }
                     else {
-                    
+                        break;
                     }
 
                 case SDL_KEYDOWN:
