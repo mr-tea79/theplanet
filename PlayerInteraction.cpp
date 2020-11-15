@@ -23,7 +23,7 @@ void PlayerInteraction::InteractionControllerHover(std::string interactionMessag
         Scene1::textRect = { 500, 610, interactionMessagelength * 10, 20 };   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
         Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
         Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-      
+ 
     }
 
     else {
@@ -64,101 +64,28 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     const char* imenu = gameObject.c_str();                 
     int interactionMessagelength = interactionMessage.length();
 
-            //Set Scene Background Player Positions. An example would be if you entered a building but you wanted the player to start in the middle of the scene.
-            if (interactionMessage == "Scene1b") {
-                interactionMessage = "";
-                Scene1::xPosition = 400;
-                Scene1::gdSprite.x = Scene1::xPosition;
-            }
-
-            if (interactionMessage == "Scene1") {
-                interactionMessage = "";
-                Scene1::xPosition = 600;
-                Scene1::gdSprite.x = Scene1::xPosition;
-                Scene1::background2 = { 0, 200, 1500, 400 };
-            }
-
-         
-
-            if (interactionMessage == "Scene1f") {
-                if (Scene1::tLoader == 0) {
-                    tex.Scene2Textures();
-                    Scene1::tLoader = 1;
-                }
-
-                interactionMessage = "";
-                Scene1::xPosition = 10;
-                Scene1::gdSprite.x = Scene1::xPosition;
-                Scene1::gdSprite.y = Scene1::yPosition;
-
-            }
-
-            if (interactionMessage == "Scene1fb") {
-
-
-                interactionMessage = "";
-                Scene1::xPosition = 10;
-                Scene1::gdSprite.x = Scene1::xPosition;
-                Scene1::gdSprite.y = Scene1::yPosition;
-
-
-
-            }
-
-            if (interactionMessage == "Scene1fa") {
-
-                interactionMessage = "";
-                Scene1::xPosition = 200;
-                Scene1::gdSprite.x = Scene1::xPosition;
-                Scene1::gdSprite.y = Scene1::yPosition;
-
-            }
-
-            if (interactionMessage == "Scene1d") {
-                interactionMessage = "";
-                // xPosition = 10;
-                Scene1::gdSprite.x = Scene1::xPosition;
-                Scene1::gdSprite.y = Scene1::yPosition;
-
-            }
-
-            if (interactionMessage == "Scene1d2") {
-                interactionMessage = "";
-
-
-            }
-
             //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-            if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x > WIDTH - 100) {
-                Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x > WIDTH - 100) {
+        Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
 
-            }
-            else if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < WIDTH - 100) {
-                Scene1::textRect = { Scene1::gdSprite.x - 100 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < WIDTH - 100) {
+        Scene1::textRect = { Scene1::gdSprite.x - 100 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
 
-            }
+    }
 
-            else if (Scene1::gdSprite.x < 130) {
-                Scene1::textRect = { Scene1::gdSprite.x - 60 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
+    else if (Scene1::gdSprite.x < 130) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
 
-            }
+    }
 
-                Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
+    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
 
-           
-
-            //Render the text on the screen.
-
-            Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-            _sleep(300); // pauses briefly to allow text to show.
-        
           
-            //delete(im);
-           
-           
-          
-
-        }
+    //Render the text on the screen.
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(300); // pauses briefly to allow text to show.    
+}
  
 
 

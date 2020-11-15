@@ -41,7 +41,7 @@ int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 
 //Used for ingame player messages.
-int Scene1::playerMessage = 1;
+//int Scene1::playerMessage = 1;
 std::string gameMessage;
 
 //Global inventory used variables. This prevents constant database checking which slows the game down.
@@ -222,7 +222,7 @@ int Scene1::scene1() {
             spriteDown1 = spriteDownp;
 
         //Set this to 1 to show the player messages. 5 will skip them.
-        playerMessage = 10;
+        //playerMessage = 10;
        
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
@@ -254,36 +254,29 @@ int Scene1::scene1() {
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
                     if (event.motion.y < HEIGHT && event.motion.y > 0 && messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 )  /* && event.motion.x > gdSprite.x + 400 || event.motion.x < gdSprite.x - 400*/ {
-                      
-                        if(playerMessage > 2){
-                        //Reset MessageHolder after the message has been hidden. This prevents messages from disappearing too quickly.
                         messageHolder = 0;
-
                      
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
+
                         //Find objects that are hoverable.
-                      
-                       // interactionMessage = pi.InteractionController(x, y, gd, gy);
                         interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
 
-                       
-                       
+                        if(messageHolder !=1){
                         if(interactionMessage !=""){
-                            pi.InteractionControllerHover(interactionMessage);
+                            pi.InteractionControllerHover(interactionMessage);                    
                         }
                         else {
-
                             SDL_DestroyTexture(ftexture);
                         }
-                    
-            }
-            
-                    break;
-        }
+                        }
+                       
+                        break;
+                    }
+
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym)
                     {
@@ -316,12 +309,10 @@ int Scene1::scene1() {
          
             SDL_DestroyTexture(spriteTexture);
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-            spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
-           
-       
+            spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
          
-            messageHolder = 0;
+        //    messageHolder = 0;
                          
             Uint8 buttons = SDL_GetMouseState(&x, &y);
             gd = gdSprite.x;
@@ -380,12 +371,6 @@ int Scene1::scene1() {
             }
 
            
-            //Get object use message.
-         //   useMessage = mob.MenuSelect(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "", interactionMessage);
-                    
-            //Get object Pull message.
-         //   useMessage = mob.Pull(scene, x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
-
             //Check which objects are picked up.
             if (gameObject != "") {
              
@@ -401,14 +386,14 @@ int Scene1::scene1() {
            
           
                 if (interactionMessage != ""){
+                    messageHolder = 1;
                     pi.InteractionControllerObject(interactionMessage, gameObject);
-                  //  SDL_DestroyTexture(spriteTexture);
-                   // spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+               
                 }
                 else if (useMessage != ""){
+                    messageHolder = 1;
                     pi.InteractionControllerUse(useMessage, openMessage, gameObject);
-                  //  SDL_DestroyTexture(spriteTexture);
-                   // spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+                                 
                 }
                 else
                     SDL_DestroyTexture(ftexture);
@@ -536,7 +521,7 @@ int Scene1::scene1() {
         gdSprite.h = SPRITE_SIZE;
      
        
-        if(playerMessage > 3){
+        if(PlayerInteraction::playerMessage > 3){
             SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
         }
         else {

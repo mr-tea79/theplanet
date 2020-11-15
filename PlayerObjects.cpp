@@ -7,6 +7,7 @@
 #include <string>
 #include "Inventory.h"
 #include "Scene1.h"
+#include "Textures.h"
 
 
 
@@ -101,7 +102,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Tape") != 0)
-            message = "Duct Tape";
+            message = "Ape Tape";
     }
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Pipe") != 0)
@@ -313,10 +314,13 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
        
         Scene1::SceneBackground = "1fb";
         Scene1::SPRITE_SIZE = 120;
-        Scene1::xPosition = 400;
-        Scene1::yPosition = 500;
+        Scene1::yPosition = 376;
+        Scene1::xPosition = 106;
+        Scene1::gdSprite.x = Scene1::xPosition;
+        Scene1::gdSprite.y = Scene1::yPosition;
+
         PlayerInteraction::playerMessage = 7;
-        message = "Scene1fb";
+       
     }
 
     if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375 && playerCurrentLocationX >= 700 ) {
@@ -324,53 +328,52 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "1b";
         Scene1::SPRITE_SIZE = 200;
         Scene1::xPosition = 400;
-
-        message = "Scene1b";
+        Scene1::gdSprite.x = Scene1::xPosition;
+  
     }
 
     if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582 && playerCurrentLocationX <6) {
         std::cout << "Going West" << std::endl;
         Scene1::SceneBackground = "1e";
         Scene1::SPRITE_SIZE = 50;
-        Scene1::yPosition = 376;
-        Scene1::xPosition = 400;
-
-        message = "Scene1e";
+        Scene1::yPosition = 380;
+        Scene1::xPosition = 350;
+        Scene1::gdSprite.x = Scene1::xPosition;
+        Scene1::gdSprite.y = Scene1::yPosition;
     }
 
 
 
     if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 570 && y <= 595) {
-        message = "Exit Wreckage";
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
-        message = "Scene1";
+       // message = "Scene1";
     }
 
 
     if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 &&playerCurrentLocationX < 300) {
        
         Scene1::SceneBackground = "1c";
-        message = "Computer Screen";
+      //  message = "Computer Screen";
     }
 
     if (Scene1::SceneBackground == "1d" && x > 126 && x <= 238 && y >= 306 && y <= 391) {
 
         Scene1::SceneBackground = "1c";
-        message = "Computer Screen";
+     //   message = "Computer Screen";
     }
 
     if (Scene1::SceneBackground == "1c" && x > 345 && x <= 488 && y >= 541 && y <= 585) {
 
         Scene1::SceneBackground = "1d";
-        message = "Computer Screen";
+      //  message = "Computer Screen";
     }
 
     if (Scene1::SceneBackground == "1c"  && x > 36 && x <= 172 && y >= 544 && y <= 582) {
 
         Scene1::SceneBackground = "1b";
         Scene1::SPRITE_SIZE = 200;
-        message = "Scene1b";
+      //  message = "Scene1b";
       
     }
 
@@ -408,18 +411,23 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 120;
         Scene1::yPosition = 10;
-        message = "Scene1";
+      //  message = "Scene1";
         
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 994 && y >= 0 && y <= 570 && playerCurrentLocationX >=994) {
-       
-
-        Scene1::SceneBackground = "1f";
+        Textures tex;
         Scene1::SPRITE_SIZE = 120;
-        Scene1::yPosition = 376;
-      
-        message = "Scene1f";
+        Scene1::SceneBackground = "1f";
+        if (Scene1::tLoader == 0) {
+            tex.Scene2Textures();
+            Scene1::tLoader = 1;
+        }
+
+
+        Scene1::xPosition = 10;
+        Scene1::gdSprite.x = Scene1::xPosition;
+        Scene1::gdSprite.y = Scene1::yPosition;
     }
 
 
