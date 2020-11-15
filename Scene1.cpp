@@ -132,7 +132,7 @@ int Scene1::scene1() {
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
 
-    Scene1::window =         SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    Scene1::window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
     renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
        //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
@@ -195,6 +195,7 @@ int Scene1::scene1() {
         //Place player objects in the game.0o
         pob.PlaceObjects();
 
+        //Show patch on suit
         if (inv3Used == 1)
             spriteDown1 = spriteDownp;
 
