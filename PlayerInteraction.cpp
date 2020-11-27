@@ -32,7 +32,7 @@ void PlayerInteraction::InteractionControllerHover(std::string interactionMessag
 
 }
 
-void PlayerInteraction::InteractionControllerUse(std::string useMessage, std::string openMessage, std::string gameObject) {
+void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject) {
     const char* imu = useMessage.c_str();;
     int useMessageLength = useMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
@@ -53,6 +53,29 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage, std::st
        
    //     delete(imu);
     
+}
+
+void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::string gameObject) {
+    const char* imu = openMessage.c_str();;
+    int useMessageLength = openMessage.length();
+    Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
+  //  SDL_DestroyTexture(Scene1::ftexture);
+
+        //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
+    if (Scene1::gdSprite.x > 130 && WIDTH - 400) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
+    }
+    if (Scene1::gdSprite.x < 130) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
+    }
+
+
+    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(300); // pauses briefly to allow text to show.
+
+//     delete(imu);
+
 }
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {

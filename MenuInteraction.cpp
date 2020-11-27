@@ -14,6 +14,7 @@ SDL_Surface* spriteAction3 = NULL;
 
 
 static std::string useStatement;
+static std::string openStatement;
 static std::string sceneBackground;
 static int inv3used;
 static int inv4used;
@@ -28,9 +29,9 @@ void MenuInteraction::LoadActionTextures() {
 }
 
 
-
+/*
 std::string MenuInteraction::MenuSelect(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage, std::string interactionMessage) {
-    
+   
     std::string returnMessage = "";
     
     //std::cout << Scene1::useStatement << std::endl;
@@ -53,15 +54,15 @@ std::string MenuInteraction::MenuSelect(int x, int y, int gd, int gy, int mInter
     }
 
 
-    if (x > 178 && x < 232 && y > 723 && y < 744) {
-        useStatement = Scene1::useStatement = "Use";
+    if (x > 177 && x < 234 && y > 723 && y < 745) {
+        useStatement = Scene1::useStatement = "Open";
         std::cout << Scene1::useStatement << std::endl;
         returnMessage = "Open what?";
     }
 
     return returnMessage;  
 }
-
+*/
 
 
 std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
@@ -72,15 +73,22 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     Inventory inv;
 
     if (x > 178 && x < 232 && y > 723 && y < 744) {
-        useStatement = Scene1::useStatement = "Open";
-        std::cout << Scene1::useStatement << std::endl;
+        openStatement = Scene1::openStatement = "Open";
+        std::cout << Scene1::openStatement << std::endl;
         openMessage = "Open what?";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteDown1);
     }
 
+    else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && openStatement == "Open") {    
+        Scene1::objectTexture6 = Scene1::objectTexture5;
+        PlayerObjects::boxOpened = 1;
+        openMessage = "Oh, what's that?";
+    }
   
     else {
         openMessage = "";
-  
+        openStatement = Scene1::openStatement = "";
     }
 
     return openMessage;
@@ -99,12 +107,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         useMessage = "Use what?";
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-     }
-
-     else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && useStatement == "Use") {
-         Scene1::objectTexture6 = Scene1::objectTexture5;
-         PlayerObjects::boxOpened = 1;    
-         useMessage = "Oh, what's that?";
      }
 
      else if (x > 879 && x < 921 && y > 648 && y < 689 && useStatement == "Use" && Scene1::SceneBackground == "1da") {

@@ -23,6 +23,7 @@ using namespace brightland;
 //Initialize the global variables accessed by other classes.
 SDL_Rect Scene1::background2;
 std::string Scene1::useStatement = "";
+std::string Scene1::openStatement = "";
 std::string Scene1::SceneBackground = "1";
 SDL_Window* Scene1::window;
 SDL_Rect Scene1::textRect;
@@ -350,8 +351,14 @@ int Scene1::scene1() {
             }
             else if (useMessage != ""){
                 messageHolder = 1;
-                pi.InteractionControllerUse(useMessage, openMessage, gameObject);                               
+                pi.InteractionControllerUse(useMessage, gameObject);                               
             }
+            else if (openMessage != "") {
+                messageHolder = 1;
+                pi.InteractionControllerUse(openMessage, gameObject);
+            }
+
+
             else
                 SDL_DestroyTexture(ftexture);            
         }
