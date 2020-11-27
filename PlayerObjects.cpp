@@ -421,18 +421,26 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     //Check if PDA is picked up and Oxygen is fixed.
     if (Scene1::SceneBackground == "1" && x > 0 && x <= 771 && y > 204 && y < 259 && playerCurrentLocationY <360 ) {
-        if (inv.checkItem("PDA") && Scene1::inv3Used == 1) {
+        
+        if (Scene1::inv3Used != 1) {
+            message = "I'm leaking Oxygen, are you crazy!?";
+        }
+        else if (inv.checkItem("Tent") != 1) {
+            message = "I need to be able to set up camp if I'm going to venture out into the wilderness.";
+        }
+        else if (inv.checkItem("PDA") != 1) {
+            message = "I need to take my computer with me.";
+        }
+        else {          
             Scene1::SceneBackground = "1e";
             Scene1::SPRITE_SIZE = 50;
             Scene1::yPosition = 376;
             Scene1::xPosition = 106;
             Scene1::gdSprite.x = Scene1::xPosition;
-            Scene1::gdSprite.y = Scene1::yPosition;     
+            Scene1::gdSprite.y = Scene1::yPosition;
             PlayerInteraction::playerMessage = 5;
-        }
-            
-        else
-            message = "I'm leaking Oxygen, are you crazy!?";
+        }       
+           
     }
 
 
