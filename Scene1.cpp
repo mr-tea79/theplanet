@@ -44,6 +44,7 @@ std::string gameMessage; //Used to display messages that tell the story.
 int Scene1::inv3Used;  //Duct Tape.
 int Scene1::inv4Used;  //Tent
 int Scene1::inv5Used; //Pipe
+int Scene1::inv6Used; //Pressure Suit
 
 SDL_Rect Scene1::gdSprite;
 SDL_Texture* Scene1::objectTexture;
@@ -55,6 +56,7 @@ SDL_Texture* Scene1::objectTexture6;
 SDL_Texture* Scene1::objectTexture7;
 SDL_Texture* Scene1::objectTextureAirBox;
 SDL_Texture* Scene1::objectTexturePipe;
+SDL_Texture* Scene1::objectTexturePipeAction;
 
 SDL_Renderer* Scene1::renderer;
 
@@ -494,7 +496,8 @@ int Scene1::scene1() {
         }
 
         if (SceneBackground == "1da" || SceneBackground== "1db") {        
-            SDL_RenderCopy(renderer, objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);                                       
+            SDL_RenderCopy(renderer, objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);    
+          
         }
         
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);

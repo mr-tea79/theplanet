@@ -1,0 +1,11 @@
+prefix=C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug
+exec_prefix=C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug
+libdir=C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug/lib
+includedir=C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug/include
+
+Name: libtiff
+Description:  Tag Image File Format (TIFF) library.
+Version: 4.0.9
+Libs: -LC:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug/lib -ltiff
+Libs.private: 
+Cflags: -IC:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug/include

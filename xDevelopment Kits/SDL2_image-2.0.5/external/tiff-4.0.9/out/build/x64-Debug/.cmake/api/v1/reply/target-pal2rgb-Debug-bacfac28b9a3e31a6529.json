@@ -1,0 +1,163 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "tools/pal2rgb.exe"
+		},
+		{
+			"path" : "tools/pal2rgb.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"install",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"tools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 27,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /W3 /MDd /Zi /Ob0 /Od /RTC1  "
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/libtiff"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/build/x64-Debug/libtiff"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/port"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/build/x64-Debug/tools"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "tiff::@c58baa005ce561a67384"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "port::@5a6e59fc4828463ce5ae"
+		}
+	],
+	"id" : "pal2rgb::@b9a00e55f22b3d77656c",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug/bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/tiff-4.0.9/out/install/x64-Debug"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /W3 /MDd /Zi /Ob0 /Od /RTC1",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "..\\libtiff\\tiffd.lib ..\\port\\portd.lib \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.28314\\lib\\x64\\zlib.lib\" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "pal2rgb",
+	"nameOnDisk" : "pal2rgb.exe",
+	"paths" : 
+	{
+		"build" : "tools",
+		"source" : "tools"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tools/pal2rgb.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

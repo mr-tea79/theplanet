@@ -18,6 +18,7 @@ static std::string openStatement;
 static std::string sceneBackground;
 static int inv3used;
 static int inv4used;
+
 static int playerMessage;
 
 
@@ -25,6 +26,7 @@ static int playerMessage;
 void MenuInteraction::LoadActionTextures() {
   
     spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
+    spriteAction2 = IMG_Load("PlayerMovement/ThePlanet/spritePipe.png");
  
 }
 
@@ -80,7 +82,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
     }
 
-    else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && openStatement == "Open") {    
+    else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && gd > 408 && gd <500 && openStatement == "Open") {    
         Scene1::objectTexture6 = Scene1::objectTexture5;
         PlayerObjects::boxOpened = 1;
         openMessage = "Oh, what's that?";
@@ -119,12 +121,24 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          useMessage = "Ok, where do I connect this pipe?";
      }
 
-     else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
+     else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 712 && Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
          inv.useItem("Pipe");
          Scene1::inv5Used = 1;
          Scene1::objectTextureAirBox = Scene1::objectTexturePipe;
+
+         SDL_DestroyTexture(spriteTexture);
+         SDL_CreateTextureFromSurface(renderer, spriteDown1);
          useMessage = "Ok, connected!";
        
+     }
+     //This is used to tell the player they are too far away.
+     else if (Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
+        
+         SDL_DestroyTexture(spriteTexture);
+         SDL_CreateTextureFromSurface(renderer, spriteDown1);
+         useMessage = "I need to be closer to where I need to connect this pipe.";
+         Scene1::useStatement = "";
+
      }
 
 
@@ -164,6 +178,25 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          inv.useItem("Tape");
          Scene1::inv3Used = 1;
          useMessage = "That should plug the leak!";
+     }
+
+      else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 731 && gy > 330 && useStatement == "Use" && Scene1::SceneBackground == "1da" &&Scene1::inv5Used == 1) {
+         Scene1::useStatement = "";
+         std::cout << Scene1::useStatement << std::endl;
+
+         SDL_DestroyTexture(spriteTexture);
+         SDL_CreateTextureFromSurface(renderer, spriteAction2);
+
+         Scene1::inv6Used = 1;
+         useMessage = "TOAD 1000: Suit has been pressurized!";
+     }
+
+     else if ( Scene1::SceneBackground == "1da" && useStatement == "Use" && x >= 245 && x <= 295 && y >= 353 && y <= 414) {
+         std::cout << "HELLO" << std::endl;
+         Scene1::useStatement = "";
+         Scene1::SceneBackground = "1db";
+         Scene1::SPRITE_SIZE = 0;
+
      }
      
 

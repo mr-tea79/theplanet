@@ -112,7 +112,14 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
- 
+    if (Scene1::SceneBackground == "1fb" && x >= 1000 && y >= 390 && y <= 586) {
+        message = "Head East";
+    }
+
+    if (Scene1::SceneBackground == "1da" && x >= 0 && x <= 100 && y >= 390 && y <= 586) {
+        message = "Leave camp";
+    }
+
     if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
             message = "Stuffed toy";
     }
@@ -130,7 +137,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 245 && x <= 295 && y >= 353 && y <= 414) {
-        message = "Sit on the sofa";
+        message = "Sofa";
     }
 
     if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283) {
@@ -261,12 +268,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             message = "I'll have a cuddle later.";
     }
 
-    if(Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened !=2) {
-
-        message = "It's a closed cardboard box.";
-
-    }
-
+    
     if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened == 1) {
 
         message = "Ooh an air pressure pipe";
@@ -275,9 +277,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     }
 
-    if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482 && playerCurrentLocationX >=600) {
-        message = "This is what I need to top up my suit, but the pipe is missing.";
-    }
+   
 
     if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {     
         Scene1::SceneBackground = "1da";
@@ -287,12 +287,13 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     
     }
 
-
+    /*
     if (Scene1::SceneBackground == "1da" && x >= 245 && x <= 295 && y >= 353 && y <= 414 && playerCurrentLocationX <= 260) {
         Scene1::SceneBackground = "1db";
         Scene1::SPRITE_SIZE = 0;
     
     }
+    */
 
     if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248 && playerCurrentLocationX >= 440 && playerCurrentLocationY <=308) {
         Scene1::SceneBackground = "1da";
@@ -302,6 +303,22 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::gdSprite.y = Scene1::yPosition;    
         PlayerInteraction::playerMessage = 6;
+    }
+
+    if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     
+        if (Scene1::inv6Used != 1) {
+            message = "My suit hasn't got enough oxygen";
+        }
+        else {
+            Scene1::SceneBackground = "1fb";
+            Scene1::SPRITE_SIZE = 120;
+            Scene1::yPosition = 390;
+            Scene1::xPosition = 106;
+            Scene1::gdSprite.x = Scene1::xPosition;
+            Scene1::gdSprite.y = Scene1::yPosition;
+        }
+       
+       
     }
 
     if (Scene1::SceneBackground == "1fa" && x >= 793 && x <= 959 && y >= 474 && y <= 535) {
@@ -495,7 +512,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
         message = "Tent";
     }
 
-    if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 500) {
+    if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 530) {
         message = "Pipe";
     }
 

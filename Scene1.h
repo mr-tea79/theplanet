@@ -33,6 +33,7 @@ namespace brightland {
 		static int inv3Used;
 		static int inv4Used;
 		static int inv5Used;
+		static int inv6Used;
 
 		int colorkey;
 		int count;
@@ -46,6 +47,7 @@ namespace brightland {
 		static SDL_Rect background2;
 		SDL_Rect background3;
 		SDL_Rect background4;
+		SDL_Rect pipeAction;
 
 		SDL_Rect inv1;
 		SDL_Rect inv2;
@@ -71,6 +73,7 @@ namespace brightland {
 		static SDL_Texture* objectTexture7;
 		static SDL_Texture* objectTextureAirBox;
 		static SDL_Texture* objectTexturePipe;
+		static SDL_Texture* objectTexturePipeAction;
 
 		SDL_Texture* invTexture1;
 		SDL_Texture* invTexture2;

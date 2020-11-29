@@ -1,0 +1,16 @@
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/png-fix-itxt.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/pngtest.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/install.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/genfiles.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/png.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/pngfix.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/png_static.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/pngunknown.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/pngvalid.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/pngstest.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/pngimage.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/test.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/list_install_components.dir
+C:/admin/C++/ThePlanet/Development Kits/SDL2_image-2.0.5/external/libpng-1.6.37/out/build/x64-Debug/CMakeFiles/install/local.dir

@@ -111,6 +111,7 @@ void Textures::Scene2Textures() {
     Scene1::objectTexture7 = SDL_CreateTextureFromSurface(Scene1::renderer, boxEmpty);
     Scene1::objectTextureAirBox = SDL_CreateTextureFromSurface(Scene1::renderer, airBox);
     Scene1::objectTexturePipe = SDL_CreateTextureFromSurface(Scene1::renderer, pipeBox);
+  
     
 
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);

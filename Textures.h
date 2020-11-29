@@ -57,6 +57,7 @@ namespace brightland {
 		SDL_Surface* tape;
 		SDL_Surface* tent;
 		SDL_Surface* pipeBox;
+		SDL_Surface* pipeAction;
 
 	public:
 		void Scene1Textures();

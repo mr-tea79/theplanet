@@ -62,10 +62,15 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
   //  SDL_DestroyTexture(Scene1::ftexture);
 
         //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && WIDTH - 400) {
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 500) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
+       
     }
-    if (Scene1::gdSprite.x < 130) {
+    else if (Scene1::gdSprite.x > 500) {
+       
+        Scene1::textRect = { Scene1::gdSprite.x - 200,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x < 130) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
     }
 
@@ -88,12 +93,12 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     int interactionMessagelength = interactionMessage.length();
 
             //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x > WIDTH - 100) {
-        Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 600) {
+        Scene1::textRect = { Scene1::gdSprite.x - 100,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
 
     }
-    else if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < WIDTH - 100) {
-        Scene1::textRect = { Scene1::gdSprite.x - 100 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
+    else if (Scene1::gdSprite.x > 600 ) {
+        Scene1::textRect = { Scene1::gdSprite.x - 400 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
 
     }
 
