@@ -171,8 +171,9 @@ int Scene1::scene1() {
     dTexture.h = 200; 
 
     Textures tex;
-    tex.Scene1Textures();
+   tex.Scene1Textures();
   // tex.Scene2Textures();
+  // tex.Scene3Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
@@ -293,6 +294,7 @@ int Scene1::scene1() {
             cout << "y = " << y << endl;
             cout << "Current Player X Position is: " << gdSprite.x << endl;
             cout << "Current Player Y Position is: " << gdSprite.y << endl;
+            cout << "Current Scene is: " << SceneBackground << endl;
         
             if(mouseHold == 0){
                 mouseHold = 1;
@@ -395,6 +397,10 @@ int Scene1::scene1() {
 
         if (SceneBackground == "1db") {
             SDL_RenderCopy(renderer, Textures::scene1d2, NULL, &background);
+        }
+
+        if (SceneBackground == "3a") {
+            SDL_RenderCopy(renderer, Textures::scene3a, NULL, &background);
         }
 
         //This needs to go here, don't move it.
