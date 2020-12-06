@@ -11,6 +11,7 @@ SDL_Texture* Textures::scene1fb;
 SDL_Texture* Textures::scene1d;
 SDL_Texture* Textures::scene1d2;
 SDL_Texture* Textures::scene3a;
+SDL_Texture* Textures::scene3b;
 SDL_Texture* Textures::wreakageScene;
 SDL_Texture* Textures::scene1e;
 SDL_Texture* Textures::texture;
@@ -127,10 +128,12 @@ void Textures::Scene3Textures() {
     imageSurface11 = IMG_Load("Scenes/Scene1d.png");
     imageSurface12 = IMG_Load("Scenes/Scene1d2.png");
     imageSurface13 = IMG_Load("Scenes/Scene3a.png");
+    imageSurface14 = IMG_Load("Scenes/Scene3b.png");
     scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);
     scene1d2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface12);
     scene3a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface13);
+    scene3b = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface14);
 
  
     boxOpened = IMG_Load("Objects/boxopened.png");

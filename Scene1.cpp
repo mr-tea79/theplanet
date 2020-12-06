@@ -75,7 +75,7 @@ int Scene1::scene1() {
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "1";
     
-   // SPRITE_SIZE = 180;
+  //  SPRITE_SIZE = 10;
    // xPosition = 10;
    // yPosition = 300;
 
@@ -157,7 +157,7 @@ int Scene1::scene1() {
 
     //Something to do with the font texture.
     SDL_QueryTexture(ftexture, NULL, NULL, &texW, &texH);
-    
+     
     //Free up the RGB surface.
     SDL_FreeSurface(dialog);
  
@@ -401,6 +401,9 @@ int Scene1::scene1() {
 
         if (SceneBackground == "3a") {
             SDL_RenderCopy(renderer, Textures::scene3a, NULL, &background);
+        }
+        if (SceneBackground == "3b") {
+            SDL_RenderCopy(renderer, Textures::scene3b, NULL, &background);
         }
 
         //This needs to go here, don't move it.

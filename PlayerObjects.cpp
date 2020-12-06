@@ -111,7 +111,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
-    
+    if (Scene1::SceneBackground == "3a" && x >= 150 && x < 209 && y >= 341 && y <= 374) {
+        message = "Rock face";
+    }
+
     if (Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369) {
         message = "Camp";
     }
@@ -221,6 +224,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Ape Tape";
     }
 
+    if (Scene1::SceneBackground == "3a" && x > 682 && x <= 800 && y >= 25 && y <= 71){
+        message = "Crators";
+    }
+
 
     return message;
 }
@@ -270,6 +277,21 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     Inventory inv;
 
     std::string message;
+
+    if (Scene1::SceneBackground == "3a" && x >= 150 && x < 209 && y >= 341 && y <= 374 && playerCurrentLocationX > 160 && playerCurrentLocationX < 199 && playerCurrentLocationY > 360 && playerCurrentLocationY < 383) {
+        Scene1::SceneBackground = "3b";
+        Scene1::SPRITE_SIZE = 50;
+        Scene1::xPosition = 945;
+        Scene1::yPosition = 387;
+    }
+
+    if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174 && playerCurrentLocationX > 400 && playerCurrentLocationX < 529 ) {
+        message = "My crashed ship, no chance of repairing.";
+    }
+
+    if (Scene1::SceneBackground == "3a" && x > 682 && x <= 800 && y >= 25 && y <= 71 && playerCurrentLocationX > 670 && playerCurrentLocationY < 126) {
+        message = "These crators are lined up in a row, very strange.";
+    }
 
     if (Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369 && playerCurrentLocationX > 900) {
         Scene1::SceneBackground = "1fb";
