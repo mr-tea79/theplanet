@@ -81,7 +81,7 @@ int Scene1::scene1() {
 
     //THIS IS THE DEFAULT SCENE
     //Normal Size (Uncomment)
-    SPRITE_SIZE = 120;
+     SPRITE_SIZE = 120;
 
     
     //Static variables that are updated while the program is running.
@@ -172,7 +172,7 @@ int Scene1::scene1() {
 
     Textures tex;
    tex.Scene1Textures();
-  // tex.Scene2Textures();
+ //  tex.Scene2Textures();
   // tex.Scene3Textures();
  
     //Purge the Inventory for a new game.
