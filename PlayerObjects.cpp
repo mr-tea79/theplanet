@@ -111,6 +111,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+
+    if (Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92) {
+        message = "Enter cave";
+    }
+
     if (Scene1::SceneBackground == "3a" && x >= 150 && x < 209 && y >= 341 && y <= 374) {
         message = "Rock face";
     }
