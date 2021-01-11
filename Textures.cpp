@@ -122,7 +122,7 @@ void Textures::Scene3Textures() {
     SDL_DestroyTexture(Scene1::objectTexture5);
     SDL_DestroyTexture(Scene1::objectTexture4);
 
-
+    lantern = IMG_Load("Objects/lantern.png");
     pipe = IMG_Load("Objects/pipe.png");
     imageSurface10 = IMG_Load("Scenes/Scene1fb.png");
     imageSurface11 = IMG_Load("Scenes/Scene1d.png");

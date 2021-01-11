@@ -50,6 +50,7 @@ namespace brightland {
 		SDL_Surface* imageSurface13;
 		SDL_Surface* imageSurface14;
 		
+		SDL_Surface* lantern;
 		SDL_Surface* pipe;
 		SDL_Surface* airBox;
 		SDL_Surface* boxClosed;

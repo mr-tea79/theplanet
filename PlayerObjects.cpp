@@ -736,3 +736,5 @@ void PlayerObjects::PlaceObjects() {
     PlayerObjects::dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
 }
 
+
+
