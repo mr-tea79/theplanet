@@ -28,6 +28,7 @@ SDL_Texture* Textures::invTexture2;
 SDL_Texture* Textures::invTexture3;
 SDL_Texture* Textures::invTexture4;
 SDL_Texture* Textures::invTexture5;
+SDL_Texture* Textures::invTexture6;
 
 
 void Textures::Scene1Textures() {
@@ -122,8 +123,7 @@ void Textures::Scene3Textures() {
     SDL_DestroyTexture(Scene1::objectTexture5);
     SDL_DestroyTexture(Scene1::objectTexture4);
 
-    lantern = IMG_Load("Objects/lantern.png");
-    pipe = IMG_Load("Objects/pipe.png");
+   
     imageSurface10 = IMG_Load("Scenes/Scene1fb.png");
     imageSurface11 = IMG_Load("Scenes/Scene1d.png");
     imageSurface12 = IMG_Load("Scenes/Scene1d2.png");
@@ -141,14 +141,18 @@ void Textures::Scene3Textures() {
     boxEmpty = IMG_Load("Objects/boxopenede.png");
     pipeBox = IMG_Load("Objects/pipec.png");
     airBox = IMG_Load("Objects/airBox.png");
+    lantern = IMG_Load("Objects/lantern.png");
+    pipe = IMG_Load("Objects/pipe.png");
 
     Scene1::objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
     Scene1::objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, boxOpened);
     Scene1::objectTexture7 = SDL_CreateTextureFromSurface(Scene1::renderer, boxEmpty);
     Scene1::objectTextureAirBox = SDL_CreateTextureFromSurface(Scene1::renderer, airBox);
     Scene1::objectTexturePipe = SDL_CreateTextureFromSurface(Scene1::renderer, pipeBox);
+    Scene1::objectTextureLantern = SDL_CreateTextureFromSurface(Scene1::renderer, lantern);
 
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);
+    invTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, lantern);
 
 
 }

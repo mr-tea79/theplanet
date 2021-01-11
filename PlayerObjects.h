@@ -28,6 +28,8 @@ namespace brightland {
         static SDL_Rect dstrect6;
         static SDL_Rect srcrect7;
         static SDL_Rect dstrect7;
+        static SDL_Rect srcrect8;
+        static SDL_Rect dstrect8;
 
         std::string HoverObjects(int x, int y, int scene, int gd, int gy);
         std::string DestroyObjects(std::string gameObject);

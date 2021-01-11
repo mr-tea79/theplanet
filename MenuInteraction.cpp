@@ -231,9 +231,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
        
       //  std::cout << "You clicked Pick up!" << std::endl;
         items = inv.checkItem(gameObject);
-     //  SDL_DestroyTexture(spriteTexture);
-      //  SDL_CreateTextureFromSurface(renderer, spriteDown1);
-
        
         if(items < 1 ){
            
@@ -262,6 +259,12 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
             }
 
+            if (menuMessages == "Battery Lantern") {
+
+                inv.SQLInsertInventory(gameObject, 0);
+
+            }
+
             if (menuMessages == "Pipe") {
 
                 inv.SQLInsertInventory(gameObject, 0);
@@ -275,12 +278,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
         }    
        
     }
-
-    
-   // else if (x > 190 && x < 682 && y > 676 && y < 690) {
-
-     //   std::cout << "You clicked use." << std::endl;
-  //  }
 
     else {
         gameObject = "";

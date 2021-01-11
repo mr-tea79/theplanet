@@ -36,6 +36,8 @@ SDL_Rect PlayerObjects::srcrect6;
 SDL_Rect PlayerObjects::dstrect6;
 SDL_Rect PlayerObjects::srcrect7;
 SDL_Rect PlayerObjects::dstrect7;
+SDL_Rect PlayerObjects::srcrect8;
+SDL_Rect PlayerObjects::dstrect8;
 
 
 
@@ -111,6 +113,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+
+    if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && inv.checkItem("Battery Lantern") != 1) {
+        message = "Battery Lantern";
+    }
 
     if (Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92) {
         message = "Enter cave";
@@ -267,6 +273,11 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
         objectToDestroy = "5";
     }
 
+    if (gameObject == "Battery Lantern") {
+
+        objectToDestroy = "6";
+    }
+
     return objectToDestroy;
 }
 
@@ -289,6 +300,12 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 945;
         Scene1::yPosition = 387;
     }
+
+    if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && playerCurrentLocationX > 300 && playerCurrentLocationX < 411 && playerCurrentLocationY <394) {
+        message = "Hyper Lithium Battery Lantern";
+    }
+
+
 
     if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174 && playerCurrentLocationX > 400 && playerCurrentLocationX < 529 ) {
         message = "My crashed ship, no chance of repairing.";
@@ -562,6 +579,11 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
         message = "Pipe";
     }
 
+    if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 411) {
+        message = "Battery Lantern";
+    }
+
+
     return message;
 }
 
@@ -612,6 +634,12 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         //The second value is set to 0 to prevent the animation by setting the speed to 0.
         return  std::make_tuple(1, 0, NULL, 186, 138);
     }
+    if (scene == 1 && objectID == 8) {
+        //Tent
+
+        //The second value is set to 0 to prevent the animation by setting the speed to 0.
+        return  std::make_tuple(1, 0, NULL, 30, 81);
+    }
 
 
 
@@ -652,6 +680,11 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
         //Air Box
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 838, 380, 140, 118);
+    }
+    if (scene == 1 && objectID == 8) {
+        //Lantern
+        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+        return  std::make_tuple(1, 419, 372, 20, 41);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
 
     return  std::make_tuple(scene, objectID, b, c, d);
@@ -734,6 +767,17 @@ void PlayerObjects::PlaceObjects() {
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 8 Lantern
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 8, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 8, NULL, NULL, NULL);
+
+    int object8 = (ticks / 100) % 1;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect8 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect8 = { objectP3, objectP4, objectP5, objectP6 };
+
+
 }
 
 

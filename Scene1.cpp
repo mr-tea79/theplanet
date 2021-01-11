@@ -45,6 +45,7 @@ int Scene1::inv3Used;  //Duct Tape.
 int Scene1::inv4Used;  //Tent
 int Scene1::inv5Used; //Pipe
 int Scene1::inv6Used; //Pressure Suit
+int Scene1::inv7Used; //Lantern
 
 SDL_Rect Scene1::gdSprite;
 SDL_Texture* Scene1::objectTexture;
@@ -57,6 +58,7 @@ SDL_Texture* Scene1::objectTexture7;
 SDL_Texture* Scene1::objectTextureAirBox;
 SDL_Texture* Scene1::objectTexturePipe;
 SDL_Texture* Scene1::objectTexturePipeAction;
+SDL_Texture* Scene1::objectTextureLantern;
 
 SDL_Renderer* Scene1::renderer;
 
@@ -118,6 +120,7 @@ int Scene1::scene1() {
     inv2 = { 760, 610, 60, 60 };
     inv3 = { 880, 650, 40, 40 };
     inv4 = { 760, 700, 60, 60 };
+    inv7 = { 760, 700, 60, 60 };
     
     //Main background Rect
     background = { 0, 0, 1024, 600 };
@@ -172,7 +175,7 @@ int Scene1::scene1() {
 
     Textures tex;
    tex.Scene1Textures();
-   //tex.Scene2Textures();
+  // tex.Scene2Textures();
   // tex.Scene3Textures();
  
     //Purge the Inventory for a new game.
@@ -455,11 +458,24 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                        
            }        
         }
+
+        //Lantern    
+        if (objectToDestroy.find("6") != std::string::npos) {
+            if (inv7Used == 0) {
+                SDL_RenderCopy(renderer, Textures::invTexture6, NULL, &inv7);
+            }
+        }
+        else if(SceneBackground == "1da" || SceneBackground == "1db") {
+            SDL_RenderCopy(renderer, objectTextureLantern, &PlayerObjects::srcrect8, &PlayerObjects::dstrect8);
+        }
         
+    
         if (SceneBackground == "1da" || SceneBackground == "1db") {
             SDL_RenderCopy(renderer, objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
-
+         
         }
+
+      
 
         //Display Character
         gdSprite.w = SPRITE_SIZE;

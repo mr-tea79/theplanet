@@ -34,6 +34,7 @@ namespace brightland {
 		static int inv4Used;
 		static int inv5Used;
 		static int inv6Used;
+		static int inv7Used;
 
 		int colorkey;
 		int count;
@@ -54,6 +55,7 @@ namespace brightland {
 		SDL_Rect inv3;
 		SDL_Rect inv4;
 		SDL_Rect inv5;
+		SDL_Rect inv7;
 		
 
 	
@@ -74,12 +76,14 @@ namespace brightland {
 		static SDL_Texture* objectTextureAirBox;
 		static SDL_Texture* objectTexturePipe;
 		static SDL_Texture* objectTexturePipeAction;
+		static SDL_Texture* objectTextureLantern;
 
-		SDL_Texture* invTexture1;
-		SDL_Texture* invTexture2;
-		SDL_Texture* invTexture3;
-		SDL_Texture* invTexture4;
-		SDL_Texture* invTexture5;
+		//SDL_Texture* invTexture1;
+		//SDL_Texture* invTexture2;
+		//SDL_Texture* invTexture3;
+		//SDL_Texture* invTexture4;
+		//SDL_Texture* invTexture5;
+	//	SDL_Texture* invTexture6;
 
 
 		//Texture used for displaying text.
@@ -134,11 +138,11 @@ namespace brightland {
 		SDL_Surface* purpleSurface;
 
 		//Scene Objects
-		SDL_Surface* pda;
-		SDL_Surface* flag;
-		SDL_Surface* stars;
-		SDL_Surface* tape;
-		SDL_Surface* tent;
+		//SDL_Surface* pda;
+		//SDL_Surface* flag;
+		//SDL_Surface* stars;
+		//SDL_Surface* tape;
+	//	SDL_Surface* tent;
 
 
 
