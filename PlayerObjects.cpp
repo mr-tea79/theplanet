@@ -249,22 +249,22 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
     std::string objectToDestroy;
 
     if (gameObject == "PDA") {
-        SDL_DestroyTexture(Scene1::objectTexture);
+        SDL_DestroyTexture(Textures::objectTexture);
         objectToDestroy = "1";
     }
 
     if (gameObject == "Tape") {
-        SDL_DestroyTexture(Scene1::objectTexture4);
+        SDL_DestroyTexture(Textures::objectTexture4);
         objectToDestroy = "3";
     }
 
     if (gameObject == "Flag") {
-        SDL_DestroyTexture(Scene1::objectTexture2);
+        SDL_DestroyTexture(Textures::objectTexture2);
         objectToDestroy = "2";
     }
 
     if (gameObject == "Tent") {
-        SDL_DestroyTexture(Scene1::objectTexture5);
+        SDL_DestroyTexture(Textures::objectTexture5);
         objectToDestroy = "4";
     }
 

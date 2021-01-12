@@ -17,7 +17,17 @@ namespace brightland {
 		static SDL_Texture* computerScene1;
 		static SDL_Texture* computerScene2;
 		
-	
+		static SDL_Texture* Textures::objectTexture;
+		static SDL_Texture* Textures::objectTexture2;
+		static SDL_Texture* Textures::objectTexture3;
+		static SDL_Texture* Textures::objectTexture4;
+		static SDL_Texture* Textures::objectTexture5;
+		static SDL_Texture* Textures::objectTexture6;
+		static SDL_Texture* Textures::objectTexture7;
+		static SDL_Texture* Textures::objectTextureAirBox;
+		static SDL_Texture* Textures::objectTexturePipe;
+		static SDL_Texture* Textures::objectTexturePipeAction;
+		static SDL_Texture* Textures::objectTextureLantern;
 
 		static SDL_Texture* wreakageScene;
 		static SDL_Texture* scene1e;

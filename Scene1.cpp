@@ -48,17 +48,7 @@ int Scene1::inv6Used; //Pressure Suit
 int Scene1::inv7Used; //Lantern
 
 SDL_Rect Scene1::gdSprite;
-SDL_Texture* Scene1::objectTexture;
-SDL_Texture* Scene1::objectTexture2;
-SDL_Texture* Scene1::objectTexture3;
-SDL_Texture* Scene1::objectTexture4;
-SDL_Texture* Scene1::objectTexture5;
-SDL_Texture* Scene1::objectTexture6;
-SDL_Texture* Scene1::objectTexture7;
-SDL_Texture* Scene1::objectTextureAirBox;
-SDL_Texture* Scene1::objectTexturePipe;
-SDL_Texture* Scene1::objectTexturePipeAction;
-SDL_Texture* Scene1::objectTextureLantern;
+
 
 SDL_Renderer* Scene1::renderer;
 
@@ -75,7 +65,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1";
+    SceneBackground = "1da";
     
     //SPRITE_SIZE = 10;
    // xPosition = 10;
@@ -175,8 +165,8 @@ int Scene1::scene1() {
 
     Textures tex;
    tex.Scene1Textures();
-  // tex.Scene2Textures();
-  // tex.Scene3Textures();
+   tex.Scene2Textures();
+   tex.Scene3Textures();
  
     //Purge the Inventory for a new game.
     Inventory inv;
@@ -421,14 +411,14 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &inv1);        
         }
     
-        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}        
+        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, Textures::objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}        
         //If the object has been picked up.
         //Flag Inventory Item
         if (objectToDestroy.find("2") != std::string::npos ) {    
             SDL_RenderCopy(renderer, Textures::invTexture2, NULL, &inv2); 
         }
         else if (SceneBackground == "1b") { 
-            SDL_RenderCopy(renderer, objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
+            SDL_RenderCopy(renderer, Textures::objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
         }
        
         //Ape Tape Inventory Item.
@@ -438,7 +428,7 @@ int Scene1::scene1() {
             }
         }
         else if (SceneBackground == "1b") {    
-            SDL_RenderCopy(renderer, objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);  
+            SDL_RenderCopy(renderer, Textures::objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);
         }
         
         //Tent
@@ -449,7 +439,7 @@ int Scene1::scene1() {
             }
         }
         else if (SceneBackground == "1b") {
-            SDL_RenderCopy(renderer, objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
+            SDL_RenderCopy(renderer, Textures::objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
         }
 
         //Pipe      
@@ -466,12 +456,12 @@ int Scene1::scene1() {
             }
         }
         else if(SceneBackground == "1da" || SceneBackground == "1db") {
-            SDL_RenderCopy(renderer, objectTextureLantern, &PlayerObjects::srcrect8, &PlayerObjects::dstrect8);
+            SDL_RenderCopy(renderer, Textures::objectTextureLantern, &PlayerObjects::srcrect8, &PlayerObjects::dstrect8);
         }
         
     
         if (SceneBackground == "1da" || SceneBackground == "1db") {
-            SDL_RenderCopy(renderer, objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
+            SDL_RenderCopy(renderer, Textures::objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
          
         }
 
@@ -521,7 +511,7 @@ int Scene1::scene1() {
         }
 
         if (SceneBackground == "1da" || SceneBackground== "1db") {        
-            SDL_RenderCopy(renderer, objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);    
+            SDL_RenderCopy(renderer, Textures::objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);
           
         }
         

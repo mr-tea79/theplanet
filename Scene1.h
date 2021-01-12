@@ -66,24 +66,8 @@ namespace brightland {
 		SDL_Rect menuTextRect;
 		SDL_Rect windowRect;
 		//Player position on start.
-		static SDL_Texture* objectTexture;
-		static SDL_Texture* objectTexture2;	
-		static SDL_Texture* objectTexture3;
-		static SDL_Texture* objectTexture4;
-		static SDL_Texture* objectTexture5;
-		static SDL_Texture* objectTexture6;
-		static SDL_Texture* objectTexture7;
-		static SDL_Texture* objectTextureAirBox;
-		static SDL_Texture* objectTexturePipe;
-		static SDL_Texture* objectTexturePipeAction;
-		static SDL_Texture* objectTextureLantern;
-
-		//SDL_Texture* invTexture1;
-		//SDL_Texture* invTexture2;
-		//SDL_Texture* invTexture3;
-		//SDL_Texture* invTexture4;
-		//SDL_Texture* invTexture5;
-	//	SDL_Texture* invTexture6;
+	
+;
 
 
 		//Texture used for displaying text.

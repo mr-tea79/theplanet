@@ -83,7 +83,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     }
 
     else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && gd > 408 && gd <500 && openStatement == "Open") {    
-        Scene1::objectTexture6 = Scene1::objectTexture5;
+        Textures::objectTexture6 = Textures::objectTexture5;
         PlayerObjects::boxOpened = 1;
         openMessage = "Oh, what's that?";
     }
@@ -124,7 +124,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
      else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 712 && Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
          inv.useItem("Pipe");
          Scene1::inv5Used = 1;
-         Scene1::objectTextureAirBox = Scene1::objectTexturePipe;
+         Textures::objectTextureAirBox = Textures::objectTexturePipe;
 
          SDL_DestroyTexture(spriteTexture);
          SDL_CreateTextureFromSurface(renderer, spriteDown1);
@@ -269,7 +269,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
                 inv.SQLInsertInventory(gameObject, 0);
 
-                Scene1::objectTexture6 = Scene1::objectTexture7;
+                Textures::objectTexture6 = Textures::objectTexture7;
              
                 PlayerObjects::boxOpened = 2;
 
