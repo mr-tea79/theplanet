@@ -1,5 +1,4 @@
 #include "PlayerInteraction.h"
-#include "Scene1.h"
 #include <SDL.h>
 #include <iostream>
 #include "Scene1.h"
@@ -7,13 +6,12 @@
 
 using namespace brightland;
 
-int PlayerInteraction::playerMessage = 10;
+int PlayerInteraction::playerMessage = 10000;
 
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
     // Textures tex;
     const char* im = NULL;
     SDL_DestroyTexture(Scene1::ftexture);
-//	Scene1::fsurface = NULL;
 
     if (interactionMessage != "" ) {
 
@@ -36,32 +34,29 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::str
     const char* imu = useMessage.c_str();;
     int useMessageLength = useMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
-  //  SDL_DestroyTexture(Scene1::ftexture);
    
-        //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-        if (Scene1::gdSprite.x > 130 && WIDTH - 400) {
-            Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
-        }
-        if (Scene1::gdSprite.x < 130) {
-            Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
-        }
+    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x < 130) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x > 680) {
+        Scene1::textRect = { Scene1::gdSprite.x - 160 ,  Scene1::gdSprite.y - 80, useMessageLength * 10, 20 };
+    }
 
-   
-        Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
-        Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-        _sleep(300); // pauses briefly to allow text to show.
-       
-   //     delete(imu);
-    
+    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(300); // pauses briefly to allow text to show.      
 }
 
 void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::string gameObject) {
     const char* imu = openMessage.c_str();;
     int useMessageLength = openMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
-  //  SDL_DestroyTexture(Scene1::ftexture);
 
-        //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
+    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
     if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 500) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
        
@@ -74,42 +69,31 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
     }
 
-
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     _sleep(300); // pauses briefly to allow text to show.
-
-//     delete(imu);
-
 }
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {
     //Handles all object interaction messages on the game window.    
-  //  SDL_DestroyTexture(Scene1::ftexture);
     Textures tex;
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
     const char* im = interactionMessage.c_str();
     const char* imenu = gameObject.c_str();                 
     int interactionMessagelength = interactionMessage.length();
 
-            //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
+    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
     if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 600) {
         Scene1::textRect = { Scene1::gdSprite.x - 100,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
-
     }
-    else if (Scene1::gdSprite.x > 600 ) {
-        Scene1::textRect = { Scene1::gdSprite.x - 400 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
-
+    else if (Scene1::gdSprite.x > 680 ) {
+        Scene1::textRect = { Scene1::gdSprite.x - 600 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
     }
-
     else if (Scene1::gdSprite.x < 130) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
-
+        Scene1::textRect = { Scene1::gdSprite.x + 30 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
     }
 
-    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
-
-          
+    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);        
     //Render the text on the screen.
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     _sleep(300); // pauses briefly to allow text to show.    
@@ -163,82 +147,44 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
 
     //This will show the scene player messages in sequence.
     if (playerMessage == 1) {
-
-        interactionMessage = PlayerMessage(1, 1);
-
-    
+        interactionMessage = PlayerMessage(1, 1);   
         playerMessage = 2;
-
-
     }
     else if (playerMessage == 2) {
-
-        interactionMessage = PlayerMessage(1, 2);
-       
-        playerMessage = 3;
-      
+        interactionMessage = PlayerMessage(1, 2);     
+        playerMessage = 3;     
     }
-
     else if (playerMessage == 3) {
-
-        interactionMessage = PlayerMessage(1, 3);
-                   
-
-        playerMessage = 6;
-      
+        interactionMessage = PlayerMessage(1, 3);                 
+        playerMessage = 6;     
     }
-
     else if (playerMessage == 4) {
-
-        interactionMessage = PlayerMessage(1, 4);
-                 
-
-        playerMessage = 5;
-        //  _sleep(3000);
+        interactionMessage = PlayerMessage(1, 4);                
+        playerMessage = 5;      
     }
-
-
-    //This is important to allow the last message in the player interaction to be shown.
     else if (playerMessage == 5) {
-
         interactionMessage = PlayerMessage(1, 5);
- 
         playerMessage = 6;
-
     }
-
     else if (playerMessage == 6) {
-
-        interactionMessage = PlayerMessage(1, 6);
-     
-
+        interactionMessage = PlayerMessage(1, 6);     
         playerMessage = 7;
-
     }
     else if (playerMessage == 7) {
-
         interactionMessage = PlayerMessage(1, 7);
-  
-
         playerMessage = 7;
-
     }
-
 
     //This is important to allow the last message in the player interaction to be shown.
     else if (playerMessage == 7) {
-
-        playerMessage = 8;
-     
+        playerMessage = 8;   
     }
-
 
     else {
 
     }
 
     return interactionMessage;
-
 
 }
 	

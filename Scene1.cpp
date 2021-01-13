@@ -5,16 +5,17 @@
 
 */
 
-#include "Scene1.h"
+
 #include <iostream>
 #include <algorithm>
+#include <chrono>
+
+#include "Scene1.h"
 #include "PlayerMovement.h"
 #include "PlayerObjects.h"
 #include "PlayerInteraction.h"
 #include "MenuInteraction.h"
 #include "Inventory.h"
-#include <tuple>
-#include <chrono>
 #include "Textures.h"
 
 using namespace std;
@@ -25,6 +26,8 @@ SDL_Rect Scene1::background2;
 std::string Scene1::useStatement = "";
 std::string Scene1::openStatement = "";
 std::string Scene1::SceneBackground = "1";
+std::string gameMessage; //Used to display messages that tell the story.
+
 SDL_Window* Scene1::window;
 SDL_Rect Scene1::textRect;
 TTF_Font* Scene1::font;
@@ -32,13 +35,13 @@ SDL_Surface* Scene1::fsurface;
 SDL_Color Scene1::fcolor;
 SDL_Texture* Scene1::ftexture = NULL;
 SDL_Rect Scene1::dTexture;
-int Scene1::mouseHold = 0;
+
+//int Scene1::mouseHold = 0;
 //Used to prevent hover from removing the message on the screen too quickly. This was a real brain teaser to figure out.
 int Scene1::messageHolder = 0;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
-std::string gameMessage; //Used to display messages that tell the story.
 
 //Global inventory used variables. This prevents constant database checking which slows the game down.
 int Scene1::inv3Used;  //Duct Tape.
@@ -48,8 +51,6 @@ int Scene1::inv6Used; //Pressure Suit
 int Scene1::inv7Used; //Lantern
 
 SDL_Rect Scene1::gdSprite;
-
-
 SDL_Renderer* Scene1::renderer;
 
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice.
@@ -57,9 +58,8 @@ int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in tw
 int Scene1::scene1() {
 
     cout << "Initialize" << endl;
-    scene = 1;
-    //Scene Number.
-    
+    scene = 1; //Scene Number.
+        
     //Set initial position of game character and the size of the character.
     xPosition = 10;
     yPosition = 430;
@@ -115,20 +115,20 @@ int Scene1::scene1() {
     //Main background Rect
     background = { 0, 0, 1024, 600 };
 
-    //Background overlay Rect (Rocks in foreground etc)
+    //Background overlay Rects (Rocks in foreground etc)
     background2 = { 0, 200, 1500, 400 };
-
     background3 = { 0, 310, 1100, 300 };
 
+    //Interaction Menu Rect
     menu = { 0, 600, 1024, 568 };
-    windowRect = { 921 ,460,78,100 };
+    //windowRect = { 921 ,460,78,100 };
 
     SDL_Surface* SDL_DisplayFormat(SDL_Surface * surface);
 
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
 
-    Scene1::window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
     renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
        //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
@@ -157,18 +157,14 @@ int Scene1::scene1() {
     //Place the player sprite in the chosen location.
     gdSprite.x = xPosition;
     gdSprite.y = yPosition;
-  
-    dTexture.x = 10;
-    dTexture.y = 300;
-    dTexture.w = 300;
-    dTexture.h = 200; 
 
+    //Initialize Textures
     Textures tex;
-   tex.Scene1Textures();
-   tex.Scene2Textures();
-   tex.Scene3Textures();
+    tex.Scene1Textures();
+    tex.Scene2Textures();
+    tex.Scene3Textures();
  
-    //Purge the Inventory for a new game.
+    //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
     inv.purgeDatabase();
 
@@ -274,9 +270,7 @@ int Scene1::scene1() {
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
             spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
-         
-            //messageHolder = 0;
-                         
+                                  
             Uint8 buttons = SDL_GetMouseState(&x, &y);
             gd = gdSprite.x;
             gy = gdSprite.y;
@@ -303,13 +297,13 @@ int Scene1::scene1() {
                 gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture,ftexture, dialogmTexture);
          
             }
-            _sleep(1);  //This makes the animation of the character look a bit more realistic.
+            _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
            
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
             if (interactionMessage != "") {
                 SDL_DestroyTexture(spriteTexture);
-               spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
             }
 
             std::string menuMessage;
@@ -323,6 +317,7 @@ int Scene1::scene1() {
                  
             openMessage = mob.Open(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
 
+            //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
             if (gameMessage != "") {
                 interactionMessage = gameMessage;
@@ -335,7 +330,7 @@ int Scene1::scene1() {
                 object = pob.DestroyObjects(gameObject);
                 objectToDestroy.append(object);
                 std::cout << objectToDestroy << std::endl;
-                //Added the following lines to try and prevent the sprite from disappearing sometimes.
+                //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);           
             }
@@ -354,12 +349,11 @@ int Scene1::scene1() {
                 messageHolder = 1;
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
-
-
             else
                 SDL_DestroyTexture(ftexture);            
         }
- 
+        
+        //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP.
         //Render the window
         SDL_RenderClear(renderer);
         
@@ -399,20 +393,18 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::scene3b, NULL, &background);
         }
 
-        //This needs to go here, don't move it.
+        //This needs to go here, don't move it!
         SDL_RenderCopy(renderer, menuTexture, NULL, &menu);   
  
         //Display Scene Objects if not destroyed (picked up).     
-
-        //Scene1a
-        //If the object has been picked up
+    
         //PDA Inventory item.
         if (objectToDestroy.find("1") != std::string::npos) {
             SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &inv1);        
         }
     
         else if(SceneBackground == "1") {SDL_RenderCopy(renderer, Textures::objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}        
-        //If the object has been picked up.
+     
         //Flag Inventory Item
         if (objectToDestroy.find("2") != std::string::npos ) {    
             SDL_RenderCopy(renderer, Textures::invTexture2, NULL, &inv2); 
@@ -459,13 +451,11 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::objectTextureLantern, &PlayerObjects::srcrect8, &PlayerObjects::dstrect8);
         }
         
-    
+        //Air Pressure Unit
         if (SceneBackground == "1da" || SceneBackground == "1db") {
             SDL_RenderCopy(renderer, Textures::objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
          
         }
-
-      
 
         //Display Character
         gdSprite.w = SPRITE_SIZE;

@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include "MenuInteraction.h"
 
+
 namespace brightland {
 	
 	class Scene1
@@ -11,7 +12,6 @@ namespace brightland {
 	private:
 		const int WIDTH = 1024;
 		const int HEIGHT = 768;
-		//const int SPRITE_SIZE = 120;
 
 		const Uint8* keystate;
 		int gameover = 0;
@@ -24,7 +24,6 @@ namespace brightland {
 		static std::string useStatement;
 		static std::string openStatement;
 		static std::string SceneBackground;
-	//	static int playerMessage;
 		static int mouseHold;
 		static int tLoader;
 		static int messageHolder;
@@ -39,6 +38,7 @@ namespace brightland {
 		int colorkey;
 		int count;
 		int scene;
+
 		//Set start position of main character.
 		static int xPosition;
 		static int yPosition;
@@ -56,9 +56,6 @@ namespace brightland {
 		SDL_Rect inv4;
 		SDL_Rect inv5;
 		SDL_Rect inv7;
-		
-
-	
 		static SDL_Rect dTexture;
 		SDL_Rect menu;
 		static SDL_Rect gdSprite;
@@ -66,9 +63,6 @@ namespace brightland {
 		SDL_Rect menuTextRect;
 		SDL_Rect windowRect;
 		//Player position on start.
-	
-;
-
 
 		//Texture used for displaying text.
 		static SDL_Texture* ftexture;
@@ -99,11 +93,8 @@ namespace brightland {
 		SDL_Surface* spriteFlat;
 		SDL_Surface* spriteDown1;
 		SDL_Surface* spriteDownp;
-	
 
-		//Use action Surfaces
-		SDL_Surface* spriteMask;
-
+		//Scene Background Surfaces
 		SDL_Surface* imageSurface2;
 		SDL_Surface* imageSurface;
 		SDL_Surface* imageSurface3;
@@ -121,20 +112,10 @@ namespace brightland {
 		SDL_Surface* menuSurface;
 		SDL_Surface* purpleSurface;
 
-		//Scene Objects
-		//SDL_Surface* pda;
-		//SDL_Surface* flag;
-		//SDL_Surface* stars;
-		//SDL_Surface* tape;
-	//	SDL_Surface* tent;
-
-
-
 		//Scene Dialog
 		SDL_Surface* dialog;
 		SDL_Surface* dialogm;
 		static SDL_Surface* fsurface;
-
 		static SDL_Renderer* renderer;
 
 		static SDL_Window* window;
@@ -146,8 +127,6 @@ namespace brightland {
 
 	public: 
 		int scene1();
-	//	void Scene1Textures();
-		//void Scene2Textures();
 
 		private:
 			

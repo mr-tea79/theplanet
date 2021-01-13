@@ -2,16 +2,8 @@
 #define PLAYERINTERACTION_H_
 
 #pragma once
-#include <string>
-#include <SDL.h>
-#include "PlayerObjects.h"
-#include "Inventory.h"
+
 #include "Scene1.h"
-#include <SDL_ttf.h>
-
-
-
-
 
 namespace brightland {
 
@@ -19,10 +11,6 @@ namespace brightland {
 	class PlayerInteraction
 	{
 	private:
-		//TTF_Font* font;
-		//SDL_Surface* fsurface;
-		//SDL_Color fcolor;
-		//SDL_Texture* ftexture;
 		const int WIDTH = 1024;
 		const int HEIGHT = 768;
 	public:
@@ -34,9 +22,7 @@ namespace brightland {
 		void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject);
 		void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject);
 		void PlayerInteraction::InteractionControllerOpen(std::string openMessage,std::string gameObject);
-		std::string PlayerInteraction::DisplayPlayerMessages();
-
-		
+		std::string PlayerInteraction::DisplayPlayerMessages();	
 	};
 
 }

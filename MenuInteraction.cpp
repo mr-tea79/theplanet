@@ -129,6 +129,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          SDL_DestroyTexture(spriteTexture);
          SDL_CreateTextureFromSurface(renderer, spriteDown1);
          useMessage = "Ok, connected!";
+         Scene1::useStatement = "";
        
      }
      //This is used to tell the player they are too far away.
