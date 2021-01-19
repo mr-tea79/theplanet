@@ -87,12 +87,6 @@ namespace brightland {
 		SDL_Texture* dialogTexture;
 		SDL_Texture* dialogmTexture;
 
-	//	SDL_Texture* menuTexture;
-
-		//Player movement animations
-		SDL_Surface* spriteFlat;
-		SDL_Surface* spriteDown1;
-		SDL_Surface* spriteDownp;
 
 		//Scene Background Surfaces
 		SDL_Surface* imageSurface2;

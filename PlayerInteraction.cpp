@@ -125,7 +125,7 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
 
     else if (msgNumber == 5) {
       
-        std::string PlayerMessage = "TOAD 1000: Bonita, you need to find a suitable area for base camp. Your Oxygen is limited.";
+        std::string PlayerMessage = "TOAD 1000: Bonita, your Oxygen is very low.";
         return PlayerMessage;
     }
 

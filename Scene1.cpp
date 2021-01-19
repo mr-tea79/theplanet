@@ -459,7 +459,7 @@ int Scene1::scene1() {
         }
         else {
             SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteFlat);
+           // Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteFlat);
             SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
     
