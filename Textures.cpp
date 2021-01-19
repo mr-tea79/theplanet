@@ -5,6 +5,9 @@
 
 using namespace brightland;
 
+
+SDL_Texture* Textures::menuTexture;
+
 SDL_Texture* Textures::scene1f;
 SDL_Texture* Textures::scene1fa;
 SDL_Texture* Textures::scene1fb;
@@ -42,6 +45,9 @@ SDL_Texture* Textures::objectTexturePipe;
 SDL_Texture* Textures::objectTexturePipeAction;
 SDL_Texture* Textures::objectTextureLantern;
 
+SDL_Texture* Textures::spriteTexture;
+SDL_Surface* Textures::spriteDown1;
+SDL_Surface* Textures::spriteDownp;
 
 void Textures::Scene1Textures() {
 
@@ -53,6 +59,8 @@ void Textures::Scene1Textures() {
     SDL_DestroyTexture(scene1d2);
 
     //Load in all Scene textures here. Only do this once as it uses RAM to do this.
+    menuSurface = IMG_Load("menu.png");
+    
     imageSurface = IMG_Load("scene1.png");
     imageSurface2 = IMG_Load("Scenes/rocks.png");
     imageSurface3 = IMG_Load("Scenes/ComputerScreen.png");
@@ -66,6 +74,9 @@ void Textures::Scene1Textures() {
     stars = IMG_Load("Objects/stars3.png");
     tape = IMG_Load("Objects/tape.png");
     tent = IMG_Load("Objects/tent.png");
+
+    spriteDown1 = IMG_Load("PlayerMovement/ThePlanet/sprite.png");
+    spriteDownp = IMG_Load("PlayerMovement/ThePlanet/spritep.png");
 
     texture = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     computerScene1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface3);
@@ -87,6 +98,9 @@ void Textures::Scene1Textures() {
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
     invTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tent);
 
+    menuTexture = SDL_CreateTextureFromSurface(Scene1::renderer, menuSurface);
+    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+   
 
 }
 

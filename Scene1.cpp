@@ -65,7 +65,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1da";
+    SceneBackground = "1";
     
     //SPRITE_SIZE = 10;
    // xPosition = 10;
@@ -135,13 +135,6 @@ int Scene1::scene1() {
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 };
 
-    menuSurface =    IMG_Load("menu.png");
-    spriteFlat =     IMG_Load("PlayerMovement/ThePlanet/spriteFlat.png");
-    spriteDown1 =    IMG_Load("PlayerMovement/ThePlanet/sprite.png");
-    spriteDownp =    IMG_Load("PlayerMovement/ThePlanet/spritep.png"); 
-  
-    menuTexture =    SDL_CreateTextureFromSurface(renderer, menuSurface);
-    spriteTexture =  SDL_CreateTextureFromSurface(renderer, spriteDown1);
     dialogTexture =  SDL_CreateTextureFromSurface(renderer, dialog);
 
     //Assign the images to the textures.
@@ -161,8 +154,8 @@ int Scene1::scene1() {
     //Initialize Textures
     Textures tex;
     tex.Scene1Textures();
-    tex.Scene2Textures();
-    tex.Scene3Textures();
+   // tex.Scene2Textures();
+  //  tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -190,7 +183,7 @@ int Scene1::scene1() {
 
         //Show patch on suit
         if (inv3Used == 1)
-            spriteDown1 = spriteDownp;
+            Textures::spriteDown1 = Textures::spriteDownp;
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
         SDL_RenderClear(renderer);
@@ -266,9 +259,9 @@ int Scene1::scene1() {
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
             //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                 
-            SDL_DestroyTexture(spriteTexture);
+            SDL_DestroyTexture(Textures::spriteTexture);
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-            spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1); 
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
                                   
             Uint8 buttons = SDL_GetMouseState(&x, &y);
@@ -276,7 +269,7 @@ int Scene1::scene1() {
             gy = gdSprite.y;
 
             //Show coordinates in console for object placement.
-            cout << "Current Mouse click coordinates are:" << endl;
+            cout << "Current Mouse click coordinates are:"  << endl;
             cout << "x = " << x << endl;
             cout << "y = " << y << endl;
             cout << "Current Player X Position is: " << gdSprite.x << endl;
@@ -286,15 +279,15 @@ int Scene1::scene1() {
             if(mouseHold == 0){
                 mouseHold = 1;
                 ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);               
-                gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture, ftexture, dialogmTexture);
+                gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
               
           
             //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
             if(y < gdSprite.y && x < gdSprite.x +75 && x >gdSprite.x)
-                gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture,ftexture, dialogmTexture);
+                gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture,ftexture, dialogmTexture);
             
             if (y > gdSprite.y && x < gdSprite.x +75 && x > gdSprite.x)
-                gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, spriteTexture,ftexture, dialogmTexture);
+                gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture,ftexture, dialogmTexture);
          
             }
             _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
@@ -302,20 +295,20 @@ int Scene1::scene1() {
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
             if (interactionMessage != "") {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);
+                SDL_DestroyTexture(Textures::spriteTexture);
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
 
             std::string menuMessage;
             //Clicking objects on the scene.
       
             //Get object pickup message.
-            gameObject = mob.PickUp(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
+            gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
     
             //Get object use message.
-            useMessage = mob.Use(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
+            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
                  
-            openMessage = mob.Open(x, y, gd, gy, mInteraction, spriteTexture, renderer, spriteDown1, "");
+            openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
             //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
@@ -331,8 +324,8 @@ int Scene1::scene1() {
                 objectToDestroy.append(object);
                 std::cout << objectToDestroy << std::endl;
                 //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteDown1);           
+                SDL_DestroyTexture(Textures::spriteTexture);
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
            
           
@@ -394,7 +387,7 @@ int Scene1::scene1() {
         }
 
         //This needs to go here, don't move it!
-        SDL_RenderCopy(renderer, menuTexture, NULL, &menu);   
+        SDL_RenderCopy(renderer, Textures::menuTexture, NULL, &menu);   
  
         //Display Scene Objects if not destroyed (picked up).     
     
@@ -462,12 +455,12 @@ int Scene1::scene1() {
         gdSprite.h = SPRITE_SIZE;
           
         if(PlayerInteraction::playerMessage > 3){
-            SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
         else {
-            SDL_DestroyTexture(spriteTexture);
-            spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteFlat);
-            SDL_RenderCopy(renderer, spriteTexture, NULL, &gdSprite);
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteFlat);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
     
         //Display Objects and textures for the current scene background.
