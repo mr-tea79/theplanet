@@ -67,9 +67,9 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     SDL_Texture* dialogmTexture) {
 
 //Player Movement
-
-    SDL_DestroyTexture(spriteTexture);
-    spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteDown1a);
+   
+   // SDL_DestroyTexture(spriteTexture);
+  // spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteDown1a);
 
     //Set the coordinates for walking on the given Scene background.
 
@@ -660,45 +660,48 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
     //Set the coordinates for walking on the given Scene background.
     if (Scene1::SceneBackground == "1") {
-
+        
         if (gd <= x - 60 && y > 320 && y < 575) {
+          
+                if (position == 0) {
 
-            if (position == 0) {
+                    SDL_DestroyTexture(spriteTexture);
+                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);                
+                    gd += 3.5; //Speed of sprite movement.
 
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
+                }
+                if (position == 1) {
 
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
+                    SDL_DestroyTexture(spriteTexture);
+                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);             
+                    gd += 3.5;
+                   
+                }
+                if (position == 2) {
 
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-                //position = 0; //This achieves the animation effect.
-            }
-            if (position == 3) {
+                    SDL_DestroyTexture(spriteTexture);
+                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);                 
+                    gd += 3.5;
+                   
+                }
+                if (position == 3) {
 
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gd += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
+                    SDL_DestroyTexture(spriteTexture);
+                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);                 
+                    gd += 3.5;
+                    position = 0; //This achieves the animation effect.
+                }
 
-            if (gd == screenWidth - 50) {
+                if (gd == screenWidth - 50) {
 
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-
-            position++;
-
+                    SDL_DestroyTexture(spriteTexture);
+                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
+                    gd -= 3.5;
+                }
+               
+               
+                position++;
+         
         }
 
         else if (gd >= x  && y > 320 && y < 575) {
