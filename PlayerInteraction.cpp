@@ -74,6 +74,29 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
     _sleep(300); // pauses briefly to allow text to show.
 }
 
+void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject) {
+    const char* imu = lookMessage.c_str();;
+    int lookMessageLength = lookMessage.length();
+    Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
+
+    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 500) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, lookMessageLength * 10, 20 };
+
+    }
+    else if (Scene1::gdSprite.x > 500) {
+
+        Scene1::textRect = { Scene1::gdSprite.x - 200,  Scene1::gdSprite.y - 100, lookMessageLength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x < 130) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, lookMessageLength * 10, 20 };
+    }
+
+    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(300); // pauses briefly to allow text to show.
+}
+
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {
     //Handles all object interaction messages on the game window.    
     Textures tex;
