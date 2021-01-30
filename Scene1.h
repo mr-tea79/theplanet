@@ -34,6 +34,7 @@ namespace brightland {
 		static int inv5Used;
 		static int inv6Used;
 		static int inv7Used;
+		static int action;
 
 		int colorkey;
 		int count;
@@ -45,7 +46,7 @@ namespace brightland {
 
 		static SDL_Color fcolor;
 		SDL_Rect background;
-		static SDL_Rect background2;
+		SDL_Rect background2;
 		SDL_Rect background3;
 		SDL_Rect background4;
 		SDL_Rect pipeAction;
@@ -121,6 +122,8 @@ namespace brightland {
 
 	public: 
 		int scene1();
+		static void renderSprite();
+		void DoAction();
 
 		private:
 			

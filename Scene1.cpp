@@ -22,7 +22,6 @@ using namespace std;
 using namespace brightland;
 
 //Initialize the global variables accessed by other classes.
-SDL_Rect Scene1::background2;
 std::string Scene1::useStatement = "";
 std::string Scene1::openStatement = "";
 std::string Scene1::SceneBackground = "1";
@@ -49,6 +48,8 @@ int Scene1::inv4Used;  //Tent
 int Scene1::inv5Used; //Pipe
 int Scene1::inv6Used; //Pressure Suit
 int Scene1::inv7Used; //Lantern
+
+int Scene1::action; //Used to trigger action texture.
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -99,6 +100,7 @@ int Scene1::scene1() {
     int gd;
     int gy;
     int x =0, y = 0;
+    int wx = 0, wy = 0;
 
     //Text Dialog.
     dialog =         NULL;
@@ -209,10 +211,8 @@ int Scene1::scene1() {
 
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                    if (messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 || event.motion.y > y+150 || event.motion.y < y-150) {
-                      
-                        messageHolder = 0;
-                     
+                    if (messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 || event.motion.y > y+150 || event.motion.y < y-150 ) {
+                        
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
@@ -220,20 +220,24 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
 
                         //Find objects that are hoverable.
-                        interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                       
+                       interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
 
                         if(messageHolder !=1){
-                        if(interactionMessage !=""){
+                        if(interactionMessage !=""){   
+
+                            mouseHold = 0;
                             pi.InteractionControllerHover(interactionMessage);                    
                         }
-                        else {
-                            SDL_DestroyTexture(ftexture);
+                        else {                         
+                           SDL_DestroyTexture(ftexture);
                         }
                     }
                        
                         break;
                     }
                     else {
+                       
                         break;
                     }
 
@@ -253,18 +257,22 @@ int Scene1::scene1() {
         keystate = SDL_GetKeyboardState(NULL);
 
         if (SDL_MOUSEBUTTONUP) {
-            mouseHold = 0;
+            mouseHold = 1;
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
-           //Note needs some tweaking. If you remove this your RAM will rocket!                 
+          
+           //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
+           //Note needs some tweaking. If you remove this your RAM will rocket!  
+           if(mouseHold !=0){
+             
             SDL_DestroyTexture(Textures::spriteTexture);
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
-                                  
-            Uint8 buttons = SDL_GetMouseState(&x, &y);
+           }
+           
+            Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
             gy = gdSprite.y;
 
@@ -276,49 +284,41 @@ int Scene1::scene1() {
             cout << "Current Player Y Position is: " << gdSprite.y << endl;
             cout << "Current Scene is: " << SceneBackground << endl;
         
-            if(mouseHold == 0){
-                mouseHold = 1;
-                ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);               
-                gdSprite.x = player.walk(x, y, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
-              
-          
-            //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
-            if(y < gdSprite.y && x < gdSprite.x +75 && x >gdSprite.x)
-                gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture,ftexture, dialogmTexture);
-            
-            if (y > gdSprite.y && x < gdSprite.x +75 && x > gdSprite.x)
-                gdSprite.y = player.walky(x, y, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture,ftexture, dialogmTexture);
-         
-            }
-            _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
            
+        
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
+
+            /*
             if (interactionMessage != "") {
                 SDL_DestroyTexture(Textures::spriteTexture);
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
+            */
 
             std::string menuMessage;
             //Clicking objects on the scene.
       
             //Get object pickup message.
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-    
-            //Get object use message.
-            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-                 
+                       
+               
+            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, ""); 
+                    
             openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-
+        
             //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
-            if (gameMessage != "") {
-                interactionMessage = gameMessage;
-                PlayerInteraction::playerMessage = 100;               
-            }     
 
+            if (gameMessage != "") {
+               
+                interactionMessage = gameMessage;
+                PlayerInteraction::playerMessage = 100;    
+                mouseHold = 0;
+            }     
+            
             //Check which objects are picked up.
-            if (gameObject != "") {            
+            if (gameObject != "") {     
                 std::string object;
                 object = pob.DestroyObjects(gameObject);
                 objectToDestroy.append(object);
@@ -326,25 +326,60 @@ int Scene1::scene1() {
                 //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
                 SDL_DestroyTexture(Textures::spriteTexture);
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
+                mouseHold = 0;
+
             }
            
-          
-            if (interactionMessage != ""){
-                messageHolder = 1;
-                pi.InteractionControllerObject(interactionMessage, gameObject);
-               
-            }
-            else if (useMessage != ""){
-                messageHolder = 1;
+        
+           if (useMessage != ""){
+                mouseHold = 0;
                 pi.InteractionControllerUse(useMessage, gameObject);                               
             }
             else if (openMessage != "") {
-                messageHolder = 1;
+               // messageHolder = 1;
+                mouseHold = 0;
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
+
             else
-                SDL_DestroyTexture(ftexture);            
+            
+                SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
+          
+
         }
+
+        gd = gdSprite.x;
+        gy = gdSprite.y;
+
+        if (wx > gdSprite.x && mouseHold == 1 || wx < gdSprite.x && mouseHold == 1 && messageHolder !=1) {
+
+            if(action !=1){
+                //This is critical and prevents sprite from disappearing.
+                SDL_DestroyTexture(Textures::spriteTexture);
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
+            }
+            else {
+                DoAction();
+            }
+           
+            gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);         
+            messageHolder = 0;         
+            _sleep(1);
+        }
+      
+        if(wy < gdSprite.y && mouseHold == 1 || wy > gdSprite.y && mouseHold == 1 && messageHolder !=1){
+        //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
+            if (y < gdSprite.y && wx < gdSprite.x + 75 && wx >gdSprite.x)
+                gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+          
+            if (y > gdSprite.y && wx < gdSprite.x + 75 && wx > gdSprite.x)
+                gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                messageHolder = 0; 
+                _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
+           
+      
+    }
+
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP.
         //Render the window
@@ -470,7 +505,7 @@ int Scene1::scene1() {
         }
 
         if (SceneBackground == "1b") {
-            
+             
         }
         //This will hide the sprite because it comes after the render of the sprite.
         if (SceneBackground == "1c") {
@@ -509,10 +544,12 @@ int Scene1::scene1() {
         interactionMessage = ""; // Clear the interaction message on every loop.
         useMessage = "";
         gameMessage = "";
-       
+        
         SDL_RenderPresent(renderer);
       
     }
+
+    
 
     //Clean up after yourself!
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
@@ -523,4 +560,16 @@ int Scene1::scene1() {
 
     TTF_Quit();
     SDL_Quit();
+}
+
+void Scene1::renderSprite() {
+    
+    SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
+
+}
+
+//Does the action animations.
+void Scene1::DoAction() {
+    _sleep(250);
+    action = 0;
 }

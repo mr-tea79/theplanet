@@ -103,13 +103,24 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     PlayerObjects pob;
     Inventory inv;
 
+
      if (x > 190 && x < 227 && y > 676 && y < 690) {
         useStatement = Scene1::useStatement = "Use";
         std::cout << Scene1::useStatement << std::endl;
         useMessage = "Use what?";
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
+        Scene1::useStatement = "Use What?";
      }
+
+
+     else if (x >= 560 && x <= 612 && y >= 288 && y <= 350 && useStatement == "Use" && Scene1::SceneBackground == "1" ) {
+         
+         SDL_DestroyTexture(spriteTexture);
+         SDL_CreateTextureFromSurface(renderer, spriteDown1);
+           useMessage = "It's broken, what am I supposed to use it for?";   
+     }
+
 
      else if (x > 879 && x < 921 && y > 648 && y < 689 && useStatement == "Use" && Scene1::SceneBackground == "1da") {
          Scene1::useStatement = "Pipe with";
@@ -169,7 +180,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          useMessage = "";
      }
 
-      else if (x > 889 && x < 920 && y > 647 && y < 687 && useStatement == "Use" && Scene1::SceneBackground == "1") {
+      else if (x > 889 && x < 920 && y > 647 && y < 687 && useStatement == "Use") {
          Scene1::useStatement = "";
          std::cout << Scene1::useStatement << std::endl;
 
@@ -179,6 +190,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          inv.useItem("Tape");
          Scene1::inv3Used = 1;
          useMessage = "That should plug the leak!";
+         Scene1::action = 1;
      }
 
       else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 731 && gy > 330 && useStatement == "Use" && Scene1::SceneBackground == "1da" &&Scene1::inv5Used == 1) {
