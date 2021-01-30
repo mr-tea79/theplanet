@@ -7,7 +7,7 @@
 
 using namespace brightland;
 
-//Sprite Action Textures
+//Sprite Action Texturess
 SDL_Surface* spriteAction = NULL;
 SDL_Surface* spriteAction2 = NULL;
 SDL_Surface* spriteAction3 = NULL;
