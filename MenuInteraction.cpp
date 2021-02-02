@@ -77,7 +77,6 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     /**/
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         actionStatement = Scene1::actionStatement = "Look at";
-     //   Scene1::lookStatement = "Look";
         actionMessage = "Look at what?";
 
     }
@@ -88,7 +87,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
 
 
 
-std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
+std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
 
     std::string lookMessage;
 
@@ -97,9 +96,12 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     /**/
   
 
-    if (Scene1::SceneBackground == "1" && gd > 400 && gy >300 && Scene1::actionStatement == "Look at") {
+    if (Scene1::SceneBackground == "1" && gd > 440 && gy >300 && gy<340 && Scene1::actionStatement == "Look at") {
         lookMessage = "That's one of the engines.";
-                   
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        
+     
     }
 
     return lookMessage;

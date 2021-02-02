@@ -265,7 +265,6 @@ int Scene1::scene1() {
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-          
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!  
            if(mouseHold !=0){
@@ -347,12 +346,7 @@ int Scene1::scene1() {
                 mouseHold = 0;
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
-            else if (lookMessage != "" && actionMessage == "Look at") {
-               // messageHolder = 1;
-               mouseHold = 0;
-               pi.InteractionControllerLook(lookMessage, gameObject);
-                                        
-           }
+            
            else if (actionMessage != "" || actionStatement != "") {
                // messageHolder = 1;
                mouseHold = 0;
@@ -370,22 +364,25 @@ int Scene1::scene1() {
         gd = gdSprite.x;
         gy = gdSprite.y;
 
+        if(actionMessage != "Look at what?")
+            lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
+
+
         if (lookMessage != "") {           
             pi.InteractionControllerLook(lookMessage, gameObject);
-            actionMessage = "";
-            lookMessage = "";
+           // actionMessage = "";
+           // lookMessage = "";
             actionStatement = "";
-
+           
         }
- 
-       lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
        
+    
         
        
 
         if (wx > gdSprite.x && mouseHold == 1 || wx < gdSprite.x && mouseHold == 1 && messageHolder !=1) {
 
-            if(action !=1){
+            if(action !=1 ){
                 //This is critical and prevents sprite from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
@@ -408,8 +405,7 @@ int Scene1::scene1() {
                 gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
                 messageHolder = 0; 
                 _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
-           
-      
+              
     }
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP.
@@ -601,6 +597,7 @@ void Scene1::renderSprite() {
 
 //Does the action animations.
 void Scene1::DoAction() {
-    _sleep(250);
+    _sleep(550);
     action = 0;
+ 
 }

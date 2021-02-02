@@ -48,6 +48,7 @@ SDL_Texture* Textures::objectTextureLantern;
 SDL_Texture* Textures::spriteTexture;
 SDL_Surface* Textures::spriteDown1;
 SDL_Surface* Textures::spriteDownp;
+SDL_Surface* Textures::spriteBack1a;
 
 void Textures::Scene1Textures() {
 
@@ -77,6 +78,7 @@ void Textures::Scene1Textures() {
 
     spriteDown1 = IMG_Load("PlayerMovement/ThePlanet/sprite.png");
     spriteDownp = IMG_Load("PlayerMovement/ThePlanet/spritep.png");
+    spriteBack1a = IMG_Load("PlayerMovement/ThePlanet/spriteback1.png");
 
     texture = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     computerScene1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface3);

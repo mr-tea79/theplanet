@@ -204,7 +204,8 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
-        message = "Wreckage";
+        message = Scene1::actionStatement + " Wreckage";
+      
         
     }
 
