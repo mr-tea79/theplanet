@@ -16,6 +16,7 @@ SDL_Surface* spriteAction3 = NULL;
 static std::string useStatement;
 static std::string openStatement;
 static std::string lookStatement;
+static std::string actionStatement;
 static std::string sceneBackground;
 static int inv3used;
 static int inv4used;
@@ -67,6 +68,26 @@ std::string MenuInteraction::MenuSelect(int x, int y, int gd, int gy, int mInter
 }
 */
 
+std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
+
+    std::string actionMessage;
+
+    PlayerObjects pob;
+    Inventory inv;
+    /**/
+    if (x > 57 && x < 145 && y > 621 && y < 647) {
+        actionStatement = Scene1::actionStatement = "Look at";
+     //   Scene1::lookStatement = "Look";
+        actionMessage = "Look at what?";
+
+    }
+
+
+    return actionMessage;
+}
+
+
+
 std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
 
     std::string lookMessage;
@@ -74,21 +95,11 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     PlayerObjects pob;
     Inventory inv;
     /**/
-    if (x > 57 && x < 145 && y > 621 && y < 647) {
-        lookStatement = Scene1::lookStatement = "Look";
-        std::cout << Scene1::lookStatement << std::endl;
-        SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteDown1);
-        lookMessage = "Look at what?";
-     
-    }
+  
 
-    else if (Scene1::SceneBackground == "1" && gd > 400 && gy >300 && lookStatement == "Look") {
-     //   std::cout << "GOT HERE" << std::endl;
+    if (Scene1::SceneBackground == "1" && gd > 400 && gy >300 && Scene1::actionStatement == "Look at") {
         lookMessage = "That's one of the engines.";
-        lookStatement = Scene1::lookStatement = "";
-       
-       
+                   
     }
 
     return lookMessage;

@@ -23,6 +23,7 @@ namespace brightland {
 		void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject);
 		void PlayerInteraction::InteractionControllerOpen(std::string openMessage,std::string gameObject);
 		void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject);
+		void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject);
 		std::string PlayerInteraction::DisplayPlayerMessages();	
 	};
 

@@ -25,6 +25,7 @@ using namespace brightland;
 std::string Scene1::useStatement = "";
 std::string Scene1::openStatement = "";
 std::string Scene1::lookStatement = "";
+std::string Scene1::actionStatement = "";
 std::string Scene1::SceneBackground = "1";
 std::string gameMessage; //Used to display messages that tell the story.
 
@@ -91,6 +92,7 @@ int Scene1::scene1() {
     std::string useMessage;
     std::string openMessage;
     std::string lookMessage;
+    std::string actionMessage;
 
     //Used to detecting mouse clicks. The program runs really fast!
     static int mouseHold = 0;
@@ -309,7 +311,9 @@ int Scene1::scene1() {
                     
             openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
-            lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+            actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+
+          //  lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
         
             //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
@@ -331,7 +335,6 @@ int Scene1::scene1() {
                 SDL_DestroyTexture(Textures::spriteTexture);
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
                 mouseHold = 0;
-
             }
            
         
@@ -344,10 +347,16 @@ int Scene1::scene1() {
                 mouseHold = 0;
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
-            else if (lookMessage != "" || lookStatement !="") {
+            else if (lookMessage != "" && actionMessage == "Look at") {
                // messageHolder = 1;
                mouseHold = 0;
                pi.InteractionControllerLook(lookMessage, gameObject);
+                                        
+           }
+           else if (actionMessage != "" || actionStatement != "") {
+               // messageHolder = 1;
+               mouseHold = 0;
+               pi.InteractionControllerLook(actionMessage, gameObject);
            }
 
             else         
@@ -361,13 +370,18 @@ int Scene1::scene1() {
         gd = gdSprite.x;
         gy = gdSprite.y;
 
-
-        lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-        if (lookMessage != ""){
+        if (lookMessage != "") {           
             pi.InteractionControllerLook(lookMessage, gameObject);
+            actionMessage = "";
             lookMessage = "";
-       
+            actionStatement = "";
+
         }
+ 
+       lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+       
+        
+       
 
         if (wx > gdSprite.x && mouseHold == 1 || wx < gdSprite.x && mouseHold == 1 && messageHolder !=1) {
 
