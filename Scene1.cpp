@@ -24,6 +24,7 @@ using namespace brightland;
 //Initialize the global variables accessed by other classes.
 std::string Scene1::useStatement = "";
 std::string Scene1::openStatement = "";
+std::string Scene1::lookStatement = "";
 std::string Scene1::SceneBackground = "1";
 std::string gameMessage; //Used to display messages that tell the story.
 
@@ -89,6 +90,7 @@ int Scene1::scene1() {
     std::string interactionMessage;
     std::string useMessage;
     std::string openMessage;
+    std::string lookMessage;
 
     //Used to detecting mouse clicks. The program runs really fast!
     static int mouseHold = 0;
@@ -306,6 +308,8 @@ int Scene1::scene1() {
             useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, ""); 
                     
             openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+
+            lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
         
             //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
@@ -340,16 +344,30 @@ int Scene1::scene1() {
                 mouseHold = 0;
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
+            else if (lookMessage != "" || lookStatement !="") {
+               // messageHolder = 1;
+               mouseHold = 0;
+               pi.InteractionControllerLook(lookMessage, gameObject);
+           }
 
-            else
-            
+            else         
                 SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
           
 
         }
 
+
+     
         gd = gdSprite.x;
         gy = gdSprite.y;
+
+
+        lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+        if (lookMessage != ""){
+            pi.InteractionControllerLook(lookMessage, gameObject);
+            lookMessage = "";
+       
+        }
 
         if (wx > gdSprite.x && mouseHold == 1 || wx < gdSprite.x && mouseHold == 1 && messageHolder !=1) {
 
@@ -379,7 +397,6 @@ int Scene1::scene1() {
            
       
     }
-
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP.
         //Render the window

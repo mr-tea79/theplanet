@@ -85,6 +85,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Open";
     }
 
+    if (x > 57 && x < 145 && y > 621 && y < 647) {
+        message = "Look";
+
+    }
+
     //Inventory Hover Messages 
    
     if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {

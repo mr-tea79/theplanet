@@ -94,7 +94,7 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
 
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(300); // pauses briefly to allow text to show.
+    _sleep(100); // pauses briefly to allow text to show.
 }
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {

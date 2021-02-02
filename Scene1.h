@@ -23,6 +23,7 @@ namespace brightland {
 		static int SPRITE_SIZE;
 		static std::string useStatement;
 		static std::string openStatement;
+		static std::string lookStatement;
 		static std::string SceneBackground;
 		static int mouseHold;
 		static int tLoader;
