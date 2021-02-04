@@ -305,8 +305,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
-
-
         
             }
 

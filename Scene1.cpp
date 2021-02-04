@@ -346,7 +346,8 @@ int Scene1::scene1() {
             std::string object;
             object = pob.DestroyObjects(gameObject);
             objectToDestroy.append(object);
-            std::cout << objectToDestroy << std::endl;
+            //std::cout << objectToDestroy << std::endl;
+            actionStatement = "";
             //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
