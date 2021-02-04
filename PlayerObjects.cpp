@@ -205,12 +205,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
         message = Scene1::actionStatement + " Wreckage";
-      
-        
+           
     }
 
     if (Scene1::SceneBackground == "1" && x >= 609 && x <= 719 && y >= 515 && y <= 542 && inv.checkItem("PDA") != 1) {
-        message = "White plastic thingy";
+        message = Scene1::actionStatement + " White plastic thingy";
              
     }
 
@@ -529,19 +528,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
 
     /* Looking at broken engine */
-    if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 600) {
-        message = "Anti matter engine. This ship isn't going nowhere!";
-        if (Scene1::useStatement == "Use")
-            message= "It's broken, what am I supposed to use it for?";
-    }
+  
 
-    /* Trying to use PDA which is still on the ground */
-    if (Scene1::SceneBackground == "1" && x >= 681 && x <= 700 && y >= 515 && y <= 542 && playerCurrentLocationX >= 622 && playerCurrentLocationX <= 736 && inv.checkItem("PDA") != 1) {
-
-        message = "That's my PDA";
-        if (Scene1::useStatement == "Use")
-            message = "I need to pick it up first!";
-    }
 
     /* Looking at Ape Tape */
     if (Scene1::SceneBackground == "1b" && x >= 320 && x <= 390 && y >= 433 && y <= 474 && playerCurrentLocationX >= 310 && playerCurrentLocationX <= 394 && inv.checkItem("Tape") != 1) {

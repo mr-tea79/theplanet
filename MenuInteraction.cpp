@@ -81,14 +81,19 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
 
     }
 
+    if (x > 61 && x < 146 && y > 643 && y < 690) {
+        actionStatement = Scene1::actionStatement = "Pick up";
+        actionMessage = "Pick up what?";
+
+    }
+
 
     return actionMessage;
 }
 
 
 
-std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
-
+std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {  
     std::string lookMessage;
 
     PlayerObjects pob;
@@ -100,9 +105,14 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookMessage = "That's one of the engines.";
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteBack);
-        
-     
+        Scene1::action = 1;
     }
+
+    if (Scene1::SceneBackground == "1" && gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && Scene1::actionStatement == "Look at") {
+
+        lookMessage = "That's my PDA";  
+    }
+
 
     return lookMessage;
 }
@@ -262,7 +272,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
      return useMessage;
 }
 
-std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1,std::string menuMessage) {
+std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spritePick,std::string menuMessage) {
 
 
     std::string gameObject;
@@ -281,7 +291,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
     Inventory inv;
   
     //If user clicks on the location of the pickup button.
-    if (x > 61 && x < 146 && y > 643 && y < 690) {
+    if (Scene1::actionStatement == "Pick up") {
        
       //  std::cout << "You clicked Pick up!" << std::endl;
         items = inv.checkItem(gameObject);
@@ -290,37 +300,41 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
            
         //If object picked up is..
             if (menuMessages == "PDA") {
-              
+                SDL_DestroyTexture(spriteTexture);
+                SDL_CreateTextureFromSurface(renderer, spritePick);
+                Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                Scene1::action = 1;
+
 
         
             }
 
             if (menuMessages == "Flag") {
-       
+                Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                              
             }
             if (menuMessages == "Tape") {
-
+                Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
 
             }
 
             if (menuMessages == "Tent") {
-
+                Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
 
             }
 
             if (menuMessages == "Battery Lantern") {
-
+                Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
 
             }
 
             if (menuMessages == "Pipe") {
-
+                Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
 
                 Textures::objectTexture6 = Textures::objectTexture7;

@@ -52,6 +52,8 @@ namespace brightland {
 		static SDL_Surface* spriteDown1;
 		static SDL_Surface* spriteDownp;
 		static SDL_Surface* spriteBack1a;
+		static SDL_Surface* spritePick;
+		static SDL_Surface* spritePickp;
 
 		SDL_Surface* menuSurface;
 		SDL_Surface* imageSurface2;
