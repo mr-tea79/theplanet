@@ -74,9 +74,9 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
-        if (inv.checkItem(gameObject) != 1) //Prevents invisible pickup objects.
-            message = "Pick up " + gameObject;
-        else
+      //  if (inv.checkItem(gameObject) != 1) //Prevents invisible pickup objects.
+        //    message = "Pick up " + gameObject;
+        //else
             message = "Pick up";
         
     }

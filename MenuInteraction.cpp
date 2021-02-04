@@ -83,7 +83,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
         actionStatement = Scene1::actionStatement = "Pick up";
-    //    actionMessage = "Pick up what?";
+        actionMessage = "Pick up what?";
 
     }
 

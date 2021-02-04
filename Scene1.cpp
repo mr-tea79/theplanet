@@ -341,22 +341,24 @@ int Scene1::scene1() {
    
         gd = gdSprite.x;
         gy = gdSprite.y;
+
+
         //Check which objects are picked up.
         if (gameObject != "") {
             std::string object;
             object = pob.DestroyObjects(gameObject);
             objectToDestroy.append(object);
             //std::cout << objectToDestroy << std::endl;
-            actionStatement = "";
             //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
         }
+       
 
-
-        //Get object pickup message.
+        if (actionMessage != "Pick up what?") {
+            //Get object pickup message.
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, "");
-
+        }
         if (actionMessage != "Look at what?") {
             lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
             
@@ -376,6 +378,7 @@ int Scene1::scene1() {
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else {
+
                 DoAction();
             }
            
