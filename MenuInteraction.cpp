@@ -289,15 +289,18 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
     Inventory inv;
   
+    std::string interactionMessage = pob.HoverObjects(x, y, 1, gd, gy);
+    int n = interactionMessage.length();
+
+
+    if(n > 8){
     //If user clicks on the location of the pickup button.
     if (Scene1::actionStatement == "Pick up") {
         std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
         gameObject = menuMessages;
-      //  std::cout << "You clicked Pick up!" << std::endl;
         items = inv.checkItem(gameObject);
        
         if(items < 1 ){
-           
         //If object picked up is..
             if (menuMessages == "PDA") {
                 SDL_DestroyTexture(spriteTexture);
@@ -347,10 +350,10 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
     else {
         gameObject = "";
-  
+        interactionMessage = "";
 
     }
     
-    
+    }
 	return gameObject;
 }

@@ -209,17 +209,16 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1" && x >= 609 && x <= 719 && y >= 515 && y <= 542 && inv.checkItem("PDA") != 1) {
-        message = Scene1::actionStatement + " White plastic thingy";
-             
+        message = Scene1::actionStatement + " White plastic thingy";             
     }
 
 
     if (Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1) {
-        message = "Flag";
+        message = Scene1::actionStatement + " Flag";
     }
 
     if (Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && inv.checkItem("Tent") != 1) {
-        message = "Self Inflating Tent";
+        message = Scene1::actionStatement +  " Self Inflating Tent";
     }
 
 
@@ -237,7 +236,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Scene1::inv3Used !=1) {
-        message = "Ape Tape";
+        message = Scene1::actionStatement + " Ape Tape";
     }
 
     if (Scene1::SceneBackground == "3a" && x > 682 && x <= 800 && y >= 25 && y <= 71){
