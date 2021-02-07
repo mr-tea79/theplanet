@@ -285,14 +285,14 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
     int items = 0;
    
     //Get object name to pickup. So for example it will say "Pick up Tape".
-    std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
-    gameObject = menuMessages;
+  
 
     Inventory inv;
   
     //If user clicks on the location of the pickup button.
     if (Scene1::actionStatement == "Pick up") {
-       
+        std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
+        gameObject = menuMessages;
       //  std::cout << "You clicked Pick up!" << std::endl;
         items = inv.checkItem(gameObject);
        
