@@ -109,14 +109,14 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             SDL_CreateTextureFromSurface(renderer, spriteBack);
             Scene1::action = 1;
             Scene1::actionStatement = "";
-  
+            Scene1::sceneHalt = 1;
         }
 
         if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && interactionMessage == "Look at White plastic thingy") {
 
             lookMessage = "That's my PDA";
             Scene1::actionStatement = "";
-        
+            Scene1::sceneHalt = 1;
         }
 
     }
@@ -248,6 +248,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
          Scene1::inv3Used = 1;
          useMessage = "That should plug the leak!";
          Scene1::action = 1;
+         Scene1::sceneHalt = 1;
      }
 
       else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 731 && gy > 330 && useStatement == "Use" && Scene1::SceneBackground == "1da" &&Scene1::inv5Used == 1) {
@@ -262,7 +263,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
      }
 
      else if ( Scene1::SceneBackground == "1da" && useStatement == "Use" && x >= 245 && x <= 295 && y >= 353 && y <= 414) {
-         std::cout << "HELLO" << std::endl;
          Scene1::useStatement = "";
          Scene1::SceneBackground = "1db";
          Scene1::SPRITE_SIZE = 0;
@@ -314,7 +314,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
-        
+                Scene1::sceneHalt = 1;
             }
 
             if (menuMessages == "Flag") {

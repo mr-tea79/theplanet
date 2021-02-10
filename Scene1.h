@@ -37,10 +37,12 @@ namespace brightland {
 		static int inv6Used;
 		static int inv7Used;
 		static int action;
+		static int sceneHalt;
 
 		int colorkey;
 		int count;
 		int scene;
+		
 
 		//Set start position of main character.
 		static int xPosition;

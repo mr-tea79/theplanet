@@ -52,6 +52,8 @@ int Scene1::inv6Used; //Pressure Suit
 int Scene1::inv7Used; //Lantern
 
 int Scene1::action; //Used to trigger action texture.
+int Scene1::sceneHalt = 0;
+
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -61,7 +63,6 @@ int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in tw
 int Scene1::scene1() {
 
     cout << "Initialize" << endl;
-    SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
     scene = 1; //Scene Number.
         
     //Set initial position of game character and the size of the character.
@@ -83,6 +84,7 @@ int Scene1::scene1() {
     //Static variables that are updated while the program is running.
     static int position;
     static int mInteraction;
+
 
     //Used to check which objects are currently picked up by the user.
     static std::string objectToDestroy;  
@@ -106,7 +108,8 @@ int Scene1::scene1() {
     int gd;
     int gy;
     int x =0, y = 0;
-    int wx = 0, wy = 0;
+    int wx=0,wy=0;
+      
 
     //Text Dialog.
     dialog =         NULL;
@@ -227,6 +230,7 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
+                        
 
                         //Find objects that are hoverable.
                        
@@ -263,13 +267,13 @@ int Scene1::scene1() {
         keystate = SDL_GetKeyboardState(NULL);
 
         if (SDL_MOUSEBUTTONUP) {       
-        
+           
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!  
-         
+                     
             SDL_DestroyTexture(Textures::spriteTexture);
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
@@ -292,13 +296,7 @@ int Scene1::scene1() {
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
 
-            /*
-            if (interactionMessage != "") {
-                SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
-            }
-            */
-
+           
             std::string menuMessage;
             //Clicking objects on the scene.
       
@@ -334,6 +332,9 @@ int Scene1::scene1() {
            else if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
            }
+           else if (interactionMessage != "") {
+               pi.InteractionControllerObject(interactionMessage, gameObject);
+           }
 
            else         
              SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
@@ -353,8 +354,7 @@ int Scene1::scene1() {
             //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
-        }
-       
+        }      
 
         if (actionMessage != "Pick up what?") {
             //Get object pickup message.
@@ -370,7 +370,6 @@ int Scene1::scene1() {
           
         }
  
-
         if (wx > gdSprite.x || wx < gdSprite.x) {
 
             if(action !=1 ){
@@ -383,21 +382,31 @@ int Scene1::scene1() {
                 DoAction();
             }
            
-            gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);                 
-            _sleep(1);
-        }
-      
-        if(wy < gdSprite.y || wy > gdSprite.y){
-           
-        //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
-            if (y < gdSprite.y && wx < gdSprite.x + 75 && wx >gdSprite.x)
-                gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
-          
-            if (y > gdSprite.y && wx < gdSprite.x + 75 && wx > gdSprite.x)
-                gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);    
+            if (sceneHalt == 0) {
+                gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                _sleep(1);
 
-                _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
-              
+                if (wy < gdSprite.y || wy > gdSprite.y) {
+
+                    //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
+                    if (y < gdSprite.y && wx < gdSprite.x + 75 && wx >gdSprite.x)
+                        gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+
+                    if (y > gdSprite.y && wx < gdSprite.x + 75 && wx > gdSprite.x)
+                        gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+
+                    _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
+                }
+            }
+            else {
+                x = gdSprite.x;
+                    y = gdSprite.y;
+                    wx = gdSprite.x;
+                    wy = gdSprite.y;
+                    _sleep(300);
+                    sceneHalt = 0;
+
+            }
     }
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP.
@@ -409,8 +418,9 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::texture, NULL, &background);
         }
        
-        if (SceneBackground == "1b") {            
+        if (SceneBackground == "1b") { 
             SDL_RenderCopy(renderer, Textures::wreakageScene, NULL, &background);
+                   
         }
 
         if (SceneBackground == "1e") {          
@@ -563,7 +573,7 @@ int Scene1::scene1() {
         interactionMessage = ""; // Clear the interaction message on every loop.
         useMessage = "";
         gameMessage = "";
-        
+             
         SDL_RenderPresent(renderer);
       
     }
@@ -589,7 +599,6 @@ void Scene1::renderSprite() {
 
 //Does the action animations.
 void Scene1::DoAction() {
-    
     _sleep(300);
     action = 0;
  

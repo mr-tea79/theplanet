@@ -406,7 +406,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 200;
         Scene1::xPosition = 400;
         Scene1::gdSprite.x = Scene1::xPosition;
-  
+        Scene1::sceneHalt = 1;
+               
     }
     /* Sandy clearing */
     if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582 && playerCurrentLocationX <6) {
@@ -422,6 +423,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 570 && y <= 595) {
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
+      
        // message = "Scene1";
     }
 
@@ -506,6 +508,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "1" && x > 0 && x <= 771 && y > 204 && y < 259 && playerCurrentLocationY <360 ) {
         
         if (Scene1::inv3Used != 1) {
+            Scene1::sceneHalt = 1;
             message = "I'm leaking Oxygen, are you crazy!?";
         }
         else if (inv.checkItem("Tent") != 1) {
