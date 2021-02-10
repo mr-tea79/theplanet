@@ -98,22 +98,26 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     PlayerObjects pob;
     Inventory inv;
+    std::string interactionMessage = pob.HoverObjects(x, y, 1, gd, gy);
+    int n = interactionMessage.length();
     /**/
-  
+  //  std::cout << n << std::endl;
+    if (n > 9) {
+        if (gy > 300 && gy < 340 && interactionMessage == "Look at Wreckage") {
+            lookMessage = "That's one of the engines.";
+            SDL_DestroyTexture(spriteTexture);
+            SDL_CreateTextureFromSurface(renderer, spriteBack);
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+        }
 
-    if (Scene1::SceneBackground == "1" && gd > 440 && gy >300 && gy<340 && Scene1::actionStatement == "Look at") {
-        lookMessage = "That's one of the engines.";
-        SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteBack);
-        Scene1::action = 1;
+        if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && interactionMessage == "Look at White plastic thingy") {
+
+            lookMessage = "That's my PDA";
+            Scene1::actionStatement = "";
+        }
+
     }
-
-    if (Scene1::SceneBackground == "1" && gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && Scene1::actionStatement == "Look at") {
-
-        lookMessage = "That's my PDA";  
-    }
-
-
     return lookMessage;
 }
 

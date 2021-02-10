@@ -365,7 +365,7 @@ int Scene1::scene1() {
         }
         if (lookMessage != "") {           
             pi.InteractionControllerLook(lookMessage, gameObject);
-            actionStatement = "";   
+           // actionStatement = "";   
           
         }
  
