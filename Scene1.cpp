@@ -61,6 +61,7 @@ int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in tw
 int Scene1::scene1() {
 
     cout << "Initialize" << endl;
+    SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
     scene = 1; //Scene Number.
         
     //Set initial position of game character and the size of the character.
