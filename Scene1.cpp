@@ -53,7 +53,7 @@ int Scene1::inv7Used; //Lantern
 
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;
-
+bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -222,34 +222,39 @@ int Scene1::scene1() {
 
                 //Mouse Hover Game Interaction.
                 case SDL_MOUSEMOTION:
-                 //   if (messageHolder != 1 || event.motion.y < 704 && event.motion.x > x + 50 || event.motion.x < x - 50 || event.motion.y > y+150 || event.motion.y < y-150 ) {
+                   // if (event.motion.x > x + 50 || event.motion.x < x - 50 || event.motion.y > y+50 || event.motion.y < y-50 ) {
                      //   if (messageHolder != 1 ) {
-                            
+                           
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-                        
+
+                        if(playerMessage != true){
+                        interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+
+                        if (interactionMessage != "") {
+
+                            pi.InteractionControllerHover(interactionMessage);
+
+                        }
 
                         //Find objects that are hoverable.
-                       
-                       interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-
-                        if(interactionMessage !=""){                         
-                            pi.InteractionControllerHover(interactionMessage);                        
-                        }
-                        else {                             
-                           SDL_DestroyTexture(ftexture);
-                        }
+                        if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen
                     
+                            SDL_DestroyTexture(ftexture);
                        
+                        }
+                        else {
+                            
+                               
+                        }
+                        }
+                      
                         break;
-                 //   }
-                //    else {
                        
-                    //    break;
-                 //   }
+                     
 
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym)
@@ -322,7 +327,7 @@ int Scene1::scene1() {
            
            
         
-           if (useMessage != ""){             
+           if (useMessage != ""){           
                 pi.InteractionControllerUse(useMessage, gameObject);                               
             }
             else if (openMessage != "") {                       
@@ -364,7 +369,8 @@ int Scene1::scene1() {
             lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
             
         }
-        if (lookMessage != "") {           
+        if (lookMessage != "") {  
+            playerMessage = true;
             pi.InteractionControllerLook(lookMessage, gameObject);
            // actionStatement = "";   
           
@@ -383,6 +389,7 @@ int Scene1::scene1() {
             }
            
             if (sceneHalt == 0) {
+                playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
                 _sleep(1);
 
@@ -399,7 +406,8 @@ int Scene1::scene1() {
                 }
             }
             else {
-                x = gdSprite.x;
+                //This code keeps the character from continuing to walk when changing scenes.
+                    x = gdSprite.x;
                     y = gdSprite.y;
                     wx = gdSprite.x;
                     wy = gdSprite.y;
@@ -599,7 +607,7 @@ void Scene1::renderSprite() {
 
 //Does the action animations.
 void Scene1::DoAction() {
-    _sleep(300);
+    _sleep(500);
     action = 0;
- 
+ //   sceneHalt = 0;
 }
