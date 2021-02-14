@@ -551,6 +551,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     return message;
 }
 
+
 //This is used for menu object interaction (Picking up).
 std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY) {
 

@@ -299,7 +299,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
     int n = interactionMessage.length();
 
 
-    if(n > 8){
+ //   if(n > 8){
     //If user clicks on the location of the pickup button.
     if (Scene1::actionStatement == "Pick up") {
         std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
@@ -310,39 +310,61 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
         //If object picked up is..
             if (menuMessages == "PDA") {
                 SDL_DestroyTexture(spriteTexture);
-                SDL_CreateTextureFromSurface(renderer, spritePick);
+                SDL_CreateTextureFromSurface(renderer, spritePick); //Shows a different player movement when picking up things.
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
             }
 
             if (menuMessages == "Flag") {
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                Scene1::action = 1;
+                Scene1::sceneHalt = 1;
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
                              
             }
             if (menuMessages == "Tape") {
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                Scene1::action = 1;
+                Scene1::sceneHalt = 1;
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
 
             }
 
             if (menuMessages == "Tent") {
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                Scene1::action = 1;
+                Scene1::sceneHalt = 1;
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
 
             }
 
             if (menuMessages == "Battery Lantern") {
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                Scene1::action = 1;
+                Scene1::sceneHalt = 1;
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
 
             }
 
             if (menuMessages == "Pipe") {
                 Scene1::actionStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                Scene1::action = 1;
+                Scene1::sceneHalt = 1;
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
 
                 Textures::objectTexture6 = Textures::objectTexture7;
              
@@ -352,7 +374,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
            
         }    
        
-    }
+   // }
 
     else {
         gameObject = "";

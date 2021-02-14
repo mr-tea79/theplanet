@@ -28,6 +28,7 @@ std::string Scene1::lookStatement = "";
 std::string Scene1::actionStatement = "";
 std::string Scene1::SceneBackground = "1";
 std::string gameMessage; //Used to display messages that tell the story.
+std::string Scene1::objectToDestroy;
 
 SDL_Window* Scene1::window;
 SDL_Rect Scene1::textRect;
@@ -87,7 +88,7 @@ int Scene1::scene1() {
 
 
     //Used to check which objects are currently picked up by the user.
-    static std::string objectToDestroy;  
+ 
     static std::string gameObject;
     static std::string lastMessage;
     
@@ -231,7 +232,7 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
 
-                        if(playerMessage != true){
+                        if(playerMessage != true && interactionMessage ==""){
                         interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
 
                         if (interactionMessage != "") {
@@ -338,6 +339,7 @@ int Scene1::scene1() {
                pi.InteractionControllerLook(actionMessage, gameObject);
            }
            else if (interactionMessage != "") {
+               playerMessage = true;
                pi.InteractionControllerObject(interactionMessage, gameObject);
            }
 
@@ -351,6 +353,7 @@ int Scene1::scene1() {
 
 
         //Check which objects are picked up.
+        /*
         if (gameObject != "") {
             std::string object;
             object = pob.DestroyObjects(gameObject);
@@ -360,7 +363,7 @@ int Scene1::scene1() {
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
         }      
-
+        */
         if (actionMessage != "Pick up what?") {
             //Get object pickup message.
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, "");
@@ -607,7 +610,7 @@ void Scene1::renderSprite() {
 
 //Does the action animations.
 void Scene1::DoAction() {
-    _sleep(500);
+    _sleep(300);
     action = 0;
- //   sceneHalt = 0;
+   // sceneHalt = 0;
 }

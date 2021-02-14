@@ -26,6 +26,7 @@ namespace brightland {
 		static std::string lookStatement;
 		static std::string actionStatement;
 		static std::string SceneBackground;
+		static std::string objectToDestroy;
 		static int mouseHold;
 		static int tLoader;
 		static int messageHolder;
@@ -38,6 +39,7 @@ namespace brightland {
 		static int inv7Used;
 		static int action;
 		static int sceneHalt;
+
 
 		int colorkey;
 		int count;
