@@ -34,48 +34,13 @@ void MenuInteraction::LoadActionTextures() {
 }
 
 
-/*
-std::string MenuInteraction::MenuSelect(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage, std::string interactionMessage) {
-   
-    std::string returnMessage = "";
-    
-    //std::cout << Scene1::useStatement << std::endl;
-
-    if (x > 61 && x < 146 && y > 643 && y < 690) {
-        SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteDown1);
-        
-        //Access static string from another class.
-        useStatement = Scene1::useStatement = "Pick up";
-        std::cout << Scene1::useStatement << std::endl;
-
-        returnMessage = "Pick up";
-    }
-
-    if (x > 190 && x < 227 && y > 676 && y < 690) {
-        useStatement = Scene1::useStatement = "Use";
-        std::cout << Scene1::useStatement << std::endl;
-        returnMessage = "Use what?";
-    }
-
-
-    if (x > 177 && x < 234 && y > 723 && y < 745) {
-        useStatement = Scene1::useStatement = "Open";
-        std::cout << Scene1::useStatement << std::endl;
-        returnMessage = "Open what?";
-    }
-
-    return returnMessage;  
-}
-*/
-
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
 
     std::string actionMessage;
 
     PlayerObjects pob;
     Inventory inv;
-    /**/
+
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
@@ -89,8 +54,6 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         pickUpStatement = "";
 
     }
-
-
     return actionMessage;
 }
 
@@ -123,6 +86,20 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             lookStatement = "";
             Scene1::sceneHalt = 1;
         }
+    
+       
+        if (lookStatement == "Look at The moon") {
+           
+            lookMessage = "Very Earthlike";
+            SDL_DestroyTexture(spriteTexture);
+            SDL_CreateTextureFromSurface(renderer, spriteBack);
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+            lookStatement = "";
+            Scene1::sceneHalt = 1;
+        }
+
+
         else {
          
         }

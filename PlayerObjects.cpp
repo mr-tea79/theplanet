@@ -194,7 +194,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111) {
-        message = "The moon";
+        message = Scene1::actionStatement + " The moon";
         
     }
 
@@ -292,7 +292,7 @@ Here is where the interaction with objects and scenes takes place. This is where
 
 */
 std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
-    
+   
     //Check database if item has been picked up.
     Inventory inv;
 
@@ -464,13 +464,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             message = "It's a good idea";
     }
 
-    /* Outside wreakage, first scene of the game */
-    if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 && playerCurrentLocationX <= 800) {
-
-        message = "This is one strange looking Place.";
-        if (Scene1::useStatement == "Use")
-            message = "For what am I going to use the moon for?";
-    }
+   
     /* Rocky path */
     if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409 && playerCurrentLocationX >= 640) {
 
