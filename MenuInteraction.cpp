@@ -79,6 +79,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
+        lookStatement = "";
 
     }
 
@@ -100,28 +101,32 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     PlayerObjects pob;
     Inventory inv;
-    std::string interactionMessage = pob.HoverObjects(x, y, 1, gd, gy);
-    int n = interactionMessage.length();
-    /**/
+    int n = lookStatement.length();
 
-    if (n > 9) {
-        if (gy > 300 && gy < 340 && interactionMessage == "Look at Wreckage") {
+    if (n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
+        lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
+   
+        if (gy > 300 && gy < 340 && lookStatement== "Look at Wreckage") {
             lookMessage = "That's one of the engines.";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
             Scene1::action = 1;
             Scene1::actionStatement = "";
+            lookStatement = "";
             Scene1::sceneHalt = 1;
         }
 
-        if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && interactionMessage == "Look at White plastic thingy") {
+        if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
 
             lookMessage = "That's my PDA";
             Scene1::actionStatement = "";
+            lookStatement = "";
             Scene1::sceneHalt = 1;
         }
-
-    }
+        else {
+         
+        }
+   
     return lookMessage;
 }
 
@@ -293,12 +298,11 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
     int items = 0;
    
     //Get object name to pickup. So for example it will say "Pick up Tape".
-  
 
     Inventory inv;
 
     int n = pickUpStatement.length();
-    if(n < 8) //Don't override hover if a pick up statement has been selected.
+    if(n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         pickUpStatement = pob.HoverObjects(x, y, 1, gd, gy);
    
 
@@ -317,6 +321,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 SDL_DestroyTexture(spriteTexture);
                 SDL_CreateTextureFromSurface(renderer, spritePick); //Shows a different player movement when picking up things.
                 Scene1::actionStatement = "";
+                pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
@@ -327,6 +332,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
             if (menuMessages == "Flag" && pickUpStatement == "Pick up Flag") {
                 Scene1::actionStatement = "";
+                pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
@@ -336,6 +342,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
             }
             if (menuMessages == "Tape" && pickUpStatement == "Pick up Ape Tape") {
                 Scene1::actionStatement = "";
+                pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
@@ -346,6 +353,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
             if (menuMessages == "Tent" && pickUpStatement == "Pick up Self Inflating Tent") {
                 Scene1::actionStatement = "";
+                pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
@@ -356,6 +364,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
             if (menuMessages == "Battery Lantern") {
                 Scene1::actionStatement = "";
+                pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
@@ -366,6 +375,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
             if (menuMessages == "Pipe") {
                 Scene1::actionStatement = "";
+                pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
@@ -382,7 +392,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
 
     else {
         gameObject = "";
-    
 
     }
     
