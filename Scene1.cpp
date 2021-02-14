@@ -233,7 +233,7 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
 
                         if(playerMessage != true && interactionMessage ==""){
-                        interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                            interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
 
                         if (interactionMessage != "") {
 
