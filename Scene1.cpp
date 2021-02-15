@@ -351,19 +351,6 @@ int Scene1::scene1() {
         gd = gdSprite.x;
         gy = gdSprite.y;
 
-
-        //Check which objects are picked up.
-        /*
-        if (gameObject != "") {
-            std::string object;
-            object = pob.DestroyObjects(gameObject);
-            objectToDestroy.append(object);
-            //std::cout << objectToDestroy << std::endl;
-            //Added the following 2 lines to try and prevent the sprite from disappearing sometimes.
-            SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
-        }      
-        */
         if (actionMessage != "Pick up what?") {
             //Get object pickup message.
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, "");
@@ -420,7 +407,7 @@ int Scene1::scene1() {
             }
     }
         
-        //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP.
+        //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
         //Render the window
         SDL_RenderClear(renderer);
         
