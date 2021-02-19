@@ -234,7 +234,7 @@ int Scene1::scene1() {
 
                         if(playerMessage != true && interactionMessage ==""){
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-                            Scene1::useStatement = pob.HoverObjects(x, y, scene, gd, gy);
+                   
 
                         if (interactionMessage != "") {
 

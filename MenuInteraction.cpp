@@ -150,17 +150,22 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     PlayerObjects pob;
     Inventory inv;
 
+    int n = useStatement.length();
 
-    if (Scene1::useStatement == "Use Ape Tape") {
+    if (n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
+        useStatement = pob.HoverObjects(x, y, 1, gd, gy);
+
+    if (useStatement == "Use Ape Tape") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteAction);
         inv.useItem("Tape");
         Scene1::inv3Used = 1;
         useMessage = "That should plug the leak!";
-        Scene1::useStatement = "";
+        useStatement = "";
         Scene1::action = 1;
         Scene1::sceneHalt = 1;
      }
+   
 
     return useMessage;
 
