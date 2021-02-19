@@ -144,7 +144,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     return openMessage;
 }
 
-std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
+std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
    std::string useMessage;
 
     PlayerObjects pob;
@@ -152,7 +152,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
 
     int n = useStatement.length();
 
-    if (n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
+    if (n < 8) 
         useStatement = pob.HoverObjects(x, y, 1, gd, gy);
 
     if (useStatement == "Use Ape Tape") {
@@ -162,9 +162,22 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         Scene1::inv3Used = 1;
         useMessage = "That should plug the leak!";
         useStatement = "";
+        Scene1::actionStatement = "";
         Scene1::action = 1;
         Scene1::sceneHalt = 1;
      }
+    if (useStatement == "Use Wreckage") {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        useMessage = "It's wrecked!";
+        useStatement = "";
+        Scene1::actionStatement = "";
+        Scene1::action = 1;
+        Scene1::sceneHalt = 1;
+    }
+    else {
+
+    }
    
 
     return useMessage;

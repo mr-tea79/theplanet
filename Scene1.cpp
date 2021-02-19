@@ -359,7 +359,7 @@ int Scene1::scene1() {
             
         }
         if (actionMessage != "Use what?") {
-            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
         }
 
 
@@ -371,6 +371,7 @@ int Scene1::scene1() {
         }
 
         if (useMessage != "") {
+            playerMessage = true;
             pi.InteractionControllerUse(useMessage, gameObject);
         }
  
@@ -577,7 +578,7 @@ int Scene1::scene1() {
        
 
         interactionMessage = ""; // Clear the interaction message on every loop.
-        useMessage = "";
+       // useMessage = "";
         gameMessage = "";
              
         SDL_RenderPresent(renderer);
