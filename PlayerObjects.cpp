@@ -109,7 +109,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Tape") != 0)
-            message = "Ape Tape";
+            message = Scene1::actionStatement + " Ape Tape";
     }
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Pipe") != 0)
@@ -238,7 +238,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Scene1::inv3Used !=1) {
         message = Scene1::actionStatement + " Ape Tape";
     }
-
+   
     if (Scene1::SceneBackground == "3a" && x > 682 && x <= 800 && y >= 25 && y <= 71){
         message = "Crators";
     }

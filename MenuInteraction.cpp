@@ -54,6 +54,13 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         pickUpStatement = "";
 
     }
+
+    if (x > 190 && x < 227 && y > 676 && y < 690) {
+        actionStatement = Scene1::actionStatement = "Use";
+        actionMessage = "Use what?";
+        useStatement = "";
+    }
+
     return actionMessage;
 }
 
@@ -115,7 +122,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     PlayerObjects pob;
     Inventory inv;
 
-    if (x > 178 && x < 232 && y > 723 && y < 744) {
+    if (x > 178 && x < 232 && y > 723 && y < 744 ) {
         openStatement = Scene1::openStatement = "Open";
         std::cout << Scene1::openStatement << std::endl;
         openMessage = "Open what?";
@@ -138,11 +145,26 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
 }
 
 std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
-
-    std::string useMessage;
+   std::string useMessage;
 
     PlayerObjects pob;
     Inventory inv;
+
+
+    if (Scene1::useStatement == "Use Ape Tape") {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteAction);
+        inv.useItem("Tape");
+        Scene1::inv3Used = 1;
+        useMessage = "That should plug the leak!";
+        Scene1::useStatement = "";
+        Scene1::action = 1;
+        Scene1::sceneHalt = 1;
+     }
+
+    return useMessage;
+
+    /*
 
 
      if (x > 190 && x < 227 && y > 676 && y < 690) {
@@ -260,6 +282,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
      }
 
      return useMessage;
+     */
 }
 
 std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spritePick,std::string menuMessage) {

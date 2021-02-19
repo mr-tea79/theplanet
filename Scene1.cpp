@@ -234,6 +234,7 @@ int Scene1::scene1() {
 
                         if(playerMessage != true && interactionMessage ==""){
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                            Scene1::useStatement = pob.HoverObjects(x, y, scene, gd, gy);
 
                         if (interactionMessage != "") {
 
@@ -308,7 +309,7 @@ int Scene1::scene1() {
       
             
                                     
-            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, ""); 
+           // useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, ""); 
                     
             openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
@@ -328,9 +329,7 @@ int Scene1::scene1() {
            
            
         
-           if (useMessage != ""){           
-                pi.InteractionControllerUse(useMessage, gameObject);                               
-            }
+         
             else if (openMessage != "") {                       
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
@@ -359,11 +358,20 @@ int Scene1::scene1() {
             lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
             
         }
+        if (actionMessage != "Use what?") {
+            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+        }
+
+
         if (lookMessage != "") {  
             playerMessage = true;
             pi.InteractionControllerLook(lookMessage, gameObject);
            // actionStatement = "";   
           
+        }
+
+        if (useMessage != "") {
+            pi.InteractionControllerUse(useMessage, gameObject);
         }
  
         if (wx > gdSprite.x || wx < gdSprite.x) {
