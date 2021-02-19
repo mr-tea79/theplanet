@@ -321,16 +321,13 @@ int Scene1::scene1() {
             gameMessage = pi.DisplayPlayerMessages();
 
             if (gameMessage != "") {
-               
+                playerMessage = true;
                 interactionMessage = gameMessage;
                 PlayerInteraction::playerMessage = 100;                  
             }     
             
-           
-           
-        
-         
-            else if (openMessage != "") {                       
+   
+            if (openMessage != "") {                       
                 pi.InteractionControllerUse(openMessage, gameObject);
             }
             
