@@ -237,9 +237,8 @@ int Scene1::scene1() {
                    
 
                         if (interactionMessage != "") {
-
-                            pi.InteractionControllerHover(interactionMessage);
-
+                           pi.InteractionControllerHover(interactionMessage);
+                   
                         }
 
                         //Find objects that are hoverable.
@@ -278,9 +277,13 @@ int Scene1::scene1() {
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
+
+            //The following 2 lines will allow you to use an object with another object.
+            interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+            useStatement = interactionMessage;
+
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
-           //Note needs some tweaking. If you remove this your RAM will rocket!  
-                     
+           //Note needs some tweaking. If you remove this your RAM will rocket!                      
             SDL_DestroyTexture(Textures::spriteTexture);
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
@@ -298,25 +301,18 @@ int Scene1::scene1() {
             cout << "Current Player Y Position is: " << gdSprite.y << endl;
             cout << "Current Scene is: " << SceneBackground << endl;
         
-           
-        
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
-
+          
            
             std::string menuMessage;
             //Clicking objects on the scene.
-      
-            
-                                    
-           // useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, ""); 
-                    
+          
+
             openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
-          //  lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-        
             //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
 
@@ -337,6 +333,7 @@ int Scene1::scene1() {
            else if (interactionMessage != "") {
                playerMessage = true;
                pi.InteractionControllerObject(interactionMessage, gameObject);
+
            }
 
            else         
@@ -571,7 +568,7 @@ int Scene1::scene1() {
 
         //Ensures text is always on the top.
         if (interactionMessage != "" || gameObject != "")
-            SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
+        //    SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
        
 
         interactionMessage = ""; // Clear the interaction message on every loop.

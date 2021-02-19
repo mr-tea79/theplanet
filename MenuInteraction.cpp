@@ -147,15 +147,28 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
 std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
    std::string useMessage;
 
+
     PlayerObjects pob;
     Inventory inv;
 
     int n = useStatement.length();
 
-    if (n < 8) 
+    if (n < 8) {
         useStatement = pob.HoverObjects(x, y, 1, gd, gy);
-
+     
+            
+    }
     if (useStatement == "Use Ape Tape") {
+
+        if (inv.checkItem("Tape") == 0) {
+            useMessage = "I need to pick it up first.";
+            useStatement = "";
+            Scene1::actionStatement = "";
+            Scene1::action = 1;
+            Scene1::sceneHalt = 1;
+            return useMessage;
+        }
+
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteAction);
         inv.useItem("Tape");
@@ -175,6 +188,33 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         Scene1::action = 1;
         Scene1::sceneHalt = 1;
     }
+
+   if (useStatement == "Use Self Inflating Tent") {
+     //   Scene1::useStatement = "Tent with";
+        std::cout << Scene1::useStatement << std::endl;
+
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteDown1);
+        useMessage = "Ok, where shall I put this tent?";
+        useStatement = "";
+        Scene1::useStatement = "with";
+        Scene1::actionStatement = "Use Self Inflating Tent with";    
+    }
+
+    if (Scene1::useStatement == "Use Self Inflating Tent with Sandy clearing") {
+       
+       SDL_DestroyTexture(spriteTexture);
+       SDL_CreateTextureFromSurface(renderer, spriteAction3);
+       inv.useItem("Tent");
+       Scene1::inv4Used = 1;
+       Scene1::actionStatement = "";
+       //Change scene.
+       Scene1::SceneBackground = "1fa";
+
+   }
+
+
+
     else {
 
     }

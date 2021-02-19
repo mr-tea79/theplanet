@@ -99,7 +99,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {
         if(inv.checkItem("Tent") != 0)
-            message = "Self Inflating Tent";
+            message = Scene1::actionStatement + " Self Inflating Tent";
     }
 
     if (x >= 771 && x <= 821 && y >= 796 && y <= 798) {
@@ -169,7 +169,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283) {
-        message = "Sandy clearing";
+        message = Scene1::actionStatement + " Sandy clearing";
     }
 
     if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248) {
