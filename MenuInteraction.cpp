@@ -106,6 +106,36 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             Scene1::sceneHalt = 1;
         }
 
+        if (lookStatement == "Look at Self Inflating Tent") {
+            lookMessage = "It's a tent that, well, inflates";
+            SDL_DestroyTexture(spriteTexture);
+            SDL_CreateTextureFromSurface(renderer, spriteBack);
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+            lookStatement = "";
+            Scene1::sceneHalt = 1;
+        }
+        
+        if (lookStatement == "Look at Ape Tape") {
+            lookMessage = "Ooh, Ape Tape!";
+            SDL_DestroyTexture(spriteTexture);
+            SDL_CreateTextureFromSurface(renderer, spriteBack);
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+            lookStatement = "";
+            Scene1::sceneHalt = 1;
+        }
+
+        if (lookStatement == "Look at Flag" && gd > 526) {
+            lookMessage = "That's the mission flag";
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+            lookStatement = "";
+            Scene1::sceneHalt = 1;
+        }
+
+
+
 
         else {
          

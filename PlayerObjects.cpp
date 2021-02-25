@@ -527,21 +527,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
   
 
 
-    /* Looking at Ape Tape */
-    if (Scene1::SceneBackground == "1b" && x >= 320 && x <= 390 && y >= 433 && y <= 474 && playerCurrentLocationX >= 310 && playerCurrentLocationX <= 394 && inv.checkItem("Tape") != 1) {
-
-        message = "Oooh Ape Tape!";
-        if (Scene1::useStatement == "Use")
-            message = "I need to pick it up first!";
-    }
-    /* Looking at tent inside wreakage */
-    if (Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && playerCurrentLocationX >= 406 && playerCurrentLocationX <= 496 && inv.checkItem("Tent") != 1) {
-
-        message = "Does exactly what it says on the tin";
-        if (Scene1::useStatement == "Use")
-            message = "Not in here! That won't end well.";
-    }
-
+   
     return message;
 }
 
