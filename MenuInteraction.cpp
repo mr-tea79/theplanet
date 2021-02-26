@@ -133,6 +133,14 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             lookStatement = "";
             Scene1::sceneHalt = 1;
         }
+        /* Rocky path */
+        if (lookStatement == "Look at Rocks" && gd >= 640) {
+            lookMessage = "That's a Meteorite";
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+            lookStatement = "";
+            Scene1::sceneHalt = 1;
+        }
 
 
 

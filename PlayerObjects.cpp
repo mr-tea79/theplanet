@@ -185,7 +185,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409) {
-        message = "Rocks";
+        message = Scene1::actionStatement + " Rocks";
         
     }
 
@@ -465,13 +465,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
 
    
-    /* Rocky path */
-    if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409 && playerCurrentLocationX >= 640) {
-
-        message = "Some rocks, nothing interesting.";
-        if (Scene1::useStatement == "Use")
-            message = "I'm not a geologist.";
-    }
+    
 
     /* Leaving rocky path and going back to wreakage */
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482 && playerCurrentLocationX <=13) {
