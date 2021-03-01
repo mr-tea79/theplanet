@@ -410,9 +410,10 @@ int Scene1::scene1() {
                     sceneHalt = 0;
 
             }
-
-            //Get interaction message.         
-            interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
+            
+            //Get interaction message
+            if(actionStatement != "Look at" && actionStatement != "Pick up" && actionStatement != "Use")
+                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
     }
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.

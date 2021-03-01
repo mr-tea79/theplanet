@@ -229,6 +229,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
         message = "Exit Wreckage";
+        Scene1::SceneTransitionStatement = "Exit Wreckage";
     }
 
     if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391) {
@@ -410,6 +411,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.y = Scene1::yPosition;
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
        
                
     }
@@ -424,7 +426,9 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.y = Scene1::yPosition;
     }
     /* Inside wreakage */
-    if (Scene1::SceneBackground == "1b" &&  x > 0 && x <= 771 && y >= 570 && y <= 595) {
+    if (Scene1::SceneBackground == "1b" && Scene1::SceneTransitionStatement == "Exit Wreckage") {
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
       
