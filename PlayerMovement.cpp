@@ -569,90 +569,87 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         return gd;
     }
 
-
+    //Movement inside space ship wreakage
     if (Scene1::SceneBackground == "1b") {
+        
+        //Set boundries where player can walk (To prevent walking too far)
+        if (gd < 200) {
+            SDL_DestroyTexture(spriteTexture);
+            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
+         //   Scene1::action = 1;
+         //   Scene1::actionStatement = "";
+            Scene1::sceneHalt = 1;
+            gd += 9.5; //Speed of sprite movement.
+        }
+       
+        if (gd > 560) {
+            SDL_DestroyTexture(spriteTexture);
+            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
+            Scene1::sceneHalt = 1;
+            gd -= 9.5; //Speed of sprite movement.
+        }
 
 
+        //Do the walking
 
-        if (gd <= x - 40 && y > 272 && y < 579) {
+        if (gd <= x -40 && y > 320 && y < 575) {
 
             if (position == 0) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
+                gd += 4.5; //Speed of sprite movement.
             }
             if (position == 1) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);
-                gd += 3.5;
+                gd += 4.5;
             }
             if (position == 2) {
 
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-             //   position = 0; //This achieves the animation effect.
+                gd += 4.5;        
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 2.5;
+                gd += 4.5;
                 position = 0; //This achieves the animation effect.
             }
-
-            //Set boundries where player can walk
-            if (gd == screenWidth - 380) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-
+     
             position++;
 
         }
 
-        else if (gd >= x + 40 && y > 272 && y < 579) {
+        else if (gd >= x +40 && y > 300 && y < 575) {
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
+                gd -= 5.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
+                gd -= 5.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft3a);
-              //  position = 0;
-                gd -= 3.5;
+                gd -= 5.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy += 2.5;
+                gd += 5.5;
                 position = 0; //This achieves the animation effect.
             }
 
-            //Set boundries where player can walk
-            if (gd == 268) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
 
             position++;
         }
 
-        else {
-       //     std::cout << "SCENE 1B!!!!!!" << std::endl;
-          //  SDL_DestroyTexture(spriteTexture);
-            //spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-        }
 
         return gd;
     }
@@ -741,6 +738,11 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         return gd;
     }
 }//END OF WALK METHOD
+
+
+// WALKY IS FOR MOVING THE CHARACTER UP AND DOWN
+///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight, SDL_Texture* spriteTexture, SDL_Texture* ftexture,
     SDL_Texture* dialogmTexture) {
@@ -909,7 +911,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         return gy;
     }
 
-
+    //Space ship wreakage scene
     if (Scene1::SceneBackground == "1b") {
 
 
@@ -941,18 +943,15 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
                 position = 0; //This achieves the animation effect.
             }
 
-          
 
             position++;
 
 
         }
-
-        else if (gy <= y && y < 580 && gy < 200) {
-
-
-            std::cout << "gy is: " << gy << std::endl;
-            std::cout << "Down" << std::endl;
+        
+        //DOWN
+        //If the player position is above where you click and the mouse click is above the menu AND the mouse click is lower than the current postion of the sprite AND the sprite is at a position greater than 250 and less than 450 (menu box) then.
+        else if (gy <= y && y < 575 && y > gd && gy > 250 && gy < 445) {
 
 
             if (position == 0) {
