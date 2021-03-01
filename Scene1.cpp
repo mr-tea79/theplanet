@@ -26,6 +26,7 @@ std::string Scene1::useStatement = "";
 std::string Scene1::openStatement = "";
 std::string Scene1::lookStatement = "";
 std::string Scene1::actionStatement = "";
+std::string Scene1::SceneTransitionStatement = "";
 std::string Scene1::SceneBackground = "1";
 std::string gameMessage; //Used to display messages that tell the story.
 std::string Scene1::objectToDestroy;
@@ -242,14 +243,12 @@ int Scene1::scene1() {
                         }
 
                         //Find objects that are hoverable.
-                        if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen
-                    
+                        if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen                      
                             SDL_DestroyTexture(ftexture);
                        
                         }
                         else {
-                            
-                               
+                                                       
                         }
                         }
                       
@@ -277,6 +276,8 @@ int Scene1::scene1() {
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
+
+            SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
 
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
@@ -334,7 +335,7 @@ int Scene1::scene1() {
                
                playerMessage = true;
                pi.InteractionControllerObject(interactionMessage, gameObject);
-               renderSprite();
+              
            }
 
            else         
@@ -409,6 +410,9 @@ int Scene1::scene1() {
                     sceneHalt = 0;
 
             }
+
+            //Get interaction message.         
+            interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
     }
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.

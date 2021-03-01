@@ -200,7 +200,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
         message = "Enter Wreckage";
-        
+        Scene1::SceneTransitionStatement = "Wreckage";
     }
 
     if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
@@ -400,7 +400,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
        
     }
     /* Outside wreckage */
-    if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375 && playerCurrentLocationX >= 700 ) {
+  //  if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375 && playerCurrentLocationX >= 700 ) {
+    if (Scene1::SceneBackground == "1" && playerCurrentLocationX >=665 && playerCurrentLocationX < 771 && playerCurrentLocationY <=365 && Scene1::SceneTransitionStatement == "Wreckage" ) {
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
         Scene1::SPRITE_SIZE = 160;
@@ -409,6 +410,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.y = Scene1::yPosition;
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::sceneHalt = 1;
+       
                
     }
     /* Sandy clearing */
@@ -422,7 +424,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.y = Scene1::yPosition;
     }
     /* Inside wreakage */
-    if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 570 && y <= 595) {
+    if (Scene1::SceneBackground == "1b" &&  x > 0 && x <= 771 && y >= 570 && y <= 595) {
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
       
