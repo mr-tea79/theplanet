@@ -56,6 +56,7 @@ int Scene1::inv7Used; //Lantern
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
+static bool mouseClick = false;
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -276,7 +277,7 @@ int Scene1::scene1() {
             //std::cout << "Mouse button up" << std::endl;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-
+            mouseClick = true;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
 
             //The following 2 lines will allow you to use an object with another object.
@@ -411,9 +412,12 @@ int Scene1::scene1() {
 
             }
             
-            //Get interaction message
-            if(actionStatement != "Look at" && actionStatement != "Pick up" && actionStatement != "Use")
-                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
+            //Get interaction message (NOT WORKING)
+          //  if (actionStatement != "Look at" && actionStatement != "Pick up" && actionStatement != "Use") {
+             //   interactionMessage = pob.ObjectInteraction(x, y, gd, gy);        
+               
+         //   }
+               
     }
         
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
