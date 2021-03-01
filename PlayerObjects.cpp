@@ -201,6 +201,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
         message = "Enter Wreckage";
         Scene1::SceneTransitionStatement = "Wreckage";
+        
     }
 
     if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
@@ -412,6 +413,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        Scene1::mouseClick = false;
        
                
     }

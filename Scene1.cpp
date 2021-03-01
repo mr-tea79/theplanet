@@ -56,7 +56,7 @@ int Scene1::inv7Used; //Lantern
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
-static bool mouseClick = false;
+bool Scene1::mouseClick = false;
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -246,8 +246,10 @@ int Scene1::scene1() {
                         //Find objects that are hoverable.
                         if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen                      
                             SDL_DestroyTexture(ftexture);
+                            
                        
                         }
+                       
                         else {
                                                        
                         }
@@ -373,7 +375,7 @@ int Scene1::scene1() {
         }
  
         if (wx > gdSprite.x || wx < gdSprite.x) {
-
+          
             if(action !=1 ){
                 //This is critical and prevents sprite from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
@@ -390,7 +392,7 @@ int Scene1::scene1() {
                 _sleep(1);
 
                 if (wy < gdSprite.y || wy > gdSprite.y) {
-
+                   
                     //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
                     if (y < gdSprite.y && wx < gdSprite.x + 75 && wx >gdSprite.x)
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
@@ -402,7 +404,7 @@ int Scene1::scene1() {
                 }
             }
             else {
-                //This code keeps the character from continuing to walk when changing scenes.
+                //This code prevents the character from continuing to walk when changing scenes.
                     x = gdSprite.x;
                     y = gdSprite.y;
                     wx = gdSprite.x;
@@ -412,11 +414,11 @@ int Scene1::scene1() {
 
             }
             
-            //Get interaction message (NOT WORKING)
-          //  if (actionStatement != "Look at" && actionStatement != "Pick up" && actionStatement != "Use") {
-             //   interactionMessage = pob.ObjectInteraction(x, y, gd, gy);        
-               
-         //   }
+            //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
+            if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
+                interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
+            }
+
                
     }
         
