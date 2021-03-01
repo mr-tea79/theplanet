@@ -399,7 +399,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         PlayerInteraction::playerMessage = 7;
        
     }
-    /* Outside wrekage */
+    /* Outside wreckage */
     if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375 && playerCurrentLocationX >= 700 ) {
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
@@ -456,12 +456,16 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::sceneHalt = 1;
       
     }
-
+    /* Leave computer screen, inside wreakage */
     if (Scene1::SceneBackground == "1d" && x > 36 && x <= 172 && y >= 544 && y <= 582) {
 
         Scene1::SceneBackground = "1b";
-        Scene1::SPRITE_SIZE = 200;
-        message = "Scene1b";
+        Scene1::SPRITE_SIZE = 160;
+        Scene1::xPosition = 400;
+        Scene1::yPosition = 400;
+        Scene1::gdSprite.y = Scene1::yPosition;
+        Scene1::gdSprite.x = Scene1::xPosition;
+        Scene1::sceneHalt = 1;
 
     }
     /* Sandy clearing */

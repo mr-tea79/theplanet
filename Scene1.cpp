@@ -331,9 +331,10 @@ int Scene1::scene1() {
                pi.InteractionControllerLook(actionMessage, gameObject);
            }
            else if (interactionMessage != "") {
+               
                playerMessage = true;
                pi.InteractionControllerObject(interactionMessage, gameObject);
-
+               renderSprite();
            }
 
            else         

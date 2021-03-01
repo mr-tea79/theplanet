@@ -569,15 +569,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         return gd;
     }
 
-    //Movement inside space ship wreakage
+    //Movement inside space ship wreckage
     if (Scene1::SceneBackground == "1b") {
         
         //Set boundries where player can walk (To prevent walking too far)
         if (gd < 200) {
             SDL_DestroyTexture(spriteTexture);
             spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-         //   Scene1::action = 1;
-         //   Scene1::actionStatement = "";
             Scene1::sceneHalt = 1;
             gd += 9.5; //Speed of sprite movement.
         }
@@ -911,7 +909,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         return gy;
     }
 
-    //Space ship wreakage scene
+    //Space ship wreckage scene
     if (Scene1::SceneBackground == "1b") {
 
 
