@@ -381,7 +381,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
      */
 }
 
-std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spritePick,std::string menuMessage) {
+std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spritePick, SDL_Surface* spriteBack,std::string menuMessage) {
 
 
     std::string gameObject;
@@ -437,6 +437,8 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                              
             }
             if (menuMessages == "Tape" && pickUpStatement == "Pick up Ape Tape") {
+                SDL_DestroyTexture(spriteTexture);
+                SDL_CreateTextureFromSurface(renderer, spriteBack); //Shows a different player movement when picking up things.
                 Scene1::actionStatement = "";
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
@@ -448,6 +450,8 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
             }
 
             if (menuMessages == "Tent" && pickUpStatement == "Pick up Self Inflating Tent") {
+                SDL_DestroyTexture(spriteTexture);
+                SDL_CreateTextureFromSurface(renderer, spriteBack); //Shows a different player movement when picking up things.
                 Scene1::actionStatement = "";
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);

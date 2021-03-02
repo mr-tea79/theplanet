@@ -351,7 +351,7 @@ int Scene1::scene1() {
 
         if (actionMessage != "Pick up what?") {
             //Get object pickup message.
-            gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, "");
+            gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, Textures::spriteBack1a,"");
         }
         if (actionMessage != "Look at what?") {
             lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
