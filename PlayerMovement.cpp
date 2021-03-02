@@ -625,22 +625,22 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             if (position == 0) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 5.5;
+                gd -= 4.5;
             }
             if (position == 1) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft2a);
-                gd -= 5.5;
+                gd -= 4.5;
             }
             if (position == 2) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft3a);
-                gd -= 5.5;
+                gd -= 4.5;
             }
             if (position == 3) {
                 SDL_DestroyTexture(spriteTexture);
                 spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gd += 5.5;
+                gd -= 4.5;
                 position = 0; //This achieves the animation effect.
             }
 
