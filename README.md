@@ -6,6 +6,12 @@ This is being developed in my spare time and by no means finished. This is aimed
 
 You are free to use this source code to make improvements, new games, anything! I just ask that you keep my name in the code as a nod of acknowledgement to all the many hours of work making this.
 
+If you have enjoyed this and it has helped you get started using SDL2, please feel free to make a small donation via this link below: 
+
+[Donate Here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8TW9LN5YTRBKL)
+
+
+
 You will need the following libraries which can be downloaded. One is for dealing with images and the other for text. I have included them in the repo but just incase:
 
 #SDL_image   (For images)
