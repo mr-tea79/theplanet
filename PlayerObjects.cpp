@@ -352,12 +352,17 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     /* Entering tent from sandy clearing */
     if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248 && playerCurrentLocationX >= 440 && playerCurrentLocationY <=308) {
         Scene1::SceneBackground = "1da";
-        Scene1::SPRITE_SIZE = 180;
-        Scene1::yPosition = 390;
+        Scene1::SPRITE_SIZE = 170;
+        Scene1::yPosition = 360;
         Scene1::xPosition = 106;
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::gdSprite.y = Scene1::yPosition;    
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+        Scene1::mouseClick = false;
         PlayerInteraction::playerMessage = 6;
+    
+    
     }
     /* Inside Tent */
     if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     

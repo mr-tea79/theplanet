@@ -26,11 +26,9 @@ static int playerMessage;
 
 
 
-void MenuInteraction::LoadActionTextures() {
-  
+void MenuInteraction::LoadActionTextures() { 
     spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
     spriteAction2 = IMG_Load("PlayerMovement/ThePlanet/spritePipe.png");
- 
 }
 
 
@@ -45,14 +43,12 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
         lookStatement = "";
-
     }
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
         actionStatement = Scene1::actionStatement = "Pick up";
         actionMessage = "Pick up what?";
         pickUpStatement = "";
-
     }
 
     if (x > 190 && x < 227 && y > 676 && y < 690) {
@@ -65,15 +61,13 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         actionStatement = Scene1::actionStatement = "Open";
         actionMessage = "Open what?";
         openStatement = "";
-
     }
 
     return actionMessage;
 }
 
-
-
 std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
+    
     std::string lookMessage;
 
     PlayerObjects pob;
@@ -100,8 +94,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             lookStatement = "";
             Scene1::sceneHalt = 1;
         }
-    
-       
+          
         if (lookStatement == "Look at The moon") {
            
             lookMessage = "Very Earthlike";
@@ -149,11 +142,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             Scene1::sceneHalt = 1;
         }
 
-
-
-
-        else {
-         
+        else {        
         }
    
     return lookMessage;
@@ -172,7 +161,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     if (n < 8)
         openStatement = pob.HoverObjects(x, y, 1, gd, gy);
    
-    if (gd >= 430 && gy > 425 && openStatement == "Open Cardboard box") {
+    if (gd >= 410 && gy > 400 && openStatement == "Open Cardboard box") {
         openMessage = "Oh, what's this?";
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
@@ -185,15 +174,14 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     }
 
     else {
-
     }
     
     return openMessage;
 }
 
 std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
-   std::string useMessage;
-
+   
+    std::string useMessage;
 
     PlayerObjects pob;
     Inventory inv;
@@ -235,9 +223,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     }
 
    if (useStatement == "Use Self Inflating Tent") {
-     //   Scene1::useStatement = "Tent with";
-        std::cout << Scene1::useStatement << std::endl;
-
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
         useMessage = "Ok, where shall I put this tent?";
@@ -247,7 +232,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     }
 
     if (Scene1::useStatement == "Use Self Inflating Tent with Sandy clearing") {
-       
        SDL_DestroyTexture(spriteTexture);
        SDL_CreateTextureFromSurface(renderer, spriteAction3);
        inv.useItem("Tent");
@@ -255,19 +239,13 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
        Scene1::actionStatement = "";
        //Change scene.
        Scene1::SceneBackground = "1fa";
-
    }
-
-
-
-    else {
-
-    }
+   else {
+   }
    
-
     return useMessage;
 
-    /*
+    /*  I HAVE KEPT THIS HERE FOR FUTURE REFERENCE BECAUSE I AM CHANGING THE WAY THIS IS DONE.
 
 
      if (x > 190 && x < 227 && y > 676 && y < 690) {
@@ -390,36 +368,26 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
 
 std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spritePick, SDL_Surface* spriteBack,std::string menuMessage) {
 
-
     std::string gameObject;
-	//std::string pickUp;
-   
-    PlayerObjects pob;
-  
-  //  int scene = 1; //Need to pass scene number in.
-    int i = 0;
-    int items = 0;
-   
-    //Get object name to pickup. So for example it will say "Pick up Tape".
 
+    PlayerObjects pob;
     Inventory inv;
 
+    int i = 0;
+    int items = 0;
+  
     int n = pickUpStatement.length();
     if(n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         pickUpStatement = pob.HoverObjects(x, y, 1, gd, gy);
    
-
     std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
     gameObject = menuMessages;
     items = inv.checkItem(gameObject);
   
     //If user clicks on the location of the pickup button.
-    if (Scene1::actionStatement == "Pick up") {
-        std::cout << pickUpStatement << std::endl;
-     
+    if (Scene1::actionStatement == "Pick up") {     
+        
         if(items < 1 ){
-         
-        //If object picked up is..
             if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy") {
                 SDL_DestroyTexture(spriteTexture);
                 SDL_CreateTextureFromSurface(renderer, spritePick); //Shows a different player movement when picking up things.
@@ -429,8 +397,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
                 std::string object = pob.DestroyObjects(gameObject);
-                Scene1::objectToDestroy.append(object);
-               
+                Scene1::objectToDestroy.append(object);              
             }
 
             if (menuMessages == "Flag" && pickUpStatement == "Pick up Flag") {
@@ -440,8 +407,7 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::action = 1;
                 Scene1::sceneHalt = 1;
                 std::string object = pob.DestroyObjects(gameObject);
-                Scene1::objectToDestroy.append(object);
-                             
+                Scene1::objectToDestroy.append(object);                             
             }
             if (menuMessages == "Tape" && pickUpStatement == "Pick up Ape Tape") {
                 SDL_DestroyTexture(spriteTexture);
@@ -453,7 +419,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::sceneHalt = 1;
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
-
             }
 
             if (menuMessages == "Tent" && pickUpStatement == "Pick up Self Inflating Tent") {
@@ -466,7 +431,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::sceneHalt = 1;
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
-
             }
 
             if (menuMessages == "Battery Lantern") {
@@ -477,7 +441,6 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::sceneHalt = 1;
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
-
             }
 
             if (menuMessages == "Pipe") {
@@ -488,18 +451,13 @@ std::string MenuInteraction::PickUp(int x, int y,int gd, int gy, int mInteractio
                 Scene1::sceneHalt = 1;
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
-
                 Textures::objectTexture6 = Textures::objectTexture7;
-             
                 PlayerObjects::boxOpened = 2;
-
             }
-       
-    }
+        }
 
     else {
         gameObject = "";
-
     }
     
     }

@@ -1207,9 +1207,8 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         }
 
-        else if (gy <= y - 100 && y < 565 && x > 300) {
+        else if (gy <= y - 100 && y < 565 && x > 300 && gy <410 ) {
 
-            //  Scene1::SPRITE_SIZE = 120;
 
             std::cout << "gy is: " << gy << std::endl;
             std::cout << "Down" << std::endl;
