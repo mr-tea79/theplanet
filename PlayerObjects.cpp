@@ -10,7 +10,6 @@
 #include "Textures.h"
 
 
-
 using namespace brightland;
 
 //Global
@@ -47,13 +46,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
   
     std::string gameObject;
 
-    //std::string pickUp;
     //Check database if item has been picked up.
     Inventory inv;
     PlayerObjects pob;
    
-    
-
     //  int scene = 1; //Need to pass scene number in.
     int i = 0;
     int items = 0;
@@ -74,11 +70,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
-      //  if (inv.checkItem(gameObject) != 1) //Prevents invisible pickup objects.
-        //    message = "Pick up " + gameObject;
-        //else
-            message = "Pick up";
-        
+        message = "Pick up";
     }
 
     if (x > 178 && x < 232 && y > 723 && y < 744) {
@@ -87,7 +79,6 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         message = "Look";
-
     }
 
     //Inventory Hover Messages 
@@ -153,7 +144,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && boxOpened !=1) {
-        message = "Carboard box";
+        message = Scene1::actionStatement + " Cardboard box";
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482) {

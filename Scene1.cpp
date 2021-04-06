@@ -168,8 +168,8 @@ int Scene1::scene1() {
     //Initialize Textures
     Textures tex;
     tex.Scene1Textures();
-   // tex.Scene2Textures();
-  //  tex.Scene3Textures();
+    //tex.Scene2Textures();
+    //tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -313,7 +313,7 @@ int Scene1::scene1() {
             //Clicking objects on the scene.
           
 
-            openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+          //  openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
@@ -327,9 +327,9 @@ int Scene1::scene1() {
             }     
             
    
-            if (openMessage != "") {                       
-                pi.InteractionControllerUse(openMessage, gameObject);
-            }
+         // if (openMessage != "") {                       
+         //     pi.InteractionControllerUse(openMessage, gameObject);
+        //  }
             
            else if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
@@ -360,19 +360,26 @@ int Scene1::scene1() {
         if (actionMessage != "Use what?") {
             useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
         }
+        if (actionMessage != "Open what?") {
+            openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+        }
 
 
         if (lookMessage != "") {  
             playerMessage = true;
             pi.InteractionControllerLook(lookMessage, gameObject);
-           // actionStatement = "";   
-          
         }
 
         if (useMessage != "") {
             playerMessage = true;
             pi.InteractionControllerUse(useMessage, gameObject);
         }
+
+        if (openMessage != "") {
+            playerMessage = true;
+            pi.InteractionControllerOpen(openMessage, gameObject);
+        }
+
  
         if (wx > gdSprite.x || wx < gdSprite.x) {
           

@@ -61,12 +61,19 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         useStatement = "";
     }
 
+    if (x > 178 && x < 232 && y > 723 && y < 744) {
+        actionStatement = Scene1::actionStatement = "Open";
+        actionMessage = "Open what?";
+        openStatement = "";
+
+    }
+
     return actionMessage;
 }
 
 
 
-std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {  
+std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack, std::string menuMessage) {
     std::string lookMessage;
 
     PlayerObjects pob;
@@ -75,7 +82,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     if (n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
-   
+
         if (gy > 300 && gy < 340 && lookStatement== "Look at Wreckage") {
             lookMessage = "That's one of the engines.";
             SDL_DestroyTexture(spriteTexture);
@@ -160,25 +167,27 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     PlayerObjects pob;
     Inventory inv;
 
-    if (x > 178 && x < 232 && y > 723 && y < 744 ) {
-        openStatement = Scene1::openStatement = "Open";
-        std::cout << Scene1::openStatement << std::endl;
-        openMessage = "Open what?";
+    int n = openStatement.length();
+
+    if (n < 8)
+        openStatement = pob.HoverObjects(x, y, 1, gd, gy);
+   
+    if (gd >= 430 && gy > 425 && openStatement == "Open Cardboard box") {
+        openMessage = "Oh, what's this?";
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-    }
-
-    else if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && gd > 408 && gd <500 && openStatement == "Open") {    
         Textures::objectTexture6 = Textures::objectTexture5;
         PlayerObjects::boxOpened = 1;
-        openMessage = "Oh, what's that?";
-    }
-  
-    else {
-        openMessage = "";
-        openStatement = Scene1::openStatement = "";
+        Scene1::action = 1;
+        Scene1::actionStatement = "";
+        openStatement = "";
+        Scene1::sceneHalt = 1;
     }
 
+    else {
+
+    }
+    
     return openMessage;
 }
 
@@ -192,9 +201,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     int n = useStatement.length();
 
     if (n < 8) {
-        useStatement = pob.HoverObjects(x, y, 1, gd, gy);
-     
-            
+        useStatement = pob.HoverObjects(x, y, 1, gd, gy);     
     }
     if (useStatement == "Use Ape Tape") {
 
