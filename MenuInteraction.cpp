@@ -161,7 +161,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
 
 std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
-
+    //New
     std::string openMessage;
 
     PlayerObjects pob;
