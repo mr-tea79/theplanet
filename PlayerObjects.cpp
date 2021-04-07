@@ -302,8 +302,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         message = "Hyper Lithium Battery Lantern";
     }
 
-
-
     if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174 && playerCurrentLocationX > 400 && playerCurrentLocationX < 529 ) {
         message = "My crashed ship, no chance of repairing.";
     }
@@ -361,8 +359,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneTransitionStatement = "";
         Scene1::mouseClick = false;
         PlayerInteraction::playerMessage = 6;
-    
-    
+      
     }
     /* Inside Tent */
     if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     
@@ -398,7 +395,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
        
     }
     /* Outside wreckage */
-  //  if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375 && playerCurrentLocationX >= 700 ) {
     if (Scene1::SceneBackground == "1" && playerCurrentLocationX >=665 && playerCurrentLocationX < 771 && playerCurrentLocationY <=365 && Scene1::SceneTransitionStatement == "Wreckage" ) {
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
@@ -409,9 +405,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
-        Scene1::mouseClick = false;
-       
-               
+        Scene1::mouseClick = false;              
     }
     /* Sandy clearing */
     if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582 && playerCurrentLocationX <6) {
@@ -429,40 +423,32 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
-      
-       // message = "Scene1";
     }
 
     /* Looking at computer screen */
-    if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 &&playerCurrentLocationX < 300) {
-       
+    if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 &&playerCurrentLocationX < 300) {      
         Scene1::SceneBackground = "1c";
     }
     /* Looking at computer screen */
     if (Scene1::SceneBackground == "1d" && x > 126 && x <= 238 && y >= 306 && y <= 391) {
-
         Scene1::SceneBackground = "1c";
     }
     /* Looking at computer screen */
     if (Scene1::SceneBackground == "1c" && x > 345 && x <= 488 && y >= 541 && y <= 585) {
-
         Scene1::SceneBackground = "1d";
     }
     /* Leave computer screen, inside wreakage */
     if (Scene1::SceneBackground == "1c"  && x > 36 && x <= 172 && y >= 544 && y <= 582) {
-
         Scene1::SceneBackground = "1b";
         Scene1::SPRITE_SIZE = 160;
         Scene1::xPosition = 400;
         Scene1::yPosition = 400;
         Scene1::gdSprite.y = Scene1::yPosition;
         Scene1::gdSprite.x = Scene1::xPosition;
-        Scene1::sceneHalt = 1;
-      
+        Scene1::sceneHalt = 1;     
     }
     /* Leave computer screen, inside wreakage */
     if (Scene1::SceneBackground == "1d" && x > 36 && x <= 172 && y >= 544 && y <= 582) {
-
         Scene1::SceneBackground = "1b";
         Scene1::SPRITE_SIZE = 160;
         Scene1::xPosition = 400;
@@ -470,7 +456,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.y = Scene1::yPosition;
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::sceneHalt = 1;
-
     }
     /* Sandy clearing */
     if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283 && playerCurrentLocationX <=900 && playerCurrentLocationX >300  && playerCurrentLocationY <= 360) {
@@ -478,10 +463,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         if (Scene1::useStatement == "Use")
             message = "It's a good idea";
     }
-
-   
-    
-
     /* Leaving rocky path and going back to wreakage */
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482 && playerCurrentLocationX <=13) {
         Scene1::SceneBackground = "1";
@@ -532,11 +513,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
            
     }
 
-    /* Looking at broken engine */
-  
-
-
-   
     return message;
 }
 
