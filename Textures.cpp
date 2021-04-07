@@ -5,9 +5,10 @@
 
 using namespace brightland;
 
-
+//Menu Texture.
 SDL_Texture* Textures::menuTexture;
 
+//Scene Textures.
 SDL_Texture* Textures::scene1f;
 SDL_Texture* Textures::scene1fa;
 SDL_Texture* Textures::scene1fb;
@@ -19,13 +20,14 @@ SDL_Texture* Textures::wreakageScene;
 SDL_Texture* Textures::scene1e;
 SDL_Texture* Textures::texture;
 SDL_Texture* Textures::sceneTexture;
-
-SDL_Texture* Textures::rocks;
-SDL_Texture* Textures::rocks2;
 SDL_Texture* Textures::computerScene1;
 SDL_Texture* Textures::computerScene2;
 
+//Overlay Textures.
+SDL_Texture* Textures::rocks;
+SDL_Texture* Textures::rocks2;
 
+//Inventory Textures.
 SDL_Texture* Textures::invTexture1;
 SDL_Texture* Textures::invTexture2;
 SDL_Texture* Textures::invTexture3;
@@ -33,6 +35,7 @@ SDL_Texture* Textures::invTexture4;
 SDL_Texture* Textures::invTexture5;
 SDL_Texture* Textures::invTexture6;
 
+//Object Textures.
 SDL_Texture* Textures::objectTexture;
 SDL_Texture* Textures::objectTexture2;
 SDL_Texture* Textures::objectTexture3;
@@ -53,7 +56,6 @@ SDL_Surface* Textures::spritePick;
 SDL_Surface* Textures::spritePickp;
 
 void Textures::Scene1Textures() {
-
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -112,23 +114,19 @@ void Textures::Scene1Textures() {
 
 void Textures::Scene2Textures() {
 
-    //Clear out textures that will no longer be required to free up memory.
-   
-    
+    //Clear out textures that will no longer be required to free up memory. 
     SDL_DestroyTexture(invTexture3);
+
+    //Load in new textures.
     imageSurface8 =  IMG_Load("Scenes/Scene1f.png");
     imageSurface9 =  IMG_Load("Scenes/Scene1fa.png");
     scene1f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface8);
     scene1fa = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface9);
-    
-
-
 }
 
 void Textures::Scene3Textures() {
 
     //Clear out textures that will no longer be required to free up memory.
-
     imageSurface = NULL;
     imageSurface2 = NULL;
     imageSurface3 = NULL;
@@ -155,7 +153,7 @@ void Textures::Scene3Textures() {
     SDL_DestroyTexture(objectTexture5);
     SDL_DestroyTexture(objectTexture4);
 
-   
+    //Load in new Textures.
     imageSurface10 = IMG_Load("Scenes/Scene1fb.png");
     imageSurface11 = IMG_Load("Scenes/Scene1d.png");
     imageSurface12 = IMG_Load("Scenes/Scene1d2.png");
