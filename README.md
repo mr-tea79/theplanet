@@ -1,6 +1,6 @@
 # theplanet
 An adventure game in C/C++ SDL2 to help people who always dreamed of making a point and click adventure game but don't know where to begin.
-This is being developed in my spare time and by no means finished. This is aimed at people who are learning to program and need a template to get started with making a game. Lots of scope for improvement of the code!
+This is being developed in my spare time and by no means finished. This is aimed at people who are learning to program and need a template to get started with making a game. There is Lots of scope for improvement of the code, so have fun with it!
 
 
 
