@@ -53,9 +53,6 @@
     <ClInclude Include="MenuInteraction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerInteraction.h">
       <Filter>Header Files</Filter>
     </ClInclude>

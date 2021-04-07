@@ -97,7 +97,6 @@
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Menu.h" />
     <ClInclude Include="PlayerInteraction.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="MenuInteraction.h" />

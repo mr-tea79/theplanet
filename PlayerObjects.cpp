@@ -63,8 +63,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Menu Hover Messages
 
-    if (x > 190 && x < 227 && y > 676 && y < 690) {
-        
+    if (x > 190 && x < 227 && y > 676 && y < 690) {       
         message = "Use";
     }
 
