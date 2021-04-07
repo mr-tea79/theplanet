@@ -87,7 +87,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PlayerInteraction.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="Inventory.cpp" />

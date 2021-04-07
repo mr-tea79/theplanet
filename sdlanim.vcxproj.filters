@@ -33,9 +33,6 @@
     <ClCompile Include="Scene1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerInteraction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
