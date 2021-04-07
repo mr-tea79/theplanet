@@ -56,7 +56,7 @@ Occasional sprite flickering (SOLVED)
 
 # Things to be aware of
 
-1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions.
+1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions. If you are a mathematician, you could probably do something with this to scale the game and objects using maths to do so. I am planning to look at this myself further down the line.
 
 
 
