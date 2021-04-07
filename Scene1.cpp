@@ -88,7 +88,6 @@ int Scene1::scene1() {
     static int position;
     static int mInteraction;
 
-
     //Used to check which objects are currently picked up by the user.
  
     static std::string gameObject;
@@ -224,10 +223,7 @@ int Scene1::scene1() {
                     break;
 
                 //Mouse Hover Game Interaction.
-                case SDL_MOUSEMOTION:
-                   // if (event.motion.x > x + 50 || event.motion.x < x - 50 || event.motion.y > y+50 || event.motion.y < y-50 ) {
-                     //   if (messageHolder != 1 ) {
-                           
+                case SDL_MOUSEMOTION:                           
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
@@ -237,7 +233,6 @@ int Scene1::scene1() {
                         if(playerMessage != true && interactionMessage ==""){
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                    
-
                         if (interactionMessage != "") {
                            pi.InteractionControllerHover(interactionMessage);
                    
@@ -245,9 +240,7 @@ int Scene1::scene1() {
 
                         //Find objects that are hoverable.
                         if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen                      
-                            SDL_DestroyTexture(ftexture);
-                            
-                       
+                            SDL_DestroyTexture(ftexture);                     
                         }
                        
                         else {
@@ -310,11 +303,7 @@ int Scene1::scene1() {
           
            
             std::string menuMessage;
-            //Clicking objects on the scene.
-          
-
-          //  openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-
+           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
             //These messages are displayed to help tell the story.
@@ -324,25 +313,16 @@ int Scene1::scene1() {
                 playerMessage = true;
                 interactionMessage = gameMessage;
                 PlayerInteraction::playerMessage = 100;                  
-            }     
-            
-   
-         // if (openMessage != "") {                       
-         //     pi.InteractionControllerUse(openMessage, gameObject);
-        //  }
-            
+            }             
            else if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
            }
-           else if (interactionMessage != "") {
-               
+           else if (interactionMessage != "") {             
                playerMessage = true;
-               pi.InteractionControllerObject(interactionMessage, gameObject);
-              
+               pi.InteractionControllerObject(interactionMessage, gameObject);           
            }
-
-           else         
-             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
+        //   else         
+          //   SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)  //TESTING THIS AS IT MIGHT BE THE BUG WITH THE SPRITE APPEARING IN THE TEXT AREA. WATCH RAM USAGE.
           
         }
    
@@ -389,7 +369,6 @@ int Scene1::scene1() {
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else {
-
                 DoAction();
             }
            
@@ -534,7 +513,7 @@ int Scene1::scene1() {
          
         }
 
-        //Display Character
+        //Set character size.
         gdSprite.w = SPRITE_SIZE;
         gdSprite.h = SPRITE_SIZE;
           
@@ -586,7 +565,7 @@ int Scene1::scene1() {
         SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
 
         //Ensures text is always on the top.
-        if (interactionMessage != "" || gameObject != "")
+     //   if (interactionMessage != "" || gameObject != "")
         //    SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
        
 
@@ -595,6 +574,8 @@ int Scene1::scene1() {
         gameMessage = "";
              
         SDL_RenderPresent(renderer);
+
+        
       
     }
 
