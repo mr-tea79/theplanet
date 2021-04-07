@@ -38,7 +38,9 @@ Images used in making the scenes were to the best of my knowledge all from googl
 
 # Current known problems that I have yet to overcome
 
-Keeping text on the screen long enough for the player to see it. (SOLVED)
+Occasionally the sprite appears in the text area (UNSOLVED)
+
+Keeping text on the screen long enough for the player to see it. (MOSTLY SOLVED)
 
 Occasional sprite flickering (SOLVED)
 
