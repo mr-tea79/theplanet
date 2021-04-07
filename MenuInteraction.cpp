@@ -87,6 +87,17 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             Scene1::sceneHalt = 1;
         }
 
+        if (lookStatement == "Look at Stuffed toy") {
+            lookMessage = "That's George.";
+            SDL_DestroyTexture(spriteTexture);
+            SDL_CreateTextureFromSurface(renderer, spriteBack);
+            Scene1::action = 1;
+            Scene1::actionStatement = "";
+            lookStatement = "";
+            Scene1::sceneHalt = 1;
+        
+        }
+
         if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
 
             lookMessage = "That's my PDA";

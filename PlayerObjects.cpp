@@ -110,7 +110,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     //Scene Hover Messages
 
     if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && inv.checkItem("Battery Lantern") != 1) {
-        message = "Battery Lantern";
+        message = Scene1::actionStatement + " Battery Lantern";
     }
 
     if (Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92) {
@@ -139,7 +139,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
-            message = "Stuffed toy";
+        message = Scene1::actionStatement + " Stuffed toy";
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && boxOpened !=1) {
@@ -323,12 +323,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 945;
         Scene1::yPosition = 387;
     }
-    /* Looking at teddy bear */
-    if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
-        message = "That's George";
-        if (Scene1::useStatement == "Use")
-            message = "I'll have a cuddle later.";
-    }
+    
 
     /* Looking inside opened box */
     if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && playerCurrentLocationX >= 435 && boxOpened == 1) {
