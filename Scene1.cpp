@@ -570,7 +570,7 @@ int Scene1::scene1() {
        
 
         interactionMessage = ""; // Clear the interaction message on every loop.
-       // useMessage = "";
+       // useMessage = "";//
         gameMessage = "";
              
         SDL_RenderPresent(renderer);
