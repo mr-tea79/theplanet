@@ -63,6 +63,132 @@ void PlayerMovement::LoadMovementTextures() {
     spriteBack3a = IMG_Load("PlayerMovement/ThePlanet/spriteback3.png");
 }
 
+int PlayerMovement::doXWalkRight(int gd, SDL_Texture* spriteTexture, int screenWidth) {
+
+    if (position == 0) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
+        gd += 3.5; //Speed of sprite movement.
+    }
+    if (position == 1) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
+        gd += 3.5;
+    }
+    if (position == 2) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
+        gd += 3.5;
+    }
+    if (position == 3) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
+        gd += 3.5;
+        position = 0; //This achieves the animation effect.
+    }
+    //Prevent walking off the screen.
+    if (gd == screenWidth - 50) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
+        gd += 3.5;
+    }
+
+    return gd;
+}
+
+int PlayerMovement::doXWalkLeft(int gd, SDL_Texture* spriteTexture, int screenWidth) {
+
+    if (position == 0) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
+        gd -= 3.5;
+    }
+    if (position == 1) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
+        gd -= 3.5;
+    }
+    if (position == 2) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
+        gd -= 3.5;
+    }
+    if (position == 3) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
+        gd -= 3.5;
+        position = 0; //This achieves the animation effect.
+    }
+
+    //Prevent walking off the screen.
+    if (gd == 0) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
+        gd += 3.5;
+    }
+
+    return gd;
+}
+
+
+int PlayerMovement::doYWalkUp(int gy, SDL_Texture* spriteTexture) {
+
+    if (position == 0) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
+        gy -= 2.5; //Speed of sprite movement.
+    }
+    if (position == 1) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
+        gy -= 2.5;
+    }
+    if (position == 2) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
+        gy -= 2.5;
+        // position = 0; //This achieves the animation effect.
+    }
+    if (position == 3) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
+        gy += 2.5;
+        position = 0; //This achieves the animation effect.
+    }
+
+    return gy;
+
+}
+
+int PlayerMovement::doYWalkDown(int gy, SDL_Texture* spriteTexture) {
+    if (position == 0) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
+        gy += 2.5; //Speed of sprite movement.
+    }
+    if (position == 1) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
+        gy += 2.5;
+    }
+    if (position == 2) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
+        gy += 2.5;
+    }
+    if (position == 3) {
+        SDL_DestroyTexture(spriteTexture);
+        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
+        gy += 2.5;
+        position = 0; //This achieves the animation effect.
+    }
+
+    return gy;
+
+}
+
+
+
 int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight, SDL_Texture* spriteTexture, SDL_Texture* ftexture,
     SDL_Texture* dialogmTexture) {
 
@@ -80,66 +206,12 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         }
         //GOING RIGHT
         else if (gd <= x - 60 && y > 120 && y < 575) {
-
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-            //Prevent walking off the screen.
-            if (gd == screenWidth - 50) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd += 3.5;
-            }
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
         }
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy -= 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
 
             position++;
         }
@@ -155,35 +227,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         if (gd <= x - 60 && y > 120 && y < 575) {
 
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == screenWidth - 50) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
 
             position++;
 
@@ -191,35 +235,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
-                //  position = 0;
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy -= 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
 
             position++;
         }
@@ -246,72 +262,14 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
      
         //GOING RIGHT
         else if (gd <= x - 60 && y > 120 && y < 575 && gd <739) {
-
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-               // position = 0; //This achieves the animation effect.
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == screenWidth - 50) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
 
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy -= 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
 
             position++;
         }
@@ -327,38 +285,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         //GOING RIGHT
         if (gd <= x - 60 && y > 120 && y < 575) {
 
-            if (position == 0) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == screenWidth - 50) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
 
             position++;
 
@@ -366,34 +293,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy -= 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
 
             position++;
         }
@@ -408,70 +308,14 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         //GOING RIGHT
         if (gd <= x - 60 && y > 120 && y < 575) {
 
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == screenWidth - 50) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
 
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy -= 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Prevent walking off the screen.
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
 
             position++;
         }
@@ -487,69 +331,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         if (gd <= x  && y > 272 && y < 579) {
 
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight2a);
-                gd += 3.5;
-            }
-            if (position == 2) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight3a);
-                gd += 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Set boundries where player can walk
-            if (gd == 1000) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x  && y > 272 && y < 579) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteLeft3a);
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gy += 3.5;
-                position = 0; //This achieves the animation effect.
-            }
-
-            //Set boundries where player can walk
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
-
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
 
@@ -579,57 +367,14 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         //GO RIGHT
         if (gd <= x -40 && y > 320 && y < 575) {
 
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 4.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);
-                gd += 4.5;
-            }
-            if (position == 2) {
-
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);
-                gd += 4.5;        
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);
-                gd += 4.5;
-                position = 0; //This achieves the animation effect.
-            }
-     
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
 
         }
 
         //GO LEFT
         else if (gd >= x +40 && y > 300 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 4.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft2a);
-                gd -= 4.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft3a);
-                gd -= 4.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                gd -= 4.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
 
@@ -641,71 +386,14 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     if (Scene1::SceneBackground == "1") {
         
         //GO RIGHT
-        if (gd <= x - 60 && y > 320 && y < 575) {        
-                if (position == 0) {
-                    SDL_DestroyTexture(spriteTexture);
-                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);                
-                    gd += 3.5; //Speed of sprite movement.
-                }
-                if (position == 1) {
-                    SDL_DestroyTexture(spriteTexture);
-                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight2a);             
-                    gd += 3.5;
-                }
-                if (position == 2) {
-                    SDL_DestroyTexture(spriteTexture);
-                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight3a);                 
-                    gd += 3.5;
-                }
-                if (position == 3) {
-                    SDL_DestroyTexture(spriteTexture);
-                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight4a);                 
-                    gd += 3.5;
-                    position = 0; //This achieves the animation effect.
-                }
-
-                //Prevent walking off the screen.
-                if (gd == screenWidth - 50) {
-                    SDL_DestroyTexture(spriteTexture);
-                    spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                    gd -= 3.5;
-                }
-               
-                position++;
+        if (gd <= x - 60 && y > 320 && y < 575) {    
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            position++;
         }
 
         //GO LEFT
         else if (gd >= x  && y > 320 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft1a);
-                gd -= 3.5;
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft2a);
-                gd -= 3.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft3a);
-              //  position = 0;
-                gd -= 3.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteLeft4a);
-                position = 0;
-                gd -= 3.5;
-            }
-
-            //Prevent walking off the screen.
-            if (gd == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteRight1a);
-                gd += 3.5;
-            }
-
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
         else {}
@@ -734,55 +422,15 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         
         //GOING UP
         if (gy >= y && y < 570 && y >0) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-                // position = 0; //This achieves the animation effect.
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+
+            gy = doYWalkUp(gy, spriteTexture);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y && y < 590 && gy > 0) {
 
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkDown(gy, spriteTexture);
 
             position++;
         }
@@ -795,54 +443,14 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 570 && y >330) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkUp(gy, spriteTexture);
 
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y && y < 580 && gy < 386) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkDown(gy, spriteTexture);
 
             position++;
         }
@@ -855,54 +463,14 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 570 && y >330 ) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkUp(gy, spriteTexture);
 
             position++;
         }
         
         //GOING DOWN
         else if (gy <= y && y < 575 && y > gd && gy > 250 && gy < 445) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkDown(gy, spriteTexture);
 
             position++;
         }
@@ -930,54 +498,14 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >158) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkUp(gy, spriteTexture);
 
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkDown(gy, spriteTexture);
 
             position++;
         }
@@ -1005,27 +533,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >158) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkUp(gy, spriteTexture);
 
             position++;
 
@@ -1033,27 +541,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {    
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkDown(gy, spriteTexture);
 
             position++;
         }
@@ -1066,53 +554,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >290 && x > 300) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;        
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkUp(gy, spriteTexture);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 565 && x > 300 && gy <410 ) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;         
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkDown(gy, spriteTexture);
 
             position++;
 
@@ -1139,27 +587,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >258) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack1a);
-                gy -= 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack2a);
-                gy -= 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;     
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteBack3a);
-                gy -= 2.5;
-                position = 0; //This achieves the animation effect.
-            }
+            gy = doYWalkUp(gy, spriteTexture);
 
             position++;
 
@@ -1167,28 +595,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {
-            if (position == 0) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown3a);
-                gy += 2.5; //Speed of sprite movement.
-            }
-            if (position == 1) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown1a);
-                gy += 2.5;
-            }
-            if (position == 2) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-            }
-            if (position == 3) {
-                SDL_DestroyTexture(spriteTexture);
-                spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, spriteDown2a);
-                gy += 2.5;
-                position = 0; //This achieves the animation effect.
-            }
-
+            gy = doYWalkDown(gy, spriteTexture);
             position++;
         }
 

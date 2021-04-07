@@ -19,6 +19,14 @@ public:
 	int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight, SDL_Texture* spriteTexture, SDL_Texture* ftexture,
 		SDL_Texture* dialogmTexture);
 
+	int doXWalkRight(int gd, SDL_Texture* spriteTexture, int screenWidth);
+
+	int doXWalkLeft(int gd, SDL_Texture* spriteTexture, int screenWidth);
+
+	int doYWalkUp(int gy, SDL_Texture* spriteTexture);
+
+	int doYWalkDown(int gy, SDL_Texture* spriteTexture);
+
 
 };
 }
