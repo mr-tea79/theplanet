@@ -23,6 +23,13 @@ https://sites.google.com/site/sdlinvc2010/installation/sdl_ttf
 #sqlite3    (For inventory)
 https://dcravey.wordpress.com/2011/03/21/using-sqlite-in-a-visual-c-application/
 
+# You will need to point visual studio directories to the location of the libraries above. It's not too hard and you can find this in: Project > Properties 
+
+See image here for help:
+
+![The Planet Screenshot](https://i.imgur.com/MkXNa9n.jpg)
+
+
 # About thePlanet adventure game engine
 
 I have always wanted to create a point and click adventure game ever since the days when I was a teenager and played Monkey Island. ThePlanet is my attempt at creating an adventure game engine in C/C++ and SDL2. This is a work in progress project with many areas for improvement and enhancement. This has been a learning journey for myself in creating games in C++ and has been a very tough learning experience but very rewarding at the same time. I do hope that this code will help others like me who have always dreamed about creating a point and click adventure game but just don't know where to start (Getting a sprite to appear on the screen). Starting out programming is a daunting task for any beginner and it seems like a mountain to climb. I hope this might help others get started and create their own "Better" versions of this engine. I am looking forward to people contributing improvements!
