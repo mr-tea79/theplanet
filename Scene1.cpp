@@ -291,12 +291,18 @@ int Scene1::scene1() {
             gy = gdSprite.y;
 
             //Show coordinates in console for object placement.
-            cout << "Current Mouse click coordinates are:"  << endl;
-            cout << "x = " << x << endl;
-            cout << "y = " << y << endl;
-            cout << "Current Player X Position is: " << gdSprite.x << endl;
-            cout << "Current Player Y Position is: " << gdSprite.y << endl;
-            cout << "Current Scene is: " << SceneBackground << endl;
+            cout << string(100, '\n');
+            std::cout << "Mouse Click X Location = " << x << std::endl;
+            std::cout << "" << std::endl;
+            std::cout << "Mouse Click Y Location = " << y << std::endl;
+            std::cout << "" << std::endl;
+            std::cout << "Current Player X Position is: " << gdSprite.x << std::endl;
+            std::cout << "" << std::endl;
+            std::cout << "Current Player Y Position is: " << gdSprite.y << std::endl;
+            std::cout << "" << std::endl;
+            std::cout << "Current Scene is: " << SceneBackground << std::endl;
+            std::cout << "" << std::endl;
+
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
