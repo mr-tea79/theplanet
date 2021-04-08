@@ -8,6 +8,20 @@ using namespace brightland;
 
 int PlayerInteraction::playerMessage = 10000;
 
+
+void PlayerInteraction::textDimensions(int messageLength) {
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x < 130) {
+        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    }
+    else if (Scene1::gdSprite.x > 680) {
+        Scene1::textRect = { Scene1::gdSprite.x - 160 ,  Scene1::gdSprite.y - 80, messageLength * 10, 20 };
+    }
+
+}
+
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
     // Textures tex;
     const char* im = NULL;
@@ -34,117 +48,48 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::str
     const char* imu = useMessage.c_str();;
     int useMessageLength = useMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
-   
-    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x < 130) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, useMessageLength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x > 680) {
-        Scene1::textRect = { Scene1::gdSprite.x - 160 ,  Scene1::gdSprite.y - 80, useMessageLength * 10, 20 };
-    }
-
+    textDimensions(useMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(300); // pauses briefly to allow text to show.      
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);  
 }
 
 void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::string gameObject) {
     const char* imu = openMessage.c_str();;
     int openMessageLength = openMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
-
-    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 500) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, openMessageLength * 10, 20 };
-       
-    }
-    else if (Scene1::gdSprite.x > 500) {
-       
-        Scene1::textRect = { Scene1::gdSprite.x - 200,  Scene1::gdSprite.y - 100, openMessageLength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x < 130) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, openMessageLength * 10, 20 };
-    }
-
+    textDimensions(openMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(300); // pauses briefly to allow text to show.
 }
 
 void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject) {
     const char* imu = lookMessage.c_str();;
     int lookMessageLength = lookMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
-
-    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 500) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, lookMessageLength * 10, 20 };
-
-    }
-    else if (Scene1::gdSprite.x > 500) {
-
-        Scene1::textRect = { Scene1::gdSprite.x - 200,  Scene1::gdSprite.y - 100, lookMessageLength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x < 130) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, lookMessageLength * 10, 20 };
-    }
-
+    textDimensions(lookMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    //_sleep(100); // pauses briefly to allow text to show.
 }
 
 void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
     const char* imu = actionMessage.c_str();;
     int actionMessageLength = actionMessage.length();
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
-
-    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 500) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, actionMessageLength * 10, 20 };
-
-    }
-    else if (Scene1::gdSprite.x > 500) {
-
-        Scene1::textRect = { Scene1::gdSprite.x - 200,  Scene1::gdSprite.y - 100, actionMessageLength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x < 130) {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, actionMessageLength * 10, 20 };
-    }
-
+    textDimensions(actionMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(100); // pauses briefly to allow text to show.
 }
 
 
 
-void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {
-    //Handles all object interaction messages on the game window.    
-    Textures tex;
+void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {  
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
     const char* im = interactionMessage.c_str();
     const char* imenu = gameObject.c_str();                 
     int interactionMessagelength = interactionMessage.length();
-
-    //The following 2 if statements will ensure the dialog text doesn't go off the screen. Needs tweaking a little bit.
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 600) {
-        Scene1::textRect = { Scene1::gdSprite.x - 100,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x > 680 ) {
-        Scene1::textRect = { Scene1::gdSprite.x - 600 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x < 130) {
-        Scene1::textRect = { Scene1::gdSprite.x + 30 ,  Scene1::gdSprite.y - 80, interactionMessagelength * 10, 20 };
-    }
-
+    textDimensions(interactionMessagelength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);        
-    //Render the text on the screen.
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(300); // pauses briefly to allow text to show.    
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);   
 }
  
 
