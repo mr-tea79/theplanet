@@ -274,11 +274,15 @@ int Scene1::scene1() {
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
             mouseClick = true;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-
+ 
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;
 
+            //This fixes the bug where if you decide to not to commit to picking something up.
+            if (interactionMessage == "")
+                actionStatement = "";
+ 
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                      
             SDL_DestroyTexture(Textures::spriteTexture);
