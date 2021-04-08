@@ -19,6 +19,7 @@ class MenuInteraction
 
 public:
 	
+	void doAction();
 	void LoadActionTextures();
 	std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, SDL_Surface* spriteBack,std::string menuMessage);
 	std::string MenuInteraction::MenuSelect(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage, std::string interactionMessage);

@@ -31,6 +31,13 @@ void MenuInteraction::LoadActionTextures() {
     spriteAction2 = IMG_Load("PlayerMovement/ThePlanet/spritePipe.png");
 }
 
+void MenuInteraction::doAction() {
+    Scene1::action = 1;
+    Scene1::actionStatement = "";
+    lookStatement = "";
+    Scene1::sceneHalt = 1;
+
+}
 
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction, SDL_Texture* spriteTexture, SDL_Renderer* renderer, SDL_Surface* spriteDown1, std::string menuMessage) {
 
@@ -81,20 +88,14 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             lookMessage = "That's one of the engines.";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         }
 
         if (lookStatement == "Look at Stuffed toy") {
             lookMessage = "That's George.";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         
         }
 
@@ -111,46 +112,31 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             lookMessage = "Very Earthlike";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         }
 
         if (lookStatement == "Look at Self Inflating Tent") {
             lookMessage = "It's a tent that, well, inflates";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         }
         
         if (lookStatement == "Look at Ape Tape") {
             lookMessage = "Ooh, Ape Tape!";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         }
 
         if (lookStatement == "Look at Flag" && gd > 526) {
             lookMessage = "That's the mission flag";
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         }
         /* Rocky path */
         if (lookStatement == "Look at Rocks" && gd >= 640) {
             lookMessage = "That's a Meteorite";
-            Scene1::action = 1;
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            doAction();
         }
 
         else {        
@@ -178,10 +164,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
         Textures::objectTexture6 = Textures::objectTexture5;
         PlayerObjects::boxOpened = 1;
-        Scene1::action = 1;
-        Scene1::actionStatement = "";
-        openStatement = "";
-        Scene1::sceneHalt = 1;
+        doAction();
     }
 
     else {
@@ -207,9 +190,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         if (inv.checkItem("Tape") == 0) {
             useMessage = "I need to pick it up first.";
             useStatement = "";
-            Scene1::actionStatement = "";
-            Scene1::action = 1;
-            Scene1::sceneHalt = 1;
+            doAction();
             return useMessage;
         }
 
@@ -219,18 +200,14 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         Scene1::inv3Used = 1;
         useMessage = "That should plug the leak!";
         useStatement = "";
-        Scene1::actionStatement = "";
-        Scene1::action = 1;
-        Scene1::sceneHalt = 1;
+        doAction();
      }
     if (useStatement == "Use Wreckage") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteBack);
         useMessage = "It's wrecked!";
         useStatement = "";
-        Scene1::actionStatement = "";
-        Scene1::action = 1;
-        Scene1::sceneHalt = 1;
+        doAction();
     }
 
    if (useStatement == "Use Self Inflating Tent") {
