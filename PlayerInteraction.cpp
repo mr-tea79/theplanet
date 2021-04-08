@@ -50,6 +50,7 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::str
     textDimensions(useMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);  
+    _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::string gameObject) {
@@ -58,6 +59,7 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
     textDimensions(openMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject) {
@@ -66,6 +68,7 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
     textDimensions(lookMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
@@ -74,6 +77,7 @@ void PlayerInteraction::InteractionControllerAction(std::string actionMessage, s
     textDimensions(actionMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {   
@@ -83,6 +87,7 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     textDimensions(interactionMessagelength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);        
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);   
+    _sleep(10);
 }
  
 

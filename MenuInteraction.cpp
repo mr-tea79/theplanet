@@ -33,9 +33,15 @@ void MenuInteraction::LoadActionTextures() {
 
 void MenuInteraction::doAction() {
     Scene1::action = 1;
-    //Scene1::actionStatement = "";
+    if (useStatement.find("with") != std::string::npos) {
+        std::cout << "found!" << '\n';
+    }
+    else {
+        useStatement = "";
+    }
+    actionStatement = "";
     lookStatement = "";
-    useStatement = "";
+  
     Scene1::sceneHalt = 1;
 
 }
@@ -214,7 +220,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
        // useMessage = "Ok, where shall I put this tent?";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Self Inflating Tent with";    
-        doAction();
+       // doAction();
     }
 
     if (Scene1::useStatement == "Use Self Inflating Tent with Sandy clearing") {
@@ -223,10 +229,12 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
        inv.useItem("Tent");
        Scene1::inv4Used = 1;
        Scene1::actionStatement = "";
+     //  Scene1::useStatement = "";
        //Change scene.
        Scene1::SceneBackground = "1fa";
    }
    else {
+        useStatement = "";
    }
    
     return useMessage;
