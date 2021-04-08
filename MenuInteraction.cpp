@@ -35,6 +35,7 @@ void MenuInteraction::doAction() {
     Scene1::action = 1;
     Scene1::actionStatement = "";
     lookStatement = "";
+    useStatement = "";
     Scene1::sceneHalt = 1;
 
 }
@@ -199,14 +200,12 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         inv.useItem("Tape");
         Scene1::inv3Used = 1;
         useMessage = "That should plug the leak!";
-        useStatement = "";
         doAction();
      }
     if (useStatement == "Use Wreckage") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteBack);
         useMessage = "It's wrecked!";
-        useStatement = "";
         doAction();
     }
 
@@ -214,7 +213,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
         useMessage = "Ok, where shall I put this tent?";
-        useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Self Inflating Tent with";    
     }
