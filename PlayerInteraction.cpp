@@ -8,7 +8,7 @@ using namespace brightland;
 
 int PlayerInteraction::playerMessage = 10000;
 
-
+//Needs some tweaking
 void PlayerInteraction::textDimensions(int messageLength) {
     if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
@@ -79,8 +79,6 @@ void PlayerInteraction::InteractionControllerAction(std::string actionMessage, s
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
 }
-
-
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {  
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
