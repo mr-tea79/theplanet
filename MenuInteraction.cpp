@@ -96,16 +96,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
             lookMessage = "That's George.";
             SDL_DestroyTexture(spriteTexture);
             SDL_CreateTextureFromSurface(renderer, spriteBack);
-            doAction();
-        
+            doAction();      
         }
 
         if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
 
             lookMessage = "That's my PDA";
-            Scene1::actionStatement = "";
-            lookStatement = "";
-            Scene1::sceneHalt = 1;
+            SDL_DestroyTexture(spriteTexture);
+            SDL_CreateTextureFromSurface(renderer, spriteDown1);
+            doAction();
         }
           
         if (lookStatement == "Look at The moon") {
