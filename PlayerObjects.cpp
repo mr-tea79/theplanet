@@ -502,6 +502,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::xPosition = 106;
             Scene1::gdSprite.x = Scene1::xPosition;
             Scene1::gdSprite.y = Scene1::yPosition;
+            Scene1::sceneHalt = 1;
             PlayerInteraction::playerMessage = 5;
         }       
            

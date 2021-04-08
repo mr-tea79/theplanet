@@ -315,10 +315,10 @@ int Scene1::scene1() {
                 interactionMessage = gameMessage;
                 PlayerInteraction::playerMessage = 100;                  
             }             
-           else if (actionMessage != "" || actionStatement != "") {            
+            if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
            }
-           else if (interactionMessage != "") {             
+            if (interactionMessage != "") {             
                playerMessage = true;
                pi.InteractionControllerObject(interactionMessage, gameObject);           
            }
