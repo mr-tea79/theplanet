@@ -229,22 +229,23 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-
+                      
                         if(playerMessage != true && interactionMessage ==""){
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-                   
+                    
                         if (interactionMessage != "") {
                            pi.InteractionControllerHover(interactionMessage);
-                   
+                           
                         }
 
                         //Find objects that are hoverable.
                         if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen                      
-                            SDL_DestroyTexture(ftexture);                     
+                            SDL_DestroyTexture(ftexture);       
+                                               
                         }
                        
                         else {
-                                                       
+                        
                         }
                         }
                       
@@ -310,20 +311,18 @@ int Scene1::scene1() {
             //These messages are displayed to help tell the story.
             gameMessage = pi.DisplayPlayerMessages();
 
-            if (gameMessage != "") {
-                playerMessage = true;
+            if (gameMessage != "") {             
                 interactionMessage = gameMessage;
                 PlayerInteraction::playerMessage = 100;                  
             }             
             if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
            }
-            if (interactionMessage != "") {             
-               playerMessage = true;
+            if (interactionMessage != "") {                         
                pi.InteractionControllerObject(interactionMessage, gameObject);           
            }
-          // else         
-            // SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)  //TESTING THIS AS IT MIGHT BE THE BUG WITH THE SPRITE APPEARING IN THE TEXT AREA. WATCH RAM USAGE.
+       //   else         
+         //    SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)  //TESTING THIS AS IT MIGHT BE THE BUG WITH THE SPRITE APPEARING IN THE TEXT AREA. WATCH RAM USAGE.
           
         }
    
@@ -346,9 +345,10 @@ int Scene1::scene1() {
         }
 
 
-        if (lookMessage != "") {  
+        if (lookMessage != "" ) {  
             playerMessage = true;
             pi.InteractionControllerLook(lookMessage, gameObject);
+           
         }
 
         if (useMessage != "") {
@@ -567,14 +567,12 @@ int Scene1::scene1() {
      //   if (interactionMessage != "" || gameObject != "")
         //    SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
        
-
+       
         interactionMessage = ""; // Clear the interaction message on every loop.
        // useMessage = "";//
         gameMessage = "";
              
         SDL_RenderPresent(renderer);
-
-        
       
     }
 

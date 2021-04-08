@@ -12,14 +12,18 @@ int PlayerInteraction::playerMessage = 10000;
 void PlayerInteraction::textDimensions(int messageLength) {
     if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+        
     }
     else if (Scene1::gdSprite.x < 130) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+       
     }
     else if (Scene1::gdSprite.x > 680) {
         Scene1::textRect = { Scene1::gdSprite.x - 160 ,  Scene1::gdSprite.y - 80, messageLength * 10, 20 };
+        
     }
     Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
+   
 }
 
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
@@ -28,14 +32,14 @@ void PlayerInteraction::InteractionControllerHover(std::string interactionMessag
     SDL_DestroyTexture(Scene1::ftexture);
 
     if (interactionMessage != "" ) {
-
+        
         int interactionMessagelength = interactionMessage.length();
         im = interactionMessage.c_str();
 
         Scene1::textRect = { 500, 610, interactionMessagelength * 10, 20 };   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
         Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
         Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
- 
+        
     }
 
     else {
@@ -50,7 +54,7 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::str
     textDimensions(useMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);  
-    _sleep(10);
+  //  _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::string gameObject) {
@@ -59,7 +63,7 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
     textDimensions(openMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(10);
+   // _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject) {
@@ -68,7 +72,7 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
     textDimensions(lookMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(10);
+  //  _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
@@ -77,7 +81,7 @@ void PlayerInteraction::InteractionControllerAction(std::string actionMessage, s
     textDimensions(actionMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    _sleep(10);
+   // _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {   
@@ -87,7 +91,7 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     textDimensions(interactionMessagelength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);        
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);   
-    _sleep(10);
+   // _sleep(10);
 }
  
 
