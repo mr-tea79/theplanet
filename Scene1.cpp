@@ -268,8 +268,7 @@ int Scene1::scene1() {
         keystate = SDL_GetKeyboardState(NULL);
 
         if (SDL_MOUSEBUTTONUP) {       
-           
-            //std::cout << "Mouse button up" << std::endl;
+     
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
             mouseClick = true;
@@ -305,11 +304,7 @@ int Scene1::scene1() {
 
         
             //Get interaction message.         
-            interactionMessage = pob.ObjectInteraction( x, y, gd, gy);
-          
-           
-            std::string menuMessage;
-           
+            interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
             //These messages are displayed to help tell the story.
@@ -327,8 +322,8 @@ int Scene1::scene1() {
                playerMessage = true;
                pi.InteractionControllerObject(interactionMessage, gameObject);           
            }
-        //   else         
-          //   SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)  //TESTING THIS AS IT MIGHT BE THE BUG WITH THE SPRITE APPEARING IN THE TEXT AREA. WATCH RAM USAGE.
+          // else         
+            // SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)  //TESTING THIS AS IT MIGHT BE THE BUG WITH THE SPRITE APPEARING IN THE TEXT AREA. WATCH RAM USAGE.
           
         }
    
@@ -403,14 +398,12 @@ int Scene1::scene1() {
                     wy = gdSprite.y;
                     _sleep(300);
                     sceneHalt = 0;
-
             }
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
             }
-
                
     }
         

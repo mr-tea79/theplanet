@@ -33,7 +33,7 @@ void MenuInteraction::LoadActionTextures() {
 
 void MenuInteraction::doAction() {
     Scene1::action = 1;
-    Scene1::actionStatement = "";
+    //Scene1::actionStatement = "";
     lookStatement = "";
     useStatement = "";
     Scene1::sceneHalt = 1;
@@ -159,12 +159,12 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
         openStatement = pob.HoverObjects(x, y, 1, gd, gy);
    
     if (gd >= 410 && gy > 400 && openStatement == "Open Cardboard box") {
-        openMessage = "Oh, what's this?";
+     //   openMessage = "Oh, what's this?";
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
         Textures::objectTexture6 = Textures::objectTexture5;
         PlayerObjects::boxOpened = 1;
-        doAction();
+      //  doAction();
     }
 
     else {
@@ -211,9 +211,10 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
    if (useStatement == "Use Self Inflating Tent") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-        useMessage = "Ok, where shall I put this tent?";
+       // useMessage = "Ok, where shall I put this tent?";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Self Inflating Tent with";    
+        doAction();
     }
 
     if (Scene1::useStatement == "Use Self Inflating Tent with Sandy clearing") {
