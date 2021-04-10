@@ -18,9 +18,7 @@ static std::string openStatement;
 static std::string lookStatement;
 static std::string pickUpStatement;
 static std::string actionStatement;
-static std::string sceneBackground;
-//static int inv3used;
-//static int inv4used;
+
 
 static int playerMessage;
 
