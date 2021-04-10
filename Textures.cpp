@@ -50,10 +50,61 @@ SDL_Texture* Textures::objectTextureLantern;
 
 SDL_Texture* Textures::spriteTexture;
 SDL_Surface* Textures::spriteDown1;
-SDL_Surface* Textures::spriteDownp;
-SDL_Surface* Textures::spriteBack1a;
+//SDL_Surface* Textures::spriteDownp;
+//SDL_Surface* Textures::spriteBack1a;
 SDL_Surface* Textures::spritePick;
 SDL_Surface* Textures::spritePickp;
+
+SDL_Surface* Textures::spriteDownTape;
+SDL_Surface* Textures::spriteDown1a;
+SDL_Surface* Textures::spriteDown2a;
+SDL_Surface* Textures::spriteDown3a;
+
+SDL_Surface* Textures::spriteDownp;
+SDL_Surface* Textures::spriteDown2p;
+SDL_Surface* Textures::spriteDown3p;
+
+SDL_Surface* Textures::spriteRight1a;
+SDL_Surface* Textures::spriteRight2a;
+SDL_Surface* Textures::spriteRight3a;
+SDL_Surface* Textures::spriteRight4a;
+
+SDL_Surface* Textures::spriteLeft1a;
+SDL_Surface* Textures::spriteLeft2a;
+SDL_Surface* Textures::spriteLeft3a;
+SDL_Surface* Textures::spriteLeft4a;
+
+SDL_Surface* Textures::spriteBack1a;
+SDL_Surface* Textures::spriteBack2a;
+SDL_Surface* Textures::spriteBack3a;
+
+void Textures::MovementTextures() {
+
+    spriteDownTape = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
+    spriteDown1a = IMG_Load("PlayerMovement/ThePlanet/sprite.png");
+    spriteDown2a = IMG_Load("PlayerMovement/ThePlanet/sprite2.png");
+    spriteDown3a = IMG_Load("PlayerMovement/ThePlanet/sprite3.png");
+
+    spriteDownp = IMG_Load("PlayerMovement/ThePlanet/spritep.png");
+    spriteDown2p = IMG_Load("PlayerMovement/ThePlanet/sprite2p.png");
+    spriteDown3p = IMG_Load("PlayerMovement/ThePlanet/sprite3p.png");
+
+    spriteRight1a = IMG_Load("PlayerMovement/ThePlanet/spriter1.png");
+    spriteRight2a = IMG_Load("PlayerMovement/ThePlanet/spriter2.png");
+    spriteRight3a = IMG_Load("PlayerMovement/ThePlanet/spriter3.png");
+    spriteRight4a = IMG_Load("PlayerMovement/ThePlanet/spriter4.png");
+
+    spriteLeft1a = IMG_Load("PlayerMovement/ThePlanet/spriteL1.png");
+    spriteLeft2a = IMG_Load("PlayerMovement/ThePlanet/spriteL2.png");
+    spriteLeft3a = IMG_Load("PlayerMovement/ThePlanet/spriteL3.png");
+    spriteLeft4a = IMG_Load("PlayerMovement/ThePlanet/spriteL4.png");
+
+    spriteBack1a = IMG_Load("PlayerMovement/ThePlanet/spriteback1.png");
+    spriteBack2a = IMG_Load("PlayerMovement/ThePlanet/spriteback2.png");
+    spriteBack3a = IMG_Load("PlayerMovement/ThePlanet/spriteback3.png");
+
+
+}
 
 void Textures::Scene1Textures() {
 

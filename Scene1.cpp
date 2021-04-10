@@ -163,6 +163,7 @@ int Scene1::scene1() {
     //Initialize Textures
     Textures tex;
     tex.Scene1Textures();
+    tex.MovementTextures();
    // tex.Scene2Textures();
     //tex.Scene3Textures();
  
@@ -176,7 +177,7 @@ int Scene1::scene1() {
 
     //Load player movement class.
     PlayerMovement player;
-    player.LoadMovementTextures();
+   // player.LoadMovementTextures();
 
     //Load player movement class.
     PlayerObjects pob;
@@ -318,7 +319,7 @@ int Scene1::scene1() {
             }             
             if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
-           }
+            }
             if (interactionMessage != "") {                         
                pi.InteractionControllerObject(interactionMessage, gameObject);           
            }
@@ -345,11 +346,9 @@ int Scene1::scene1() {
             openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
         }
 
-
         if (lookMessage != "" ) {  
             playerMessage = true;
-            pi.InteractionControllerLook(lookMessage, gameObject);
-           
+            pi.InteractionControllerLook(lookMessage, gameObject);         
         }
 
         if (useMessage != "") {

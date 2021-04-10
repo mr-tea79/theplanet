@@ -50,10 +50,34 @@ namespace brightland {
 		static SDL_Texture* spriteTexture;
 
 		static SDL_Surface* spriteDown1;
-		static SDL_Surface* spriteDownp;
-		static SDL_Surface* spriteBack1a;
+		//static SDL_Surface* spriteDownp;
+		//static SDL_Surface* spriteBack1a;
 		static SDL_Surface* spritePick;
 		static SDL_Surface* spritePickp;
+
+		static SDL_Surface* spriteDownTape;
+		static SDL_Surface* spriteDown1a;
+		static SDL_Surface* spriteDown2a;
+		static SDL_Surface* spriteDown3a;
+
+		static SDL_Surface* spriteDownp;
+		static SDL_Surface* spriteDown2p;
+		static SDL_Surface* spriteDown3p;
+
+		static SDL_Surface* spriteRight1a;
+		static SDL_Surface* spriteRight2a;
+		static SDL_Surface* spriteRight3a;
+		static SDL_Surface* spriteRight4a;
+
+		static SDL_Surface* spriteLeft1a;
+		static SDL_Surface* spriteLeft2a;
+		static SDL_Surface* spriteLeft3a;
+		static SDL_Surface* spriteLeft4a;
+
+		static SDL_Surface* spriteBack1a;
+		static SDL_Surface* spriteBack2a;
+		static SDL_Surface* spriteBack3a;
+
 
 		SDL_Surface* menuSurface;
 		SDL_Surface* imageSurface2;
@@ -89,6 +113,7 @@ namespace brightland {
 		void Scene1Textures();
 		void Scene2Textures();
 		void Scene3Textures();
+		void MovementTextures();
 
 
 	};

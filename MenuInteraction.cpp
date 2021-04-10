@@ -25,7 +25,6 @@ static std::string sceneBackground;
 static int playerMessage;
 
 
-
 void MenuInteraction::LoadActionTextures() {
     spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
     spriteAction2 = IMG_Load("PlayerMovement/ThePlanet/spritePipe.png");
