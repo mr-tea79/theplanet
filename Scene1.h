@@ -47,13 +47,6 @@ namespace brightland {
 		SDL_Rect background4;
 		SDL_Rect pipeAction;
 
-		SDL_Rect inv1;
-		SDL_Rect inv2;
-		SDL_Rect inv3;
-		SDL_Rect inv4;
-		SDL_Rect inv5;
-		SDL_Rect inv7;
-
 
 		static SDL_Rect dTexture;
 		SDL_Rect menu;

@@ -10,6 +10,13 @@ int Inventory::inv5Used;
 int Inventory::inv6Used;
 int Inventory::inv7Used;
 
+SDL_Rect Inventory::inv1 = { 700, 650, 40, 40 };
+SDL_Rect Inventory::inv2 = { 760, 610, 60, 60 };
+SDL_Rect Inventory::inv3 = { 880, 650, 40, 40 };
+SDL_Rect Inventory::inv4 = { 760, 700, 60, 60 };
+SDL_Rect Inventory::inv7 = { 760, 700, 60, 60 };
+
+
 int Inventory::purgeDatabase() {
 
 	sqlite3* db;

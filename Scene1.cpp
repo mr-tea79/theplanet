@@ -106,12 +106,6 @@ int Scene1::scene1() {
     fsurface =       NULL;
     
     //Image RECTS are used to hold in game images and are set to a given position (x,y,height,width).
-    //Inventory RECTS
-    inv1 = { 700, 650, 40, 40 };
-    inv2 = { 760, 610, 60, 60 };
-    inv3 = { 880, 650, 40, 40 };
-    inv4 = { 760, 700, 60, 60 };
-    inv7 = { 760, 700, 60, 60 };
     
     //Main background Rect
     background = { 0, 0, 1024, 600 };
@@ -446,14 +440,14 @@ int Scene1::scene1() {
     
         //PDA Inventory item.
         if (objectToDestroy.find("1") != std::string::npos) {
-            SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &inv1);        
+            SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &Inventory::inv1);        
         }
     
         else if(SceneBackground == "1") {SDL_RenderCopy(renderer, Textures::objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}        
      
         //Flag Inventory Item
         if (objectToDestroy.find("2") != std::string::npos ) {    
-            SDL_RenderCopy(renderer, Textures::invTexture2, NULL, &inv2); 
+            SDL_RenderCopy(renderer, Textures::invTexture2, NULL, &Inventory::inv2);
         }
         else if (SceneBackground == "1b") { 
             SDL_RenderCopy(renderer, Textures::objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
@@ -462,7 +456,7 @@ int Scene1::scene1() {
         //Ape Tape Inventory Item.
         if (objectToDestroy.find("3") != std::string::npos) {
             if (Inventory::inv3Used == 0) {             
-                    SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                         
+                    SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &Inventory::inv3);
             }
         }
         else if (SceneBackground == "1b") {    
@@ -473,7 +467,7 @@ int Scene1::scene1() {
         if (objectToDestroy.find("4") != std::string::npos) {
             if (Inventory::inv4Used == 0) {
                 //This makes sure the inventory item is removed if the player has used the tent.
-                SDL_RenderCopy(renderer, Textures::invTexture4, NULL, &inv4);
+                SDL_RenderCopy(renderer, Textures::invTexture4, NULL, &Inventory::inv4);
             }
         }
         else if (SceneBackground == "1b") {
@@ -483,14 +477,14 @@ int Scene1::scene1() {
         //Pipe      
         if (objectToDestroy.find("5") != std::string::npos) {
            if(Inventory::inv5Used == 0){
-            SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                        
+            SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &Inventory::inv3);
            }        
         }
 
         //Lantern    
         if (objectToDestroy.find("6") != std::string::npos) {
             if (Inventory::inv7Used == 0) {
-                SDL_RenderCopy(renderer, Textures::invTexture6, NULL, &inv7);
+                SDL_RenderCopy(renderer, Textures::invTexture6, NULL, &Inventory::inv7);
             }
         }
         else if(SceneBackground == "1da" || SceneBackground == "1db") {
