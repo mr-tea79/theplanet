@@ -8,12 +8,8 @@
 using namespace brightland;
 using namespace std;
 
-static int position;
+static int position; //Used to update current position variable.
 
-//Global
-static int SPRITE_SIZE;
-static std::string sceneBackground;
-static int inv3Used; //This is to check if the player has used the duct tape.
 
 int PlayerMovement::doXWalkRight(int gd, SDL_Texture* spriteTexture, int screenWidth) {
   
