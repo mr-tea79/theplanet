@@ -51,6 +51,16 @@ SDL_Renderer* Scene1::renderer;
 
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice.
 
+
+//This will help when transitioning to a new scene. 
+void Scene1::DoAction() {
+    _sleep(100);
+    action = 0;
+    // sceneHalt = 0;
+}
+
+
+
 int Scene1::scene1() {
 
     cout << "Initialize" << endl;
@@ -566,13 +576,4 @@ int Scene1::scene1() {
 
     TTF_Quit();
     SDL_Quit();
-}
-
-
-
-//This will help when transitioning to a new scene. 
-void Scene1::DoAction() {
-    _sleep(100);
-    action = 0;
-   // sceneHalt = 0;
 }
