@@ -9,7 +9,6 @@
 #include <iostream>
 #include <algorithm>
 #include <chrono>
-
 #include "Scene1.h"
 #include "PlayerMovement.h"
 #include "PlayerObjects.h"
@@ -39,9 +38,6 @@ SDL_Color Scene1::fcolor;
 SDL_Texture* Scene1::ftexture = NULL;
 SDL_Rect Scene1::dTexture;
 
-//int Scene1::mouseHold = 0;
-//Used to prevent hover from removing the message on the screen too quickly. This was a real brain teaser to figure out.
-//int Scene1::messageHolder = 0;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
@@ -284,11 +280,12 @@ int Scene1::scene1() {
                 actionStatement = "";
  
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
-           //Note needs some tweaking. If you remove this your RAM will rocket!                      
-            SDL_DestroyTexture(Textures::spriteTexture);
+           //Note needs some tweaking. If you remove this your RAM will rocket!                                 
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
             fsurface = TTF_RenderText_Solid(font, "", fcolor);
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
+           
                       
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
@@ -325,8 +322,8 @@ int Scene1::scene1() {
             if (interactionMessage != "") {                         
                pi.InteractionControllerObject(interactionMessage, gameObject);           
            }
-       //   else         
-         //    SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)  //TESTING THIS AS IT MIGHT BE THE BUG WITH THE SPRITE APPEARING IN THE TEXT AREA. WATCH RAM USAGE.
+          //else         
+           //  SDL_DestroyTexture(ftexture); 
           
         }
    
@@ -554,7 +551,7 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::rocks2, NULL, &background3);
         }
 
-        //This will hide the sprite because it comes after the render of the sprite.
+        //This will hide the sprite because it comes after the render of the sprite. For example rocks in the foreground where the sprite passes behind them.
         if (SceneBackground == "1fa") {
             SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);                   
         }
@@ -567,13 +564,8 @@ int Scene1::scene1() {
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
         SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
 
-        //Ensures text is always on the top.
-     //   if (interactionMessage != "" || gameObject != "")
-        //    SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
-       
        
         interactionMessage = ""; // Clear the interaction message on every loop.
-       // useMessage = "";//
         gameMessage = "";
              
         SDL_RenderPresent(renderer);
