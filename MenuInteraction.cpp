@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Scene1.h"
 #include "Textures.h"
-
+#include "Inventory.h"
 
 using namespace brightland;
 
@@ -192,7 +192,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteAction);
         inv.useItem("Tape");
-        Scene1::inv3Used = 1;
+        Inventory::inv3Used = 1;
         useMessage = "That should plug the leak!";
         useStatement = "";
         doAction();
@@ -218,7 +218,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteAction3);
         inv.useItem("Tent");
-        Scene1::inv4Used = 1;
+        Inventory::inv4Used = 1;
         Scene1::actionStatement = "";
         //Change scene.
         Scene1::SceneBackground = "1fa";

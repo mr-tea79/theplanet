@@ -1,6 +1,7 @@
 
 #include "PlayerMovement.h"
 #include "Textures.h"
+#include "Inventory.h"
 #include <iostream>
 #include <SDL.h>
 #include "Scene1.h"
@@ -342,7 +343,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     SDL_Texture* dialogmTexture) {
 
     //Check if player has put patch on their suit.
-    if (Scene1::inv3Used == 1) {
+    if (Inventory::inv3Used == 1) {
        Textures::spriteDown1a = Textures::spriteDownp;
        Textures::spriteDown2a = Textures::spriteDown2p;
        Textures::spriteDown3a = Textures::spriteDown3p;

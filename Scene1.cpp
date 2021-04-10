@@ -41,13 +41,6 @@ int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 
-//Global inventory used variables. This prevents constant database checking which slows the game down.
-int Scene1::inv3Used;  //Duct Tape.
-int Scene1::inv4Used;  //Tent
-int Scene1::inv5Used; //Pipe
-int Scene1::inv6Used; //Pressure Suit
-int Scene1::inv7Used; //Lantern
-
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
@@ -190,7 +183,7 @@ int Scene1::scene1() {
         pob.PlaceObjects();
 
         //Show patch on suit
-        if (inv3Used == 1) {
+        if (Inventory::inv3Used == 1) {
             Textures::spriteDown1 = Textures::spriteDownp;
             Textures::spritePick = Textures::spritePickp;
         }
@@ -468,7 +461,7 @@ int Scene1::scene1() {
        
         //Ape Tape Inventory Item.
         if (objectToDestroy.find("3") != std::string::npos) {
-            if (inv3Used == 0) {             
+            if (Inventory::inv3Used == 0) {             
                     SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                         
             }
         }
@@ -478,7 +471,7 @@ int Scene1::scene1() {
         
         //Tent
         if (objectToDestroy.find("4") != std::string::npos) {
-            if (inv4Used == 0) {
+            if (Inventory::inv4Used == 0) {
                 //This makes sure the inventory item is removed if the player has used the tent.
                 SDL_RenderCopy(renderer, Textures::invTexture4, NULL, &inv4);
             }
@@ -489,14 +482,14 @@ int Scene1::scene1() {
 
         //Pipe      
         if (objectToDestroy.find("5") != std::string::npos) {
-           if(inv5Used == 0){
+           if(Inventory::inv5Used == 0){
             SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &inv3);                        
            }        
         }
 
         //Lantern    
         if (objectToDestroy.find("6") != std::string::npos) {
-            if (inv7Used == 0) {
+            if (Inventory::inv7Used == 0) {
                 SDL_RenderCopy(renderer, Textures::invTexture6, NULL, &inv7);
             }
         }

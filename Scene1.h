@@ -31,13 +31,6 @@ namespace brightland {
 
 		static int tLoader;
 		static bool mouseClick;
-		
-		//Inventory used variables. To check if the item has been used and shouldn't remain in the inventory.
-		static int inv3Used;
-		static int inv4Used;
-		static int inv5Used;
-		static int inv6Used;
-		static int inv7Used;
 		static int action;
 		static int sceneHalt;
 

@@ -4,6 +4,12 @@
 using namespace brightland;
 
 
+int Inventory::inv3Used;
+int Inventory::inv4Used;
+int Inventory::inv5Used;
+int Inventory::inv6Used;
+int Inventory::inv7Used;
+
 int Inventory::purgeDatabase() {
 
 	sqlite3* db;

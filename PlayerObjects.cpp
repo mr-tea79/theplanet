@@ -10,6 +10,7 @@
 #include "Textures.h"
 
 
+
 using namespace brightland;
 
 //Global
@@ -18,7 +19,7 @@ static int SPRITE_SIZE;
 static int xPosition;
 static int yPosition;
 static int playerMessage;
-static int inv3Used;  //Duct Tape
+//static int inv3Used;  //Duct Tape
 int PlayerObjects::boxOpened;
 
 SDL_Rect PlayerObjects::srcrect;
@@ -227,7 +228,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Computer Screen";
     }
 
-    if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Scene1::inv3Used !=1) {
+    if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Inventory::inv3Used !=1) {
         message = Scene1::actionStatement + " Ape Tape";
     }
    
@@ -357,7 +358,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
     /* Inside Tent */
     if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     
-        if (Scene1::inv6Used != 1) {
+        if (Inventory::inv6Used != 1) {
             message = "My suit hasn't got enough oxygen";
         }
         else {
@@ -485,7 +486,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     /* Leave wreakage scene and head to rocky path */
     if (Scene1::SceneBackground == "1" && x > 0 && x <= 771 && y > 204 && y < 259 && playerCurrentLocationY <360 ) {
         
-        if (Scene1::inv3Used != 1) {
+        if (Inventory::inv3Used != 1) {
             Scene1::sceneHalt = 1;
             message = "I'm leaking Oxygen, are you crazy!?";
         }

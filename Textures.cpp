@@ -48,10 +48,9 @@ SDL_Texture* Textures::objectTexturePipe;
 SDL_Texture* Textures::objectTexturePipeAction;
 SDL_Texture* Textures::objectTextureLantern;
 
+//Player Textures
 SDL_Texture* Textures::spriteTexture;
 SDL_Surface* Textures::spriteDown1;
-//SDL_Surface* Textures::spriteDownp;
-//SDL_Surface* Textures::spriteBack1a;
 SDL_Surface* Textures::spritePick;
 SDL_Surface* Textures::spritePickp;
 

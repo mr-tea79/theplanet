@@ -9,6 +9,12 @@ namespace brightland{
 class Inventory
 {
 public:
+	static int inv3Used;
+	static int inv4Used;
+	static int inv5Used;
+	static int inv6Used;
+	static int inv7Used;
+
 	int Inventory::SQLInsertInventory(std::string itemName, int itemUsed);
 
 	int Inventory::checkItem(std::string itemName);
