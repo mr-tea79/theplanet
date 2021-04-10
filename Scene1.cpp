@@ -1,7 +1,7 @@
 
 /* Adventure Game Creator Engine by Damian Baldry @ Brightland. Written in 2020
    Very much a work in progress!
-   V2.01
+   V3.01 (April 2021)
 
 */
 
@@ -177,7 +177,6 @@ int Scene1::scene1() {
 
     //Load player movement class.
     PlayerMovement player;
-   // player.LoadMovementTextures();
 
     //Load player movement class.
     PlayerObjects pob;
@@ -517,29 +516,28 @@ int Scene1::scene1() {
         gdSprite.h = SPRITE_SIZE;
           
         if(PlayerInteraction::playerMessage > 3){
+            //Render main character
             SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
         else {
+            //THIS WAS A CUTSCENE BUT CURRENTLY NOT IN USE.
             SDL_DestroyTexture(Textures::spriteTexture);
            // Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteFlat);
             SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
     
-        //Display Objects and textures for the current scene background.
+        //FOREGROUND OBJECTS (SPRITE BEHIND THEM)
+        //This will hide the sprite because it comes after the render of the sprite. For example rocks in the foreground where the sprite passes behind them.
         if (SceneBackground == "1") {
-            SDL_RenderCopy(renderer, Textures::sceneTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
             SDL_RenderCopy(renderer, Textures::rocks, NULL, &background2);
         }
+       
 
-        if (SceneBackground == "1b") {
-             
-        }
-        //This will hide the sprite because it comes after the render of the sprite.
         if (SceneBackground == "1c") {
            
             SDL_RenderCopy(renderer, Textures::computerScene1, NULL, &background);
         }
-        //This will hide the sprite because it comes after the render of the sprite.
+  
         if (SceneBackground == "1d") {
           
             SDL_RenderCopy(renderer, Textures::computerScene2, NULL, &background);
@@ -550,11 +548,11 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::rocks2, NULL, &background3);
         }
 
-        //This will hide the sprite because it comes after the render of the sprite. For example rocks in the foreground where the sprite passes behind them.
+        //Cut Scene (Hide sprite)
         if (SceneBackground == "1fa") {
             SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);                   
         }
-
+        //Cardboard Box (In front of sprite)
         if (SceneBackground == "1da" || SceneBackground== "1db") {        
             SDL_RenderCopy(renderer, Textures::objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);
           
@@ -584,15 +582,11 @@ int Scene1::scene1() {
     SDL_Quit();
 }
 
-void Scene1::renderSprite() {
-    
-    SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
 
-}
 
-//Does the action animations.
+//This will help when transitioning to a new scene. 
 void Scene1::DoAction() {
-    _sleep(300);
+    _sleep(100);
     action = 0;
    // sceneHalt = 0;
 }
