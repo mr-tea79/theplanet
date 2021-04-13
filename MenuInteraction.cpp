@@ -212,11 +212,24 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     if (useStatement == "Use Pipe") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
+        useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Pipe with";
         
     }
 
+    if (Scene1::useStatement == "Use Pipe with Oxygenator 5000" && gd > 720 ) {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteAction2);
+        useMessage = "TOAD 1000: Suit has been pressurized!";     
+        inv.useItem("Pipe");
+        doAction();
+        Inventory::inv6Used = 1;
+        Scene1::actionStatement = "";
+        Scene1::useStatement = ""; //Very Important or you will get a memory leak.
+
+    }
+   
     if (useStatement == "Use Self Inflating Tent") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
@@ -235,8 +248,8 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         //Change scene.
         Scene1::SceneBackground = "1fa";
     }
-    else {
-    }
+   
+   
 
     return useMessage;
 

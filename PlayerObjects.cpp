@@ -152,7 +152,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482) {
-        message = "Oxygenator 5000";
+        message = Scene1::actionStatement + " Oxygenator 5000";
     }
 
     if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {

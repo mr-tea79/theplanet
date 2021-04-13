@@ -71,15 +71,15 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1";
+    SceneBackground = "1da";
     
-   // SPRITE_SIZE = 170;
+    SPRITE_SIZE = 170;
    // xPosition = 10;
    // yPosition = 350;
 
     //THIS IS THE DEFAULT SCENE
     //Normal Size (Uncomment)
-    SPRITE_SIZE = 120;
+   // SPRITE_SIZE = 120;
 
     
     //Static variables that are updated while the program is running.
@@ -158,8 +158,8 @@ int Scene1::scene1() {
     Textures tex;
     tex.Scene1Textures();
     tex.MovementTextures();
-   // tex.Scene2Textures();
-  //  tex.Scene3Textures();
+    tex.Scene2Textures();
+    tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -369,6 +369,7 @@ int Scene1::scene1() {
             if (sceneHalt == 0) {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+         
                 _sleep(1);
 
                 if (wy < gdSprite.y || wy > gdSprite.y) {
