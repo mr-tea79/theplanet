@@ -116,7 +116,7 @@ void Textures::Scene1Textures() {
     //Load in all Scene textures here. Only do this once as it uses RAM to do this.
     menuSurface = IMG_Load("menu.png");
     
-    imageSurface = IMG_Load("scene1.png");
+    imageSurface = IMG_Load("Scenes/scene1.png");
     imageSurface2 = IMG_Load("Scenes/rocks.png");
     imageSurface3 = IMG_Load("Scenes/ComputerScreen.png");
     imageSurface4 = IMG_Load("Scenes/scene1b1.png");
