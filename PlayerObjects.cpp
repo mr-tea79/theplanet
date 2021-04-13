@@ -362,7 +362,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
     /* Inside Tent */
     if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     
-        if (Inventory::inv6Used != 1) {
+        if (Inventory::inv5Used != 1) {
             message = "My suit hasn't got enough oxygen";
         }
         else {

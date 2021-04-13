@@ -220,11 +220,11 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
 
     if (Scene1::useStatement == "Use Pipe with Oxygenator 5000" && gd > 720 ) {
         SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteAction2);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
         useMessage = "TOAD 1000: Suit has been pressurized!";     
         inv.useItem("Pipe");
         doAction();
-        Inventory::inv6Used = 1;
+        Inventory::inv5Used = 1;
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
 
