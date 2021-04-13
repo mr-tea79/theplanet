@@ -42,24 +42,28 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     Inventory inv;
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
+        useStatement = "";  //Important
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
         lookStatement = "";
     }
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
+        useStatement = "";
         actionStatement = Scene1::actionStatement = "Pick up";
         actionMessage = "Pick up what?";
         pickUpStatement = "";
     }
 
     if (x > 190 && x < 227 && y > 676 && y < 690) {
+        useStatement = "";
         actionStatement = Scene1::actionStatement = "Use";
         actionMessage = "Use what?";
         useStatement = "";
     }
 
     if (x > 178 && x < 232 && y > 723 && y < 744) {
+        useStatement = "";
         actionStatement = Scene1::actionStatement = "Open";
         actionMessage = "Open what?";
         openStatement = "";
@@ -203,6 +207,14 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         useMessage = "It's wrecked!";
         useStatement = "";
         doAction();
+    }
+
+    if (useStatement == "Use Pipe") {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteDown1);
+        Scene1::useStatement = "with";
+        Scene1::actionStatement = "Use Pipe with";
+        
     }
 
     if (useStatement == "Use Self Inflating Tent") {
@@ -412,7 +424,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 Scene1::objectToDestroy.append(object);
             }
 
-            if (menuMessages == "Battery Lantern") {
+            if (menuMessages == "Battery Lantern" && pickUpStatement == "Pick up Battery Lantern") {
               
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);

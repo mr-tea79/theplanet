@@ -104,7 +104,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Pipe") != 0)
-            message = "Pipe";
+            message = Scene1::actionStatement + " Pipe";
     }
 
  
@@ -112,6 +112,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && inv.checkItem("Battery Lantern") != 1) {
         message = Scene1::actionStatement + " Battery Lantern";
+    }
+
+    if (Scene1::SceneBackground == "1da" && x >= 554 && x < 591 && y >= 515 && y <= 572 && inv.checkItem("Pipe") != 1 && boxOpened ==1) {
+        message = Scene1::actionStatement + " Plastic Pipe";
     }
 
     if (Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92) {

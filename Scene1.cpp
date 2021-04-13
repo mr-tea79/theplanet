@@ -73,13 +73,13 @@ int Scene1::scene1() {
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "1";
     
-   // SPRITE_SIZE = 180;
+   // SPRITE_SIZE = 170;
    // xPosition = 10;
    // yPosition = 350;
 
     //THIS IS THE DEFAULT SCENE
     //Normal Size (Uncomment)
-     SPRITE_SIZE = 120;
+    SPRITE_SIZE = 120;
 
     
     //Static variables that are updated while the program is running.
@@ -109,8 +109,7 @@ int Scene1::scene1() {
     int gy;
     int x =0, y = 0;
     int wx=0,wy=0;
-      
-
+     
     //Text Dialog.
     dialog =         NULL;
     fsurface =       NULL;
@@ -126,8 +125,7 @@ int Scene1::scene1() {
 
     //Interaction Menu Rect
     menu = { 0, 600, 1024, 568 };
-    //windowRect = { 921 ,460,78,100 };
-
+  
     SDL_Surface* SDL_DisplayFormat(SDL_Surface * surface);
 
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -161,7 +159,7 @@ int Scene1::scene1() {
     tex.Scene1Textures();
     tex.MovementTextures();
    // tex.Scene2Textures();
-    //tex.Scene3Textures();
+  //  tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -272,9 +270,10 @@ int Scene1::scene1() {
             useStatement = interactionMessage;
 
             //This fixes the bug where if you decide to not to commit to picking something up.
-            if (interactionMessage == "")
+            if (interactionMessage == "") {
                 actionStatement = "";
- 
+               
+            }
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                                 
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
@@ -332,7 +331,6 @@ int Scene1::scene1() {
         }
         if (actionMessage != "Look at what?") {
             lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
-            
         }
         if (actionMessage != "Use what?") {
             useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
@@ -401,7 +399,7 @@ int Scene1::scene1() {
             }
                
     }
-        
+
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
         //Render the window
         SDL_RenderClear(renderer);
@@ -560,6 +558,9 @@ int Scene1::scene1() {
        
         interactionMessage = ""; // Clear the interaction message on every loop.
         gameMessage = "";
+        useMessage = "";
+      
+
              
         SDL_RenderPresent(renderer);
       
