@@ -569,7 +569,7 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     if (scene == 1 && objectID == 3) {
         //Stars
 
-        return  std::make_tuple(3, 15, NULL, 283, 347);
+        return  std::make_tuple(0, 15, NULL, 283, 347);
     }
 
     if (scene == 1 && objectID == 4) {
@@ -624,9 +624,9 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
     }
     if (scene == 1 && objectID == 3) {
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
-        return  std::make_tuple(9, 400, 30, 15, 40);
+        return  std::make_tuple(3, 400, 30, 8, 40);
     }
-    if (scene == 1 && objectID == 4) {
+    if (scene == 1 && objectID == 2) {
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 300, 430, 60, 60);
     }
