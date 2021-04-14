@@ -356,7 +356,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::gdSprite.y = Scene1::yPosition;    
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
-        Scene1::mouseClick = false;
         PlayerInteraction::playerMessage = 6;
       
     }

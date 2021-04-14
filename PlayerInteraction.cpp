@@ -144,6 +144,7 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     if (playerMessage == 1) {
         interactionMessage = PlayerMessage(1, 1);   
         playerMessage = 2;
+       
     }
     else if (playerMessage == 2) {
         interactionMessage = PlayerMessage(1, 2);     
@@ -152,6 +153,7 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     else if (playerMessage == 3) {
         interactionMessage = PlayerMessage(1, 3);                 
         playerMessage = 6;     
+   
     }
     else if (playerMessage == 4) {
         interactionMessage = PlayerMessage(1, 4);                

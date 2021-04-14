@@ -71,7 +71,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1";
+    SceneBackground = "1fb";
     
   //  SPRITE_SIZE = 170;
    // xPosition = 10;
@@ -158,8 +158,8 @@ int Scene1::scene1() {
     Textures tex;
     tex.Scene1Textures();
     tex.MovementTextures();
-   // tex.Scene2Textures();
-  //  tex.Scene3Textures();
+    tex.Scene2Textures();
+    tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -304,19 +304,15 @@ int Scene1::scene1() {
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
 
-            //These messages are displayed to help tell the story.
-            gameMessage = pi.DisplayPlayerMessages();
-
-            if (gameMessage != "") {             
-                interactionMessage = gameMessage;
-                PlayerInteraction::playerMessage = 100;                  
-            }             
+                    
             if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
             }
-            if (interactionMessage != "") {                         
-               pi.InteractionControllerObject(interactionMessage, gameObject);           
-           }
+
+            if (interactionMessage != "") {
+                pi.InteractionControllerObject(interactionMessage, gameObject);
+            }
+          
           //else         
            //  SDL_DestroyTexture(ftexture); 
           
@@ -324,6 +320,18 @@ int Scene1::scene1() {
    
         gd = gdSprite.x;
         gy = gdSprite.y;
+
+        //These messages are displayed to help tell the story.
+        gameMessage = pi.DisplayPlayerMessages();
+
+        if (gameMessage != "") {
+            interactionMessage = gameMessage;
+            PlayerInteraction::playerMessage = 100;
+        }
+
+        if (interactionMessage != "" && sceneHalt == 1) {
+            pi.InteractionControllerObject(interactionMessage, gameObject);
+        }
 
         if (actionMessage != "Pick up what?") {
             //Get object pickup message.
@@ -390,6 +398,7 @@ int Scene1::scene1() {
                     y = gdSprite.y;
                     wx = gdSprite.x;
                     wy = gdSprite.y;
+                  
                     _sleep(300);
                     sceneHalt = 0;
             }
