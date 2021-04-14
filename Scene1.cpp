@@ -94,9 +94,7 @@ int Scene1::scene1() {
     std::string lookMessage;
     std::string actionMessage;
 
-    //Used to detecting mouse clicks. The program runs really fast!
-    //static int mouseHold = 0;
-    
+  
     //Allow usage of .png images.
     int imgFlags = IMG_INIT_PNG;
 
@@ -136,9 +134,6 @@ int Scene1::scene1() {
     fcolor =         { 255, 255, 255 }; //Font colour.
     bcolor =         { 0,0,0 }; //Font background colour.
   
-   
-   // dialogTexture =  SDL_CreateTextureFromSurface(renderer, dialog);
-
     //Assign the images to the textures.
     ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
     dialogmTexture = SDL_CreateTextureFromSurface(renderer, fsurface);
@@ -373,14 +368,14 @@ int Scene1::scene1() {
 
                 if (wy < gdSprite.y || wy > gdSprite.y) {
                    
-                    //The following 2 statements will prevent the player from traversing diaginally which causes animation issues. Took ages to get this right!
+                    //The following 2 statements will prevent the player from traversing diaginally which just looks..well..wrong. Took ages to get this right!
                     if (y < gdSprite.y && wx < gdSprite.x + 75 && wx >gdSprite.x)
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
 
                     if (y > gdSprite.y && wx < gdSprite.x + 75 && wx > gdSprite.x)
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
 
-                    _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates.
+                    _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
                 }
             }
             else {
