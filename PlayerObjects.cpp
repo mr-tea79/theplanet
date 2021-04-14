@@ -380,15 +380,16 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Textures tex;
         Scene1::SceneBackground = "1fb";
         Scene1::SPRITE_SIZE = 120;
-        Scene1::yPosition = 376;
-        Scene1::xPosition = 106;
-        Scene1::gdSprite.x = Scene1::xPosition;
-        Scene1::gdSprite.y = Scene1::yPosition;
+    
         if (Scene1::tLoader == 1) {
             tex.Scene3Textures();
             Scene1::tLoader = 2;
         }
-
+        Scene1::yPosition = 376;
+        Scene1::xPosition = 106;
+        Scene1::gdSprite.x = Scene1::xPosition;
+        Scene1::gdSprite.y = Scene1::yPosition;
+        Scene1::sceneHalt = 1;
         PlayerInteraction::playerMessage = 7;
        
     }
@@ -482,6 +483,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 10;
         Scene1::gdSprite.x = Scene1::xPosition;
         Scene1::gdSprite.y = Scene1::yPosition;
+        Scene1::sceneHalt = 1;
     }
 
 

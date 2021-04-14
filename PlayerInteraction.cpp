@@ -10,6 +10,8 @@ int PlayerInteraction::playerMessage = 10000;
 
 //Needs some tweaking
 void PlayerInteraction::textDimensions(int messageLength) {
+
+
     if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
         
@@ -52,7 +54,7 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::str
     const char* imu = useMessage.c_str();;
     int useMessageLength = useMessage.length();  
     textDimensions(useMessageLength);
-    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
+    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);  
   //  _sleep(10);
 }
@@ -61,7 +63,7 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
     const char* imu = openMessage.c_str();;
     int openMessageLength = openMessage.length();   
     textDimensions(openMessageLength);
-    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
+    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
    // _sleep(10);
 }
@@ -70,7 +72,7 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
     const char* imu = lookMessage.c_str();;
     int lookMessageLength = lookMessage.length();
     textDimensions(lookMessageLength);
-    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
+    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor,Scene1::bcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
   //  _sleep(10);
 }
@@ -89,7 +91,7 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     const char* imenu = gameObject.c_str();                 
     int interactionMessagelength = interactionMessage.length();
     textDimensions(interactionMessagelength);
-    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);        
+    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, im, Scene1::fcolor, Scene1::bcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);   
    // _sleep(10);
 }
@@ -125,7 +127,7 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     }
 
     else if (msgNumber == 6) {
-        std::string PlayerMessage = "Wow, these self inflatable tents are pretty nice.";
+        std::string PlayerMessage = "These self inflatable tents seem to have improved over the years!";
         return PlayerMessage;
     }
     else if (msgNumber == 7) {

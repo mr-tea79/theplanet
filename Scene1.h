@@ -41,6 +41,7 @@ namespace brightland {
 		static int yPosition;
 
 		static SDL_Color fcolor;
+		static SDL_Color bcolor;
 		SDL_Rect background;
 		SDL_Rect background2;
 		SDL_Rect background3;

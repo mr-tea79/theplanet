@@ -34,6 +34,7 @@ SDL_Rect Scene1::textRect;
 TTF_Font* Scene1::font;
 SDL_Surface* Scene1::fsurface;
 SDL_Color Scene1::fcolor;
+SDL_Color Scene1::bcolor;
 SDL_Texture* Scene1::ftexture = NULL;
 SDL_Rect Scene1::dTexture;
 
@@ -71,7 +72,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1fb";
+    SceneBackground = "1";
     
   //  SPRITE_SIZE = 170;
    // xPosition = 10;
@@ -111,7 +112,7 @@ int Scene1::scene1() {
     int wx=0,wy=0;
      
     //Text Dialog.
-    dialog =         NULL;
+   // dialog =         NULL;
     fsurface =       NULL;
     
     //Image RECTS are used to hold in game images and are set to a given position (x,y,height,width).
@@ -137,8 +138,10 @@ int Scene1::scene1() {
                   //  SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 };
-
-    dialogTexture =  SDL_CreateTextureFromSurface(renderer, dialog);
+    bcolor = { 0,0,0 };
+  
+   
+   // dialogTexture =  SDL_CreateTextureFromSurface(renderer, dialog);
 
     //Assign the images to the textures.
     ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
@@ -148,7 +151,8 @@ int Scene1::scene1() {
     SDL_QueryTexture(ftexture, NULL, NULL, &texW, &texH);
      
     //Free up the RGB surface.
-    SDL_FreeSurface(dialog);
+   // SDL_FreeSurface(dialog);
+
  
     //Place the player sprite in the chosen location.
     gdSprite.x = xPosition;
@@ -158,8 +162,8 @@ int Scene1::scene1() {
     Textures tex;
     tex.Scene1Textures();
     tex.MovementTextures();
-    tex.Scene2Textures();
-    tex.Scene3Textures();
+   // tex.Scene2Textures();
+    //tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -191,6 +195,7 @@ int Scene1::scene1() {
         }
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+
         SDL_RenderClear(renderer);
 
         if (SDL_PollEvent(&event))

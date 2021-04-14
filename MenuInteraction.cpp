@@ -46,6 +46,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
         lookStatement = "";
+        
     }
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
@@ -90,6 +91,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         doAction();
         lookStatement = "";
     }
+
+    if (x >= 613 && x <= 640 && y >= 335 && y <= 378 && lookStatement == "Look at Stuffed toy") {
+        lookMessage = "That's George";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
 
     if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
 
