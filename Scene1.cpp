@@ -85,10 +85,8 @@ int Scene1::scene1() {
     static int mInteraction;
 
     //Used to check which objects are currently picked up by the user.
- 
     static std::string gameObject;
-  //  static std::string lastMessage;
-    
+
     //Strings used for message handing. Contain returned values from the game loop.
     std::string interactionMessage;
     std::string useMessage;
@@ -118,6 +116,8 @@ int Scene1::scene1() {
 
     //Background overlay Rects (Rocks in foreground etc)
     background2 = { 0, 200, 1500, 400 };
+    
+    //This is the hill on the rocky path scene.
     background3 = { 0, 310, 1100, 300 };
 
     //Interaction Menu Rect
@@ -162,7 +162,7 @@ int Scene1::scene1() {
     Inventory inv;
     inv.purgeDatabase();
 
-   
+    //Menu Interaction USE, LOOK etc.
     MenuInteraction mob;
    
     //Load player movement class.
@@ -300,8 +300,7 @@ int Scene1::scene1() {
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
-
-                    
+                  
             if (actionMessage != "" || actionStatement != "") {            
                pi.InteractionControllerLook(actionMessage, gameObject);
             }
@@ -309,10 +308,6 @@ int Scene1::scene1() {
             if (interactionMessage != "") {
                 pi.InteractionControllerObject(interactionMessage, gameObject);
             }
-          
-          //else         
-           //  SDL_DestroyTexture(ftexture); 
-          
         }
    
         gd = gdSprite.x;
@@ -331,7 +326,6 @@ int Scene1::scene1() {
         }
 
         if (actionMessage != "Pick up what?") {
-            //Get object pickup message.
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, Textures::spriteBack1a,"");
         }
         if (actionMessage != "Look at what?") {
@@ -568,7 +562,7 @@ int Scene1::scene1() {
         useMessage = "";
       
 
-             
+        //Make something appear!    
         SDL_RenderPresent(renderer);
       
     }
