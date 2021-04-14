@@ -10,7 +10,7 @@ namespace brightland {
 	public:
 	
 		//Texture used for menu dialog.
-		static SDL_Texture* sceneTexture;
+		static SDL_Texture* starsTexture;
 		static SDL_Texture* texture;
 		static SDL_Texture* rocks;
 		static SDL_Texture* rocks2;

@@ -520,6 +520,7 @@ int Scene1::scene1() {
         //FOREGROUND OBJECTS (SPRITE BEHIND THEM)
         //This will hide the sprite because it comes after the render of the sprite. For example rocks in the foreground where the sprite passes behind them.
         if (SceneBackground == "1") {
+            SDL_RenderCopy(renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
             SDL_RenderCopy(renderer, Textures::rocks, NULL, &background2);
         }
        

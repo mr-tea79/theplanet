@@ -19,7 +19,7 @@ SDL_Texture* Textures::scene3b;
 SDL_Texture* Textures::wreakageScene;
 SDL_Texture* Textures::scene1e;
 SDL_Texture* Textures::texture;
-SDL_Texture* Textures::sceneTexture;
+SDL_Texture* Textures::starsTexture;
 SDL_Texture* Textures::computerScene1;
 SDL_Texture* Textures::computerScene2;
 
@@ -157,7 +157,7 @@ void Textures::Scene1Textures() {
     objectTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
     objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, tent);
 
-    sceneTexture = SDL_CreateTextureFromSurface(Scene1::renderer, stars);
+    starsTexture = SDL_CreateTextureFromSurface(Scene1::renderer, stars);
 
     invTexture1 = SDL_CreateTextureFromSurface(Scene1::renderer, pda);
     invTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
