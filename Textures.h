@@ -49,6 +49,8 @@ namespace brightland {
 		static SDL_Texture* menuTexture;
 		static SDL_Texture* spriteTexture;
 
+		static SDL_Surface* spriteAction;
+
 		static SDL_Surface* spriteDown1;
 		//static SDL_Surface* spriteDownp;
 		//static SDL_Surface* spriteBack1a;
@@ -114,7 +116,7 @@ namespace brightland {
 		void Scene2Textures();
 		void Scene3Textures();
 		void MovementTextures();
-
+		void LoadActionTextures();
 
 	};
 

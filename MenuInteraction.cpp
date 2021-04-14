@@ -7,11 +7,6 @@
 
 using namespace brightland;
 
-//Sprite Action Texturess
-SDL_Surface* spriteAction = NULL;
-SDL_Surface* spriteAction2 = NULL;
-SDL_Surface* spriteAction3 = NULL;
-
 
 static std::string useStatement;
 static std::string openStatement;
@@ -22,11 +17,6 @@ static std::string actionStatement;
 
 static int playerMessage;
 
-
-void MenuInteraction::LoadActionTextures() {
-    spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
-    spriteAction2 = IMG_Load("PlayerMovement/ThePlanet/spritePipe.png");
-}
 
 void MenuInteraction::doAction() {
     Scene1::sceneHalt = 1;
@@ -204,7 +194,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         }
 
         SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteAction);
+        SDL_CreateTextureFromSurface(renderer, Textures::spriteAction);
         inv.useItem("Tape");
         Inventory::inv3Used = 1;
         useMessage = "That should plug the leak!";
@@ -250,8 +240,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
     }
 
     if (Scene1::useStatement == "Use Self Inflating Tent with Sandy clearing") {
-        SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteAction3);
+        
         inv.useItem("Tent");
         Inventory::inv4Used = 1;
         Scene1::actionStatement = "";

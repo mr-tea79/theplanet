@@ -57,10 +57,7 @@ int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in tw
 void Scene1::DoAction() {
     _sleep(100);
     action = 0;
-    // sceneHalt = 0;
 }
-
-
 
 int Scene1::scene1() {
 
@@ -90,7 +87,7 @@ int Scene1::scene1() {
     //Used to check which objects are currently picked up by the user.
  
     static std::string gameObject;
-    static std::string lastMessage;
+  //  static std::string lastMessage;
     
     //Strings used for message handing. Contain returned values from the game loop.
     std::string interactionMessage;
@@ -112,7 +109,6 @@ int Scene1::scene1() {
     int wx=0,wy=0;
      
     //Text Dialog.
-   // dialog =         NULL;
     fsurface =       NULL;
     
     //Image RECTS are used to hold in game images and are set to a given position (x,y,height,width).
@@ -135,10 +131,10 @@ int Scene1::scene1() {
     window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
     renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
-                  //  SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
+       //             SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
     font =           TTF_OpenFont("arial.ttf", 25);
-    fcolor =         { 255, 255, 255 };
-    bcolor = { 0,0,0 };
+    fcolor =         { 255, 255, 255 }; //Font colour.
+    bcolor =         { 0,0,0 }; //Font background colour.
   
    
    // dialogTexture =  SDL_CreateTextureFromSurface(renderer, dialog);
@@ -149,17 +145,14 @@ int Scene1::scene1() {
 
     //Something to do with the font texture.
     SDL_QueryTexture(ftexture, NULL, NULL, &texW, &texH);
-     
-    //Free up the RGB surface.
-   // SDL_FreeSurface(dialog);
-
- 
+  
     //Place the player sprite in the chosen location.
     gdSprite.x = xPosition;
     gdSprite.y = yPosition;
 
     //Initialize Textures
     Textures tex;
+    tex.LoadActionTextures();
     tex.Scene1Textures();
     tex.MovementTextures();
    // tex.Scene2Textures();
@@ -169,10 +162,9 @@ int Scene1::scene1() {
     Inventory inv;
     inv.purgeDatabase();
 
-    //Load the action textures.
+   
     MenuInteraction mob;
-    mob.LoadActionTextures();
-
+   
     //Load player movement class.
     PlayerMovement player;
 

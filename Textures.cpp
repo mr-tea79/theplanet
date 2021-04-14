@@ -48,6 +48,9 @@ SDL_Texture* Textures::objectTexturePipe;
 SDL_Texture* Textures::objectTexturePipeAction;
 SDL_Texture* Textures::objectTextureLantern;
 
+//Action Textures
+SDL_Surface* Textures::spriteAction;
+
 //Player Textures
 SDL_Texture* Textures::spriteTexture;
 SDL_Surface* Textures::spriteDown1;
@@ -76,6 +79,11 @@ SDL_Surface* Textures::spriteLeft4a;
 SDL_Surface* Textures::spriteBack1a;
 SDL_Surface* Textures::spriteBack2a;
 SDL_Surface* Textures::spriteBack3a;
+
+void Textures::LoadActionTextures() {
+    spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
+
+}
 
 void Textures::MovementTextures() {
 
