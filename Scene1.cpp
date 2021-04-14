@@ -29,6 +29,7 @@ std::string Scene1::SceneBackground = "1";
 std::string gameMessage; //Used to display messages that tell the story.
 std::string Scene1::objectToDestroy;
 
+//Main Game window and Text dialog window.
 SDL_Window* Scene1::window;
 SDL_Rect Scene1::textRect;
 TTF_Font* Scene1::font;
@@ -43,14 +44,14 @@ int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 
 int Scene1::action; //Used to trigger action texture.
-int Scene1::sceneHalt = 0;
+int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
 bool Scene1::mouseClick = false;
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
-int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice.
+int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at.
 
 
 //This will help when transitioning to a new scene. 
