@@ -270,7 +270,7 @@ int Scene1::scene1() {
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                                 
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-        //    fsurface = TTF_RenderText_Solid(font, "", fcolor);
+        //    fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
            
