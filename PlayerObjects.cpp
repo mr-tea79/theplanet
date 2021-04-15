@@ -40,6 +40,12 @@ SDL_Rect PlayerObjects::srcrect8;
 SDL_Rect PlayerObjects::dstrect8;
 
 
+void PlayerObjects::SetSpritePosition(int x, int y) {
+
+    Scene1::gdSprite.x = x;
+    Scene1::gdSprite.y = y;
+
+}
 
 //HoverObjects will display information about objects of interest when the user hovers over them.
 std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) {
@@ -352,8 +358,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 170;
         Scene1::yPosition = 360;
         Scene1::xPosition = 106;
-        Scene1::gdSprite.x = Scene1::xPosition;
-        Scene1::gdSprite.y = Scene1::yPosition;    
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);  
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
         PlayerInteraction::playerMessage = 6;
@@ -369,8 +374,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::SPRITE_SIZE = 120;
             Scene1::yPosition = 390;
             Scene1::xPosition = 106;
-            Scene1::gdSprite.x = Scene1::xPosition;
-            Scene1::gdSprite.y = Scene1::yPosition;
+            SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         }
        
        
@@ -387,8 +391,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         }
         Scene1::yPosition = 376;
         Scene1::xPosition = 106;
-        Scene1::gdSprite.x = Scene1::xPosition;
-        Scene1::gdSprite.y = Scene1::yPosition;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         PlayerInteraction::playerMessage = 7;
        
@@ -400,8 +403,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 160;
         Scene1::xPosition = 400;
         Scene1::yPosition = 400;
-        Scene1::gdSprite.y = Scene1::yPosition;
-        Scene1::gdSprite.x = Scene1::xPosition;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
         Scene1::mouseClick = false;              
@@ -413,8 +415,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 50;
         Scene1::yPosition = 380;
         Scene1::xPosition = 350;
-        Scene1::gdSprite.x = Scene1::xPosition;
-        Scene1::gdSprite.y = Scene1::yPosition;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
     }
     /* Inside wreakage */
     if (Scene1::SceneBackground == "1b" && Scene1::SceneTransitionStatement == "Exit Wreckage") {
@@ -442,8 +443,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 160;
         Scene1::xPosition = 400;
         Scene1::yPosition = 400;
-        Scene1::gdSprite.y = Scene1::yPosition;
-        Scene1::gdSprite.x = Scene1::xPosition;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;     
     }
     /* Leave computer screen, inside wreakage */
@@ -452,8 +452,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 160;
         Scene1::xPosition = 400;
         Scene1::yPosition = 400;
-        Scene1::gdSprite.y = Scene1::yPosition;
-        Scene1::gdSprite.x = Scene1::xPosition;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
     }
     /* Sandy clearing */
@@ -481,8 +480,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         }
 
         Scene1::xPosition = 10;
-        Scene1::gdSprite.x = Scene1::xPosition;
-        Scene1::gdSprite.y = Scene1::yPosition;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
     }
 
@@ -506,8 +504,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::SPRITE_SIZE = 50;
             Scene1::yPosition = 376;
             Scene1::xPosition = 106;
-            Scene1::gdSprite.x = Scene1::xPosition;
-            Scene1::gdSprite.y = Scene1::yPosition;
+            SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
             Scene1::sceneHalt = 1;
             PlayerInteraction::playerMessage = 5;
         }       

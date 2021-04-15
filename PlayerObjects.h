@@ -37,8 +37,10 @@ namespace brightland {
         std::tuple<int, int, int, int, int> ObjectSettings(int scene, int a, int b, int c, int d);
         std::tuple<int, int, int, int, int> placeObject(int scene, int a, int b, int c, int d);
         std::string ObjectInteraction(int x, int y, int playerCurrentLocationx,int playerCurrentLocationy);
-        std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY);
-        void PlayerObjects::ObjectController();
+        std::string ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY);
+        void ObjectController();
+        void SetSpritePosition(int x, int y);
+       
      
     };
 }
