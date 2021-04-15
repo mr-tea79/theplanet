@@ -173,8 +173,8 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-        //Place player objects in the game.0o
-        pob.PlaceObjects();
+        //Place player objects in the game.
+        pob.ObjectController();
 
         //Show patch on suit
         if (Inventory::inv3Used == 1) {

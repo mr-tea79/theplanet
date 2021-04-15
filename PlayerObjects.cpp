@@ -551,57 +551,47 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
 }
 
 
-/*Here is where you place game objects. You specify coordinates and dimensions of the object */
-std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
+/*Here is where you set the size of the object and you set the speed of the sprite scroller (to achieve animation effect)
+
+*/
+std::tuple<int, int, int, int, int> PlayerObjects::ObjectSettings(int scene, int objectID, int b, int c, int d) {
 
     if (scene == 1 && objectID == 1) {
         //PDA
-        //Put "actual" image size here (sprites,NULL,WIDTH,HEIGHT)
-        return  std::make_tuple(3, 15, NULL, 50, 50);
+        //Put "actual" image size here (NULL, Speed of Animation, NULL, Width, Height) Make sure that use use the real dimensiosn of the image eg: image.jpg is 200x300
+        return  std::make_tuple(NULL, NULL, NULL, 40, 40);
     }
 
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up
-
-        return  std::make_tuple(3, 15, NULL, 80, 218);
+        return  std::make_tuple(NULL, NULL, NULL, 80, 218);
     }
 
     if (scene == 1 && objectID == 3) {
         //Stars
-
-        return  std::make_tuple(0, 15, NULL, 283, 347);
+        return  std::make_tuple(NULL, 15, NULL, 183, 347); //You can see here that I set the scroll speed to 15 because the star is animated. This will scroll the RECT at a speed of 15 from left to right.
     }
 
     if (scene == 1 && objectID == 4) {
         //Tape
-
-        //The second value is set to 0 to prevent the animation by setting the speed to 0.
-        return  std::make_tuple(1, 0, NULL, 100, 100);
+        return  std::make_tuple(NULL, NULL, NULL, 100, 100);
     }
 
     if (scene == 1 && objectID == 5) {
         //Tent
-
-        //The second value is set to 0 to prevent the animation by setting the speed to 0.
-        return  std::make_tuple(1, 0, NULL, 100, 149);
+        return  std::make_tuple(NULL, NULL, NULL, 100, 149);
     }
     if (scene == 1 && objectID == 6) {
         //Tent
-
-        //The second value is set to 0 to prevent the animation by setting the speed to 0.
-        return  std::make_tuple(1, 0, NULL, 100, 149);
+        return  std::make_tuple(NULL, NULL, NULL, 100, 149);
     }
     if (scene == 1 && objectID == 7) {
         //Tent
-
-        //The second value is set to 0 to prevent the animation by setting the speed to 0.
-        return  std::make_tuple(1, 0, NULL, 186, 138);
+        return  std::make_tuple(NULL, NULL, NULL, 186, 138);
     }
     if (scene == 1 && objectID == 8) {
         //Tent
-
-        //The second value is set to 0 to prevent the animation by setting the speed to 0.
-        return  std::make_tuple(1, 0, NULL, 30, 81);
+        return  std::make_tuple(NULL, NULL, NULL, 30, 81);
     }
 
 
@@ -609,8 +599,13 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     return  std::make_tuple(scene, objectID, b, c, d);
 }
 
-/* Here is where you set animations of the objects and also hadd coordinates and dimensions */
-std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int objectID, int b, int c, int d) {
+/* 
+Here is where you actually specify where you want to place the object and how big you want that object to be.
+The returned values are: (Number of sprites in the iamge, x position of the ojbect, y postion of the object, desired width of the object, desired height of the object)
+If you set number of sprites to 1, that means its not animated. If you increase the number of sprites value it will assume there are multiple sprites in the image.
+
+*/
+std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
 
     if (scene == 1 && objectID == 1) {
         //PDA
@@ -653,40 +648,45 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObjectA(int scene, int o
     return  std::make_tuple(scene, objectID, b, c, d);
 }
 
-void PlayerObjects::PlaceObjects() {
+void PlayerObjects::ObjectController() {
 
     Uint32 ticks = SDL_GetTicks();
     PlayerObjects pob;
     /*Scene Objects
-    Below you can add all the objects you want to appear on the scene and then you copy them to the renderer at the bottom of the game loop.*/
+    Below you can add all the objects you want in your game. srcect is the image window and dstrect is the scroller window that is used to animate objects when needed.
+    This does look quite complicated but once you get the hang of it, it's not too hard to add objects and you can just copy and paste each object but change the ID each time.
+        
+    */
     //Add Scene Objects.
      //Scene Object variables.
     int sceneobject = 1, objectP1, objectP2, objectHeight, objectWidth, numberSprites;
     int objectP3, objectP4, objectP5, objectP6;
 
-    //Scene Object 1 (PDA)
-    //Build object parameters.                                                            //1 means object 1
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 1, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 1, NULL, NULL, NULL);
+    //Scene Object 1 (PDA) /////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                              //1 means object 1
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 1, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 1, NULL, NULL, NULL);
 
-    int object1 = (ticks / 100) % 1;
+    int object1 = (ticks / 100) % numberSprites; //1 means its not going to move (animate).
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect = { object1 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect = { objectP3, objectP4, objectP5, objectP6 };
 
-    //Scene Object 2
-    //Build object parameters.                                                                //2 means object 2
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 2, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 2, NULL, NULL, NULL);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    int object2 = (ticks / 100) % 1;
+    //Scene Object 2
+    //Build object parameters.                                                                //2 means object 2  and so on...
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 2, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 2, NULL, NULL, NULL);
+
+    int object2 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect2 = { object2 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect2 = { objectP3, objectP4, objectP5, objectP6 };
 
     //Scene Object 3 (Flashing lights)
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 3, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 3, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 3, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 3, NULL, NULL, NULL);
 
     //% numberSprites is set to the value specified in PlaceObjectA. Here it is set to 3.
     int object3 = (ticks / 100) % numberSprites;
@@ -695,47 +695,47 @@ void PlayerObjects::PlaceObjects() {
     PlayerObjects::dstrect3 = { objectP3, objectP4, objectP5, objectP6 };
 
     //Scene Object 4.......
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 4, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 4, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 4, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 4, NULL, NULL, NULL);
 
     //Set it to 1 for no animation.
-    int object4 = (ticks / 100) % 1;
+    int object4 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect4 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect4 = { objectP3, objectP4, objectP5, objectP6 };
 
     //Scene Object 5.......
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 5, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 5, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 5, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 5, NULL, NULL, NULL);
 
-    int object5 = (ticks / 100) % 1;
+    int object5 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect5 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect5 = { objectP3, objectP4, objectP5, objectP6 };
 
     //Scene Object 6.......
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 6, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 6, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 6, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 6, NULL, NULL, NULL);
 
-    int object6 = (ticks / 100) % 1;
+    int object6 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect6 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect6 = { objectP3, objectP4, objectP5, objectP6 };
 
     //Scene Object 7 Air Box
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 7, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 7, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 7, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 7, NULL, NULL, NULL);
 
-    int object7 = (ticks / 100) % 1;
+    int object7 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
 
     //Scene Object 8 Lantern
-    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.placeObject(1, 8, NULL, NULL, NULL);
-    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObjectA(1, 8, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 8, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 8, NULL, NULL, NULL);
 
-    int object8 = (ticks / 100) % 1;
+    int object8 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect8 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect8 = { objectP3, objectP4, objectP5, objectP6 };
