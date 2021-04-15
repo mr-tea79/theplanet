@@ -50,7 +50,6 @@ void PlayerObjects::SetSpritePosition(int x, int y) {
 //HoverObjects will display information about objects of interest when the user hovers over them.
 std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) {
 
-  
     std::string gameObject;
 
     //Check database if item has been picked up.

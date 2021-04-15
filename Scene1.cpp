@@ -206,26 +206,20 @@ int Scene1::scene1() {
                     break;
 
                 //Mouse Hover Game Interaction.
-                case SDL_MOUSEMOTION:                           
+                case SDL_MOUSEMOTION:      
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
+            
                         if (playerMessage != true && interactionMessage == "") {
-                            SDL_DestroyTexture(ftexture);
+                            SDL_DestroyTexture(ftexture);                  
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-
-                       
-                            if (interactionMessage != "") {
-                                SDL_DestroyTexture(ftexture);
-                                    pi.InteractionControllerHover(interactionMessage);
-                            }
-
-
-                           
-
                         }
+                        if (interactionMessage != "") {
+                            pi.InteractionControllerHover(interactionMessage);
+                        }                 
 
                         break;                    
                     
@@ -263,7 +257,7 @@ int Scene1::scene1() {
            //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
            //Note needs some tweaking. If you remove this your RAM will rocket!                                 
             SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-        //    fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
+           // fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
            
@@ -290,7 +284,7 @@ int Scene1::scene1() {
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
                   
-            if (actionMessage != "" || actionStatement != "") {            
+            if (actionMessage != "" || actionStatement != "") {   
                pi.InteractionControllerLook(actionMessage, gameObject);
             }
 

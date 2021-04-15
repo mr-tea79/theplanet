@@ -71,9 +71,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     Inventory inv;
     int n = lookStatement.length();
 
-    if (n < 8) //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
+    if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
-
+    }
     if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {
         lookMessage = "That's one of the engines.";
         SDL_DestroyTexture(spriteTexture);

@@ -28,22 +28,15 @@ void PlayerInteraction::textDimensions(int messageLength) {
    
 }
 
+//Small memory leak here. Need to figure this out.
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
-    const char* im = NULL;
-    SDL_DestroyTexture(Scene1::ftexture);
-
+    const char* im = interactionMessage.c_str();
     if (interactionMessage != "" ) {
         int interactionMessagelength = interactionMessage.length();
-        im = interactionMessage.c_str();
         Scene1::textRect = { 500, 610, interactionMessagelength * 10, 20 };   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
         Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
-        Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+        Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);    
     }
-
-    else {
-        SDL_DestroyTexture(Scene1::ftexture);
-    }
-
 }
 
 void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject) {
@@ -70,7 +63,6 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
     textDimensions(lookMessageLength);
     Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor,Scene1::bcolor);
     Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-  //  _sleep(10);
 }
 
 void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
