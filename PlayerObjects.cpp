@@ -551,7 +551,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
 }
 
 
-/*Here is where you set the size of the object and you set the speed of the sprite scroller (to achieve animation effect)
+/*Here is where you set the size of the object and you set the speed of the sprite scroller (to achieve animation effect it scrolls from the LEFT to the RIGHT)
 
 */
 std::tuple<int, int, int, int, int> PlayerObjects::ObjectSettings(int scene, int objectID, int b, int c, int d) {
@@ -601,7 +601,7 @@ std::tuple<int, int, int, int, int> PlayerObjects::ObjectSettings(int scene, int
 
 /* 
 Here is where you actually specify where you want to place the object and how big you want that object to be.
-The returned values are: (Number of sprites in the iamge, x position of the ojbect, y postion of the object, desired width of the object, desired height of the object)
+The returned values are: (Number of sprites in the iamge, x position of the object, y postion of the object, desired width of the object, desired height of the object)
 If you set number of sprites to 1, that means its not animated. If you increase the number of sprites value it will assume there are multiple sprites in the image.
 
 */
