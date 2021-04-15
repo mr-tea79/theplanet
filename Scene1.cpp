@@ -212,30 +212,23 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-                      
-                        if(playerMessage != true && interactionMessage ==""){
+                        if (playerMessage != true && interactionMessage == "") {
+                            SDL_DestroyTexture(ftexture);
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-                    
-                        if (interactionMessage != "") {
-                           pi.InteractionControllerHover(interactionMessage);
+
+                       
+                            if (interactionMessage != "") {
+                                SDL_DestroyTexture(ftexture);
+                                    pi.InteractionControllerHover(interactionMessage);
+                            }
+
+
                            
+
                         }
 
-                        //Find objects that are hoverable.
-                        if (event.motion.x > x + 150 && event.motion.x < x - 150 && event.motion.y > y + 150 && event.motion.y < y - 150) { //Here I am trying to keep the text on the screen                      
-                            SDL_DestroyTexture(ftexture);       
-                                               
-                        }
-                       
-                        else {
-                        
-                        }
-                        }
-                      
-                        break;
-                       
-                     
-
+                        break;                    
+                    
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym)
                     {
