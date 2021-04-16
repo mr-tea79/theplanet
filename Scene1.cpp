@@ -42,7 +42,7 @@ SDL_Rect Scene1::dTexture;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
-int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects.
+int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
 
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
@@ -218,7 +218,7 @@ int Scene1::scene1() {
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            _sleep(40); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to fix.
+                            _sleep(40); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
