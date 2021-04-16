@@ -265,13 +265,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     //GOING RIGHT
     if (Scene1::SceneBackground == "1e") {
 
-        if (gd <= x  && y > 272 && y < 579) {
+        if (gd <= x -20  && y > 272 && y < 579) {
             gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
         }
 
         //GOING LEFT
-        else if (gd >= x  && y > 272 && y < 579) {
+        else if (gd >= x -10 && y > 272 && y < 579) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
@@ -325,7 +325,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         }
 
         //GO LEFT
-        else if (gd >= x  && y > 320 && y < 575) {
+        else if (gd >= x -15  && y > 320 && y < 575) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }

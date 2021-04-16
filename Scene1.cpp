@@ -42,6 +42,7 @@ SDL_Rect Scene1::dTexture;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
+int playerIsMoving = 0;
 
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
@@ -212,13 +213,13 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-            
-                        if (playerMessage != true && interactionMessage == "") {
-                         //   SDL_DestroyTexture(ftexture);                  
+                                      
+                        if (playerMessage != true && interactionMessage == "") {   
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                         }
-                        if (interactionMessage != "") {
-                            pi.InteractionControllerHover(interactionMessage);
+                        if (interactionMessage != "" && playerIsMoving !=1) {
+                            _sleep(40); //Trying to prevent memory leak.
+                            pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
                         break;                    
@@ -243,6 +244,8 @@ int Scene1::scene1() {
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
             mouseClick = true;
+            playerIsMoving = 0;
+            playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
  
             //The following 2 lines will allow you to use an object with another object.
@@ -379,9 +382,12 @@ int Scene1::scene1() {
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
+                playerIsMoving = 1;
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
             }
-               
+            else
+                playerIsMoving = 0;         
+          
     }
 
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
@@ -544,7 +550,6 @@ int Scene1::scene1() {
         interactionMessage = ""; // Clear the interaction message on every loop.
         gameMessage = "";
         useMessage = "";
-      
 
         //Make something appear!    
         SDL_RenderPresent(renderer);
