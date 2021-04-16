@@ -42,7 +42,7 @@ SDL_Rect Scene1::dTexture;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
-int playerIsMoving = 0;
+int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects.
 
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
@@ -218,7 +218,7 @@ int Scene1::scene1() {
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            _sleep(40); //Trying to prevent memory leak.
+                            _sleep(40); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to fix.
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
@@ -382,11 +382,11 @@ int Scene1::scene1() {
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
-                playerIsMoving = 1;
+                playerIsMoving = 1;  //Player is moving.
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
             }
             else
-                playerIsMoving = 0;         
+                playerIsMoving = 0;  //Player is not moving.        
           
     }
 
