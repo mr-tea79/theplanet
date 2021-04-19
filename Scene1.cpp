@@ -52,7 +52,7 @@ bool Scene1::mouseClick = false;
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
-int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at.
+int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 
 
 //This will help when transitioning to a new scene. 
@@ -213,12 +213,13 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-                                      
+
+                     
                         if (playerMessage != true && interactionMessage == "") {   
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            _sleep(40); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
+                            _sleep(50); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
@@ -354,18 +355,21 @@ int Scene1::scene1() {
             if (sceneHalt == 0) {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
-         
+                playerIsMoving = 1;
                 _sleep(1);
 
                 if (wy < gdSprite.y || wy > gdSprite.y) {
                    
-                    //The following 2 statements will prevent the player from traversing diaginally which just looks..well..wrong. Took ages to get this right!
-                    if (y < gdSprite.y && wx < gdSprite.x + 75 && wx >gdSprite.x)
+                    //The following 2 statements will allow the player to move across and then up or down.
+                    if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
-
-                    if (y > gdSprite.y && wx < gdSprite.x + 75 && wx > gdSprite.x)
+                     
+                    }
+                    if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
-
+                      
+                    }
+                
                     _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
                 }
             }
@@ -375,14 +379,14 @@ int Scene1::scene1() {
                     y = gdSprite.y;
                     wx = gdSprite.x;
                     wy = gdSprite.y;
-                  
+
                     _sleep(300);
                     sceneHalt = 0;
             }
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
-                playerIsMoving = 1;  //Player is moving.
+              //  playerIsMoving = 0;  //Player is moving.
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
             }
             else

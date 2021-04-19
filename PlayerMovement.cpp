@@ -306,7 +306,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         }
 
         //GO LEFT
-        else if (gd >= x +40 && y > 300 && y < 575) {
+        else if (gd >= x -18 && y > 300 && y < 575) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
@@ -319,13 +319,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     if (Scene1::SceneBackground == "1") {
         
         //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x - 60 && y > 320 && y < 575) {     
+        if (gd <= x -60  && y > 320 && y < 575) {     
             gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
         }
 
         //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x -15  && y > 320 && y < 575) {
+        else if (gd >= x -15 && y > 320 && y < 575) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
@@ -504,7 +504,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         }
 
         //GOING UP
-        if (gy >= y && y < 575 && y >258) {
+        if (gy >= y  && y < 575 && y >258) {
             gy = doYWalkUp(gy, spriteTexture);
             position++;
         }
