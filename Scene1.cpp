@@ -215,10 +215,6 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
 
                   
-                   //     if (playerMessage == true && event.motion.y > 575) {
-                     //       interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-                       // }
-                     
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") { 
                             //Prevents sleep from kicking in when walking to a target.
@@ -230,9 +226,7 @@ int Scene1::scene1() {
                                 SDL_DestroyTexture(Textures::spriteTexture);
                                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
                             }
-                      
-                           
-                           
+                                   
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                           
                         }
