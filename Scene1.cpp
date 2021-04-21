@@ -215,14 +215,14 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
 
                   
-                        if (playerMessage == true && event.motion.y > 575) {
-                            interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
-                        }
+                   //     if (playerMessage == true && event.motion.y > 575) {
+                     //       interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                       // }
                      
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") { 
                             //Prevents sleep from kicking in when walking to a target.
-                            if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
+                            if (gdSprite.x < gd || gdSprite.x > gd ) {
                                 playerIsMoving = 0; 
                             }
                             else {
@@ -237,7 +237,7 @@ int Scene1::scene1() {
                           
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            _sleep(150); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
+                            _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
