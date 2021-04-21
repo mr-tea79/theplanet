@@ -219,20 +219,25 @@ int Scene1::scene1() {
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                         }
                      
-                        //Prevents sleep from kicking in when walking to a target.
+                        //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") { 
+                            //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
                                 playerIsMoving = 0; 
                             }
+                            else {
+                                SDL_DestroyTexture(ftexture);
+                                SDL_DestroyTexture(Textures::spriteTexture);
+                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
+                            }
                       
-                            SDL_DestroyTexture(ftexture);
-                            SDL_DestroyTexture(Textures::spriteTexture);
-                            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
+                           
+                           
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                           
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
+                            _sleep(150); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
