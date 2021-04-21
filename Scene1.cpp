@@ -231,6 +231,8 @@ int Scene1::scene1() {
                           
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
+                            SDL_DestroyTexture(Textures::spriteTexture);
+                            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
                             _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
