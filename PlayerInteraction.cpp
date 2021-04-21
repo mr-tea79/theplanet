@@ -30,7 +30,7 @@ void PlayerInteraction::textDimensions(int messageLength) {
 
 //Small memory leak here. Need to figure this out.
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
-    SDL_DestroyTexture(Scene1::ftexture);
+   // SDL_DestroyTexture(Scene1::ftexture); //Leave this alone.
     const char* im = interactionMessage.c_str();
     if (interactionMessage != "" ) {
         int interactionMessagelength = interactionMessage.length();
@@ -123,8 +123,24 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
         std::string PlayerMessage = "Well, it's a Wigwam!";
         return PlayerMessage;
     }
+    else if (msgNumber == 8) {
+        std::string PlayerMessage = "I'm leaking Oxygen and need to sort that out first.";
+        return PlayerMessage;
+    }
+    else if (msgNumber == 9) {
+        std::string PlayerMessage = "I need to be able to set up camp if I'm going to venture out into the wilderness.";
+        return PlayerMessage;
+    }
+    else if (msgNumber == 10) {
+        std::string PlayerMessage = "I need to take my computer with me.";
+        return PlayerMessage;
+    }
+
 
 }
+
+
+
 
 
 std::string PlayerInteraction::DisplayPlayerMessages() {
@@ -162,10 +178,22 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
         interactionMessage = PlayerMessage(1, 7);
         playerMessage = 7;
     }
+    else if (playerMessage == 8) {
+        interactionMessage = PlayerMessage(1, 8);
+        playerMessage = 7;
+    }
+    else if (playerMessage == 9) {
+        interactionMessage = PlayerMessage(1, 9);
+        playerMessage = 7;
+    }
+    else if (playerMessage == 10) {
+        interactionMessage = PlayerMessage(1, 10);
+        playerMessage = 7;
+    }
 
     //This is important to allow the last message in the player interaction to be shown.
-    else if (playerMessage == 7) {
-        playerMessage = 8;   
+    else if (playerMessage == 10) {
+        playerMessage = 11;   
     }
 
     else {

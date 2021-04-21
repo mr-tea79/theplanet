@@ -214,12 +214,25 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
 
-                     
-                        if (playerMessage != true && interactionMessage == "") {   
+                  
+                        if (playerMessage == true && event.motion.y > 575) {
                             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                         }
+                     
+                        //Prevents sleep from kicking in when walking to a target.
+                        if (playerMessage != true && interactionMessage == "") { 
+                            if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
+                                playerIsMoving = 0; 
+                            }
+                      
+                            SDL_DestroyTexture(ftexture);
+                            SDL_DestroyTexture(Textures::spriteTexture);
+                            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
+                            interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                          
+                        }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            _sleep(50); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
+                            _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
@@ -258,13 +271,16 @@ int Scene1::scene1() {
                 actionStatement = "";
                
             }
-           //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
-           //Note needs some tweaking. If you remove this your RAM will rocket!                                 
-            SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-           // fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
-            SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
-           
+
+            if(sceneHalt == 0 && playerMessage !=true){
+                //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
+                //Note needs some tweaking. If you remove this your RAM will rocket!                                 
+              //  SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
+                // fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
+                SDL_DestroyTexture(Textures::spriteTexture);
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
+     
+            }
                       
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
@@ -309,6 +325,7 @@ int Scene1::scene1() {
         }
 
         if (interactionMessage != "" && sceneHalt == 1) {
+            playerMessage = true;
             pi.InteractionControllerObject(interactionMessage, gameObject);
         }
 
@@ -363,13 +380,16 @@ int Scene1::scene1() {
                     //The following 2 statements will allow the player to move across and then up or down.
                     if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                        playerIsMoving = 0;
                      
                     }
                     if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                        playerIsMoving = 0;
                       
                     }
-                
+
+                                
                     _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
                 }
             }
@@ -386,7 +406,6 @@ int Scene1::scene1() {
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
-              //  playerIsMoving = 0;  //Player is moving.
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
             }
             else

@@ -490,13 +490,15 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         
         if (Inventory::inv3Used != 1) {
             Scene1::sceneHalt = 1;
-            message = "I'm leaking Oxygen, are you crazy!?";
+            PlayerInteraction::playerMessage = 8;
         }
         else if (inv.checkItem("Tent") != 1) {
-            message = "I need to be able to set up camp if I'm going to venture out into the wilderness.";
+            Scene1::sceneHalt = 1;
+            PlayerInteraction::playerMessage = 9;
         }
         else if (inv.checkItem("PDA") != 1) {
-            message = "I need to take my computer with me.";
+            Scene1::sceneHalt = 1;
+            PlayerInteraction::playerMessage = 10;
         }
         else {          
             Scene1::SceneBackground = "1e";

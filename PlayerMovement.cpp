@@ -306,7 +306,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         }
 
         //GO LEFT
-        else if (gd >= x -18 && y > 300 && y < 575) {
+        else if (gd >= x -15 && y > 300 && y < 575) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
@@ -395,7 +395,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         }
         
         //GOING DOWN
-        else if (gy <= y && y < 575 && y > gd && gy > 250 && gy < 445) {
+        else if (gy <= y -100 && y < 575 && y > gd && gy > 250 && gy < 445) {
             gy = doYWalkDown(gy, spriteTexture);
             position++;
         }

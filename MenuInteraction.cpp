@@ -395,7 +395,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     if (Scene1::actionStatement == "Pick up") {
 
         if (items < 1) {
-            if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy") {
+            if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 651 && gy > 425) {
                 SDL_DestroyTexture(spriteTexture);
                 SDL_CreateTextureFromSurface(renderer, spritePick); //Shows a different player movement when picking up things.
                
