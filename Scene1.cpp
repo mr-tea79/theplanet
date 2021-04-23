@@ -217,10 +217,13 @@ int Scene1::scene1() {
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") { 
                             //Prevents sleep from kicking in when walking to a target.
-                            if (gdSprite.x < gd || gdSprite.x > gd && gdSprite.y < gy || gdSprite.y > gy) {
+                            if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {
+                                ftexture = SDL_CreateTextureFromSurface(renderer, fsurface); //Potentially fixes sprite appearing in text.
+                                SDL_DestroyTexture(ftexture);
                                 playerIsMoving = 0; 
                             }
-                            else {
+                           
+                            else {                         
                                 ftexture = SDL_CreateTextureFromSurface(renderer,fsurface); //Potentially fixes sprite appearing in text.
                                 SDL_DestroyTexture(ftexture);
                                 SDL_DestroyTexture(Textures::spriteTexture);
@@ -231,9 +234,10 @@ int Scene1::scene1() {
                           
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-             
-                            _sleep(80); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
-                            pi.InteractionControllerHover(interactionMessage);                             
+
+                            _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
+                            pi.InteractionControllerHover(interactionMessage);                        
+                          
                         }                 
 
                         break;                    
@@ -273,15 +277,8 @@ int Scene1::scene1() {
             }
 
             if(sceneHalt == 0 && playerMessage !=true ){
-                //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
-                //Note needs some tweaking. If you remove this your RAM will rocket!                                 
-              //  SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-             //   fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
-             
                 SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
-         
-     
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);   
             }
                       
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
@@ -422,38 +419,47 @@ int Scene1::scene1() {
         //Which scene to be displayed.
         if(SceneBackground == "1"){
             SDL_RenderCopy(renderer, Textures::texture, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
        
         if (SceneBackground == "1b") { 
             SDL_RenderCopy(renderer, Textures::wreakageScene, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
                    
         }
 
         if (SceneBackground == "1e") {          
             SDL_RenderCopy(renderer, Textures::scene1e, NULL, &background); 
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
 
         if (SceneBackground == "1f" ) {
             SDL_RenderCopy(renderer, Textures::scene1f, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
 
         if (SceneBackground == "1fb") {
             SDL_RenderCopy(renderer, Textures::scene1fb, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
 
         if (SceneBackground == "1da") {
             SDL_RenderCopy(renderer, Textures::scene1d, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
 
         if (SceneBackground == "1db") {
             SDL_RenderCopy(renderer, Textures::scene1d2, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
 
         if (SceneBackground == "3a") {
             SDL_RenderCopy(renderer, Textures::scene3a, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
         if (SceneBackground == "3b") {
             SDL_RenderCopy(renderer, Textures::scene3b, NULL, &background);
+            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
 
         //This needs to go here, don't move it!

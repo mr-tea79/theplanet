@@ -41,9 +41,11 @@ SDL_Rect PlayerObjects::dstrect8;
 
 
 void PlayerObjects::SetSpritePosition(int x, int y) {
-
+    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface); //Potentially fixes sprite appearing in text.
+    SDL_DestroyTexture(Scene1::ftexture);
     Scene1::gdSprite.x = x;
     Scene1::gdSprite.y = y;
+    SDL_WarpMouseInWindow(Scene1::window, 400, 400);
 
 }
 
