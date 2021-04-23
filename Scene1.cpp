@@ -214,14 +214,14 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
 
-                  
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") { 
                             //Prevents sleep from kicking in when walking to a target.
-                            if (gdSprite.x < gd || gdSprite.x > gd ) {
+                            if (gdSprite.x < gd || gdSprite.x > gd && gdSprite.y < gy || gdSprite.y > gy) {
                                 playerIsMoving = 0; 
                             }
                             else {
+                                ftexture = SDL_CreateTextureFromSurface(renderer,fsurface); //Potentially fixes sprite appearing in text.
                                 SDL_DestroyTexture(ftexture);
                                 SDL_DestroyTexture(Textures::spriteTexture);
                                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
@@ -231,9 +231,8 @@ int Scene1::scene1() {
                           
                         }
                         if (interactionMessage != "" && playerIsMoving !=1) {
-                            SDL_DestroyTexture(Textures::spriteTexture);
-                            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
-                            _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
+             
+                            _sleep(80); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
                             pi.InteractionControllerHover(interactionMessage);                             
                         }                 
 
@@ -273,13 +272,15 @@ int Scene1::scene1() {
                
             }
 
-            if(sceneHalt == 0 && playerMessage !=true){
+            if(sceneHalt == 0 && playerMessage !=true ){
                 //Free up memory for dialog texture and sprite texture. Prevents memory leak!   TRUST ME!
                 //Note needs some tweaking. If you remove this your RAM will rocket!                                 
               //  SDL_DestroyTexture(ftexture); //VERY VERRRRY IMPORTANT (DON'T REMOVE)
-                // fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
+             //   fsurface = TTF_RenderText_Solid(font, "", fcolor);  //Dont think I need this.
+             
                 SDL_DestroyTexture(Textures::spriteTexture);
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
+         
      
             }
                       
@@ -577,7 +578,7 @@ int Scene1::scene1() {
 
         //Make something appear!    
         SDL_RenderPresent(renderer);
-      
+   
     }
 
     
