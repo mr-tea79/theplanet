@@ -138,7 +138,7 @@ int Scene1::scene1() {
   
     //Assign the images to the textures.
     ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-    dialogmTexture = SDL_CreateTextureFromSurface(renderer, fsurface);
+  //  dialogmTexture = SDL_CreateTextureFromSurface(renderer, fsurface);
 
     //Something to do with the font texture.
     SDL_QueryTexture(ftexture, NULL, NULL, &texW, &texH);
@@ -183,6 +183,8 @@ int Scene1::scene1() {
             Textures::spritePick = Textures::spritePickp;
         }
 
+    
+
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
         SDL_RenderClear(renderer);
@@ -213,31 +215,27 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-
+                    
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
-                        if (playerMessage != true && interactionMessage == "") { 
+                        if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {
-                                ftexture = SDL_CreateTextureFromSurface(renderer, fsurface); //Potentially fixes sprite appearing in text.
                                 SDL_DestroyTexture(ftexture);
-                                playerIsMoving = 0; 
+                                playerIsMoving = 0;                           
                             }
                            
-                            else {                         
-                                ftexture = SDL_CreateTextureFromSurface(renderer,fsurface); //Potentially fixes sprite appearing in text.
+                            else {                               
                                 SDL_DestroyTexture(ftexture);
                                 SDL_DestroyTexture(Textures::spriteTexture);
                                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.
                             }
-                                   
-                            interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                           
+                                interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);   
+                           
                         }
-                        if (interactionMessage != "" && playerIsMoving !=1) {
 
-                            _sleep(70); //Prevents memory leak when repeatedly hovering over objects in quick succession. This was a difficult one to track down. Don't go below 40 or you'll get leaks!
-                            pi.InteractionControllerHover(interactionMessage);                        
-                          
+                        if (interactionMessage != "" && playerIsMoving !=1) {                                           
+                            pi.InteractionControllerHover(interactionMessage);
                         }                 
 
                         break;                    
@@ -265,7 +263,6 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
- 
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;
@@ -573,15 +570,13 @@ int Scene1::scene1() {
             SDL_RenderCopy(renderer, Textures::objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);
           
         }
-        
+    
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
-        SDL_RenderCopy(renderer, dialogmTexture, NULL, &menuTextRect);
-
+     
        
         interactionMessage = ""; // Clear the interaction message on every loop.
         gameMessage = "";
         useMessage = "";
-
         //Make something appear!    
         SDL_RenderPresent(renderer);
    
