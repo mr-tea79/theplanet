@@ -41,10 +41,10 @@ namespace brightland {
 
 		static SDL_Color fcolor;
 		static SDL_Color bcolor;
-		SDL_Rect background;
-		SDL_Rect background2;
-		SDL_Rect background3;
-		SDL_Rect background4;
+		static SDL_Rect background;
+		static SDL_Rect background2;
+		static SDL_Rect background3;
+		static SDL_Rect background4;
 		SDL_Rect pipeAction;
 
 

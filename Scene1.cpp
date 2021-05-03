@@ -15,6 +15,8 @@
 #include "MenuInteraction.h"
 #include "Inventory.h"
 #include "Textures.h"
+#include "SceneRender.h"
+
 
 using namespace std;
 using namespace brightland;
@@ -38,7 +40,10 @@ SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
 SDL_Texture* Scene1::ftexture = NULL;
 SDL_Rect Scene1::dTexture;
-
+SDL_Rect Scene1::background;
+SDL_Rect Scene1::background2;
+SDL_Rect Scene1::background3;
+SDL_Rect Scene1::background4;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
@@ -170,7 +175,11 @@ int Scene1::scene1() {
 
     //Load player message class.
     PlayerInteraction pi;
-  
+
+    //Load Scene Render class
+    SceneRender sr;
+
+
     //Game loop.
     while (!gameover)
     {        
@@ -413,52 +422,9 @@ int Scene1::scene1() {
         //Render the window
         SDL_RenderClear(renderer);
         
-        //Which scene to be displayed.
-        if(SceneBackground == "1"){
-            SDL_RenderCopy(renderer, Textures::texture, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-       
-        if (SceneBackground == "1b") { 
-            SDL_RenderCopy(renderer, Textures::wreakageScene, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-                   
-        }
+        sr.sceneRender();
 
-        if (SceneBackground == "1e") {          
-            SDL_RenderCopy(renderer, Textures::scene1e, NULL, &background); 
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-
-        if (SceneBackground == "1f" ) {
-            SDL_RenderCopy(renderer, Textures::scene1f, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-
-        if (SceneBackground == "1fb") {
-            SDL_RenderCopy(renderer, Textures::scene1fb, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-
-        if (SceneBackground == "1da") {
-            SDL_RenderCopy(renderer, Textures::scene1d, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-
-        if (SceneBackground == "1db") {
-            SDL_RenderCopy(renderer, Textures::scene1d2, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-
-        if (SceneBackground == "3a") {
-            SDL_RenderCopy(renderer, Textures::scene3a, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-        if (SceneBackground == "3b") {
-            SDL_RenderCopy(renderer, Textures::scene3b, NULL, &background);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
-
+    
         //This needs to go here, don't move it!
         SDL_RenderCopy(renderer, Textures::menuTexture, NULL, &menu);   
  
@@ -531,46 +497,10 @@ int Scene1::scene1() {
             //Render main character
             SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
-        else {
-            //THIS WAS A CUTSCENE BUT CURRENTLY NOT IN USE.
-            SDL_DestroyTexture(Textures::spriteTexture);
-           // Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, spriteFlat);
-            SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
-        }
+     
     
-        //FOREGROUND OBJECTS (SPRITE BEHIND THEM)
-        //This will hide the sprite because it comes after the render of the sprite. For example rocks in the foreground where the sprite passes behind them.
-        if (SceneBackground == "1") {
-            SDL_RenderCopy(renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
-            SDL_RenderCopy(renderer, Textures::rocks, NULL, &background2);
-        }
-       
+        sr.sceneRenderOverlay(); //Render objects in front of sprite.
 
-        if (SceneBackground == "1c") {
-           
-            SDL_RenderCopy(renderer, Textures::computerScene1, NULL, &background);
-        }
-  
-        if (SceneBackground == "1d") {
-          
-            SDL_RenderCopy(renderer, Textures::computerScene2, NULL, &background);
-        }
-
-        if (SceneBackground == "1e") {
-           
-            SDL_RenderCopy(renderer, Textures::rocks2, NULL, &background3);
-        }
-
-        //Cut Scene (Hide sprite)
-        if (SceneBackground == "1fa") {
-            SDL_RenderCopy(renderer, Textures::scene1fa, NULL, &background);                   
-        }
-        //Cardboard Box (In front of sprite)
-        if (SceneBackground == "1da" || SceneBackground== "1db") {        
-            SDL_RenderCopy(renderer, Textures::objectTexture6, &PlayerObjects::srcrect6, &PlayerObjects::dstrect6);
-          
-        }
-    
         SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
      
        
