@@ -143,7 +143,8 @@ int Scene1::scene1() {
     bcolor =         { 0,0,0 }; //Font background colour.
   
     //Assign the images to the textures.
-    ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
+   // ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
+  //  SDL_FreeSurface(fsurface);
   //  dialogmTexture = SDL_CreateTextureFromSurface(renderer, fsurface);
 
     //Something to do with the font texture.
