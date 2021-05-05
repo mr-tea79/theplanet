@@ -147,23 +147,27 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
     ///////////////////////// SCENE 3B //////////////////////////////////////
     if (Scene1::SceneBackground == "3b") {
-
-        if (gy <300 && gd <500) {
-            SDL_DestroyTexture(spriteTexture);
-            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
-            gd += 3.5; //Speed of sprite movement.
+       
+        if (gd < 750 && gy < 270) {
+            gd = gd + 1;
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            position++;
+            Scene1::sceneHalt = 1;
         }
+
+
         //GOING RIGHT
-        else if (gd <= x - 60 && y > 120 && y < 575) {
+        else if (gd <= x - 60 && y < 575) {
             gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
         }
         //GOING LEFT
-        else if (gd >= x && y > 120 && y < 575) {
+        else if (gd >= x && y < 575) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
 
             position++;
         }
+
         else {}
 
         return gd;
@@ -174,13 +178,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     //GOING RIGHT
     if (Scene1::SceneBackground == "3a") {
 
-        if (gd <= x - 60 && y > 120 && y < 575) {
+        if (gd <= x - 25 && y > 10 && y < 575) {
             gd = doXWalkRight(gd, spriteTexture, screenWidth);
             position++;
         }
 
         //GOING LEFT
-        else if (gd >= x && y > 120 && y < 575) {
+        else if (gd >= x && y > 10 && y < 575) {
             gd = doXWalkLeft(gd, spriteTexture, screenWidth);
             position++;
         }
@@ -349,11 +353,36 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
        Textures::spriteDown3a = Textures::spriteDown3p;
     }
 
+    ///////////////////////// SCENE 3B ROCK FACE //////////////////////////////////////
+    if (Scene1::SceneBackground == "3b") {
+
+        if (gd < 750 && gy < 370) {        
+            gy = gy + 1;
+            gy = doYWalkDown(gy, spriteTexture);
+            position++;     
+            Scene1::sceneHalt = 1;
+        }
+
+        //GOING UP
+        else if (gy >= y) {
+            gy = doYWalkUp(gy, spriteTexture);
+            position++;
+        }
+
+        //GOING DOWN
+        else if (gy <= y && y < 590 && gy > 0) {
+            gy = doYWalkDown(gy, spriteTexture);
+            position++;
+        }
+
+        return gy;
+    }
+
     ///////////////////////// SCENE 3A //////////////////////////////////////
     if (Scene1::SceneBackground == "3a") {
         
         //GOING UP
-        if (gy >= y && y < 570 && y >0) {
+        if (gy >= y) {
             gy = doYWalkUp(gy, spriteTexture);
             position++;
         }

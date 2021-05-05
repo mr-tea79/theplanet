@@ -128,7 +128,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Enter cave";
     }
 
-    if (Scene1::SceneBackground == "3a" && x >= 150 && x < 209 && y >= 341 && y <= 374) {
+    if (Scene1::SceneBackground == "3a" && x <= 268 && y >= 347) {
         message = "Rock face";
     }
 
@@ -137,7 +137,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
     
     if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174) {
-        message = "Crash site";
+        message = Scene1::actionStatement + " Crash site";
     }
 
 
@@ -242,8 +242,8 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = Scene1::actionStatement + " Ape Tape";
     }
    
-    if (Scene1::SceneBackground == "3a" && x > 682 && x <= 800 && y >= 25 && y <= 71){
-        message = "Crators";
+    if (Scene1::SceneBackground == "3a" && x > 662 && x <= 812 && y <= 71){
+        message = Scene1::actionStatement + " Crators";
     }
 
 
@@ -301,23 +301,19 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     std::string message;
 
-    if (Scene1::SceneBackground == "3a" && x >= 150 && x < 209 && y >= 341 && y <= 374 && playerCurrentLocationX > 160 && playerCurrentLocationX < 199 && playerCurrentLocationY > 360 && playerCurrentLocationY < 383) {
+    if (Scene1::SceneBackground == "3a" && playerCurrentLocationX < 268 && playerCurrentLocationY > 347) {
         Scene1::SceneBackground = "3b";
         Scene1::SPRITE_SIZE = 50;
         Scene1::xPosition = 945;
         Scene1::yPosition = 387;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+      
     }
 
     if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && playerCurrentLocationX > 300 && playerCurrentLocationX < 411 && playerCurrentLocationY <394) {
         message = "Hyper Lithium Battery Lantern";
-    }
-
-    if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174 && playerCurrentLocationX > 400 && playerCurrentLocationX < 529 ) {
-        message = "My crashed ship, no chance of repairing.";
-    }
-
-    if (Scene1::SceneBackground == "3a" && x > 682 && x <= 800 && y >= 25 && y <= 71 && playerCurrentLocationX > 670 && playerCurrentLocationY < 126) {
-        message = "These crators are lined up in a row, very strange.";
     }
 
     if (Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369 && playerCurrentLocationX > 900) {

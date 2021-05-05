@@ -74,6 +74,23 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
+
+    if (gy < 208 && gd > 400 && gd < 529 && lookStatement == "Look at Crash site") {
+        lookMessage = "My crashed ship, no chance of repairing.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (gy < 90 && gd > 670 && lookStatement == "Look at Crators") {
+        lookMessage = "These crators are lined up in a row, very strange.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
     if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {
         lookMessage = "That's one of the engines.";
         SDL_DestroyTexture(spriteTexture);
