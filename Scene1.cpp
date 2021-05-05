@@ -142,11 +142,6 @@ int Scene1::scene1() {
     fcolor =         { 255, 255, 255 }; //Font colour.
     bcolor =         { 0,0,0 }; //Font background colour.
   
-    //Assign the images to the textures.
-   // ftexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-  //  SDL_FreeSurface(fsurface);
-  //  dialogmTexture = SDL_CreateTextureFromSurface(renderer, fsurface);
-
     //Something to do with the font texture.
     SDL_QueryTexture(ftexture, NULL, NULL, &texW, &texH);
   
@@ -229,6 +224,12 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
                     
+                        if (event.motion.y > 570) {
+                                                    
+                            playerMessage = false;
+                        }
+
+
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
@@ -288,7 +289,7 @@ int Scene1::scene1() {
 
             if(sceneHalt == 0 && playerMessage !=true ){
                 SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);   
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);              
             }
                       
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
@@ -454,7 +455,7 @@ int Scene1::scene1() {
         useMessage = "";
         //Make something appear!    
         SDL_RenderPresent(renderer);
-   
+  
     }
 
     
