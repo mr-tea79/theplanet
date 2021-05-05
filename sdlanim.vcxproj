@@ -87,6 +87,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ObjectRender.cpp" />
     <ClCompile Include="PlayerInteraction.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ObjectRender.h" />
     <ClInclude Include="PlayerInteraction.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="MenuInteraction.h" />

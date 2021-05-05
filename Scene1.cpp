@@ -16,6 +16,7 @@
 #include "Inventory.h"
 #include "Textures.h"
 #include "SceneRender.h"
+#include "ObjectRender.h"
 
 
 using namespace std;
@@ -179,6 +180,8 @@ int Scene1::scene1() {
     //Load Scene Render class
     SceneRender sr;
 
+    //Load Ojbect Render class
+    ObjectRender obr;
 
     //Game loop.
     while (!gameover)
@@ -422,72 +425,13 @@ int Scene1::scene1() {
         //Render the window
         SDL_RenderClear(renderer);
         
-        sr.sceneRender();
+        sr.sceneRender();  //Render the game scene backgrounds.
 
     
         //This needs to go here, don't move it!
         SDL_RenderCopy(renderer, Textures::menuTexture, NULL, &menu);   
  
-        //Display Scene Objects if not destroyed (picked up).     
-    
-        //PDA Inventory item.
-        if (objectToDestroy.find("1") != std::string::npos) {
-            SDL_RenderCopy(renderer, Textures::invTexture1, NULL, &Inventory::inv1);        
-        }
-    
-        else if(SceneBackground == "1") {SDL_RenderCopy(renderer, Textures::objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect);}        
-     
-        //Flag Inventory Item
-        if (objectToDestroy.find("2") != std::string::npos ) {    
-            SDL_RenderCopy(renderer, Textures::invTexture2, NULL, &Inventory::inv2);
-        }
-        else if (SceneBackground == "1b") { 
-            SDL_RenderCopy(renderer, Textures::objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
-        }
-       
-        //Ape Tape Inventory Item.
-        if (objectToDestroy.find("3") != std::string::npos) {
-            if (Inventory::inv3Used == 0) {             
-                    SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &Inventory::inv3);
-            }
-        }
-        else if (SceneBackground == "1b") {    
-            SDL_RenderCopy(renderer, Textures::objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);
-        }
-        
-        //Tent
-        if (objectToDestroy.find("4") != std::string::npos) {
-            if (Inventory::inv4Used == 0) {
-                //This makes sure the inventory item is removed if the player has used the tent.
-                SDL_RenderCopy(renderer, Textures::invTexture4, NULL, &Inventory::inv4);
-            }
-        }
-        else if (SceneBackground == "1b") {
-            SDL_RenderCopy(renderer, Textures::objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
-        }
-
-        //Pipe      
-        if (objectToDestroy.find("5") != std::string::npos) {
-           if(Inventory::inv5Used == 0){
-            SDL_RenderCopy(renderer, Textures::invTexture3, NULL, &Inventory::inv3);
-           }        
-        }
-
-        //Lantern    
-        if (objectToDestroy.find("6") != std::string::npos) {
-            if (Inventory::inv7Used == 0) {
-                SDL_RenderCopy(renderer, Textures::invTexture6, NULL, &Inventory::inv7);
-            }
-        }
-        else if(SceneBackground == "1da" || SceneBackground == "1db") {
-            SDL_RenderCopy(renderer, Textures::objectTextureLantern, &PlayerObjects::srcrect8, &PlayerObjects::dstrect8);
-        }
-        
-        //Air Pressure Unit
-        if (SceneBackground == "1da" || SceneBackground == "1db") {
-            SDL_RenderCopy(renderer, Textures::objectTextureAirBox, &PlayerObjects::srcrect7, &PlayerObjects::dstrect7);
-         
-        }
+        obr.objectRender(); //Render the game objects (Things that the player can pick up).
 
         //Set character size.
         gdSprite.w = SPRITE_SIZE;
