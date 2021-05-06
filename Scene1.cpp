@@ -224,7 +224,7 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
                     
-                        if (event.motion.y > 589 && event.motion.x < 289) {                                                  
+                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 50 || event.motion.y == gy - 50 || event.motion.x == gd + 50 || event.motion.x == gd - 50) {                                                  
                             playerMessage = false;
                         }
 
@@ -397,9 +397,7 @@ int Scene1::scene1() {
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
                         playerIsMoving = 0;
                       
-                    }
-
-                                
+                    }                              
                     _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
                 }
             }
