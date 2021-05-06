@@ -247,7 +247,8 @@ int Scene1::scene1() {
                            
                         }
 
-                        if (interactionMessage != "" && playerIsMoving !=1) {                                           
+                        if (interactionMessage != "" && playerIsMoving !=1) {        
+                            SDL_DestroyTexture(ftexture); //Trying to fix texture pop in on menu text.. 
                             pi.InteractionControllerHover(interactionMessage);
                         }                 
 
