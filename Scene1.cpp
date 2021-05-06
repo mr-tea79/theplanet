@@ -247,8 +247,8 @@ int Scene1::scene1() {
                         }
 
                         if (interactionMessage != "" && playerIsMoving !=1) {   
-                            SDL_DestroyTexture(Textures::spriteTexture);
-                            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+                          //  SDL_DestroyTexture(Textures::spriteTexture);
+                            //Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                             pi.InteractionControllerHover(interactionMessage);
                         }                 
 
