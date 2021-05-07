@@ -77,15 +77,15 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "3a";
+    SceneBackground = "1";
     
-    SPRITE_SIZE = 10;
+   // SPRITE_SIZE = 10;
    // xPosition = 310;
    // yPosition = 350;
 
     //THIS IS THE DEFAULT SCENE
     //Normal Size (Uncomment)
-   // SPRITE_SIZE = 120;
+    SPRITE_SIZE = 120;
 
     
     //Static variables that are updated while the program is running.
@@ -154,8 +154,8 @@ int Scene1::scene1() {
     tex.LoadActionTextures();
     tex.Scene1Textures();
     tex.MovementTextures();
-    tex.Scene2Textures();
-    tex.Scene3Textures();
+    //tex.Scene2Textures();
+   // tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
