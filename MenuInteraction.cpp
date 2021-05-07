@@ -108,7 +108,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
 
-    if (gd >= 622 && gd <= 651 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
+    if (gd >= 622 && gd <= 700 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
 
         lookMessage = "That's my PDA";
         Scene1::actionStatement = "";
