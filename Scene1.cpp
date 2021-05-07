@@ -224,7 +224,7 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
                     
-                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 50 || event.motion.y == gy - 50 || event.motion.x == gd + 50 || event.motion.x == gd - 50) {                                                  
+                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
                         }
 
