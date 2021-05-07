@@ -22,6 +22,7 @@ SDL_Texture* Textures::texture;
 SDL_Texture* Textures::starsTexture;
 SDL_Texture* Textures::computerScene1;
 SDL_Texture* Textures::computerScene2;
+SDL_Texture* Textures::caveScene1;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -211,17 +212,20 @@ void Textures::Scene3Textures() {
     SDL_DestroyTexture(objectTexture5);
     SDL_DestroyTexture(objectTexture4);
 
-    //Load in new Textures.
+    //Load in new Scene Textures.
     imageSurface10 = IMG_Load("Scenes/Scene1fb.png");
     imageSurface11 = IMG_Load("Scenes/Scene1d.png");
     imageSurface12 = IMG_Load("Scenes/Scene1d2.png");
     imageSurface13 = IMG_Load("Scenes/Scene3a.png");
     imageSurface14 = IMG_Load("Scenes/Scene3b.png");
+    imageSurface15 = IMG_Load("Scenes/scene3c.png");
+
     scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);
     scene1d2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface12);
     scene3a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface13);
     scene3b = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface14);
+    caveScene1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface15);
 
  
     boxOpened = IMG_Load("Objects/boxopened.png");

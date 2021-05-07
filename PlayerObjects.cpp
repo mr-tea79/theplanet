@@ -360,6 +360,20 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         PlayerInteraction::playerMessage = 6;
       
     }
+
+    if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >=750 && playerCurrentLocationY <=120) {
+        Scene1::SceneBackground = "3c";
+        Scene1::SPRITE_SIZE = 170;
+        Scene1::yPosition = 360;
+        Scene1::xPosition = 106;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+        PlayerInteraction::playerMessage = 11;
+    }
+
+
+
     /* Inside Tent */
     if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     
         if (Inventory::inv5Used != 1) {

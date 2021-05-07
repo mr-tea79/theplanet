@@ -147,6 +147,10 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
         std::string PlayerMessage = "I need to take my computer with me.";
         return PlayerMessage;
     }
+    else if (msgNumber == 11) {
+        std::string PlayerMessage = "Hmmm.... Well, it's a bit dark in here!";
+        return PlayerMessage;
+    }
 
 
 }
@@ -188,24 +192,28 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     }
     else if (playerMessage == 7) {
         interactionMessage = PlayerMessage(1, 7);
-        playerMessage = 7;
+        playerMessage = 8;
     }
     else if (playerMessage == 8) {
         interactionMessage = PlayerMessage(1, 8);
-        playerMessage = 7;
+        playerMessage = 9;
     }
     else if (playerMessage == 9) {
         interactionMessage = PlayerMessage(1, 9);
-        playerMessage = 7;
+        playerMessage = 10;
     }
     else if (playerMessage == 10) {
         interactionMessage = PlayerMessage(1, 10);
-        playerMessage = 7;
+        playerMessage = 11;
+    }
+    else if (playerMessage == 11) {
+        interactionMessage = PlayerMessage(1, 11);
+        playerMessage = 12;
     }
 
     //This is important to allow the last message in the player interaction to be shown.
-    else if (playerMessage == 10) {
-        playerMessage = 11;   
+    else if (playerMessage == 12) {
+        playerMessage = 13;   
     }
 
     else {
