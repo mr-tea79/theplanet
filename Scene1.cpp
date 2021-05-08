@@ -134,7 +134,7 @@ int Scene1::scene1() {
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
 
-    window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_RESIZABLE);
     windowSurface =  SDL_GetWindowSurface(window);
     renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
        //             SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
@@ -204,6 +204,9 @@ int Scene1::scene1() {
             case SDL_WINDOWEVENT:
                 switch (event.window.event)
                 {
+                case SDL_WINDOWEVENT_RESIZED: {
+					SDL_RenderSetScale(renderer, event.window.data1 / (float)WIDTH, event.window.data2 / (float)HEIGHT);
+                } break;
                 case SDL_WINDOWEVENT_ENTER:
                     break;
 
