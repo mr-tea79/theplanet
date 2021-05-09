@@ -108,6 +108,12 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         if(inv.checkItem("Tape") != 0)
             message = Scene1::actionStatement + " Ape Tape";
     }
+    if (x >= 764 && x <= 815 && y >= 695 && y <= 753) {
+        if (inv.checkItem("Battery Lantern") != 0)
+            message = Scene1::actionStatement + " Battery Lantern";
+    }
+
+
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Pipe") != 0)
             message = Scene1::actionStatement + " Pipe";
@@ -115,6 +121,14 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+
+    if (Scene1::SceneBackground == "3c" && x <= 37 && y >= 376 && y <= 432) {
+        message = "Exit Cave";
+    }
+
+    if (Scene1::SceneBackground == "3c" && x >= 107 && x <= 201 && y >= 400 && y <= 473) {
+        message = Scene1::actionStatement + " Smooth surface";
+    }
 
     if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && inv.checkItem("Battery Lantern") != 1) {
         message = Scene1::actionStatement + " Battery Lantern";
@@ -301,6 +315,17 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     std::string message;
 
+
+    if (Scene1::SceneBackground == "3c" && playerCurrentLocationX <37 && playerCurrentLocationY >346) {
+        Scene1::SceneBackground = "3b";
+        Scene1::SPRITE_SIZE = 50;
+        Scene1::xPosition = 945;
+        Scene1::yPosition = 387;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+    }
+
     if (Scene1::SceneBackground == "3a" && playerCurrentLocationX < 268 && playerCurrentLocationY > 347) {
         Scene1::SceneBackground = "3b";
         Scene1::SPRITE_SIZE = 50;
@@ -365,7 +390,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "3c";
         Scene1::SPRITE_SIZE = 170;
         Scene1::yPosition = 360;
-        Scene1::xPosition = 106;
+        Scene1::xPosition = 206;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";

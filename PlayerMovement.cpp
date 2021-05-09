@@ -145,6 +145,25 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
    
     //Set the coordinates for walking left or right in the scene.
 
+        ///////////////////////// SCENE 3C DARK ROOM //////////////////////////////////////
+    if (Scene1::SceneBackground == "3c") {
+
+        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
+        if (gd <= x - 60 && y > 320 && y < 575) {
+            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            position++;
+        }
+
+        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
+        else if (gd >= x - 15 && y > 320 && y < 575) {
+            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            position++;
+        }
+        else {}
+
+        return gd;
+    }
+
     ///////////////////////// SCENE 3B //////////////////////////////////////
     if (Scene1::SceneBackground == "3b") {
        
@@ -352,6 +371,37 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
        Textures::spriteDown2a = Textures::spriteDown2p;
        Textures::spriteDown3a = Textures::spriteDown3p;
     }
+
+    ///////////////////////// SCENE 3A DARK ROOM //////////////////////////////////////
+    if (Scene1::SceneBackground == "3c") {
+
+        //Make character bigger or smaller depending on distance.
+        if (gy < 390) {
+            Scene1::SPRITE_SIZE = 90;
+        }
+        if (gy < 400) {
+            Scene1::SPRITE_SIZE = 110;
+        }
+
+        if (gy > 440) {
+            Scene1::SPRITE_SIZE = 120;
+        }
+
+        //GOING UP
+        if (gy >= y && y < 575 && y >238) {
+            gy = doYWalkUp(gy, spriteTexture);
+            position++;
+        }
+
+        //GOING DOWN
+        else if (gy <= y - 100 && y < 575) {
+            gy = doYWalkDown(gy, spriteTexture);
+            position++;
+        }
+
+        return gy;
+    }
+
 
     ///////////////////////// SCENE 3B ROCK FACE //////////////////////////////////////
     if (Scene1::SceneBackground == "3b") {

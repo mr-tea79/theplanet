@@ -41,7 +41,10 @@ void SceneRender::sceneRender() {
     if (Scene1::SceneBackground == "3b") {
         SDL_RenderCopy(Scene1::renderer, Textures::scene3b, NULL, &Scene1::background);
     }
-
+    if (Scene1::SceneBackground == "3d") {
+        SDL_RenderCopy(Scene1::renderer, Textures::caveScene2, NULL, &Scene1::background);
+    }
+   
 }
 
 //Renders objects that appear in front of the player like rocks as an example.
@@ -68,10 +71,9 @@ void SceneRender::sceneRenderOverlay() {
         SDL_RenderCopy(Scene1::renderer, Textures::rocks2, NULL, &Scene1::background3);
     }
 
-    if (Scene1::SceneBackground == "3c") {
-
-        SDL_RenderCopy(Scene1::renderer, Textures::caveScene1, NULL, &Scene1::background);
-    }
+   if (Scene1::SceneBackground == "3c") {
+    SDL_RenderCopy(Scene1::renderer, Textures::caveScene1, NULL, &Scene1::background);
+   }
 
     //Cut Scene (Hide sprite)
     if (Scene1::SceneBackground == "1fa") {

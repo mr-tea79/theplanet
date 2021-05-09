@@ -154,8 +154,8 @@ int Scene1::scene1() {
     tex.LoadActionTextures();
     tex.Scene1Textures();
     tex.MovementTextures();
-    //tex.Scene2Textures();
-   // tex.Scene3Textures();
+   // tex.Scene2Textures();
+  //  tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -233,20 +233,21 @@ int Scene1::scene1() {
                         if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {
-                                SDL_DestroyTexture(ftexture);
+                              //  SDL_DestroyTexture(ftexture);
                                 playerIsMoving = 0;                           
                             }
                            
-                            else {                               
+                            else {                 
                                 SDL_DestroyTexture(ftexture);
                                 SDL_DestroyTexture(Textures::spriteTexture);
-                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                     
+                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                            
                             }
-                          
+                           
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
                         }
 
-                        if (interactionMessage != "" && playerIsMoving !=1) {   
+                        if (interactionMessage != "" && playerIsMoving !=1) { 
+                            SDL_DestroyTexture(ftexture); //Testing
                             pi.InteractionControllerHover(interactionMessage);
                         }                 
 

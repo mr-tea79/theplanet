@@ -75,6 +75,14 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+    if (lookStatement == "Look at Smooth surface") {
+        lookMessage = "How can I look at that, it's pitch black!";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
     if (gy < 208 && gd > 400 && gd < 529 && lookStatement == "Look at Crash site") {
         lookMessage = "My crashed ship, no chance of repairing.";
         SDL_DestroyTexture(spriteTexture);
@@ -226,6 +234,14 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         doAction();
     }
 
+    if (useStatement == "Use Smooth surface") {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        useMessage = "I'll just have a quick sit down, ahhhh nice.";
+        useStatement = "";
+        doAction();
+    }
+
     if (useStatement == "Use Pipe") {
         SDL_DestroyTexture(spriteTexture);
         SDL_CreateTextureFromSurface(renderer, spriteDown1);
@@ -234,6 +250,33 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction,
         Scene1::actionStatement = "Use Pipe with";
         
     }
+
+    if (useStatement == "Use Battery Lantern") {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteDown1);
+        useStatement = "";
+        Scene1::useStatement = "with";
+        Scene1::actionStatement = "Use Battery Lantern with";
+    }
+
+    if (Scene1::useStatement == "Use Battery Lantern with Smooth surface") {
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        useMessage = "Let there be light!";
+        inv.useItem("Battery Lantern");
+        doAction();
+        Inventory::inv7Used = 1;
+        Scene1::actionStatement = "";
+        Scene1::useStatement = ""; //Very Important or you will get a memory leak.
+        Scene1::xPosition = 606;
+        Scene1::yPosition = 460;
+        PlayerObjects pob;
+        pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+    
+         //Change scene.
+        Scene1::SceneBackground = "3d";
+    }
+
 
     if (Scene1::useStatement == "Use Pipe with Oxygenator 5000" && gd > 720 ) {
         SDL_DestroyTexture(spriteTexture);
