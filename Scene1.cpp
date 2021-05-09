@@ -223,31 +223,31 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-                    
+
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
+                      
                         }
 
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
-                            if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {
-                              //  SDL_DestroyTexture(ftexture);
+                            if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {                        
                                 playerIsMoving = 0;                           
                             }
                            
                             else {                 
-                                SDL_DestroyTexture(ftexture);
+                               
                                 SDL_DestroyTexture(Textures::spriteTexture);
-                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                            
+                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+                                SDL_DestroyTexture(ftexture);
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
                         }
 
                         if (interactionMessage != "" && playerIsMoving !=1) { 
-                            SDL_DestroyTexture(ftexture); //Testing
                             pi.InteractionControllerHover(interactionMessage);
                         }                 
 
@@ -374,7 +374,7 @@ int Scene1::scene1() {
                 SDL_DestroyTexture(Textures::spriteTexture);
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
-            else {
+            else {           
                 DoAction();
             }
            
@@ -383,9 +383,8 @@ int Scene1::scene1() {
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
                 playerIsMoving = 1;
                 _sleep(1);
-
+             
                 if (wy < gdSprite.y || wy > gdSprite.y) {
-                   
                     //The following 2 statements will allow the player to move across and then up or down.
                     if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
