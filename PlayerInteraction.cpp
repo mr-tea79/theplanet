@@ -34,7 +34,6 @@ void PlayerInteraction::textDimensions(int messageLength) {
 
 //Small memory leak here. Need to figure this out.
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
-   
     const char* im = interactionMessage.c_str();
     if (interactionMessage != "" ) {
         int interactionMessagelength = interactionMessage.length();

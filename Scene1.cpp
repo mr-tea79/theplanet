@@ -226,7 +226,7 @@ int Scene1::scene1() {
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
-                      
+                                         
                         }
 
 
@@ -234,11 +234,13 @@ int Scene1::scene1() {
                         if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {                        
-                                playerIsMoving = 0;                           
+                                playerIsMoving = 0;  
+                                SDL_DestroyTexture(Textures::spriteTexture);
+                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+                                SDL_DestroyTexture(ftexture);
                             }
                            
-                            else {                 
-                               
+                            else {                                              
                                 SDL_DestroyTexture(Textures::spriteTexture);
                                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                 SDL_DestroyTexture(ftexture);
@@ -247,10 +249,10 @@ int Scene1::scene1() {
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
                         }
 
-                        if (interactionMessage != "" && playerIsMoving !=1) { 
+                        if (interactionMessage != "" && playerIsMoving !=1) {                                           
                             pi.InteractionControllerHover(interactionMessage);
                         }                 
-
+                 
                         break;                    
                     
                 case SDL_KEYDOWN:
