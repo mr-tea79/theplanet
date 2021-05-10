@@ -49,6 +49,7 @@ int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
+static int dialogLock = 0;
 
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
@@ -226,28 +227,31 @@ int Scene1::scene1() {
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
-                                         
+                            SDL_DestroyTexture(ftexture);
                         }
-
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
-                            if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {                        
-                                playerIsMoving = 0;  
-
+                            if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
+                                dialogLock = 1;
+                                playerIsMoving = 0;
+                                SDL_DestroyTexture(ftexture); //Important.
                             }
                            
-                            else {                                              
-                                SDL_DestroyTexture(Textures::spriteTexture);
-                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
-                                SDL_DestroyTexture(ftexture);
+                            else {    
+                                if(dialogLock == 0){
+                                    SDL_DestroyTexture(Textures::spriteTexture);
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+                                }
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
                         }
 
-                        if (interactionMessage != "" && playerIsMoving !=1) {                                           
+                        if (interactionMessage != "" && playerIsMoving !=1) {  
+                            SDL_DestroyTexture(ftexture); //Important.
+                            dialogLock = 1;
                             pi.InteractionControllerHover(interactionMessage);
                         }                 
                  
@@ -276,6 +280,7 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
+            dialogLock = 0;
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;
@@ -285,12 +290,12 @@ int Scene1::scene1() {
                 actionStatement = "";
                
             }
-
+            /*
             if(sceneHalt == 0 && playerMessage !=true ){
-                SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);              
+           //     SDL_DestroyTexture(Textures::spriteTexture);
+           //     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);              
             }
-                      
+              */        
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
             gy = gdSprite.y;
