@@ -235,9 +235,7 @@ int Scene1::scene1() {
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {                        
                                 playerIsMoving = 0;  
-                                SDL_DestroyTexture(Textures::spriteTexture);
-                                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
-                                SDL_DestroyTexture(ftexture);
+
                             }
                            
                             else {                                              
