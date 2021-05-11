@@ -368,9 +368,10 @@ int Scene1::scene1() {
         if (wx > gdSprite.x || wx < gdSprite.x) {
           
             if(action !=1 ){
+                SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite); //TESTING
                 //This is critical and prevents sprite from disappearing.
-                SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
+               // SDL_DestroyTexture(Textures::spriteTexture);
+              //  Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
                 DoAction();

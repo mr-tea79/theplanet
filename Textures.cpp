@@ -165,30 +165,32 @@ void Textures::Scene1Textures() {
     objectTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
     objectTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
     objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, tent);
-
     starsTexture = SDL_CreateTextureFromSurface(Scene1::renderer, stars);
-    SDL_FreeSurface(stars);
-
+    
     invTexture1 = SDL_CreateTextureFromSurface(Scene1::renderer, pda);
-    SDL_FreeSurface(pda);
     invTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
-    SDL_FreeSurface(flag);
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
-    SDL_FreeSurface(tape);
     invTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tent);
-    SDL_FreeSurface(tent);
-
+  
     menuTexture = SDL_CreateTextureFromSurface(Scene1::renderer, menuSurface);
-    SDL_FreeSurface(menuSurface);
+
     spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
    
+    //Free up surfaces (Memory Management)
+    SDL_FreeSurface(pda);
+    SDL_FreeSurface(stars);
+    SDL_FreeSurface(flag);
     SDL_FreeSurface(imageSurface);
     SDL_FreeSurface(imageSurface3);
+    SDL_FreeSurface(tape);
+    SDL_FreeSurface(tent);
+    SDL_FreeSurface(menuSurface);
     SDL_FreeSurface(imageSurface5);
     SDL_FreeSurface(imageSurface4);
     SDL_FreeSurface(imageSurface6);
     SDL_FreeSurface(imageSurface2);
     SDL_FreeSurface(imageSurface7);
+ 
 }
 
 void Textures::Scene2Textures() {
@@ -201,6 +203,8 @@ void Textures::Scene2Textures() {
     imageSurface9 =  IMG_Load("Scenes/Scene1fa.png");
     scene1f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface8);
     scene1fa = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface9);
+
+    //Free up surfaces (Memory Management)
     SDL_FreeSurface(imageSurface8);
     SDL_FreeSurface(imageSurface9);
 
@@ -245,22 +249,14 @@ void Textures::Scene3Textures() {
     imageSurface15 = IMG_Load("Scenes/scene3c.png");
     imageSurface16 = IMG_Load("Scenes/scene3d.png");
 
-    scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);
-    
-    scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);
-    
+    scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);  
+    scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);  
     scene1d2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface12);
-  
-    scene3a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface13);
-   
+    scene3a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface13);  
     scene3b = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface14);
-  
     caveScene1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface15);
-  
     caveScene2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface16);
    
-
- 
     boxOpened = IMG_Load("Objects/boxopened.png");
     boxClosed = IMG_Load("Objects/boxclosed.png");
     boxEmpty = IMG_Load("Objects/boxopenede.png");
@@ -279,6 +275,7 @@ void Textures::Scene3Textures() {
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);
     invTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, lantern);
     
+    //Free up surfaces (Memory Management)
     SDL_FreeSurface(imageSurface10);
     SDL_FreeSurface(imageSurface11);
     SDL_FreeSurface(imageSurface12);
@@ -286,6 +283,12 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(imageSurface14);
     SDL_FreeSurface(imageSurface15);
     SDL_FreeSurface(imageSurface16);
-
+    SDL_FreeSurface(lantern);
+    SDL_FreeSurface(pipe);
+    SDL_FreeSurface(pipeBox);
+    SDL_FreeSurface(airBox);
+    SDL_FreeSurface(boxEmpty);
+    SDL_FreeSurface(boxOpened);
+    SDL_FreeSurface(boxClosed);
 
 }
