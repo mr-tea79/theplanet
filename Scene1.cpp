@@ -233,12 +233,13 @@ int Scene1::scene1() {
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
                                 playerIsMoving = 0;                            
-                            }
-                           
+                            }                         
                             else {              
                                     SDL_DestroyTexture(ftexture);
+                                    ftexture = nullptr;
                                     SDL_DestroyTexture(Textures::spriteTexture);
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                              
+                                    Textures::spriteTexture = nullptr;
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                                                                                                                        
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
@@ -368,8 +369,9 @@ int Scene1::scene1() {
         if (wx > gdSprite.x || wx < gdSprite.x) {
           
             if(action !=1 ){
-               //This is important because it prevents the player from disappearing 
+               //This is important because it prevents the player from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
+                Textures::spriteTexture = nullptr;
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
@@ -453,7 +455,6 @@ int Scene1::scene1() {
     }
 
     
-
     //Clean up after yourself!
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
     SDL_DestroyWindow(window);
