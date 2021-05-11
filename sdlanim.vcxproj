@@ -44,8 +44,8 @@
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\Microsoft\Repos\theplanet\Development Kits\SDL2_image-2.0.5;F:\Microsoft\Repos\theplanet\Development Kits\SDL2_image-2.0.5\include;F:\Microsoft\Repos\theplanet\Development Kits\SDL2_ttf\include;F:\Microsoft\Repos\theplanet\Development Kits\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Microsoft\Repos\theplanet\Development Kits\SDL2_ttf\lib\x86;F:\Microsoft\Repos\theplanet\Development Kits\SDL2_image-2.0.5\lib\x86;F:\Microsoft\Repos\theplanet\Development Kits\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\admin\theplanet\Development Kits\SDL2_image-2.0.5;C:\admin\theplanet\Development Kits\SDL2_image-2.0.5\include;C:\admin\theplanet\Development Kits\SDL2_ttf\include;C:\admin\theplanet\Development Kits\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\admin\theplanet\Development Kits\SDL2_ttf\lib\x86;C:\admin\theplanet\Development Kits\SDL2_image-2.0.5\lib\x86;C:\admin\theplanet\Development Kits\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
