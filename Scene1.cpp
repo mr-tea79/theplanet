@@ -226,7 +226,6 @@ int Scene1::scene1() {
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
-                         //   SDL_DestroyTexture(ftexture);
                         }
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
@@ -239,8 +238,7 @@ int Scene1::scene1() {
                             else {              
                                     SDL_DestroyTexture(ftexture);
                                     SDL_DestroyTexture(Textures::spriteTexture);
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                           
-                                 
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                              
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
