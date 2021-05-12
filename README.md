@@ -46,9 +46,9 @@ This project was created in Visual Studio 2019.
 
 Images used in making the scenes were to the best of my knowledge all from google images free to use searches. I drew the sprite myself, don't laugh!
 
-# Current known problems that I have yet to overcome
+# Current known problems
 
-Occasionally the sprite appears in the text area (SOLVED)
+Occasionally the sprite appears in the text area ( I THINK THIS IS NOW SOLVED!)
 
 Keeping text on the screen long enough for the player to see it. (MOSTLY SOLVED)
 
