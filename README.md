@@ -40,6 +40,8 @@ I have always wanted to create a point and click adventure game ever since the d
 
 ![The Planet Screenshot](https://i.imgur.com/9uA8gGT.jpg)
 
+![The Planet Screenshot](https://i.imgur.com/ehBZHPF.jpg)
+
 The most challenging part of programming in C/C++ and SDL2 is from my point of view (Memory management). I have spent many hours trying to figure out why my RAM suddenly shoots up and how to effectively deal with textures properly to prevent memory leaks. In its current form I think that it is fairly stable and I have managed to overcome the memory leaks to the best of my knowledge.
 
 This project was created in Visual Studio 2019.
