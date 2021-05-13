@@ -44,7 +44,7 @@ The most challenging part of programming in C/C++ and SDL2 is from my point of v
 
 This project was created in Visual Studio 2019.
 
-Images used in making the scenes were to the best of my knowledge all from google images free to use searches. I actually drew the sprite myself using a mouse, don't laugh!
+Images used in making the scenes were to the best of my knowledge all from google images free to use searches. I actually drew the sprite myself using a mouse, don't laugh! If there are any artists out there, please feel free to make a better character for my game!
 
 # Current known problems
 
