@@ -32,7 +32,7 @@ See image here for help:
 
 # About thePlanet adventure game engine
 
-I have always wanted to create a point and click adventure game ever since the days when I was a teenager and played Monkey Island. ThePlanet is my attempt at creating an adventure game engine in C/C++ and SDL2. This is a work in progress project with many areas for improvement and enhancement. This has been a learning journey for myself in creating games in C++ and has been a very tough learning experience but very rewarding at the same time. I do hope that this code will help others like me who have always dreamed about creating a point and click adventure game but just don't know where to start (Getting a sprite to appear on the screen). Starting out programming is a daunting task for any beginner and it seems like a mountain to climb. I hope this might help others get started and create their own "Better" versions of this engine. I am looking forward to people contributing improvements!
+I have always wanted to create a point and click adventure game ever since the days when I was a teenager and played Monkey Island. ThePlanet is my attempt at creating an adventure game engine in C/C++ and SDL2. This is a work in progress project with many areas for improvement and enhancement. This has been a learning journey for myself in creating games and has been a very tough learning experience but very rewarding at the same time. I do hope that this code will help others like me who have always dreamed about creating a point and click adventure game but just don't know where to start (Getting a sprite to appear on the screen). Starting out programming is a daunting task for any beginner and it seems like a mountain to climb. I hope this might help others get started and create their own "Better" versions of this engine. I am looking forward to people contributing improvements!
 
 ![The Planet Screenshot](https://i.imgur.com/Ym5MogO.jpg)
 
@@ -54,9 +54,9 @@ Keeping text on the screen long enough for the player to see it. (MOSTLY SOLVED)
 
 Occasional sprite flickering (SOLVED)
 
-# Things to be aware of
+# Things you should know
 
-1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions. If you are a mathematician, you could probably do something with this to scale the game and objects using maths to do so. I am planning to look at this myself further down the line.
+1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However, if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions. If you are a mathematician, you could probably do something with this to scale the game and objects using maths to do so. I am planning to look at this myself further down the line.
 
 
 
