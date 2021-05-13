@@ -12,67 +12,77 @@ using namespace std;
 static int position; //Used to update current position variable.
 
 
-int PlayerMovement::doXWalkRight(int gd, SDL_Texture* spriteTexture, int screenWidth) {
+int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
   
     if (position == 0) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
         gd += 3.5; //Speed of sprite movement.
     }
     if (position == 1) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight2a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight2a);
         gd += 3.5;
     }
     if (position == 2) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight3a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight3a);
         gd += 3.5;
     }
     if (position == 3) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight4a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight4a);
         gd += 3.5;
         position = 0; //This achieves the animation effect.
     }
     //Prevent walking off the screen.
     if (gd == screenWidth - 50) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
         gd += 3.5;
     }
 
     return gd;
 }
 
-int PlayerMovement::doXWalkLeft(int gd, SDL_Texture* spriteTexture, int screenWidth) {
+int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
 
     if (position == 0) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
         gd -= 3.5;
     }
     if (position == 1) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft2a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft2a);
         gd -= 3.5;
     }
     if (position == 2) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft3a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft3a);
         gd -= 3.5;
     }
     if (position == 3) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft4a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft4a);
         gd -= 3.5;
         position = 0; //This achieves the animation effect.
     }
 
     //Prevent walking off the screen.
     if (gd == 0) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
         gd += 3.5;
     }
 
@@ -80,27 +90,31 @@ int PlayerMovement::doXWalkLeft(int gd, SDL_Texture* spriteTexture, int screenWi
 }
 
 
-int PlayerMovement::doYWalkUp(int gy, SDL_Texture* spriteTexture) {
+int PlayerMovement::doYWalkUp(int gy) {
 
     if (position == 0) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         gy -= 2.5; //Speed of sprite movement.
     }
     if (position == 1) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack2a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack2a);
         gy -= 2.5;
     }
     if (position == 2) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack3a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack3a);
         gy -= 2.5;
         // position = 0; //This achieves the animation effect.
     }
     if (position == 3) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack3a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack3a);
         gy += 2.5;
         position = 0; //This achieves the animation effect.
     }
@@ -109,25 +123,29 @@ int PlayerMovement::doYWalkUp(int gy, SDL_Texture* spriteTexture) {
 
 }
 
-int PlayerMovement::doYWalkDown(int gy, SDL_Texture* spriteTexture) {
+int PlayerMovement::doYWalkDown(int gy) {
     if (position == 0) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown3a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown3a);
         gy += 2.5; //Speed of sprite movement.
     }
     if (position == 1) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
         gy += 2.5;
     }
     if (position == 2) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown2a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown2a);
         gy += 2.5;
     }
     if (position == 3) {
-        SDL_DestroyTexture(spriteTexture);
-        spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown2a);
+        SDL_DestroyTexture(Textures::spriteTexture);
+        Textures::spriteTexture = nullptr;
+        Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown2a);
         gy += 2.5;
         position = 0; //This achieves the animation effect.
     }
@@ -138,25 +156,45 @@ int PlayerMovement::doYWalkDown(int gy, SDL_Texture* spriteTexture) {
 
 
 
-int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight, SDL_Texture* spriteTexture, SDL_Texture* ftexture,
-    SDL_Texture* dialogmTexture) {
+int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
 //Player Movement
    
     //Set the coordinates for walking left or right in the scene.
+
+
+
+        ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
+    if (Scene1::SceneBackground == "3d") {
+
+        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
+        if (gd <= x - 60 && y > 320 && y < 575) {
+            gd = doXWalkRight(gd, screenWidth);
+            position++;
+        }
+
+        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
+        else if (gd >= x - 15 && y > 320 && y < 575) {
+            gd = doXWalkLeft(gd,  screenWidth);
+            position++;
+        }
+        else {}
+
+        return gd;
+    }
 
         ///////////////////////// SCENE 3C DARK ROOM //////////////////////////////////////
     if (Scene1::SceneBackground == "3c") {
 
         //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
         if (gd <= x - 60 && y > 320 && y < 575) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
         else if (gd >= x - 15 && y > 320 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
         else {}
@@ -169,7 +207,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
        
         if (gd < 750 && gy < 270) {
             gd = gd + 1;
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
             Scene1::sceneHalt = 1;
         }
@@ -177,12 +215,12 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //GOING RIGHT
         else if (gd <= x - 60 && y < 575) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
         //GOING LEFT
         else if (gd >= x && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
 
             position++;
         }
@@ -198,13 +236,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     if (Scene1::SceneBackground == "3a") {
 
         if (gd <= x - 25 && y > 10 && y < 575) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x && y > 10 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
         else {}
@@ -217,26 +255,28 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //Custom Boundries (Chairs etc) very tricky.
         if (gd == 541 && gy <360) {    
-            SDL_DestroyTexture(spriteTexture);
-            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = nullptr;
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
             gd -= 3.5;
         }
 
         if (gd == 244 && y <= 500) {
-            SDL_DestroyTexture(spriteTexture);
-            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDownp);
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = nullptr;
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDownp);
             gd += 3.5;
         }
      
         //GOING RIGHT
         else if (gd <= x - 60 && y > 120 && y < 575 && gd <739) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
       
@@ -250,13 +290,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //GOING RIGHT
         if (gd <= x - 60 && y > 120 && y < 575) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
         else {}
@@ -269,13 +309,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //GOING RIGHT
         if (gd <= x - 60 && y > 120 && y < 575) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x && y > 120 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
         else {}
@@ -289,13 +329,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     if (Scene1::SceneBackground == "1e") {
 
         if (gd <= x -20  && y > 272 && y < 579) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GOING LEFT
         else if (gd >= x -10 && y > 272 && y < 579) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
 
@@ -309,28 +349,30 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
         //Set boundries where player can walk (To prevent walking too far)
         if (gd < 200) {
-            SDL_DestroyTexture(spriteTexture);
-            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = nullptr;
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
             Scene1::sceneHalt = 1;
             gd += 9.5; //Speed of sprite movement.
         }
        
         if (gd > 560) {
-            SDL_DestroyTexture(spriteTexture);
-            spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = nullptr;
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
             Scene1::sceneHalt = 1;
             gd -= 9.5; //Speed of sprite movement.
         }
 
         //GO RIGHT
         if (gd <= x -40 && y > 320 && y < 575) {
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GO LEFT
         else if (gd >= x -15 && y > 300 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
 
@@ -343,13 +385,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
         
         //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
         if (gd <= x -60  && y > 320 && y < 575) {     
-            gd = doXWalkRight(gd, spriteTexture, screenWidth);
+            gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
         else if (gd >= x -15 && y > 320 && y < 575) {
-            gd = doXWalkLeft(gd, spriteTexture, screenWidth);
+            gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
         else {}
@@ -362,14 +404,44 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 /////////////////////////////// WALKY IS FOR MOVING THE CHARACTER UP AND DOWN  ////////////////////////////////////////////////////////////////
 
 
-int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight, SDL_Texture* spriteTexture, SDL_Texture* ftexture,
-    SDL_Texture* dialogmTexture) {
+int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
     //Check if player has put patch on their suit.
     if (Inventory::inv3Used == 1) {
        Textures::spriteDown1a = Textures::spriteDownp;
        Textures::spriteDown2a = Textures::spriteDown2p;
        Textures::spriteDown3a = Textures::spriteDown3p;
+    }
+
+
+    ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
+    if (Scene1::SceneBackground == "3d") {
+
+        //Make character bigger or smaller depending on distance.
+        if (gy < 390) {
+            Scene1::SPRITE_SIZE = 90;
+        }
+        if (gy < 400) {
+            Scene1::SPRITE_SIZE = 110;
+        }
+
+        if (gy > 440) {
+            Scene1::SPRITE_SIZE = 120;
+        }
+
+        //GOING UP
+        if (gy >= y && y < 575 && y >238) {
+            gy = doYWalkUp(gy);
+            position++;
+        }
+
+        //GOING DOWN
+        else if (gy <= y - 100 && y < 575) {
+            gy = doYWalkDown(gy);
+            position++;
+        }
+
+        return gy;
     }
 
     ///////////////////////// SCENE 3A DARK ROOM //////////////////////////////////////
@@ -389,13 +461,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >238) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -408,20 +480,20 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         if (gd < 750 && gy < 370) {        
             gy = gy + 1;
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;     
             Scene1::sceneHalt = 1;
         }
 
         //GOING UP
         else if (gy >= y) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y && y < 590 && gy > 0) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -433,13 +505,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         
         //GOING UP
         if (gy >= y) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y && y < 590 && gy > 0) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -451,13 +523,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 570 && y >330) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y && y < 580 && gy < 386) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -469,13 +541,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 570 && y >330 ) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
         
         //GOING DOWN
         else if (gy <= y -100 && y < 575 && y > gd && gy > 250 && gy < 445) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -502,13 +574,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >158) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -535,13 +607,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >158) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {    
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -553,13 +625,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y && y < 575 && y >290 && x > 300) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 565 && x > 300 && gy <410 ) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 
@@ -584,13 +656,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
         //GOING UP
         if (gy >= y  && y < 575 && y >238) {
-            gy = doYWalkUp(gy, spriteTexture);
+            gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
         else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy, spriteTexture);
+            gy = doYWalkDown(gy);
             position++;
         }
 

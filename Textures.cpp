@@ -25,9 +25,15 @@ SDL_Texture* Textures::computerScene2;
 SDL_Texture* Textures::caveScene1;
 SDL_Texture* Textures::caveScene2;
 
+SDL_Rect Textures::background;
+SDL_Rect Textures::background2;
+SDL_Rect Textures::background3;
+SDL_Rect Textures::background4;
+
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
 SDL_Texture* Textures::rocks2;
+SDL_Texture* Textures::rocks3;
 
 //Inventory Textures.
 SDL_Texture* Textures::invTexture1;
@@ -82,6 +88,8 @@ SDL_Surface* Textures::spriteBack1a;
 SDL_Surface* Textures::spriteBack2a;
 SDL_Surface* Textures::spriteBack3a;
 
+
+
 void Textures::LoadActionTextures() {
     spriteAction = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
 
@@ -116,6 +124,19 @@ void Textures::MovementTextures() {
 }
 
 void Textures::Scene1Textures() {
+
+    //Background dimensions (x,y,width,height).
+    //Main background Rect
+    background = { 0, 0, 1024, 600 };
+
+    //Background overlay Rects (Rocks in foreground etc)
+    background2 = { 0, 200, 1500, 400 };
+
+    //This is the hill on the rocky path scene.
+    background3 = { 0, 310, 1100, 300 };
+
+    //This is the rock in the cave scene
+    background4 = { -30, 268, 398, 329 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -248,6 +269,7 @@ void Textures::Scene3Textures() {
     imageSurface14 = IMG_Load("Scenes/Scene3b.png");
     imageSurface15 = IMG_Load("Scenes/scene3c.png");
     imageSurface16 = IMG_Load("Scenes/scene3d.png");
+    imageSurface17 = IMG_Load("Scenes/rocks3.png");
 
     scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);  
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);  
@@ -256,6 +278,7 @@ void Textures::Scene3Textures() {
     scene3b = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface14);
     caveScene1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface15);
     caveScene2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface16);
+    rocks3 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface17);
    
     boxOpened = IMG_Load("Objects/boxopened.png");
     boxClosed = IMG_Load("Objects/boxclosed.png");
@@ -283,6 +306,7 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(imageSurface14);
     SDL_FreeSurface(imageSurface15);
     SDL_FreeSurface(imageSurface16);
+    SDL_FreeSurface(imageSurface17);
     SDL_FreeSurface(lantern);
     SDL_FreeSurface(pipe);
     SDL_FreeSurface(pipeBox);
