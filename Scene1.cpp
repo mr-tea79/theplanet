@@ -77,7 +77,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "3d";
+    SceneBackground = "1";
     
    // SPRITE_SIZE = 10;
     //xPosition = 310;
@@ -115,7 +115,7 @@ int Scene1::scene1() {
     //Text Dialog.
     fsurface =       NULL;
     
-    //Image RECTS are used to hold in game images and are set to a given position (x,y,height,width).
+    //Image RECTS are used to hold in game images and are set to a given position (x,y,width,height).
     
     //Main background Rect
     background = { 0, 0, 1024, 600 };
@@ -125,6 +125,9 @@ int Scene1::scene1() {
     
     //This is the hill on the rocky path scene.
     background3 = { 0, 310, 1100, 300 };
+
+    //This is the rock in the cave scene
+    background4 = {-30, 268, 398, 329 };
 
     //Interaction Menu Rect
     menu = { 0, 600, 1024, 568 };
@@ -154,8 +157,8 @@ int Scene1::scene1() {
     tex.LoadActionTextures();
     tex.Scene1Textures();
     tex.MovementTextures();
-    tex.Scene2Textures();
-    tex.Scene3Textures();
+   // tex.Scene2Textures();
+   // tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -380,19 +383,19 @@ int Scene1::scene1() {
            
             if (sceneHalt == 0) {
                 playerMessage = false;
-                gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 playerIsMoving = 1;
                 _sleep(1);
              
                 if (wy < gdSprite.y || wy > gdSprite.y) {
                     //The following 2 statements will allow the player to move across and then up or down.
                     if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
-                        gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                        gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
                         playerIsMoving = 0;
                      
                     }
                     if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
-                        gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT, Textures::spriteTexture, ftexture, dialogmTexture);
+                        gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
                         playerIsMoving = 0;
                       
                     }                              

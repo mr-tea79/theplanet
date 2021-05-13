@@ -126,6 +126,32 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Exit Cave";
     }
 
+    if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
+        message = "Exit Cave";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 431 && x <= 527 && y >= 102 && y <= 125) {
+        message = Scene1::actionStatement + " Flying saucer drawing";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 579 && x <= 619 && y >= 96 && y <= 133) {
+        message = Scene1::actionStatement + " Planet drawing";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 677 && x <= 738 && y >= 78 && y <= 192) {
+        message = Scene1::actionStatement + " Large alien drawing";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 768 && x <= 810 && y >= 154 && y <= 212) {
+        message = Scene1::actionStatement + " Human drawing";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 722 && x <= 942 && y >= 25 && y <= 83) {
+        message = Scene1::actionStatement + " Alien solar system drawing";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 788 && x <= 820 && y >= 258 && y <= 285) {
+        message = Scene1::actionStatement + " Artifact drawing";
+    }
+    if (Scene1::SceneBackground == "3d" && x >= 837 && x <= 910 && y >= 179 && y <= 254) {
+        message = Scene1::actionStatement + " Cave door drawing";
+    }
+
+
     if (Scene1::SceneBackground == "3c" && x >= 107 && x <= 201 && y >= 400 && y <= 473) {
         message = Scene1::actionStatement + " Smooth surface";
     }

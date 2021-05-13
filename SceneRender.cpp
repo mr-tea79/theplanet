@@ -75,6 +75,10 @@ void SceneRender::sceneRenderOverlay() {
     SDL_RenderCopy(Scene1::renderer, Textures::caveScene1, NULL, &Scene1::background);
    }
 
+   if (Scene1::SceneBackground == "3d") {
+       SDL_RenderCopy(Scene1::renderer, Textures::rocks3, NULL, &Scene1::background4);
+   }
+
     //Cut Scene (Hide sprite)
     if (Scene1::SceneBackground == "1fa") {
         SDL_RenderCopy(Scene1::renderer, Textures::scene1fa, NULL, &Scene1::background);
