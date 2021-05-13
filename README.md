@@ -23,7 +23,7 @@ https://sites.google.com/site/sdlinvc2010/installation/sdl_ttf
 #sqlite3    (For inventory)
 https://dcravey.wordpress.com/2011/03/21/using-sqlite-in-a-visual-c-application/
 
-# You will need to point visual studio directories to the location of the libraries above. It's not too hard and you can find this in: Project > Properties 
+# You might need to point visual studio directories to the location of the libraries above. I have made them look at the working directory so it should work straight out of the box but It's not too hard to change them if you need to and you can find this in: Project > Properties 
 
 See image here for help:
 
