@@ -41,10 +41,7 @@ SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
 SDL_Texture* Scene1::ftexture = NULL;
 SDL_Rect Scene1::dTexture;
-SDL_Rect Scene1::background;
-SDL_Rect Scene1::background2;
-SDL_Rect Scene1::background3;
-SDL_Rect Scene1::background4;
+
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
@@ -115,20 +112,6 @@ int Scene1::scene1() {
     //Text Dialog.
     fsurface =       NULL;
     
-    //Image RECTS are used to hold in game images and are set to a given position (x,y,width,height).
-    
-    //Main background Rect
-    background = { 0, 0, 1024, 600 };
-
-    //Background overlay Rects (Rocks in foreground etc)
-    background2 = { 0, 200, 1500, 400 };
-    
-    //This is the hill on the rocky path scene.
-    background3 = { 0, 310, 1100, 300 };
-
-    //This is the rock in the cave scene
-    background4 = {-30, 268, 398, 329 };
-
     //Interaction Menu Rect
     menu = { 0, 600, 1024, 568 };
   

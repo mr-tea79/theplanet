@@ -8,41 +8,41 @@ void SceneRender::sceneRender() {
 
 
     if (Scene1::SceneBackground == "1") {
-        SDL_RenderCopy(Scene1::renderer, Textures::texture, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::texture, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1b") {
-        SDL_RenderCopy(Scene1::renderer, Textures::wreakageScene, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::wreakageScene, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1e") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene1e, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene1e, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1f") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene1f, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene1f, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1fb") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene1fb, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene1fb, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1da") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene1d, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene1d, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1db") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene1d2, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene1d2, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "3a") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene3a, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene3a, NULL, &Textures::background);
     }
     if (Scene1::SceneBackground == "3b") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene3b, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene3b, NULL, &Textures::background);
     }
     if (Scene1::SceneBackground == "3d") {
-        SDL_RenderCopy(Scene1::renderer, Textures::caveScene2, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::caveScene2, NULL, &Textures::background);
     }
    
 }
@@ -52,36 +52,36 @@ void SceneRender::sceneRenderOverlay() {
 
     if (Scene1::SceneBackground == "1") {
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
-        SDL_RenderCopy(Scene1::renderer, Textures::rocks, NULL, &Scene1::background2);
+        SDL_RenderCopy(Scene1::renderer, Textures::rocks, NULL, &Textures::background2);
     }
 
 
     if (Scene1::SceneBackground == "1c") {
 
-        SDL_RenderCopy(Scene1::renderer, Textures::computerScene1, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::computerScene1, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1d") {
 
-        SDL_RenderCopy(Scene1::renderer, Textures::computerScene2, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::computerScene2, NULL, &Textures::background);
     }
 
     if (Scene1::SceneBackground == "1e") {
 
-        SDL_RenderCopy(Scene1::renderer, Textures::rocks2, NULL, &Scene1::background3);
+        SDL_RenderCopy(Scene1::renderer, Textures::rocks2, NULL, &Textures::background3);
     }
 
    if (Scene1::SceneBackground == "3c") {
-    SDL_RenderCopy(Scene1::renderer, Textures::caveScene1, NULL, &Scene1::background);
+    SDL_RenderCopy(Scene1::renderer, Textures::caveScene1, NULL, &Textures::background);
    }
 
    if (Scene1::SceneBackground == "3d") {
-       SDL_RenderCopy(Scene1::renderer, Textures::rocks3, NULL, &Scene1::background4);
+       SDL_RenderCopy(Scene1::renderer, Textures::rocks3, NULL, &Textures::background4);
    }
 
     //Cut Scene (Hide sprite)
     if (Scene1::SceneBackground == "1fa") {
-        SDL_RenderCopy(Scene1::renderer, Textures::scene1fa, NULL, &Scene1::background);
+        SDL_RenderCopy(Scene1::renderer, Textures::scene1fa, NULL, &Textures::background);
     }
     //Cardboard Box (In front of sprite)
     if (Scene1::SceneBackground == "1da" || Scene1::SceneBackground == "1db") {
