@@ -136,7 +136,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = Scene1::actionStatement + " Planet drawing";
     }
     if (Scene1::SceneBackground == "3d" && x >= 677 && x <= 738 && y >= 78 && y <= 192) {
-        message = Scene1::actionStatement + " Large alien drawing";
+        message = Scene1::actionStatement + " Large Alien drawing";
     }
     if (Scene1::SceneBackground == "3d" && x >= 768 && x <= 810 && y >= 154 && y <= 212) {
         message = Scene1::actionStatement + " Human drawing";
