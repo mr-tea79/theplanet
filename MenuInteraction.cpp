@@ -74,6 +74,58 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
+    if (lookStatement == "Look at Cave door drawing") {
+        lookMessage = "Seems like a cave door with the artifact placed in it. Weird.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Artifact drawing") {
+        lookMessage = "That looks like an artifact which has a line pointing to south America.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Alien solar system drawing") {
+        lookMessage = "I think this is the system I am in. Those lines are the planet that I am on.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+    if (lookStatement == "Look at Human drawing") {
+        lookMessage = "What looks like an elderly human kneeling before that large person";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+    if (lookStatement == "Look at Flying saucer drawing") {
+        lookMessage = "That looks like an Alien Craft approaching Planet Earth!";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+    if (lookStatement == "Look at Large Alien drawing") {
+        lookMessage = "That is one big looking person with a very long head.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+    if (lookStatement == "Look at Planet drawing") {
+        lookMessage = "That is Earth, I can see the Americas.";
+        SDL_DestroyTexture(spriteTexture);
+        SDL_CreateTextureFromSurface(renderer, spriteBack);
+        doAction();
+        lookStatement = "";
+    }
+
 
     if (lookStatement == "Look at Smooth surface") {
         lookMessage = "How can I look at that, it's pitch black!";
