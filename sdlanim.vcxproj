@@ -44,8 +44,8 @@
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>c:\Admin\theplanet\Development Kits\SDL2_image-2.0.5;c:\Admin\theplanet\Development Kits\SDL2_image-2.0.5\include;c:\Admin\theplanet\Development Kits\SDL2_ttf\include;c:\Admin\theplanet\Development Kits\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\Admin\theplanet\Development Kits\SDL2_ttf\lib\x86;c:\Admin\theplanet\Development Kits\SDL2_image-2.0.5\lib\x86;c:\Admin\theplanet\Development Kits\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Development Kits\SDL2_image-2.0.5;.\Development Kits\SDL2_image-2.0.5\include;.\Development Kits\SDL2_ttf\include;.\Development Kits\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Development Kits\SDL2_ttf\lib\x86;.\Development Kits\SDL2_image-2.0.5\lib\x86;.\Development Kits\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
