@@ -26,9 +26,6 @@ void PlayerInteraction::textDimensions(int messageLength) {
     else if (Scene1::gdSprite.y < 100) {
         Scene1::textRect = { Scene1::gdSprite.x -300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 };
     }
-
-
-    Scene1::dTexture.x = Scene1::gdSprite.x - 100;  //Set position of text.
    
 }
 
@@ -39,7 +36,7 @@ void PlayerInteraction::InteractionControllerHover(std::string interactionMessag
         int interactionMessagelength = interactionMessage.length();
         Scene1::textRect = { 500, 610, interactionMessagelength * 10, 20 };   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
         Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
-        Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);     
+        Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);     
         SDL_FreeSurface(Scene1::fsurface);
       
     }
@@ -51,7 +48,7 @@ void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::str
     int useMessageLength = useMessage.length();  
     textDimensions(useMessageLength);
     Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);  
+    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     SDL_FreeSurface(Scene1::fsurface);
 }
 
@@ -61,7 +58,7 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
     int openMessageLength = openMessage.length();   
     textDimensions(openMessageLength);
     Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     SDL_FreeSurface(Scene1::fsurface);
 
 }
@@ -72,7 +69,7 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
     int lookMessageLength = lookMessage.length();
     textDimensions(lookMessageLength);
     Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor,Scene1::bcolor);
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);   
+    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     SDL_FreeSurface(Scene1::fsurface);
 }
 
@@ -82,7 +79,7 @@ void PlayerInteraction::InteractionControllerAction(std::string actionMessage, s
     int actionMessageLength = actionMessage.length();
     textDimensions(actionMessageLength);
     Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     SDL_FreeSurface(Scene1::fsurface);
 }
 
@@ -93,7 +90,7 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     int interactionMessagelength = interactionMessage.length();
     textDimensions(interactionMessagelength);
     Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, im, Scene1::fcolor, Scene1::bcolor);
-    Scene1::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     SDL_FreeSurface(Scene1::fsurface);
 }
  

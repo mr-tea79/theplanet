@@ -39,8 +39,6 @@ TTF_Font* Scene1::font;
 SDL_Surface* Scene1::fsurface;
 SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
-SDL_Texture* Scene1::ftexture = NULL;
-SDL_Rect Scene1::dTexture;
 
 int Scene1::xPosition;
 int Scene1::yPosition;
@@ -129,7 +127,7 @@ int Scene1::scene1() {
     bcolor =         { 0,0,0 }; //Font background colour.
   
     //Something to do with the font texture.
-    SDL_QueryTexture(ftexture, NULL, NULL, &texW, &texH);
+    SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
   
     //Place the player sprite in the chosen location.
     gdSprite.x = xPosition;
@@ -221,8 +219,8 @@ int Scene1::scene1() {
                                 playerIsMoving = 0;                            
                             }                         
                             else {              
-                                    SDL_DestroyTexture(ftexture);
-                                    ftexture = nullptr;
+                                    SDL_DestroyTexture(Textures::ftexture);
+                                    Textures::ftexture = nullptr;
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                                                                                                                        
@@ -429,7 +427,7 @@ int Scene1::scene1() {
     
         sr.sceneRenderOverlay(); //Render objects in front of sprite.
 
-        SDL_RenderCopy(renderer, ftexture, NULL, &textRect);
+        SDL_RenderCopy(renderer, Textures::ftexture, NULL, &textRect);
      
        
         interactionMessage = ""; // Clear the interaction message on every loop.

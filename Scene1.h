@@ -44,20 +44,13 @@ namespace brightland {
 		SDL_Rect pipeAction;
 
 
-		static SDL_Rect dTexture;
+		//static SDL_Rect dTexture;
 		SDL_Rect menu;
 		static SDL_Rect gdSprite;
 		static SDL_Rect textRect;
 		SDL_Rect menuTextRect;
 		SDL_Rect windowRect;
-		//Player position on start.
-
-		//Texture used for displaying text.
-		static SDL_Texture* ftexture;
-
-		SDL_Texture* dialogTexture;
-		SDL_Texture* dialogmTexture;
-
+	
 		SDL_Surface* windowSurface;
 	
 		//Scene Dialog

@@ -5,6 +5,9 @@
 
 using namespace brightland;
 
+//Text Texture
+SDL_Texture* Textures::ftexture;
+
 //Menu Texture.
 SDL_Texture* Textures::menuTexture;
 
