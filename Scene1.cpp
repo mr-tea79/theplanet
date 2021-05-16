@@ -210,20 +210,23 @@ int Scene1::scene1() {
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
+                         
                         }
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") {                          
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
-                                playerIsMoving = 0;                            
+                                playerIsMoving = 0;       
+                                
                             }                         
                             else {              
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr;
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                                                                                                                        
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
+                                    
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
@@ -258,7 +261,9 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-     
+            
+            mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
+            
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;

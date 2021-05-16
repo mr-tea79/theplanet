@@ -15,6 +15,12 @@ static std::string pickUpStatement;
 static std::string actionStatement;
 
 
+//These 2 lines will deal when the player uses the wrong item.
+int MenuInteraction::wrongAction = 0;
+std::string MenuInteraction::wrongActionMessage = "";
+
+
+
 static int playerMessage;
 
 
@@ -22,6 +28,21 @@ void MenuInteraction::doAction() {
     Scene1::sceneHalt = 1;
     Scene1::action = 1;
     Scene1::actionStatement = "";
+}
+
+//This deals with the items being used wrong.
+void MenuInteraction::useChecker() {
+
+    if (Scene1::useStatement.find("Use Self Inflating Tent with") != std::string::npos && Scene1::useStatement.find("Use Self Inflating Tent with Sandy clearing") == std::string::npos && Scene1::useStatement != "Use Self Inflating Tent with Self Inflating Tent") {
+        MenuInteraction::wrongAction = 1;
+        wrongActionMessage = "I can't set up a tent with that! I need a clear space.";
+    }
+    if (Scene1::useStatement.find("Use Pipe with") != std::string::npos && Scene1::useStatement.find("Use Pipe with Oxygenator 5000") == std::string::npos && Scene1::useStatement != "Use Pipe with Pipe") {
+        MenuInteraction::wrongAction = 1;
+        wrongActionMessage = "The pipe won't work with that!";
+    }
+
+
 }
 
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
@@ -255,7 +276,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
 
     PlayerObjects pob;
     Inventory inv;
-
     int n = useStatement.length();
 
     if (n < 8) {
@@ -345,7 +365,6 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     if (useStatement == "Use Self Inflating Tent") {
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        useMessage = "Ok, where shall I put this tent?";
         useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Self Inflating Tent with";
@@ -359,131 +378,21 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         //Change scene.
         Scene1::SceneBackground = "1fa";
     }
-   
-   
-
+    
+    if (wrongAction == 1) {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        useMessage = wrongActionMessage;
+        wrongAction = 0;
+        Scene1::actionStatement = "";
+        Scene1::useStatement = "";
+        doAction();
+    }
+    
     return useMessage;
 
-    /*  I HAVE KEPT THIS HERE FOR FUTURE REFERENCE BECAUSE I AM CHANGING THE WAY THIS IS DONE.
-
-
-     if (x > 190 && x < 227 && y > 676 && y < 690) {
-        useStatement = Scene1::useStatement = "Use";
-        std::cout << Scene1::useStatement << std::endl;
-        useMessage = "Use what?";
-        SDL_DestroyTexture(spriteTexture);
-        SDL_CreateTextureFromSurface(renderer, spriteDown1);
-        Scene1::useStatement = "Use What?";
-     }
-
-
-     else if (x >= 560 && x <= 612 && y >= 288 && y <= 350 && useStatement == "Use" && Scene1::SceneBackground == "1" ) {
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-           useMessage = "It's broken, what am I supposed to use it for?";
-     }
-
-
-     else if (x > 879 && x < 921 && y > 648 && y < 689 && useStatement == "Use" && Scene1::SceneBackground == "1da") {
-         Scene1::useStatement = "Pipe with";
-         std::cout << Scene1::useStatement << std::endl;
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-
-         useMessage = "Ok, where do I connect this pipe?";
-     }
-
-     else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 712 && Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
-         inv.useItem("Pipe");
-         Scene1::inv5Used = 1;
-         Textures::objectTextureAirBox = Textures::objectTexturePipe;
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-         useMessage = "Ok, connected!";
-         Scene1::useStatement = "";
-
-     }
-     //This is used to tell the player they are too far away.
-     else if (Scene1::useStatement == "Pipe with" && Scene1::SceneBackground == "1da") {
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-         useMessage = "I need to be closer to where I need to connect this pipe.";
-         Scene1::useStatement = "";
-
-     }
-
-
-     else if (x > 758 && x < 819 && y > 689 && y < 757 && useStatement == "Use") {
-         Scene1::useStatement = "Tent with";
-         std::cout << Scene1::useStatement << std::endl;
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteDown1);
-
-         useMessage = "Ok, where shall I put this tent?";
-     }
-
-     else if (x > 370 && x < 916 && y > 220 && y < 283 && Scene1::useStatement == "Tent with" && Scene1::SceneBackground =="1f") {
-         Scene1::useStatement = "Tent with";
-         std::cout << Scene1::useStatement << std::endl;
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteAction3);
-
-         inv.useItem("Tent");
-
-         Scene1::inv4Used = 1;
-         //Change scene.
-         Scene1::SceneBackground = "1fa";
-
-         useMessage = "";
-     }
-
-      else if (x > 889 && x < 920 && y > 647 && y < 687 && useStatement == "Use") {
-         Scene1::useStatement = "";
-         std::cout << Scene1::useStatement << std::endl;
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteAction);
-
-         inv.useItem("Tape");
-         Scene1::inv3Used = 1;
-         useMessage = "That should plug the leak!";
-         Scene1::action = 1;
-         Scene1::sceneHalt = 1;
-     }
-
-      else if (x >= 850 && x <= 958 && y >= 391 && y <= 482 && gd > 731 && gy > 330 && useStatement == "Use" && Scene1::SceneBackground == "1da" &&Scene1::inv5Used == 1) {
-         Scene1::useStatement = "";
-         std::cout << Scene1::useStatement << std::endl;
-
-         SDL_DestroyTexture(spriteTexture);
-         SDL_CreateTextureFromSurface(renderer, spriteAction2);
-
-         Scene1::inv6Used = 1;
-         useMessage = "TOAD 1000: Suit has been pressurized!";
-     }
-
-     else if ( Scene1::SceneBackground == "1da" && useStatement == "Use" && x >= 245 && x <= 295 && y >= 353 && y <= 414) {
-         Scene1::useStatement = "";
-         Scene1::SceneBackground = "1db";
-         Scene1::SPRITE_SIZE = 0;
-
-     }
-
-
-     else {
-         useMessage = "";
-         useStatement = Scene1::useStatement = "";
-     }
-
-     return useMessage;
-     */
 }
+
 
 std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction) {
 
