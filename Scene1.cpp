@@ -296,7 +296,7 @@ int Scene1::scene1() {
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
-            actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+            actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
                   
             if (actionMessage != "" || actionStatement != "") {   
                pi.InteractionControllerLook(actionMessage, gameObject);
@@ -324,16 +324,16 @@ int Scene1::scene1() {
         }
 
         if (actionMessage != "Pick up what?") {
-            gameObject = mob.PickUp(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spritePick, Textures::spriteBack1a,"");
+            gameObject = mob.PickUp(x, y, gd, gy, mInteraction);
         }
         if (actionMessage != "Look at what?") {
-            lookMessage = mob.Look(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
+            lookMessage = mob.Look(x, y, gd, gy, mInteraction);
         }
         if (actionMessage != "Use what?") {
-            useMessage = mob.Use(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, Textures::spriteBack1a, "");
+            useMessage = mob.Use(x, y, gd, gy, mInteraction);
         }
         if (actionMessage != "Open what?") {
-            openMessage = mob.Open(x, y, gd, gy, mInteraction, Textures::spriteTexture, renderer, Textures::spriteDown1, "");
+            openMessage = mob.Open(x, y, gd, gy, mInteraction);
         }
 
         if (lookMessage != "" ) {  
