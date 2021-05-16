@@ -445,7 +445,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Textures tex;
         Scene1::SceneBackground = "1fb";
         Scene1::SPRITE_SIZE = 120;
-    
+        //Prevents Textures being loaded more than once.
         if (Scene1::tLoader == 1) {
             tex.Scene3Textures();
             Scene1::tLoader = 2;

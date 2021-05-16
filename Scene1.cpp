@@ -296,7 +296,7 @@ int Scene1::scene1() {
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
                   
-            if (actionMessage != "" || actionStatement != "") {   
+            if (actionMessage != "" || actionStatement != "") {
                pi.InteractionControllerLook(actionMessage, gameObject);
             }
 
