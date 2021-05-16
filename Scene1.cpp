@@ -222,7 +222,7 @@ int Scene1::scene1() {
                             }                         
                             else {              
                                     SDL_DestroyTexture(Textures::ftexture);
-                                    Textures::ftexture = nullptr;
+                                    Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
@@ -273,12 +273,7 @@ int Scene1::scene1() {
                 actionStatement = "";
                
             }
-            /*
-            if(sceneHalt == 0 && playerMessage !=true ){
-           //     SDL_DestroyTexture(Textures::spriteTexture);
-           //     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);              
-            }
-              */        
+             
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
             gy = gdSprite.y;

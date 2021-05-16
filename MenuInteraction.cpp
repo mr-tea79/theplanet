@@ -15,9 +15,9 @@ static std::string pickUpStatement;
 static std::string actionStatement;
 
 
-//These 2 lines will deal when the player uses the wrong item.
+//These 2 lines will deal when the player uses the wrong item. 
 int MenuInteraction::wrongAction = 0;
-std::string MenuInteraction::wrongActionMessage = "";
+std::string MenuInteraction::wrongActionMessage = "";  //Custom response to the player.
 
 
 
@@ -30,7 +30,7 @@ void MenuInteraction::doAction() {
     Scene1::actionStatement = "";
 }
 
-//This deals with the items being used wrong.
+//This deals with the items being used wrong. For example, you try and use a tent with the tape.. This is not essential but it allows you to customize the message when using the wrong item.
 void MenuInteraction::useChecker() {
 
     if (Scene1::useStatement.find("Use Self Inflating Tent with") != std::string::npos && Scene1::useStatement.find("Use Self Inflating Tent with Sandy clearing") == std::string::npos && Scene1::useStatement != "Use Self Inflating Tent with Self Inflating Tent") {
@@ -381,7 +381,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     
     if (wrongAction == 1) {
         SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
         useMessage = wrongActionMessage;
         wrongAction = 0;
         Scene1::actionStatement = "";
@@ -416,7 +416,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     if (Scene1::actionStatement == "Pick up") {
 
         if (items < 1) {
-            if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 651 && gy > 425) {
+            if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 691 && gy > 425) {
                 SDL_DestroyTexture(Textures::spriteTexture);
                 SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spritePick); //Shows a different player movement when picking up things.
                
