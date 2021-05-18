@@ -11,6 +11,10 @@ using namespace std;
 
 static int position; //Used to update current position variable.
 
+//Customize your speed to your liking.
+float hspeed = 3.5;  //Left to Right.
+float vspeed = 2.5;  //Up and Down.
+
 
 int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
   
@@ -18,25 +22,25 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
-        gd += 3.5; //Speed of sprite movement.
+        gd += hspeed; //Speed of sprite movement.
     }
     if (position == 1) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight2a);
-        gd += 3.5;
+        gd += hspeed;
     }
     if (position == 2) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight3a);
-        gd += 3.5;
+        gd += hspeed;
     }
     if (position == 3) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight4a);
-        gd += 3.5;
+        gd += hspeed;
         position = 0; //This achieves the animation effect.
     }
     //Prevent walking off the screen.
@@ -44,7 +48,7 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
-        gd += 3.5;
+        gd += hspeed;
     }
 
     return gd;
@@ -56,25 +60,25 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
-        gd -= 3.5;
+        gd -= hspeed;
     }
     if (position == 1) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft2a);
-        gd -= 3.5;
+        gd -= hspeed;
     }
     if (position == 2) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft3a);
-        gd -= 3.5;
+        gd -= hspeed;
     }
     if (position == 3) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft4a);
-        gd -= 3.5;
+        gd -= hspeed;
         position = 0; //This achieves the animation effect.
     }
 
@@ -83,7 +87,7 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight1a);
-        gd += 3.5;
+        gd += hspeed;
     }
 
     return gd;
@@ -96,26 +100,26 @@ int PlayerMovement::doYWalkUp(int gy) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        gy -= 2.5; //Speed of sprite movement.
+        gy -= vspeed; //Speed of sprite movement.
     }
     if (position == 1) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack2a);
-        gy -= 2.5;
+        gy -= vspeed;
     }
     if (position == 2) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack3a);
-        gy -= 2.5;
+        gy -= vspeed;
         // position = 0; //This achieves the animation effect.
     }
     if (position == 3) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack3a);
-        gy += 2.5;
+        gy += vspeed;
         position = 0; //This achieves the animation effect.
     }
 
@@ -128,25 +132,25 @@ int PlayerMovement::doYWalkDown(int gy) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown3a);
-        gy += 2.5; //Speed of sprite movement.
+        gy += vspeed; //Speed of sprite movement.
     }
     if (position == 1) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
-        gy += 2.5;
+        gy += vspeed;
     }
     if (position == 2) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown2a);
-        gy += 2.5;
+        gy += vspeed;
     }
     if (position == 3) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown2a);
-        gy += 2.5;
+        gy += vspeed;
         position = 0; //This achieves the animation effect.
     }
 
