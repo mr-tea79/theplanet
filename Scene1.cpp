@@ -427,7 +427,7 @@ int Scene1::scene1() {
     
         sr.sceneRenderOverlay(); //Render objects in front of sprite.
 
-        SDL_RenderCopy(renderer, Textures::ftexture, NULL, &textRect);
+        SDL_RenderCopy(renderer, Textures::ftexture, NULL, &textRect); //Renders the text that appears on the screen.
      
        
         interactionMessage = ""; // Clear the interaction message on every loop.
