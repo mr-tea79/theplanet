@@ -120,7 +120,7 @@ int Scene1::scene1() {
 
     window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
     windowSurface =  SDL_GetWindowSurface(window);
-    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC); //|| SDL_RENDERER_PRESENTVSYNC
+    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED ); //|| SDL_RENDERER_PRESENTVSYNC  //USE SDL_RENDERER_PREVENTVSYNC TO SLOW THE GAME DOWN ON HIGH END CARDS.
        //             SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 }; //Font colour.
