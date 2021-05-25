@@ -8,13 +8,23 @@ using namespace brightland;
 
 int PlayerInteraction::playerMessage = 10000;
 
-//Needs some tweaking
+//This will determine where the text box appears on the screen. For example if the player is on the far right hand side
+//then the text box will move left to prevent the text going off the screen. Bit fidly but just needs tweaking sometimes.
+
 void PlayerInteraction::textDimensions(int messageLength) {
 
 
-    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 700 && Scene1::gdSprite.y >100) {
+    if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 600 && Scene1::gdSprite.y >100) {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
         
+    }
+    else if (Scene1::gdSprite.x > 600 && Scene1::gdSprite.x < 700 && Scene1::gdSprite.y >100) {
+        Scene1::textRect = { Scene1::gdSprite.x - 400,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+
+    }
+    else if (Scene1::gdSprite.x > 700 && Scene1::gdSprite.y >100) {
+        Scene1::textRect = { Scene1::gdSprite.x - 700,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+
     }
     else if (Scene1::gdSprite.x < 130 && Scene1::gdSprite.y >100) {
         Scene1::textRect = { Scene1::gdSprite.x + 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };

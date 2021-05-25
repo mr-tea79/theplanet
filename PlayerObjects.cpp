@@ -122,6 +122,13 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
+    if (Scene1::SceneBackground == "3b" && x >= 860 && y < 500 && y > 400) {
+        message = "Leave Rocky Cliff";
+    }
+    if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
+        message = "Exit Cave";
+    }
+
     if (Scene1::SceneBackground == "3c" && x <= 37 && y >= 376 && y <= 432) {
         message = "Exit Cave";
     }
@@ -342,6 +349,40 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     std::string message;
 
 
+    if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 900 && playerCurrentLocationY < 500 && playerCurrentLocationY > 400) {
+        Scene1::SceneBackground = "3a";
+        Scene1::SPRITE_SIZE = 10;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 300;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+
+    }
+
+
+    if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 750 && playerCurrentLocationY <= 120 && Inventory::inv7Used == 1) {
+        Scene1::SceneBackground = "3d";
+        Scene1::SPRITE_SIZE = 120;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 65;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+      
+    }
+
+
+    if (Scene1::SceneBackground == "3d" && playerCurrentLocationX < 37 && playerCurrentLocationY >346) {
+        Scene1::SceneBackground = "3b";
+        Scene1::SPRITE_SIZE = 50;
+        Scene1::xPosition = 945;
+        Scene1::yPosition = 387;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+    }
+
     if (Scene1::SceneBackground == "3c" && playerCurrentLocationX <37 && playerCurrentLocationY >346) {
         Scene1::SceneBackground = "3b";
         Scene1::SPRITE_SIZE = 50;
@@ -363,6 +404,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
       
     }
 
+  
     if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && playerCurrentLocationX > 300 && playerCurrentLocationX < 411 && playerCurrentLocationY <394) {
         message = "Hyper Lithium Battery Lantern";
     }
