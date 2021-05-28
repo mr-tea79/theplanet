@@ -12,7 +12,7 @@ using namespace std;
 static int position; //Used to update current position variable.
 
 //Customize your speed to your liking.
-float hspeed = 3.5;  //Left to Right.
+float hspeed = 2.5;  //Left to Right.
 float vspeed = 2.5;  //Up and Down.
 
 
