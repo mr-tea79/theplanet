@@ -136,6 +136,9 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
         message = "Exit Cave";
     }
+    if (Scene1::SceneBackground == "3d" && x >= 557 && x <= 618 && y >= 404 && y <= 476) {
+        message = Scene1::actionStatement + " Human remains";
+    }
     if (Scene1::SceneBackground == "3d" && x >= 431 && x <= 527 && y >= 102 && y <= 125) {
         message = Scene1::actionStatement + " Flying saucer drawing";
     }

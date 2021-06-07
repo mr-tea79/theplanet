@@ -95,6 +95,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
+
+    if (lookStatement == "Look at Human remains") {
+        lookMessage = "Unbelievable! I wonder if this is the woman in the cave drawing.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
     if (lookStatement == "Look at Cave door drawing") {
         lookMessage = "Seems like a cave door with the artifact placed in it. Weird.";
         SDL_DestroyTexture(Textures::spriteTexture);
