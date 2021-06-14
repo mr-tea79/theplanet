@@ -561,12 +561,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
     }
-    /* Sandy clearing */
-    if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283 && playerCurrentLocationX <=900 && playerCurrentLocationX >300  && playerCurrentLocationY <= 360) {
-        message = "It's very flat here.";
-        if (Scene1::useStatement == "Use")
-            message = "It's a good idea";
-    }
+ 
     /* Leaving rocky path and going back to wreakage */
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482 && playerCurrentLocationX <=13) {
         Scene1::SceneBackground = "1";

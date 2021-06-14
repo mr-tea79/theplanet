@@ -206,6 +206,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         Scene1::sceneHalt = 1;
     }
 
+    /* Sandy clearing */
+    if (lookStatement == "Look at Sandy clearing" && gd <= 900 && gd > 300 && gy <= 360) {
+        lookMessage = "It's very flat here.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
     if (lookStatement == "Look at The moon") {
 
         lookMessage = "Very Earthlike";
@@ -319,6 +328,14 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         useMessage = "I'll just have a quick sit down, ahhhh nice.";
+        useStatement = "";
+        doAction();
+    }
+
+    if (useStatement == "Use Sandy clearing") {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        useMessage = "This could be ideal for setting up my tent!";
         useStatement = "";
         doAction();
     }
