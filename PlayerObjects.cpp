@@ -91,7 +91,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
    
     if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
         if(inv.checkItem("PDA") != 0)
-            message = "PDA";
+            message = Scene1::actionStatement + " PDA";
     }
 
     if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {

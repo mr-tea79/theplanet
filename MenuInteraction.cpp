@@ -96,6 +96,62 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+    //Inventory Objects
+
+    if (lookStatement == "Look at PDA") {
+        lookMessage = "This is my personal computer that is linked to TOAD1000.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Self Inflating Tent") {
+        lookMessage = "This is my habitat that inflates.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Ape Tape") {
+        lookMessage = "No job is too much for APE TAPE.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Flag") {
+        lookMessage = "Just need somewhere to put it.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Battery Lantern") {
+        lookMessage = "Says on the back 5000 lumens.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Pipe") {
+        lookMessage = "This is used with an Oxygenator.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+
+
+    
+
+    //
+
     if (lookStatement == "Look at Human remains") {
         lookMessage = "Unbelievable! I wonder if this is the woman in the cave drawing.";
         SDL_DestroyTexture(Textures::spriteTexture);
@@ -218,22 +274,6 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (lookStatement == "Look at The moon") {
 
         lookMessage = "Very Earthlike";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
-        lookStatement = "";
-    }
-
-    if (lookStatement == "Look at Self Inflating Tent") {
-        lookMessage = "It's a tent that, well, inflates";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
-        lookStatement = "";
-    }
-
-    if (lookStatement == "Look at Ape Tape") {
-        lookMessage = "Ooh, Ape Tape!";
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();
