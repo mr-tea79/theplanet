@@ -44,8 +44,8 @@
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\Development Kits\SDL2_image-2.0.5;.\Development Kits\SDL2_image-2.0.5\include;.\Development Kits\SDL2_ttf\include;.\Development Kits\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Development Kits\SDL2_ttf\lib\x86;.\Development Kits\SDL2_image-2.0.5\lib\x86;.\Development Kits\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Development Kits\SDL2_mixer-2.0.4\include;.\Development Kits\SDL2_image-2.0.5;.\Development Kits\SDL2_image-2.0.5\include;.\Development Kits\SDL2_ttf\include;.\Development Kits\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Development Kits\SDL2_mixer-2.0.4\lib\x86;.\Development Kits\SDL2_ttf\lib\x86;.\Development Kits\SDL2_image-2.0.5\lib\x86;.\Development Kits\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -64,7 +64,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;sqlite3.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>

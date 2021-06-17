@@ -17,6 +17,7 @@
 #include "Textures.h"
 #include "SceneRender.h"
 #include "ObjectRender.h"
+#include "SDL_mixer.h"
 
 
 using namespace std;
@@ -125,6 +126,15 @@ int Scene1::scene1() {
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 }; //Font colour.
     bcolor =         { 0,0,0 }; //Font background colour.
+
+    // Inilialize SDL_mixer , exit if fail
+    if (SDL_Init(SDL_INIT_AUDIO) < 0) exit(1);
+    Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
+    Mix_Init(MIX_INIT_MP3);
+    
+
+    Mix_Music* mus, * mus2;  // Background Music
+    mus2 = Mix_LoadMUS("Development Kits/Music/bg2.mp3"); //Add your MP3 here for the background music.
   
     //Something to do with the font texture.
     SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
@@ -163,9 +173,23 @@ int Scene1::scene1() {
     //Load Ojbect Render class
     ObjectRender obr;
 
+    Mix_PlayMusic(mus2, 1);
+
     //Game loop.
     while (!gameover)
     {        
+       
+        
+
+        /*Error checking for SDL_Mixer if you need to use it
+        
+        if (Mix_PlayMusic(mus2, -1) == -1) {
+            printf("Mix_PlayMusic: %s\n", Mix_GetError());
+            // well, there's no music, but most games don't break without music...
+        }
+        */
+
+
         //Place player objects in the game.
         pob.ObjectController();
 
@@ -437,12 +461,12 @@ int Scene1::scene1() {
         SDL_RenderPresent(renderer);
   
     }
-
-    
+        
     //Clean up after yourself!
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
+    Mix_FreeMusic(mus2);
  
     return 0;
 
