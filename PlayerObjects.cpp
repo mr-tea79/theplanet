@@ -122,6 +122,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
+    if (Scene1::SceneBackground == "3d" && x >= 561 && x <=627 && y < 512 && y > 496) {
+        message = Scene1::actionStatement + " Marks in dirt";
+    }
+
     if (Scene1::SceneBackground == "3b" && x >= 860 && y < 500 && y > 400) {
         message = "Leave Rocky Cliff";
     }
@@ -352,6 +356,16 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     std::string message;
 
 
+    if (Scene1::SceneBackground == "3e" && x >= 866 && x <=987 && y >= 536 && y <=575) {
+        Scene1::SceneBackground = "3d";
+        Scene1::SPRITE_SIZE = 128;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 65;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+    }
+
     if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 900 && playerCurrentLocationY < 500 && playerCurrentLocationY > 400) {
         Scene1::SceneBackground = "3a";
         Scene1::SPRITE_SIZE = 10;
@@ -372,7 +386,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
-      
+         
     }
 
 
