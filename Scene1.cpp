@@ -29,7 +29,7 @@ std::string Scene1::openStatement = "";
 std::string Scene1::lookStatement = "";
 std::string Scene1::actionStatement = "";
 std::string Scene1::SceneTransitionStatement = "";
-std::string Scene1::SceneBackground = "1";
+std::string Scene1::SceneBackground = "3e";
 std::string gameMessage; //Used to display messages that tell the story.
 std::string Scene1::objectToDestroy;
 
@@ -149,7 +149,7 @@ int Scene1::scene1() {
     tex.Scene1Textures();
     tex.MovementTextures();
    // tex.Scene2Textures();
-  //  tex.Scene3Textures();
+   // tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;

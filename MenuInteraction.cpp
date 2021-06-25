@@ -96,7 +96,11 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
-    //Inventory Objects
+
+    if (lookStatement == "Look at Marks in dirt") {
+        Scene1::SceneBackground = "3e";
+        lookStatement = "";
+    }
 
     if (lookStatement == "Look at PDA") {
         lookMessage = "This is my personal computer that is linked to TOAD1000.";
