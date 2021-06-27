@@ -121,6 +121,17 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+    if (Scene1::SceneBackground == "3e" && x >= 183 && x <= 236 && y < 429 && y > 382) {
+        message = Scene1::actionStatement + " Big X";
+    }
+
+    if (Scene1::SceneBackground == "3e" && x >= 753 && x <= 904 && y < 341 && y > 230) {
+        message = Scene1::actionStatement + " Location of interest";
+    }
+
+    if (Scene1::SceneBackground == "3e" && x >= 548 && x <= 716 && y < 306 && y > 213) {
+        message = Scene1::actionStatement + " Odd formation";
+    }
 
     if (Scene1::SceneBackground == "3d" && x >= 561 && x <=627 && y < 512 && y > 496) {
         message = Scene1::actionStatement + " Marks in dirt";

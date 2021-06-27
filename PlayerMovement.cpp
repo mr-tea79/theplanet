@@ -166,7 +166,24 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
    
     //Set the coordinates for walking left or right in the scene.
 
+          ///////////////////////// SCENE 3E CAVE DRAWING IN DIRT //////////////////////////////////////
+    if (Scene1::SceneBackground == "3e") {
 
+        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
+        if (gd <= x - 60 && y > 320 && y < 575) {
+            gd = doXWalkRight(gd, screenWidth);
+            position++;
+        }
+
+        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
+        else if (gd >= x - 15 && y > 320 && y < 575) {
+            gd = doXWalkLeft(gd, screenWidth);
+            position++;
+        }
+        else {}
+
+        return gd;
+    }
 
         ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "3d") {

@@ -4,6 +4,7 @@
 #include "Scene1.h"
 #include "Textures.h"
 #include "Inventory.h"
+#include "PlayerInteraction.h"
 
 using namespace brightland;
 
@@ -96,10 +97,38 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+    if (lookStatement == "Look at Big X") {
+        lookMessage = "I think this is where I am.. I think this is a map.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Odd formation") {
+        lookMessage = "Not sure what this is supposed to be?";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Location of interest") {
+        lookMessage = "Whatever this is, it has to be significant.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
 
     if (lookStatement == "Look at Marks in dirt") {
-        Scene1::SceneBackground = "3e";
+        Scene1::SceneBackground = "3e";     
+        Scene1::xPosition = 545;
+        PlayerInteraction::playerMessage = 12;
+        Scene1::sceneHalt = 1;
         lookStatement = "";
+        Scene1::actionStatement = "";
     }
 
     if (lookStatement == "Look at PDA") {

@@ -149,7 +149,7 @@ int Scene1::scene1() {
     tex.Scene1Textures();
     tex.MovementTextures();
    // tex.Scene2Textures();
-   // tex.Scene3Textures();
+  //  tex.Scene3Textures();
  
     //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
     Inventory inv;
@@ -390,7 +390,8 @@ int Scene1::scene1() {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 playerIsMoving = 1;
-                _sleep(1);
+                SDL_Delay(1);
+                //_sleep(1);
              
                 if (wy < gdSprite.y || wy > gdSprite.y) {
                     //The following 2 statements will allow the player to move across and then up or down.
@@ -403,8 +404,9 @@ int Scene1::scene1() {
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
                         playerIsMoving = 0;
                       
-                    }                              
-                    _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
+                    }  
+                    SDL_Delay(1); //Moving from _sleep to SDL_Delay
+                  //  _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
                 }
             }
             else {
@@ -414,7 +416,8 @@ int Scene1::scene1() {
                     wx = gdSprite.x;
                     wy = gdSprite.y;
 
-                    _sleep(300);
+                 //   _sleep(300);
+                    SDL_Delay(300);
                     sceneHalt = 0;
             }
             

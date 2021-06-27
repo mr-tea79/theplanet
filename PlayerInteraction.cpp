@@ -22,7 +22,7 @@ void PlayerInteraction::textDimensions(int messageLength) {
   //      Scene1::textRect = { Scene1::gdSprite.x - 400,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 
   //  }
-    if (Scene1::gdSprite.x > 500 && Scene1::gdSprite.y >100 && messageLength > 40 ) {
+    if (Scene1::gdSprite.x > 550 && Scene1::gdSprite.y >100 && messageLength > 40 ) {
         Scene1::textRect = { Scene1::gdSprite.x - 600,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 
     }
@@ -161,6 +161,10 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
         std::string PlayerMessage = "Hmmm.... Well, it's a bit dark in here!";
         return PlayerMessage;
     }
+    else if (msgNumber == 12) {
+        std::string PlayerMessage = "Looks like a map!";
+        return PlayerMessage;
+    }
 
 
 }
@@ -220,10 +224,13 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
         interactionMessage = PlayerMessage(1, 11);
         playerMessage = 12;
     }
-
-    //This is important to allow the last message in the player interaction to be shown.
     else if (playerMessage == 12) {
-        playerMessage = 13;   
+        interactionMessage = PlayerMessage(1, 12);
+        playerMessage = 13;
+    }
+    //This is important to allow the last message in the player interaction to be shown.
+    else if (playerMessage == 13) {
+        playerMessage = 14;   
     }
 
     else {
