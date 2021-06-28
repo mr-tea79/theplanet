@@ -55,7 +55,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Check database if item has been picked up.
     Inventory inv;
-    PlayerObjects pob;
+   // PlayerObjects pob;
    
     //  int scene = 1; //Need to pass scene number in.
     int i = 0;

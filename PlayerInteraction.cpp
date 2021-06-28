@@ -109,64 +109,52 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
 }
  
 
-
 std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
+    std::string PlayerMessage = "";
+
     if (msgNumber == 1) {
-        std::string PlayerMessage = "Bonita Gonzalez finds herself stranded on an Alien planet.";
-        return PlayerMessage;
+        PlayerMessage = "Bonita Gonzalez finds herself stranded on an Alien planet.";      
     }
 
     else if (msgNumber == 2) {
-        std::string PlayerMessage = "TOAD 1000: Bonita WAKE UP!";
-        return PlayerMessage;
+        PlayerMessage = "TOAD 1000: Bonita WAKE UP!";
     }
 
     else if (msgNumber == 3) {
-        std::string PlayerMessage = "TOAD 1000: Bonita.... Your Oxygen Level is critical! BEEP BEEP";
-        return PlayerMessage;
+        PlayerMessage = "TOAD 1000: Bonita.... Your Oxygen Level is critical! BEEP BEEP";
     }
 
     else if (msgNumber == 4) {
-        std::string PlayerMessage = "TOAD 1000: Suit pressure rising";
-        return PlayerMessage;
+        PlayerMessage = "TOAD 1000: Suit pressure rising";
     }
 
-    else if (msgNumber == 5) {
-      
-        std::string PlayerMessage = "TOAD 1000: Bonita, your Oxygen is very low.";
-        return PlayerMessage;
+    else if (msgNumber == 5) {    
+        PlayerMessage = "TOAD 1000: Bonita, your Oxygen is very low.";
     }
 
     else if (msgNumber == 6) {
-        std::string PlayerMessage = "These self inflatable tents seem to have improved over the years!";
-        return PlayerMessage;
+        PlayerMessage = "These self inflatable tents seem to have improved over the years!";
     }
     else if (msgNumber == 7) {
-        std::string PlayerMessage = "Well, it's a Wigwam!";
-        return PlayerMessage;
+        PlayerMessage = "Well, it's a Wigwam!";
     }
     else if (msgNumber == 8) {
-        std::string PlayerMessage = "I'm leaking Oxygen and need to sort that out first.";
-        return PlayerMessage;
+        PlayerMessage = "I'm leaking Oxygen and need to sort that out first.";
     }
     else if (msgNumber == 9) {
-        std::string PlayerMessage = "I need to be able to set up camp if I'm going to venture out into the wilderness.";
-        return PlayerMessage;
+        PlayerMessage = "I need to be able to set up camp if I'm going to venture out into the wilderness.";
     }
     else if (msgNumber == 10) {
-        std::string PlayerMessage = "I need to take my computer with me.";
-        return PlayerMessage;
+        PlayerMessage = "I need to take my computer with me.";
     }
     else if (msgNumber == 11) {
-        std::string PlayerMessage = "Hmmm.... Well, it's a bit dark in here!";
-        return PlayerMessage;
+        PlayerMessage = "Hmmm.... Well, it's a bit dark in here!";
     }
     else if (msgNumber == 12) {
-        std::string PlayerMessage = "Looks like a map!";
-        return PlayerMessage;
+        PlayerMessage = "Looks like a map!";
     }
 
-
+    return PlayerMessage;
 }
 
 

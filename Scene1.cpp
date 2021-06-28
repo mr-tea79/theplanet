@@ -59,7 +59,7 @@ int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in tw
 
 //This will help when transitioning to a new scene. 
 void Scene1::DoAction() {
-    _sleep(100);
+    SDL_Delay(100);
     action = 0;
 }
 

@@ -160,7 +160,7 @@ int PlayerMovement::doYWalkDown(int gy) {
 
 
 
-int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
+double PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
 //Player Movement
    
@@ -180,9 +180,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
     }
 
         ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
@@ -199,9 +196,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd,  screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
     }
 
         ///////////////////////// SCENE 3C DARK ROOM //////////////////////////////////////
@@ -218,9 +212,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
     }
 
     ///////////////////////// SCENE 3B //////////////////////////////////////
@@ -245,10 +236,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
             position++;
         }
-
-        else {}
-
-        return gd;
     }
 
     ///////////////////////// SCENE 3A //////////////////////////////////////
@@ -266,9 +253,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
     }
 
     ///////////////////////// SCENE 1DA  INSIDE TENT //////////////////////////////////////
@@ -300,10 +284,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-      
-        else {}
-
-        return gd;
     }
 
     ///////////////////////// SCENE 1F  SANDY CLEARING //////////////////////////////////////
@@ -320,9 +300,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
     }
 
     ///////////////////////// SCENE 1FB SANDY CLAERING WITH TENT //////////////////////////////////////
@@ -339,9 +316,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
+      
     }
 
     ///////////////////////// SCENE 1E ROCKY SCENE //////////////////////////////////////
@@ -360,9 +335,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             position++;
         }
 
-        else {}
-
-        return gd;
     }
 
     ///////////////////////// SCENE 1B INSIDE SHIP WRECKAGE //////////////////////////////////////
@@ -396,8 +368,6 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-
-        return gd;
     }
 
 
@@ -415,17 +385,16 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }
-        else {}
-
-        return gd;
     }
+
+    return gd;
 }//END OF WALK METHOD
 
 
 /////////////////////////////// WALKY IS FOR MOVING THE CHARACTER UP AND DOWN  ////////////////////////////////////////////////////////////////
 
 
-int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
+double PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
     //Check if player has put patch on their suit.
     if (Inventory::inv3Used == 1) {
@@ -461,8 +430,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
     ///////////////////////// SCENE 3A DARK ROOM //////////////////////////////////////
@@ -491,8 +458,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
 
@@ -517,8 +482,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
     ///////////////////////// SCENE 3A //////////////////////////////////////
@@ -535,8 +498,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
     ///////////////////////// SCENE 1E ROCKY SCENE//////////////////////////////////////
@@ -553,8 +514,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
     ///////////////////////// SCENE 1B INSIDE SPACE SHIP WRECKAGE //////////////////////////////////////
@@ -571,8 +530,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
     ///////////////////////// SCENE 1F SANDY CLEARING //////////////////////////////////////
@@ -604,8 +561,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
     
     ///////////////////////// SCENE 1FB SANDY CLEARING WITH TENT //////////////////////////////////////
@@ -637,8 +592,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
     ///////////////////////// SCENE 1DA INSIDE TENT //////////////////////////////////////
@@ -655,8 +608,6 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
 
 
@@ -686,9 +637,11 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
             gy = doYWalkDown(gy);
             position++;
         }
-
-        return gy;
     }
+
+
+    return gy;
+
 }//END OF WALKY METHOD
 
 

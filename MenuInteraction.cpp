@@ -50,8 +50,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
 
     std::string actionMessage;
 
-    PlayerObjects pob;
-    Inventory inv;
+  //  PlayerObjects pob;
+  //  Inventory inv;
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         useStatement = "";  //Important
@@ -337,7 +337,6 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     std::string openMessage;
 
     PlayerObjects pob;
-    Inventory inv;
 
     int n = openStatement.length();
 
