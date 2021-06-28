@@ -160,7 +160,7 @@ int PlayerMovement::doYWalkDown(int gy) {
 
 
 
-double PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
+int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
 //Player Movement
    
@@ -393,8 +393,7 @@ double PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int s
 
 /////////////////////////////// WALKY IS FOR MOVING THE CHARACTER UP AND DOWN  ////////////////////////////////////////////////////////////////
 
-
-double PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
+int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
     //Check if player has put patch on their suit.
     if (Inventory::inv3Used == 1) {
