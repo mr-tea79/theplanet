@@ -20,8 +20,6 @@ static std::string actionStatement;
 int MenuInteraction::wrongAction = 0;
 std::string MenuInteraction::wrongActionMessage = "";  //Custom response to the player.
 
-
-
 static int playerMessage;
 
 
@@ -42,16 +40,11 @@ void MenuInteraction::useChecker() {
         MenuInteraction::wrongAction = 1;
         wrongActionMessage = "The pipe won't work with that!";
     }
-
-
 }
 
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string actionMessage;
-
-  //  PlayerObjects pob;
-  //  Inventory inv;
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         useStatement = "";  //Important
@@ -115,6 +108,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     if (lookStatement == "Look at Location of interest") {
         lookMessage = "Whatever this is, it has to be significant.";
+        Scene1::secretTrigger = 1; //Unlock hidden area.
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
         doAction();

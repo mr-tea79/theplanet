@@ -41,20 +41,24 @@ SDL_Surface* Scene1::fsurface;
 SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
 
+//Player variables
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
+bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
 
+//Scene variables
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
-bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
+int Scene1::secretTrigger = 0;  //This is used to tell the program that a secret has been found.
 bool Scene1::mouseClick = false;
+int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
-int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
+
 
 
 //This will help when transitioning to a new scene. 

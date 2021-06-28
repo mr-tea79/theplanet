@@ -20,6 +20,7 @@ namespace brightland {
 		int texW;
 		int texH;
 	public:
+		static int secretTrigger; 
 		static int SPRITE_SIZE;
 		static std::string useStatement;
 		static std::string openStatement;
