@@ -183,6 +183,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
        
+      //  inv.gameSave(SceneBackground);
         
 
         /*Error checking for SDL_Mixer if you need to use it

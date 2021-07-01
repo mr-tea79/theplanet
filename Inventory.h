@@ -30,6 +30,8 @@ public:
 
 	int Inventory::useItem(std::string itemName);
 
+	int Inventory::gameSave(std::string currentScene);
+
 	int Inventory::purgeDatabase();
 };
 
