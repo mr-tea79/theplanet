@@ -179,13 +179,13 @@ int Scene1::scene1() {
 
     Mix_PlayMusic(mus2, 1);
 
+    //Create a game save (Only needed to use this once to create the game save record)
+    //inv.SQLCreateGameSave(SceneBackground);
+
     //Game loop.
     while (!gameover)
     {        
-       
-      //  inv.gameSave(SceneBackground);
-        
-
+              
         /*Error checking for SDL_Mixer if you need to use it
         
         if (Mix_PlayMusic(mus2, -1) == -1) {
@@ -227,6 +227,7 @@ int Scene1::scene1() {
 
                 case SDL_QUIT:
                     gameover = 1;
+                    inv.gameSave(SceneBackground);
                     break;
 
                 //Mouse Hover Game Interaction.

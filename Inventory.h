@@ -26,6 +26,8 @@ public:
 
 	int Inventory::SQLInsertInventory(std::string itemName, int itemUsed);
 
+	int Inventory::SQLCreateGameSave(std::string scene);
+
 	int Inventory::checkItem(std::string itemName);
 
 	int Inventory::useItem(std::string itemName);
