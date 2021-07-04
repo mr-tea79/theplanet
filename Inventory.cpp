@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include "Scene1.h"
 #include <iostream>
 
 using namespace brightland;
@@ -59,7 +60,9 @@ int Inventory::gameSave(std::string currentScene) {
 	const char* data = "";
 	sqlite3_stmt* stmt = NULL;
 	int i = 0;
-
+	int size = Scene1::SPRITE_SIZE;
+	int y = Scene1::yPosition;
+	int x = Scene1::xPosition;
 
 	rc = sqlite3_open("Inventory.db", &db);
 
@@ -71,13 +74,17 @@ int Inventory::gameSave(std::string currentScene) {
 	}
 
 	/* Create SQL statement */
-	sql = "UPDATE tblProgress SET scene=? WHERE id=1";
+	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=? WHERE id=1";
 
 	//sqlite using variables in statement.
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
 
 	sqlite3_bind_text(stmt, 1, currentScene.c_str(), strlen(currentScene.c_str()), 0);
-	
+	sqlite3_bind_int(stmt, 2, x);
+	sqlite3_bind_int(stmt, 3, y);
+	sqlite3_bind_int(stmt, 4, size);
+
+
 	//Execute parameter statement.
 	sqlite3_step(stmt);
 	i++;
@@ -103,6 +110,8 @@ int Inventory::SQLCreateGameSave(std::string scene) {
 	int i = 0;
 	int id = 1;
 
+
+
 	rc = sqlite3_open("Inventory.db", &db);
 
 	if (rc) {
@@ -112,13 +121,14 @@ int Inventory::SQLCreateGameSave(std::string scene) {
 	}
 
 	/* Create SQL statement */
-	sql = "INSERT into tblProgress (scene,id) VALUES(?,?)";
+	sql = "INSERT into tblProgress (scene,id,x,y,size) VALUES(?,?)";
 
 	//sqlite using variables in statement.
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
 
 	sqlite3_bind_text(stmt, 1, scene.c_str(), strlen(scene.c_str()), 0);
 	sqlite3_bind_int(stmt, 2, id);
+	
 
 	//Execute parameter statement.
 	sqlite3_step(stmt);
@@ -168,10 +178,70 @@ int Inventory::useItem(std::string itemName) {
 	sqlite3_close(db);
 
 	return 0;
-
-
-
 }
+
+std::string Inventory::ContinueGame() {
+
+	sqlite3* db;
+	char* zErrMsg = 0;
+	int rc;
+	const char* sql;
+	const char* data = "";
+	sqlite3_stmt* stmt = NULL;
+	int i = 0;
+	std::string scene = "1";
+
+	/* Open database */
+	rc = sqlite3_open("Inventory.db", &db);
+
+	if (rc) {
+		scene = "1";
+		return scene;
+	}
+	else {
+	}
+
+	/* Create SQL statement */
+	sql = "SELECT scene FROM tblProgress WHERE id=1";
+	//sqlite using variables in statement.
+	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
+	sqlite3_bind_text(stmt, 1, scene.c_str(), strlen(scene.c_str()), 0);
+	//	sqlite3_bind_int(stmt, 2, pin);
+
+
+	while (sqlite3_step(stmt) != SQLITE_DONE) {
+
+		int i;
+		int num_cols = sqlite3_column_count(stmt);
+
+
+		for (i = 0; i < 2; i++)
+		{
+			switch (sqlite3_column_type(stmt, i))
+			{
+			case (SQLITE3_TEXT):
+				break;
+			case (SQLITE_INTEGER):
+				//	record = 1;
+				break;
+			case (SQLITE_FLOAT):
+
+				break;
+			default:
+				break;
+			}
+		}
+		;
+	}
+	//Clean up.
+	sqlite3_finalize(stmt);
+	sqlite3_close(db);
+
+
+
+	return scene;
+}
+
 
 int Inventory::checkItem(std::string itemName) {
 

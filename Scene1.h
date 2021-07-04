@@ -35,7 +35,10 @@ namespace brightland {
 		static int sceneHalt;
 
 		int scene;
-		
+
+		static bool continueGame;
+		static bool newGame;
+
 		//Set start position of main character.
 		static int xPosition;
 		static int yPosition;

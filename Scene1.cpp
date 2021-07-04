@@ -47,6 +47,9 @@ int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
+bool Scene1::continueGame = false;
+bool Scene1::newGame = false;
+
 
 //Scene variables
 int Scene1::action; //Used to trigger action texture.
@@ -149,16 +152,25 @@ int Scene1::scene1() {
 
     //Initialize Textures
     Textures tex;
+    Inventory inv;
     tex.LoadActionTextures();
     tex.Scene1Textures();
+
+    if (continueGame == true) {
+        SceneBackground = inv.ContinueGame();
+    }
+      
+    if (newGame == true) {
+        //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
+        inv.purgeDatabase();
+    }
+
+   
     tex.MovementTextures();
    // tex.Scene2Textures();
   //  tex.Scene3Textures();
  
-    //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.
-    Inventory inv;
-    inv.purgeDatabase();
-
+  
     //Menu Interaction USE, LOOK etc.
     MenuInteraction mob;
    
@@ -185,8 +197,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-              
-        /*Error checking for SDL_Mixer if you need to use it
+       /*Error checking for SDL_Mixer if you need to use it
         
         if (Mix_PlayMusic(mus2, -1) == -1) {
             printf("Mix_PlayMusic: %s\n", Mix_GetError());

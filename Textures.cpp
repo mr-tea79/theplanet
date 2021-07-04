@@ -142,7 +142,7 @@ void Textures::Scene1Textures() {
     background2 = { 0, 200, 1500, 400 };
 
     //This is the hill on the rocky path scene.
-    background3 = { 0, 310, 1100, 300 };
+    background3 = { 0, 310, 1100, 300 }; 
 
     //This is the rock in the cave scene
     background4 = { -30, 268, 398, 329 };

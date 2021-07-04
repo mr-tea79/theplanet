@@ -30,6 +30,8 @@ public:
 
 	int Inventory::checkItem(std::string itemName);
 
+	std::string Inventory::ContinueGame();
+
 	int Inventory::useItem(std::string itemName);
 
 	int Inventory::gameSave(std::string currentScene);
