@@ -44,6 +44,7 @@ namespace brightland {
 		static SDL_Texture* scene3e;
 		static SDL_Texture* caveScene1;
 		static SDL_Texture* caveScene2;
+		static SDL_Texture* mainMenu;
 
 		static SDL_Texture* invTexture1;
 		static SDL_Texture* invTexture2;
@@ -90,6 +91,7 @@ namespace brightland {
 		static SDL_Rect background2;
 		static SDL_Rect background3;
 		static SDL_Rect background4;
+		static SDL_Rect menuBackground;
 
 		SDL_Surface* menuSurface;
 
@@ -112,6 +114,7 @@ namespace brightland {
 		SDL_Surface* imageSurface16;
 		SDL_Surface* imageSurface17; //Rock in Cave
 		SDL_Surface* imageSurface18;
+		SDL_Surface* imageSurface19; //Main Menu
 		
 		SDL_Surface* lantern;
 		SDL_Surface* pipe;

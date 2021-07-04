@@ -6,7 +6,7 @@ using namespace brightland;
 //Renders the scene backgrounds for the game.
 void SceneRender::sceneRender() {
 
-
+ 
     if (Scene1::SceneBackground == "1") {
         SDL_RenderCopy(Scene1::renderer, Textures::texture, NULL, &Textures::background);
     }
@@ -49,6 +49,12 @@ void SceneRender::sceneRender() {
 
 //Renders objects that appear in front of the player like rocks as an example.
 void SceneRender::sceneRenderOverlay() {
+
+    if (Scene1::SceneBackground == "0") {
+        SDL_RenderCopy(Scene1::renderer, Textures::mainMenu, NULL, &Textures::menuBackground);
+        SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
+    }
+
 
     if (Scene1::SceneBackground == "1") {
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);

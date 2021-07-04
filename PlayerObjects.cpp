@@ -366,6 +366,15 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     std::string message;
 
+    if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
+        Scene1::SceneBackground = "1";
+        Scene1::SPRITE_SIZE = 128;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 65;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+     
+    }
 
     if (Scene1::SceneBackground == "3e" && x >= 866 && x <=987 && y >= 536 && y <=575) {
         Scene1::SceneBackground = "3d";

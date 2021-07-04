@@ -28,11 +28,13 @@ SDL_Texture* Textures::computerScene1;
 SDL_Texture* Textures::computerScene2;
 SDL_Texture* Textures::caveScene1;
 SDL_Texture* Textures::caveScene2;
+SDL_Texture* Textures::mainMenu;
 
 SDL_Rect Textures::background;
 SDL_Rect Textures::background2;
 SDL_Rect Textures::background3;
 SDL_Rect Textures::background4;
+SDL_Rect Textures::menuBackground;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -131,6 +133,9 @@ void Textures::Scene1Textures() {
 
     //Background dimensions (x,y,width,height).
     //Main background Rect
+    menuBackground = { 0, 0, 1024, 768 };
+
+    //Main background Rect
     background = { 0, 0, 1024, 600 };
 
     //Background overlay Rects (Rocks in foreground etc)
@@ -158,6 +163,7 @@ void Textures::Scene1Textures() {
     imageSurface5 = IMG_Load("Scenes/ComputerScreen1.png");
     imageSurface6 = IMG_Load("Scenes/Scene1e.png");
     imageSurface7 = IMG_Load("Scenes/rocks2.png");
+    imageSurface19 = IMG_Load("Scenes/gameMenu.png");
 
     pda = IMG_Load("Objects/pda.png");
     flag = IMG_Load("Objects/flagr.png");
@@ -185,6 +191,7 @@ void Textures::Scene1Textures() {
    
     rocks2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface7);
    
+    mainMenu = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface19);
 
     objectTexture = SDL_CreateTextureFromSurface(Scene1::renderer, pda);
     objectTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
@@ -215,6 +222,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(imageSurface6);
     SDL_FreeSurface(imageSurface2);
     SDL_FreeSurface(imageSurface7);
+    SDL_FreeSurface(imageSurface19);
  
 }
 

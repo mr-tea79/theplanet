@@ -77,7 +77,7 @@ int Scene1::scene1() {
     yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
-    SceneBackground = "1";
+    SceneBackground = "0";
    
    // SPRITE_SIZE = 10;
     //xPosition = 310;
@@ -444,7 +444,8 @@ int Scene1::scene1() {
 
     
         //This needs to go here, don't move it!
-        SDL_RenderCopy(renderer, Textures::menuTexture, NULL, &menu);   
+        if(SceneBackground !="0")
+            SDL_RenderCopy(renderer, Textures::menuTexture, NULL, &menu);   
  
         obr.objectRender(); //Render the game objects (Things that the player can pick up).
 
