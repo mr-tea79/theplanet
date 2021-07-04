@@ -133,7 +133,7 @@ void Textures::Scene1Textures() {
 
     //Background dimensions (x,y,width,height).
     //Main background Rect
-    menuBackground = { 0, 0, 1024, 768 };
+    menuBackground = { 0, 0, 1200, 768 };
 
     //Main background Rect
     background = { 0, 0, 1024, 600 };
