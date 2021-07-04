@@ -160,10 +160,7 @@ int Scene1::scene1() {
         SceneBackground = inv.ContinueGame();
     }
       
-    if (newGame == true) {
-        //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
-        inv.purgeDatabase();
-    }
+   
 
    
     tex.MovementTextures();
@@ -204,7 +201,11 @@ int Scene1::scene1() {
             // well, there's no music, but most games don't break without music...
         }
         */
-
+        if (newGame == true) {
+            //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
+            inv.purgeDatabase();
+            newGame = false;
+        }
 
         //Place player objects in the game.
         pob.ObjectController();
