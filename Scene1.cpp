@@ -159,10 +159,7 @@ int Scene1::scene1() {
     if (continueGame == true) {
         SceneBackground = inv.ContinueGame();
     }
-      
-   
-
-   
+         
     tex.MovementTextures();
    // tex.Scene2Textures();
   //  tex.Scene3Textures();
