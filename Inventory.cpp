@@ -235,12 +235,38 @@ std::string Inventory::ContinueGame() {
 				}
 
 				if (columnName == "objectToDestroy") {
-					std::cout << "OBJECT TO DESTROY: " << sqlite3_column_text(stmt, i) << std::endl;
+					Scene1::objectToDestroy = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
+					std::cout << "OBJECT TO DESTROY: " << Scene1::objectToDestroy;
 				}
-
 				break;
+			
 			case (SQLITE_INTEGER):
-				//	record = 1;
+				columnName = sqlite3_column_name(stmt, i);
+				if (columnName == "size") {
+					std::cout << "size: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "x") {					
+					std::cout << "x: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "y") {
+					std::cout << "y: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "inv3Used") {
+					std::cout << "inv3Used: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "inv4Used") {
+					std::cout << "inv4Used: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "inv5Used") {
+					std::cout << "inv5Used: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "inv6Used") {
+					std::cout << "inv6Used: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+				if (columnName == "inv7Used") {
+					std::cout << "inv7Used: " << sqlite3_column_int(stmt, i) << std::endl;
+				}
+		
 				break;
 			case (SQLITE_FLOAT):
 
