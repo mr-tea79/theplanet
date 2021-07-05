@@ -191,6 +191,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+      //  SceneBackground = inv.ContinueGame();
        /*Error checking for SDL_Mixer if you need to use it
         
         if (Mix_PlayMusic(mus2, -1) == -1) {

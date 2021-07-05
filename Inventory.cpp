@@ -63,7 +63,8 @@ int Inventory::gameSave(std::string currentScene) {
 	int size = Scene1::SPRITE_SIZE;
 	int y = Scene1::yPosition;
 	int x = Scene1::xPosition;
-
+	std::string objectToDestroy = Scene1::objectToDestroy;
+	
 	rc = sqlite3_open("Inventory.db", &db);
 
 	if (rc) {
@@ -74,7 +75,7 @@ int Inventory::gameSave(std::string currentScene) {
 	}
 
 	/* Create SQL statement */
-	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=? WHERE id=1";
+	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=?,objectToDestroy=?,inv3Used=?,inv4Used=?,inv5Used=?,inv6Used=?,inv7Used=? WHERE id=1";
 
 	//sqlite using variables in statement.
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
@@ -83,6 +84,12 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_bind_int(stmt, 2, x);
 	sqlite3_bind_int(stmt, 3, y);
 	sqlite3_bind_int(stmt, 4, size);
+	sqlite3_bind_text(stmt, 5, objectToDestroy.c_str(), strlen(objectToDestroy.c_str()), 0);
+	sqlite3_bind_int(stmt, 6, inv3Used);
+	sqlite3_bind_int(stmt, 7, inv4Used);
+	sqlite3_bind_int(stmt, 8, inv5Used);
+	sqlite3_bind_int(stmt, 9, inv6Used);
+	sqlite3_bind_int(stmt, 10, inv7Used);
 
 
 	//Execute parameter statement.
@@ -202,7 +209,7 @@ std::string Inventory::ContinueGame() {
 	}
 
 	/* Create SQL statement */
-	sql = "SELECT scene FROM tblProgress WHERE id=1";
+	sql = "SELECT * FROM tblProgress WHERE id=1";
 	//sqlite using variables in statement.
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
 	sqlite3_bind_text(stmt, 1, scene.c_str(), strlen(scene.c_str()), 0);
@@ -215,11 +222,22 @@ std::string Inventory::ContinueGame() {
 		int num_cols = sqlite3_column_count(stmt);
 
 
-		for (i = 0; i < 2; i++)
+		for (i = 0; i < num_cols; i++)
 		{
+			std::string columnName;
+
 			switch (sqlite3_column_type(stmt, i))
 			{
 			case (SQLITE3_TEXT):
+				columnName = sqlite3_column_name(stmt, i);
+				if (columnName == "scene") {
+					std::cout << "SCENE: " << sqlite3_column_text(stmt, i) << std::endl;
+				}
+
+				if (columnName == "objectToDestroy") {
+					std::cout << "OBJECT TO DESTROY: " << sqlite3_column_text(stmt, i) << std::endl;
+				}
+
 				break;
 			case (SQLITE_INTEGER):
 				//	record = 1;
