@@ -76,8 +76,8 @@ int Scene1::scene1() {
     scene = 1; //Scene Number.
         
     //Set initial position of game character and the size of the character.
-    xPosition = 60;
-    yPosition = 430;
+   // xPosition = 60;
+  //  yPosition = 430;
 
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "0";
@@ -188,6 +188,10 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+
+        yPosition = gdSprite.y;
+        xPosition = gdSprite.x;
+     
       //  SceneBackground = inv.ContinueGame();
        /*Error checking for SDL_Mixer if you need to use it
         
@@ -205,6 +209,7 @@ int Scene1::scene1() {
         if (continueGame == true) {
             inv.ContinueGame();
             continueGame = false;
+            pob.SetSpritePosition(xPosition, yPosition);
         }
 
 
