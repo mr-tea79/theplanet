@@ -179,7 +179,7 @@ int Inventory::useItem(std::string itemName) {
 	return 0;
 }
 
-std::string Inventory::ContinueGame() {
+void Inventory::ContinueGame() {
 
 	sqlite3* db;
 	char* zErrMsg = 0;
@@ -195,7 +195,7 @@ std::string Inventory::ContinueGame() {
 
 	if (rc) {
 		scene = "1";
-		return scene;
+		
 	}
 	else {
 	}
@@ -268,8 +268,6 @@ std::string Inventory::ContinueGame() {
 	sqlite3_close(db);
 
 
-
-	return scene;
 }
 
 

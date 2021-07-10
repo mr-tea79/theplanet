@@ -27,7 +27,7 @@ public:
 
 	int Inventory::checkItem(std::string itemName);
 
-	std::string Inventory::ContinueGame();
+	void Inventory::ContinueGame();
 
 	int Inventory::useItem(std::string itemName);
 

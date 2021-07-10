@@ -203,7 +203,7 @@ int Scene1::scene1() {
         }
 
         if (continueGame == true) {
-            SceneBackground = inv.ContinueGame();
+            inv.ContinueGame();
             continueGame = false;
         }
 

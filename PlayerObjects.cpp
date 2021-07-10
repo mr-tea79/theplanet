@@ -378,9 +378,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
 
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
-        Scene1::SPRITE_SIZE = 128;
-        Scene1::yPosition = 400;
-        Scene1::xPosition = 65;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::newGame = false;
