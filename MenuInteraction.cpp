@@ -558,7 +558,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 Scene1::objectToDestroy.append(object);
             }
 
-            if (menuMessages == "Pipe") {
+            if (menuMessages == "Pipe" && pickUpStatement == "Pick up Plastic Pipe") {
               
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);

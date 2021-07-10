@@ -199,7 +199,12 @@ int Scene1::scene1() {
             printf("Mix_PlayMusic: %s\n", Mix_GetError());
             // well, there's no music, but most games don't break without music...
         }
-        */
+       
+           */
+
+        
+
+
         if (newGame == true) {
             //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
             inv.purgeDatabase();
@@ -210,6 +215,17 @@ int Scene1::scene1() {
             inv.ContinueGame();
             continueGame = false;
             pob.SetSpritePosition(xPosition, yPosition);
+
+            //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
+            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos) {             
+                tex.Scene2Textures();
+                tex.Scene3Textures();       
+            }
+
+            if (SceneBackground.find("3") != std::string::npos) {
+                tex.Scene3Textures();
+            }
+                     
         }
 
 
