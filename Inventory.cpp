@@ -224,6 +224,11 @@ std::string Inventory::ContinueGame() {
 				columnName = sqlite3_column_name(stmt, i);
 				if (columnName == "scene") {
 					std::cout << "SCENE: " << sqlite3_column_text(stmt, i) << std::endl;
+					Scene1::SceneBackground = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
+				}
+				if (columnName == "inv") {
+					std::cout << "INV: " << sqlite3_column_text(stmt, i) << std::endl;
+					Inventory::inv = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
 				}
 
 				if (columnName == "objectToDestroy") {
@@ -236,28 +241,17 @@ std::string Inventory::ContinueGame() {
 				columnName = sqlite3_column_name(stmt, i);
 				if (columnName == "size") {
 					std::cout << "size: " << sqlite3_column_int(stmt, i) << std::endl;
+					Scene1::SPRITE_SIZE = sqlite3_column_int(stmt, i);
 				}
 				if (columnName == "x") {					
 					std::cout << "x: " << sqlite3_column_int(stmt, i) << std::endl;
+					Scene1::xPosition = sqlite3_column_int(stmt, i);
 				}
 				if (columnName == "y") {
 					std::cout << "y: " << sqlite3_column_int(stmt, i) << std::endl;
+					Scene1::yPosition = sqlite3_column_int(stmt, i);
 				}
-				if (columnName == "inv3Used") {
-					std::cout << "inv3Used: " << sqlite3_column_int(stmt, i) << std::endl;
-				}
-				if (columnName == "inv4Used") {
-					std::cout << "inv4Used: " << sqlite3_column_int(stmt, i) << std::endl;
-				}
-				if (columnName == "inv5Used") {
-					std::cout << "inv5Used: " << sqlite3_column_int(stmt, i) << std::endl;
-				}
-				if (columnName == "inv6Used") {
-					std::cout << "inv6Used: " << sqlite3_column_int(stmt, i) << std::endl;
-				}
-				if (columnName == "inv7Used") {
-					std::cout << "inv7Used: " << sqlite3_column_int(stmt, i) << std::endl;
-				}
+			
 		
 				break;
 			case (SQLITE_FLOAT):

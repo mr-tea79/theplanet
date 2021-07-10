@@ -156,10 +156,7 @@ int Scene1::scene1() {
     tex.LoadActionTextures();
     tex.Scene1Textures();
 
-    if (continueGame == true) {
-        SceneBackground = inv.ContinueGame();
-    }
-         
+ 
     tex.MovementTextures();
    // tex.Scene2Textures();
   //  tex.Scene3Textures();
@@ -204,6 +201,12 @@ int Scene1::scene1() {
             inv.purgeDatabase();
             newGame = false;
         }
+
+        if (continueGame == true) {
+            SceneBackground = inv.ContinueGame();
+            continueGame = false;
+        }
+
 
         //Place player objects in the game.
         pob.ObjectController();

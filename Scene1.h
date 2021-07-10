@@ -29,6 +29,7 @@ namespace brightland {
 		static std::string SceneBackground;
 		static std::string objectToDestroy;
 		static std::string SceneTransitionStatement;
+	
 		static int tLoader;
 		static bool mouseClick;
 		static int action;
