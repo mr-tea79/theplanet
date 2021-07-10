@@ -377,7 +377,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteAction);
         inv.useItem("Tape");
-        Inventory::inv3Used = 1;
+        Inventory::inv.append("3");
         useMessage = "That should plug the leak!";
         useStatement = "";
         doAction();
@@ -429,7 +429,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         useMessage = "Let there be light!";
         inv.useItem("Battery Lantern");
         doAction();
-        Inventory::inv7Used = 1;
+        Inventory::inv.append("7");
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
         Scene1::xPosition = 606;
@@ -447,8 +447,8 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         useMessage = "TOAD 1000: Suit has been pressurized!";     
         inv.useItem("Pipe");
-        doAction();
-        Inventory::inv5Used = 1;
+        doAction();      
+        Inventory::inv.append("5");
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
 
@@ -465,7 +465,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     if (Scene1::useStatement == "Use Self Inflating Tent with Sandy clearing") {
         
         inv.useItem("Tent");
-        Inventory::inv4Used = 1;
+        Inventory::inv.append("4");
         Scene1::actionStatement = "";
         //Change scene.
         Scene1::SceneBackground = "1fa";

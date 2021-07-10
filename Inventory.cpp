@@ -4,12 +4,7 @@
 
 using namespace brightland;
 
-
-int Inventory::inv3Used;
-int Inventory::inv4Used;
-int Inventory::inv5Used;
-int Inventory::inv6Used;
-int Inventory::inv7Used;
+std::string Inventory::inv;
 
 SDL_Rect Inventory::inv1 = { 700, 650, 40, 40 };
 SDL_Rect Inventory::inv2 = { 760, 610, 60, 60 };
@@ -63,6 +58,7 @@ int Inventory::gameSave(std::string currentScene) {
 	int size = Scene1::SPRITE_SIZE;
 	int y = Scene1::yPosition;
 	int x = Scene1::xPosition;
+	std::string invItems = inv;
 	std::string objectToDestroy = Scene1::objectToDestroy;
 	
 	rc = sqlite3_open("Inventory.db", &db);
@@ -75,7 +71,7 @@ int Inventory::gameSave(std::string currentScene) {
 	}
 
 	/* Create SQL statement */
-	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=?,objectToDestroy=?,inv3Used=?,inv4Used=?,inv5Used=?,inv6Used=?,inv7Used=? WHERE id=1";
+	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=?,objectToDestroy=?,inv=? WHERE id=1";
 
 	//sqlite using variables in statement.
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
@@ -85,12 +81,8 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_bind_int(stmt, 3, y);
 	sqlite3_bind_int(stmt, 4, size);
 	sqlite3_bind_text(stmt, 5, objectToDestroy.c_str(), strlen(objectToDestroy.c_str()), 0);
-	sqlite3_bind_int(stmt, 6, inv3Used);
-	sqlite3_bind_int(stmt, 7, inv4Used);
-	sqlite3_bind_int(stmt, 8, inv5Used);
-	sqlite3_bind_int(stmt, 9, inv6Used);
-	sqlite3_bind_int(stmt, 10, inv7Used);
-
+	sqlite3_bind_text(stmt, 6, invItems.c_str(), strlen(invItems.c_str()), 0);
+	
 
 	//Execute parameter statement.
 	sqlite3_step(stmt);

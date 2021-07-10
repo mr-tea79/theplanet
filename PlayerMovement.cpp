@@ -396,7 +396,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
     //Check if player has put patch on their suit.
-    if (Inventory::inv3Used == 1) {
+    if (Inventory::inv.find("3") == std::string::npos){
        Textures::spriteDown1a = Textures::spriteDownp;
        Textures::spriteDown2a = Textures::spriteDown2p;
        Textures::spriteDown3a = Textures::spriteDown3p;

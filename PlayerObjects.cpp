@@ -303,7 +303,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Computer Screen";
     }
 
-    if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Inventory::inv3Used !=1) {
+    if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Inventory::inv.find("3") == std::string::npos){
         message = Scene1::actionStatement + " Ape Tape";
     }
    
@@ -411,7 +411,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
 
 
-    if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 750 && playerCurrentLocationY <= 120 && Inventory::inv7Used == 1) {
+    if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 750 && playerCurrentLocationY <= 120 && Inventory::inv.find("7") != std::string::npos) {
         Scene1::SceneBackground = "3d";
         Scene1::SPRITE_SIZE = 120;
         Scene1::yPosition = 400;
@@ -519,7 +519,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     /* Inside Tent */
     if (Scene1::SceneBackground == "1da" && x >= 0 && x <100 && y >= 390  && playerCurrentLocationX <= 10 && playerCurrentLocationY >= 308) {     
-        if (Inventory::inv5Used != 1) {
+        if (Inventory::inv.find("5") == std::string::npos) {
             message = "My suit hasn't got enough oxygen";
         }
         else {
@@ -637,7 +637,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     /* Leave wreakage scene and head to rocky path */
     if (Scene1::SceneBackground == "1" && x > 0 && x <= 771 && y > 204 && y < 259 && playerCurrentLocationY <360 ) {
         
-        if (Inventory::inv3Used != 1) {
+        if (Inventory::inv.find("3") == std::string::npos) {
             Scene1::sceneHalt = 1;
             PlayerInteraction::playerMessage = 8;
         }

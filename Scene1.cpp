@@ -209,7 +209,8 @@ int Scene1::scene1() {
         pob.ObjectController();
 
         //Show patch on suit
-        if (Inventory::inv3Used == 1) {
+        if (Inventory::inv.find("3") != std::string::npos) {
+           
             Textures::spriteDown1 = Textures::spriteDownp;
             Textures::spritePick = Textures::spritePickp;
         }

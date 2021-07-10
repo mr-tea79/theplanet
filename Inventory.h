@@ -10,11 +10,8 @@ namespace brightland{
 class Inventory
 {
 public:
-	static int inv3Used;
-	static int inv4Used;
-	static int inv5Used;
-	static int inv6Used;
-	static int inv7Used;
+
+	static std::string inv;
 
 	static SDL_Rect inv1;
 	static SDL_Rect inv2;

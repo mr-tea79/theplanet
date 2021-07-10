@@ -25,7 +25,7 @@ void ObjectRender::objectRender() {
 
     //Ape Tape Inventory Item.
     if (Scene1::objectToDestroy.find("3") != std::string::npos) {
-        if (Inventory::inv3Used == 0) {
+        if (Inventory::inv.find("3")) {
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture3, NULL, &Inventory::inv3);
         }
     }
@@ -35,7 +35,7 @@ void ObjectRender::objectRender() {
 
     //Tent
     if (Scene1::objectToDestroy.find("4") != std::string::npos) {
-        if (Inventory::inv4Used == 0) {
+        if (Inventory::inv.find("4") == std::string::npos) {
             //This makes sure the inventory item is removed if the player has used the tent.
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture4, NULL, &Inventory::inv4);
         }
@@ -46,14 +46,14 @@ void ObjectRender::objectRender() {
 
     //Pipe      
     if (Scene1::objectToDestroy.find("5") != std::string::npos) {
-        if (Inventory::inv5Used == 0) {
+        if (Inventory::inv.find("5") == std::string::npos) {
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture3, NULL, &Inventory::inv3);
         }
     }
 
     //Lantern    
     if (Scene1::objectToDestroy.find("6") != std::string::npos) {
-        if (Inventory::inv7Used == 0) {
+        if (Inventory::inv.find("7") == std::string::npos) {
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture6, NULL, &Inventory::inv7);
         }
     }
