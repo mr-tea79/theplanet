@@ -10,8 +10,8 @@ namespace brightland {
 	class SceneRender {
 
 	public:
-		void sceneRender(int x, int y);
-		void sceneRenderOverlay();
+		void sceneRender();
+		void sceneRenderOverlay(int x, int y);
 		int HoverButtons(int x, int y);
 
 	};

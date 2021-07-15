@@ -475,7 +475,7 @@ int Scene1::scene1() {
         //Render the window
         SDL_RenderClear(renderer);
        
-        sr.sceneRender(event.motion.x, event.motion.y);  //Render the game scene backgrounds.
+        sr.sceneRender();  //Render the game scene backgrounds.
 
     
         //This needs to go here, don't move it!
@@ -494,7 +494,7 @@ int Scene1::scene1() {
         }
      
     
-        sr.sceneRenderOverlay(); //Render objects in front of sprite.
+        sr.sceneRenderOverlay(event.motion.x, event.motion.y); //Render objects in front of sprite.
 
         SDL_RenderCopy(renderer, Textures::ftexture, NULL, &textRect); //Renders the text that appears on the screen.
      
