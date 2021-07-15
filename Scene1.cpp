@@ -474,8 +474,8 @@ int Scene1::scene1() {
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
         //Render the window
         SDL_RenderClear(renderer);
-        
-        sr.sceneRender();  //Render the game scene backgrounds.
+       
+        sr.sceneRender(event.motion.x, event.motion.y);  //Render the game scene backgrounds.
 
     
         //This needs to go here, don't move it!

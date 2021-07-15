@@ -3,8 +3,16 @@
 
 using namespace brightland;
 
+
+//Returns hover trigger for buttons
+int SceneRender::HoverButtons(int x, int y) {
+
+
+    return 0;
+}
+
 //Renders the scene backgrounds for the game.
-void SceneRender::sceneRender() {
+void SceneRender::sceneRender(int x, int y) {
 
  
     if (Scene1::SceneBackground == "1") {
