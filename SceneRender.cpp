@@ -4,11 +4,22 @@
 using namespace brightland;
 
 
+//Global Static Variables
+
+//This is used to identify which button was pressed. For example: New Game button.
+std::string buttonID = "";
+
 //Returns hover trigger for buttons
 int SceneRender::HoverButtons(int x, int y) {
 
-    if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {
-      
+    //New game hover button (main menu)
+    if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {  
+        buttonID = "New Game";
+        return 1;
+    }
+    //New game hover button (main menu)
+    if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
+        buttonID = "Continue Game";
         return 1;
     }
 
@@ -68,8 +79,12 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
     if (Scene1::SceneBackground == "0") {
         SDL_RenderCopy(Scene1::renderer, Textures::mainMenu, NULL, &Textures::menuBackground);
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
-        if (hoverTrigger == 1) {
+        if (hoverTrigger == 1 && buttonID == "New Game") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverNewGame, NULL, &Textures::RHoverNewGame);
+       
+        }
+        if (hoverTrigger == 1 && buttonID == "Continue Game") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverContinueGame, NULL, &Textures::RHoverConinueGame);
         }
     }
 

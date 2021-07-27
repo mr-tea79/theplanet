@@ -153,8 +153,9 @@ void Textures::Scene1Textures() {
     //This is the rock in the cave scene
     background4 = { -30, 268, 398, 329 };
 
-    //This is for the new game hover button
+    //This is for the main menu hover buttons
     RHoverNewGame = { 180, 480, 272, 61 };
+    RHoverConinueGame = { 180, 376, 272, 61 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -176,7 +177,9 @@ void Textures::Scene1Textures() {
 
     //Hover Button Surfaces
     ShoverNewGame = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
+    ShoverContinueGame = IMG_Load("Scenes/HoverButtons/menuContinueHover.png");
     hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverNewGame);
+    hoverContinueGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverContinueGame);
 
     pda = IMG_Load("Objects/pda.png");
     flag = IMG_Load("Objects/flagr.png");
@@ -237,6 +240,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(imageSurface7);
     SDL_FreeSurface(imageSurface19);
     SDL_FreeSurface(ShoverNewGame);
+    SDL_FreeSurface(ShoverContinueGame);
  
 }
 
