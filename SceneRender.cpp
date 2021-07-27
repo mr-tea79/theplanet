@@ -17,7 +17,7 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "New Game";
         return 1;
     }
-    //New game hover button (main menu)
+    //Continue game hover button (main menu)
     if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
         buttonID = "Continue Game";
         return 1;
