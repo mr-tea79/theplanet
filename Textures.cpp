@@ -5,6 +5,10 @@
 
 using namespace brightland;
 
+//Hover Button Textures;
+SDL_Texture* Textures::hoverNewGame;
+SDL_Texture* Textures::hoverContinueGame;
+
 //Text Texture
 SDL_Texture* Textures::ftexture;
 
@@ -35,6 +39,8 @@ SDL_Rect Textures::background2;
 SDL_Rect Textures::background3;
 SDL_Rect Textures::background4;
 SDL_Rect Textures::menuBackground;
+SDL_Rect Textures::RHoverNewGame;
+SDL_Rect Textures::RHoverConinueGame;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -147,6 +153,9 @@ void Textures::Scene1Textures() {
     //This is the rock in the cave scene
     background4 = { -30, 268, 398, 329 };
 
+    //This is for the new game hover button
+    RHoverNewGame = { 180, 480, 272, 61 };
+
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
     SDL_DestroyTexture(scene1fb);
@@ -164,6 +173,10 @@ void Textures::Scene1Textures() {
     imageSurface6 = IMG_Load("Scenes/Scene1e.png");
     imageSurface7 = IMG_Load("Scenes/rocks2.png");
     imageSurface19 = IMG_Load("Scenes/gameMenu.png");
+
+    //Hover Button Surfaces
+    ShoverNewGame = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
+    hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverNewGame);
 
     pda = IMG_Load("Objects/pda.png");
     flag = IMG_Load("Objects/flagr.png");
@@ -223,6 +236,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(imageSurface2);
     SDL_FreeSurface(imageSurface7);
     SDL_FreeSurface(imageSurface19);
+    SDL_FreeSurface(ShoverNewGame);
  
 }
 

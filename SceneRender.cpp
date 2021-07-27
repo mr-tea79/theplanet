@@ -7,6 +7,10 @@ using namespace brightland;
 //Returns hover trigger for buttons
 int SceneRender::HoverButtons(int x, int y) {
 
+    if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {
+      
+        return 1;
+    }
 
     return 0;
 }
@@ -60,9 +64,13 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
 
    int hoverTrigger = HoverButtons(x, y);
 
+  
     if (Scene1::SceneBackground == "0") {
         SDL_RenderCopy(Scene1::renderer, Textures::mainMenu, NULL, &Textures::menuBackground);
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
+        if (hoverTrigger == 1) {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverNewGame, NULL, &Textures::RHoverNewGame);
+        }
     }
 
 
