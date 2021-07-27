@@ -70,20 +70,20 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Menu Hover Messages
 
-    if (x > 190 && x < 227 && y > 676 && y < 690) {       
+    if (x > 190 && x < 227 && y > 676 && y < 690 && Scene1::SceneBackground != "0") {       
         message = "Use";
     }
 
 
-    if (x > 61 && x < 146 && y > 643 && y < 690) {
+    if (x > 61 && x < 146 && y > 643 && y < 690 && Scene1::SceneBackground != "0") {
         message = "Pick up";
     }
 
-    if (x > 178 && x < 232 && y > 723 && y < 744) {
+    if (x > 178 && x < 232 && y > 723 && y < 744 && Scene1::SceneBackground != "0") {
         message = "Open";
     }
 
-    if (x > 57 && x < 145 && y > 621 && y < 647) {
+    if (x > 57 && x < 145 && y > 621 && y < 647 && Scene1::SceneBackground != "0") {
         message = "Look";
     }
 
