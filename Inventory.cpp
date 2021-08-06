@@ -71,7 +71,7 @@ int Inventory::gameSave(std::string currentScene) {
 	}
 
 	/* Create SQL statement */
-	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=?,objectToDestroy=?,inv=? WHERE id=1";
+	sql = "UPDATE tblProgress SET scene=?,x=?,y=?,size=?,objectToDestroy=?,inv=?,secretCounter=? WHERE id=1";
 
 	//sqlite using variables in statement.
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
@@ -82,6 +82,7 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_bind_int(stmt, 4, size);
 	sqlite3_bind_text(stmt, 5, objectToDestroy.c_str(), strlen(objectToDestroy.c_str()), 0);
 	sqlite3_bind_text(stmt, 6, invItems.c_str(), strlen(invItems.c_str()), 0);
+	sqlite3_bind_int(stmt, 7, Scene1::secretTrigger);
 	
 
 	//Execute parameter statement.
@@ -251,7 +252,10 @@ void Inventory::ContinueGame() {
 					std::cout << "y: " << sqlite3_column_int(stmt, i) << std::endl;
 					Scene1::yPosition = sqlite3_column_int(stmt, i);
 				}
-			
+				if (columnName == "secretCounter") {
+					std::cout << "secretCounter: " << sqlite3_column_int(stmt, i) << std::endl;
+					Scene1::secretTrigger = sqlite3_column_int(stmt, i);
+				}
 		
 				break;
 			case (SQLITE_FLOAT):
