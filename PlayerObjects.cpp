@@ -375,7 +375,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     std::string message;
 
-    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34 && playerCurrentLocationY < 357 && playerCurrentLocationY > 279) {
+    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34 ) {
         Scene1::SceneBackground = "3a";
         Scene1::SPRITE_SIZE = 10;
         Scene1::yPosition = 120;
@@ -383,6 +383,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        
     }
 
     if (Scene1::SceneBackground == "3a" && playerCurrentLocationX >= 862 && playerCurrentLocationX <=918 && playerCurrentLocationY < 159 && playerCurrentLocationY > 107 && Scene1::secretTrigger > 0) {
