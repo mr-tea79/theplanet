@@ -24,6 +24,7 @@ SDL_Texture* Textures::scene1d2;
 SDL_Texture* Textures::scene3a;
 SDL_Texture* Textures::scene3b;
 SDL_Texture* Textures::scene3e;
+SDL_Texture* Textures::scene3f;
 SDL_Texture* Textures::wreakageScene;
 SDL_Texture* Textures::scene1e;
 SDL_Texture* Textures::texture;
@@ -301,6 +302,7 @@ void Textures::Scene3Textures() {
     imageSurface16 = IMG_Load("Scenes/scene3d.png");
     imageSurface17 = IMG_Load("Scenes/rocks3.png");
     imageSurface18 = IMG_Load("Scenes/scene3e.png");
+    imageSurface20 = IMG_Load("Scenes/scene3f.png");
 
     scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);  
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);  
@@ -311,6 +313,7 @@ void Textures::Scene3Textures() {
     caveScene2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface16);
     rocks3 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface17);
     scene3e = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface18);
+    scene3f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface20);
    
     boxOpened = IMG_Load("Objects/boxopened.png");
     boxClosed = IMG_Load("Objects/boxclosed.png");
@@ -340,6 +343,7 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(imageSurface16);
     SDL_FreeSurface(imageSurface17);
     SDL_FreeSurface(imageSurface18);
+    SDL_FreeSurface(imageSurface20);
     SDL_FreeSurface(lantern);
     SDL_FreeSurface(pipe);
     SDL_FreeSurface(pipeBox);

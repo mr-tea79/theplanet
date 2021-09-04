@@ -166,6 +166,24 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
    
     //Set the coordinates for walking left or right in the scene.
 
+
+            ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
+    if (Scene1::SceneBackground == "3f") {
+
+        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
+        if (gd <= x - 60 && y > 320 && y < 575) {
+            gd = doXWalkRight(gd, screenWidth);
+            position++;
+        }
+
+        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
+        else if (gd >= x - 15 && y > 320 && y < 575) {
+            gd = doXWalkLeft(gd, screenWidth);
+            position++;
+        }
+    }
+
+
           ///////////////////////// SCENE 3E CAVE DRAWING IN DIRT //////////////////////////////////////
     if (Scene1::SceneBackground == "3e") {
 
@@ -400,6 +418,38 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
        Textures::spriteDown1a = Textures::spriteDownp;
        Textures::spriteDown2a = Textures::spriteDown2p;
        Textures::spriteDown3a = Textures::spriteDown3p;
+    }
+
+
+    ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
+    if (Scene1::SceneBackground == "3f") {
+
+        //Make character smaller and bigger depending on distance.
+        if (gy < 290) {
+            Scene1::SPRITE_SIZE = 50;
+        }
+        if (gy < 310) {
+            Scene1::SPRITE_SIZE = 50;
+        }
+        if (gy < 355) {
+            Scene1::SPRITE_SIZE = 50;
+        }
+
+        if (gy > 355) {
+            Scene1::SPRITE_SIZE = 50;
+        }
+
+        //GOING UP
+        if (gy >= y && y < 575 && y >158) {
+            gy = doYWalkUp(gy);
+            position++;
+        }
+
+        //GOING DOWN
+        else if (gy <= y - 100 && y < 575) {
+            gy = doYWalkDown(gy);
+            position++;
+        }
     }
 
 

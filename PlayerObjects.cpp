@@ -121,6 +121,15 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+
+    if (Scene1::SceneBackground == "3f" && x <= 20 && y < 414 && y > 250 ) {
+        message = Scene1::actionStatement + " Leave crator";
+    }
+
+    if (Scene1::SceneBackground == "3a" && x >= 878 && x <= 919 && y < 148 && y > 121 && Scene1::secretTrigger > 0) {
+        message = Scene1::actionStatement + " Point of interest";
+    }
+
     if (Scene1::SceneBackground == "3e" && x >= 183 && x <= 236 && y < 429 && y > 382) {
         message = Scene1::actionStatement + " Big X";
     }
@@ -365,6 +374,27 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     Inventory inv;
 
     std::string message;
+
+    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34 && playerCurrentLocationY < 357 && playerCurrentLocationY > 279) {
+        Scene1::SceneBackground = "3a";
+        Scene1::SPRITE_SIZE = 10;
+        Scene1::yPosition = 120;
+        Scene1::xPosition = 860;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+    }
+
+    if (Scene1::SceneBackground == "3a" && playerCurrentLocationX >= 862 && playerCurrentLocationX <=918 && playerCurrentLocationY < 159 && playerCurrentLocationY > 107 && Scene1::secretTrigger > 0) {
+        Scene1::SceneBackground = "3f";
+        Scene1::SPRITE_SIZE = 50;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 65;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+    }
+
 
     if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
         Scene1::SceneBackground = "1";

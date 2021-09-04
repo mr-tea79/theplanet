@@ -67,6 +67,9 @@ void SceneRender::sceneRender() {
     if (Scene1::SceneBackground == "3d") {
         SDL_RenderCopy(Scene1::renderer, Textures::caveScene2, NULL, &Textures::background);
     }
+    if (Scene1::SceneBackground == "3f") {
+        SDL_RenderCopy(Scene1::renderer, Textures::scene3f, NULL, &Textures::background);
+    }
    
 }
 
