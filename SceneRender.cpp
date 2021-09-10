@@ -70,7 +70,10 @@ void SceneRender::sceneRender() {
     if (Scene1::SceneBackground == "3f") {
         SDL_RenderCopy(Scene1::renderer, Textures::scene3f, NULL, &Textures::background);
         SDL_RenderCopy(Scene1::renderer, Textures::objectTextureSparkle, &PlayerObjects::srcrect9, &PlayerObjects::dstrect9);
-        SDL_RenderCopy(Scene1::renderer, Textures::rocks4, NULL, &Textures::background5);  
+        if (Scene1::secretTrigger < 2) {
+            SDL_RenderCopy(Scene1::renderer, Textures::rocks4, NULL, &Textures::background5);
+        }
+            
     }
    
 }

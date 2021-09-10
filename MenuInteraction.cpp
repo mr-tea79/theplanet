@@ -610,7 +610,7 @@ std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction
         pullStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
   
-    if (pullStatement == "Pull Loose Rocks") {
+    if (pullStatement == "Pull Loose rocks") {
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         pullMessage = "Oooh!";
