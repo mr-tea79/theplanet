@@ -70,6 +70,7 @@ SDL_Texture* Textures::objectTextureAirBox;
 SDL_Texture* Textures::objectTexturePipe;
 SDL_Texture* Textures::objectTexturePipeAction;
 SDL_Texture* Textures::objectTextureLantern;
+SDL_Texture* Textures::objectTextureSparkle;
 
 //Action Textures
 SDL_Surface* Textures::spriteAction;
@@ -329,6 +330,7 @@ void Textures::Scene3Textures() {
     airBox = IMG_Load("Objects/airBox.png");
     lantern = IMG_Load("Objects/lantern.png");
     pipe = IMG_Load("Objects/pipe.png");
+    sparkle = IMG_Load("Objects/sparkleObject.png");
 
     objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
     objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, boxOpened);
@@ -336,6 +338,7 @@ void Textures::Scene3Textures() {
     objectTextureAirBox = SDL_CreateTextureFromSurface(Scene1::renderer, airBox);
     objectTexturePipe = SDL_CreateTextureFromSurface(Scene1::renderer, pipeBox);
     objectTextureLantern = SDL_CreateTextureFromSurface(Scene1::renderer, lantern);
+    objectTextureSparkle = SDL_CreateTextureFromSurface(Scene1::renderer, sparkle);
 
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);
     invTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, lantern);
@@ -359,5 +362,6 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(boxEmpty);
     SDL_FreeSurface(boxOpened);
     SDL_FreeSurface(boxClosed);
+    SDL_FreeSurface(sparkle);
 
 }

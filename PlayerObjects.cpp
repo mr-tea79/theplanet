@@ -38,6 +38,8 @@ SDL_Rect PlayerObjects::srcrect7;
 SDL_Rect PlayerObjects::dstrect7;
 SDL_Rect PlayerObjects::srcrect8;
 SDL_Rect PlayerObjects::dstrect8;
+SDL_Rect PlayerObjects::srcrect9;
+SDL_Rect PlayerObjects::dstrect9;
 
 
 void PlayerObjects::SetSpritePosition(int x, int y) {
@@ -768,7 +770,10 @@ std::tuple<int, int, int, int, int> PlayerObjects::ObjectSettings(int scene, int
         //Tent
         return  std::make_tuple(NULL, NULL, NULL, 30, 81);
     }
-
+    if (scene == 1 && objectID == 9) {
+        //Tent
+        return  std::make_tuple(NULL, 5, NULL, 20, 41);
+    }
 
 
     return  std::make_tuple(scene, objectID, b, c, d);
@@ -819,6 +824,12 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 419, 372, 20, 41);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
+    if (scene == 1 && objectID == 9) {
+        //Sparkly object
+        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+        return  std::make_tuple(3, 499, 252, 8, 8);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
+    }
+
 
     return  std::make_tuple(scene, objectID, b, c, d);
 }
@@ -914,6 +925,16 @@ void PlayerObjects::ObjectController() {
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect8 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect8 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 9 (Sparkly thing)
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 9, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 9, NULL, NULL, NULL);
+
+    //% numberSprites is set to the value specified in PlaceObjectA. Here it is set to 3.
+    int object9 = (ticks / 100) % numberSprites;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect9 = { object9 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect9 = { objectP3, objectP4, objectP5, objectP6 };
 
 
 }

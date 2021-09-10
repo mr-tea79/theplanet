@@ -36,6 +36,7 @@ namespace brightland {
 		static SDL_Texture* Textures::objectTexturePipe;
 		static SDL_Texture* Textures::objectTexturePipeAction;
 		static SDL_Texture* Textures::objectTextureLantern;
+		static SDL_Texture* Textures::objectTextureSparkle;
 
 		static SDL_Texture* wreakageScene;
 		static SDL_Texture* scene1e;
@@ -144,6 +145,7 @@ namespace brightland {
 		SDL_Surface* tent;
 		SDL_Surface* pipeBox;
 		SDL_Surface* pipeAction;
+		SDL_Surface* sparkle;
 
 	public:
 		void Scene1Textures();
