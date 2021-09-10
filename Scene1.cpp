@@ -104,6 +104,7 @@ int Scene1::scene1() {
     std::string openMessage;
     std::string lookMessage;
     std::string actionMessage;
+    std::string pullMessage;
 
   
     //Allow usage of .png images.
@@ -398,6 +399,9 @@ int Scene1::scene1() {
         if (actionMessage != "Open what?") {
             openMessage = mob.Open(x, y, gd, gy, mInteraction);
         }
+        if (actionMessage != "Pull what?") {
+            openMessage = mob.Pull(x, y, gd, gy, mInteraction);
+        }
 
         if (lookMessage != "" ) {  
             playerMessage = true;
@@ -413,6 +417,11 @@ int Scene1::scene1() {
             playerMessage = true;
             pi.InteractionControllerOpen(openMessage, gameObject);
         }
+        if (pullMessage != "") {
+            playerMessage = true;
+            pi.InteractionControllerOpen(pullMessage, gameObject);
+        }
+
 
  
         if (wx > gdSprite.x || wx < gdSprite.x) {

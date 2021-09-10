@@ -14,6 +14,7 @@ static std::string openStatement;
 static std::string lookStatement;
 static std::string pickUpStatement;
 static std::string actionStatement;
+static std::string pullStatement;
 
 
 //These 2 lines will deal when the player uses the wrong item. 
@@ -75,6 +76,15 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         openStatement = "";
     }
 
+    if (x > 59 && x < 114 && y > 723 && y < 744 && Scene1::SceneBackground != "0") {
+        useStatement = "";
+        actionStatement = Scene1::actionStatement = "Pull";
+        actionMessage = "Pull what?";
+        pullStatement = "";
+    }
+
+
+
     return actionMessage;
 }
 
@@ -89,6 +99,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
+
+    if (gy < 260 && gd > 300 && lookStatement == "Look at Loose rocks") {
+        lookMessage = "Hmmmm what's this?";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
 
     if (lookStatement == "Look at Big X") {
         lookMessage = "I think this is where I am.. I think this is a map.";
@@ -577,3 +596,32 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     }
     return gameObject;
 }
+
+
+std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction) {
+
+    std::string pullMessage;
+
+    PlayerObjects pob;
+    Inventory inv;
+    int n = pullStatement.length();
+
+    if (n < 8) {
+        pullStatement = pob.HoverObjects(x, y, 1, gd, gy);
+    }
+  
+    if (pullStatement == "Pull Loose Rocks") {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        pullMessage = "Oooh!";
+        pullStatement = "";
+        doAction();
+        Scene1::secretTrigger = 2;
+    }
+
+  
+
+    return pullMessage;
+
+}
+

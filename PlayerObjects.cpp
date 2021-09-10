@@ -88,6 +88,9 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     if (x > 57 && x < 145 && y > 621 && y < 647 && Scene1::SceneBackground != "0") {
         message = "Look";
     }
+    if (x > 59 && x < 114 && y > 723 && y < 744 && Scene1::SceneBackground != "0") {
+        message = "Pull";
+    }
 
     //Inventory Hover Messages 
    
@@ -123,6 +126,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+
+    if (Scene1::SceneBackground == "3f" && x <= 560 && x >=483 && y < 262 && y > 202) {
+            message = Scene1::actionStatement + " Loose rocks";
+    }
 
     if (Scene1::SceneBackground == "3f" && x <= 20 && y < 414 && y > 250 ) {
         message = Scene1::actionStatement + " Leave crator";

@@ -87,6 +87,17 @@ void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::
     SDL_FreeSurface(Scene1::fsurface);
 }
 
+void PlayerInteraction::InteractionControllerPull(std::string lookMessage, std::string gameObject) {
+
+    const char* imu = lookMessage.c_str();;
+    int pullMessageLength = lookMessage.length();
+    textDimensions(pullMessageLength);
+    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
+    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
+    SDL_FreeSurface(Scene1::fsurface);
+}
+
+
 void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
     
     const char* imu = actionMessage.c_str();;
