@@ -39,6 +39,7 @@ SDL_Rect Textures::background;
 SDL_Rect Textures::background2;
 SDL_Rect Textures::background3;
 SDL_Rect Textures::background4;
+SDL_Rect Textures::background5;
 SDL_Rect Textures::menuBackground;
 SDL_Rect Textures::RHoverNewGame;
 SDL_Rect Textures::RHoverConinueGame;
@@ -47,6 +48,7 @@ SDL_Rect Textures::RHoverConinueGame;
 SDL_Texture* Textures::rocks;
 SDL_Texture* Textures::rocks2;
 SDL_Texture* Textures::rocks3;
+SDL_Texture* Textures::rocks4;
 
 //Inventory Textures.
 SDL_Texture* Textures::invTexture1;
@@ -153,6 +155,9 @@ void Textures::Scene1Textures() {
 
     //This is the rock in the cave scene
     background4 = { -30, 268, 398, 329 };
+
+    //This is the rock in the cave scene
+    background5 = { 490, 200, 100, 60 };
 
     //This is for the main menu hover buttons
     RHoverNewGame = { 180, 480, 272, 61 };
@@ -301,6 +306,7 @@ void Textures::Scene3Textures() {
     imageSurface15 = IMG_Load("Scenes/scene3c.png");
     imageSurface16 = IMG_Load("Scenes/scene3d.png");
     imageSurface17 = IMG_Load("Scenes/rocks3.png");
+    imageSurface21 = IMG_Load("Scenes/rocks4.png");
     imageSurface18 = IMG_Load("Scenes/scene3e.png");
     imageSurface20 = IMG_Load("Scenes/scene3f.png");
 
@@ -312,6 +318,7 @@ void Textures::Scene3Textures() {
     caveScene1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface15);
     caveScene2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface16);
     rocks3 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface17);
+    rocks4 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface21);
     scene3e = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface18);
     scene3f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface20);
    
@@ -344,6 +351,7 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(imageSurface17);
     SDL_FreeSurface(imageSurface18);
     SDL_FreeSurface(imageSurface20);
+    SDL_FreeSurface(imageSurface21);
     SDL_FreeSurface(lantern);
     SDL_FreeSurface(pipe);
     SDL_FreeSurface(pipeBox);
