@@ -57,6 +57,7 @@ SDL_Texture* Textures::invTexture3;
 SDL_Texture* Textures::invTexture4;
 SDL_Texture* Textures::invTexture5;
 SDL_Texture* Textures::invTexture6;
+SDL_Texture* Textures::invTexture7;
 
 //Object Textures.
 SDL_Texture* Textures::objectTexture;
@@ -331,6 +332,7 @@ void Textures::Scene3Textures() {
     lantern = IMG_Load("Objects/lantern.png");
     pipe = IMG_Load("Objects/pipe.png");
     sparkle = IMG_Load("Objects/sparkleObject.png");
+    disc = IMG_Load("Objects/disc.png");
 
     objectTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, boxClosed);
     objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, boxOpened);
@@ -342,6 +344,7 @@ void Textures::Scene3Textures() {
 
     invTexture3 = SDL_CreateTextureFromSurface(Scene1::renderer, pipe);
     invTexture6 = SDL_CreateTextureFromSurface(Scene1::renderer, lantern);
+    invTexture7 = SDL_CreateTextureFromSurface(Scene1::renderer, disc);
     
     //Free up surfaces (Memory Management)
     SDL_FreeSurface(imageSurface10);
@@ -363,5 +366,6 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(boxOpened);
     SDL_FreeSurface(boxClosed);
     SDL_FreeSurface(sparkle);
+    SDL_FreeSurface(disc);
 
 }

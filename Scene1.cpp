@@ -190,6 +190,8 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+    //    std::cout << Inventory::inv << std::endl;
+
 
         yPosition = gdSprite.y;
         xPosition = gdSprite.x;

@@ -127,8 +127,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
+    if (Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2) {
+        message = Scene1::actionStatement + " Sparkling object";
+    }
     if (Scene1::SceneBackground == "3f" && x <= 560 && x >=483 && y < 262 && y > 202 && Scene1::secretTrigger <2) {
-            message = Scene1::actionStatement + " Loose rocks";
+        message = Scene1::actionStatement + " Loose rocks";
     }
 
     if (Scene1::SceneBackground == "3f" && x <= 20 && y < 414 && y > 250 ) {
@@ -367,6 +370,10 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
 
         objectToDestroy = "6";
     }
+    if (gameObject == "Disc") {
+        objectToDestroy = "7";
+    }
+
 
     return objectToDestroy;
 }
@@ -729,7 +736,9 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 411) {
         message = "Battery Lantern";
     }
-
+    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX >= 360 && playerCurrentLocationX <= 411) {
+        message = "Disc";
+    }
 
     return message;
 }

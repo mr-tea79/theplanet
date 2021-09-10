@@ -109,6 +109,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+
+    if (lookStatement == "Look at Sparkling object" && gd > 360 && gy <260) {
+        lookMessage = "It's a small gold disc!";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
     if (gy < 260 && gd > 300 && lookStatement == "Look at Loose rocks") {
         lookMessage = "Hmmmm what's this?";
         SDL_DestroyTexture(Textures::spriteTexture);
@@ -200,12 +209,6 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         doAction();
         lookStatement = "";
     }
-
-
-
-    
-
-    //
 
     if (lookStatement == "Look at Human remains") {
         lookMessage = "Unbelievable! I wonder if this is the woman in the cave drawing.";
@@ -547,6 +550,17 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
+
+            if (menuMessages == "Disc" && pickUpStatement == "Pick up Sparkling object" && gd > 360 && gy < 260) {
+                SDL_DestroyTexture(Textures::spriteTexture);
+                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spritePick); //Shows a different player movement when picking up things.
+                pickUpStatement = "";
+                inv.SQLInsertInventory(gameObject, 0);
+                doAction();
+                std::string object = pob.DestroyObjects(gameObject);
+                Scene1::objectToDestroy.append(object);
+            }
+
 
             if (menuMessages == "Flag" && pickUpStatement == "Pick up Flag") {
                

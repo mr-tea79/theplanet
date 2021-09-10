@@ -59,6 +59,7 @@ namespace brightland {
 		static SDL_Texture* invTexture4;
 		static SDL_Texture* invTexture5;
 		static SDL_Texture* invTexture6;
+		static SDL_Texture* invTexture7;
 
 		static SDL_Texture* menuTexture;
 		static SDL_Texture* spriteTexture;
@@ -146,6 +147,7 @@ namespace brightland {
 		SDL_Surface* pipeBox;
 		SDL_Surface* pipeAction;
 		SDL_Surface* sparkle;
+		SDL_Surface* disc;
 
 	public:
 		void Scene1Textures();

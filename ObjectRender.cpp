@@ -59,7 +59,7 @@ void ObjectRender::objectRender() {
     }
     else if (Scene1::SceneBackground == "1da" || Scene1::SceneBackground == "1db") {
         SDL_RenderCopy(Scene1::renderer, Textures::objectTextureLantern, &PlayerObjects::srcrect8, &PlayerObjects::dstrect8);
-    }
+    }  
 
     //Air Pressure Unit
     if (Scene1::SceneBackground == "1da" || Scene1::SceneBackground == "1db") {
@@ -67,6 +67,10 @@ void ObjectRender::objectRender() {
 
     }
 
-
+    if (Scene1::objectToDestroy.find("7") != std::string::npos) {
+        if (Inventory::inv.find("8") == std::string::npos) {
+            SDL_RenderCopy(Scene1::renderer, Textures::invTexture7, NULL, &Inventory::inv7);
+        }
+    }
 
 }
