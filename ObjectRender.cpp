@@ -67,7 +67,10 @@ void ObjectRender::objectRender() {
 
     }
 
+    //Disc
+    //if the number 7 was found in the objectToDestroy then ...
     if (Scene1::objectToDestroy.find("7") != std::string::npos) {
+        //if the number 8 is NOT found in the inv string, then display the inventory item.
         if (Inventory::inv.find("8") == std::string::npos) {
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture7, NULL, &Inventory::inv7);
         }

@@ -70,6 +70,7 @@ void SceneRender::sceneRender() {
     if (Scene1::SceneBackground == "3f") {
         SDL_RenderCopy(Scene1::renderer, Textures::scene3f, NULL, &Textures::background);
 
+        //if the number 7 was NOT found in the objectToDestroy string then display the object on the scene.
         if (Scene1::objectToDestroy.find("7") == std::string::npos) {
             SDL_RenderCopy(Scene1::renderer, Textures::objectTextureSparkle, &PlayerObjects::srcrect9, &PlayerObjects::dstrect9);
         }
