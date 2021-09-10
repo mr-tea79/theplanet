@@ -41,6 +41,15 @@ void MenuInteraction::useChecker() {
         MenuInteraction::wrongAction = 1;
         wrongActionMessage = "The pipe won't work with that!";
     }
+    if (Scene1::useStatement.find("Pick up Loose rocks") != std::string::npos){
+        MenuInteraction::wrongAction = 1;
+        wrongActionMessage = "I don't want to pick them up, they are quite heavy!";
+    }
+    if (Scene1::useStatement.find("Use Loose rocks") != std::string::npos) {
+        MenuInteraction::wrongAction = 1;
+        wrongActionMessage = "They aren't round, so I can't use them as bowling balls.";
+    }
+
 }
 
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
@@ -527,6 +536,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     if (Scene1::actionStatement == "Pick up") {
 
         if (items < 1) {
+
             if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 691 && gy > 425) {
                 SDL_DestroyTexture(Textures::spriteTexture);
                 SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spritePick); //Shows a different player movement when picking up things.
@@ -610,7 +620,7 @@ std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction
         pullStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
   
-    if (pullStatement == "Pull Loose rocks") {
+    if (gy < 260 && gd > 300 && pullStatement == "Pull Loose rocks") {
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         pullMessage = "Oooh!";

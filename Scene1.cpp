@@ -27,6 +27,7 @@ using namespace brightland;
 std::string Scene1::useStatement = "";
 std::string Scene1::openStatement = "";
 std::string Scene1::lookStatement = "";
+std::string Scene1::pickUpStatement = "";
 std::string Scene1::actionStatement = "";
 std::string Scene1::SceneTransitionStatement = "";
 std::string Scene1::SceneBackground = "3e";
@@ -333,7 +334,7 @@ int Scene1::scene1() {
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;
-
+         
             //This fixes the bug where if you decide to not to commit to picking something up.
             if (interactionMessage == "") {
                 actionStatement = "";
