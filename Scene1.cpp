@@ -443,7 +443,7 @@ int Scene1::scene1() {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 playerIsMoving = 1;
-                SDL_Delay(1);
+               // SDL_Delay(1);
                 //_sleep(1);
              
                 if (wy < gdSprite.y || wy > gdSprite.y) {
@@ -458,7 +458,7 @@ int Scene1::scene1() {
                         playerIsMoving = 0;
                       
                     }  
-                    SDL_Delay(1); //Moving from _sleep to SDL_Delay
+                  //  SDL_Delay(1); //Moving from _sleep to SDL_Delay
                   //  _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
                 }
             }
