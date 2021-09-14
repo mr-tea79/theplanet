@@ -127,7 +127,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
-    if (Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2) {
+    if (Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2 && inv.checkItem("Disc") != 1) {
         message = Scene1::actionStatement + " Sparkling object";
     }
     if (Scene1::SceneBackground == "3f" && x <= 560 && x >=483 && y < 262 && y > 202 && Scene1::secretTrigger <2) {

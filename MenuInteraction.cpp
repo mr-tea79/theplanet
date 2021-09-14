@@ -551,7 +551,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 Scene1::objectToDestroy.append(object);
             }
 
-            if (menuMessages == "Disc" && pickUpStatement == "Pick up Sparkling object" && gd > 360 && gy < 260) {
+            if (menuMessages == "Disc" && pickUpStatement == "Pick up Sparkling object") {
                 SDL_DestroyTexture(Textures::spriteTexture);
                 SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spritePick); //Shows a different player movement when picking up things.
                 pickUpStatement = "";
