@@ -22,6 +22,11 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "Continue Game";
         return 1;
     }
+    //Player Options hover button (main menu)
+    if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
+        buttonID = "Player Options";
+        return 1;
+    }
 
     return 0;
 }
@@ -29,7 +34,11 @@ int SceneRender::HoverButtons(int x, int y) {
 //Renders the scene backgrounds for the game.
 void SceneRender::sceneRender() {
 
- 
+    if (Scene1::SceneBackground == "01") {
+        SDL_RenderCopy(Scene1::renderer, Textures::poptions, NULL, &Textures::background);
+    }
+
+
     if (Scene1::SceneBackground == "1") {
         SDL_RenderCopy(Scene1::renderer, Textures::texture, NULL, &Textures::background);
     }
@@ -97,6 +106,9 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
        
         }
         if (hoverTrigger == 1 && buttonID == "Continue Game") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverContinueGame, NULL, &Textures::RHoverConinueGame);
+        }
+        if (hoverTrigger == 1 && buttonID == "Player Options") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverContinueGame, NULL, &Textures::RHoverConinueGame);
         }
     }

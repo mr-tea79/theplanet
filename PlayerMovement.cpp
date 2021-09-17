@@ -12,8 +12,8 @@ using namespace std;
 static int position; //Used to update current position variable.
 
 //Customize your speed to your liking.
-float hspeed = 2.5;  //Left to Right.
-float vspeed = 2.5;  //Up and Down.
+float PlayerMovement::hspeed = 2.5;  //Left to Right.
+float PlayerMovement::vspeed = 2.5;  //Up and Down.
 
 
 int PlayerMovement::doXWalkRight(int gd, int screenWidth) {

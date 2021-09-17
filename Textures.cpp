@@ -34,6 +34,7 @@ SDL_Texture* Textures::computerScene2;
 SDL_Texture* Textures::caveScene1;
 SDL_Texture* Textures::caveScene2;
 SDL_Texture* Textures::mainMenu;
+SDL_Texture* Textures::poptions;
 
 SDL_Rect Textures::background;
 SDL_Rect Textures::background2;
@@ -182,6 +183,7 @@ void Textures::Scene1Textures() {
     imageSurface6 = IMG_Load("Scenes/Scene1e.png");
     imageSurface7 = IMG_Load("Scenes/rocks2.png");
     imageSurface19 = IMG_Load("Scenes/gameMenu.png");
+    imageSurface22 = IMG_Load("Scenes/poptions.png");
 
     //Hover Button Surfaces
     ShoverNewGame = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
@@ -217,6 +219,8 @@ void Textures::Scene1Textures() {
    
     mainMenu = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface19);
 
+    poptions = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface22);
+
     objectTexture = SDL_CreateTextureFromSurface(Scene1::renderer, pda);
     objectTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
     objectTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
@@ -247,6 +251,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(imageSurface2);
     SDL_FreeSurface(imageSurface7);
     SDL_FreeSurface(imageSurface19);
+    SDL_FreeSurface(imageSurface22);
     SDL_FreeSurface(ShoverNewGame);
     SDL_FreeSurface(ShoverContinueGame);
  

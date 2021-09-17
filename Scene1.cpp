@@ -266,7 +266,10 @@ int Scene1::scene1() {
 
                 case SDL_QUIT:
                     gameover = 1;
-                    inv.gameSave(SceneBackground);
+                    if (Scene1::SceneBackground != "01") {
+                        inv.gameSave(SceneBackground);
+                    }
+                  
                     break;
 
                 //Mouse Hover Game Interaction.
@@ -312,7 +315,12 @@ int Scene1::scene1() {
                     {
                         case SDLK_ESCAPE:
                         case SDLK_q:
-                        gameover = 1;
+                            if(Scene1::SceneBackground != "01"){
+                                inv.gameSave(SceneBackground);
+                            }
+
+                            Scene1::SceneBackground = "0";
+                           
                         break;
                     }
                     break;          

@@ -391,6 +391,38 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     std::string message;
 
+    //Menu Hover buttons //////////////////////////////////////////////////////////////////
+    if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
+        Scene1::SceneBackground = "1";
+        Scene1::SPRITE_SIZE = 128;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 65;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::newGame = true;
+
+    }
+
+    if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::newGame = false;
+        Scene1::continueGame = true;
+
+    }
+    if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
+        Scene1::SceneBackground = "01";
+        Scene1::SPRITE_SIZE = 50;
+        Scene1::yPosition = 400;
+        Scene1::xPosition = 65;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+
+
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+
     if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34 ) {
         Scene1::SceneBackground = "3a";
         Scene1::SPRITE_SIZE = 10;
@@ -412,26 +444,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneTransitionStatement = "";
     }
 
-
-    if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
-        Scene1::SceneBackground = "1";
-        Scene1::SPRITE_SIZE = 128;
-        Scene1::yPosition = 400;
-        Scene1::xPosition = 65;
-        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
-        Scene1::sceneHalt = 1;
-        Scene1::newGame = true;
-     
-    }
-
-    if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
-        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
-        Scene1::sceneHalt = 1;
-        Scene1::newGame = false;
-        Scene1::continueGame = true;
-
-    }
-
+   
 
     if (Scene1::SceneBackground == "3e" && x >= 866 && x <=987 && y >= 536 && y <=575) {
         Scene1::SceneBackground = "3d";

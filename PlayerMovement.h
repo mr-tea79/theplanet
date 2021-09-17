@@ -10,6 +10,8 @@ namespace brightland{
 class PlayerMovement
 {
 public:
+	static float hspeed;
+	static float vspeed;
 
 	void LoadMovementTextures();
 		
