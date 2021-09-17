@@ -109,7 +109,7 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverContinueGame, NULL, &Textures::RHoverConinueGame);
         }
         if (hoverTrigger == 1 && buttonID == "Player Options") {
-            SDL_RenderCopy(Scene1::renderer, Textures::hoverContinueGame, NULL, &Textures::RHoverConinueGame);
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverOptions, NULL, &Textures::RHoverOptions);
         }
     }
 

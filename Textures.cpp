@@ -8,6 +8,7 @@ using namespace brightland;
 //Hover Button Textures;
 SDL_Texture* Textures::hoverNewGame;
 SDL_Texture* Textures::hoverContinueGame;
+SDL_Texture* Textures::hoverOptions;
 
 //Text Texture
 SDL_Texture* Textures::ftexture;
@@ -44,6 +45,7 @@ SDL_Rect Textures::background5;
 SDL_Rect Textures::menuBackground;
 SDL_Rect Textures::RHoverNewGame;
 SDL_Rect Textures::RHoverConinueGame;
+SDL_Rect Textures::RHoverOptions;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -165,6 +167,7 @@ void Textures::Scene1Textures() {
     //This is for the main menu hover buttons
     RHoverNewGame = { 180, 480, 272, 61 };
     RHoverConinueGame = { 180, 376, 272, 61 };
+    RHoverOptions = { 180,579,272,61 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -188,8 +191,10 @@ void Textures::Scene1Textures() {
     //Hover Button Surfaces
     ShoverNewGame = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
     ShoverContinueGame = IMG_Load("Scenes/HoverButtons/menuContinueHover.png");
+    ShoverOptions = IMG_Load("Scenes/HoverButtons/playerOptionsHover.png");
     hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverNewGame);
     hoverContinueGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverContinueGame);
+    hoverOptions = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverOptions);
 
     pda = IMG_Load("Objects/pda.png");
     flag = IMG_Load("Objects/flagr.png");
@@ -254,6 +259,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(imageSurface22);
     SDL_FreeSurface(ShoverNewGame);
     SDL_FreeSurface(ShoverContinueGame);
+    SDL_FreeSurface(ShoverOptions);
  
 }
 
