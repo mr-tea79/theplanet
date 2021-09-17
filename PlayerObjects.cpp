@@ -387,10 +387,6 @@ Here is where the interaction with objects and scenes takes place. This is where
 */
 std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
    
-    std::cout << x << std::endl;
-    std::cout << y << std::endl;
-
-
     //Check database if item has been picked up.
     Inventory inv;
 
@@ -417,7 +413,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
         Scene1::SceneBackground = "01";
-        Scene1::inGame = 1;
+        //Scene1::inGame = 1;
         Scene1::SPRITE_SIZE = 50;
         Scene1::yPosition = 400;
         Scene1::xPosition = 65;
@@ -426,11 +422,28 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
 
     }
-    // + Speed of player
-    if (Scene1::SceneBackground == "01" && x >= 620 && x <= 691 && y >= 148 && y <= 179) {
-        PlayerMovement::vspeed = PlayerMovement::vspeed + 0.1;
-        PlayerMovement::hspeed = PlayerMovement::hspeed + 0.1;
+    // + Speed of player (Needs attention)
+    if (Scene1::SceneBackground == "01" && x >= 620 && x <= 691 && y >= 148 && y <= 179 ) {
+        if (PlayerMovement::vspeed < 5 && PlayerMovement::hspeed < 5) {
+            PlayerMovement::vspeed = PlayerMovement::vspeed + 0.01;
+            PlayerMovement::hspeed = PlayerMovement::hspeed + 0.01;
+            std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
+            std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
+
+        }
     
+    }
+
+    // - Speed of player  (Needs attention)
+    if (Scene1::SceneBackground == "01" && x >= 282 && x <= 353 && y >= 148 && y <= 179 ) {
+        if (PlayerMovement::vspeed > 1 && PlayerMovement::hspeed > 1) {
+            PlayerMovement::vspeed = PlayerMovement::vspeed - 0.01;
+            PlayerMovement::hspeed = PlayerMovement::hspeed - 0.01;
+            std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
+            std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
+        }
+      
+
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////

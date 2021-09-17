@@ -224,11 +224,13 @@ int Scene1::scene1() {
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
             if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos && inGame == 0) {             
                 tex.Scene2Textures();
-                tex.Scene3Textures();       
+                tex.Scene3Textures();
+                inGame = 1;
             }
 
             if (SceneBackground.find("3") != std::string::npos && inGame == 0) {
                 tex.Scene3Textures();
+                inGame = 1;
             }
                      
         }
