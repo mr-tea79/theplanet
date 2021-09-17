@@ -33,6 +33,8 @@ public:
 
 	int Inventory::gameSave(std::string currentScene);
 
+	int Inventory::gameSpeedSave();
+
 	int Inventory::purgeDatabase();
 };
 

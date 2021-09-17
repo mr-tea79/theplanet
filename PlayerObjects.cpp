@@ -429,7 +429,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             PlayerMovement::hspeed = PlayerMovement::hspeed + 0.01;
             std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
             std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
-
+            inv.gameSpeedSave();
         }
     
     }
@@ -441,6 +441,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             PlayerMovement::hspeed = PlayerMovement::hspeed - 0.01;
             std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
             std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
+            inv.gameSpeedSave();
         }
       
 

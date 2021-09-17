@@ -1,6 +1,8 @@
 #include "Inventory.h"
 #include "Scene1.h"
+#include "PlayerMovement.h"
 #include <iostream>
+#include <sstream>
 
 using namespace brightland;
 
@@ -46,6 +48,58 @@ int Inventory::purgeDatabase() {
 	return 0;
 }
 
+int Inventory::gameSpeedSave() {
+
+	sqlite3* db;
+	char* zErrMsg = 0;
+	int rc;
+	const char* sql;
+	const char* data = "";
+	sqlite3_stmt* stmt = NULL;
+	int i = 0;
+	
+	float vs = PlayerMovement::vspeed;
+	float hs = PlayerMovement::hspeed;
+
+	//Convert player movement speed float to string to insert into database.
+	std::ostringstream ss;
+	ss << vs;
+	std::string vspeed(ss.str());
+	std::string hspeed(ss.str());
+
+	rc = sqlite3_open("Inventory.db", &db);
+
+	if (rc) {
+
+		return(0);
+	}
+	else {
+	}
+
+	/* Create SQL statement */
+	sql = "UPDATE tblProgress SET vspeed=?,hspeed=? WHERE id=1";
+
+	//sqlite using variables in statement.
+	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
+
+	sqlite3_bind_text(stmt, 1, vspeed.c_str(), strlen(vspeed.c_str()), 0);
+	sqlite3_bind_text(stmt, 2, hspeed.c_str(), strlen(hspeed.c_str()), 0);
+
+
+	//Execute parameter statement.
+	sqlite3_step(stmt);
+	i++;
+	//Clean up.
+	sqlite3_finalize(stmt);
+
+	sqlite3_close(db);
+
+	return 0;
+
+
+
+}
+
 int Inventory::gameSave(std::string currentScene) {
 
 	sqlite3* db;
@@ -83,7 +137,6 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_bind_text(stmt, 5, objectToDestroy.c_str(), strlen(objectToDestroy.c_str()), 0);
 	sqlite3_bind_text(stmt, 6, invItems.c_str(), strlen(invItems.c_str()), 0);
 	sqlite3_bind_int(stmt, 7, Scene1::secretTrigger);
-	
 
 	//Execute parameter statement.
 	sqlite3_step(stmt);
@@ -236,6 +289,15 @@ void Inventory::ContinueGame() {
 					Scene1::objectToDestroy = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
 					std::cout << "OBJECT TO DESTROY: " << Scene1::objectToDestroy;
 				}
+				if (columnName == "vspeed") {
+					std::string vspeed = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
+					PlayerMovement::vspeed = std::stof(vspeed);
+				}
+				if (columnName == "hspeed") {
+					std::string hspeed = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
+					PlayerMovement::hspeed = std::stof(hspeed);
+				}
+
 				break;
 			
 			case (SQLITE_INTEGER):

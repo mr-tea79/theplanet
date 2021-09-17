@@ -217,6 +217,7 @@ int Scene1::scene1() {
         }
 
         if (continueGame == true) {
+
             inv.ContinueGame();
             continueGame = false;
             pob.SetSpritePosition(xPosition, yPosition);
@@ -230,8 +231,9 @@ int Scene1::scene1() {
 
             if (SceneBackground.find("3") != std::string::npos && inGame == 0) {
                 tex.Scene3Textures();
-                inGame = 1;
+                inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
             }
+           
                      
         }
 
