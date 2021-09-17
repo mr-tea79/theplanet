@@ -58,6 +58,7 @@ int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages
 int Scene1::secretTrigger = 0;  //This is used to tell the program that a secret has been found.
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
+int Scene1::inGame = 0;
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -221,12 +222,12 @@ int Scene1::scene1() {
             pob.SetSpritePosition(xPosition, yPosition);
 
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
-            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos) {             
+            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos && inGame == 0) {             
                 tex.Scene2Textures();
                 tex.Scene3Textures();       
             }
 
-            if (SceneBackground.find("3") != std::string::npos) {
+            if (SceneBackground.find("3") != std::string::npos && inGame == 0) {
                 tex.Scene3Textures();
             }
                      
@@ -302,7 +303,7 @@ int Scene1::scene1() {
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
-                        }
+                        } 
                        
                         if (interactionMessage != "" && playerIsMoving !=1) {                        
                             pi.InteractionControllerHover(interactionMessage);

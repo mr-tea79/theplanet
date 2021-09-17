@@ -35,6 +35,7 @@ namespace brightland {
 		static bool mouseClick;
 		static int action;
 		static int sceneHalt;
+		static int inGame;
 
 		int scene;
 

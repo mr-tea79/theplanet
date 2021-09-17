@@ -166,6 +166,22 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
    
     //Set the coordinates for walking left or right in the scene.
 
+    ///////////////////// PLAYER OPTIONS ///////////////////////////////////////////////
+       //GOING RIGHT
+    if (Scene1::SceneBackground == "01") {
+
+        if (gd <= x - 20 && y > 272 && y < 579) {
+            gd = doXWalkRight(gd, screenWidth);
+            position++;
+        }
+
+        //GOING LEFT
+        else if (gd >= x - 10 && y > 272 && y < 579) {
+            gd = doXWalkLeft(gd, screenWidth);
+            position++;
+        }
+
+    }
 
             ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
     if (Scene1::SceneBackground == "3f") {
