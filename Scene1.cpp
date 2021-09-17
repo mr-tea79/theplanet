@@ -207,9 +207,6 @@ int Scene1::scene1() {
        
            */
 
-        
-
-
         if (newGame == true) {
             //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
             inv.purgeDatabase();
@@ -223,17 +220,23 @@ int Scene1::scene1() {
             pob.SetSpritePosition(xPosition, yPosition);
 
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
-            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos  && inGame == 0) {
-                tex.Scene2Textures();   
-                tex.Scene3Textures();
-                inGame = 1;
+            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos ) {
+                if (inGame < 1) {
+                    tex.Scene2Textures();
+                    tex.Scene3Textures();
+                    inGame = 1;
+                }
+               
+               
             }
 
-            if (SceneBackground.find("3") != std::string::npos && inGame == 0) {
-                tex.Scene3Textures();
-                inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
-            }
-           
+            if (SceneBackground.find("3") != std::string::npos) {
+                if (inGame < 1) {
+                    tex.Scene3Textures();
+                    inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
+                }
+                       
+            }           
                      
         }
 
@@ -319,13 +322,14 @@ int Scene1::scene1() {
                     switch (event.key.keysym.sym)
                     {
                         case SDLK_ESCAPE:
+                           
                         case SDLK_q:
                             if(Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0"){
                                 inv.gameSave(SceneBackground);
                             }
 
                             Scene1::SceneBackground = "0";
-                           
+                                             
                         break;
                     }
                     break;          
