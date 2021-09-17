@@ -223,8 +223,8 @@ int Scene1::scene1() {
             pob.SetSpritePosition(xPosition, yPosition);
 
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
-            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos && inGame == 0) {             
-                tex.Scene2Textures();
+            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos  && inGame == 0) {
+                tex.Scene2Textures();   
                 tex.Scene3Textures();
                 inGame = 1;
             }
@@ -271,7 +271,7 @@ int Scene1::scene1() {
 
                 case SDL_QUIT:
                     gameover = 1;
-                    if (Scene1::SceneBackground != "01") {
+                    if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
                         inv.gameSave(SceneBackground);
                     }
                   
@@ -320,7 +320,7 @@ int Scene1::scene1() {
                     {
                         case SDLK_ESCAPE:
                         case SDLK_q:
-                            if(Scene1::SceneBackground != "01"){
+                            if(Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0"){
                                 inv.gameSave(SceneBackground);
                             }
 
