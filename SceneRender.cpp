@@ -27,6 +27,18 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "Player Options";
         return 1;
     }
+   
+    //Plus hover button (main menu)
+    if (x >= 619 && x <= 691 && y >= 149 && y <= 178 && Scene1::SceneBackground == "01") {
+        buttonID = "Plus";
+        return 1;
+    }
+    //Minus hover button (main menu)
+    if (x >= 281 && x <= 353 && y >= 149 && y <= 178 && Scene1::SceneBackground == "01") {
+        buttonID = "Minus";
+        return 1;
+    }
+
 
     return 0;
 }
@@ -111,8 +123,16 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         if (hoverTrigger == 1 && buttonID == "Player Options") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverOptions, NULL, &Textures::RHoverOptions);
         }
+      
     }
-
+    if (Scene1::SceneBackground == "01") {
+        if (hoverTrigger == 1 && buttonID == "Plus") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverPlus, NULL, &Textures::RHoverPlus);
+        }
+        if (hoverTrigger == 1 && buttonID == "Minus") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverMinus, NULL, &Textures::RHoverMinus);
+        }
+    }
 
     if (Scene1::SceneBackground == "1") {
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);

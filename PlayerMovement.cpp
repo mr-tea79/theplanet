@@ -170,13 +170,13 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
        //GOING RIGHT
     if (Scene1::SceneBackground == "01") {
 
-        if (gd <= x - 20 && y > 272 && y < 579) {
+        if (gd <= x - 20 && y > 102 && y < 579) {
             gd = doXWalkRight(gd, screenWidth);
             position++;
         }
 
         //GOING LEFT
-        else if (gd >= x - 10 && y > 272 && y < 579) {
+        else if (gd >= x - 10 && y > 102 && y < 579) {
             gd = doXWalkLeft(gd, screenWidth);
             position++;
         }

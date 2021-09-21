@@ -15,6 +15,8 @@ namespace brightland {
 		static SDL_Texture* Textures::hoverNewGame;
 		static SDL_Texture* Textures::hoverContinueGame;
 		static SDL_Texture* Textures::hoverOptions;
+		static SDL_Texture* Textures::hoverMinus;
+		static SDL_Texture* Textures::hoverPlus;
 
 		//Texture used for menu dialog.
 		static SDL_Texture* starsTexture;
@@ -103,9 +105,13 @@ namespace brightland {
 		static SDL_Rect background4;
 		static SDL_Rect background5;
 		static SDL_Rect menuBackground;
+
+		//Hover Button Rect
 		static SDL_Rect RHoverNewGame;
 		static SDL_Rect RHoverConinueGame;
 		static SDL_Rect RHoverOptions;
+		static SDL_Rect RHoverPlus;
+		static SDL_Rect RHoverMinus;
 
 		SDL_Surface* menuSurface;
 
@@ -113,6 +119,8 @@ namespace brightland {
 		SDL_Surface* ShoverNewGame;
 		SDL_Surface* ShoverContinueGame;
 		SDL_Surface* ShoverOptions;
+		SDL_Surface* ShoverPlus;
+		SDL_Surface* ShoverMinus;
 
 		//Scene Surfaces.
 		SDL_Surface* imageSurface2;

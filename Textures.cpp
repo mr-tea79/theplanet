@@ -9,6 +9,8 @@ using namespace brightland;
 SDL_Texture* Textures::hoverNewGame;
 SDL_Texture* Textures::hoverContinueGame;
 SDL_Texture* Textures::hoverOptions;
+SDL_Texture* Textures::hoverPlus;
+SDL_Texture* Textures::hoverMinus;
 
 //Text Texture
 SDL_Texture* Textures::ftexture;
@@ -43,9 +45,13 @@ SDL_Rect Textures::background3;
 SDL_Rect Textures::background4;
 SDL_Rect Textures::background5;
 SDL_Rect Textures::menuBackground;
+
+//Hover Rect
 SDL_Rect Textures::RHoverNewGame;
 SDL_Rect Textures::RHoverConinueGame;
 SDL_Rect Textures::RHoverOptions;
+SDL_Rect Textures::RHoverMinus;
+SDL_Rect Textures::RHoverPlus;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -168,6 +174,8 @@ void Textures::Scene1Textures() {
     RHoverNewGame = { 180, 480, 272, 61 };
     RHoverConinueGame = { 180, 376, 272, 61 };
     RHoverOptions = { 180,579,272,61 };
+    RHoverPlus = { 600,139,104,54 };
+    RHoverMinus = { 281,139,104,54 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -192,9 +200,15 @@ void Textures::Scene1Textures() {
     ShoverNewGame = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
     ShoverContinueGame = IMG_Load("Scenes/HoverButtons/menuContinueHover.png");
     ShoverOptions = IMG_Load("Scenes/HoverButtons/playerOptionsHover.png");
+    ShoverMinus = IMG_Load("Scenes/HoverButtons/hoverMinus.png");
+    ShoverPlus = IMG_Load("Scenes/HoverButtons/hoverPlus.png");
+
+
     hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverNewGame);
     hoverContinueGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverContinueGame);
     hoverOptions = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverOptions);
+    hoverMinus = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverMinus);
+    hoverPlus = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverPlus);
 
     pda = IMG_Load("Objects/pda.png");
     flag = IMG_Load("Objects/flagr.png");
@@ -260,6 +274,8 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(ShoverNewGame);
     SDL_FreeSurface(ShoverContinueGame);
     SDL_FreeSurface(ShoverOptions);
+    SDL_FreeSurface(ShoverPlus);
+    SDL_FreeSurface(ShoverMinus);
  
 }
 
