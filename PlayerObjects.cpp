@@ -43,7 +43,7 @@ SDL_Rect PlayerObjects::srcrect9;
 SDL_Rect PlayerObjects::dstrect9;
 
 
-void PlayerObjects::SetSpritePosition(int& x, int& y) {
+void PlayerObjects::SetSpritePosition(int x, int y) {
    
     Scene1::gdSprite.x = x;
     Scene1::gdSprite.y = y;
@@ -52,7 +52,7 @@ void PlayerObjects::SetSpritePosition(int& x, int& y) {
 }
 
 //HoverObjects will display information about objects of interest when the user hovers over them.
-std::string PlayerObjects::HoverObjects(int& x, int& y, int scene,int& gd, int& gy) {
+std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) {
 
     std::string gameObject;
 
@@ -338,7 +338,7 @@ std::string PlayerObjects::HoverObjects(int& x, int& y, int scene,int& gd, int& 
 }
 
 /* Make objects disappear when picked up. */
-std::string PlayerObjects::DestroyObjects(std::string& gameObject) {
+std::string PlayerObjects::DestroyObjects(std::string gameObject) {
 
     std::string objectToDestroy;
 
@@ -385,7 +385,7 @@ ObjectInteraction
 Here is where the interaction with objects and scenes takes place. This is where the player is placed in correct place when transitioning scenes and also the interaction when using objects.
 
 */
-std::string PlayerObjects::ObjectInteraction(int& x, int& y, int& playerCurrentLocationX, int& playerCurrentLocationY) {
+std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
    
     //Check database if item has been picked up.
     Inventory inv;
@@ -750,7 +750,7 @@ std::string PlayerObjects::ObjectInteraction(int& x, int& y, int& playerCurrentL
 
 
 //This is used for menu object interaction (Picking up).
-std::string PlayerObjects::ObjectInteractionM1(int& playerCurrentLocationX, int& playerCurrentLocationY) {
+std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY) {
 
     std::string message;
 

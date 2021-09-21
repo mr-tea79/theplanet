@@ -15,9 +15,9 @@ public:
 
 	void LoadMovementTextures();
 		
-	int PlayerMovement::walk(int &x, int &y, int gd, int gy, int screenWidth, int screenHeight);
+	int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight);
 
-	int PlayerMovement::walky(int &x, int &y, int gd, int gy, int screenWidth, int screenHeight);
+	int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight);
 
 	int doXWalkRight(int gd, int screenWidth);
 

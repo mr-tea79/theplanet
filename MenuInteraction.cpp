@@ -52,7 +52,7 @@ void MenuInteraction::useChecker() {
 
 }
 
-std::string MenuInteraction::MenuAction(int& x, int& y, int& gd, int& gy, int& mInteraction) {
+std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string actionMessage;
 
@@ -97,7 +97,7 @@ std::string MenuInteraction::MenuAction(int& x, int& y, int& gd, int& gy, int& m
     return actionMessage;
 }
 
-std::string MenuInteraction::Look(int& x, int& y, int& gd, int& gy, int& mInteraction) {
+std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string lookMessage;
 
@@ -357,7 +357,7 @@ std::string MenuInteraction::Look(int& x, int& y, int& gd, int& gy, int& mIntera
 }
 
 
-std::string MenuInteraction::Open(int& x, int& y, int& gd, int& gy, int& mInteraction) {
+std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction) {
     //New
     std::string openMessage;
 
@@ -385,7 +385,7 @@ std::string MenuInteraction::Open(int& x, int& y, int& gd, int& gy, int& mIntera
     return openMessage;
 }
 
-std::string MenuInteraction::Use(int& x, int& y, int& gd, int& gy, int& mInteraction) {
+std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string useMessage;
 
@@ -517,7 +517,7 @@ std::string MenuInteraction::Use(int& x, int& y, int& gd, int& gy, int& mInterac
 }
 
 
-std::string MenuInteraction::PickUp(int& x, int& y, int& gd, int& gy, int& mInteraction) {
+std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string gameObject;
 
@@ -622,7 +622,7 @@ std::string MenuInteraction::PickUp(int& x, int& y, int& gd, int& gy, int& mInte
 }
 
 
-std::string MenuInteraction::Pull(int& x, int& y, int& gd, int& gy, int& mInteraction) {
+std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string pullMessage;
 
