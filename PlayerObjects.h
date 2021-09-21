@@ -34,7 +34,7 @@ namespace brightland {
         static SDL_Rect dstrect9;
        
 
-        std::string HoverObjects(int x, int y, int scene, int gd, int gy);
+        std::string HoverObjects(int &x, int &y, int scene, int &gd, int &gy);
         std::string DestroyObjects(std::string gameObject);
         std::tuple<int, int, int, int, int> ObjectSettings(int scene, int a, int b, int c, int d);
         std::tuple<int, int, int, int, int> placeObject(int scene, int a, int b, int c, int d);
