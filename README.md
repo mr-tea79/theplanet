@@ -1,4 +1,4 @@
-# theplanet
+# The Planet
 An adventure game in C/C++ SDL2 to help people who always dreamed of making a point and click adventure game but don't know where to begin.
 This is being developed in my spare time and by no means finished. This is aimed at people who are learning to program and need a template to get started with making a game. There is lots of scope for improvement of the code, so have fun with it! You will learn more about coding if you are making something that is fun to do, trust me!
 
@@ -48,7 +48,7 @@ This project was created in Visual Studio 2019.
 
 Images used in making the scenes were to the best of my knowledge all from google images free to use searches. I actually drew the sprite myself using a mouse, don't laugh! If there are any artists out there, please feel free to make a better character for my game!
 
-# Current known problems
+# Currently known problems
 
 Occasionally the sprite appears in the text area ( I THINK THIS IS NOW SOLVED!)
 
