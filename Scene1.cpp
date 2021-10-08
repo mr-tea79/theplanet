@@ -545,7 +545,7 @@ int Scene1::scene1() {
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
-   // Mix_FreeMusic(mus2);
+    s.freeMusic();
  
     return 0;
 

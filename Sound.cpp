@@ -22,6 +22,17 @@ void Sound::loadSounds(std::string sceneBackground) {
 		mus2 = Mix_LoadMUS("Development Kits/Music/esparks.mp3"); //Add your MP3 here for the background music.
 		playSounds();
 	}
+	if (Scene1::SceneBackground == "1da") {
 
+		mus2 = Mix_LoadMUS("Development Kits/Music/modular-ambient-04-792.mp3"); //Add your MP3 here for the background music.
+		playSounds();
+	}
+
+
+
+}
+
+void Sound::freeMusic() {
+	Mix_FreeMusic(mus2);
 
 }

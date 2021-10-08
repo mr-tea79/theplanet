@@ -13,7 +13,7 @@ namespace brightland {
 	public:
 		void loadSounds(std::string sceneBackground);
 		void playSounds();
-		
+		void freeMusic();
 
 	};
 
