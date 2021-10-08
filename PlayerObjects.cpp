@@ -127,6 +127,13 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
     //Scene Hover Messages
+    if (Scene1::SceneBackground == "1da" && x <= 971 && x >= 843 && y < 231 && y > 142) {
+        message = Scene1::actionStatement + " Spaceflix";
+    }
+
+    if (Scene1::SceneBackground == "1da" && x <= 411 && x >= 364 && y < 402 && y > 396) {
+        message = Scene1::actionStatement + " Pot plant";
+    }
 
     if (Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2 && inv.checkItem("Disc") != 1) {
         message = Scene1::actionStatement + " Sparkling object";

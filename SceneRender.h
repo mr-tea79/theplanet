@@ -13,6 +13,7 @@ namespace brightland {
 		void sceneRender();
 		void sceneRenderOverlay(int x, int y);
 		int HoverButtons(int x, int y);
+	
 
 	};
 

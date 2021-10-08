@@ -109,6 +109,13 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+    if (lookStatement == "Look at Spaceflix") {
+        lookMessage = "I have 5 billion films and TV shows stored on it!";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
 
     if (lookStatement == "Look at Sparkling object" && gd > 360 && gy <260) {
         lookMessage = "It's a small gold disc!";
@@ -117,6 +124,31 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         doAction();
         lookStatement = "";
     }
+
+    if (lookStatement == "Look at Pot plant") {
+        lookMessage = "Plastic!";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Oxygenator 5000" && gd > 700 ) {
+        lookMessage = "It's for topping up oxygen in my suit!";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Cardboard box") {
+        lookMessage = "It's a box made of cardboard";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
+    }
+
 
     if (gy < 260 && gd > 300 && lookStatement == "Look at Loose rocks") {
         lookMessage = "Hmmmm what's this?";
@@ -197,7 +229,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (lookStatement == "Look at Battery Lantern") {
         lookMessage = "Says on the back 5000 lumens.";
         SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();
         lookStatement = "";
     }
@@ -413,6 +445,16 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         useStatement = "";
         doAction();
     }
+
+    if (useStatement == "Use Spaceflix") {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        useMessage = "Maybe later!";
+        useStatement = "";
+        doAction();
+    }
+
+
     if (useStatement == "Use Wreckage") {
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
@@ -433,6 +475,14 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         useMessage = "This could be ideal for setting up my tent!";
+        useStatement = "";
+        doAction();
+    }
+
+    if (useStatement == "Use Oxygenator 5000" && gd >700 ) {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        useMessage = "It's missing the connector pipe.";
         useStatement = "";
         doAction();
     }

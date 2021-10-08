@@ -29,6 +29,14 @@ void PlayerInteraction::textDimensions(int messageLength) {
     else if (Scene1::gdSprite.y < 100) {
         Scene1::textRect = { Scene1::gdSprite.x -300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 };
     }
+    else if (Scene1::gdSprite.x > 550 && messageLength > 14) {
+        Scene1::textRect = { Scene1::gdSprite.x - 400,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+
+    }
+    else if (Scene1::gdSprite.x < 200 && messageLength > 14) {
+        Scene1::textRect = { Scene1::gdSprite.x + 400,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+
+    }
     else {
         Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 

@@ -347,6 +347,8 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
+
+        //    sr.HoverButtonsClicked(x, y);
             
             mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
             

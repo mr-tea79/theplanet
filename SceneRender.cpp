@@ -43,6 +43,7 @@ int SceneRender::HoverButtons(int x, int y) {
     return 0;
 }
 
+
 //Renders the scene backgrounds for the game.
 void SceneRender::sceneRender() {
 
@@ -109,13 +110,12 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
 
    int hoverTrigger = HoverButtons(x, y);
 
-  
+    
     if (Scene1::SceneBackground == "0") {
         SDL_RenderCopy(Scene1::renderer, Textures::mainMenu, NULL, &Textures::menuBackground);
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
-        if (hoverTrigger == 1 && buttonID == "New Game") {
+        if (hoverTrigger == 1 && buttonID == "New Game") {           
             SDL_RenderCopy(Scene1::renderer, Textures::hoverNewGame, NULL, &Textures::RHoverNewGame);
-       
         }
         if (hoverTrigger == 1 && buttonID == "Continue Game") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverContinueGame, NULL, &Textures::RHoverConinueGame);

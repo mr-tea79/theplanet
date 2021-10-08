@@ -663,7 +663,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     if (Scene1::SceneBackground == "1da") {
 
         //GOING UP
-        if (gy >= y && y < 575 && y >290 && x > 300) {
+        if (gy >= y && y < 575 && y >376 && x > 300) {
             gy = doYWalkUp(gy);
             position++;
         }
