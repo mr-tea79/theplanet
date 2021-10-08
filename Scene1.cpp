@@ -144,7 +144,7 @@ int Scene1::scene1() {
     
 
     Mix_Music* mus, * mus2;  // Background Music
-    mus2 = Mix_LoadMUS("Development Kits/Music/bg2.mp3"); //Add your MP3 here for the background music.
+    mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
   
     //Something to do with the font texture.
     SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
@@ -183,8 +183,7 @@ int Scene1::scene1() {
     //Load Ojbect Render class
     ObjectRender obr;
 
-    Mix_PlayMusic(mus2, 1);
-
+    
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
 
@@ -192,7 +191,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
     //    std::cout << Inventory::inv << std::endl;
-
+        Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 
         yPosition = gdSprite.y;
         xPosition = gdSprite.x;

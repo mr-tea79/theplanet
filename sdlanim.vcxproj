@@ -96,6 +96,7 @@
     <ClCompile Include="PlayerObjects.cpp" />
     <ClCompile Include="SceneRender.cpp" />
     <ClCompile Include="sdlanim.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,7 @@
     <ClInclude Include="PlayerObjects.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneRender.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

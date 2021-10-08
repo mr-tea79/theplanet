@@ -9,7 +9,8 @@
 #include "Scene1.h"
 #include "Textures.h"
 #include "PlayerMovement.h"
-
+#include "SDL_mixer.h"
+#include "Sound.h"
 
 
 using namespace brightland;
@@ -396,6 +397,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
    
     //Check database if item has been picked up.
     Inventory inv;
+    Sound s;
 
     std::string message;
 
@@ -407,16 +409,17 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 65;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
-        Scene1::newGame = true;
-
+        Scene1::newGame = true;      
+        s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
+      
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::newGame = false;
         Scene1::continueGame = true;
-
+        s.loadSounds(sceneBackground);
     }
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
         Scene1::SceneBackground = "01";
@@ -426,7 +429,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 65;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
-
+        s.loadSounds(sceneBackground);
 
     }
     // + Speed of player (Needs attention)
@@ -437,6 +440,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
             std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
             inv.gameSpeedSave();
+            s.loadSounds(sceneBackground);
         }
     
     }
@@ -449,6 +453,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
             std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
             inv.gameSpeedSave();
+            s.loadSounds(sceneBackground);
         }
       
 
@@ -465,6 +470,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
         //Bug here! Sometimes you transition to scene 3b.. bit odd.
     }
 
@@ -476,6 +482,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
     }
 
    
@@ -488,6 +495,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 900 && playerCurrentLocationY < 500 && playerCurrentLocationY > 400) {
@@ -498,6 +506,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
 
     }
 
@@ -510,6 +519,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
          
     }
 
@@ -522,6 +532,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "3c" && playerCurrentLocationX <37 && playerCurrentLocationY >346) {
@@ -532,6 +543,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "3a" && playerCurrentLocationX < 268 && playerCurrentLocationY > 347) {
@@ -542,6 +554,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
       
     }
 
@@ -555,6 +568,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 180;
         Scene1::xPosition = 945;
         Scene1::yPosition = 387;
+        s.loadSounds(sceneBackground);
     }
 
     /*Leaving sandy clearing and going to map */
@@ -563,6 +577,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 10;
         Scene1::xPosition = 945;
         Scene1::yPosition = 387;
+        s.loadSounds(sceneBackground);
     }
     
 
@@ -580,6 +595,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SPRITE_SIZE = 180;
         Scene1::xPosition = 280;
         Scene1::yPosition = 410;
+        s.loadSounds(sceneBackground);
     
     }
     /* Entering tent from sandy clearing */
@@ -592,6 +608,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
         PlayerInteraction::playerMessage = 6;
+        s.loadSounds(sceneBackground);
       
     }
 
@@ -604,6 +621,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
         PlayerInteraction::playerMessage = 11;
+        s.loadSounds(sceneBackground);
     }
 
 
@@ -618,6 +636,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::SPRITE_SIZE = 120;
             Scene1::yPosition = 390;
             Scene1::xPosition = 106;
+            s.loadSounds(sceneBackground);
             SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         }
        
@@ -638,6 +657,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         PlayerInteraction::playerMessage = 7;
+        s.loadSounds(sceneBackground);
        
     }
     /* Outside wreckage */
@@ -650,7 +670,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
-        Scene1::mouseClick = false;              
+        Scene1::mouseClick = false;     
+        s.loadSounds(sceneBackground);
     }
     /* Sandy clearing */
     if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582 && playerCurrentLocationX <6) {
@@ -660,6 +681,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::yPosition = 380;
         Scene1::xPosition = 350;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        s.loadSounds(sceneBackground);
     }
     /* Inside wreakage */
     if (Scene1::SceneBackground == "1b" && Scene1::SceneTransitionStatement == "Exit Wreckage") {
@@ -667,6 +689,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
+        s.loadSounds(sceneBackground);
     }
 
     /* Looking at computer screen */
@@ -689,6 +712,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::yPosition = 400;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;     
+        s.loadSounds(sceneBackground);
     }
     /* Leave computer screen, inside wreakage */
     if (Scene1::SceneBackground == "1d" && x > 36 && x <= 172 && y >= 544 && y <= 582) {
@@ -698,6 +722,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::yPosition = 400;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
+        s.loadSounds(sceneBackground);
     }
  
     /* Leaving rocky path and going back to wreakage */
@@ -721,6 +746,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 10;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
+        s.loadSounds(sceneBackground);
     }
 
 
@@ -748,6 +774,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
             Scene1::sceneHalt = 1;
             PlayerInteraction::playerMessage = 5;
+            s.loadSounds(sceneBackground);
         }       
            
     }
