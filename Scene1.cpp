@@ -18,6 +18,7 @@
 #include "SceneRender.h"
 #include "ObjectRender.h"
 #include "SDL_mixer.h"
+#include "Sound.h"
 
 
 using namespace std;
@@ -143,8 +144,8 @@ int Scene1::scene1() {
     Mix_Init(MIX_INIT_MP3);
     
 
-    Mix_Music* mus, * mus2;  // Background Music
-    mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
+    //Mix_Music* mus, * mus2;  // Background Music
+    //mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
   
     //Something to do with the font texture.
     SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
@@ -183,6 +184,8 @@ int Scene1::scene1() {
     //Load Ojbect Render class
     ObjectRender obr;
 
+    //Load sound class
+    Sound s;
     
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
@@ -217,6 +220,7 @@ int Scene1::scene1() {
             inv.ContinueGame();
             continueGame = false;
             pob.SetSpritePosition(xPosition, yPosition);
+            s.loadSounds(Scene1::SceneBackground);
 
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
             if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos ) {
@@ -541,7 +545,7 @@ int Scene1::scene1() {
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
-    Mix_FreeMusic(mus2);
+   // Mix_FreeMusic(mus2);
  
     return 0;
 
