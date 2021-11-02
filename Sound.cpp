@@ -10,11 +10,24 @@ void Sound::playSounds() {
 
 }
 
+void Sound::playMovementSounds() {
+	
+	Mix_PlayChannel(2, walk, 0);
+	Mix_Volume(2, MIX_MAX_VOLUME * 0.02676767);
+
+}
+
+void Sound::loadMovementSounds() {
+	//mus = Mix_LoadMUS("Development Kits/Music/crunch-snow-sound-effect.mp3"); //Add your MP3 here for the background music.
+	walk = Mix_LoadWAV("Development Kits/Music/421128__giocosound__footstep-grass-4.wav");
+}
+
 void Sound::loadSounds(std::string sceneBackground) {
 
 	if(Scene1::SceneBackground == "1" || Scene1::SceneBackground == "1fb" || Scene1::SceneBackground == "3b"){
 		
 		mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
+
 		playSounds();
 	}
 

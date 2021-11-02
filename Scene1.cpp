@@ -60,6 +60,8 @@ int Scene1::secretTrigger = 0;  //This is used to tell the program that a secret
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
+int Scene1::soundCount = 0;
+
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -188,6 +190,7 @@ int Scene1::scene1() {
     //Load sound class
     Sound s;
     
+    s.loadMovementSounds();
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
 
@@ -504,10 +507,16 @@ int Scene1::scene1() {
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
+                s.playMovementSounds();
+             //   soundCount = 0;
             }
-            else
+            else{
+             //   if (soundCount != 1) {
+              //      s.loadSounds(SceneBackground);
+            //   }
+              //  soundCount = 1;
                 playerIsMoving = 0;  //Player is not moving.        
-          
+            }
     }
 
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.

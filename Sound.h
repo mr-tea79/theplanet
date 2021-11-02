@@ -9,10 +9,13 @@ namespace brightland {
 
 	public:
 		Mix_Music* mus, * mus2;  // Background Music
+		Mix_Chunk* walk;
 
 	public:
 		void loadSounds(std::string sceneBackground);
+		void loadMovementSounds();
 		void playSounds();
+		void playMovementSounds();
 		void freeMusic();
 
 	};
