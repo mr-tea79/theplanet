@@ -601,9 +601,10 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 Scene1::objectToDestroy.append(object);
             }
 
-            if (menuMessages == "Disc" && pickUpStatement == "Pick up Sparkling object") {
+           
+            if (menuMessages == "Disc" && pickUpStatement == "Pick up Sparkling object" && gd > 360 && gy < 260) {
                 SDL_DestroyTexture(Textures::spriteTexture);
-                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spritePick); //Shows a different player movement when picking up things.
+                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a); //Shows a different player movement when picking up things.
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
                 doAction();
@@ -684,7 +685,7 @@ std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction
         pullStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
   
-    if (gy < 260 && gd > 300 && pullStatement == "Pull Loose rocks") {
+    if (gy < 260 && gd > 400 && gd <569 && pullStatement == "Pull Loose rocks") {
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         pullMessage = "Oooh!";

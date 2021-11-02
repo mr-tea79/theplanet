@@ -810,7 +810,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 411) {
         message = "Battery Lantern";
     }
-    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX >= 360 && playerCurrentLocationX <= 411) {
+    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 511) {
         message = "Disc";
     }
 

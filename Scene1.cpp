@@ -154,6 +154,7 @@ int Scene1::scene1() {
     gdSprite.x = xPosition;
     gdSprite.y = yPosition;
 
+
     //Initialize Textures
     Textures tex;
     Inventory inv;
@@ -194,10 +195,14 @@ int Scene1::scene1() {
     while (!gameover)
     {        
     //    std::cout << Inventory::inv << std::endl;
-        Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
+        Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
         yPosition = gdSprite.y;
         xPosition = gdSprite.x;
+        gd = gdSprite.x;
+        gy = gdSprite.y;
+
+
      
       //  SceneBackground = inv.ContinueGame();
        /*Error checking for SDL_Mixer if you need to use it
@@ -444,7 +449,7 @@ int Scene1::scene1() {
         }
         if (pullMessage != "") {
             playerMessage = true;
-            pi.InteractionControllerOpen(pullMessage, gameObject);
+            pi.InteractionControllerPull(pullMessage, gameObject);
         }
 
 

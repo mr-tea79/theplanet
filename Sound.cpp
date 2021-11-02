@@ -33,6 +33,6 @@ void Sound::loadSounds(std::string sceneBackground) {
 }
 
 void Sound::freeMusic() {
-	Mix_FreeMusic(mus2);
+	//Mix_FreeMusic(mus2);
 
 }
