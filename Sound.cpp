@@ -12,14 +12,28 @@ void Sound::playSounds() {
 
 void Sound::loadSounds(std::string sceneBackground) {
 
-	if(Scene1::SceneBackground == "1"){
+	if(Scene1::SceneBackground == "1" || Scene1::SceneBackground == "1fb" || Scene1::SceneBackground == "3b"){
 		
 		mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
 		playSounds();
 	}
+
+	if (Scene1::SceneBackground == "3a") {
+
+		mus2 = Mix_LoadMUS("Development Kits/Music/sound-of-wind-blowing.mp3"); //Add your MP3 here for the background music.
+		playSounds();
+	}
+
+	if (Scene1::SceneBackground == "3c" || Scene1::SceneBackground == "3d") {
+
+		mus2 = Mix_LoadMUS("Development Kits/Music/Water-dripping.mp3"); //Add your MP3 here for the background music.
+		playSounds();
+	}
+
+
 	if (Scene1::SceneBackground == "1b") {
 	
-		mus2 = Mix_LoadMUS("Development Kits/Music/esparks.mp3"); //Add your MP3 here for the background music.
+		mus2 = Mix_LoadMUS("Development Kits/Music/Electricity-sound-effect.mp3"); //Add your MP3 here for the background music.
 		playSounds();
 	}
 	if (Scene1::SceneBackground == "1da") {
