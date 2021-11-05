@@ -90,7 +90,6 @@ void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::
 }
 
 void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject) {
-    
     const char* imu = lookMessage.c_str();;
     int lookMessageLength = lookMessage.length();
     textDimensions(lookMessageLength);
@@ -111,7 +110,7 @@ void PlayerInteraction::InteractionControllerPull(std::string lookMessage, std::
 
 
 void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
-    
+   
     const char* imu = actionMessage.c_str();;
     int actionMessageLength = actionMessage.length();
     textDimensions(actionMessageLength);

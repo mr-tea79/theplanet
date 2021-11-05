@@ -57,11 +57,13 @@ bool Scene1::newGame = false;
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
 int Scene1::secretTrigger = 0;  //This is used to tell the program that a secret has been found.
+int Scene1::menuSound = 0;
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
 int Scene1::soundCount = 0;
 
+static int mouseHold = 0;
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -110,8 +112,7 @@ int Scene1::scene1() {
     std::string lookMessage;
     std::string actionMessage;
     std::string pullMessage;
-
-  
+     
     //Allow usage of .png images.
     int imgFlags = IMG_INIT_PNG;
 
@@ -171,7 +172,7 @@ int Scene1::scene1() {
   
     //Menu Interaction USE, LOOK etc.
     MenuInteraction mob;
-   
+    
     //Load player movement class.
     PlayerMovement player;
 
@@ -190,13 +191,17 @@ int Scene1::scene1() {
     //Load sound class
     Sound s;
     
+    //Load in some sounds!
     s.loadMovementSounds();
+    s.loadClickSound();
+
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
 
     //Game loop.
     while (!gameover)
     {        
+        
     //    std::cout << Inventory::inv << std::endl;
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
@@ -204,8 +209,7 @@ int Scene1::scene1() {
         xPosition = gdSprite.x;
         gd = gdSprite.x;
         gy = gdSprite.y;
-
-
+             
      
       //  SceneBackground = inv.ContinueGame();
        /*Error checking for SDL_Mixer if you need to use it
@@ -298,7 +302,8 @@ int Scene1::scene1() {
                         y = event.motion.y;
                         gd = gdSprite.x;
                         gy = gdSprite.y;
-
+                        menuSound = 0;
+                        mouseHold = 0;
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
                          
@@ -351,13 +356,22 @@ int Scene1::scene1() {
         keystate = SDL_GetKeyboardState(NULL);
 
         if (SDL_MOUSEBUTTONUP) {       
-     
+            mouseClick = true;
+         //   mouseHold = 0;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-            mouseClick = true;
+            mouseHold++;
+           
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
+         
+           
+            if (menuSound == 1 ) {            
+            //    s.playClickSound();
+                
+              
+            }
 
         //    sr.HoverButtonsClicked(x, y);
             
@@ -388,20 +402,26 @@ int Scene1::scene1() {
             std::cout << "Current Player Y Position is: " << gdSprite.y << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Scene is: " << SceneBackground << std::endl;
+            std::cout << "Mouse Click is: " << mouseHold << std::endl;
             std::cout << "" << std::endl;
 
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
-                  
-            if (actionMessage != "" || actionStatement != "") {
-               pi.InteractionControllerLook(actionMessage, gameObject);
-            }
+            if(mouseClick == true && mouseHold <10 ){
+                if (actionMessage != "" || actionStatement != "" ) {
+                    pi.InteractionControllerLook(actionMessage, gameObject);
+                                     
+                }
 
-            if (interactionMessage != "") {
-                pi.InteractionControllerObject(interactionMessage, gameObject);
-            }
+                if (interactionMessage != "") {
+                    pi.InteractionControllerObject(interactionMessage, gameObject);
+                }
+
+                mouseClick = false;
+                mouseHold++;
+             }
         }
    
         gd = gdSprite.x;
@@ -418,11 +438,13 @@ int Scene1::scene1() {
         if (interactionMessage != "" && sceneHalt == 1) {
             playerMessage = true;
             pi.InteractionControllerObject(interactionMessage, gameObject);
+        
         }
 
-        if (actionMessage != "Pick up what?") {
+        if (actionMessage != "Pick up what?") {       
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction);
         }
+        
         if (actionMessage != "Look at what?") {
             lookMessage = mob.Look(x, y, gd, gy, mInteraction);
         }
@@ -437,8 +459,8 @@ int Scene1::scene1() {
         }
 
         if (lookMessage != "" ) {  
-            playerMessage = true;
-            pi.InteractionControllerLook(lookMessage, gameObject);         
+            playerMessage = true;       
+            pi.InteractionControllerLook(lookMessage, gameObject);                    
         }
 
         if (useMessage != "") {
@@ -454,6 +476,7 @@ int Scene1::scene1() {
             playerMessage = true;
             pi.InteractionControllerPull(pullMessage, gameObject);
         }
+       
 
 
  
@@ -508,6 +531,7 @@ int Scene1::scene1() {
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
                 s.playMovementSounds();
+              
              //   soundCount = 0;
             }
             else{
@@ -517,6 +541,7 @@ int Scene1::scene1() {
               //  soundCount = 1;
                 playerIsMoving = 0;  //Player is not moving.        
             }
+       
     }
 
         //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
@@ -552,7 +577,8 @@ int Scene1::scene1() {
         useMessage = "";
         //Make something appear!    
         SDL_RenderPresent(renderer);
-  
+        mouseClick = false;
+        
     }
         
     //Clean up after yourself!

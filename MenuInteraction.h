@@ -21,9 +21,11 @@ public:
 	
 	static int wrongAction;
 	static std::string wrongActionMessage;
+	
 
 	void doAction();
 	void useChecker();
+	
 	std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction);
 	std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction);
 	std::string MenuInteraction::MenuSelect(int x, int y, int gd, int gy, int mInteraction);

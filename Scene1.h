@@ -37,6 +37,7 @@ namespace brightland {
 		static int sceneHalt;
 		static int inGame;
 		static int soundCount;
+		static int menuSound;
 
 		int scene;
 

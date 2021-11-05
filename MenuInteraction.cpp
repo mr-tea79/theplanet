@@ -5,6 +5,7 @@
 #include "Textures.h"
 #include "Inventory.h"
 #include "PlayerInteraction.h"
+#include "Sound.h"
 
 using namespace brightland;
 
@@ -17,7 +18,7 @@ static std::string actionStatement;
 static std::string pullStatement;
 
 
-//These 2 lines will deal when the player uses the wrong item. 
+//These 2 lines will deal when the player uses the wrong item.
 int MenuInteraction::wrongAction = 0;
 std::string MenuInteraction::wrongActionMessage = "";  //Custom response to the player.
 
@@ -55,6 +56,7 @@ void MenuInteraction::useChecker() {
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string actionMessage;
+     
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         useStatement = "";  //Important
@@ -65,10 +67,13 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     }
 
     if (x > 61 && x < 146 && y > 643 && y < 690) {
+            
+        Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pick up";
         actionMessage = "Pick up what?";
         pickUpStatement = "";
+      
     }
 
     if (x > 190 && x < 227 && y > 676 && y < 690) {
@@ -570,7 +575,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
 std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string gameObject;
-
+  
     PlayerObjects pob;
     Inventory inv;
 
@@ -587,7 +592,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
 
     //If user clicks on the location of the pickup button.
     if (Scene1::actionStatement == "Pick up") {
-
+       
         if (items < 1) {
 
             if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 691 && gy > 425) {
