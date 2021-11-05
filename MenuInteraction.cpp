@@ -219,7 +219,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = "";
     }
 
-    if (lookStatement == "Look at Ape Tape") {
+    if (lookStatement == "Look at Ape Tape") {      
         lookMessage = "No job is too much for APE TAPE.";
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
@@ -336,7 +336,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = "";
     }
 
-    if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {
+    if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {     
         lookMessage = "That's one of the engines.";
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);

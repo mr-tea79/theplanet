@@ -26,6 +26,19 @@ void Sound::playClickSound() {
 	
 }
 
+void Sound::playHoverSound() {
+
+	Mix_PlayChannel(4, hover, 0);
+	Mix_Volume(3, MIX_MAX_VOLUME * 0.02676767);
+
+}
+
+void Sound::loadHoverSound() {
+	//mus = Mix_LoadMUS("Development Kits/Music/crunch-snow-sound-effect.mp3"); //Add your MP3 here for the background music.
+	hover = Mix_LoadWAV("Development Kits/Music/338229__fachii__button-hover.wav");
+}
+
+
 void Sound::loadClickSound() {
 	//mus = Mix_LoadMUS("Development Kits/Music/crunch-snow-sound-effect.mp3"); //Add your MP3 here for the background music.
 	click = Mix_LoadWAV("Development Kits/Music/computer-mouse-click-sound.wav");

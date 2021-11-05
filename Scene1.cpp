@@ -57,13 +57,15 @@ bool Scene1::newGame = false;
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
 int Scene1::secretTrigger = 0;  //This is used to tell the program that a secret has been found.
-int Scene1::menuSound = 0;
+int Scene1::menuSound = 0; //For menu clicking sounds.
+int Scene1::hoverSound = 0; //For object hover sounds.
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
-int Scene1::soundCount = 0;
+//int Scene1::soundCount = 0;
 
 static int mouseHold = 0;
+int Scene1::hoverHold = 0;
 
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
@@ -194,6 +196,7 @@ int Scene1::scene1() {
     //Load in some sounds!
     s.loadMovementSounds();
     s.loadClickSound();
+    s.loadHoverSound();
 
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
@@ -220,6 +223,13 @@ int Scene1::scene1() {
         }
        
            */
+
+           //Used for clicking sounds in game.
+        if (hoverSound== 1 && hoverHold <2 && menuSound !=1) {
+            s.playHoverSound();
+            hoverHold++;
+        }
+
 
         if (newGame == true) {
             //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
@@ -304,33 +314,40 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
                         menuSound = 0;
                         mouseHold = 0;
+                        hoverSound = 0;
+                       
+
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
-                         
+                            hoverHold = 0;
                         }
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
-                        if (playerMessage != true && interactionMessage == "") {                          
+                        if (playerMessage != true && interactionMessage == "") {                   
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
-                                playerIsMoving = 0;       
-                                
+                                                            
                             }                         
                             else {              
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
-                                    
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                   
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
                         } 
                        
-                        if (interactionMessage != "" && playerIsMoving !=1) {                        
+                        if (interactionMessage != "" && playerIsMoving !=1) {     
+                            hoverSound = 1;
+                            hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
-                        }                 
+                           
+                        }  
+                        else {
+                          
+                        }
                  
                         break;                    
                     
@@ -360,12 +377,11 @@ int Scene1::scene1() {
          //   mouseHold = 0;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-            mouseHold++;
-           
+            mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-         
+            
           
             
             mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
@@ -402,6 +418,8 @@ int Scene1::scene1() {
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
+
+            //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 ){
                 if (actionMessage != "" || actionStatement != "" ) {
                     pi.InteractionControllerLook(actionMessage, gameObject);
@@ -417,6 +435,7 @@ int Scene1::scene1() {
                     s.playClickSound();
                 }
 
+               
 
                 mouseClick = false;
                 mouseHold++;

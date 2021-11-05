@@ -403,6 +403,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     //Menu Hover buttons //////////////////////////////////////////////////////////////////
     if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
+        Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 128;
         Scene1::yPosition = 400;
@@ -414,7 +415,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
 
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
-      
+        Scene1::menuSound = 1;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::newGame = false;
@@ -422,6 +423,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         s.loadSounds(sceneBackground);
     }
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
+        Scene1::menuSound = 1;
         Scene1::SceneBackground = "01";
         //Scene1::inGame = 1;
         Scene1::SPRITE_SIZE = 50;
@@ -434,6 +436,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     }
     // + Speed of player (Needs attention)
     if (Scene1::SceneBackground == "01" && x >= 620 && x <= 691 && y >= 148 && y <= 179 ) {
+        Scene1::menuSound = 1;
         if (PlayerMovement::vspeed < 5 && PlayerMovement::hspeed < 5) {
             PlayerMovement::vspeed = PlayerMovement::vspeed + 0.01;
             PlayerMovement::hspeed = PlayerMovement::hspeed + 0.01;
@@ -447,6 +450,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     // - Speed of player  (Needs attention)
     if (Scene1::SceneBackground == "01" && x >= 282 && x <= 353 && y >= 148 && y <= 179 ) {
+        Scene1::menuSound = 1;
         if (PlayerMovement::vspeed > 1 && PlayerMovement::hspeed > 1) {
             PlayerMovement::vspeed = PlayerMovement::vspeed - 0.01;
             PlayerMovement::hspeed = PlayerMovement::hspeed - 0.01;
