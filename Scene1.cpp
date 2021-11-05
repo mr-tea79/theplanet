@@ -366,14 +366,7 @@ int Scene1::scene1() {
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
          
-           
-            if (menuSound == 1 ) {            
-            //    s.playClickSound();
-                
-              
-            }
-
-        //    sr.HoverButtonsClicked(x, y);
+          
             
             mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
             
@@ -418,6 +411,12 @@ int Scene1::scene1() {
                 if (interactionMessage != "") {
                     pi.InteractionControllerObject(interactionMessage, gameObject);
                 }
+
+                //Used for clicking sounds in game.
+                if (menuSound == 1 && mouseHold < 3) {
+                    s.playClickSound();
+                }
+
 
                 mouseClick = false;
                 mouseHold++;

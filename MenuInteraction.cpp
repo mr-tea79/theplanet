@@ -59,6 +59,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
      
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
+        Scene1::menuSound = 1;
         useStatement = "";  //Important
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
@@ -77,6 +78,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     }
 
     if (x > 190 && x < 227 && y > 676 && y < 690) {
+        Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Use";
         actionMessage = "Use what?";
@@ -84,6 +86,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     }
 
     if (x > 178 && x < 232 && y > 723 && y < 744) {
+        Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Open";
         actionMessage = "Open what?";
@@ -91,6 +94,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     }
 
     if (x > 59 && x < 114 && y > 723 && y < 744 && Scene1::SceneBackground != "0") {
+        Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pull";
         actionMessage = "Pull what?";

@@ -22,7 +22,7 @@ void Sound::playMovementSounds() {
 void Sound::playClickSound() {
 	
 	Mix_PlayChannel(3, click, 0);
-	Mix_Volume(2, MIX_MAX_VOLUME * 0.5);
+	Mix_Volume(3, MIX_MAX_VOLUME * 0.02676767);
 	
 }
 
