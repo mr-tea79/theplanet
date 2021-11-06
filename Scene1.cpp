@@ -313,16 +313,15 @@ int Scene1::scene1() {
 
                      
                         checkHoverLocation = s.checkHoverLocation(x, y);
-                        //This is an attempt to prevent hover sounds looping
-                        std::cout << checkHoverLocation << std::endl;
-                        
+                        //This is an attempt to prevent hover sounds looping, a REAL brain teaser if I have saw one!
+                                       
                         if (checkHoverLocation == 0 && hoverHold < 1){
                             s.playHoverSound();
                             hoverHold++;
                         }
                         if (checkHoverLocation == 1) {
                             hoverHold = 0;
-                       }
+                        }
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
