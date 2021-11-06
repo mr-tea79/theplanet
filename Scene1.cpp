@@ -314,13 +314,16 @@ int Scene1::scene1() {
                    
                         //This is an attempt to prevent hover sounds looping
                         checkHoverLocation = s.checkHoverLocation(event.motion.x, event.motion.y);
-                        if (hoverSound > 0 && checkHoverLocation ==false) {
+                        if (hoverSound > 0 && checkHoverLocation !=false ) {                   
+                           
                             s.playHoverSound();
                             hoverHold++;  
                             checkHoverLocation = true;
+                            hoverSound = 0;
+                            
                         }                
                         else{
-                           
+                            hoverSound = 0;
                             checkHoverLocation = true;
                          //   hoverHold = 0;
                         }
