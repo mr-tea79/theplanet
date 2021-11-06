@@ -225,11 +225,7 @@ int Scene1::scene1() {
            */
 
            //Used for clicking sounds in game.
-        if (hoverSound== 1 && hoverHold <2 && menuSound !=1) {
-            s.playHoverSound();
-            hoverHold++;
-        }
-
+       
 
         if (newGame == true) {
             //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
@@ -314,13 +310,26 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
                         menuSound = 0;
                         mouseHold = 0;
-                        hoverSound = 0;
-                       
+                      //  hoverSound = 0;
+                        bool checkHoverLocation;
+                   
+                        checkHoverLocation = s.checkHoverLocation(event.motion.x, event.motion.y);
+                        if (hoverSound > 0 && checkHoverLocation !=false) {
+                            s.playHoverSound();
+                            hoverHold++;
+                          
+                        }
+                    
+                        else{
+                            hoverHold = 0;
+                        }
+                    
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
-                            hoverHold = 0;
+                           
                         }
+                       
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "") {                   
@@ -340,7 +349,7 @@ int Scene1::scene1() {
                         } 
                        
                         if (interactionMessage != "" && playerIsMoving !=1) {     
-                            hoverSound = 1;
+                         //   hoverSound = 1; Hate it!
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
                            
@@ -596,6 +605,7 @@ int Scene1::scene1() {
         //Make something appear!    
         SDL_RenderPresent(renderer);
         mouseClick = false;
+      
         
     }
         

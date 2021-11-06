@@ -14,6 +14,7 @@ namespace brightland {
 		Mix_Chunk* hover;
 
 	public:
+		bool checkHoverLocation(int x, int y);
 		void loadSounds(std::string sceneBackground);
 		void loadMovementSounds();
 		void playSounds();
