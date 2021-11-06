@@ -314,18 +314,21 @@ int Scene1::scene1() {
                    
                         //This is an attempt to prevent hover sounds looping
                         checkHoverLocation = s.checkHoverLocation(event.motion.x, event.motion.y);
-                        if (hoverSound > 0 && checkHoverLocation !=false) {
+                        if (hoverSound > 0 && checkHoverLocation ==false) {
                             s.playHoverSound();
-                            hoverHold++;                      
+                            hoverHold++;  
+                            checkHoverLocation = true;
                         }                
                         else{
-                            hoverHold = 0;
+                           
+                            checkHoverLocation = true;
+                         //   hoverHold = 0;
                         }
                     
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;
-                           
+                            hoverHold = 1;
                         }
                        
 
