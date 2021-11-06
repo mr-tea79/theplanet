@@ -309,17 +309,15 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
                         menuSound = 0;
-                        mouseHold = 0;
-                      //  hoverSound = 0;
+                        mouseHold = 0;                
                         bool checkHoverLocation;
                    
+                        //This is an attempt to prevent hover sounds looping
                         checkHoverLocation = s.checkHoverLocation(event.motion.x, event.motion.y);
                         if (hoverSound > 0 && checkHoverLocation !=false) {
                             s.playHoverSound();
-                            hoverHold++;
-                          
-                        }
-                    
+                            hoverHold++;                      
+                        }                
                         else{
                             hoverHold = 0;
                         }
