@@ -51,7 +51,7 @@ int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering wh
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
 bool Scene1::continueGame = false;
 bool Scene1::newGame = false;
-
+static bool checkHoverLocation = false;
 
 //Scene variables
 int Scene1::action; //Used to trigger action texture.
@@ -309,25 +309,20 @@ int Scene1::scene1() {
                         gd = gdSprite.x;
                         gy = gdSprite.y;
                         menuSound = 0;
-                        mouseHold = 0;                
-                        bool checkHoverLocation;
-                   
+                        mouseHold = 0;  
+
+                     
+                        checkHoverLocation = s.checkHoverLocation(x, y);
                         //This is an attempt to prevent hover sounds looping
-                        checkHoverLocation = s.checkHoverLocation(event.motion.x, event.motion.y);
-                        if (hoverSound > 0 && checkHoverLocation !=false ) {                   
-                           
+                        std::cout << checkHoverLocation << std::endl;
+                        
+                        if (checkHoverLocation == 0 && hoverHold < 1){
                             s.playHoverSound();
-                            hoverHold++;  
-                            checkHoverLocation = true;
-                            hoverSound = 0;
-                            
-                        }                
-                        else{
-                            hoverSound = 0;
-                            checkHoverLocation = true;
-                         //   hoverHold = 0;
+                            hoverHold++;
                         }
-                    
+                        if (checkHoverLocation == 1) {
+                            hoverHold = 0;
+                       }
 
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
                             playerMessage = false;

@@ -11,15 +11,16 @@ bool Sound::checkHoverLocation(int x, int y) {
 	if (x >= 159 && x <= 376 && y >= 480 && y <= 546 && Scene1::SceneBackground == "0") {
 		return false;
 	}
-	
-	if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
+		
+	else if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
 		return false;
-	}
-	
+	}		
 	//Player Options hover button (main menu)
-	if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
+	else if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
 		return false;
 	}
+	else
+		return true;
 	
 
 }
