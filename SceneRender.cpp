@@ -43,11 +43,31 @@ int SceneRender::HoverButtons(int x, int y) {
         return 1;
     }
     //Pickup hover button (bottom menu)
-     //Minus hover button (main menu)
     if (x > 61 && x < 146 && y > 643 && y < 690) {
         buttonID = "Pickup";
         return 1;
     }
+    //Open hover button (bottom menu)
+    if (x > 178 && x < 232 && y > 723 && y < 744) {
+        buttonID = "Open";
+        return 1;
+    }
+    //Pull hover button (bottom menu)
+    if (x > 59 && x < 114 && y > 723 && y < 744) {
+        buttonID = "Pull";
+        return 1;
+    }
+    //Look hover button (bottom menu)
+    if (x > 57 && x < 145 && y > 621 && y < 647) {
+        buttonID = "Look";
+        return 1;
+    }
+    //Use hover button (bottom menu)
+    if (x > 190 && x < 227 && y > 676 && y < 690) {
+        buttonID = "Use";
+        return 1;
+    }
+
 
 
     return 0;
@@ -122,6 +142,18 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
    if(Scene1::SceneBackground !="0" || Scene1::SceneBackground !="01"){
         if (hoverTrigger == 1 && buttonID == "Pickup") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverPickup, NULL, &Textures::RHoverPickup);
+        }
+        if (hoverTrigger == 1 && buttonID == "Pull") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverPull, NULL, &Textures::RHoverPull);
+        }
+        if (hoverTrigger == 1 && buttonID == "Open") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverOpen, NULL, &Textures::RHoverOpen);
+        }
+        if (hoverTrigger == 1 && buttonID == "Look") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverLook, NULL, &Textures::RHoverLook);
+        }
+        if (hoverTrigger == 1 && buttonID == "Use") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverUse, NULL, &Textures::RHoverUse);
         }
    }
 

@@ -12,6 +12,10 @@ SDL_Texture* Textures::hoverOptions;
 SDL_Texture* Textures::hoverPlus;
 SDL_Texture* Textures::hoverMinus;
 SDL_Texture* Textures::hoverPickup;
+SDL_Texture* Textures::hoverOpen;
+SDL_Texture* Textures::hoverLook;
+SDL_Texture* Textures::hoverPull;
+SDL_Texture* Textures::hoverUse;
 
 //Text Texture
 SDL_Texture* Textures::ftexture;
@@ -54,6 +58,10 @@ SDL_Rect Textures::RHoverOptions;
 SDL_Rect Textures::RHoverMinus;
 SDL_Rect Textures::RHoverPlus;
 SDL_Rect Textures::RHoverPickup;
+SDL_Rect Textures::RHoverOpen;
+SDL_Rect Textures::RHoverPull;
+SDL_Rect Textures::RHoverLook;
+SDL_Rect Textures::RHoverUse;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -179,6 +187,10 @@ void Textures::Scene1Textures() {
     RHoverPlus = { 600,139,104,54 };
     RHoverMinus = { 281,139,104,54 };
     RHoverPickup = { 45,655,124,54 };
+    RHoverLook = { 45,610,100,50 };
+    RHoverOpen = { 160,710,100,44 };
+    RHoverUse = { 160,660,100,44 };
+    RHoverPull = { 45,710,100,44 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -206,6 +218,10 @@ void Textures::Scene1Textures() {
     ShoverMinus = IMG_Load("Scenes/HoverButtons/hoverMinus.png");
     ShoverPlus = IMG_Load("Scenes/HoverButtons/hoverPlus.png");
     ShoverPickup = IMG_Load("Scenes/HoverButtons/pickup.png");
+    ShoverOpen = IMG_Load("Scenes/HoverButtons/open.png");
+    ShoverPull = IMG_Load("Scenes/HoverButtons/pull.png");
+    ShoverUse = IMG_Load("Scenes/HoverButtons/use.png");
+    ShoverLook = IMG_Load("Scenes/HoverButtons/look.png");
 
 
 
@@ -215,6 +231,10 @@ void Textures::Scene1Textures() {
     hoverMinus = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverMinus);
     hoverPlus = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverPlus);
     hoverPickup = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverPickup);
+    hoverLook = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverLook);
+    hoverUse = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverUse);
+    hoverOpen = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverOpen);
+    hoverPull = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverPull);
 
     pda = IMG_Load("Objects/pda.png");
     flag = IMG_Load("Objects/flagr.png");
@@ -283,6 +303,10 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(ShoverPlus);
     SDL_FreeSurface(ShoverMinus);
     SDL_FreeSurface(ShoverPickup);
+    SDL_FreeSurface(ShoverPull);
+    SDL_FreeSurface(ShoverOpen);
+    SDL_FreeSurface(ShoverLook);
+    SDL_FreeSurface(ShoverUse);
  
 }
 
