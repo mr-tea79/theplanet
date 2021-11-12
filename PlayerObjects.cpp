@@ -78,8 +78,8 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Use";
     }
 
-
     if (x > 61 && x < 146 && y > 643 && y < 690 && Scene1::SceneBackground != "0") {
+        Scene1::hoverSound = 1;
         message = "Pick up";
     }
 

@@ -42,6 +42,12 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "Minus";
         return 1;
     }
+    //Pickup hover button (bottom menu)
+     //Minus hover button (main menu)
+    if (x > 61 && x < 146 && y > 643 && y < 690) {
+        buttonID = "Pickup";
+        return 1;
+    }
 
 
     return 0;
@@ -113,8 +119,12 @@ void SceneRender::sceneRender() {
 void SceneRender::sceneRenderOverlay(int x, int y) {
 
    int hoverTrigger = HoverButtons(x, y);
+   if(Scene1::SceneBackground !="0" || Scene1::SceneBackground !="01"){
+        if (hoverTrigger == 1 && buttonID == "Pickup") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverPickup, NULL, &Textures::RHoverPickup);
+        }
+   }
 
-    
     if (Scene1::SceneBackground == "0") {
         SDL_RenderCopy(Scene1::renderer, Textures::mainMenu, NULL, &Textures::menuBackground);
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
@@ -127,7 +137,7 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         if (hoverTrigger == 1 && buttonID == "Player Options") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverOptions, NULL, &Textures::RHoverOptions);
         }
-      
+       
     }
     if (Scene1::SceneBackground == "01") {
         if (hoverTrigger == 1 && buttonID == "Plus") {

@@ -17,6 +17,7 @@ namespace brightland {
 		static SDL_Texture* Textures::hoverOptions;
 		static SDL_Texture* Textures::hoverMinus;
 		static SDL_Texture* Textures::hoverPlus;
+		static SDL_Texture* Textures::hoverPickup;
 
 		//Texture used for menu dialog.
 		static SDL_Texture* starsTexture;
@@ -112,6 +113,7 @@ namespace brightland {
 		static SDL_Rect RHoverOptions;
 		static SDL_Rect RHoverPlus;
 		static SDL_Rect RHoverMinus;
+		static SDL_Rect RHoverPickup;
 
 		SDL_Surface* menuSurface;
 
@@ -121,6 +123,7 @@ namespace brightland {
 		SDL_Surface* ShoverOptions;
 		SDL_Surface* ShoverPlus;
 		SDL_Surface* ShoverMinus;
+		SDL_Surface* ShoverPickup;
 
 		//Scene Surfaces.
 		SDL_Surface* imageSurface2;

@@ -346,8 +346,7 @@ int Scene1::scene1() {
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
                         } 
                        
-                        if (interactionMessage != "" && playerIsMoving !=1) {     
-                         //   hoverSound = 1; Hate it!
+                        if (interactionMessage != "" && playerIsMoving !=1) {                      
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
                            
@@ -466,7 +465,7 @@ int Scene1::scene1() {
         
         }
 
-        if (actionMessage != "Pick up what?") {       
+        if (actionMessage != "Pick up what?") {     
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction);
         }
         
