@@ -66,6 +66,7 @@ namespace brightland {
 	
 		//Scene Dialog
 		SDL_Surface* dialog;
+	
 		static SDL_Surface* fsurface;
 		static SDL_Renderer* renderer;
 

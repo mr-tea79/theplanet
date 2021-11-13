@@ -77,6 +77,7 @@ int SceneRender::HoverButtons(int x, int y) {
 //Renders the scene backgrounds for the game.
 void SceneRender::sceneRender() {
 
+
     if (Scene1::SceneBackground == "01") {
         SDL_RenderCopy(Scene1::renderer, Textures::poptions, NULL, &Textures::background);
     }
@@ -140,17 +141,18 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
 
    int hoverTrigger = HoverButtons(x, y);
    if(Scene1::SceneBackground !="0" || Scene1::SceneBackground !="01"){
+
         if (hoverTrigger == 1 && buttonID == "Pickup") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverPickup, NULL, &Textures::RHoverPickup);
         }
         if (hoverTrigger == 1 && buttonID == "Pull") {
-            SDL_RenderCopy(Scene1::renderer, Textures::hoverPull, NULL, &Textures::RHoverPull);
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverPull, NULL, &Textures::RHoverPull);      
         }
         if (hoverTrigger == 1 && buttonID == "Open") {
-            SDL_RenderCopy(Scene1::renderer, Textures::hoverOpen, NULL, &Textures::RHoverOpen);
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverOpen, NULL, &Textures::RHoverOpen);        
         }
         if (hoverTrigger == 1 && buttonID == "Look") {
-            SDL_RenderCopy(Scene1::renderer, Textures::hoverLook, NULL, &Textures::RHoverLook);
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverLook, NULL, &Textures::RHoverLook);        
         }
         if (hoverTrigger == 1 && buttonID == "Use") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverUse, NULL, &Textures::RHoverUse);
@@ -158,6 +160,7 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
    }
 
     if (Scene1::SceneBackground == "0") {
+       
         SDL_RenderCopy(Scene1::renderer, Textures::mainMenu, NULL, &Textures::menuBackground);
         SDL_RenderCopy(Scene1::renderer, Textures::starsTexture, &PlayerObjects::srcrect3, &PlayerObjects::dstrect3);
         if (hoverTrigger == 1 && buttonID == "New Game") {           
@@ -225,5 +228,6 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
     }
 
 
+    SDL_RenderCopy(Scene1::renderer, Textures::cursor, NULL, &Textures::RCursor);
 }
 

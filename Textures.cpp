@@ -5,6 +5,9 @@
 
 using namespace brightland;
 
+SDL_Texture* Textures::cursor;
+SDL_Rect Textures::RCursor;
+
 //Hover Button Textures;
 SDL_Texture* Textures::hoverNewGame;
 SDL_Texture* Textures::hoverContinueGame;
@@ -191,6 +194,7 @@ void Textures::Scene1Textures() {
     RHoverOpen = { 160,710,100,44 };
     RHoverUse = { 160,660,100,44 };
     RHoverPull = { 45,710,100,44 };
+    RCursor = { 100, 310, 50, 50 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -222,9 +226,10 @@ void Textures::Scene1Textures() {
     ShoverPull = IMG_Load("Scenes/HoverButtons/pull.png");
     ShoverUse = IMG_Load("Scenes/HoverButtons/use.png");
     ShoverLook = IMG_Load("Scenes/HoverButtons/look.png");
+     
+    Scursor = IMG_Load("Scenes/Cursors/mousePointer.png");
 
-
-
+    cursor = SDL_CreateTextureFromSurface(Scene1::renderer, Scursor);
     hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverNewGame);
     hoverContinueGame = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverContinueGame);
     hoverOptions = SDL_CreateTextureFromSurface(Scene1::renderer, ShoverOptions);
@@ -307,6 +312,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(ShoverOpen);
     SDL_FreeSurface(ShoverLook);
     SDL_FreeSurface(ShoverUse);
+    SDL_FreeSurface(Scursor);
  
 }
 

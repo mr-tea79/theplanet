@@ -71,8 +71,6 @@ SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
 
-
-
 //This will help when transitioning to a new scene. 
 void Scene1::DoAction() {
     SDL_Delay(100);
@@ -142,7 +140,8 @@ int Scene1::scene1() {
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 }; //Font colour.
     bcolor =         { 0,0,0 }; //Font background colour.
-
+    SDL_ShowCursor(SDL_DISABLE); // Disable default mouse pointer because I want to use my customized one!
+  
     // Inilialize SDL_mixer , exit if fail
     if (SDL_Init(SDL_INIT_AUDIO) < 0) exit(1);
     Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
@@ -205,6 +204,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
         
+       // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
@@ -311,6 +311,7 @@ int Scene1::scene1() {
                         menuSound = 0;
                         mouseHold = 0;  
 
+                        Textures::RCursor = { x-24,y-26,50,50 };
                      
                         checkHoverLocation = s.checkHoverLocation(x, y);
                         //This is an attempt to prevent hover sounds looping, a REAL brain teaser if I have saw one!
