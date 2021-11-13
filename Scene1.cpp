@@ -310,7 +310,8 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
                         menuSound = 0;
                         mouseHold = 0;  
-
+                        
+                        //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
                      
                         checkHoverLocation = s.checkHoverLocation(x, y);

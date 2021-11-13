@@ -5,10 +5,11 @@
 
 using namespace brightland;
 
+//Custom mouse cursor.
 SDL_Texture* Textures::cursor;
 SDL_Rect Textures::RCursor;
 
-//Hover Button Textures;
+//Hover Button Textures
 SDL_Texture* Textures::hoverNewGame;
 SDL_Texture* Textures::hoverContinueGame;
 SDL_Texture* Textures::hoverOptions;
@@ -194,7 +195,7 @@ void Textures::Scene1Textures() {
     RHoverOpen = { 160,710,100,44 };
     RHoverUse = { 160,660,100,44 };
     RHoverPull = { 45,710,100,44 };
-    RCursor = { 100, 310, 50, 50 };
+    RCursor = { 100, 310, 50, 50}; //Custom mouse cursor.
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
