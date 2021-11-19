@@ -933,8 +933,11 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         //Sparkly object
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
      
-        if (Scene1::SPRITE_SIZE >= 160 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
+        if (Scene1::SPRITE_SIZE >= 160 && Scene1::SPRITE_SIZE <170 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
             return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
+        }
+        if (Scene1::SPRITE_SIZE >= 170 && Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
+            return  std::make_tuple(40, Scene1::gdSprite.x + 52, Scene1::gdSprite.y + 48, 48, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
         }
     }
 
