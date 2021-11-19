@@ -47,6 +47,7 @@ SDL_Texture* Textures::caveScene1;
 SDL_Texture* Textures::caveScene2;
 SDL_Texture* Textures::mainMenu;
 SDL_Texture* Textures::poptions;
+SDL_Texture* Textures::blink;
 
 SDL_Rect Textures::background;
 SDL_Rect Textures::background2;
@@ -128,6 +129,8 @@ SDL_Surface* Textures::spriteBack1a;
 SDL_Surface* Textures::spriteBack2a;
 SDL_Surface* Textures::spriteBack3a;
 
+SDL_Surface* Textures::Sblink;
+
 
 
 void Textures::LoadActionTextures() {
@@ -159,7 +162,6 @@ void Textures::MovementTextures() {
     spriteBack1a = IMG_Load("PlayerMovement/ThePlanet/spriteback1.png");
     spriteBack2a = IMG_Load("PlayerMovement/ThePlanet/spriteback2.png");
     spriteBack3a = IMG_Load("PlayerMovement/ThePlanet/spriteback3.png");
-
 
 }
 
@@ -215,6 +217,8 @@ void Textures::Scene1Textures() {
     imageSurface7 = IMG_Load("Scenes/rocks2.png");
     imageSurface19 = IMG_Load("Scenes/gameMenu.png");
     imageSurface22 = IMG_Load("Scenes/poptions.png");
+
+    Sblink = IMG_Load("PlayerMovement/ThePlanet/blink.png");
 
     //Hover Button Surfaces
     ShoverNewGame = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
@@ -277,6 +281,7 @@ void Textures::Scene1Textures() {
     objectTexture4 = SDL_CreateTextureFromSurface(Scene1::renderer, tape);
     objectTexture5 = SDL_CreateTextureFromSurface(Scene1::renderer, tent);
     starsTexture = SDL_CreateTextureFromSurface(Scene1::renderer, stars);
+    blink = SDL_CreateTextureFromSurface(Scene1::renderer, Sblink);
     
     invTexture1 = SDL_CreateTextureFromSurface(Scene1::renderer, pda);
     invTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, flag);
@@ -314,6 +319,7 @@ void Textures::Scene1Textures() {
     SDL_FreeSurface(ShoverLook);
     SDL_FreeSurface(ShoverUse);
     SDL_FreeSurface(Scursor);
+    SDL_FreeSurface(Sblink);
  
 }
 

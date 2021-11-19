@@ -40,6 +40,7 @@ namespace brightland {
 		static int menuSound; //For menu clicking noises.
 		static int hoverSound; //For hover menu noises.
 		static int hoverHold;
+		static int playerIsMoving;
 
 		int scene;
 

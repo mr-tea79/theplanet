@@ -47,7 +47,7 @@ SDL_Color Scene1::bcolor;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
-int playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
+int Scene1:: playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
 bool Scene1::continueGame = false;
 bool Scene1::newGame = false;
@@ -158,7 +158,7 @@ int Scene1::scene1() {
     gdSprite.x = xPosition;
     gdSprite.y = yPosition;
 
-
+    
     //Initialize Textures
     Textures tex;
     Inventory inv;
@@ -203,7 +203,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-        
+        std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
@@ -212,8 +212,7 @@ int Scene1::scene1() {
         xPosition = gdSprite.x;
         gd = gdSprite.x;
         gy = gdSprite.y;
-             
-     
+                  
       //  SceneBackground = inv.ContinueGame();
        /*Error checking for SDL_Mixer if you need to use it
         
@@ -335,14 +334,15 @@ int Scene1::scene1() {
                         if (playerMessage != true && interactionMessage == "") {                   
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
-                                                            
+                               
                             }                         
                             else {              
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.                                   
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.     
+                                   
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
@@ -529,12 +529,12 @@ int Scene1::scene1() {
                     //The following 2 statements will allow the player to move across and then up or down.
                     if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
-                        playerIsMoving = 0;
+                        playerIsMoving = 1;
                      
                     }
                     if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
-                        playerIsMoving = 0;
+                        playerIsMoving = 1;
                       
                     }  
                     SDL_Delay(1); //Moving from _sleep to SDL_Delay

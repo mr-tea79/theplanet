@@ -42,6 +42,9 @@ SDL_Rect PlayerObjects::srcrect8;
 SDL_Rect PlayerObjects::dstrect8;
 SDL_Rect PlayerObjects::srcrect9;
 SDL_Rect PlayerObjects::dstrect9;
+SDL_Rect PlayerObjects::srcrect10;
+SDL_Rect PlayerObjects::dstrect10;
+
 
 
 void PlayerObjects::SetSpritePosition(int x, int y) {
@@ -865,10 +868,13 @@ std::tuple<int, int, int, int, int> PlayerObjects::ObjectSettings(int scene, int
         return  std::make_tuple(NULL, NULL, NULL, 30, 81);
     }
     if (scene == 1 && objectID == 9) {
-        //Tent
+        //Disc
         return  std::make_tuple(NULL, 5, NULL, 20, 41);
     }
-
+    if (scene == 1 && objectID == 10) {
+        //Blinking eyes
+        return  std::make_tuple(NULL, 122, NULL, 140, 500);
+    }
 
     return  std::make_tuple(scene, objectID, b, c, d);
 }
@@ -922,6 +928,14 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         //Sparkly object
         // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(3, 499, 252, 8, 8);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
+    }
+    if (scene == 1 && objectID == 10) {
+        //Sparkly object
+        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+     
+        if (Scene1::SPRITE_SIZE >= 160 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
+            return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
+        }
     }
 
 
@@ -1029,6 +1043,16 @@ void PlayerObjects::ObjectController() {
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect9 = { object9 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect9 = { objectP3, objectP4, objectP5, objectP6 };
+
+    //Scene Object 10 (Blinking eyes)
+    std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 10, NULL, NULL, NULL);
+    std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 10, NULL, NULL, NULL);
+
+    //% numberSprites is set to the value specified in PlaceObjectA. Here it is set to 3.
+    int object10 = (ticks / 100) % numberSprites;
+    //Set objectSprite Parameters size, height, width, position etc.
+    PlayerObjects::srcrect10 = { object10 * objectP1, objectP2, objectHeight, objectWidth };
+    PlayerObjects::dstrect10 = { objectP3, objectP4, objectP5, objectP6 };
 
 
 }

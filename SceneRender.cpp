@@ -229,5 +229,9 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
 
 
     SDL_RenderCopy(Scene1::renderer, Textures::cursor, NULL, &Textures::RCursor);  //Render the custom mouse cursor last of all (keeps it on top).
+
+    if(Scene1::playerIsMoving == 0){
+        SDL_RenderCopy(Scene1::renderer, Textures::blink, &PlayerObjects::srcrect10, &PlayerObjects::dstrect10);
+    }
 }
 

@@ -35,6 +35,7 @@ namespace brightland {
 		static SDL_Texture* rocks4;
 		static SDL_Texture* computerScene1;
 		static SDL_Texture* computerScene2;
+		static SDL_Texture* blink;
 		
 		static SDL_Texture* Textures::objectTexture;
 		static SDL_Texture* Textures::objectTexture2;
@@ -79,8 +80,6 @@ namespace brightland {
 		static SDL_Surface* spriteAction;
 
 		static SDL_Surface* spriteDown1;
-		//static SDL_Surface* spriteDownp;
-		//static SDL_Surface* spriteBack1a;
 		static SDL_Surface* spritePick;
 		static SDL_Surface* spritePickp;
 
@@ -106,6 +105,8 @@ namespace brightland {
 		static SDL_Surface* spriteBack1a;
 		static SDL_Surface* spriteBack2a;
 		static SDL_Surface* spriteBack3a;
+
+		static SDL_Surface* Sblink;
 
 		static SDL_Rect background;
 		static SDL_Rect background2;

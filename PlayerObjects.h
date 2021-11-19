@@ -32,6 +32,8 @@ namespace brightland {
         static SDL_Rect dstrect8;
         static SDL_Rect srcrect9;
         static SDL_Rect dstrect9;
+        static SDL_Rect srcrect10;
+        static SDL_Rect dstrect10;
        
 
         std::string HoverObjects(int x, int y, int scene, int gd, int gy);
