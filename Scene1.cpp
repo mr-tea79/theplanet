@@ -436,6 +436,7 @@ int Scene1::scene1() {
 
                 if (interactionMessage != "") {
                     pi.InteractionControllerObject(interactionMessage, gameObject);
+                    playerIsMoving = 1;
                 }
 
                 //Used for clicking sounds in game.
