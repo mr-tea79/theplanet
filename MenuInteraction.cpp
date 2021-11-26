@@ -109,13 +109,29 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
 std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string lookMessage;
-
+     
     PlayerObjects pob;
     Inventory inv;
     int n = lookStatement.length();
 
     if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
+    }
+
+    if (gd > 800 && lookStatement == "Look at Strange peg") {
+        lookMessage = "It's a peg with a latch on it, hmmmm";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (lookStatement == "Look at Disc") {
+        lookMessage = "A gold disc with markings on it and a small hole in the middle";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        doAction();
+        lookStatement = "";
     }
 
     if (lookStatement == "Look at Spaceflix") {
@@ -494,6 +510,28 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         useMessage = "It's missing the connector pipe.";
         useStatement = "";
         doAction();
+    }
+
+    if (useStatement == "Use Disc") {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        useStatement = "";
+        Scene1::useStatement = "with";
+        Scene1::actionStatement = "Use Disc with";
+
+    }
+
+    if (Scene1::useStatement == "Use Disc with Strange peg" && gd > 800) {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        useMessage = "Oooh some text has appeared on the wall!";
+        inv.useItem("Disc");
+        doAction();
+        Inventory::inv.append("8");
+        Scene1::actionStatement = "";
+        Scene1::useStatement = ""; //Very Important or you will get a memory leak.
+        Scene1::secretTrigger = 3; //Unlock hidden area.
+
     }
 
     if (useStatement == "Use Pipe") {

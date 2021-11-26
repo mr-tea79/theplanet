@@ -203,6 +203,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;

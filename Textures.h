@@ -14,16 +14,16 @@ namespace brightland {
 		static SDL_Texture* Textures::cursor;
 
 		//Hover Buttons
-		static SDL_Texture* Textures::hoverNewGame;
-		static SDL_Texture* Textures::hoverContinueGame;
-		static SDL_Texture* Textures::hoverOptions;
-		static SDL_Texture* Textures::hoverMinus;
-		static SDL_Texture* Textures::hoverPlus;
-		static SDL_Texture* Textures::hoverPickup;
-		static SDL_Texture* Textures::hoverPull;
-		static SDL_Texture* Textures::hoverLook;
-		static SDL_Texture* Textures::hoverOpen;
-		static SDL_Texture* Textures::hoverUse;
+		static SDL_Texture* hoverNewGame;
+		static SDL_Texture* hoverContinueGame;
+		static SDL_Texture* hoverOptions;
+		static SDL_Texture* hoverMinus;
+		static SDL_Texture* hoverPlus;
+		static SDL_Texture* hoverPickup;
+		static SDL_Texture* hoverPull;
+		static SDL_Texture* hoverLook;
+		static SDL_Texture* hoverOpen;
+		static SDL_Texture* hoverUse;
 
 
 		//Texture used for menu dialog.
@@ -36,19 +36,20 @@ namespace brightland {
 		static SDL_Texture* computerScene1;
 		static SDL_Texture* computerScene2;
 		static SDL_Texture* blink;
+		static SDL_Texture* secretDrawing;
 		
-		static SDL_Texture* Textures::objectTexture;
-		static SDL_Texture* Textures::objectTexture2;
-		static SDL_Texture* Textures::objectTexture3;
-		static SDL_Texture* Textures::objectTexture4;
-		static SDL_Texture* Textures::objectTexture5;
-		static SDL_Texture* Textures::objectTexture6;
-		static SDL_Texture* Textures::objectTexture7;
-		static SDL_Texture* Textures::objectTextureAirBox;
-		static SDL_Texture* Textures::objectTexturePipe;
-		static SDL_Texture* Textures::objectTexturePipeAction;
-		static SDL_Texture* Textures::objectTextureLantern;
-		static SDL_Texture* Textures::objectTextureSparkle;
+		static SDL_Texture* objectTexture;
+		static SDL_Texture* objectTexture2;
+		static SDL_Texture* objectTexture3;
+		static SDL_Texture* objectTexture4;
+		static SDL_Texture* objectTexture5;
+		static SDL_Texture* objectTexture6;
+		static SDL_Texture* objectTexture7;
+		static SDL_Texture* objectTextureAirBox;
+		static SDL_Texture* objectTexturePipe;
+		static SDL_Texture* objectTexturePipeAction;
+		static SDL_Texture* objectTextureLantern;
+		static SDL_Texture* objectTextureSparkle;
 
 		static SDL_Texture* wreakageScene;
 		static SDL_Texture* scene1e;
@@ -107,6 +108,7 @@ namespace brightland {
 		static SDL_Surface* spriteBack3a;
 
 		static SDL_Surface* Sblink;
+		static SDL_Surface* sSecretDrawing;
 
 		static SDL_Rect background;
 		static SDL_Rect background2;
@@ -114,6 +116,7 @@ namespace brightland {
 		static SDL_Rect background4;
 		static SDL_Rect background5;
 		static SDL_Rect menuBackground;
+		static SDL_Rect rSecretDrawing;
 
 		static SDL_Rect RCursor;
 

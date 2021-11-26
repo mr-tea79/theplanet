@@ -129,8 +129,18 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
             message = Scene1::actionStatement + " Pipe";
     }
 
+    if (x >= 753 && x <= 827 && y >= 699 && y <= 788) {
+        if (inv.checkItem("Disc") != 0)
+            message = Scene1::actionStatement + " Disc";
+    }
+
  
     //Scene Hover Messages
+
+    if (Scene1::SceneBackground == "3d" && x <= 1009 && x >= 948 && y < 457 && y > 409) {
+        message = Scene1::actionStatement + " Strange peg";
+    }
+
     if (Scene1::SceneBackground == "1da" && x <= 971 && x >= 843 && y < 231 && y > 142) {
         message = Scene1::actionStatement + " Spaceflix";
     }

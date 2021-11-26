@@ -21,6 +21,7 @@ SDL_Texture* Textures::hoverLook;
 SDL_Texture* Textures::hoverPull;
 SDL_Texture* Textures::hoverUse;
 
+
 //Text Texture
 SDL_Texture* Textures::ftexture;
 
@@ -49,12 +50,14 @@ SDL_Texture* Textures::mainMenu;
 SDL_Texture* Textures::poptions;
 SDL_Texture* Textures::blink;
 
+
 SDL_Rect Textures::background;
 SDL_Rect Textures::background2;
 SDL_Rect Textures::background3;
 SDL_Rect Textures::background4;
 SDL_Rect Textures::background5;
 SDL_Rect Textures::menuBackground;
+SDL_Rect Textures::rSecretDrawing;
 
 //Hover Rect
 SDL_Rect Textures::RHoverNewGame;
@@ -73,6 +76,7 @@ SDL_Texture* Textures::rocks;
 SDL_Texture* Textures::rocks2;
 SDL_Texture* Textures::rocks3;
 SDL_Texture* Textures::rocks4;
+SDL_Texture* Textures::secretDrawing;
 
 //Inventory Textures.
 SDL_Texture* Textures::invTexture1;
@@ -130,6 +134,7 @@ SDL_Surface* Textures::spriteBack2a;
 SDL_Surface* Textures::spriteBack3a;
 
 SDL_Surface* Textures::Sblink;
+SDL_Surface* Textures::sSecretDrawing;
 
 
 
@@ -198,6 +203,8 @@ void Textures::Scene1Textures() {
     RHoverUse = { 160,660,100,44 };
     RHoverPull = { 45,710,100,44 };
     RCursor = { 100, 310, 50, 50}; //Custom mouse cursor.
+    rSecretDrawing = { 940,260,100,240 };
+
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -382,6 +389,7 @@ void Textures::Scene3Textures() {
     imageSurface21 = IMG_Load("Scenes/rocks4.png");
     imageSurface18 = IMG_Load("Scenes/scene3e.png");
     imageSurface20 = IMG_Load("Scenes/scene3f.png");
+    sSecretDrawing = IMG_Load("Scenes/planetGlow.png");
 
     scene1fb = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface10);  
     scene1d = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface11);  
@@ -394,6 +402,7 @@ void Textures::Scene3Textures() {
     rocks4 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface21);
     scene3e = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface18);
     scene3f = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface20);
+    secretDrawing = SDL_CreateTextureFromSurface(Scene1::renderer, sSecretDrawing);
    
     boxOpened = IMG_Load("Objects/boxopened.png");
     boxClosed = IMG_Load("Objects/boxclosed.png");
@@ -438,5 +447,6 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(boxClosed);
     SDL_FreeSurface(sparkle);
     SDL_FreeSurface(disc);
+    SDL_FreeSurface(sSecretDrawing);
 
 }
