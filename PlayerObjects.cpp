@@ -137,6 +137,11 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
+   
+    if (Scene1::SceneBackground == "3d" && Scene1::secretTrigger > 2 && x <= 1000 && x >= 959 && y < 402 && y > 292) {
+            message = Scene1::actionStatement + " Drawing";
+    }
+
     if (Scene1::SceneBackground == "3d" && x <= 1009 && x >= 948 && y < 457 && y > 409) {
         message = Scene1::actionStatement + " Strange peg";
     }
@@ -507,8 +512,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "3e" && x >= 866 && x <=987 && y >= 536 && y <=575) {
         Scene1::SceneBackground = "3d";
         Scene1::SPRITE_SIZE = 128;
-        Scene1::yPosition = 400;
-        Scene1::xPosition = 65;
+        Scene1::xPosition = 645;
+        Scene1::yPosition = 448;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";

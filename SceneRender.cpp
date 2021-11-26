@@ -215,6 +215,7 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
    if (Scene1::SceneBackground == "3d" && Scene1::secretTrigger >2) {
        SDL_RenderCopy(Scene1::renderer, Textures::secretDrawing, NULL, &Textures::rSecretDrawing);
        SDL_RenderCopy(Scene1::renderer, Textures::spriteTexture, NULL, &Scene1::gdSprite); //Make sure the sprite is on top.
+       SDL_RenderCopy(Scene1::renderer, Textures::rocks3, NULL, &Textures::background4);
    }
 
    if (Scene1::SceneBackground == "3e") {

@@ -118,6 +118,16 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+    if (gd > 800 && lookStatement == "Look at Drawing") {
+        lookMessage = "That's Earth and the Solar System, strange..";
+        Scene1::secretTrigger = 4;
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
+
     if (gd > 800 && lookStatement == "Look at Strange peg") {
         lookMessage = "It's a peg with a latch on it, hmmmm";
         SDL_DestroyTexture(Textures::spriteTexture);
