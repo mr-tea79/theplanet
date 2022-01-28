@@ -453,6 +453,24 @@ void Textures::Scene3Textures() {
 }
 
 void Textures::Scene4Textures() {
+
+   
+    SDL_DestroyTexture(scene1fb);
+    SDL_DestroyTexture(scene1d);
+    SDL_DestroyTexture(scene1d2);
+    SDL_DestroyTexture(scene3a);
+    SDL_DestroyTexture(scene3b);
+    SDL_DestroyTexture(caveScene1);
+    SDL_DestroyTexture(caveScene2);
+    SDL_DestroyTexture(rocks3);
+    SDL_DestroyTexture(rocks4);
+    SDL_DestroyTexture(scene3e);
+    SDL_DestroyTexture(scene3f);
+    SDL_DestroyTexture(secretDrawing);
+    SDL_DestroyTexture(invTexture3);
+    SDL_DestroyTexture(invTexture6);
+    SDL_DestroyTexture(invTexture7);
+  
     imageSurface23 = IMG_Load("Scenes/Scene4a.png");
     scene4a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface23);
     SDL_FreeSurface(imageSurface23);
