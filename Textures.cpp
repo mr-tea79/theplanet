@@ -49,6 +49,7 @@ SDL_Texture* Textures::caveScene2;
 SDL_Texture* Textures::mainMenu;
 SDL_Texture* Textures::poptions;
 SDL_Texture* Textures::blink;
+SDL_Texture* Textures::scene4a;
 
 
 SDL_Rect Textures::background;
@@ -449,4 +450,10 @@ void Textures::Scene3Textures() {
     SDL_FreeSurface(disc);
     SDL_FreeSurface(sSecretDrawing);
 
+}
+
+void Textures::Scene4Textures() {
+    imageSurface23 = IMG_Load("Scenes/Scene4a.png");
+    scene4a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface23);
+    SDL_FreeSurface(imageSurface23);
 }

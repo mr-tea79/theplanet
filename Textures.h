@@ -61,6 +61,7 @@ namespace brightland {
 		static SDL_Texture* scene3a;
 		static SDL_Texture* scene3b;
 		static SDL_Texture* scene3e;
+		static SDL_Texture* scene4a;
 		static SDL_Texture* caveScene1;
 		static SDL_Texture* caveScene2;
 		static SDL_Texture* mainMenu;
@@ -170,6 +171,7 @@ namespace brightland {
 		SDL_Surface* imageSurface20;
 		SDL_Surface* imageSurface21; //Rocky mound.
 		SDL_Surface* imageSurface22; //Player options.
+		SDL_Surface* imageSurface23; //Scene 4a
 		
 		SDL_Surface* lantern;
 		SDL_Surface* pipe;
@@ -191,6 +193,7 @@ namespace brightland {
 		void Scene1Textures();
 		void Scene2Textures();
 		void Scene3Textures();
+		void Scene4Textures();
 		void MovementTextures();
 		void LoadActionTextures();
 

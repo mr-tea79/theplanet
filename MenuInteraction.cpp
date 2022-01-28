@@ -118,6 +118,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
+       
     if (gd > 800 && lookStatement == "Look at Drawing") {
         lookMessage = "That's Earth and the Solar System, strange..";
         Scene1::secretTrigger = 4;

@@ -257,7 +257,15 @@ int Scene1::scene1() {
                     inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
                 }
                        
-            }           
+            }          
+
+            if (SceneBackground.find("4") != std::string::npos) {
+                if (inGame < 1) {
+                    tex.Scene4Textures();
+                    inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
+                }
+
+            }
                      
         }
 
@@ -390,7 +398,7 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-            
+         
           
             
             mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
@@ -422,7 +430,7 @@ int Scene1::scene1() {
             std::cout << "Current Scene is: " << SceneBackground << std::endl;
             std::cout << "Mouse Click is: " << mouseHold << std::endl;
             std::cout << "" << std::endl;
-
+            std::cout << Scene1::tLoader << std::endl;
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           

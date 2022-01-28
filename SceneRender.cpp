@@ -133,6 +133,9 @@ void SceneRender::sceneRender() {
         }
             
     }
+    if (Scene1::SceneBackground == "4a") {
+        SDL_RenderCopy(Scene1::renderer, Textures::scene4a, NULL, &Textures::background);
+    }
    
 }
 

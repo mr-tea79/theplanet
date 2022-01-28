@@ -483,6 +483,23 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
 
     /////////////////////////////////////////////////////////////////////////////////////////
 
+    if (playerCurrentLocationY < 90 && playerCurrentLocationX > 670 && Scene1::secretTrigger == 4 && Scene1::SceneBackground == "3a") {
+        Textures tex;
+        Scene1::SceneBackground = "4a";
+        Scene1::SPRITE_SIZE = 10;
+        Scene1::yPosition = 120;
+        Scene1::xPosition = 860;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+        s.loadSounds(sceneBackground);
+        //Load in the new textures for scene2
+        if (Scene1::tLoader == 0) {
+            tex.Scene4Textures();
+            Scene1::tLoader = 4;
+        }
+    }
+
 
     if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34 ) {
         Scene1::SceneBackground = "3a";
