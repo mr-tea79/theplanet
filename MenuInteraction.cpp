@@ -118,7 +118,30 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
-       
+    if (lookStatement == "Look at Mound" && Scene1::SceneBackground == "4a") {
+        lookMessage = "Hmmmm very unusual.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (gd > 650 && lookStatement == "Look at Markings" && Scene1::SceneBackground == "4a") {
+        lookMessage = "TOAD1000: will need more examples to translate, use personal computer to record.";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
+    if (gd > 650 && lookStatement == "Look at Entrance") {
+        lookMessage = "Looks like a stairwell, this is crazy!";
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        doAction();
+        lookStatement = "";
+    }
+
     if (gd > 800 && lookStatement == "Look at Drawing") {
         lookMessage = "That's Earth and the Solar System, strange..";
         Scene1::secretTrigger = 4;
@@ -480,6 +503,29 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         useMessage = "That should plug the leak!";
         useStatement = "";
         doAction();
+    }
+
+
+    if (useStatement == "Use PDA") {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        useStatement = "";
+        Scene1::useStatement = "with";
+        Scene1::actionStatement = "Use PDA with";
+
+    }
+    if (Scene1::useStatement == "Use PDA with Markings" && gd > 600) {
+        SDL_DestroyTexture(Textures::spriteTexture);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+      
+        useMessage = "TOAD1000: Recorded";
+        Scene1::secretTrigger++;
+        std::cout << Scene1::secretTrigger << std::endl;
+        Scene1::actionStatement = "";
+        Scene1::useStatement = ""; //Very Important or you will get a memory leak.
+        doAction();
+       
+
     }
 
     if (useStatement == "Use Spaceflix") {

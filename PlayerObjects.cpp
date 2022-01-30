@@ -137,6 +137,19 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
  
     //Scene Hover Messages
 
+    if (Scene1::SceneBackground == "4a" && x <= 442 && x >= 319 && y < 198 && y > 127) {
+        message = Scene1::actionStatement + " Mound";
+    }
+
+
+    if (Scene1::SceneBackground == "4a" && x <= 837 && x >= 699 && y < 504 && y > 483) {
+        message = Scene1::actionStatement + " Markings";
+    }
+
+
+    if (Scene1::SceneBackground == "4a" && x <= 851 && x >= 729 && y < 470 && y > 406) {
+        message = Scene1::actionStatement + " Entrance";
+    }
    
     if (Scene1::SceneBackground == "3d" && Scene1::secretTrigger > 2 && x <= 1000 && x >= 959 && y < 402 && y > 292) {
             message = Scene1::actionStatement + " Drawing";

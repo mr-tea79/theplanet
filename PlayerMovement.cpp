@@ -183,7 +183,24 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
     }
 
-            ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
+    ///////////////////////// SCENE 4A SECRET ENTRANCE //////////////////////////////////////
+    if (Scene1::SceneBackground == "4a") {
+
+        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
+        if (gd <= x - 60 && y < 576 && x > 10 && x < 850) {
+            gd = doXWalkRight(gd, screenWidth);
+            position++;
+        }
+
+        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
+        else if (gd >= x - 15 && y < 576 && x < 850 && x > 10) {
+            gd = doXWalkLeft(gd, screenWidth);
+            position++;
+        }
+    }
+
+
+   ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
     if (Scene1::SceneBackground == "3f") {
 
         //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
@@ -436,6 +453,31 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
        Textures::spriteDown3a = Textures::spriteDown3p;
     }
 
+    ///////////////////////// SCENE 4A SECRET ENTRANCE //////////////////////////////////////
+    if (Scene1::SceneBackground == "4a") {
+
+        //Make character smaller and bigger depending on distance.
+   
+        if (gy > 455) {
+            Scene1::SPRITE_SIZE = 65;
+        }
+        else {
+            Scene1::SPRITE_SIZE = 60;
+        }
+
+        //GOING UP
+        if (gy >= y && y < 575 && y >367) {
+            gy = doYWalkUp(gy);
+            position++;
+        }
+
+        //GOING DOWN
+        else if (gy <= y - 100 && y < 585) {
+            gy = doYWalkDown(gy);
+            position++;
+        }
+    }
+
 
     ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
     if (Scene1::SceneBackground == "3f") {
@@ -456,13 +498,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         }
 
         //GOING UP
-        if (gy >= y && y < 382 && y >200) {
+        if (gy >= y && y < 580 && y >590) {
             gy = doYWalkUp(gy);
             position++;
         }
 
         //GOING DOWN
-        else if (gy <= y - 100 && y < 482) {
+        else if (gy <= y - 100 && y < 582) {
             gy = doYWalkDown(gy);
             position++;
         }
