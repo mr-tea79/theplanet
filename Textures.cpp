@@ -50,6 +50,7 @@ SDL_Texture* Textures::mainMenu;
 SDL_Texture* Textures::poptions;
 SDL_Texture* Textures::blink;
 SDL_Texture* Textures::scene4a;
+SDL_Texture* Textures::scene4b;
 
 
 SDL_Rect Textures::background;
@@ -474,4 +475,8 @@ void Textures::Scene4Textures() {
     imageSurface23 = IMG_Load("Scenes/Scene4a.png");
     scene4a = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface23);
     SDL_FreeSurface(imageSurface23);
+    
+    imageSurface24 = IMG_Load("Scenes/Scene4b.png");
+    scene4b = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface24);
+    SDL_FreeSurface(imageSurface24);
 }

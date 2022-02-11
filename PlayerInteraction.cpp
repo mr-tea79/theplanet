@@ -175,6 +175,9 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 12) {
         PlayerMessage = "Looks like a map!";
     }
+    else if (msgNumber == 13) {
+        PlayerMessage = "¡que demonios!";
+    }
 
     return PlayerMessage;
 }
@@ -240,7 +243,12 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     }
     //This is important to allow the last message in the player interaction to be shown.
     else if (playerMessage == 13) {
+        interactionMessage = PlayerMessage(1, 13);
         playerMessage = 14;   
+    }
+    //This is important to allow the last message in the player interaction to be shown.
+    else if (playerMessage == 14) {
+        playerMessage = 15;
     }
 
     else {

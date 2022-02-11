@@ -136,7 +136,10 @@ void SceneRender::sceneRender() {
     if (Scene1::SceneBackground == "4a") {
         SDL_RenderCopy(Scene1::renderer, Textures::scene4a, NULL, &Textures::background);
     }
-   
+    if (Scene1::SceneBackground == "4b") {
+        SDL_RenderCopy(Scene1::renderer, Textures::scene4b, NULL, &Textures::background);
+    }
+
 }
 
 //Renders objects that appear in front of the player like rocks as an example.
