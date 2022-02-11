@@ -142,7 +142,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
 
-    if (Scene1::SceneBackground == "4a" && x <= 837 && x >= 699 && y < 504 && y > 483) {
+    if (Scene1::SceneBackground == "4a" && x <= 837 && x >= 699 && y < 504 && y > 483 && Scene1::secretTrigger < 5) {
         message = Scene1::actionStatement + " Markings";
     }
 

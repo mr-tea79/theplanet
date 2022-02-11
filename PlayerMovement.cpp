@@ -498,7 +498,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         }
 
         //GOING UP
-        if (gy >= y && y < 580 && y >590) {
+        if (gy >= y && y < 580 && y >200) {
             gy = doYWalkUp(gy);
             position++;
         }

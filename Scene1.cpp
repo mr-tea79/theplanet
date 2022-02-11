@@ -398,7 +398,7 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-         
+          
           
             
             mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
@@ -431,6 +431,7 @@ int Scene1::scene1() {
             std::cout << "Mouse Click is: " << mouseHold << std::endl;
             std::cout << "" << std::endl;
             std::cout << Scene1::tLoader << std::endl;
+            std::cout << "Secret Trigger is currently: " << secretTrigger << std::endl;
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
