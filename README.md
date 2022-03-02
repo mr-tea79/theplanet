@@ -44,7 +44,7 @@ I have always wanted to create a point and click adventure game ever since the d
 
 The most challenging part of programming in C/C++ and SDL2 is from my point of view (Memory management). I have spent many hours trying to figure out why my RAM suddenly shoots up and how to effectively deal with textures properly to prevent memory leaks. In its current form I think that it is fairly stable and I have managed to overcome the memory leaks to the best of my knowledge.
 
-This project was created in Visual Studio 2019.
+This project was created in Visual Studio 2022.
 
 Images used in making the scenes were to the best of my knowledge all from google images free to use searches. I actually drew the sprite myself using a mouse, don't laugh! If there are any artists out there, please feel free to make a better character for my game!
 
