@@ -510,6 +510,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         tex.Scene4Textures();
 
     }
+    /*
     if (playerCurrentLocationX > 700 && Scene1::SceneBackground == "4a") {
         Textures tex;
         Scene1::SceneBackground = "4b";
@@ -525,7 +526,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         tex.Scene4Textures();
 
     }
-
+    */
 
     if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34 ) {
         Scene1::SceneBackground = "3a";
