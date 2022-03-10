@@ -1,6 +1,7 @@
 #include "SceneRender.h"
 #include "Textures.h"
 #include "Scene1.h"
+#include "PlayerMovement.h"
 
 using namespace brightland;
 
@@ -242,7 +243,8 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
 
     SDL_RenderCopy(Scene1::renderer, Textures::cursor, NULL, &Textures::RCursor);  //Render the custom mouse cursor last of all (keeps it on top).
 
-    if(Scene1::playerIsMoving == 0){
+    if(Scene1::playerIsMoving == 0 && PlayerMovement::blink == true){
+       
         SDL_RenderCopy(Scene1::renderer, Textures::blink, &PlayerObjects::srcrect10, &PlayerObjects::dstrect10);
     }
 }

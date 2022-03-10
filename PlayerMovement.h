@@ -12,6 +12,7 @@ class PlayerMovement
 public:
 	static float hspeed;
 	static float vspeed;
+	static bool blink;
 
 	void LoadMovementTextures();
 		

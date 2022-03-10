@@ -14,10 +14,11 @@ static int position; //Used to update current position variable.
 //Customize your speed to your liking.
 float PlayerMovement::hspeed = 2.5;  //Left to Right.
 float PlayerMovement::vspeed = 2.5;  //Up and Down.
+bool PlayerMovement::blink;
 
 
 int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
-  
+    blink = false;
     if (position == 0) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
@@ -55,7 +56,7 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
 }
 
 int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
-
+    blink = false;
     if (position == 0) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
@@ -95,7 +96,7 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
 
 
 int PlayerMovement::doYWalkUp(int gy) {
-
+    blink = false;
     if (position == 0) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
@@ -128,6 +129,7 @@ int PlayerMovement::doYWalkUp(int gy) {
 }
 
 int PlayerMovement::doYWalkDown(int gy) {
+    blink = true;
     if (position == 0) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;

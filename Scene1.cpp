@@ -203,6 +203,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+        std::cout << PlayerMovement::blink << std::endl;
 
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
@@ -350,7 +351,8 @@ int Scene1::scene1() {
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.     
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
+                                    PlayerMovement::blink = true;
                                    
                             }
                            
@@ -360,6 +362,7 @@ int Scene1::scene1() {
                         if (interactionMessage != "" && playerIsMoving !=1) {                      
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
+                            PlayerMovement::blink = false;
                            
                         }  
                         else {
