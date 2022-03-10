@@ -80,11 +80,10 @@ namespace brightland {
 		SDL_Event   event;
 
 	public: 
-		std::thread scene1();
+		int scene1();
+	
 		void DoAction();
-		void Hello();
-
-
+	
 	};
 
 

@@ -20,7 +20,7 @@
 #include "ObjectRender.h"
 #include "SDL_mixer.h"
 #include "Sound.h"
-
+#include <vector>
 
 using namespace std;
 using namespace brightland;
@@ -71,6 +71,7 @@ int Scene1::hoverHold = 0;
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
+// A dummy function
 
 
 //This will help when transitioning to a new scene. 
@@ -79,14 +80,9 @@ void Scene1::DoAction() {
     action = 0;
 }
 
-void Scene1::Hello() {
-    std::cout << "Hello there" << std::endl;
 
-}
-
-std::thread Scene1::scene1() {
+int Scene1::scene1() {
   
-
     cout << "Initialize" << endl;
     scene = 1; //Scene Number.
         
@@ -210,7 +206,8 @@ std::thread Scene1::scene1() {
        //Game loop.
     while (!gameover)
     {        
-     
+       
+       
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
@@ -325,7 +322,8 @@ std::thread Scene1::scene1() {
                         gy = gdSprite.y;
                         menuSound = 0;
                         mouseHold = 0;  
-                        
+                   
+                       
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
                      
@@ -631,8 +629,8 @@ std::thread Scene1::scene1() {
     s.freeMusic();
 
     //Close down game.
-    return std::thread([=] { NULL; });
-    //return 0;
+ 
+    return 0;
 
     TTF_Quit();
     SDL_Quit();
