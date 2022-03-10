@@ -5,6 +5,7 @@
 
 */
 
+#include <thread>
 #include <iostream>
 #include <algorithm>
 #include <chrono>
@@ -70,6 +71,15 @@ int Scene1::hoverHold = 0;
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
+//Testing threads.
+void ThreadTester(int t)
+{
+    for (int i = 0; i < t; i++) {
+        cout << "Thread testing using function\n";
+    }
+    
+}
+
 
 //This will help when transitioning to a new scene. 
 void Scene1::DoAction() {
@@ -78,6 +88,11 @@ void Scene1::DoAction() {
 }
 
 int Scene1::scene1() {
+
+    //Testing with threads (ignore)
+    thread th1(ThreadTester, 44);
+    th1.join();
+  
 
     cout << "Initialize" << endl;
     scene = 1; //Scene Number.
@@ -616,17 +631,19 @@ int Scene1::scene1() {
         useMessage = "";
         //Make something appear!    
         SDL_RenderPresent(renderer);
-        mouseClick = false;
-      
+        mouseClick = false;    
         
     }
+
+
+  
         
     //Clean up after yourself!
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
     s.freeMusic();
- 
+   
     return 0;
 
     TTF_Quit();
