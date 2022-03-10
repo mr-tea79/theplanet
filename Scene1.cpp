@@ -53,6 +53,7 @@ bool playerMessage = false;  //Used to keep the player text on the screen long e
 bool Scene1::continueGame = false;
 bool Scene1::newGame = false;
 static bool checkHoverLocation = false;
+int threadRipper = 0;
 
 //Scene variables
 int Scene1::action; //Used to trigger action texture.
@@ -80,12 +81,22 @@ void Scene1::DoAction() {
     action = 0;
 }
 
+void hello() {
+    int i = 0;
+    while(!threadRipper){
+    std::this_thread::sleep_for(4s);
+    std::cout << "SAYS HELLO" << std::endl;
+  
+    }
+}
 
 int Scene1::scene1() {
   
     cout << "Initialize" << endl;
     scene = 1; //Scene Number.
-        
+    std::thread t(hello);
+    t.detach();
+
     //Set initial position of game character and the size of the character.
    // xPosition = 60;
   //  yPosition = 430;
@@ -206,8 +217,7 @@ int Scene1::scene1() {
        //Game loop.
     while (!gameover)
     {        
-       
-       
+      
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
@@ -306,6 +316,7 @@ int Scene1::scene1() {
                 break;
 
                 case SDL_QUIT:
+                    threadRipper = 1;
                     gameover = 1;
                     if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
                         inv.gameSave(SceneBackground);
@@ -323,7 +334,7 @@ int Scene1::scene1() {
                         menuSound = 0;
                         mouseHold = 0;  
                    
-                       
+
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
                      
@@ -405,7 +416,7 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-          
+            
           
             
             mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
@@ -627,7 +638,7 @@ int Scene1::scene1() {
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
     s.freeMusic();
-
+ 
     //Close down game.
  
     return 0;
