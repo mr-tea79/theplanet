@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include "MenuInteraction.h"
+#include "Thread"
 
 
 namespace brightland {
@@ -79,8 +80,10 @@ namespace brightland {
 		SDL_Event   event;
 
 	public: 
-		int scene1();
+		std::thread scene1();
 		void DoAction();
+		void Hello();
+
 
 	};
 

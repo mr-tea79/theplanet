@@ -71,14 +71,6 @@ int Scene1::hoverHold = 0;
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
-//Testing threads.
-void ThreadTester(int t)
-{
-    for (int i = 0; i < t; i++) {
-        cout << "Thread testing using function\n";
-    }
-    
-}
 
 
 //This will help when transitioning to a new scene. 
@@ -87,11 +79,12 @@ void Scene1::DoAction() {
     action = 0;
 }
 
-int Scene1::scene1() {
+void Scene1::Hello() {
+    std::cout << "Hello there" << std::endl;
 
-    //Testing with threads (ignore)
-    thread th1(ThreadTester, 44);
-    th1.join();
+}
+
+std::thread Scene1::scene1() {
   
 
     cout << "Initialize" << endl;
@@ -214,8 +207,7 @@ int Scene1::scene1() {
 
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
-
-    //Game loop.
+       //Game loop.
     while (!gameover)
     {        
      
@@ -585,14 +577,8 @@ int Scene1::scene1() {
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
                 interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
                 s.playMovementSounds();
-              
-             //   soundCount = 0;
             }
-            else{
-             //   if (soundCount != 1) {
-              //      s.loadSounds(SceneBackground);
-            //   }
-              //  soundCount = 1;
+            else{         
                 playerIsMoving = 0;  //Player is not moving.        
             }
        
@@ -643,8 +629,10 @@ int Scene1::scene1() {
     SDL_DestroyWindow(window);
     TTF_CloseFont(font);
     s.freeMusic();
-   
-    return 0;
+
+    //Close down game.
+    return std::thread([=] { NULL; });
+    //return 0;
 
     TTF_Quit();
     SDL_Quit();
