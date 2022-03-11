@@ -187,6 +187,12 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 17) {
         PlayerMessage = "BEEEEEEP";
     }
+    else if (msgNumber == 18) {
+        PlayerMessage = "TOAD1000: Bonita your oxygen is very low";
+    }
+    else if (msgNumber == 19) {
+        PlayerMessage = "This planet is very.... Purple.";
+    }
 
     return PlayerMessage;
 }
@@ -271,6 +277,17 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
         interactionMessage = PlayerMessage(1, 17);
 
     }
+    else if (playerMessage == 18) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 18);
+
+    }
+    else if (playerMessage == 19) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 19);
+
+    }
+
 
     else {
 

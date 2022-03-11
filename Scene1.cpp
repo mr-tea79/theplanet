@@ -209,6 +209,9 @@ int Scene1::scene1() {
     //Init the TOAD1000 AI Thread.
     ai.ToadTalk();
 
+    AI::aiPlayMessages = true;
+    PlayerInteraction::playerMessage = 15;
+
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
        //Game loop.
@@ -486,7 +489,7 @@ int Scene1::scene1() {
       
         if (gameMessage != "") {
             interactionMessage = gameMessage;
-            PlayerInteraction::playerMessage = 100;
+            PlayerInteraction::playerMessage =1000;
         }
 
         if (interactionMessage != "" && sceneHalt == 1) {

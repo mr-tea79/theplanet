@@ -11,6 +11,7 @@
 #include "PlayerMovement.h"
 #include "SDL_mixer.h"
 #include "Sound.h"
+#include "AI.h"
 
 
 using namespace brightland;
@@ -839,7 +840,8 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::xPosition = 106;
             SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
             Scene1::sceneHalt = 1;
-            PlayerInteraction::playerMessage = 5;
+            PlayerInteraction::playerMessage = 18;
+            AI::aiPlayMessages = true;
             s.loadSounds(sceneBackground);
         }       
            

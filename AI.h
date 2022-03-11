@@ -8,6 +8,8 @@ namespace brightland {
 	public:
 		static bool continueGame;
 		static int aiStop;
+		static bool aiPlayMessages;
+
 		void ToadTalk();
 
 	};
