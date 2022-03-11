@@ -244,7 +244,7 @@ int Scene1::scene1() {
         }
 
         if (continueGame == true) {
-
+            AI::continueGame = true;
             inv.ContinueGame();
             continueGame = false;
             pob.SetSpritePosition(xPosition, yPosition);

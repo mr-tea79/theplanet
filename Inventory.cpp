@@ -244,6 +244,7 @@ void Inventory::ContinueGame() {
 	int i = 0;
 	std::string scene = "1";
 
+
 	/* Open database */
 	rc = sqlite3_open("Inventory.db", &db);
 
