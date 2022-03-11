@@ -9,6 +9,7 @@ namespace brightland {
 		static bool continueGame;
 		static int aiStop;
 		static bool aiPlayMessages;
+		static std::string beenThereAlready;
 
 		void ToadTalk();
 

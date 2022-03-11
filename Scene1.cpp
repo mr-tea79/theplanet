@@ -489,7 +489,7 @@ int Scene1::scene1() {
       
         if (gameMessage != "") {
             interactionMessage = gameMessage;
-            PlayerInteraction::playerMessage =1000;
+            PlayerInteraction::playerMessage =1000; //Stops that memory leak!
         }
 
         if (interactionMessage != "" && sceneHalt == 1) {

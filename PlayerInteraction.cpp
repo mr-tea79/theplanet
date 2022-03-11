@@ -151,7 +151,7 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     }
 
     else if (msgNumber == 5) {    
-        PlayerMessage = "TOAD 1000: Bonita, your Oxygen is very low.";
+       // PlayerMessage = "TOAD 1000: Bonita, your Oxygen is very low.";
     }
 
     else if (msgNumber == 6) {
