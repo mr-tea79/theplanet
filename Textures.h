@@ -109,8 +109,6 @@ namespace brightland {
 		static SDL_Surface* spriteBack2a;
 		static SDL_Surface* spriteBack3a;
 
-		static SDL_Surface* Sblink;
-		static SDL_Surface* sSecretDrawing;
 
 		static SDL_Rect background;
 		static SDL_Rect background2;
@@ -137,59 +135,10 @@ namespace brightland {
 		SDL_Surface* menuSurface;
 		SDL_Surface* Scursor;
 
-		//Hover Button Surfaces.
-		SDL_Surface* ShoverNewGame;
-		SDL_Surface* ShoverContinueGame;
-		SDL_Surface* ShoverOptions;
-		SDL_Surface* ShoverPlus;
-		SDL_Surface* ShoverMinus;
-		SDL_Surface* ShoverPickup;
-		SDL_Surface* ShoverOpen;
-		SDL_Surface* ShoverPull;
-		SDL_Surface* ShoverUse;
-		SDL_Surface* ShoverLook;
-
+	
 		//Scene Surfaces.
-		SDL_Surface* imageSurface2;
 		SDL_Surface* imageSurface;
-		SDL_Surface* imageSurface3;
-		SDL_Surface* imageSurface4;
-		SDL_Surface* imageSurface5;
-		SDL_Surface* imageSurface6;
-		SDL_Surface* imageSurface7;
-		SDL_Surface* imageSurface8;
-		SDL_Surface* imageSurface9;
-		SDL_Surface* imageSurface10;
-		SDL_Surface* imageSurface11;
-		SDL_Surface* imageSurface12;
-		SDL_Surface* imageSurface13;
-		SDL_Surface* imageSurface14;
-		SDL_Surface* imageSurface15;
-		SDL_Surface* imageSurface16;
-		SDL_Surface* imageSurface17; //Rock in Cave
-		SDL_Surface* imageSurface18;
-		SDL_Surface* imageSurface19; //Main Menu
-		SDL_Surface* imageSurface20;
-		SDL_Surface* imageSurface21; //Rocky mound.
-		SDL_Surface* imageSurface22; //Player options.
-		SDL_Surface* imageSurface23; //Scene 4a
-		SDL_Surface* imageSurface24; //Scene 4b
-		
-		SDL_Surface* lantern;
-		SDL_Surface* pipe;
-		SDL_Surface* airBox;
-		SDL_Surface* boxClosed;
-		SDL_Surface* boxOpened;
-		SDL_Surface* boxEmpty;
-		SDL_Surface* pda;
-		SDL_Surface* flag;
-		SDL_Surface* stars;
-		SDL_Surface* tape;
-		SDL_Surface* tent;
-		SDL_Surface* pipeBox;
-		SDL_Surface* pipeAction;
-		SDL_Surface* sparkle;
-		SDL_Surface* disc;
+
 
 	public:
 		void Scene1Textures();
