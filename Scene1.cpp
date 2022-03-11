@@ -14,6 +14,7 @@
 #include "PlayerObjects.h"
 #include "PlayerInteraction.h"
 #include "MenuInteraction.h"
+#include "AI.h"
 #include "Inventory.h"
 #include "Textures.h"
 #include "SceneRender.h"
@@ -53,7 +54,7 @@ bool playerMessage = false;  //Used to keep the player text on the screen long e
 bool Scene1::continueGame = false;
 bool Scene1::newGame = false;
 static bool checkHoverLocation = false;
-int threadRipper = 0;
+int Scene1::threadRipper = 0; //Thread 2 stopper.
 
 //Scene variables
 int Scene1::action; //Used to trigger action texture.
@@ -81,21 +82,12 @@ void Scene1::DoAction() {
     action = 0;
 }
 
-void hello() {
-    int i = 0;
-    while(!threadRipper){
-    std::this_thread::sleep_for(4s);
-    std::cout << "SAYS HELLO" << std::endl;
-  
-    }
-}
 
 int Scene1::scene1() {
   
     cout << "Initialize" << endl;
     scene = 1; //Scene Number.
-    std::thread t(hello);
-    t.detach();
+    
 
     //Set initial position of game character and the size of the character.
    // xPosition = 60;
@@ -185,6 +177,8 @@ int Scene1::scene1() {
    // tex.Scene2Textures();
   //  tex.Scene3Textures();
  
+    //TOAD AI
+    AI ai;
   
     //Menu Interaction USE, LOOK etc.
     MenuInteraction mob;
@@ -212,12 +206,15 @@ int Scene1::scene1() {
     s.loadClickSound();
     s.loadHoverSound();
 
+    //Init the TOAD1000 AI Thread.
+    ai.ToadTalk();
+
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
        //Game loop.
     while (!gameover)
     {        
-      
+     //   std::cout << pi.playerMessage << std::endl;
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
@@ -349,14 +346,14 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                                                  
+                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {                                                  
                             playerMessage = false;
                             hoverHold = 1;
                         }
                        
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
-                        if (playerMessage != true && interactionMessage == "") {                   
+                        if (playerMessage != true && interactionMessage == "" && AI::aiStop !=1) {                   
                             //Prevents sleep from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
                                
@@ -411,10 +408,11 @@ int Scene1::scene1() {
             mouseClick = true;
          //   mouseHold = 0;
         }
-        if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
+        if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
             mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
+            
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
             
           
@@ -453,16 +451,17 @@ int Scene1::scene1() {
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
+           
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
 
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
-            if(mouseClick == true && mouseHold <10 ){
+            if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
                 if (actionMessage != "" || actionStatement != "" ) {
                     pi.InteractionControllerLook(actionMessage, gameObject);
                                      
                 }
 
-                if (interactionMessage != "") {
+                if (interactionMessage != "" && AI::aiStop !=1) {
                     pi.InteractionControllerObject(interactionMessage, gameObject);
                     playerIsMoving = 1;
                 }
@@ -484,7 +483,7 @@ int Scene1::scene1() {
 
         //These messages are displayed to help tell the story.
         gameMessage = pi.DisplayPlayerMessages();
-
+      
         if (gameMessage != "") {
             interactionMessage = gameMessage;
             PlayerInteraction::playerMessage = 100;
@@ -495,6 +494,7 @@ int Scene1::scene1() {
             pi.InteractionControllerObject(interactionMessage, gameObject);
         
         }
+     
 
         if (actionMessage != "Pick up what?") {     
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction);
@@ -547,7 +547,7 @@ int Scene1::scene1() {
                 DoAction();
             }
            
-            if (sceneHalt == 0) {
+            if (sceneHalt == 0 && AI::aiStop !=1) {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 playerIsMoving = 1;

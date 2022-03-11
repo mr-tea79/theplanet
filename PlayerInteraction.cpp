@@ -6,7 +6,7 @@
 
 using namespace brightland;
 
-int PlayerInteraction::playerMessage = 10000;
+int PlayerInteraction::playerMessage = 100;
 
 //This will determine where the text box appears on the screen. For example if the player is on the far right hand side
 //then the text box will move left to prevent the text going off the screen. Bit fidly but just needs tweaking sometimes.
@@ -178,6 +178,15 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 13) {
         PlayerMessage = "¡que demonios!";
     }
+    else if (msgNumber == 15) {
+        PlayerMessage = "TOAD1000: Bonita your oxygen is low";
+    }
+    else if (msgNumber == 16) {
+        PlayerMessage = "BEEEP";
+    }
+    else if (msgNumber == 17) {
+        PlayerMessage = "BEEEEEEP";
+    }
 
     return PlayerMessage;
 }
@@ -247,8 +256,20 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
         playerMessage = 14;   
     }
     //This is important to allow the last message in the player interaction to be shown.
-    else if (playerMessage == 14) {
-        playerMessage = 15;
+    else if (playerMessage == 15) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 15);
+    
+    }
+    else if (playerMessage == 16) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 16);
+
+    }
+    else if (playerMessage == 17) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 17);
+
     }
 
     else {
