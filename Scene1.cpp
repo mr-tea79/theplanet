@@ -213,8 +213,7 @@ int Scene1::scene1() {
     //inv.SQLCreateGameSave(SceneBackground);
        //Game loop.
     while (!gameover)
-    {        
-     //   std::cout << pi.playerMessage << std::endl;
+    {          
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
@@ -409,6 +408,7 @@ int Scene1::scene1() {
          //   mouseHold = 0;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
+          
             mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
@@ -547,7 +547,7 @@ int Scene1::scene1() {
                 DoAction();
             }
            
-            if (sceneHalt == 0 && AI::aiStop !=1) {
+            if (sceneHalt == 0 ) {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 playerIsMoving = 1;

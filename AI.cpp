@@ -34,7 +34,7 @@ void Messages() {
         if (PlayerInteraction::playerMessage == 100) {          
             PlayerInteraction::playerMessage = 17;
             std::this_thread::sleep_for(2s);
-            Scene1::sceneHalt = 1;
+            Scene1::sceneHalt = 0;
             AI::aiStop = 0;
             PlayerInteraction::playerMessage = 200;
             
