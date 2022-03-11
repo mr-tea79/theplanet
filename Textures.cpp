@@ -254,13 +254,10 @@ void Textures::Scene1Textures() {
     poptions = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
       
-   
-
     imageSurface = IMG_Load("PlayerMovement/ThePlanet/blink.png");
     blink = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
 
-    //Hover Button Surfaces
     imageSurface = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
     hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
@@ -268,7 +265,6 @@ void Textures::Scene1Textures() {
     imageSurface = IMG_Load("Scenes/HoverButtons/menuContinueHover.png");
     hoverContinueGame = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
-
 
     imageSurface = IMG_Load("Scenes/HoverButtons/playerOptionsHover.png");
     hoverOptions = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
