@@ -8,7 +8,7 @@
 using namespace brightland;
 using namespace std;
 
-int AI::aiStop = 0;
+int AI::aiStop = 0; //This is used to halt the user from moving while the AI is talking to the player.
 
 void Messages() {
     while (!Scene1::threadRipper) {   
@@ -19,7 +19,6 @@ void Messages() {
       
         if (PlayerInteraction::playerMessage == 100) {
             AI::aiStop = 1;
-           // Scene1::sceneHalt = 1;
             PlayerInteraction::playerMessage = 15;
             std::this_thread::sleep_for(2s);  
             Scene1::sceneHalt = 1;                     
