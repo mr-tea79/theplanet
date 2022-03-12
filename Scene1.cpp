@@ -185,7 +185,7 @@ int Scene1::scene1() {
    // tex.Scene2Textures();
   //  tex.Scene3Textures();
  
-    //TOAD AI
+    //TOAD AI - For conversations and story.
     AI ai;
   
     //Menu Interaction USE, LOOK etc.
@@ -222,7 +222,7 @@ int Scene1::scene1() {
 
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
-       //Game loop.
+    //Game loop.
     while (!gameover)
     {          
 
@@ -646,12 +646,14 @@ int Scene1::scene1() {
         SDL_RenderPresent(renderer);
         mouseClick = false;    
 
-        while(timerStop !=5) {
+        if(timerStop !=1){
             auto end = std::chrono::high_resolution_clock::now();
             auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            printf("Game loop speed is: %.3f seconds.\n", elapsed.count() * 1e-9);
+            printf("Result: %.20f\n", sum);
+            printf("Game loop speed test results: %.3f seconds.\n", elapsed.count() * 1e-9);
             timerStop++;
         }
+       
     }
 
 
