@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Textures.h"
 #include "Scene1.h"
 
@@ -108,6 +107,8 @@ SDL_Surface* Textures::spriteAction;
 
 //Player Textures
 SDL_Texture* Textures::spriteTexture;
+
+//Player Surfaces.
 SDL_Surface* Textures::spriteDown1;
 SDL_Surface* Textures::spritePick;
 SDL_Surface* Textures::spritePickp;

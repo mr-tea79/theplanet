@@ -60,19 +60,9 @@ void PlayerObjects::SetSpritePosition(int x, int y) {
 std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) {
 
     std::string gameObject;
-
-    //Check database if item has been picked up.
     Inventory inv;
-   // PlayerObjects pob;
-   
-    //  int scene = 1; //Need to pass scene number in.
     int i = 0;
     int items = 0;
-
-
-   // std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
-  //  gameObject = menuMessages;
-
 
     std::string message;
 
@@ -99,7 +89,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     //Inventory Hover Messages 
-   
+
     if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
         if(inv.checkItem("PDA") != 0)
             message = Scene1::actionStatement + " PDA";
@@ -123,7 +113,6 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         if (inv.checkItem("Battery Lantern") != 0)
             message = Scene1::actionStatement + " Battery Lantern";
     }
-
 
     if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
         if(inv.checkItem("Pipe") != 0)
@@ -425,6 +414,7 @@ ObjectInteraction
 Here is where the interaction with objects and scenes takes place. This is where the player is placed in correct place when transitioning scenes and also the interaction when using objects.
 
 */
+
 std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
    
     //Check database if item has been picked up.
@@ -457,7 +447,6 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "01";
-        //Scene1::inGame = 1;
         Scene1::SPRITE_SIZE = 50;
         Scene1::yPosition = 400;
         Scene1::xPosition = 65;

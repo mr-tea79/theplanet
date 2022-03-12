@@ -52,6 +52,7 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
         gd += hspeed;
     }
 
+
     return gd;
 }
 

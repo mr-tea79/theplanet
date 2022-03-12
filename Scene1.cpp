@@ -654,6 +654,8 @@ int Scene1::scene1() {
             timerStop++;
         }
        
+    
+
     }
 
 
