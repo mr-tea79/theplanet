@@ -14,6 +14,9 @@ public:
 	static float vspeed;
 	static bool blink;
 
+	//Scene Surfaces.
+	SDL_Surface* imageSurface;
+
 	void LoadMovementTextures();
 		
 	int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight);

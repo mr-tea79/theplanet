@@ -134,7 +134,7 @@ SDL_Surface* Textures::spriteLeft4a;
 SDL_Surface* Textures::spriteBack1a;
 SDL_Surface* Textures::spriteBack2a;
 SDL_Surface* Textures::spriteBack3a;
-
+SDL_Surface* Textures::spriteSurface;
 
 
 void Textures::LoadActionTextures() {
@@ -150,6 +150,7 @@ void Textures::MovementTextures() {
     spriteDown3a = IMG_Load("PlayerMovement/ThePlanet/sprite3.png");
 
     spriteDownp = IMG_Load("PlayerMovement/ThePlanet/spritep.png");
+
     spriteDown2p = IMG_Load("PlayerMovement/ThePlanet/sprite2p.png");
     spriteDown3p = IMG_Load("PlayerMovement/ThePlanet/sprite3p.png");
 

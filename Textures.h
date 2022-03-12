@@ -138,6 +138,7 @@ namespace brightland {
 	
 		//Scene Surfaces.
 		SDL_Surface* imageSurface;
+		static SDL_Surface* spriteSurface;
 
 
 	public:

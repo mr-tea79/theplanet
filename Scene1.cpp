@@ -128,6 +128,14 @@ int Scene1::scene1() {
     int gy;
     int x =0, y = 0;
     int wx=0,wy=0;
+
+    //Testing game loop speed.
+    double sum = 0;
+    double add = 1;
+    static int timerStop = 0;
+
+
+
      
     //Text Dialog.
     fsurface =       NULL;
@@ -217,6 +225,13 @@ int Scene1::scene1() {
        //Game loop.
     while (!gameover)
     {          
+
+        auto begin = std::chrono::high_resolution_clock::now();
+
+        int iterations = 1000 * 1000 * 1000;
+        sum += add;
+        add /= 2.0;
+
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
@@ -630,7 +645,13 @@ int Scene1::scene1() {
         //Make something appear!    
         SDL_RenderPresent(renderer);
         mouseClick = false;    
-        
+
+        while(timerStop !=5) {
+            auto end = std::chrono::high_resolution_clock::now();
+            auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+            printf("Game loop speed is: %.3f seconds.\n", elapsed.count() * 1e-9);
+            timerStop++;
+        }
     }
 
 

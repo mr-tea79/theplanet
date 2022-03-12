@@ -54,7 +54,7 @@ void Messages() {
                 Scene1::sceneHalt = 0;
                 AI::aiStop = 0;
                 AI::aiPlayMessages = false;
-                AI::beenThereAlready.append("22");
+                AI::beenThereAlready.append("2");
             }
            
         }
