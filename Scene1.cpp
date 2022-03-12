@@ -466,6 +466,7 @@ int Scene1::scene1() {
             std::cout << "" << std::endl;
             std::cout << Scene1::tLoader << std::endl;
             std::cout << "Secret Trigger is currently: " << secretTrigger << std::endl;
+            timerStop = 0;
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
@@ -648,8 +649,7 @@ int Scene1::scene1() {
 
         if(timerStop !=1){
             auto end = std::chrono::high_resolution_clock::now();
-            auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            printf("Result: %.20f\n", sum);
+            auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);         
             printf("Game loop speed test results: %.3f seconds.\n", elapsed.count() * 1e-9);
             timerStop++;
         }
