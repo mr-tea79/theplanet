@@ -659,6 +659,9 @@ int Scene1::scene1() {
                 PlayerMovement::hspeed = 4.0;
                 std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
             }
+            else {
+                std::cout << "You are running on a good spec pc." << std::endl;
+            }
 
             timerStop++;
         }
