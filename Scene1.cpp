@@ -657,6 +657,7 @@ int Scene1::scene1() {
 
             if (t > 5.000000) {
                 PlayerMovement::hspeed = 4.0;
+              //  PlayerMovement::vspeed = 6.0;
             }
 
             timerStop++;
