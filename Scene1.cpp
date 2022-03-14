@@ -653,11 +653,11 @@ int Scene1::scene1() {
             std::cout << "Time difference = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
             
             float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
-            std::cout << "FLOAT IS: " << t << std::endl;
+       //     std::cout << "FLOAT IS: " << t << std::endl;
 
             if (t > 5.000000) {
                 PlayerMovement::hspeed = 4.0;
-              //  PlayerMovement::vspeed = 6.0;
+                std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
             }
 
             timerStop++;
