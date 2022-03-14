@@ -130,8 +130,6 @@ int Scene1::scene1() {
     int wx=0,wy=0;
 
     //Testing game loop speed.
-    double sum = 0;
-    double add = 1;
     static int timerStop = 0;
 
 
@@ -220,17 +218,14 @@ int Scene1::scene1() {
     AI::aiPlayMessages = true;
     PlayerInteraction::playerMessage = 15;
 
+    //Start the timer.
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
     //Game loop.
     while (!gameover)
     {          
-
-        auto begin = std::chrono::high_resolution_clock::now();
-
-        int iterations = 1000 * 1000 * 1000;
-        sum += add;
-        add /= 2.0;
 
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
@@ -466,7 +461,7 @@ int Scene1::scene1() {
             std::cout << "" << std::endl;
             std::cout << Scene1::tLoader << std::endl;
             std::cout << "Secret Trigger is currently: " << secretTrigger << std::endl;
-            timerStop = 0;
+          
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
@@ -647,13 +642,25 @@ int Scene1::scene1() {
         SDL_RenderPresent(renderer);
         mouseClick = false;    
 
-        if(timerStop !=1){
-            auto end = std::chrono::high_resolution_clock::now();
-            auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);         
-            printf("Game loop speed test results: %.3f seconds.\n", elapsed.count() * 1e-9);
+        //This is a timer to test speed of system - work in progress.
+        if(timerStop !=3000){
+            
             timerStop++;
         }
-       
+        else if(timerStop == 3000) {       
+            
+            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+            std::cout << "Time difference = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
+            
+            float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
+            std::cout << "FLOAT IS: " << t << std::endl;
+
+            if (t > 5.000000) {
+                PlayerMovement::hspeed = 4.0;
+            }
+
+            timerStop++;
+        }
     
 
     }
