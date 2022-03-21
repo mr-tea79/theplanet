@@ -12,27 +12,154 @@ int AI::aiStop = 0; //This is used to halt the user from moving while the AI is 
 std::string AI::beenThereAlready = ""; //This is to prevent the AI from repeating itself if you revisit an area that had dialog.
 bool AI::continueGame;  //This is used to halt the messages if you are continuing a game.
 bool AI::aiPlayMessages;
+bool AI::playerTalk; //This is enabled if the player needs to say something.
+int AI::dialogNumber = 0; //This is to identify what dialog the player will see on any given scene.
 
 void Messages() {
     while (!Scene1::threadRipper) {   
 
    //     std::cout << "Been there already: " << AI::beenThereAlready << std::endl;
-      
+        
+        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 1) {
+            if (AI::beenThereAlready.find("0") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+                PlayerInteraction::playerMessage = 1;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+                PlayerInteraction::playerMessage = 2;
+                std::this_thread::sleep_for(1s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+
+        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 2) {
+            if (AI::beenThereAlready.find("2") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+                PlayerInteraction::playerMessage = 3;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+                PlayerInteraction::playerMessage = 4;
+                std::this_thread::sleep_for(1s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 3) {
+            if (AI::beenThereAlready.find("3") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+                PlayerInteraction::playerMessage = 5;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+                PlayerInteraction::playerMessage = 6;
+                std::this_thread::sleep_for(1s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 4) {
+            if (AI::beenThereAlready.find("4") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+
+                //I have no idea why I need to play the same message twice when looking at objects!
+                PlayerInteraction::playerMessage = 7;
+                std::this_thread::sleep_for(0.5s);
+                Scene1::sceneHalt = 1;
+
+                PlayerInteraction::playerMessage = 7;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+
+                PlayerInteraction::playerMessage = 8;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1b" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 5) {
+            if (AI::beenThereAlready.find("5") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+                PlayerInteraction::playerMessage = 9;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+
+                PlayerInteraction::playerMessage = 10;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+                AI::beenThereAlready.append("5");
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1b" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 6) {
+            if (AI::beenThereAlready.find("6") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+
+                //I have no idea why I need to play the same message twice when looking at objects!
+                PlayerInteraction::playerMessage = 11;
+                std::this_thread::sleep_for(0.5s);
+                Scene1::sceneHalt = 1;
+
+                PlayerInteraction::playerMessage = 11;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+
+                PlayerInteraction::playerMessage = 12;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
 
         if(Scene1::SceneBackground == "1" && AI::continueGame == false && AI::aiPlayMessages == true) {
             if (AI::beenThereAlready.find("1") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else{
                 AI::aiStop = 1;
                 PlayerInteraction::playerMessage = 15;
-                std::this_thread::sleep_for(2s);  
+                std::this_thread::sleep_for(1.5s);  
                 Scene1::sceneHalt = 1;                     
            
                 PlayerInteraction::playerMessage =16;
-                std::this_thread::sleep_for(2s);
+                std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 1;
                    
                 PlayerInteraction::playerMessage = 17;
-                std::this_thread::sleep_for(2s);
+                std::this_thread::sleep_for(1s);
                 Scene1::sceneHalt = 0;
                 AI::aiStop = 0;
                 AI::aiPlayMessages = false;
@@ -46,11 +173,11 @@ void Messages() {
             else {
                 AI::aiStop = 1;
                 PlayerInteraction::playerMessage = 18;
-                std::this_thread::sleep_for(2s);
+                std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 1;
 
                 PlayerInteraction::playerMessage = 19;
-                std::this_thread::sleep_for(2s);
+                std::this_thread::sleep_for(1s);
                 Scene1::sceneHalt = 0;
                 AI::aiStop = 0;
                 AI::aiPlayMessages = false;

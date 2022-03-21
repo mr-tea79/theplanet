@@ -6,6 +6,7 @@
 #include "Inventory.h"
 #include "PlayerInteraction.h"
 #include "Sound.h"
+#include "AI.h"
 
 using namespace brightland;
 
@@ -270,9 +271,12 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at Ape Tape") {      
-        lookMessage = "No job is too much for APE TAPE.";
+        //lookMessage = "No job is too much for APE TAPE.";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 6;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();
         lookStatement = "";
     }
@@ -387,11 +391,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {     
-        lookMessage = "That's one of the engines.";
+      //  lookMessage = "That's one of the engines.";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 4;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();
         lookStatement = "";
+       
     }
 
     if (x >= 613 && x <= 640 && y >= 335 && y <= 378 && lookStatement == "Look at Stuffed toy") {

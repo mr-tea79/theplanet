@@ -728,6 +728,9 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneTransitionStatement = "";
         Scene1::mouseClick = false;     
         s.loadSounds(sceneBackground);
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 5;
+        AI::playerTalk = true;
     }
     /* Sandy clearing */
     if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582 && playerCurrentLocationX <6) {
@@ -813,14 +816,23 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         if (Inventory::inv.find("3") == std::string::npos) {
             Scene1::sceneHalt = 1;
             PlayerInteraction::playerMessage = 8;
+            AI::aiPlayMessages = true;
+            AI::dialogNumber = 3;
+            AI::playerTalk = true;
         }
         else if (inv.checkItem("Tent") != 1) {
-            Scene1::sceneHalt = 1;
+            Scene1::sceneHalt = 1;         
             PlayerInteraction::playerMessage = 9;
+            AI::aiPlayMessages = true;
+            AI::dialogNumber = 1;
+            AI::playerTalk = true;
         }
         else if (inv.checkItem("PDA") != 1) {
             Scene1::sceneHalt = 1;
-            PlayerInteraction::playerMessage = 10;
+            PlayerInteraction::playerMessage = 2;
+            AI::aiPlayMessages = true;
+            AI::dialogNumber = 2;
+            AI::playerTalk = true;
         }
         else {          
             Scene1::SceneBackground = "1e";

@@ -23,14 +23,14 @@ void PlayerInteraction::textDimensions(int messageLength) {
 
   //  }
     if (Scene1::gdSprite.x > 550 && Scene1::gdSprite.y >100 && messageLength > 40 ) {
-        Scene1::textRect = { Scene1::gdSprite.x - 600,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+        Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 
     }
     else if (Scene1::gdSprite.y < 100) {
         Scene1::textRect = { Scene1::gdSprite.x -300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 };
     }
     else if (Scene1::gdSprite.x > 550 && messageLength > 14) {
-        Scene1::textRect = { Scene1::gdSprite.x - 400,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+        Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 
     }
     else if (Scene1::gdSprite.x < 90 && messageLength > 14) {
@@ -135,45 +135,45 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     std::string PlayerMessage = "";
 
     if (msgNumber == 1) {
-        PlayerMessage = "Bonita Gonzalez finds herself stranded on an Alien planet.";      
+        PlayerMessage = "I need to be able to set up camp ";      
     }
 
     else if (msgNumber == 2) {
-        PlayerMessage = "TOAD 1000: Bonita WAKE UP!";
+        PlayerMessage = "if I'm going to venture out into the wilderness..!";
     }
 
     else if (msgNumber == 3) {
-        PlayerMessage = "TOAD 1000: Bonita.... Your Oxygen Level is critical! BEEP BEEP";
+        PlayerMessage = "If I go out there without my computer";
     }
 
     else if (msgNumber == 4) {
-        PlayerMessage = "TOAD 1000: Suit pressure rising";
+        PlayerMessage = "I will probably regret it!";
     }
 
     else if (msgNumber == 5) {    
-       // PlayerMessage = "TOAD 1000: Bonita, your Oxygen is very low.";
+        PlayerMessage = "My suit is leaking oxygen and if I";
     }
 
     else if (msgNumber == 6) {
-        PlayerMessage = "These self inflatable tents seem to have improved over the years!";
+        PlayerMessage = "am stupid enough to go for a walk, I will die!";
     }
     else if (msgNumber == 7) {
-        PlayerMessage = "Well, it's a Wigwam!";
+        PlayerMessage = "This is one of the ION engines, I think that";
     }
     else if (msgNumber == 8) {
-        PlayerMessage = "I'm leaking Oxygen and need to sort that out first.";
+        PlayerMessage = "It has seen better days, I'm not going anywhere.";
     }
     else if (msgNumber == 9) {
-        PlayerMessage = "I need to be able to set up camp if I'm going to venture out into the wilderness.";
+        PlayerMessage = "Ok, well this ship is somewhat wrecked!";
     }
     else if (msgNumber == 10) {
-        PlayerMessage = "I need to take my computer with me.";
+        PlayerMessage = "But I can't complain, I'm still alive.";
     }
     else if (msgNumber == 11) {
-        PlayerMessage = "Hmmm.... Well, it's a bit dark in here!";
+        PlayerMessage = "No job is too big for APE TAPE! I could";
     }
     else if (msgNumber == 12) {
-        PlayerMessage = "Looks like a map!";
+        PlayerMessage = "seal an air leak on my ship with this stuff!";
     }
     else if (msgNumber == 13) {
         PlayerMessage = "¡que demonios!";
