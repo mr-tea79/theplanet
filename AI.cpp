@@ -15,6 +15,14 @@ bool AI::aiPlayMessages;
 bool AI::playerTalk; //This is enabled if the player needs to say something.
 int AI::dialogNumber = 0; //This is to identify what dialog the player will see on any given scene.
 
+//This starts the dialog when the player looks at something.
+void startDialog() {
+    AI::aiStop = 1;
+    std::this_thread::sleep_for(0.5s);
+    Scene1::sceneHalt = 1;
+}
+
+
 void Messages() {
     while (!Scene1::threadRipper) {   
 
@@ -78,17 +86,10 @@ void Messages() {
         if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 4) {
             if (AI::beenThereAlready.find("4") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
-                AI::aiStop = 1;
-
-                //I have no idea why I need to play the same message twice when looking at objects!
-                PlayerInteraction::playerMessage = 7;
-                std::this_thread::sleep_for(0.5s);
-                Scene1::sceneHalt = 1;
-
+                startDialog();
                 PlayerInteraction::playerMessage = 7;
                 std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 1;
-
 
                 PlayerInteraction::playerMessage = 8;
                 std::this_thread::sleep_for(1.5s);
@@ -108,7 +109,6 @@ void Messages() {
                 std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 1;
 
-
                 PlayerInteraction::playerMessage = 10;
                 std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 0;
@@ -123,17 +123,10 @@ void Messages() {
         if (Scene1::SceneBackground == "1b" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 6) {
             if (AI::beenThereAlready.find("6") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
-                AI::aiStop = 1;
-
-                //I have no idea why I need to play the same message twice when looking at objects!
-                PlayerInteraction::playerMessage = 11;
-                std::this_thread::sleep_for(0.5s);
-                Scene1::sceneHalt = 1;
-
+                startDialog();
                 PlayerInteraction::playerMessage = 11;
                 std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 1;
-
 
                 PlayerInteraction::playerMessage = 12;
                 std::this_thread::sleep_for(1.5s);
@@ -150,7 +143,7 @@ void Messages() {
             if (AI::beenThereAlready.find("1") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else{
                 AI::aiStop = 1;
-                PlayerInteraction::playerMessage = 15;
+                PlayerInteraction::playerMessage = 18;
                 std::this_thread::sleep_for(1.5s);  
                 Scene1::sceneHalt = 1;                     
            
@@ -185,8 +178,53 @@ void Messages() {
             }
            
         }
+
+        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 7) {
+            if (AI::beenThereAlready.find("7") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 13;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 8) {
+            if (AI::beenThereAlready.find("8") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 15;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1b" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 9) {
+            if (AI::beenThereAlready.find("9") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 20;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+
     }
 }
+
 
 void AI::ToadTalk() {
 

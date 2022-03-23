@@ -255,7 +255,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at PDA") {
-        lookMessage = "This is my personal computer that is linked to TOAD1000.";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 7;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
         doAction();
@@ -263,9 +265,11 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at Self Inflating Tent") {
-        lookMessage = "This is my habitat that inflates.";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 9;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();
         lookStatement = "";
     }
@@ -413,7 +417,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     if (gd >= 622 && gd <= 700 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
 
-        lookMessage = "That's my PDA";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 7;
+        AI::playerTalk = true;
         Scene1::actionStatement = "";
         lookStatement = "";
         Scene1::sceneHalt = 1;
@@ -429,8 +435,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at The moon") {
-
-        lookMessage = "Very Earthlike";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 8;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();

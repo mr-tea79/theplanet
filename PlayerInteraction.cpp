@@ -176,10 +176,10 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
         PlayerMessage = "seal an air leak on my ship with this stuff!";
     }
     else if (msgNumber == 13) {
-        PlayerMessage = "¡que demonios!";
+        PlayerMessage = "That's my PDA, doesn't look damaged!!";
     }
     else if (msgNumber == 15) {
-        PlayerMessage = "TOAD1000: Bonita your oxygen is low";
+        PlayerMessage = "I wonder what mysteries there are on that moon";
     }
     else if (msgNumber == 16) {
         PlayerMessage = "BEEEP";
@@ -193,6 +193,11 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 19) {
         PlayerMessage = "This planet is very.... Purple.";
     }
+    else if (msgNumber == 20) {
+        PlayerMessage = "This is a self inflatable habitat.";
+    }
+
+
 
     return PlayerMessage;
 }
@@ -285,6 +290,11 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     else if (playerMessage == 19) {
         std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 19);
+
+    }
+    else if (playerMessage == 20) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 20);
 
     }
 
