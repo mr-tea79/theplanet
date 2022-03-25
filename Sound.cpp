@@ -35,7 +35,9 @@ bool Sound::checkHoverLocation(int x, int y) {
 	else if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
 		return false;
 	}
-	
+	else if (x > 27 && x < 77 && y > 28 && y < 77 && Scene1::SceneBackground == "0") {
+		return false;
+	}
 	else
 		return true;
 	
