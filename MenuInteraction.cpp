@@ -57,7 +57,8 @@ void MenuInteraction::useChecker() {
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string actionMessage;
-     
+    
+  
 
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         Scene1::menuSound = 1;

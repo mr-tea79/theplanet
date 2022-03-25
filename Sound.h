@@ -12,6 +12,7 @@ namespace brightland {
 		Mix_Chunk* walk;
 		Mix_Chunk* click;
 		Mix_Chunk* hover;
+		static bool soundOn;
 
 	public:
 		bool checkHoverLocation(int x, int y);

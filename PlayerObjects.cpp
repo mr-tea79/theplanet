@@ -424,6 +424,12 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
     std::string message;
 
     //Menu Hover buttons //////////////////////////////////////////////////////////////////
+
+    if (Scene1::SceneBackground == "0" && x > 27 && x < 77 && y > 28 && y < 77 && Sound::soundOn == true) {
+        Sound::soundOn = false;
+    }
+      
+
     if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";

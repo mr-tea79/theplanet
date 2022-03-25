@@ -84,6 +84,10 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "exit";
         return 1;
     }
+    if (x > 25 && x < 77 && y > 28 && y < 77) {
+        buttonID = "noSound";
+        return 1;
+    }
 
 
 
@@ -181,6 +185,8 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         if (hoverTrigger == 1 && buttonID == "Use") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverUse, NULL, &Textures::RHoverUse);
         }
+       
+
       
    }
 
@@ -196,6 +202,9 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         }
         if (hoverTrigger == 1 && buttonID == "Player Options") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverOptions, NULL, &Textures::RHoverOptions);
+        }
+        if (hoverTrigger == 1 && buttonID == "noSound") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverNoSound, NULL, &Textures::RHoverNoSound);
         }
        
     }
