@@ -226,7 +226,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {          
-        s.checkSoundStatus(Sound::soundOn);
+        s.updateSoundStatus(Sound::soundOn);
 
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
@@ -422,7 +422,7 @@ int Scene1::scene1() {
          //   mouseHold = 0;
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
-          
+      
             mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
@@ -462,7 +462,8 @@ int Scene1::scene1() {
             std::cout << "" << std::endl;
             std::cout << Scene1::tLoader << std::endl;
             std::cout << "Secret Trigger is currently: " << secretTrigger << std::endl;
-          
+            std::cout << "Current Sound Status: " << Sound::soundOn << std::endl;
+            
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
