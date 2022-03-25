@@ -80,6 +80,11 @@ int SceneRender::HoverButtons(int x, int y) {
         return 1;
     }
 
+    if (x > 31 && x < 178 && y > 543 && y < 588) {
+        buttonID = "exit";
+        return 1;
+    }
+
 
 
     return 0;
@@ -212,15 +217,25 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
     if (Scene1::SceneBackground == "1c") {
 
         SDL_RenderCopy(Scene1::renderer, Textures::computerScene1, NULL, &Textures::background);
+        if (hoverTrigger == 1 && buttonID == "log") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverLog, NULL, &Textures::RHoverLog);
+        }
+        if (hoverTrigger == 1 && buttonID == "exit") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverExit, NULL, &Textures::RHoverExit);
+        }
     }
 
     if (Scene1::SceneBackground == "1d") {
 
         SDL_RenderCopy(Scene1::renderer, Textures::computerScene2, NULL, &Textures::background);
         if (hoverTrigger == 1 && buttonID == "log") {
-        SDL_RenderCopy(Scene1::renderer, Textures::hoverLog, NULL, &Textures::RHoverLog);
-           
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverLog, NULL, &Textures::RHoverLog);
         }
+        if (hoverTrigger == 1 && buttonID == "exit") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverExit, NULL, &Textures::RHoverExit);
+        }
+           
+        
 
     }
 
