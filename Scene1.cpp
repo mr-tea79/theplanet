@@ -264,7 +264,7 @@ int Scene1::scene1() {
             s.loadSounds(Scene1::SceneBackground);
 
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
-            if (SceneBackground.find("1f") != std::string::npos || SceneBackground.find("1d") != std::string::npos ) {
+            if (SceneBackground.find("1f") != std::string::npos){
                 if (inGame < 1) {
                     tex.Scene2Textures();
                     tex.Scene3Textures();

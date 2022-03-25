@@ -11,6 +11,13 @@ using namespace brightland;
 //This is used to identify which button was pressed. For example: New Game button.
 std::string buttonID = "";
 
+void noBlinking() {
+    if (Scene1::SceneBackground == "1c" || Scene1::SceneBackground == "1d") {
+        PlayerMovement::blink = false;
+    }
+}
+
+
 //Returns hover trigger for buttons
 int SceneRender::HoverButtons(int x, int y) {
 
@@ -68,6 +75,10 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "Use";
         return 1;
     }
+    if (x > 343 && x < 487 && y > 543 && y < 588) {
+        buttonID = "log";
+        return 1;
+    }
 
 
 
@@ -78,6 +89,7 @@ int SceneRender::HoverButtons(int x, int y) {
 //Renders the scene backgrounds for the game.
 void SceneRender::sceneRender() {
 
+    noBlinking(); //Used to prevent player blinking on overlay backgrounds where the player isn't visible.
 
     if (Scene1::SceneBackground == "01") {
         SDL_RenderCopy(Scene1::renderer, Textures::poptions, NULL, &Textures::background);
@@ -164,6 +176,7 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         if (hoverTrigger == 1 && buttonID == "Use") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverUse, NULL, &Textures::RHoverUse);
         }
+      
    }
 
     if (Scene1::SceneBackground == "0") {
@@ -204,6 +217,11 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
     if (Scene1::SceneBackground == "1d") {
 
         SDL_RenderCopy(Scene1::renderer, Textures::computerScene2, NULL, &Textures::background);
+        if (hoverTrigger == 1 && buttonID == "log") {
+        SDL_RenderCopy(Scene1::renderer, Textures::hoverLog, NULL, &Textures::RHoverLog);
+           
+        }
+
     }
 
     if (Scene1::SceneBackground == "1e") {
@@ -243,9 +261,11 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
 
     SDL_RenderCopy(Scene1::renderer, Textures::cursor, NULL, &Textures::RCursor);  //Render the custom mouse cursor last of all (keeps it on top).
 
-    if(Scene1::playerIsMoving == 0 && PlayerMovement::blink == true){
-       
-        SDL_RenderCopy(Scene1::renderer, Textures::blink, &PlayerObjects::srcrect10, &PlayerObjects::dstrect10);
-    }
+  
+        if (Scene1::playerIsMoving == 0 && PlayerMovement::blink == true) {
+            SDL_RenderCopy(Scene1::renderer, Textures::blink, &PlayerObjects::srcrect10, &PlayerObjects::dstrect10);
+        }
+    
 }
+   
 

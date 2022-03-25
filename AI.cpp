@@ -83,7 +83,7 @@ void Messages() {
             }
         }
 
-        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 4) {
+        if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 4) {
             if (AI::beenThereAlready.find("4") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 startDialog();
@@ -120,7 +120,7 @@ void Messages() {
             }
         }
 
-        if (Scene1::SceneBackground == "1b" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 6) {
+        if (Scene1::SceneBackground == "1b" && AI::playerTalk == true && AI::dialogNumber == 6) {
             if (AI::beenThereAlready.find("6") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 startDialog();
@@ -179,7 +179,7 @@ void Messages() {
            
         }
 
-        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 7) {
+        if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 7) {
             if (AI::beenThereAlready.find("7") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 startDialog();
@@ -193,7 +193,7 @@ void Messages() {
             }
         }
 
-        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 8) {
+        if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 8) {
             if (AI::beenThereAlready.find("8") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 startDialog();
@@ -207,7 +207,7 @@ void Messages() {
             }
         }
 
-        if (Scene1::SceneBackground == "1b" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 9) {
+        if (Scene1::SceneBackground == "1b" && AI::playerTalk == true && AI::dialogNumber == 9) {
             if (AI::beenThereAlready.find("9") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 startDialog();
@@ -220,7 +220,37 @@ void Messages() {
 
             }
         }
+        if (Scene1::SceneBackground == "1b" && AI::playerTalk == true && AI::dialogNumber == 10) {
+            if (AI::beenThereAlready.find("10") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 21;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
 
+                PlayerInteraction::playerMessage = 22;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if ( AI::playerTalk == true && AI::dialogNumber == 11) {
+            if (AI::beenThereAlready.find("11") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 23;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
 
     }
 }

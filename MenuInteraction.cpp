@@ -286,7 +286,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at Flag") {
-        lookMessage = "Just need somewhere to put it.";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 10;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
         doAction();
@@ -414,9 +416,8 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = "";
     }
 
-
+ 
     if (gd >= 622 && gd <= 700 && gy > 425 && inv.checkItem("PDA") != 1 && lookStatement == "Look at White plastic thingy") {
-
         AI::aiPlayMessages = true;
         AI::dialogNumber = 7;
         AI::playerTalk = true;
@@ -424,6 +425,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = "";
         Scene1::sceneHalt = 1;
     }
+
+  
+
 
     /* Sandy clearing */
     if (lookStatement == "Look at Sandy clearing" && gd <= 900 && gd > 300 && gy <= 360) {
@@ -444,11 +448,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         lookStatement = "";
     }
 
-    if (lookStatement == "Look at Flag" && gd > 526) {
-        lookMessage = "That's the mission flag";
-        doAction();
-        lookStatement = "";
-    }
+ 
     /* Rocky path */
     if (lookStatement == "Look at Rocks" && gd >= 640) {
         lookMessage = "That's a Meteorite";
@@ -515,7 +515,9 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteAction);
         inv.useItem("Tape");
         Inventory::inv.append("3");
-        useMessage = "That should plug the leak!";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 11;
+        AI::playerTalk = true;
         useStatement = "";
         doAction();
     }

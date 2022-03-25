@@ -196,6 +196,17 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 20) {
         PlayerMessage = "This is a self inflatable habitat.";
     }
+    else if (msgNumber == 21) {
+        PlayerMessage = "This is the mission flag. But I am surprised";
+    }
+    else if (msgNumber == 22) {
+        PlayerMessage = "it is still standing up after the crash.";
+    }
+    else if (msgNumber == 23) {
+        PlayerMessage = "Aha! That should plug the air leak.";
+    }
+
+
 
 
 
@@ -295,6 +306,21 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     else if (playerMessage == 20) {
         std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 20);
+
+    }
+    else if (playerMessage == 21) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 21);
+
+    }
+    else if (playerMessage == 22) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 22);
+
+    }
+    else if (playerMessage == 23) {
+        std::cout << playerMessage << std::endl;
+        interactionMessage = PlayerMessage(1, 23);
 
     }
 

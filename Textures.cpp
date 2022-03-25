@@ -19,6 +19,7 @@ SDL_Texture* Textures::hoverOpen;
 SDL_Texture* Textures::hoverLook;
 SDL_Texture* Textures::hoverPull;
 SDL_Texture* Textures::hoverUse;
+SDL_Texture* Textures::hoverLog;
 
 
 //Text Texture
@@ -71,6 +72,7 @@ SDL_Rect Textures::RHoverOpen;
 SDL_Rect Textures::RHoverPull;
 SDL_Rect Textures::RHoverLook;
 SDL_Rect Textures::RHoverUse;
+SDL_Rect Textures::RHoverLog;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -205,6 +207,7 @@ void Textures::Scene1Textures() {
     RHoverPull = { 45,710,100,44 };
     RCursor = { 100, 310, 50, 50}; //Custom mouse cursor.
     rSecretDrawing = { 940,260,100,240 };
+    RHoverLog = { 343,541,150,46 };
 
 
     SDL_DestroyTexture(scene1f);
@@ -262,6 +265,10 @@ void Textures::Scene1Textures() {
 
     imageSurface = IMG_Load("Scenes/HoverButtons/menuNewGameHover.png");
     hoverNewGame = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
+    SDL_FreeSurface(imageSurface);
+
+    imageSurface = IMG_Load("Scenes/HoverButtons/log.png");
+    hoverLog = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
 
     imageSurface = IMG_Load("Scenes/HoverButtons/menuContinueHover.png");
