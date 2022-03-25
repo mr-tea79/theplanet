@@ -2,6 +2,7 @@
 #include "Textures.h"
 #include "Scene1.h"
 #include "PlayerMovement.h"
+#include "Sound.h"
 
 using namespace brightland;
 
@@ -10,6 +11,7 @@ using namespace brightland;
 
 //This is used to identify which button was pressed. For example: New Game button.
 std::string buttonID = "";
+
 
 void noBlinking() {
     if (Scene1::SceneBackground == "1c" || Scene1::SceneBackground == "1d") {
@@ -206,7 +208,10 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         if (hoverTrigger == 1 && buttonID == "noSound") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverNoSound, NULL, &Textures::RHoverNoSound);
         }
-       
+        if (Sound::soundOn == false) {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverNoSound, NULL, &Textures::RHoverNoSound);
+        }
+
     }
     if (Scene1::SceneBackground == "01") {
         if (hoverTrigger == 1 && buttonID == "Plus") {
