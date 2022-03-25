@@ -25,6 +25,8 @@ namespace brightland {
 		void playClickSound();
 		void playMovementSounds();
 		void freeMusic();
+		bool checkSoundStatus(bool status);
+		void updateSoundStatus(bool status);
 
 	};
 

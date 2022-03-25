@@ -226,6 +226,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {          
+        s.checkSoundStatus(Sound::soundOn);
 
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);

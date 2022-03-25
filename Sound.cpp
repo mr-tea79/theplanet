@@ -8,6 +8,20 @@ using namespace brightland;
 
 bool Sound::soundOn = true;
 
+
+bool Sound::checkSoundStatus(bool status) {
+	Sound::soundOn = status;
+	if (Sound::soundOn == false) {
+		Mix_HaltMusic;
+	}
+	return status;
+}
+
+void Sound::updateSoundStatus(bool status) {
+	Sound::soundOn = status;
+
+}
+
 bool Sound::checkHoverLocation(int x, int y) {
 
 	if (x >= 159 && x <= 376 && y >= 480 && y <= 546 && Scene1::SceneBackground == "0") {
@@ -25,10 +39,6 @@ bool Sound::checkHoverLocation(int x, int y) {
 	else
 		return true;
 	
-
-
-
-
 }
 
 
@@ -36,6 +46,9 @@ void Sound::playSounds() {
 	if (Sound::soundOn == true) {
 		Mix_PlayMusic(mus2, -1);
 		Mix_Volume(1, MIX_MAX_VOLUME * 0.50);
+	}
+	else {
+		Mix_HaltMusic();
 	}
 }
 
