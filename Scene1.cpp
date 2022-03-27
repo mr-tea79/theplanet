@@ -263,6 +263,7 @@ int Scene1::scene1() {
             continueGame = false;
             pob.SetSpritePosition(xPosition, yPosition);
             s.loadSounds(Scene1::SceneBackground);
+       
 
             //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
             if (SceneBackground.find("1f") != std::string::npos){
@@ -464,6 +465,7 @@ int Scene1::scene1() {
             std::cout << "Secret Trigger is currently: " << secretTrigger << std::endl;
             std::cout << "Current Sound Status: " << Sound::soundOn << std::endl;
             
+            std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
         
             //Get interaction message.         
             interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           

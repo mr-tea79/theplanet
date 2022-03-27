@@ -205,7 +205,9 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 23) {
         PlayerMessage = "Aha! That should plug the air leak.";
     }
-
+    else if (msgNumber == 24) {
+        PlayerMessage = "It's a meteorite!";
+    }
 
 
 
@@ -321,6 +323,11 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     else if (playerMessage == 23) {
         std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 23);
+
+    }
+    else if (playerMessage == 24) {
+    std::cout << playerMessage << std::endl;
+    interactionMessage = PlayerMessage(1, 24);
 
     }
 

@@ -452,7 +452,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
  
     /* Rocky path */
     if (lookStatement == "Look at Rocks" && gd >= 640) {
-        lookMessage = "That's a Meteorite";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 12;
+        AI::playerTalk = true;
         doAction();
         lookStatement = "";
     }

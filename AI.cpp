@@ -28,7 +28,7 @@ void Messages() {
 
    //     std::cout << "Been there already: " << AI::beenThereAlready << std::endl;
         
-        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 1) {
+        if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 1) {
             if (AI::beenThereAlready.find("0") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 AI::aiStop = 1;
@@ -47,7 +47,7 @@ void Messages() {
         }
 
 
-        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 2) {
+        if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 2) {
             if (AI::beenThereAlready.find("2") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 AI::aiStop = 1;
@@ -65,7 +65,7 @@ void Messages() {
             }
         }
 
-        if (Scene1::SceneBackground == "1" && AI::continueGame == false && AI::playerTalk == true && AI::dialogNumber == 3) {
+        if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 3) {
             if (AI::beenThereAlready.find("3") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 AI::aiStop = 1;
@@ -243,6 +243,20 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 23;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (AI::playerTalk == true && AI::dialogNumber == 12) {
+            if (AI::beenThereAlready.find("12") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 24;
                 std::this_thread::sleep_for(1.5s);
                 Scene1::sceneHalt = 0;
                 AI::aiStop = 0;

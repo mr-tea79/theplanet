@@ -832,21 +832,18 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         
         if (Inventory::inv.find("3") == std::string::npos) {
             Scene1::sceneHalt = 1;
-            PlayerInteraction::playerMessage = 8;
             AI::aiPlayMessages = true;
             AI::dialogNumber = 3;
             AI::playerTalk = true;
         }
         else if (inv.checkItem("Tent") != 1) {
             Scene1::sceneHalt = 1;         
-            PlayerInteraction::playerMessage = 9;
             AI::aiPlayMessages = true;
             AI::dialogNumber = 1;
             AI::playerTalk = true;
         }
         else if (inv.checkItem("PDA") != 1) {
             Scene1::sceneHalt = 1;
-            PlayerInteraction::playerMessage = 2;
             AI::aiPlayMessages = true;
             AI::dialogNumber = 2;
             AI::playerTalk = true;
