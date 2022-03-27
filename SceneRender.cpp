@@ -90,6 +90,10 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "noSound";
         return 1;
     }
+    if (x > 791 && x < 955 && y > 474 && y < 537) {
+        buttonID = "continue1";
+        return 1;
+    }
 
 
 
@@ -280,6 +284,10 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
     //Cut Scene (Hide sprite)
     if (Scene1::SceneBackground == "1fa") {
         SDL_RenderCopy(Scene1::renderer, Textures::scene1fa, NULL, &Textures::background);
+
+        if (hoverTrigger == 1 && buttonID == "continue1") {
+            SDL_RenderCopy(Scene1::renderer, Textures::HoverContinue1, NULL, &Textures::RHoverContinue1);
+        }
     }
     //Cardboard Box (In front of sprite)
     if (Scene1::SceneBackground == "1da" || Scene1::SceneBackground == "1db") {

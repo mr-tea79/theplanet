@@ -227,7 +227,7 @@ int Scene1::scene1() {
     while (!gameover)
     {          
         s.updateSoundStatus(Sound::soundOn);
-
+       
        // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
        // SDL_ShowCursor(SDL_DISABLE);
     //    std::cout << Inventory::inv << std::endl;
@@ -237,6 +237,7 @@ int Scene1::scene1() {
         xPosition = gdSprite.x;
         gd = gdSprite.x;
         gy = gdSprite.y;
+        mob.useChecker(gd, gy); //Deals with wrong use actions. Pain to figure out!
                   
       //  SceneBackground = inv.ContinueGame();
        /*Error checking for SDL_Mixer if you need to use it
@@ -269,11 +270,14 @@ int Scene1::scene1() {
             if (SceneBackground.find("1f") != std::string::npos){
                 if (inGame < 1) {
                     tex.Scene2Textures();
+                   // tex.Scene3Textures();
+                    inGame = 1;
+                }            
+            }
+
+            if (SceneBackground.find("1fb") != std::string::npos) {
                     tex.Scene3Textures();
                     inGame = 1;
-                }
-               
-               
             }
 
             if (SceneBackground.find("3") != std::string::npos) {
@@ -432,7 +436,7 @@ int Scene1::scene1() {
             
           
             
-            mob.useChecker(); //Deals with wrong use actions. Pain to figure out!
+            mob.useChecker(gd,gy); //Deals with wrong use actions. Pain to figure out!
             
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);

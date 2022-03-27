@@ -33,7 +33,7 @@ void MenuInteraction::doAction() {
 }
 
 //This deals with the items being used wrong. For example, you try and use a tent with the tape.. This is not essential but it allows you to customize the message when using the wrong item.
-void MenuInteraction::useChecker() {
+void MenuInteraction::useChecker(int gd, int gy) {
 
     if (Scene1::useStatement.find("Use Self Inflating Tent with") != std::string::npos && Scene1::useStatement.find("Use Self Inflating Tent with Sandy clearing") == std::string::npos && Scene1::useStatement != "Use Self Inflating Tent with Self Inflating Tent") {
         MenuInteraction::wrongAction = 1;
@@ -51,7 +51,13 @@ void MenuInteraction::useChecker() {
         MenuInteraction::wrongAction = 1;
         wrongActionMessage = "They aren't round, so I can't use them as bowling balls.";
     }
-
+    if (Scene1::useStatement.find("Pick up Rocks") != std::string::npos && gd > 540) {
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 13;
+        AI::playerTalk = true;
+        Scene1::useStatement = "";
+        doAction();
+    }
 }
 
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
@@ -576,7 +582,9 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     if (useStatement == "Use Sandy clearing") {
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        useMessage = "This could be ideal for setting up my tent!";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 14;
+        AI::playerTalk = true;
         useStatement = "";
         doAction();
     }
@@ -712,7 +720,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     //If user clicks on the location of the pickup button.
     if (Scene1::actionStatement == "Pick up") {
        
-        if (items < 1) {
+        if (items < 1) {          
 
             if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 691 && gy > 425) {
                 SDL_DestroyTexture(Textures::spriteTexture);

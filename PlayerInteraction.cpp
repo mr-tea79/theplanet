@@ -208,9 +208,15 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 24) {
         PlayerMessage = "It's a meteorite!";
     }
-
-
-
+    else if (msgNumber == 25) {
+        PlayerMessage = "It's half the size of me and made of rock!";
+    }
+    else if (msgNumber == 26) {
+        PlayerMessage = "This area would be ideal for setting up camp.";
+    }
+    else if (msgNumber == 27) {
+        PlayerMessage = "Well, it's a wigwam!.";
+    }
 
     return PlayerMessage;
 }
@@ -225,112 +231,83 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
 
     //This will show the scene player messages in sequence.
     if (playerMessage == 1) {
-        interactionMessage = PlayerMessage(1, 1);   
-        playerMessage = 2;
-       
+        interactionMessage = PlayerMessage(1, 1);        
     }
     else if (playerMessage == 2) {
-        interactionMessage = PlayerMessage(1, 2);     
-        playerMessage = 3;     
+        interactionMessage = PlayerMessage(1, 2);        
     }
     else if (playerMessage == 3) {
-        interactionMessage = PlayerMessage(1, 3);                 
-        playerMessage = 6;     
-   
+        interactionMessage = PlayerMessage(1, 3);                    
     }
     else if (playerMessage == 4) {
-        interactionMessage = PlayerMessage(1, 4);                
-        playerMessage = 5;      
+        interactionMessage = PlayerMessage(1, 4);                    
     }
     else if (playerMessage == 5) {
         interactionMessage = PlayerMessage(1, 5);
-        playerMessage = 6;
     }
     else if (playerMessage == 6) {
         interactionMessage = PlayerMessage(1, 6);     
-        playerMessage = 7;
     }
     else if (playerMessage == 7) {
         interactionMessage = PlayerMessage(1, 7);
-        playerMessage = 8;
     }
     else if (playerMessage == 8) {
         interactionMessage = PlayerMessage(1, 8);
-        playerMessage = 9;
     }
     else if (playerMessage == 9) {
         interactionMessage = PlayerMessage(1, 9);
-        playerMessage = 10;
     }
     else if (playerMessage == 10) {
         interactionMessage = PlayerMessage(1, 10);
-        playerMessage = 11;
     }
     else if (playerMessage == 11) {
         interactionMessage = PlayerMessage(1, 11);
-        playerMessage = 12;
     }
     else if (playerMessage == 12) {
         interactionMessage = PlayerMessage(1, 12);
-        playerMessage = 13;
     }
-    //This is important to allow the last message in the player interaction to be shown.
     else if (playerMessage == 13) {
-        interactionMessage = PlayerMessage(1, 13);
-        playerMessage = 14;   
+        interactionMessage = PlayerMessage(1, 13); 
     }
-    //This is important to allow the last message in the player interaction to be shown.
     else if (playerMessage == 15) {
-        std::cout << playerMessage << std::endl;
-        interactionMessage = PlayerMessage(1, 15);
-    
+        interactionMessage = PlayerMessage(1, 15);   
     }
     else if (playerMessage == 16) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 16);
-
     }
     else if (playerMessage == 17) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 17);
-
     }
     else if (playerMessage == 18) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 18);
-
     }
     else if (playerMessage == 19) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 19);
-
     }
     else if (playerMessage == 20) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 20);
-
     }
     else if (playerMessage == 21) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 21);
-
     }
     else if (playerMessage == 22) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 22);
-
     }
     else if (playerMessage == 23) {
-        std::cout << playerMessage << std::endl;
         interactionMessage = PlayerMessage(1, 23);
-
     }
     else if (playerMessage == 24) {
-    std::cout << playerMessage << std::endl;
     interactionMessage = PlayerMessage(1, 24);
-
     }
-
+    else if (playerMessage == 25) {
+    interactionMessage = PlayerMessage(1, 25);
+    }
+    else if (playerMessage == 26) {
+        interactionMessage = PlayerMessage(1, 26);
+    }
+    else if (playerMessage == 27) {
+        interactionMessage = PlayerMessage(1, 27);
+    }
 
     else {
 

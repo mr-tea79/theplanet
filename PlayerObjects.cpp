@@ -721,7 +721,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "1fb";
         Scene1::SPRITE_SIZE = 120;
         //Prevents Textures being loaded more than once.
-        if (Scene1::tLoader == 1) {
+        if (Scene1::tLoader == 1 || Scene1::SceneBackground == "1fb") {
             tex.Scene3Textures();
             Scene1::tLoader = 2;
         }
@@ -729,8 +729,12 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::xPosition = 106;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
-        PlayerInteraction::playerMessage = 7;
+        Scene1::SceneTransitionStatement = "";
+        Scene1::mouseClick = false;
         s.loadSounds(sceneBackground);
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 15;
+        AI::playerTalk = true;
        
     }
     /* Outside wreckage */
@@ -766,6 +770,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 110;
         s.loadSounds(sceneBackground);
+
     }
 
     /* Looking at computer screen */

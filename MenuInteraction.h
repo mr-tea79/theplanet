@@ -24,7 +24,7 @@ public:
 	
 
 	void doAction();
-	void useChecker();
+	void useChecker(int gd, int gy);
 	
 	std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction);
 	std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction);

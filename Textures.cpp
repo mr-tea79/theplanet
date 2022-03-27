@@ -22,6 +22,7 @@ SDL_Texture* Textures::hoverUse;
 SDL_Texture* Textures::hoverLog;
 SDL_Texture* Textures::hoverExit;
 SDL_Texture* Textures::hoverNoSound;
+SDL_Texture* Textures::HoverContinue1;
 
 
 //Text Texture
@@ -77,6 +78,7 @@ SDL_Rect Textures::RHoverUse;
 SDL_Rect Textures::RHoverLog;
 SDL_Rect Textures::RHoverExit;
 SDL_Rect Textures::RHoverNoSound;
+SDL_Rect Textures::RHoverContinue1;
 
 //Overlay Textures.
 SDL_Texture* Textures::rocks;
@@ -214,6 +216,7 @@ void Textures::Scene1Textures() {
     RHoverLog = { 343,541,150,46 };
     RHoverExit = { 30,541,150,46 };
     RHoverNoSound = { 23,20,60,54 };
+    RHoverContinue1 = { 780,480,190,54 };
 
     SDL_DestroyTexture(scene1f);
     SDL_DestroyTexture(scene1fa);
@@ -286,6 +289,10 @@ void Textures::Scene1Textures() {
 
     imageSurface = IMG_Load("Scenes/HoverButtons/menuContinueHover.png");
     hoverContinueGame = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
+    SDL_FreeSurface(imageSurface);
+
+    imageSurface = IMG_Load("Scenes/HoverButtons/continue1.png");
+    HoverContinue1 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
 
     imageSurface = IMG_Load("Scenes/HoverButtons/playerOptionsHover.png");

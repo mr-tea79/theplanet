@@ -93,7 +93,9 @@ void Sound::loadMovementSounds() {
 }
 
 void Sound::loadSounds(std::string sceneBackground) {
-	if(Scene1::SceneBackground == "1" || Scene1::SceneBackground == "1fb" || Scene1::SceneBackground == "3b" || Scene1::SceneBackground == "1e"){
+	if(Scene1::SceneBackground == "1" || Scene1::SceneBackground == "1fb" || Scene1::SceneBackground == "3b" || Scene1::SceneBackground == "1e"
+		|| Scene1::SceneBackground == "1f"){
+
 		mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
 		playSounds();
 	}

@@ -266,6 +266,51 @@ void Messages() {
             }
         }
 
+        if (AI::playerTalk == true && AI::dialogNumber == 13) {
+            if (AI::beenThereAlready.find("13") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 25;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (AI::playerTalk == true && AI::dialogNumber == 14) {
+            if (AI::beenThereAlready.find("14") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                startDialog();
+                PlayerInteraction::playerMessage = 26;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+            }
+        }
+
+        if (Scene1::SceneBackground == "1fb" && AI::aiPlayMessages == true && AI::dialogNumber == 15) {
+            if (AI::beenThereAlready.find("15") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+                PlayerInteraction::playerMessage = 27;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+             
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::beenThereAlready.append("15");
+               
+               
+            }
+
+        }
+
     }
 }
 
