@@ -280,6 +280,12 @@ int Scene1::scene1() {
                     inGame = 1;
             }
 
+            if (SceneBackground.find("1da") != std::string::npos) {
+                tex.Scene3Textures();
+                inGame = 1;
+            }
+
+
             if (SceneBackground.find("3") != std::string::npos) {
                 if (inGame < 1) {
                     tex.Scene3Textures();
