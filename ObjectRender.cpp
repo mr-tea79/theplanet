@@ -8,8 +8,8 @@ using namespace brightland;
 void ObjectRender::objectRender() {
     //Display Scene Objects if not destroyed (picked up).     
 
-       //PDA Inventory item.
-    if (Scene1::objectToDestroy.find("1") != std::string::npos) {
+    //PDA Inventory item.
+    if (Scene1::objectToDestroy.find("1") != std::string::npos) {  
         SDL_RenderCopy(Scene1::renderer, Textures::invTexture1, NULL, &Inventory::inv1);
     }
 

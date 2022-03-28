@@ -82,6 +82,7 @@ namespace brightland {
 
 	public: 
 		int scene1();
+		void continueGameCheck();
 	
 		void DoAction();
 	

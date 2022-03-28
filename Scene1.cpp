@@ -82,26 +82,67 @@ void Scene1::DoAction() {
     action = 0;
 }
 
+void Scene1::continueGameCheck() {
+    Textures tex;
+    Inventory inv;
+    PlayerObjects pob;
+    Sound s;
+
+    if (continueGame == true) {
+        AI::continueGame = true;
+        inv.ContinueGame();
+        continueGame = false;
+        pob.SetSpritePosition(xPosition, yPosition);
+        s.loadSounds(Scene1::SceneBackground);
+
+
+        //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
+        if (SceneBackground.find("1f") != std::string::npos) {
+            if (inGame < 1) {
+                tex.Scene2Textures();
+                inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
+            }
+        }
+
+        if (SceneBackground.find("1fb") != std::string::npos) {
+            tex.Scene3Textures();
+            inGame = 1;
+        }
+
+        if (SceneBackground.find("1da") != std::string::npos) {
+            tex.Scene3Textures();
+            inGame = 1;
+        }
+
+
+        if (SceneBackground.find("3") != std::string::npos) {
+            if (inGame < 1) {
+                tex.Scene3Textures();
+                inGame = 1; 
+            }
+        }
+
+        if (SceneBackground.find("4") != std::string::npos) {
+            if (inGame < 1) {
+                tex.Scene4Textures();
+                inGame = 1; 
+            }
+
+        }
+    }
+}
+
+
 
 int Scene1::scene1() {
   
     cout << "Initialize" << endl;
     scene = 1; //Scene Number.
-    
-
-    //Set initial position of game character and the size of the character.
-   // xPosition = 60;
-  //  yPosition = 430;
-
+  
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "0";
-   
-   // SPRITE_SIZE = 10;
-    //xPosition = 310;
-   // yPosition = 350;
 
-    //THIS IS THE DEFAULT SCENE
-    //Normal Size (Uncomment)
+    //This is the size of the player sprite.
     SPRITE_SIZE = 120;
 
     
@@ -131,9 +172,6 @@ int Scene1::scene1() {
 
     //Testing game loop speed.
     static int timerStop = 0;
-
-
-
      
     //Text Dialog.
     fsurface =       NULL;
@@ -160,10 +198,6 @@ int Scene1::scene1() {
     Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
     Mix_Init(MIX_INIT_MP3);
     
-
-    //Mix_Music* mus, * mus2;  // Background Music
-    //mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
-  
     //Something to do with the font texture.
     SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
   
@@ -171,19 +205,14 @@ int Scene1::scene1() {
     gdSprite.x = xPosition;
     gdSprite.y = yPosition;
 
-    
     //Initialize Textures
     Textures tex;
     Inventory inv;
     tex.LoadActionTextures();
-    tex.Scene1Textures();
-
- 
+    tex.Scene1Textures(); 
     tex.MovementTextures();
-   // tex.Scene2Textures();
-  //  tex.Scene3Textures();
- 
-    //TOAD AI - For conversations and story.
+
+    //TOAD AI - For conversations and story dialog.
     AI ai;
   
     //Menu Interaction USE, LOOK etc.
@@ -220,37 +249,24 @@ int Scene1::scene1() {
 
     //Start the timer.
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+   
 
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
+    
     //Game loop.
     while (!gameover)
     {          
         s.updateSoundStatus(Sound::soundOn);
-       
-       // std::cout << "Sprite Size: " << SPRITE_SIZE << std::endl;
-       // SDL_ShowCursor(SDL_DISABLE);
-    //    std::cout << Inventory::inv << std::endl;
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
         yPosition = gdSprite.y;
         xPosition = gdSprite.x;
         gd = gdSprite.x;
         gy = gdSprite.y;
-        mob.useChecker(gd, gy); //Deals with wrong use actions. Pain to figure out!
-                  
-      //  SceneBackground = inv.ContinueGame();
-       /*Error checking for SDL_Mixer if you need to use it
-        
-        if (Mix_PlayMusic(mus2, -1) == -1) {
-            printf("Mix_PlayMusic: %s\n", Mix_GetError());
-            // well, there's no music, but most games don't break without music...
-        }
-       
-           */
 
-           //Used for clicking sounds in game.
-       
+        mob.useChecker(gd, gy); //Deals with wrong use actions. Pain to figure out!
+                     
 
         if (newGame == true) {
             //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
@@ -258,64 +274,17 @@ int Scene1::scene1() {
             newGame = false;
         }
 
-        if (continueGame == true) {
-            AI::continueGame = true;
-            inv.ContinueGame();
-            continueGame = false;
-            pob.SetSpritePosition(xPosition, yPosition);
-            s.loadSounds(Scene1::SceneBackground);
-       
-
-            //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
-            if (SceneBackground.find("1f") != std::string::npos){
-                if (inGame < 1) {
-                    tex.Scene2Textures();
-                   // tex.Scene3Textures();
-                    inGame = 1;
-                }            
-            }
-
-            if (SceneBackground.find("1fb") != std::string::npos) {
-                    tex.Scene3Textures();
-                    inGame = 1;
-            }
-
-            if (SceneBackground.find("1da") != std::string::npos) {
-                tex.Scene3Textures();
-                inGame = 1;
-            }
-
-
-            if (SceneBackground.find("3") != std::string::npos) {
-                if (inGame < 1) {
-                    tex.Scene3Textures();
-                    inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
-                }
-                       
-            }          
-
-            if (SceneBackground.find("4") != std::string::npos) {
-                if (inGame < 1) {
-                    tex.Scene4Textures();
-                    inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
-                }
-
-            }
-                     
-        }
-
+        //Check what textures and player invetory is required when continuing a game.
+        continueGameCheck();
 
         //Place player objects in the game.
         pob.ObjectController();
 
-        //Show patch on suit
+        //Show Ape Tape on suit
         if (Inventory::inv.find("3") != std::string::npos) {
-           
             Textures::spriteDown1 = Textures::spriteDownp;
             Textures::spritePick = Textures::spritePickp;
         }
-
-    
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
@@ -355,7 +324,6 @@ int Scene1::scene1() {
                         menuSound = 0;
                         mouseHold = 0;  
                    
-
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
                      
@@ -378,7 +346,8 @@ int Scene1::scene1() {
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
                         if (playerMessage != true && interactionMessage == "" && AI::aiStop !=1) {                   
-                            //Prevents sleep from kicking in when walking to a target.
+                            
+                            //Prevents delay from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
                                
                             }                         
@@ -388,8 +357,7 @@ int Scene1::scene1() {
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
-                                    PlayerMovement::blink = true;
-                                   
+                                    PlayerMovement::blink = true;                                  
                             }
                            
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
@@ -422,15 +390,14 @@ int Scene1::scene1() {
                         break;
                     }
                     break;          
-                }
-                
+                }                
         }
 
         keystate = SDL_GetKeyboardState(NULL);
 
         if (SDL_MOUSEBUTTONUP) {       
             mouseClick = true;
-         //   mouseHold = 0;
+ 
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
       
@@ -439,9 +406,7 @@ int Scene1::scene1() {
             playerMessage = false;
             
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
-            
-          
-            
+                  
             mob.useChecker(gd,gy); //Deals with wrong use actions. Pain to figure out!
             
             //The following 2 lines will allow you to use an object with another object.
@@ -451,7 +416,6 @@ int Scene1::scene1() {
             //This fixes the bug where if you decide to not to commit to picking something up.
             if (interactionMessage == "") {
                 actionStatement = "";
-               
             }
              
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
@@ -471,10 +435,10 @@ int Scene1::scene1() {
             std::cout << "Current Scene is: " << SceneBackground << std::endl;
             std::cout << "Mouse Click is: " << mouseHold << std::endl;
             std::cout << "" << std::endl;
-            std::cout << Scene1::tLoader << std::endl;
             std::cout << "Secret Trigger is currently: " << secretTrigger << std::endl;
+            std::cout << "" << std::endl;
             std::cout << "Current Sound Status: " << Sound::soundOn << std::endl;
-            
+            std::cout << "" << std::endl;
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
         
             //Get interaction message.         
@@ -485,8 +449,7 @@ int Scene1::scene1() {
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
                 if (actionMessage != "" || actionStatement != "" ) {
-                    pi.InteractionControllerLook(actionMessage, gameObject);
-                                     
+                    pi.InteractionControllerLook(actionMessage, gameObject);                                   
                 }
 
                 if (interactionMessage != "" && AI::aiStop !=1) {
@@ -498,8 +461,6 @@ int Scene1::scene1() {
                 if (menuSound == 1 && mouseHold < 3) {
                     s.playClickSound();
                 }
-
-               
 
                 mouseClick = false;
                 mouseHold++;
@@ -522,8 +483,7 @@ int Scene1::scene1() {
             pi.InteractionControllerObject(interactionMessage, gameObject);
         
         }
-     
-
+        //Player interaction menu option messages.
         if (actionMessage != "Pick up what?") {     
             gameObject = mob.PickUp(x, y, gd, gy, mInteraction);
         }
@@ -560,8 +520,6 @@ int Scene1::scene1() {
             pi.InteractionControllerPull(pullMessage, gameObject);
         }
        
-
-
  
         if (wx > gdSprite.x || wx < gdSprite.x) {
           
@@ -580,7 +538,6 @@ int Scene1::scene1() {
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 playerIsMoving = 1;
                 SDL_Delay(1);
-                //_sleep(1);
              
                 if (wy < gdSprite.y || wy > gdSprite.y) {
                     //The following 2 statements will allow the player to move across and then up or down.
@@ -594,8 +551,8 @@ int Scene1::scene1() {
                         playerIsMoving = 1;
                       
                     }  
-                    SDL_Delay(1); //Moving from _sleep to SDL_Delay
-                  //  _sleep(1);  //This makes the animation of the character look a bit more realistic and less like she's on skates. _sleep is probably not the best way of doing this, but it does work so..
+                    SDL_Delay(1); 
+                 
                 }
             }
             else {
@@ -605,7 +562,6 @@ int Scene1::scene1() {
                     wx = gdSprite.x;
                     wy = gdSprite.y;
 
-                 //   _sleep(300);
                     SDL_Delay(300);
                     sceneHalt = 0;
             }
@@ -621,7 +577,8 @@ int Scene1::scene1() {
        
     }
 
-        //RENDERING SECTION. THIS IS WHERE THE GRAPHICS ARE RENDERED IN THE GAME LOOP. I TRIED MOVING THIS TO ANOTHER CLASS BUT ALL SORTS OF THINGS WENT WRONG.
+        ////////// RENDERING SECTION /////////
+        
         //Render the window
         SDL_RenderClear(renderer);
        
@@ -657,20 +614,18 @@ int Scene1::scene1() {
         mouseClick = false;    
 
         //This is a timer to test speed of system - work in progress.
-        if(timerStop !=3000){
-            
+        if(timerStop !=3000){          
             timerStop++;
         }
-        else if(timerStop == 3000) {       
-            
+        else if(timerStop == 3000) {        
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
             std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
-            
+           
             float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
-       //     std::cout << "FLOAT IS: " << t << std::endl;
 
-            if (t > 5.000000) {
-                PlayerMovement::hspeed = 4.0;
+            //Set the player speed a bit faster if you are using a slow computer. Also, don't do this if you are continuing a game because you already had set it how you wanted.
+            if (t > 5.000000 && continueGame == false) {
+                PlayerMovement::hspeed = 5.0;
                 std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
             }
             else {
