@@ -680,8 +680,10 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);  
         Scene1::sceneHalt = 1;
         Scene1::SceneTransitionStatement = "";
-        PlayerInteraction::playerMessage = 6;
         s.loadSounds(sceneBackground);
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 16;
+        AI::playerTalk = true;
       
     }
 
@@ -711,6 +713,7 @@ std::string PlayerObjects::ObjectInteraction(int x, int y, int playerCurrentLoca
             Scene1::xPosition = 106;
             s.loadSounds(sceneBackground);
             SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+
         }
        
        

@@ -303,7 +303,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at Battery Lantern") {
-        lookMessage = "Says on the back 5000 lumens.";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 17;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();

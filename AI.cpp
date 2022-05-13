@@ -311,6 +311,41 @@ void Messages() {
 
         }
 
+        if (Scene1::SceneBackground == "1da" && AI::aiPlayMessages == true && AI::dialogNumber == 16) {
+            if (AI::beenThereAlready.find("16") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+                AI::aiStop = 1;
+                PlayerInteraction::playerMessage = 28;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::beenThereAlready.append("16");
+
+
+            }
+
+        }
+
+        if (Scene1::SceneBackground == "1da" && AI::aiPlayMessages == true && AI::dialogNumber == 17) {
+            if (AI::beenThereAlready.find("17") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            else {
+
+                startDialog();
+                PlayerInteraction::playerMessage = 29;
+                std::this_thread::sleep_for(1.5s);
+                Scene1::sceneHalt = 1;
+                Scene1::sceneHalt = 0;
+                AI::aiStop = 0;
+                AI::aiPlayMessages = false;
+                AI::playerTalk = false;
+
+
+            }
+
+        }
+
     }
 }
 

@@ -217,6 +217,12 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 27) {
         PlayerMessage = "Well, it's a wigwam!.";
     }
+    else if (msgNumber == 28) {
+        PlayerMessage = "Well, the inflatable tents have certainly improved.";
+    }
+    else if (msgNumber == 29) {
+        PlayerMessage = "Apparently this little thing has 5000 lumens!";
+    }
 
     return PlayerMessage;
 }
@@ -307,6 +313,12 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     }
     else if (playerMessage == 27) {
         interactionMessage = PlayerMessage(1, 27);
+    }
+    else if (playerMessage == 28) {
+        interactionMessage = PlayerMessage(1, 28);
+    }
+    else if (playerMessage == 29) {
+        interactionMessage = PlayerMessage(1, 29);
     }
 
     else {

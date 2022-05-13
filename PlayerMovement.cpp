@@ -313,7 +313,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     if (Scene1::SceneBackground == "1da") {
 
         //Custom Boundries (Chairs etc) very tricky.
-        if (gd == 541 && gy <360) {    
+        if (gd == 541 && gy <400) {    
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = nullptr;
             Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft1a);
