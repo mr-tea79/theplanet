@@ -223,6 +223,13 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 29) {
         PlayerMessage = "Apparently this little thing has 5000 lumens!";
     }
+    else if (msgNumber == 30) {
+        PlayerMessage = "It's made of plastic.";
+    }
+    else if (msgNumber == 31) {
+        PlayerMessage = "It's a box made of cardboard and unopened.";
+    }
+
 
     return PlayerMessage;
 }
@@ -319,6 +326,12 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     }
     else if (playerMessage == 29) {
         interactionMessage = PlayerMessage(1, 29);
+    }
+    else if (playerMessage == 30) {
+        interactionMessage = PlayerMessage(1, 30);
+    }
+    else if (playerMessage == 31) {
+        interactionMessage = PlayerMessage(1, 31);
     }
 
     else {

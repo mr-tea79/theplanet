@@ -193,7 +193,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at Pot plant") {
-        lookMessage = "Plastic!";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 18;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
         doAction();
@@ -209,7 +211,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     }
 
     if (lookStatement == "Look at Cardboard box") {
-        lookMessage = "It's a box made of cardboard";
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 19;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
         doAction();
