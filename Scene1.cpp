@@ -632,6 +632,8 @@ int Scene1::scene1() {
             }
             else {
                 std::cout << "You are running on a good spec pc." << std::endl;
+                PlayerMovement::hspeed = 2.12;
+                std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
 
             timerStop++;
