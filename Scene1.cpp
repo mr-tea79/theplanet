@@ -65,6 +65,7 @@ int Scene1::hoverSound = 0; //For object hover sounds.
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
+bool doPerfCheck = true;
 //int Scene1::soundCount = 0;
 
 static int mouseHold = 0;
@@ -89,6 +90,7 @@ void Scene1::continueGameCheck() {
     Sound s;
 
     if (continueGame == true) {
+        doPerfCheck = false;
         AI::continueGame = true;
         inv.ContinueGame();
         continueGame = false;
@@ -624,7 +626,7 @@ int Scene1::scene1() {
             float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
 
             //Set the player speed a bit faster if you are using a slow computer. Also, don't do this if you are continuing a game because you already had set it how you wanted.
-            if (t > 5.000000 && continueGame == false) {
+            if (t > 5.000000 && doPerfCheck == true) {
                 PlayerMovement::hspeed = 5.0;
                 std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
             }

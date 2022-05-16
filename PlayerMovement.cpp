@@ -36,6 +36,7 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight3a);
         gd += hspeed;
+
     }
     if (position == 3) {
         SDL_DestroyTexture(Textures::spriteTexture);
