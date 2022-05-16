@@ -30,12 +30,14 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight2a);
         gd += hspeed;
+      
     }
     if (position == 2) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteRight3a);
         gd += hspeed;
+        position = 0; //This achieves the animation effect.
 
     }
     if (position == 3) {
@@ -70,12 +72,14 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft2a);
         gd -= hspeed;
+     
     }
     if (position == 2) {
         SDL_DestroyTexture(Textures::spriteTexture);
         Textures::spriteTexture = nullptr;
         Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteLeft3a);
         gd -= hspeed;
+        position = 0; //This achieves the animation effect.
     }
     if (position == 3) {
         SDL_DestroyTexture(Textures::spriteTexture);
