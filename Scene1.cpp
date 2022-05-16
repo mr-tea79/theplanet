@@ -96,6 +96,7 @@ void Scene1::continueGameCheck() {
         continueGame = false;
         pob.SetSpritePosition(xPosition, yPosition);
         s.loadSounds(Scene1::SceneBackground);
+        std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
 
 
         //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
@@ -527,9 +528,9 @@ int Scene1::scene1() {
           
             if(action !=1 ){
                //This is important because it prevents the player from disappearing.
-                SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = nullptr;
-                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
+              //  SDL_DestroyTexture(Textures::spriteTexture);
+               // Textures::spriteTexture = nullptr;
+                //Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
                 DoAction();
