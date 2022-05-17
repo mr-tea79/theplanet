@@ -50,6 +50,7 @@ SDL_Color Scene1::bcolor;
 int Scene1::xPosition;
 int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
+
 int Scene1:: playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
 bool Scene1::continueGame = false;
@@ -134,6 +135,7 @@ void Scene1::continueGameCheck() {
 
         }
     }
+ 
 }
 
 
@@ -317,6 +319,7 @@ int Scene1::scene1() {
                     gameover = 1;
                     if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
                         inv.gameSave(SceneBackground);
+                
                     }
                   
                     break;
@@ -633,12 +636,14 @@ int Scene1::scene1() {
             //Set the player speed a bit faster if you are using a slow computer. Also, don't do this if you are continuing a game because you already had set it how you wanted.
             if (t > 5.000000 && doPerfCheck == true) {
                 PlayerMovement::hspeed = 5.0;
+         
                 std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
                 std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
             else {
                 std::cout << "You are running on a good spec pc." << std::endl;
                 PlayerMovement::hspeed = 2.12;
+            
                 std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
 

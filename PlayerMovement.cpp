@@ -10,10 +10,9 @@ using namespace brightland;
 using namespace std;
 
 static int position; //Used to update current position variable.
+float PlayerMovement::hspeed = 2.5;
+float PlayerMovement::vspeed = 2.5;
 
-//Customize your speed to your liking.
-float PlayerMovement::hspeed = 2.5;  //Left to Right.
-float PlayerMovement::vspeed = 2.5;  //Up and Down.
 bool PlayerMovement::blink;
 
 
