@@ -22,6 +22,7 @@
 #include "SDL_mixer.h"
 #include "Sound.h"
 #include <vector>
+#include "SceneInteraction.h"
 
 using namespace std;
 using namespace brightland;
@@ -65,7 +66,7 @@ int Scene1::hoverSound = 0; //For object hover sounds.
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
-bool doPerfCheck = true;
+bool doPerfCheck = true; //This is to inform the system to do a performance check of hardware.
 //int Scene1::soundCount = 0;
 
 static int mouseHold = 0;
@@ -226,6 +227,9 @@ int Scene1::scene1() {
 
     //Load player movement class.
     PlayerObjects pob;
+
+    //Used for scene transitions of player.
+    SceneInteraction si;
 
     //Load player message class.
     PlayerInteraction pi;
@@ -445,7 +449,7 @@ int Scene1::scene1() {
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
         
             //Get interaction message.         
-            interactionMessage = pob.ObjectInteraction( x, y, gd, gy);           
+            interactionMessage = si.sceneTransitions(x, y, gd, gy);
            
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
 
@@ -571,7 +575,7 @@ int Scene1::scene1() {
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
             if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
-                interactionMessage = pob.ObjectInteraction(x, y, gd, gy);
+                interactionMessage = si.sceneTransitions(x, y, gd, gy);
                 s.playMovementSounds();
             }
             else{         
@@ -630,6 +634,7 @@ int Scene1::scene1() {
             if (t > 5.000000 && doPerfCheck == true) {
                 PlayerMovement::hspeed = 5.0;
                 std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
+                std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
             else {
                 std::cout << "You are running on a good spec pc." << std::endl;

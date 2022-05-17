@@ -14,7 +14,7 @@ SDL_Rect Inventory::inv3 = { 880, 650, 40, 40 };
 SDL_Rect Inventory::inv4 = { 760, 700, 60, 60 };
 SDL_Rect Inventory::inv7 = { 760, 700, 60, 60 };
 
-
+//Clears the game progress.
 int Inventory::purgeDatabase() {
 
 	sqlite3* db;
@@ -48,6 +48,7 @@ int Inventory::purgeDatabase() {
 	return 0;
 }
 
+//Save the speed of the character movement.
 int Inventory::gameSpeedSave() {
 
 	sqlite3* db;
@@ -95,11 +96,9 @@ int Inventory::gameSpeedSave() {
 	sqlite3_close(db);
 
 	return 0;
-
-
-
 }
 
+//Save player progress.
 int Inventory::gameSave(std::string currentScene) {
 
 	sqlite3* db;
@@ -117,8 +116,7 @@ int Inventory::gameSave(std::string currentScene) {
 	
 	rc = sqlite3_open("Inventory.db", &db);
 
-	if (rc) {
-		
+	if (rc) {		
 		return(0);
 	}
 	else {
@@ -147,8 +145,6 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_close(db);
 
 	return 0;
-
-
 
 }
 
@@ -194,6 +190,7 @@ int Inventory::SQLCreateGameSave(std::string scene) {
 	return 0;
 }
 
+//Update the database if item is used by the player.
 int Inventory::useItem(std::string itemName) {
 
 	sqlite3* db;
@@ -233,6 +230,7 @@ int Inventory::useItem(std::string itemName) {
 	return 0;
 }
 
+//Load in player progress.
 void Inventory::ContinueGame() {
 
 	sqlite3* db;
@@ -337,7 +335,7 @@ void Inventory::ContinueGame() {
 
 }
 
-
+//Check if item has been picked up.
 int Inventory::checkItem(std::string itemName) {
 
 	sqlite3* db;
@@ -403,9 +401,7 @@ int Inventory::checkItem(std::string itemName) {
 	return numberOfItems;
 }
 
-
-
-
+//Add item to player inventory.
 int Inventory::SQLInsertInventory(std::string itemName, int itemUsed) {
 
 	sqlite3* db;

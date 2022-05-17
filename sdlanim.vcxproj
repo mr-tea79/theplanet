@@ -95,6 +95,7 @@
     <ClCompile Include="MenuInteraction.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerObjects.cpp" />
+    <ClCompile Include="SceneInteraction.cpp" />
     <ClCompile Include="SceneRender.cpp" />
     <ClCompile Include="sdlanim.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerObjects.h" />
     <ClInclude Include="Scene1.h" />
+    <ClInclude Include="SceneInteraction.h" />
     <ClInclude Include="SceneRender.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Textures.h" />
