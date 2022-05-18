@@ -49,8 +49,9 @@ int Inventory::purgeDatabase() {
 }
 
 //Save the speed of the character movement.
-int Inventory::gameSpeedSave() {
+int Inventory::gameSpeedSave(float gameSpeed) {
 
+	std::cout << "GAME SPEED SAVING NOW AS: " << gameSpeed << std::endl;
 	sqlite3* db;
 	char* zErrMsg = 0;
 	int rc;
@@ -60,13 +61,15 @@ int Inventory::gameSpeedSave() {
 	int i = 0;
 	
 	float vs = PlayerMovement::vspeed;
-	float hs = PlayerMovement::hspeed;
+	//float hs = PlayerMovement::hspeed;
+	float hs = gameSpeed;
 
 	//Convert player movement speed float to string to insert into database.
 	std::ostringstream ss;
 	ss << vs;
 	std::string vspeed(ss.str());
 	std::string hspeed(ss.str());
+	std::cout << "CONVERSION OF GAME SPEED NOW SET TO: " << vspeed << std::endl;
 
 	rc = sqlite3_open("Inventory.db", &db);
 
