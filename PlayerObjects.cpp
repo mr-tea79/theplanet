@@ -343,6 +343,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1" && x > 0 && x <= 552 && y > 204 && y < 235 && gy <360 ) {
         message = "Head North";
+        Scene1::SceneTransitionStatement = "Head North";
     }
 
     if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {

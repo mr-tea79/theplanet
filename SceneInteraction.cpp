@@ -428,6 +428,22 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::yPosition = 10;
     }
 
+    /* Heading North */
+    if (Scene1::SceneBackground == "1" && Scene1::SceneTransitionStatement == "Head North" && Scene1::objectToDestroy.find("3") != std::string::npos) {
+        Scene1::SceneBackground = "1e";
+        Scene1::SPRITE_SIZE = 50;
+        Scene1::xPosition = 10;
+        Scene1::yPosition = 400;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
+        Scene1::mouseClick = false;
+        s.loadSounds(sceneBackground);
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 5;
+        AI::playerTalk = true;
+    }
+
     /* Entering sandy clearing from rocky path, load scene 2 textures */
     if (Scene1::SceneBackground == "1e" && x >= 994 && y >= 0 && y <= 570 && playerCurrentLocationX >= 994) {
         Textures tex;
