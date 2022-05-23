@@ -92,7 +92,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
             PlayerMovement::hspeed = PlayerMovement::hspeed + 0.01;
             std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
             std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
-            inv.gameSpeedSave(PlayerMovement::vspeed);
+            inv.gameSpeedSave();
             s.loadSounds(sceneBackground);
         }
 
@@ -106,7 +106,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
             PlayerMovement::hspeed = PlayerMovement::hspeed - 0.01;
             std::cout << "Vspeed = " << PlayerMovement::vspeed << std::endl;
             std::cout << "hspeed = " << PlayerMovement::hspeed << std::endl;
-            inv.gameSpeedSave(PlayerMovement::vspeed);
+            inv.gameSpeedSave();
             s.loadSounds(sceneBackground);
         }
 

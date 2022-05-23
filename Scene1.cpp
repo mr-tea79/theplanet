@@ -319,11 +319,11 @@ int Scene1::scene1() {
                     gameover = 1;
                     if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
                         inv.gameSave(SceneBackground);
-                        inv.gameSpeedSave(PlayerMovement::hspeed);
+                        inv.gameSpeedSave();
                 
                     }
                 
-                    inv.gameSpeedSave(PlayerMovement::hspeed);
+                    inv.gameSpeedSave();
                     break;
 
                 //Mouse Hover Game Interaction.
