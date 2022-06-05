@@ -76,8 +76,6 @@ int Scene1::hoverHold = 0;
 SDL_Rect Scene1::gdSprite;
 SDL_Renderer* Scene1::renderer;
 
-// A dummy function
-
 
 //This will help when transitioning to a new scene. 
 void Scene1::DoAction() {

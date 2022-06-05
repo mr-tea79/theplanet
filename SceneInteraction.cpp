@@ -429,20 +429,35 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     }
 
     /* Heading North */
-    if (Scene1::SceneBackground == "1" && Scene1::SceneTransitionStatement == "Head North" && Scene1::objectToDestroy.find("3") != std::string::npos) {
-        Scene1::SceneBackground = "1e";
-        Scene1::SPRITE_SIZE = 50;
-        Scene1::xPosition = 10;
-        Scene1::yPosition = 400;
-        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
-        Scene1::sceneHalt = 1;
-        Scene1::SceneTransitionStatement = "";
-        Scene1::mouseClick = false;
-        s.loadSounds(sceneBackground);
-        AI::aiPlayMessages = true;
-        AI::dialogNumber = 5;
-        AI::playerTalk = true;
+    if (Scene1::SceneBackground == "1" && Scene1::SceneTransitionStatement == "Head North") {
+        if (Scene1::objectToDestroy.find("3") == std::string::npos) {
+            Scene1::sceneHalt = 1;
+            AI::aiPlayMessages = true;
+            AI::dialogNumber = 3;
+            AI::playerTalk = true;
+        }
+        else if (Scene1::objectToDestroy.find("1") == std::string::npos) {
+            Scene1::sceneHalt = 1;
+            AI::aiPlayMessages = true;
+            AI::dialogNumber = 2;
+            AI::playerTalk = true;
+        }
+      
+        else {
+            Scene1::SceneBackground = "1e";
+            Scene1::SPRITE_SIZE = 50;
+            Scene1::xPosition = 10;
+            Scene1::yPosition = 400;
+            SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+            Scene1::sceneHalt = 1;
+            Scene1::SceneTransitionStatement = "";
+            Scene1::mouseClick = false;
+            s.loadSounds(sceneBackground);
+        }
+     
+       
     }
+    
 
     /* Entering sandy clearing from rocky path, load scene 2 textures */
     if (Scene1::SceneBackground == "1e" && x >= 994 && y >= 0 && y <= 570 && playerCurrentLocationX >= 994) {
