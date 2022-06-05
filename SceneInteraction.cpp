@@ -453,6 +453,8 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
             Scene1::SceneTransitionStatement = "";
             Scene1::mouseClick = false;
             s.loadSounds(sceneBackground);
+            AI::aiPlayMessages = true;
+         
         }
      
        
