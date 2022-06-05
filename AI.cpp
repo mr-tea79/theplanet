@@ -138,6 +138,15 @@ void Messages() {
 
             }
         }
+        if (Scene1::SceneBackground == "1f" && AI::playerTalk == true && AI::dialogNumber == 20) {
+            startDialog();
+            PlayerInteraction::playerMessage = 32;
+            std::this_thread::sleep_for(1.5s);
+            Scene1::sceneHalt = 0;
+            AI::aiStop = 0;
+            AI::aiPlayMessages = false;
+            AI::playerTalk = false;
+        }
 
 
         if(Scene1::SceneBackground == "1" && AI::continueGame == false && AI::aiPlayMessages == true) {
@@ -295,14 +304,13 @@ void Messages() {
             }
         }
 
-        if (Scene1::SceneBackground == "1fb" && AI::aiPlayMessages == true && AI::dialogNumber == 15) {
+        if (Scene1::SceneBackground == "1fb" && AI::aiPlayMessages == true) {
             if (AI::beenThereAlready.find("15") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
-                AI::aiStop = 1;
+                startDialog();
                 PlayerInteraction::playerMessage = 27;
                 std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
-             
+                Scene1::sceneHalt = 0;
                 AI::aiStop = 0;
                 AI::aiPlayMessages = false;
                 AI::beenThereAlready.append("15");

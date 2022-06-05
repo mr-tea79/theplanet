@@ -444,11 +444,15 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     /* Sandy clearing */
     if (lookStatement == "Look at Sandy clearing" && gd <= 900 && gd > 300 && gy <= 360) {
-        lookMessage = "It's very flat here.";
+  
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 20;
+        AI::playerTalk = true;
         SDL_DestroyTexture(Textures::spriteTexture);
         SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
+        doAction(); //VERY IMPORTANT OR MEMORY LEAK AND FLICKERING SPRITE!
         lookStatement = "";
+    
     }
 
     if (lookStatement == "Look at The moon") {
@@ -688,6 +692,8 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         Scene1::actionStatement = "";
         //Change scene.
         Scene1::SceneBackground = "1fa";
+      
+       
     }
     
     if (wrongAction == 1) {

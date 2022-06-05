@@ -348,8 +348,6 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::mouseClick = false;
         s.loadSounds(sceneBackground);
         AI::aiPlayMessages = true;
-        AI::dialogNumber = 15;
-        AI::playerTalk = true;
 
     }
     /* Outside wreckage */

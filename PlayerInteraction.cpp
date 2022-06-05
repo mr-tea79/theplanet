@@ -229,6 +229,9 @@ std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
     else if (msgNumber == 31) {
         PlayerMessage = "It's a box made of cardboard and unopened.";
     }
+    else if (msgNumber == 32) {
+        PlayerMessage = "Hmmm, it's very flat here..";
+    }
 
 
     return PlayerMessage;
@@ -332,6 +335,9 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     }
     else if (playerMessage == 31) {
         interactionMessage = PlayerMessage(1, 31);
+    }
+    else if (playerMessage == 32) {
+        interactionMessage = PlayerMessage(1, 32);
     }
 
     else {
