@@ -355,7 +355,7 @@ int Scene1::scene1() {
                        
 
                         //This addresses the movement to the left issue where the player never reaches to destination and prevents hover interaction.
-                        if (playerMessage != true && interactionMessage == "" && AI::aiStop !=1) {                   
+                        if (playerMessage != true && interactionMessage == "" && AI::aiStop !=1 ) {                   
                             
                             //Prevents delay from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   

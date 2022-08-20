@@ -7,7 +7,7 @@
 
 
 namespace brightland {
-	
+
 	class Scene1
 	{
 	private:
@@ -21,7 +21,7 @@ namespace brightland {
 		int texW;
 		int texH;
 	public:
-		static int secretTrigger; 
+		static int secretTrigger;
 		static int SPRITE_SIZE;
 		static std::string useStatement;
 		static std::string openStatement;
@@ -31,7 +31,7 @@ namespace brightland {
 		static std::string SceneBackground;
 		static std::string objectToDestroy;
 		static std::string SceneTransitionStatement;
-	
+
 		static int tLoader;
 		static bool mouseClick;
 		static int action;
@@ -43,7 +43,7 @@ namespace brightland {
 		static int hoverHold;
 		static int playerIsMoving;
 		static int threadRipper;
-	
+
 
 		int scene;
 
@@ -65,12 +65,12 @@ namespace brightland {
 		static SDL_Rect textRect;
 		SDL_Rect menuTextRect;
 		SDL_Rect windowRect;
-	
+
 		SDL_Surface* windowSurface;
-	
+
 		//Scene Dialog
 		SDL_Surface* dialog;
-	
+
 		static SDL_Surface* fsurface;
 		static SDL_Renderer* renderer;
 
@@ -81,13 +81,14 @@ namespace brightland {
 		SDL_Event windowEvent;
 		SDL_Event   event;
 
-	public: 
+	public:
 		int scene1();
 		void continueGameCheck();
-	
+
 		void DoAction();
-	
+
 	};
+};
 
 
-}
+
