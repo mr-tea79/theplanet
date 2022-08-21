@@ -93,33 +93,33 @@ void Sound::loadMovementSounds() {
 }
 
 void Sound::loadSounds(std::string sceneBackground) {
-	if(Scene1::SceneBackground == "1" || Scene1::SceneBackground == "1fb" || Scene1::SceneBackground == "3b" || Scene1::SceneBackground == "1e"
-		|| Scene1::SceneBackground == "1f"){
+	//if(Scene1::SceneBackground == "1" || Scene1::SceneBackground == "1fb" || Scene1::SceneBackground == "3b" || Scene1::SceneBackground == "1e"
+	//	|| Scene1::SceneBackground == "1f"){
 
 	//	mus2 = Mix_LoadMUS("Development Kits/Music/wind01.mp3"); //Add your MP3 here for the background music.
 		//playSounds();
-	}
+	//}
 
-	if (Scene1::SceneBackground == "3a") {
+//	if (Scene1::SceneBackground == "3a") {
 		//mus2 = Mix_LoadMUS("Development Kits/Music/sound-of-wind-blowing.mp3"); //Add your MP3 here for the background music.
 		//playSounds();
-	}
+	//}
 
-	if (Scene1::SceneBackground == "3c" || Scene1::SceneBackground == "3d") {
+	//if (Scene1::SceneBackground == "3c" || Scene1::SceneBackground == "3d") {
 		//mus2 = Mix_LoadMUS("Development Kits/Music/Water-dripping.mp3"); //Add your MP3 here for the background music.
 		//playSounds();
-	}
-	if (Scene1::SceneBackground == "1b") {
+	//}
+	//if (Scene1::SceneBackground == "1b") {
 	//	mus2 = Mix_LoadMUS("Development Kits/Music/Electricity-sound-effect.mp3"); //Add your MP3 here for the background music.
 		//playSounds();
-	}
-	if (Scene1::SceneBackground == "1da") {
+	//}
+//	if (Scene1::SceneBackground == "1da") {
 		//mus2 = Mix_LoadMUS("Development Kits/Music/modular-ambient-04-792.mp3"); //Add your MP3 here for the background music.
 		//playSounds();
-	}
+	//}
 	if (Scene1::SceneBackground == "0") {
-	//	mus2 = Mix_LoadMUS("Development Kits/Music/MenuBackgroundMusic.mp3"); //Add your MP3 here for the background music.
-	//	playSounds();
+		mus2 = Mix_LoadMUS("Development Kits/Music/Game_Music.mp3"); //Add your MP3 here for the background music.
+		playSounds();
 	}
 
 }

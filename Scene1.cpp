@@ -247,6 +247,7 @@ int Scene1::scene1() {
     s.loadMovementSounds();
     s.loadClickSound();
     s.loadHoverSound();
+    s.loadSounds("0");
 
     //Init the TOAD1000 AI Thread.
     ai.ToadTalk();
