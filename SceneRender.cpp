@@ -14,7 +14,7 @@ std::string buttonID = "";
 
 
 void noBlinking() {
-    if (Scene1::SceneBackground == "1c" || Scene1::SceneBackground == "1d") {
+    if (Scene1::SceneBackground == "1c" || Scene1::SceneBackground == "1d" || Scene1::SceneBackground == "3c") {
         PlayerMovement::blink = false;
     }
 }

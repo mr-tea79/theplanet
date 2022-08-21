@@ -109,9 +109,9 @@ void Sound::loadSounds(std::string sceneBackground) {
 		//mus2 = Mix_LoadMUS("Development Kits/Music/Water-dripping.mp3"); //Add your MP3 here for the background music.
 		//playSounds();
 	//}
-	//if (Scene1::SceneBackground == "1b") {
-	//	mus2 = Mix_LoadMUS("Development Kits/Music/Electricity-sound-effect.mp3"); //Add your MP3 here for the background music.
-		//playSounds();
+//	if (Scene1::SceneBackground == "1b") {
+	//	mus2 = Mix_LoadMUS("Development Kits/Music/Wreckage.mp3"); //Add your MP3 here for the background music.
+	//	playSounds();
 	//}
 //	if (Scene1::SceneBackground == "1da") {
 		//mus2 = Mix_LoadMUS("Development Kits/Music/modular-ambient-04-792.mp3"); //Add your MP3 here for the background music.
