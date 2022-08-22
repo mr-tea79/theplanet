@@ -542,7 +542,7 @@ int Scene1::scene1() {
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
-                DoAction();
+               // DoAction();  //THIS SEEMS TO CAUSE SPRITE FLICKER
             }
            
             if (sceneHalt == 0 ) {
