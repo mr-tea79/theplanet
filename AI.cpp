@@ -172,7 +172,7 @@ void Messages() {
 
         if (Scene1::SceneBackground == "1e" && AI::continueGame == false && AI::aiPlayMessages == true ) {
 
-            if (AI::beenThereAlready.find("2") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
+            if (AI::beenThereAlready.find("1e") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
                 AI::aiStop = 1;
                 PlayerInteraction::playerMessage = 18;
@@ -184,7 +184,7 @@ void Messages() {
                 Scene1::sceneHalt = 0;
                 AI::aiStop = 0;
                 AI::aiPlayMessages = false;
-                AI::beenThereAlready.append("2");
+                AI::beenThereAlready.append("1e");
             }
            
         }

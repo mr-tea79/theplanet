@@ -352,6 +352,7 @@ int Scene1::scene1() {
                         if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {                                                  
                             playerMessage = false;
                             hoverHold = 1;
+                            playerIsMoving = 0;
                         }
                        
 
@@ -381,7 +382,7 @@ int Scene1::scene1() {
                            
                         }  
                         else {
-                          
+                           
                         }
                  
                         break;                    

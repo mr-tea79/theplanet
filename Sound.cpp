@@ -47,7 +47,7 @@ bool Sound::checkHoverLocation(int x, int y) {
 void Sound::playSounds() {
 	if (Sound::soundOn == true) {
 		Mix_PlayMusic(mus2, -1);
-		Mix_Volume(1, MIX_MAX_VOLUME * 0.50);
+		Mix_Volume(1, MIX_MAX_VOLUME * 0.20);
 	}
 	else {
 		Mix_HaltMusic();

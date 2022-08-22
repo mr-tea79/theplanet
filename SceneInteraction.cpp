@@ -328,7 +328,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
         }
 
-
+          
     }
     /* Outside tent */
     if (Scene1::SceneBackground == "1fa" && x >= 793 && x <= 959 && y >= 474 && y <= 535) {
@@ -366,13 +366,15 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         AI::dialogNumber = 5;
         AI::playerTalk = true;
     }
-    /* Sandy clearing */
-    if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582 && playerCurrentLocationX < 6) {
+    /* Sandy clearing returning to rocky path */
+    if (Scene1::SceneBackground == "1f" && playerCurrentLocationX < 100 && Scene1::SceneTransitionStatement == "West") {
         std::cout << "Going West" << std::endl;
         Scene1::SceneBackground = "1e";
+        Scene1::sceneHalt = 1;
         Scene1::SPRITE_SIZE = 50;
         Scene1::yPosition = 380;
-        Scene1::xPosition = 350;
+        Scene1::xPosition = 600;
+        Scene1::SceneTransitionStatement = "";
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         s.loadSounds(sceneBackground);
     }
@@ -420,10 +422,15 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     }
 
     /* Leaving rocky path and going back to wreakage */
-    if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482 && playerCurrentLocationX <= 13) {
+    if (Scene1::SceneBackground == "1e" && playerCurrentLocationX <= 150 && Scene1::SceneTransitionStatement == "Wreckage") {
         Scene1::SceneBackground = "1";
         Scene1::SPRITE_SIZE = 120;
-        Scene1::yPosition = 10;
+        Scene1::xPosition = 400;
+        Scene1::yPosition = 400;
+        Scene1::sceneHalt = 1;
+        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+        Scene1::SceneTransitionStatement = "";
+      
     }
 
     /* Heading North */
@@ -452,6 +459,8 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
             Scene1::mouseClick = false;
             s.loadSounds(sceneBackground);
             AI::aiPlayMessages = true;
+   
+           
         }
         
        
@@ -459,7 +468,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     
 
     /* Entering sandy clearing from rocky path, load scene 2 textures */
-    if (Scene1::SceneBackground == "1e" && x >= 994 && y >= 0 && y <= 570 && playerCurrentLocationX >= 994) {
+    if (Scene1::SceneBackground == "1e" && playerCurrentLocationX >= 800 && Scene1::SceneTransitionStatement == "East") {
         Textures tex;
         Scene1::SPRITE_SIZE = 120;
         Scene1::SceneBackground = "1f";
@@ -472,6 +481,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::xPosition = 10;
         SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
         Scene1::sceneHalt = 1;
+        Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
     }
 

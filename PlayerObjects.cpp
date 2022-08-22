@@ -295,10 +295,12 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582) {
         message = "Go west";
+        Scene1::SceneTransitionStatement = "West";
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482) {
         message = "Go back to wreckage";
+        Scene1::SceneTransitionStatement = "Wreckage";
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409) {
@@ -307,7 +309,8 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     if (Scene1::SceneBackground == "1e" && x >= 994  && y >= 0 && y <= 570) {
-        message = "Head east";        
+        message = "Head east";   
+        Scene1::SceneTransitionStatement = "East";
     }
 
     if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111) {
@@ -341,7 +344,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
 
 
-    if (Scene1::SceneBackground == "1" && x > 0 && x <= 552 && y > 204 && y < 235 && gy <360 ) {
+    if (Scene1::SceneBackground == "1" && x > 0 && x <= 500 && y > 220 && y < 340 ) {
         message = "Head North";
         Scene1::SceneTransitionStatement = "Head North";
     }
