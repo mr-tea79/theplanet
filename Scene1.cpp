@@ -412,7 +412,6 @@ int Scene1::scene1() {
  
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
-      
             mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
@@ -538,11 +537,11 @@ int Scene1::scene1() {
             if(action !=1 ){
                //This is important because it prevents the player from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = nullptr;
+                Textures::spriteTexture = nullptr; //Probably not needed but not causing harm.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
-               // DoAction();  //THIS SEEMS TO CAUSE SPRITE FLICKER
+               // DoAction();  //THIS SEEMS TO CAUSE SPRITE FLICKER (22/08/2022)
             }
            
             if (sceneHalt == 0 ) {

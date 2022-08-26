@@ -131,218 +131,45 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
 }
  
 
-std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber) {
-    std::string PlayerMessage = "";
-
-    if (msgNumber == 1) {
-        PlayerMessage = "I need to be able to set up camp ";      
-    }
-
-    else if (msgNumber == 2) {
-        PlayerMessage = "if I'm going to venture out into the wilderness..!";
-    }
-
-    else if (msgNumber == 3) {
-        PlayerMessage = "If I go out there without my computer";
-    }
-
-    else if (msgNumber == 4) {
-        PlayerMessage = "I will probably regret it!";
-    }
-
-    else if (msgNumber == 5) {    
-        PlayerMessage = "My suit is leaking oxygen and if I";
-    }
-
-    else if (msgNumber == 6) {
-        PlayerMessage = "am stupid enough to go for a walk, I will die!";
-    }
-    else if (msgNumber == 7) {
-        PlayerMessage = "This is one of the ION engines, I think that";
-    }
-    else if (msgNumber == 8) {
-        PlayerMessage = "It has seen better days, I'm not going anywhere.";
-    }
-    else if (msgNumber == 9) {
-        PlayerMessage = "Ok, well this ship is somewhat wrecked!";
-    }
-    else if (msgNumber == 10) {
-        PlayerMessage = "But I can't complain, I'm still alive.";
-    }
-    else if (msgNumber == 11) {
-        PlayerMessage = "No job is too big for APE TAPE! I could";
-    }
-    else if (msgNumber == 12) {
-        PlayerMessage = "seal an air leak on my ship with this stuff!";
-    }
-    else if (msgNumber == 13) {
-        PlayerMessage = "That's my PDA, doesn't look damaged!!";
-    }
-    else if (msgNumber == 15) {
-        PlayerMessage = "I wonder what mysteries there are on that moon";
-    }
-    else if (msgNumber == 16) {
-        PlayerMessage = "BEEEP";
-    }
-    else if (msgNumber == 17) {
-        PlayerMessage = "BEEEEEEP";
-    }
-    else if (msgNumber == 18) {
-        PlayerMessage = "TOAD1000: Bonita your oxygen is very low";
-    }
-    else if (msgNumber == 19) {
-        PlayerMessage = "This planet is very.... Purple.";
-    }
-    else if (msgNumber == 20) {
-        PlayerMessage = "This is a self inflatable habitat.";
-    }
-    else if (msgNumber == 21) {
-        PlayerMessage = "This is the mission flag. But I am surprised";
-    }
-    else if (msgNumber == 22) {
-        PlayerMessage = "it is still standing up after the crash.";
-    }
-    else if (msgNumber == 23) {
-        PlayerMessage = "Aha! That should plug the air leak.";
-    }
-    else if (msgNumber == 24) {
-        PlayerMessage = "It's a meteorite!";
-    }
-    else if (msgNumber == 25) {
-        PlayerMessage = "It's half the size of me and made of rock!";
-    }
-    else if (msgNumber == 26) {
-        PlayerMessage = "This area would be ideal for setting up camp.";
-    }
-    else if (msgNumber == 27) {
-        PlayerMessage = "Well, it's a wigwam!.";
-    }
-    else if (msgNumber == 28) {
-        PlayerMessage = "Well, the inflatable tents have certainly improved.";
-    }
-    else if (msgNumber == 29) {
-        PlayerMessage = "Apparently this little thing has 5000 lumens!";
-    }
-    else if (msgNumber == 30) {
-        PlayerMessage = "It's made of plastic.";
-    }
-    else if (msgNumber == 31) {
-        PlayerMessage = "It's a box made of cardboard and unopened.";
-    }
-    else if (msgNumber == 32) {
-        PlayerMessage = "Hmmm, it's very flat here..";
-    }
-
-
-    return PlayerMessage;
-}
-
-
-
-
-
 std::string PlayerInteraction::DisplayPlayerMessages() {
  
     std::string interactionMessage;
+    
 
     //This will show the scene player messages in sequence.
-    if (playerMessage == 1) {
-        interactionMessage = PlayerMessage(1, 1);        
-    }
-    else if (playerMessage == 2) {
-        interactionMessage = PlayerMessage(1, 2);        
-    }
-    else if (playerMessage == 3) {
-        interactionMessage = PlayerMessage(1, 3);                    
-    }
-    else if (playerMessage == 4) {
-        interactionMessage = PlayerMessage(1, 4);                    
-    }
-    else if (playerMessage == 5) {
-        interactionMessage = PlayerMessage(1, 5);
-    }
-    else if (playerMessage == 6) {
-        interactionMessage = PlayerMessage(1, 6);     
-    }
-    else if (playerMessage == 7) {
-        interactionMessage = PlayerMessage(1, 7);
-    }
-    else if (playerMessage == 8) {
-        interactionMessage = PlayerMessage(1, 8);
-    }
-    else if (playerMessage == 9) {
-        interactionMessage = PlayerMessage(1, 9);
-    }
-    else if (playerMessage == 10) {
-        interactionMessage = PlayerMessage(1, 10);
-    }
-    else if (playerMessage == 11) {
-        interactionMessage = PlayerMessage(1, 11);
-    }
-    else if (playerMessage == 12) {
-        interactionMessage = PlayerMessage(1, 12);
-    }
-    else if (playerMessage == 13) {
-        interactionMessage = PlayerMessage(1, 13); 
-    }
-    else if (playerMessage == 15) {
-        interactionMessage = PlayerMessage(1, 15);   
-    }
-    else if (playerMessage == 16) {
-        interactionMessage = PlayerMessage(1, 16);
-    }
-    else if (playerMessage == 17) {
-        interactionMessage = PlayerMessage(1, 17);
-    }
-    else if (playerMessage == 18) {
-        interactionMessage = PlayerMessage(1, 18);
-    }
-    else if (playerMessage == 19) {
-        interactionMessage = PlayerMessage(1, 19);
-    }
-    else if (playerMessage == 20) {
-        interactionMessage = PlayerMessage(1, 20);
-    }
-    else if (playerMessage == 21) {
-        interactionMessage = PlayerMessage(1, 21);
-    }
-    else if (playerMessage == 22) {
-        interactionMessage = PlayerMessage(1, 22);
-    }
-    else if (playerMessage == 23) {
-        interactionMessage = PlayerMessage(1, 23);
-    }
-    else if (playerMessage == 24) {
-    interactionMessage = PlayerMessage(1, 24);
-    }
-    else if (playerMessage == 25) {
-    interactionMessage = PlayerMessage(1, 25);
-    }
-    else if (playerMessage == 26) {
-        interactionMessage = PlayerMessage(1, 26);
-    }
-    else if (playerMessage == 27) {
-        interactionMessage = PlayerMessage(1, 27);
-    }
-    else if (playerMessage == 28) {
-        interactionMessage = PlayerMessage(1, 28);
-    }
-    else if (playerMessage == 29) {
-        interactionMessage = PlayerMessage(1, 29);
-    }
-    else if (playerMessage == 30) {
-        interactionMessage = PlayerMessage(1, 30);
-    }
-    else if (playerMessage == 31) {
-        interactionMessage = PlayerMessage(1, 31);
-    }
-    else if (playerMessage == 32) {
-        interactionMessage = PlayerMessage(1, 32);
-    }
-
-    else {
-
-    }
+    playerMessage == 1 ? interactionMessage = "I need to be able to set up camp" : "";
+    playerMessage == 2 ? interactionMessage = "if I'm going to venture out into the wilderness..!" : "";
+    playerMessage == 3 ? interactionMessage = "If I go out there without my computer" : "";
+    playerMessage == 4 ? interactionMessage = "I will probably regret it!" : "";
+    playerMessage == 5 ? interactionMessage = "My suit is leaking oxygen and if I" : "";
+    playerMessage == 6 ? interactionMessage = "am stupid enough to go for a walk, I will die!" : "";
+    playerMessage == 7 ? interactionMessage = "This is one of the ION engines" : "";
+    playerMessage == 8 ? interactionMessage = "It has seen better days, I'm not going anywhere." : "";
+    playerMessage == 9 ? interactionMessage = "Ok, well this ship is somewhat wrecked!" : "";
+    playerMessage == 10 ? interactionMessage = "But I can't complain, I'm still alive." : "";
+    playerMessage == 11 ? interactionMessage = "No job is too big for APE TAPE! I could" : "";
+    playerMessage == 12 ? interactionMessage = "seal an air leak on my ship with this stuff!" : "";
+    playerMessage == 13 ? interactionMessage = "That's my PDA, doesn't look damaged!!" : "";
+    playerMessage == 14 ? interactionMessage = "" : "";
+    playerMessage == 15 ? interactionMessage = "I wonder what mysteries there are on that moon" : "";
+    playerMessage == 16 ? interactionMessage = "BEEEP" : "";
+    playerMessage == 17 ? interactionMessage = "BEEEEEEP" : "";
+    playerMessage == 18 ? interactionMessage = "TOAD1000: Bonita your oxygen is very low" : "";
+    playerMessage == 19 ? interactionMessage = "This planet is very.... Purple." : "";
+    playerMessage == 20 ? interactionMessage = "This is a self inflatable habitat." : "";
+    playerMessage == 20 ? interactionMessage = "This is the mission flag. But I am surprised" : "";
+    playerMessage == 21 ? interactionMessage = "This is the mission flag. But I am surprised" : "";
+    playerMessage == 22 ? interactionMessage = "it is still standing up after the crash." : "";
+    playerMessage == 23 ? interactionMessage = "Aha! That should plug the air leak." : "";
+    playerMessage == 24 ? interactionMessage = "It's a meteorite!" : "";
+    playerMessage == 25 ? interactionMessage = "It's half the size of me and made of rock!" : "";
+    playerMessage == 26 ? interactionMessage = "This area would be ideal for setting up camp." : "";
+    playerMessage == 27 ? interactionMessage = "Well, it's a wigwam!." : "";
+    playerMessage == 28 ? interactionMessage = "Well, the inflatable tents have certainly improved." : "";
+    playerMessage == 29 ? interactionMessage = "Apparently this little thing has 5000 lumens!" : "";
+    playerMessage == 30 ? interactionMessage = "It's made of plastic." : "";
+    playerMessage == 31 ? interactionMessage = "It's a box made of cardboard and unopened." : "";
+    playerMessage == 32 ? interactionMessage = "Hmmm, it's very flat here.." : "";
 
     return interactionMessage;
 

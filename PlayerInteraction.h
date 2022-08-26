@@ -18,7 +18,7 @@ namespace brightland {
 
 	public:
 		void textDimensions(int messageLength);
-		std::string PlayerInteraction::PlayerMessage(int scene, int msgNumber);
+		std::string PlayerInteraction::PlayerMessage(int msgNumber);
 		void PlayerInteraction::InteractionControllerHover(std::string interactionMessage);
 		void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject);
 		void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject);
