@@ -14,45 +14,15 @@ int PlayerInteraction::playerMessage = 100;
 void PlayerInteraction::textDimensions(int messageLength) {
 
 
-  //  if (Scene1::gdSprite.x > 130 && Scene1::gdSprite.x < 600 && Scene1::gdSprite.y >100) {
-    //    Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
-        
- //   }
-   // else if (Scene1::gdSprite.x > 600 && Scene1::gdSprite.x < 700 && Scene1::gdSprite.y >100) {
-  //      Scene1::textRect = { Scene1::gdSprite.x - 400,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    Scene1::gdSprite.x > 550 && Scene1::gdSprite.y > 100 && messageLength > 40 ? Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    Scene1::gdSprite.y < 100 ? Scene1::textRect = { Scene1::gdSprite.x - 300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    Scene1::gdSprite.x > 550 && messageLength > 14 ? Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    Scene1::gdSprite.x < 90 && messageLength > 14 ? Scene1::textRect = { Scene1::gdSprite.x + 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+    Scene1::gdSprite.x < 90 ? Scene1::textRect = { Scene1::gdSprite.x + 50,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 
-  //  }
-    if (Scene1::gdSprite.x > 550 && Scene1::gdSprite.y >100 && messageLength > 40 ) {
-        Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 
-    }
-    else if (Scene1::gdSprite.y < 100) {
-        Scene1::textRect = { Scene1::gdSprite.x -300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 };
-    }
-    else if (Scene1::gdSprite.x > 550 && messageLength > 14) {
-        Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
+ 
 
-    }
-    else if (Scene1::gdSprite.x < 90 && messageLength > 14) {
-        Scene1::textRect = { Scene1::gdSprite.x + 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
-
-    }
-    else if (Scene1::gdSprite.x < 90 ) {
-        Scene1::textRect = { Scene1::gdSprite.x + 50,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
-
-    }
-    else {
-        Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
-
-    }
-    
-   // else if (Scene1::gdSprite.x > 680 && Scene1::gdSprite.y > 100) {
-  //      Scene1::textRect = { Scene1::gdSprite.x - 160 ,  Scene1::gdSprite.y - 80, messageLength * 10, 20 };       
- //   }
- ///   else if (Scene1::gdSprite.y < 100) {
-  //      Scene1::textRect = { Scene1::gdSprite.x -300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 };
- //   }
-   
 }
 
 //Small memory leak here. Need to figure this out.
