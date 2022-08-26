@@ -13,6 +13,9 @@ int PlayerInteraction::playerMessage = 100;
 
 void PlayerInteraction::textDimensions(int messageLength) {
 
+    //Ternary operator
+    //(expr) ? <true logic> : <false logic>
+    //Used to reduce lots of IF statements.
 
     Scene1::gdSprite.x > 550 && Scene1::gdSprite.y > 100 && messageLength > 40 ? Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
     Scene1::gdSprite.y < 100 ? Scene1::textRect = { Scene1::gdSprite.x - 300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
@@ -105,6 +108,9 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
  
     std::string interactionMessage;
     
+    //Ternary operator
+   //(expr) ? <true logic> : <false logic>
+   //Used to reduce lots of IF statements.
 
     //This will show the scene player messages in sequence.
     playerMessage == 1 ? interactionMessage = "I need to be able to set up camp" : "";
@@ -125,7 +131,7 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     playerMessage == 16 ? interactionMessage = "BEEEP" : "";
     playerMessage == 17 ? interactionMessage = "BEEEEEEP" : "";
     playerMessage == 18 ? interactionMessage = "TOAD1000: Bonita your oxygen is very low" : "";
-    playerMessage == 19 ? interactionMessage = "This planet is very.... Purple." : "";
+    playerMessage == 19 ? interactionMessage = "Wow, this planet is very..erm.. Purple." : "";
     playerMessage == 20 ? interactionMessage = "This is a self inflatable habitat." : "";
     playerMessage == 20 ? interactionMessage = "This is the mission flag. But I am surprised" : "";
     playerMessage == 21 ? interactionMessage = "This is the mission flag. But I am surprised" : "";
