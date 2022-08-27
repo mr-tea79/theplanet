@@ -22,10 +22,6 @@ void PlayerInteraction::textDimensions(int messageLength) {
     Scene1::gdSprite.x > 550 && messageLength > 14 ? Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
     Scene1::gdSprite.x < 90 && messageLength > 14 ? Scene1::textRect = { Scene1::gdSprite.x + 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
     Scene1::gdSprite.x < 90 ? Scene1::textRect = { Scene1::gdSprite.x + 50,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
-
-
- 
-
 }
 
 //Small memory leak here. Need to figure this out.
@@ -41,56 +37,6 @@ void PlayerInteraction::InteractionControllerHover(std::string interactionMessag
     }
 }
 
-void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject) {
-    
-    const char* imu = useMessage.c_str();;
-    int useMessageLength = useMessage.length();  
-    textDimensions(useMessageLength);
-    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
-    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    SDL_FreeSurface(Scene1::fsurface);
-}
-
-void PlayerInteraction::InteractionControllerOpen(std::string openMessage, std::string gameObject) {
- 
-    const char* imu = openMessage.c_str();;
-    int openMessageLength = openMessage.length();   
-    textDimensions(openMessageLength);
-    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
-    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    SDL_FreeSurface(Scene1::fsurface);
-
-}
-
-void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject) {
-    const char* imu = lookMessage.c_str();;
-    int lookMessageLength = lookMessage.length();
-    textDimensions(lookMessageLength);
-    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor,Scene1::bcolor);
-    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    SDL_FreeSurface(Scene1::fsurface);
-}
-
-void PlayerInteraction::InteractionControllerPull(std::string lookMessage, std::string gameObject) {
-
-    const char* imu = lookMessage.c_str();;
-    int pullMessageLength = lookMessage.length();
-    textDimensions(pullMessageLength);
-    Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, imu, Scene1::fcolor, Scene1::bcolor);
-    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    SDL_FreeSurface(Scene1::fsurface);
-}
-
-
-void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject) {
-   
-    const char* imu = actionMessage.c_str();;
-    int actionMessageLength = actionMessage.length();
-    textDimensions(actionMessageLength);
-    Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, imu, Scene1::fcolor);
-    Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
-    SDL_FreeSurface(Scene1::fsurface);
-}
 
 void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject) {   
     

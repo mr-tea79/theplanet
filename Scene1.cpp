@@ -460,7 +460,7 @@ int Scene1::scene1() {
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
                 if (actionMessage != "" || actionStatement != "" ) {
-                    pi.InteractionControllerLook(actionMessage, gameObject);                                   
+                    pi.InteractionControllerObject(actionMessage, gameObject);                                   
                 }
 
                 if (interactionMessage != "" && AI::aiStop !=1) {
@@ -513,22 +513,26 @@ int Scene1::scene1() {
         }
 
         if (lookMessage != "" ) {  
-            playerMessage = true;       
-            pi.InteractionControllerLook(lookMessage, gameObject);                    
+            playerMessage = true;    
+            pi.InteractionControllerObject(lookMessage, gameObject);
+           // pi.InteractionControllerLook(lookMessage, gameObject);                    
         }
 
         if (useMessage != "") {
             playerMessage = true;
-            pi.InteractionControllerUse(useMessage, gameObject);
+            pi.InteractionControllerObject(useMessage, gameObject);
+          //  pi.InteractionControllerUse(useMessage, gameObject);
         }
 
         if (openMessage != "") {
             playerMessage = true;
-            pi.InteractionControllerOpen(openMessage, gameObject);
+            pi.InteractionControllerObject(openMessage, gameObject);
+          //  pi.InteractionControllerOpen(openMessage, gameObject);
         }
         if (pullMessage != "") {
             playerMessage = true;
-            pi.InteractionControllerPull(pullMessage, gameObject);
+            pi.InteractionControllerObject(pullMessage, gameObject);
+          //  pi.InteractionControllerPull(pullMessage, gameObject);
         }
        
  

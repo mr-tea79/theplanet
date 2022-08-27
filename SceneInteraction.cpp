@@ -129,23 +129,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         tex.Scene4Textures();
 
     }
-    /*
-    if (playerCurrentLocationX > 700 && Scene1::SceneBackground == "4a") {
-        Textures tex;
-        Scene1::SceneBackground = "4b";
-        Scene1::SPRITE_SIZE = 120;
-        Scene1::yPosition = 450;
-        Scene1::xPosition = 360;
-        SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
-        Scene1::sceneHalt = 1;
-        Scene1::SceneTransitionStatement = "";
-        s.loadSounds(sceneBackground);
-        PlayerInteraction::playerMessage = 13;
-        //Load in the new textures for scene4
-        tex.Scene4Textures();
 
-    }
-    */
 
     if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34) {
         Scene1::SceneBackground = "3a";
