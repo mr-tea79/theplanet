@@ -169,272 +169,106 @@ int PlayerMovement::doYWalkDown(int gy) {
 
 int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
-//Player Movement
-   
-    //Set the coordinates for walking left or right in the scene.
 
     ///////////////////// PLAYER OPTIONS ///////////////////////////////////////////////
-       //GOING RIGHT
     if (Scene1::SceneBackground == "01") {
-
-        if (gd <= x - 20 && y > 102 && y < 579) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GOING LEFT
-        else if (gd >= x - 10 && y > 102 && y < 579) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
-
+        gd <= x - 20 && y > 102 && y < 579 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 10 && y > 102 && y < 579 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
     ///////////////////////// SCENE 4A SECRET ENTRANCE //////////////////////////////////////
     if (Scene1::SceneBackground == "4a") {
+        gd <= x - 60 && y < 576 && x > 10 && x < 850 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y < 576 && x < 850 && x > 10 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
 
-        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x - 60 && y < 576 && x > 10 && x < 850) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x - 15 && y < 576 && x < 850 && x > 10) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
     }
-
 
    ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
     if (Scene1::SceneBackground == "3f") {
-
-        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x - 60 && y > 200 && y < 482) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x - 15 && y > 200 && y < 482) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 200 && y < 482 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y > 200 && y < 482 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+   
     }
 
-
-          ///////////////////////// SCENE 3E CAVE DRAWING IN DIRT //////////////////////////////////////
+    ///////////////////////// SCENE 3E CAVE DRAWING IN DIRT //////////////////////////////////////
     if (Scene1::SceneBackground == "3e") {
+        gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
 
-        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x - 60 && y > 320 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x - 15 && y > 320 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
     }
 
-        ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
+    ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "3d") {
-
-        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x - 60 && y > 320 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x - 15 && y > 320 && y < 575) {
-            gd = doXWalkLeft(gd,  screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
-        ///////////////////////// SCENE 3C DARK ROOM //////////////////////////////////////
+    ///////////////////////// SCENE 3C DARK ROOM //////////////////////////////////////
     if (Scene1::SceneBackground == "3c") {
-
-        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x - 60 && y > 320 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x - 15 && y > 320 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
     ///////////////////////// SCENE 3B //////////////////////////////////////
     if (Scene1::SceneBackground == "3b") {
-       
-        if (gd < 750 && gy < 270) {
-            gd = gd + 1;
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-            Scene1::sceneHalt = 1;
-        }
-
-
-        //GOING RIGHT
-        else if (gd <= x - 60 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-        //GOING LEFT
-        else if (gd >= x && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-
-            position++;
-        }
+        gd <= x - 60 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+        
+        //Custom boundry
+        gd < 750 && gy < 270 ? Scene1::sceneHalt = 1 : move = 0;
     }
 
     ///////////////////////// SCENE 3A //////////////////////////////////////
-
-    //GOING RIGHT
     if (Scene1::SceneBackground == "3a") {
-
-        if (gd <= x - 25 && y > 10 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GOING LEFT
-        else if (gd >= x && y > 10 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 25 && y > 10 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x && y > 10 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
     ///////////////////////// SCENE 1DA  INSIDE TENT //////////////////////////////////////
     if (Scene1::SceneBackground == "1da") {
-
-        //Custom Boundries (Chairs etc) very tricky.
-       
-     
-        //GOING RIGHT
-        if (gd <= x - 60 && y > 170 && y < 575 && gd <739) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GOING LEFT
-        else if (gd >= x && y > 120 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 170 && y < 575 && gd < 739 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x && y > 120 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+   
     }
 
     ///////////////////////// SCENE 1F  SANDY CLEARING //////////////////////////////////////
     if (Scene1::SceneBackground == "1f") {
-
-        //GOING RIGHT
-        if (gd <= x - 60 && y > 120 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GOING LEFT
-        else if (gd >= x && y > 120 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 120 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x && y > 120 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
     ///////////////////////// SCENE 1FB SANDY CLAERING WITH TENT //////////////////////////////////////
     if (Scene1::SceneBackground == "1fb") {
-
-        //GOING RIGHT
-        if (gd <= x - 60 && y > 120 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GOING LEFT
-        else if (gd >= x && y > 120 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 120 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x && y > 120 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
       
     }
 
-    ///////////////////////// SCENE 1E ROCKY SCENE //////////////////////////////////////
-
-    //GOING RIGHT
+    ///////////////////////// SCENE 1E ROCKY SCENE //////////////////////////////////////////////////////
     if (Scene1::SceneBackground == "1e") {
-
-        if (gd <= x -20  && y > 272 && y < 579) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GOING LEFT
-        else if (gd >= x -10 && y > 272 && y < 579) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
-
+        gd <= x - 20 && y > 272 && y < 579 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 10 && y > 272 && y < 579 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
-    ///////////////////////// SCENE 1B INSIDE SHIP WRECKAGE //////////////////////////////////////
+    ///////////////////////// SCENE 1B INSIDE SHIP WRECKAGE //////////////////////////////////////////
     if (Scene1::SceneBackground == "1b") {
+        gd <= x - 40 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y > 300 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+        
+        //Custom boundries
+        gd < 200 ? Scene1::sceneHalt = 1 : move = 0;
+        gd > 560 ? Scene1::sceneHalt = 1 : move = 0;     
 
-        //Set boundries where player can walk (To prevent walking too far)
-        if (gd < 200) {
-            SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = nullptr;
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
-            Scene1::sceneHalt = 1;
-            gd += 9.5; //Speed of sprite movement.
-        }
-       
-        if (gd > 560) {
-            SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = nullptr;
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1a);
-            Scene1::sceneHalt = 1;
-            gd -= 9.5; //Speed of sprite movement.
-        }
-
-        //GO RIGHT
-        if (gd <= x -40 && y > 320 && y < 575) {
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT
-        else if (gd >= x -15 && y > 300 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
     }
-
 
     ///////////////////////// SCENE 1 STARTING SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1") {
-        
-        //GO RIGHT   The " x -60 " prevents the player from walkig diagonally which looks wrong.
-        if (gd <= x -60  && y > 320 && y < 575) {     
-            gd = doXWalkRight(gd, screenWidth);
-            position++;
-        }
-
-        //GO LEFT    The " x -15  " is required to allow the 'playerIsMoving' variable in Scene1 class to trigger when the player stops. If you don't have this, then the game wont know when the player stops and hover objects might not work.
-        else if (gd >= x -15 && y > 320 && y < 575) {
-            gd = doXWalkLeft(gd, screenWidth);
-            position++;
-        }
+        gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 15 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
     return gd;
-}//END OF WALK METHOD
+}
 
 
 /////////////////////////////// WALKY IS FOR MOVING THE CHARACTER UP AND DOWN  ////////////////////////////////////////////////////////////////
@@ -452,293 +286,122 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     if (Scene1::SceneBackground == "4a") {
 
         //Make character smaller and bigger depending on distance.
-   
-        if (gy > 455) {
-            Scene1::SPRITE_SIZE = 65;
-        }
-        else {
-            Scene1::SPRITE_SIZE = 60;
-        }
+        gy > 455 ? Scene1::SPRITE_SIZE = 65 : Scene1::SPRITE_SIZE = 60;
+       
+        gy >= y && y < 575 && y >367 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 585 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING UP
-        if (gy >= y && y < 575 && y >367) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 585) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
 
     ///////////////////////// SCENE 3F CRATOR //////////////////////////////////////
     if (Scene1::SceneBackground == "3f") {
 
-        //Make character smaller and bigger depending on distance.
-        if (gy < 290) {
-            Scene1::SPRITE_SIZE = 50;
-        }
-        if (gy < 310) {
-            Scene1::SPRITE_SIZE = 50;
-        }
-        if (gy < 355) {
-            Scene1::SPRITE_SIZE = 50;
-        }
+        gy < 355 ? Scene1::SPRITE_SIZE = 50 : move = 0;
+        gy > 355 ? Scene1::SPRITE_SIZE = 50 : move = 0;
 
-        if (gy > 355) {
-            Scene1::SPRITE_SIZE = 50;
-        }
+        gy >= y && y < 580 && y >200 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 582 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING UP
-        if (gy >= y && y < 580 && y >200) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 582) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
 
     ///////////////////////// SCENE 3D CAVE SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "3d") {
+        gy < 390 ? Scene1::SPRITE_SIZE = 90 : move = 0;
+        gy < 400 ? Scene1::SPRITE_SIZE = 110 : move = 0;
+        gy > 440 ? Scene1::SPRITE_SIZE = 120 : move = 0;
 
-        //Make character bigger or smaller depending on distance.
-        if (gy < 390) {
-            Scene1::SPRITE_SIZE = 90;
-        }
-        if (gy < 400) {
-            Scene1::SPRITE_SIZE = 110;
-        }
+        gy >= y && y < 575 && y >390 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        if (gy > 440) {
-            Scene1::SPRITE_SIZE = 120;
-        }
-
-        //GOING UP
-        if (gy >= y && y < 575 && y >390) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
     ///////////////////////// SCENE 3A DARK ROOM //////////////////////////////////////
     if (Scene1::SceneBackground == "3c") {
+        gy < 390 ? Scene1::SPRITE_SIZE = 90 : move = 0;
+        gy < 400 ? Scene1::SPRITE_SIZE = 110 : move = 0;
+        gy > 440 ? Scene1::SPRITE_SIZE = 120 : move = 0;
 
-        //Make character bigger or smaller depending on distance.
-        if (gy < 390) {
-            Scene1::SPRITE_SIZE = 90;
-        }
-        if (gy < 400) {
-            Scene1::SPRITE_SIZE = 110;
-        }
+        gy >= y && y < 575 && y >238 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        if (gy > 440) {
-            Scene1::SPRITE_SIZE = 120;
-        }
-
-        //GOING UP
-        if (gy >= y && y < 575 && y >238) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
 
     ///////////////////////// SCENE 3B ROCK FACE //////////////////////////////////////
     if (Scene1::SceneBackground == "3b") {
 
-        if (gd < 750 && gy < 370) {        
-            gy = gy + 1;
-            gy = doYWalkDown(gy);
-            position++;     
-            Scene1::sceneHalt = 1;
-        }
+        //Custom boundry
+        gd < 750 && gy < 370 ? gy = doYWalkDown(gy), position++, Scene1::sceneHalt = 1 : move = 0;
 
-        //GOING UP
-        else if (gy >= y) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
+        gy >= y ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y && y < 590 && gy > 0 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING DOWN
-        else if (gy <= y && y < 590 && gy > 0) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
     ///////////////////////// SCENE 3A //////////////////////////////////////
     if (Scene1::SceneBackground == "3a") {
-        
-        //GOING UP
-        if (gy >= y) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
+        gy >= y ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y && y < 590 && gy > 0 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING DOWN
-        else if (gy <= y && y < 590 && gy > 0) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
     ///////////////////////// SCENE 1E ROCKY SCENE//////////////////////////////////////
     if (Scene1::SceneBackground == "1e") {
+        gy >= y && y < 570 && y >330 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y && y < 580 && gy < 386 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING UP
-        if (gy >= y && y < 570 && y >330) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y && y < 580 && gy < 386) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
     ///////////////////////// SCENE 1B INSIDE SPACE SHIP WRECKAGE //////////////////////////////////////
     if (Scene1::SceneBackground == "1b") {
+        gy >= y && y < 570 && y >330 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 575 && y > gd && gy > 250 && gy < 445 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING UP
-        if (gy >= y && y < 570 && y >330 ) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-        
-        //GOING DOWN
-        else if (gy <= y -100 && y < 575 && y > gd && gy > 250 && gy < 445) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
     ///////////////////////// SCENE 1F SANDY CLEARING //////////////////////////////////////
     if (Scene1::SceneBackground == "1f") {
+        gy < 290 ? Scene1::SPRITE_SIZE = 70 : move = 0;
+        gy < 310 ? Scene1::SPRITE_SIZE = 100 : move = 0;
+        gy < 355 ? Scene1::SPRITE_SIZE = 110 : move = 0;
+        gy > 355 ? Scene1::SPRITE_SIZE = 120 : move = 0;
 
-        //Make the character appaer smaller as they move up and down.
-        if (gy < 290) {
-            Scene1::SPRITE_SIZE = 70;
-        }
-        if (gy < 310) {
-            Scene1::SPRITE_SIZE = 100;
-        }
-        if (gy < 355) {
-            Scene1::SPRITE_SIZE = 110;
-        }
+        gy >= y && y < 575 && y >158 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        if (gy > 355) {
-            Scene1::SPRITE_SIZE = 120;
-        }
-
-        //GOING UP
-        if (gy >= y && y < 575 && y >158) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
     
     ///////////////////////// SCENE 1FB SANDY CLEARING WITH TENT //////////////////////////////////////
     if (Scene1::SceneBackground == "1fb") {
 
-        //Make character smaller and bigger depending on distance.
-        if (gy < 290) {
-            Scene1::SPRITE_SIZE = 70;
-        }
-        if (gy < 310) {
-            Scene1::SPRITE_SIZE = 100;
-        }
-        if (gy < 355) {
-            Scene1::SPRITE_SIZE = 110;
-        }
+        gy < 290 ? Scene1::SPRITE_SIZE = 70 : move = 0;
+        gy < 310 ? Scene1::SPRITE_SIZE = 100 : move = 0;
+        gy < 355 ? Scene1::SPRITE_SIZE = 110 : move = 0;
+        gy > 355 ? Scene1::SPRITE_SIZE = 120 : move = 0;
 
-        if (gy > 355) {
-            Scene1::SPRITE_SIZE = 120;
-        }
+        gy >= y && y < 575 && y >158 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING UP
-        if (gy >= y && y < 575 && y >158) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 575) {    
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
     ///////////////////////// SCENE 1DA INSIDE TENT //////////////////////////////////////
     if (Scene1::SceneBackground == "1da") {
+        gy >= y && y < 575 && y >376 && x > 300 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 565 && x > 300 && gy < 410 ? gy = doYWalkDown(gy), position++ : move = 0;
 
-        //GOING UP
-        if (gy >= y && y < 575 && y >376 && x > 300) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 565 && x > 300 && gy <410 ) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
     }
 
 
     ///////////////////////// SCENE 1 FIRST SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1") {
-
-        //Make character bigger or smaller depending on distance.
-        if (gy < 390) {
-            Scene1::SPRITE_SIZE = 90;
-        }
-        if (gy < 400) {
-            Scene1::SPRITE_SIZE = 110;
-        }
-
-        if (gy > 440) {
-            Scene1::SPRITE_SIZE = 120;
-        }
-
-        //GOING UP
-        if (gy >= y  && y < 575 && y >220) {
-            gy = doYWalkUp(gy);
-            position++;
-        }
-
-        //GOING DOWN
-        else if (gy <= y - 100 && y < 575) {
-            gy = doYWalkDown(gy);
-            position++;
-        }
+        gy < 390 ? Scene1::SPRITE_SIZE = 90 : move = 0;
+        gy < 400 ? Scene1::SPRITE_SIZE = 110 : move = 0;
+        gy > 440 ? Scene1::SPRITE_SIZE = 120 : move = 0;
+      
+        gy >= y && y < 575 && y >220 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
     }
 
 

@@ -13,6 +13,7 @@ public:
 	static float hspeed;
 	static float vspeed;
 	static bool blink;
+	int move;
 
 	//Scene Surfaces.
 	SDL_Surface* imageSurface;
