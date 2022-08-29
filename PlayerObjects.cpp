@@ -1,3 +1,12 @@
+/*
+PLEASE READ THE ADDING OBJECTS INSTRUCTIONS THAT I HAVE INCLUDED 
+Creating a sprite object in ThePlanet step by step.pdf
+
+This document will help you get started in adding objects to the game.
+
+*/
+
+
 #include <iostream>
 #include <tuple>
 #include "PlayerObjects.h"
@@ -579,20 +588,17 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 1, NULL, NULL, NULL);
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 1, NULL, NULL, NULL);
 
-    int object1 = (ticks / 100) % numberSprites; //1 means its not going to move (animate).
-    //Set objectSprite Parameters size, height, width, position etc.
+    int object1 = (ticks / 100) % numberSprites; 
     PlayerObjects::srcrect = { object1 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect = { objectP3, objectP4, objectP5, objectP6 };
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Scene Object 2
     //Build object parameters.                                                                //2 means object 2  and so on...
     std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 2, NULL, NULL, NULL);
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 2, NULL, NULL, NULL);
 
     int object2 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect2 = { object2 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect2 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -600,9 +606,7 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 3, NULL, NULL, NULL);
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 3, NULL, NULL, NULL);
 
-    //% numberSprites is set to the value specified in PlaceObjectA. Here it is set to 3.
     int object3 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect3 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect3 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -612,7 +616,6 @@ void PlayerObjects::ObjectController() {
 
     //Set it to 1 for no animation.
     int object4 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect4 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect4 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -621,7 +624,6 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 5, NULL, NULL, NULL);
 
     int object5 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect5 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect5 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -630,7 +632,6 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 6, NULL, NULL, NULL);
 
     int object6 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect6 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect6 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -639,7 +640,6 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 7, NULL, NULL, NULL);
 
     int object7 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect7 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect7 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -648,7 +648,6 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 8, NULL, NULL, NULL);
 
     int object8 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect8 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect8 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -656,9 +655,7 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 9, NULL, NULL, NULL);
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 9, NULL, NULL, NULL);
 
-    //% numberSprites is set to the value specified in PlaceObjectA. Here it is set to 3.
     int object9 = (ticks / 100) % numberSprites;
-    //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect9 = { object9 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect9 = { objectP3, objectP4, objectP5, objectP6 };
 
@@ -666,7 +663,6 @@ void PlayerObjects::ObjectController() {
     std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 10, NULL, NULL, NULL);
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 10, NULL, NULL, NULL);
 
-    //% numberSprites is set to the value specified in PlaceObjectA. Here it is set to 3.
     int object10 = (ticks / 100) % numberSprites;
     //Set objectSprite Parameters size, height, width, position etc.
     PlayerObjects::srcrect10 = { object10 * objectP1, objectP2, objectHeight, objectWidth };
