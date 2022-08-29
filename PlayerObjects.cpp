@@ -510,52 +510,45 @@ If you set number of sprites to 1, that means its not animated. If you increase 
 */
 std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
 
+    //EXAMPLE:
+    //Return std::make_tuple(Number of animation sprites (1) means no animation, Location X, Location Y, Image width, Image Height)
+
     if (scene == 1 && objectID == 1) {
         //PDA
-       // Object position and size of object (x,y,width,height)
-        return  std::make_tuple(3, 685, 523, 20, 14);
+        return  std::make_tuple(1, 685, 523, 20, 14);
     }
     if (scene == 1 && objectID == 2) {
-        //Flag Rolled up
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+        //Flag Rolled up   
         return  std::make_tuple(1, 685, 323, 80, 218);
     }
     if (scene == 1 && objectID == 3) {
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
+        //Star
         return  std::make_tuple(3, 400, 30, 8, 40);
     }
     if (scene == 1 && objectID == 4) {
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 300, 430, 60, 60);
     }
     if (scene == 1 && objectID == 5) {     
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 520, 300, 97, 149);
     }
     if (scene == 1 && objectID == 6) {
         //Closed Box
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 520, 500, 100, 96);
     }
     if (scene == 1 && objectID == 7) {
         //Air Box
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 838, 380, 140, 118);
     }
     if (scene == 1 && objectID == 8) {
         //Lantern
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(1, 419, 372, 20, 41);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
     if (scene == 1 && objectID == 9) {
         //Sparkly object
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
         return  std::make_tuple(3, 499, 252, 8, 8);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
     if (scene == 1 && objectID == 10) {
-        //Sparkly object
-        // Object position and size of object (number of sprites,x,y, DESIRED DISPLAY WIDTH, DESIRED DISPLAY HEIGHT)
-     
+        //Sparkly object   
         if (Scene1::SPRITE_SIZE >= 160 && Scene1::SPRITE_SIZE <170 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
             return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
         }
@@ -563,7 +556,6 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
             return  std::make_tuple(40, Scene1::gdSprite.x + 52, Scene1::gdSprite.y + 48, 48, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
         }
     }
-
 
     return  std::make_tuple(scene, objectID, b, c, d);
 }

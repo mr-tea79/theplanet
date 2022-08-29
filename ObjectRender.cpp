@@ -10,7 +10,9 @@ void ObjectRender::objectRender() {
 
     //PDA Inventory item.
     if (Scene1::objectToDestroy.find("1") != std::string::npos) {  
-        SDL_RenderCopy(Scene1::renderer, Textures::invTexture1, NULL, &Inventory::inv1);
+        if (Inventory::inv.find("1")) {
+            SDL_RenderCopy(Scene1::renderer, Textures::invTexture1, NULL, &Inventory::inv1);
+        }      
     }
 
     else if (Scene1::SceneBackground == "1") { SDL_RenderCopy(Scene1::renderer, Textures::objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect); }

@@ -169,6 +169,9 @@ int PlayerMovement::doYWalkDown(int gy) {
 
 int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
 
+    //Ternary operator
+    //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
+    //Used to reduce lots of IF statements.
 
     ///////////////////// PLAYER OPTIONS ///////////////////////////////////////////////
     if (Scene1::SceneBackground == "01") {
@@ -274,6 +277,10 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 /////////////////////////////// WALKY IS FOR MOVING THE CHARACTER UP AND DOWN  ////////////////////////////////////////////////////////////////
 
 int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int screenHeight) {
+    //Ternary operator
+    //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
+    //Used to reduce lots of IF statements.
+
 
     //Check if player has put patch on their suit.
     if (Inventory::inv.find("3") != std::string::npos){
