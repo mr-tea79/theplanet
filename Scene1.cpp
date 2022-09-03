@@ -264,10 +264,11 @@ int Scene1::scene1() {
     
     //Game loop.
     while (!gameover)
-    {          
-        s.updateSoundStatus(Sound::soundOn);
+    {        
+        s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
+            
         yPosition = gdSprite.y;
         xPosition = gdSprite.x;
         gd = gdSprite.x;

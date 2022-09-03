@@ -13,14 +13,18 @@ bool Sound::checkSoundStatus(bool status) {
 	Sound::soundOn = status;
 	if (Sound::soundOn == false) {
 		Mix_HaltMusic;
+		
+	
 	}
 	return status;
 }
-
+/*
 void Sound::updateSoundStatus(bool status) {
 	Sound::soundOn = status;
+	
 
 }
+*/
 
 bool Sound::checkHoverLocation(int x, int y) {
 
@@ -120,6 +124,10 @@ void Sound::loadSounds(std::string sceneBackground) {
 	if (Scene1::SceneBackground == "0") {
 		mus2 = Mix_LoadMUS("Development Kits/Music/Game_Music.mp3"); //Add your MP3 here for the background music.
 		playSounds();
+	}
+
+	if (sceneBackground == "X") {
+		Mix_HaltMusic;
 	}
 
 }

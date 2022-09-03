@@ -37,19 +37,19 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     //Menu Hover buttons //////////////////////////////////////////////////////////////////
     bool sound = s.checkSoundStatus(Sound::soundOn);
-    s.updateSoundStatus(Sound::soundOn);
 
     if (sound == true && Scene1::SceneBackground == "0" && x > 27 && x < 77 && y > 28 && y < 77) {
         Scene1::menuSound = 1;
         Scene1::sceneHalt = 1; //Important so it only registers one click!
         Sound::soundOn = false;
-        s.updateSoundStatus(Sound::soundOn);
+        s.loadSounds("X"); 
     }
     if (sound == false && Scene1::SceneBackground == "0" && x > 27 && x < 77 && y > 28 && y < 77) {
         Scene1::menuSound = 1;
         Scene1::sceneHalt = 1; //Important so it only registers one click!
         Sound::soundOn = true;
-        s.updateSoundStatus(Sound::soundOn);
+        s.loadSounds(Scene1::SceneBackground);
+       
     }
 
 
