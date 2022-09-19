@@ -188,10 +188,12 @@ int Scene1::scene1() {
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
 
-    window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN /* | SDL_WINDOW_RESIZABLE*/ | SDL_WINDOW_ALLOW_HIGHDPI);
+ 
     windowSurface =  SDL_GetWindowSurface(window);
     renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED ); //|| SDL_RENDERER_PRESENTVSYNC  //USE SDL_RENDERER_PREVENTVSYNC TO SLOW THE GAME DOWN ON HIGH END CARDS.
-       //             SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
+//    SDL_RenderSetLogicalSize(renderer, WIDTH, HEIGHT);
+       //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 }; //Font colour.
     bcolor =         { 0,0,0 }; //Font background colour.
@@ -354,6 +356,8 @@ int Scene1::scene1() {
                             playerMessage = false;
                             hoverHold = 1;
                             playerIsMoving = 0;
+                            sceneHalt = 0; // Fixes issue where hover text appears in speech area.
+                           
                         }
                        
 
@@ -493,7 +497,7 @@ int Scene1::scene1() {
         if (interactionMessage != "" && sceneHalt == 1) {
             playerMessage = true;
             pi.InteractionControllerObject(interactionMessage, gameObject);
-        
+          
         }
         //Player interaction menu option messages.
         if (actionMessage != "Pick up what?") {     

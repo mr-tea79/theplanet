@@ -24,7 +24,7 @@ void PlayerInteraction::textDimensions(int messageLength) {
     Scene1::gdSprite.x < 90 ? Scene1::textRect = { Scene1::gdSprite.x + 50,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
 }
 
-//Small memory leak here. Need to figure this out.
+
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
     const char* im = interactionMessage.c_str();
     if (interactionMessage != "" ) {
@@ -47,6 +47,7 @@ void PlayerInteraction::InteractionControllerObject(std::string interactionMessa
     Scene1::fsurface = TTF_RenderText_Shaded(Scene1::font, im, Scene1::fcolor, Scene1::bcolor);
     Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);
     SDL_FreeSurface(Scene1::fsurface);
+  
 }
  
 
