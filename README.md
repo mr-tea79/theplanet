@@ -50,6 +50,8 @@ Images used in making the scenes were to the best of my knowledge all from googl
 
 # Currently known problems
 
+When continuing a game scene dialog is missing.
+
 Occasionally the sprite appears in the text area ( I THINK THIS IS NOW SOLVED!)
 
 Keeping text on the screen long enough for the player to see it. (MOSTLY SOLVED)
