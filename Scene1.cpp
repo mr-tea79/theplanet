@@ -57,6 +57,7 @@ bool Scene1::continueGame = false;
 bool Scene1::newGame = false;
 static bool checkHoverLocation = false;
 int Scene1::threadRipper = 0; //Thread 2 stopper.
+bool Scene1::fullScreenTrigger = false;
 
 //Scene variables
 int Scene1::action; //Used to trigger action texture.
@@ -81,6 +82,15 @@ SDL_Renderer* Scene1::renderer;
 void Scene1::DoAction() {
     SDL_Delay(100);
     action = 0;
+}
+
+bool Scene1::checkFScreenStatus(bool status) {
+    Scene1::fullScreenTrigger = status;
+    if (Scene1::fullScreenTrigger == true) {
+        SDL_SetWindowFullscreen(window, SDL_TRUE);
+    }
+    else{ SDL_SetWindowFullscreen(window, SDL_FALSE); }
+    return status;
 }
 
 void Scene1::continueGameCheck() {
@@ -267,6 +277,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+        checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 

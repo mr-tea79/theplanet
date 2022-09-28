@@ -51,7 +51,17 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         s.loadSounds(Scene1::SceneBackground);
        
     }
-
+    //Switching between FULL screen //////////////////////////////////////////////////////////////
+    if (Scene1::fullScreenTrigger == false && Scene1::SceneBackground == "0" && x > 927 && x < 951 && y > 62 && y < 87) {
+        Scene1::sceneHalt = 1; //Important so it only registers one click!
+        Scene1::fullScreenTrigger = true;
+    }
+    else if (Scene1::fullScreenTrigger == true && Scene1::SceneBackground == "0" && x > 927 && x < 951 && y > 62 && y < 87) {
+        Scene1::sceneHalt = 1; //Important so it only registers one click!
+        Scene1::fullScreenTrigger = false;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+  
 
     if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
         Scene1::menuSound = 1;

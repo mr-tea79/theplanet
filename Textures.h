@@ -28,7 +28,7 @@ namespace brightland {
 		static SDL_Texture* hoverExit;
 		static SDL_Texture* hoverNoSound;
 		static SDL_Texture* HoverContinue1;
-
+		static SDL_Texture* hoverFScreen;
 
 		//Texture used for menu dialog.
 		static SDL_Texture* starsTexture;
@@ -139,6 +139,7 @@ namespace brightland {
 		static SDL_Rect RHoverExit;
 		static SDL_Rect RHoverNoSound;
 		static SDL_Rect RHoverContinue1;
+		static SDL_Rect RHoverFScreen;
 
 		SDL_Surface* menuSurface;
 		SDL_Surface* Scursor;

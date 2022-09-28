@@ -90,6 +90,10 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "noSound";
         return 1;
     }
+    if (x > 927 && x < 951 && y > 62 && y < 87) {
+        buttonID = "fullScreen";
+        return 1;
+    }
     if (x > 791 && x < 955 && y > 474 && y < 537) {
         buttonID = "continue1";
         return 1;
@@ -212,9 +216,16 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         if (hoverTrigger == 1 && buttonID == "noSound") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverNoSound, NULL, &Textures::RHoverNoSound);
         }
+        if (hoverTrigger == 1 && buttonID == "fullScreen") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverFScreen, NULL, &Textures::RHoverFScreen);
+        }
         if (Sound::soundOn == false) {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverNoSound, NULL, &Textures::RHoverNoSound);
         }
+        if (Scene1::fullScreenTrigger == true) {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverFScreen, NULL, &Textures::RHoverFScreen);
+        }
+
 
     }
     if (Scene1::SceneBackground == "01") {

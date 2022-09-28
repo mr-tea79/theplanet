@@ -43,6 +43,7 @@ namespace brightland {
 		static int hoverHold;
 		static int playerIsMoving;
 		static int threadRipper;
+		static bool fullScreenTrigger;
 
 
 		int scene;
@@ -84,6 +85,7 @@ namespace brightland {
 	public:
 		int scene1();
 		void continueGameCheck();
+		bool checkFScreenStatus(bool status);
 
 		void DoAction();
 
