@@ -36,6 +36,8 @@ public:
 	int Inventory::gameSpeedSave();
 
 	int Inventory::purgeDatabase();
+
+	void Inventory::continueGameCheck();
 };
 
 

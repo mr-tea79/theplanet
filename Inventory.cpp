@@ -3,6 +3,8 @@
 #include "PlayerMovement.h"
 #include <iostream>
 #include <sstream>
+#include "Textures.h"
+#include "Sound.h"
 
 using namespace brightland;
 
@@ -236,6 +238,64 @@ int Inventory::useItem(std::string itemName) {
 
 	return 0;
 }
+
+void Inventory::continueGameCheck() {
+	Textures tex;
+	Inventory inv;
+	PlayerObjects pob;
+	Sound s;
+
+
+	if (Scene1::continueGame == true) {
+		Scene1::doPerfCheck = false;
+		//  AI::continueGame = true; //What was I thinking here?!
+		inv.ContinueGame();
+		Scene1::continueGame = false;
+		pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+		s.loadSounds(Scene1::SceneBackground);
+		std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
+
+
+		//Need to put these in a separate method. This loads in the correct texture packs for the given scene.
+
+
+		if (Scene1::SceneBackground.find("1f") != std::string::npos) {
+			if (Scene1::inGame < 1) {
+				tex.Scene2Textures();
+				Scene1::inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
+			}
+		}
+
+		if (Scene1::SceneBackground.find("1fb") != std::string::npos) {
+			tex.Scene3Textures();
+			Scene1::inGame = 1;
+		}
+
+		if (Scene1::SceneBackground.find("1da") != std::string::npos) {
+			tex.Scene3Textures();
+			Scene1::inGame = 1;
+		}
+
+
+		if (Scene1::SceneBackground.find("3") != std::string::npos) {
+			if (Scene1::inGame < 1) {
+				tex.Scene3Textures();
+				Scene1::inGame = 1;
+			}
+		}
+
+		if (Scene1::SceneBackground.find("4") != std::string::npos) {
+			if (Scene1::inGame < 1) {
+				tex.Scene4Textures();
+				Scene1::inGame = 1;
+			}
+
+		}
+	}
+
+}
+
+
 
 //Load in player progress.
 void Inventory::ContinueGame() {

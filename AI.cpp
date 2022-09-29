@@ -25,8 +25,6 @@ void startDialog() {
 
 void Messages() {
     while (!Scene1::threadRipper) {   
-
-   //     std::cout << "Been there already: " << AI::beenThereAlready << std::endl;
         
         if (Scene1::SceneBackground == "1" && AI::playerTalk == true && AI::dialogNumber == 1) {
             if (AI::beenThereAlready.find("0") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }

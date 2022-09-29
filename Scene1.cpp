@@ -68,7 +68,7 @@ int Scene1::hoverSound = 0; //For object hover sounds.
 bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
-bool doPerfCheck = true; //This is to inform the system to do a performance check of hardware.
+bool Scene1::doPerfCheck = true; //This is to inform the system to do a performance check of hardware.
 //int Scene1::soundCount = 0;
 
 static int mouseHold = 0;
@@ -91,59 +91,6 @@ bool Scene1::checkFScreenStatus(bool status) {
     }
     else{ SDL_SetWindowFullscreen(window, SDL_FALSE); }
     return status;
-}
-
-void Scene1::continueGameCheck() {
-    Textures tex;
-    Inventory inv;
-    PlayerObjects pob;
-    Sound s;
-
-    if (continueGame == true) {
-        doPerfCheck = false;
-        AI::continueGame = true;
-        inv.ContinueGame();
-        continueGame = false;
-        pob.SetSpritePosition(xPosition, yPosition);
-        s.loadSounds(Scene1::SceneBackground);
-        std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
-
-
-        //Need to put these in a separate method. This loads in the correct texture packs for the given scene.
-        if (SceneBackground.find("1f") != std::string::npos) {
-            if (inGame < 1) {
-                tex.Scene2Textures();
-                inGame = 1; //To prevent textures loading multiple times if you go back and fourth into the player options.
-            }
-        }
-
-        if (SceneBackground.find("1fb") != std::string::npos) {
-            tex.Scene3Textures();
-            inGame = 1;
-        }
-
-        if (SceneBackground.find("1da") != std::string::npos) {
-            tex.Scene3Textures();
-            inGame = 1;
-        }
-
-
-        if (SceneBackground.find("3") != std::string::npos) {
-            if (inGame < 1) {
-                tex.Scene3Textures();
-                inGame = 1; 
-            }
-        }
-
-        if (SceneBackground.find("4") != std::string::npos) {
-            if (inGame < 1) {
-                tex.Scene4Textures();
-                inGame = 1; 
-            }
-
-        }
-    }
- 
 }
 
 
@@ -201,9 +148,7 @@ int Scene1::scene1() {
     window = SDL_CreateWindow("The Planet and Bonita", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN /* | SDL_WINDOW_RESIZABLE*/ | SDL_WINDOW_ALLOW_HIGHDPI);
  
     windowSurface =  SDL_GetWindowSurface(window);
-    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED ); //|| SDL_RENDERER_PRESENTVSYNC  //USE SDL_RENDERER_PREVENTVSYNC TO SLOW THE GAME DOWN ON HIGH END CARDS.
-//    SDL_RenderSetLogicalSize(renderer, WIDTH, HEIGHT);
-       //              SDL_SetWindowFullscreen(window, SDL_TRUE);  //Stretch the screen.
+    renderer =       SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED ); 
     font =           TTF_OpenFont("arial.ttf", 25);
     fcolor =         { 255, 255, 255 }; //Font colour.
     bcolor =         { 0,0,0 }; //Font background colour.
@@ -297,7 +242,7 @@ int Scene1::scene1() {
         }
 
         //Check what textures and player invetory is required when continuing a game.
-        continueGameCheck();
+        inv.continueGameCheck();
 
         //Place player objects in the game.
         pob.ObjectController();

@@ -38,6 +38,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     //Menu Hover buttons //////////////////////////////////////////////////////////////////
     bool sound = s.checkSoundStatus(Sound::soundOn);
 
+    /// SOUND SWITCHING ON AND OFF /////////////////////////////////////////////////////////////////
     if (sound == true && Scene1::SceneBackground == "0" && x > 27 && x < 77 && y > 28 && y < 77) {
         Scene1::menuSound = 1;
         Scene1::sceneHalt = 1; //Important so it only registers one click!
@@ -51,6 +52,8 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         s.loadSounds(Scene1::SceneBackground);
        
     }
+    //////////////////////////////////////////////////////////////////////////////
+
     //Switching between FULL screen //////////////////////////////////////////////////////////////
     if (Scene1::fullScreenTrigger == false && Scene1::SceneBackground == "0" && x > 927 && x < 951 && y > 62 && y < 87) {
         Scene1::sceneHalt = 1; //Important so it only registers one click!

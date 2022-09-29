@@ -44,6 +44,7 @@ namespace brightland {
 		static int playerIsMoving;
 		static int threadRipper;
 		static bool fullScreenTrigger;
+		static bool doPerfCheck;
 
 
 		int scene;
