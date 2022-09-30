@@ -16,7 +16,7 @@ void PlayerInteraction::textDimensions(int messageLength) {
     //Ternary operator
     //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
     //Used to reduce lots of IF statements.
-
+    //IF                                                                       //TRUE THEN ?                                                                                             //ELSE :
     Scene1::gdSprite.x > 550 && Scene1::gdSprite.y > 100 && messageLength > 40 ? Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
     Scene1::gdSprite.y < 100 ? Scene1::textRect = { Scene1::gdSprite.x - 300 ,  Scene1::gdSprite.y + 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
     Scene1::gdSprite.x > 550 && messageLength > 14 ? Scene1::textRect = { Scene1::gdSprite.x - 300,  Scene1::gdSprite.y - 100, messageLength * 10, 20 } : Scene1::textRect = { Scene1::gdSprite.x - 60,  Scene1::gdSprite.y - 100, messageLength * 10, 20 };
