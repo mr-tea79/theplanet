@@ -475,25 +475,21 @@ int Scene1::scene1() {
 
         if (lookMessage != "" ) {  
             playerMessage = true;    
-            pi.InteractionControllerObject(lookMessage, gameObject);
-           // pi.InteractionControllerLook(lookMessage, gameObject);                    
+            pi.InteractionControllerObject(lookMessage, gameObject);                 
         }
 
         if (useMessage != "") {
             playerMessage = true;
             pi.InteractionControllerObject(useMessage, gameObject);
-          //  pi.InteractionControllerUse(useMessage, gameObject);
         }
 
         if (openMessage != "") {
             playerMessage = true;
             pi.InteractionControllerObject(openMessage, gameObject);
-          //  pi.InteractionControllerOpen(openMessage, gameObject);
         }
         if (pullMessage != "") {
             playerMessage = true;
             pi.InteractionControllerObject(pullMessage, gameObject);
-          //  pi.InteractionControllerPull(pullMessage, gameObject);
         }
        
  
@@ -502,7 +498,7 @@ int Scene1::scene1() {
             if(action !=1 ){
                //This is important because it prevents the player from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
-             //   Textures::spriteTexture = nullptr; //Probably not needed but not causing harm.
+             //   Textures::spriteTexture = nullptr; //Probably not needed but not causing harm. (Removed 30/10/2022)
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
