@@ -65,7 +65,7 @@ namespace brightland {
 		SDL_Rect menu;
 		static SDL_Rect gdSprite;
 		static SDL_Rect textRect;
-		SDL_Rect menuTextRect;
+		//SDL_Rect menuTextRect;
 		SDL_Rect windowRect;
 
 		SDL_Surface* windowSurface;
@@ -85,7 +85,6 @@ namespace brightland {
 
 	public:
 		int scene1();
-		void continueGameCheck();
 		bool checkFScreenStatus(bool status);
 
 		void DoAction();

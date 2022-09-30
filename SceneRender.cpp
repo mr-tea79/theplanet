@@ -12,7 +12,7 @@ using namespace brightland;
 //This is used to identify which button was pressed. For example: New Game button.
 std::string buttonID = "";
 
-
+//Specify scenes where you do not want the player to have the blinking animation.
 void noBlinking() {
     if (Scene1::SceneBackground == "1c" || Scene1::SceneBackground == "1d" || Scene1::SceneBackground == "3c") {
         PlayerMovement::blink = false;

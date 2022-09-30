@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Textures.h"
 #include "Scene1.h"
+#include "MenuInteraction.h"
 
 using namespace brightland;
 
@@ -535,4 +536,16 @@ void Textures::Scene4Textures() {
     imageSurface = IMG_Load("Scenes/Scene4b.png");
     scene4b = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
+}
+
+void Textures::TextureUpdater(SDL_Surface* texture, std::string action) {   
+    MenuInteraction mi;
+    SDL_DestroyTexture(spriteTexture);
+    SDL_CreateTextureFromSurface(Scene1::renderer, texture);
+    if (action == "Action") {
+        mi.doAction();
+    }
+    
+
+
 }

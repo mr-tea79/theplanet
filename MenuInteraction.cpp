@@ -120,6 +120,8 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
      
     PlayerObjects pob;
     Inventory inv;
+    Textures tex;
+
     int n = lookStatement.length();
 
     if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
@@ -128,131 +130,116 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     if (lookStatement == "Look at Mound" && Scene1::SceneBackground == "4a") {
         lookMessage = "Hmmmm very unusual.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+       
     }
 
     if (gd > 650 && lookStatement == "Look at Markings" && Scene1::SceneBackground == "4a") {
         lookMessage = "TOAD1000: will need more examples to translate, use personal computer to record.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+      
     }
 
     if (gd > 650 && lookStatement == "Look at Entrance") {
         lookMessage = "Looks like a stairwell, this is crazy!";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+    
     }
 
     if (gd > 800 && lookStatement == "Look at Drawing") {
         lookMessage = "That's Earth and the Solar System, strange..";
         Scene1::secretTrigger = 4;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+     
     }
 
 
     if (gd > 800 && lookStatement == "Look at Strange peg") {
         lookMessage = "It's a peg with a latch on it, hmmmm";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+   
     }
 
     if (lookStatement == "Look at Disc") {
         lookMessage = "A gold disc with markings on it and a small hole in the middle";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+       
     }
 
     if (lookStatement == "Look at Spaceflix") {
         lookMessage = "I have 5 billion films and TV shows stored on it!";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+     
     }
 
     if (lookStatement == "Look at Sparkling object" && gd > 360 && gy <260) {
         lookMessage = "It's a small gold disc!";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+      
     }
 
     if (lookStatement == "Look at Pot plant") {
         AI::aiPlayMessages = true;
         AI::dialogNumber = 18;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+    
     }
 
     if (lookStatement == "Look at Oxygenator 5000" && gd > 700 ) {
         lookMessage = "It's for topping up oxygen in my suit!";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+     
     }
 
     if (lookStatement == "Look at Cardboard box") {
         AI::aiPlayMessages = true;
         AI::dialogNumber = 19;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+    
     }
 
 
     if (gy < 260 && gd > 300 && lookStatement == "Look at Loose rocks") {
         lookMessage = "Hmmmm what's this?";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+   
     }
 
 
     if (lookStatement == "Look at Big X") {
         lookMessage = "I think this is where I am.. I think this is a map.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+  
     }
 
     if (lookStatement == "Look at Odd formation") {
         lookMessage = "Not sure what this is supposed to be?";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+
     }
 
     if (lookStatement == "Look at Location of interest") {
         lookMessage = "Whatever this is, it has to be significant.";
         Scene1::secretTrigger = 1; //Unlock hidden area.
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+     
     }
 
 
@@ -269,20 +256,18 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::aiPlayMessages = true;
         AI::dialogNumber = 7;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+   
     }
 
     if (lookStatement == "Look at Self Inflating Tent") {
         AI::aiPlayMessages = true;
         AI::dialogNumber = 9;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+   
     }
 
     if (lookStatement == "Look at Ape Tape") {      
@@ -290,123 +275,108 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::aiPlayMessages = true;
         AI::dialogNumber = 6;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
     }
 
     if (lookStatement == "Look at Flag") {
         AI::aiPlayMessages = true;
         AI::dialogNumber = 10;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+
     }
 
     if (lookStatement == "Look at Battery Lantern") {
         AI::aiPlayMessages = true;
         AI::dialogNumber = 17;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+     
     }
 
     if (lookStatement == "Look at Pipe") {
         lookMessage = "This is used with an Oxygenator.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+  
     }
 
     if (lookStatement == "Look at Human remains") {
         lookMessage = "Unbelievable! I wonder if this is the woman in the cave drawing.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
     }
 
     if (lookStatement == "Look at Cave door drawing") {
         lookMessage = "Seems like a cave door with the artifact placed in it. Weird.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+  
     }
 
     if (lookStatement == "Look at Artifact drawing") {
         lookMessage = "That looks like an artifact which has a line pointing to south America.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
     }
 
     if (lookStatement == "Look at Alien solar system drawing") {
         lookMessage = "I think this is the system I am in. Those lines are the planet that I am on.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+   
     }
     if (lookStatement == "Look at Human drawing") {
         lookMessage = "What looks like an elderly human kneeling before that large person";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
     }
     if (lookStatement == "Look at Flying saucer drawing") {
         lookMessage = "That looks like an Alien Craft approaching Planet Earth!";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+   
     }
     if (lookStatement == "Look at Large Alien drawing") {
         lookMessage = "That is one big looking person with a very long head.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+  
     }
     if (lookStatement == "Look at Planet drawing") {
         lookMessage = "That is Earth, I can see the Americas.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+  
     }
 
 
     if (lookStatement == "Look at Smooth surface") {
         lookMessage = "How can I look at that, it's pitch black!";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+    
     }
 
     if (gy < 208 && gd > 400 && gd < 529 && lookStatement == "Look at Crash site") {
         lookMessage = "My crashed ship, no chance of repairing.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+ 
     }
 
     if (gy < 90 && gd > 670 && lookStatement == "Look at Crators") {
         lookMessage = "These crators are lined up in a row, very strange.";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+   
     }
 
     if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {     
@@ -414,19 +384,17 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::aiPlayMessages = true;
         AI::dialogNumber = 4;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
        
     }
 
     if (x >= 613 && x <= 640 && y >= 335 && y <= 378 && lookStatement == "Look at Stuffed toy") {
         lookMessage = "That's George";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
     }
 
  
@@ -448,10 +416,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::aiPlayMessages = true;
         AI::dialogNumber = 20;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction(); //VERY IMPORTANT OR MEMORY LEAK AND FLICKERING SPRITE!
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+  
     
     }
 
@@ -459,10 +426,9 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::aiPlayMessages = true;
         AI::dialogNumber = 8;
         AI::playerTalk = true;
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        doAction();
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
     }
 
  
@@ -471,7 +437,6 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::aiPlayMessages = true;
         AI::dialogNumber = 12;
         AI::playerTalk = true;
-        doAction();
         lookStatement = "";
     }
 
@@ -487,6 +452,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
     std::string openMessage;
 
     PlayerObjects pob;
+    Textures tex;
 
     int n = openStatement.length();
 
@@ -495,12 +461,11 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
 
     if (gd >= 410 && gy > 400 && openStatement == "Open Cardboard box") {
         openMessage = "Oh, what's this?";
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        openStatement = "";
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         Textures::objectTexture6 = Textures::objectTexture5;
         PlayerObjects::boxOpened = 1;
-        doAction();
-        openStatement = "";
+    
       
     }
 
@@ -513,7 +478,7 @@ std::string MenuInteraction::Open(int x, int y, int gd, int gy, int mInteraction
 std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string useMessage;
-
+    Textures tex;
     PlayerObjects pob;
     Inventory inv;
     int n = useStatement.length();
@@ -526,90 +491,78 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         if (inv.checkItem("Tape") == 0) {
             useMessage = "I need to pick it up first.";
             useStatement = "";
-            doAction();
             return useMessage;
         }
-
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteAction);
+        useStatement = "";
+        tex.TextureUpdater(Textures::spriteAction, "Action");
         inv.useItem("Tape");
         Inventory::inv.append("3");
         AI::aiPlayMessages = true;
         AI::dialogNumber = 11;
         AI::playerTalk = true;
-        useStatement = "";
-        doAction();
+      
     }
 
 
     if (useStatement == "Use PDA") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use PDA with";
 
     }
     if (Scene1::useStatement == "Use PDA with Markings" && gd > 600) {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-      
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useMessage = "TOAD1000: Recorded";
         Scene1::secretTrigger++;
         std::cout << Scene1::secretTrigger << std::endl;
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
-        doAction();
+       
        
 
     }
 
     if (useStatement == "Use Spaceflix") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
-        useMessage = "Maybe later!";
         useStatement = "";
-        doAction();
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
+        useMessage = "Maybe later!";
+     
     }
 
 
     if (useStatement == "Use Wreckage") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        useMessage = "It's wrecked!";
         useStatement = "";
-        doAction();
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+        useMessage = "It's wrecked!";
+     
     }
 
     if (useStatement == "Use Smooth surface") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        useMessage = "I'll just have a quick sit down, ahhhh nice.";
         useStatement = "";
-        doAction();
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+        useMessage = "I'll just have a quick sit down, ahhhh nice.";
+  
     }
 
     if (useStatement == "Use Sandy clearing") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        useStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
         AI::aiPlayMessages = true;
         AI::dialogNumber = 14;
         AI::playerTalk = true;
-        useStatement = "";
-        doAction();
+   
     }
 
     if (useStatement == "Use Oxygenator 5000" && gd >700 ) {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
-        useMessage = "It's missing the connector pipe.";
         useStatement = "";
-        doAction();
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+        useMessage = "It's missing the connector pipe.";
+ 
     }
 
     if (useStatement == "Use Disc") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Disc with";
@@ -617,11 +570,10 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     }
 
     if (Scene1::useStatement == "Use Disc with Strange peg" && gd > 800) {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
         useMessage = "Oooh some text has appeared on the wall!";
         inv.useItem("Disc");
-        doAction();
+       
         Inventory::inv.append("8");
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
@@ -630,8 +582,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     }
 
     if (useStatement == "Use Pipe") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Pipe with";
@@ -639,19 +590,17 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     }
 
     if (useStatement == "Use Battery Lantern") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Battery Lantern with";
     }
 
     if (Scene1::useStatement == "Use Battery Lantern with Smooth surface") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
         useMessage = "Let there be light!";
         inv.useItem("Battery Lantern");
-        doAction();
+     
         Inventory::inv.append("7");
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
@@ -666,11 +615,10 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
 
 
     if (Scene1::useStatement == "Use Pipe with Oxygenator 5000" && gd > 720 ) {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
         useMessage = "TOAD 1000: Suit has been pressurized!";     
         inv.useItem("Pipe");
-        doAction();      
+      
         Inventory::inv.append("5");
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
@@ -678,8 +626,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     }
    
     if (useStatement == "Use Self Inflating Tent") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useStatement = "";
         Scene1::useStatement = "with";
         Scene1::actionStatement = "Use Self Inflating Tent with";
@@ -697,13 +644,12 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
     }
     
     if (wrongAction == 1) {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteDown1);
+        tex.TextureUpdater(Textures::spriteDown1, "Action");
         useMessage = wrongActionMessage;
         wrongAction = 0;
         Scene1::actionStatement = "";
         Scene1::useStatement = "";
-        doAction();
+ 
     }
     
     return useMessage;
@@ -714,7 +660,7 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
 std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string gameObject;
-  
+    Textures tex;
     PlayerObjects pob;
     Inventory inv;
 
@@ -735,72 +681,61 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
         if (items < 1) {          
 
             if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 691 && gy > 425) {
-                SDL_DestroyTexture(Textures::spriteTexture);
-                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spritePick); //Shows a different player movement when picking up things.
-               
+                tex.TextureUpdater(Textures::spritePick, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+             
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
 
            
             if (menuMessages == "Disc" && pickUpStatement == "Pick up Sparkling object" && gd > 360 && gy < 260) {
-                SDL_DestroyTexture(Textures::spriteTexture);
-                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a); //Shows a different player movement when picking up things.
+                tex.TextureUpdater(Textures::spriteBack1a, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+             
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
 
 
             if (menuMessages == "Flag" && pickUpStatement == "Pick up Flag") {
-               
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+             
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
             if (menuMessages == "Tape" && pickUpStatement == "Pick up Ape Tape") {
-                SDL_DestroyTexture(Textures::spriteTexture);
-                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a); //Shows a different player movement when picking up things.
-              
+                tex.TextureUpdater(Textures::spriteBack1a, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+              
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
 
             if (menuMessages == "Tent" && pickUpStatement == "Pick up Self Inflating Tent") {
-                SDL_DestroyTexture(Textures::spriteTexture);
-                SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a); //Shows a different player movement when picking up things.
-             
+                tex.TextureUpdater(Textures::spriteBack1a, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+              
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
 
-            if (menuMessages == "Battery Lantern" && pickUpStatement == "Pick up Battery Lantern") {
-              
+            if (menuMessages == "Battery Lantern" && pickUpStatement == "Pick up Battery Lantern") {     
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+             
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
             }
 
             if (menuMessages == "Pipe" && pickUpStatement == "Pick up Plastic Pipe") {
-              
                 pickUpStatement = "";
-                inv.SQLInsertInventory(gameObject, 0);
-                doAction();
+                inv.SQLInsertInventory(gameObject, 0);            
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
                 Textures::objectTexture6 = Textures::objectTexture7;
@@ -820,7 +755,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
 std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string pullMessage;
-
+    Textures tex;
     PlayerObjects pob;
     Inventory inv;
     int n = pullStatement.length();
@@ -830,11 +765,10 @@ std::string MenuInteraction::Pull(int x, int y, int gd, int gy, int mInteraction
     }
   
     if (gy < 260 && gd > 400 && gd <569 && pullStatement == "Pull Loose rocks") {
-        SDL_DestroyTexture(Textures::spriteTexture);
-        SDL_CreateTextureFromSurface(Scene1::renderer, Textures::spriteBack1a);
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
         pullMessage = "Oooh!";
         pullStatement = "";
-        doAction();
+    ;
         Scene1::secretTrigger = 2;
     }
 

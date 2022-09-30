@@ -157,6 +157,7 @@ namespace brightland {
 		void Scene4Textures();
 		void MovementTextures();
 		void LoadActionTextures();
+		void TextureUpdater(SDL_Surface* texture, std::string action);
 
 	};
 
