@@ -23,8 +23,6 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
     blink = false;
     if (position == 0) {
         tex.TextureUpdater(Textures::spriteRight1a, "Movement");
-       // Textures::spriteTexture = nullptr;
-      
         gd += hspeed; //Speed of sprite movement.
     }
     if (position == 1) {

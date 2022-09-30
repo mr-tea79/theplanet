@@ -538,6 +538,9 @@ void Textures::Scene4Textures() {
     SDL_FreeSurface(imageSurface);
 }
 
+//This will update the player texture and if there is dialog "Action", it will halt the game so that the
+//sprite does not flicker.
+
 void Textures::TextureUpdater(SDL_Surface* texture, std::string action) {   
     MenuInteraction mi;
     SDL_DestroyTexture(spriteTexture);
