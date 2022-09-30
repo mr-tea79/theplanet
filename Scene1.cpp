@@ -475,32 +475,35 @@ int Scene1::scene1() {
 
         if (lookMessage != "" ) {  
             playerMessage = true;    
-            pi.InteractionControllerObject(lookMessage, gameObject);                   
+            pi.InteractionControllerObject(lookMessage, gameObject);
+           // pi.InteractionControllerLook(lookMessage, gameObject);                    
         }
 
         if (useMessage != "") {
             playerMessage = true;
             pi.InteractionControllerObject(useMessage, gameObject);
+          //  pi.InteractionControllerUse(useMessage, gameObject);
         }
 
         if (openMessage != "") {
             playerMessage = true;
             pi.InteractionControllerObject(openMessage, gameObject);
+          //  pi.InteractionControllerOpen(openMessage, gameObject);
         }
         if (pullMessage != "") {
             playerMessage = true;
             pi.InteractionControllerObject(pullMessage, gameObject);
+          //  pi.InteractionControllerPull(pullMessage, gameObject);
         }
        
  
         if (wx > gdSprite.x || wx < gdSprite.x) {
           
             if(action !=1 ){
-                tex.TextureUpdater(Textures::spriteRight1a, "Action");
                //This is important because it prevents the player from disappearing.
-         //       SDL_DestroyTexture(Textures::spriteTexture);
-            //    Textures::spriteTexture = nullptr; //Probably not needed but not causing harm.
-             //   Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
+                SDL_DestroyTexture(Textures::spriteTexture);
+                Textures::spriteTexture = nullptr; //Probably not needed but not causing harm.
+                Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
                // DoAction();  //THIS SEEMS TO CAUSE SPRITE FLICKER (22/08/2022)
