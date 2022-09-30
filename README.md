@@ -50,7 +50,7 @@ Images used in making the scenes were to the best of my knowledge all from googl
 
 # Currently known problems
 
-When continuing a game, scene dialog is missing.
+When continuing a game, scene dialog is missing (FIXED).
 
 Occasionally the sprite appears in the text area ( I THINK THIS IS NOW SOLVED!)
 
