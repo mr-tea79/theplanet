@@ -502,7 +502,7 @@ int Scene1::scene1() {
             if(action !=1 ){
                //This is important because it prevents the player from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = nullptr; //Probably not needed but not causing harm.
+             //   Textures::spriteTexture = nullptr; //Probably not needed but not causing harm.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           

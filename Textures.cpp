@@ -2,6 +2,7 @@
 #include "Textures.h"
 #include "Scene1.h"
 #include "MenuInteraction.h"
+#include "AI.h"
 
 using namespace brightland;
 
@@ -541,11 +542,12 @@ void Textures::Scene4Textures() {
 //This will update the player texture and if there is dialog "Action", it will halt the game so that the
 //sprite does not flicker.
 
-void Textures::TextureUpdater(SDL_Surface* texture, std::string action) {   
+void Textures::TextureUpdater(SDL_Surface* texture, std::string action) { 
     MenuInteraction mi;
     SDL_DestroyTexture(spriteTexture);
     SDL_CreateTextureFromSurface(Scene1::renderer, texture);
     if (action == "Action") {
+        std::cout << "ACTION" << std::endl;
         mi.doAction();
     }
     
