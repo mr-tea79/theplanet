@@ -438,6 +438,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::dialogNumber = 12;
         AI::playerTalk = true;
         lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
     }
 
     else {
