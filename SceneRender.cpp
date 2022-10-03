@@ -42,9 +42,9 @@ int SceneRender::HoverButtons(int x, int y) {
         return 1;
     }
    
-    if (x > 17 && x < 47 && y > 704 && y < 742 && Scene1::SceneBackground == "0") {
-        buttonID = "exitGame";
+    if (x > 17 && x < 47 && y > 704 && y < 742 && Scene1::SceneBackground == "0") {      
         Scene1::hoverSound = 1;
+        buttonID = "exitGame";
         return 1;
     }
 

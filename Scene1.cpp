@@ -428,7 +428,6 @@ int Scene1::scene1() {
             }
            
 
-
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
                 if (actionMessage != "" || actionStatement != "" ) {
