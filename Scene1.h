@@ -45,6 +45,7 @@ namespace brightland {
 		static int threadRipper;
 		static bool fullScreenTrigger;
 		static bool doPerfCheck;
+		static bool quitGame;
 
 
 		int scene;
@@ -86,6 +87,7 @@ namespace brightland {
 	public:
 		int scene1();
 		bool checkFScreenStatus(bool status);
+		
 
 		void DoAction();
 

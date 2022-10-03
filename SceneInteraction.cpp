@@ -34,6 +34,8 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     //Check database if item has been picked up.
     Inventory inv;
     Sound s;
+    Textures tex;
+   
 
     std::string message;
 
@@ -54,6 +56,11 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         s.loadSounds(Scene1::SceneBackground);
        
     }
+
+    if (Scene1::SceneBackground == "0" && x > 17 && x < 47 && y > 704 && y < 742) {
+        Scene1::quitGame = true;
+    }
+
     //////////////////////////////////////////////////////////////////////////////
 
     //Switching between FULL screen //////////////////////////////////////////////////////////////
@@ -137,7 +144,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         SetSpritePosition(860,120,10);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
-        //Bug here! Sometimes you transition to scene 3b.. bit odd.
+       
     }
 
     if (Scene1::SceneBackground == "3a" && playerCurrentLocationX >= 862 && playerCurrentLocationX <= 918 && playerCurrentLocationY < 159 && playerCurrentLocationY > 107 && Scene1::secretTrigger > 0) {
@@ -288,6 +295,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
         SetSpritePosition(400,400,160);
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
         Scene1::SceneTransitionStatement = "";
      //   Scene1::mouseClick = false;
         s.loadSounds(sceneBackground);
@@ -348,6 +356,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     /* Heading North */
     if (Scene1::SceneBackground == "1" && Scene1::SceneTransitionStatement == "Head North") {
         if (Inventory::inv.find("3") == std::string::npos) {
+            tex.TextureUpdater(Textures::spriteDown1, "Action");
             Scene1::sceneHalt = 1;
             AI::aiPlayMessages = true;
             AI::dialogNumber = 3;
@@ -355,6 +364,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         }
 
         else if (Scene1::objectToDestroy.find("1") == std::string::npos) {
+            tex.TextureUpdater(Textures::spriteDown1, "Action");
             Scene1::sceneHalt = 1;
             AI::aiPlayMessages = true;
             AI::dialogNumber = 2;

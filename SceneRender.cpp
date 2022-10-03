@@ -42,6 +42,13 @@ int SceneRender::HoverButtons(int x, int y) {
         return 1;
     }
    
+    if (x > 17 && x < 47 && y > 704 && y < 742 && Scene1::SceneBackground == "0") {
+        buttonID = "exitGame";
+        Scene1::hoverSound = 1;
+        return 1;
+    }
+
+   
     //Plus hover button (main menu)
     if (x >= 619 && x <= 691 && y >= 149 && y <= 178 && Scene1::SceneBackground == "01") {
         buttonID = "Plus";
@@ -98,8 +105,7 @@ int SceneRender::HoverButtons(int x, int y) {
         buttonID = "continue1";
         return 1;
     }
-
-
+ 
 
     return 0;
 }
@@ -218,6 +224,9 @@ void SceneRender::sceneRenderOverlay(int x, int y) {
         }
         if (hoverTrigger == 1 && buttonID == "fullScreen") {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverFScreen, NULL, &Textures::RHoverFScreen);
+        }
+        if (hoverTrigger == 1 && buttonID == "exitGame") {
+            SDL_RenderCopy(Scene1::renderer, Textures::hoverExitGame, NULL, &Textures::RHoverExitGame);
         }
         if (Sound::soundOn == false) {
             SDL_RenderCopy(Scene1::renderer, Textures::hoverNoSound, NULL, &Textures::RHoverNoSound);

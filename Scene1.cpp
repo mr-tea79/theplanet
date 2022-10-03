@@ -69,6 +69,7 @@ bool Scene1::mouseClick = false;
 int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in twice. Needs looking at as I don't think its working correctly.
 int Scene1::inGame = 0;
 bool Scene1::doPerfCheck = true; //This is to inform the system to do a performance check of hardware.
+bool Scene1::quitGame = false;
 //int Scene1::soundCount = 0;
 
 static int mouseHold = 0;
@@ -92,8 +93,6 @@ bool Scene1::checkFScreenStatus(bool status) {
     else{ SDL_SetWindowFullscreen(window, SDL_FALSE); }
     return status;
 }
-
-
 
 int Scene1::scene1() {
   
@@ -418,6 +417,18 @@ int Scene1::scene1() {
            
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
 
+            //Monitor for quit game
+            if (quitGame == true) {
+                if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
+                    inv.gameSave(SceneBackground);
+                }
+
+                Scene1::SceneBackground = "0";
+                break;
+            }
+           
+
+
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
                 if (actionMessage != "" || actionStatement != "" ) {
@@ -496,9 +507,8 @@ int Scene1::scene1() {
         if (wx > gdSprite.x || wx < gdSprite.x) {
           
             if(action !=1 ){
-               //This is important because it prevents the player from disappearing.
                 SDL_DestroyTexture(Textures::spriteTexture);
-             //   Textures::spriteTexture = nullptr; //Probably not needed but not causing harm. (Removed 30/10/2022)
+                Textures::spriteTexture = nullptr; //Prevents memory leak.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{           
