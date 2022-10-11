@@ -25,25 +25,21 @@ int SceneRender::HoverButtons(int x, int y) {
 
     //New game hover button (main menu)
     if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {  
-        Scene1::hoverSound = 1;
         buttonID = "New Game";
         return 1;
     }
     //Continue game hover button (main menu)
     if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
-        Scene1::hoverSound = 1;
         buttonID = "Continue Game";
         return 1;
     }
     //Player Options hover button (main menu)
     if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
-        Scene1::hoverSound = 1;
         buttonID = "Player Options";
         return 1;
     }
    
-    if (x > 17 && x < 47 && y > 704 && y < 742 && Scene1::SceneBackground == "0") {      
-        Scene1::hoverSound = 1;
+    if (x > 17 && x < 47 && y > 704 && y < 742 && Scene1::SceneBackground == "0") {  
         buttonID = "exitGame";
         return 1;
     }

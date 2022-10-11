@@ -300,6 +300,7 @@ int Scene1::scene1() {
                         //This is an attempt to prevent hover sounds looping, a REAL brain teaser if I have saw one!
                                        
                         if (checkHoverLocation == 0 && hoverHold < 1){
+                            std::cout << "YES PLAY HOVER SOUND!" << std::endl;
                             s.playHoverSound();
                             hoverHold++;
                         }
@@ -417,16 +418,7 @@ int Scene1::scene1() {
            
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
 
-            //Monitor for quit game
-            if (quitGame == true) {
-                if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
-                    inv.gameSave(SceneBackground);
-                }
-
-                Scene1::SceneBackground = "0";
-                break;
-            }
-           
+          
 
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
@@ -593,6 +585,17 @@ int Scene1::scene1() {
         //Make something appear!    
         SDL_RenderPresent(renderer);
         mouseClick = false;    
+
+        //Monitor for quit game
+        if (quitGame == true) {
+            if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
+                inv.gameSave(SceneBackground);
+            }
+
+            Scene1::SceneBackground = "0";
+            break;
+        }
+
 
         //This is a timer to test speed of system - work in progress.
         if(timerStop !=3000){          

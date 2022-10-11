@@ -98,283 +98,241 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     //Inventory Hover Messages 
+    if(Scene1::SceneBackground !="0") {
+        if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
+            if(inv.checkItem("PDA") != 0)
+                message = Scene1::actionStatement + " PDA";
+        }
 
-    if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
-        if(inv.checkItem("PDA") != 0)
-            message = Scene1::actionStatement + " PDA";
-    }
+        if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {
+            if(inv.checkItem("Tent") != 0)
+                message = Scene1::actionStatement + " Self Inflating Tent";
+        }
 
-    if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {
-        if(inv.checkItem("Tent") != 0)
-            message = Scene1::actionStatement + " Self Inflating Tent";
-    }
+        if (x >= 771 && x <= 821 && y >= 796 && y <= 798) {
+            if(inv.checkItem("Flag") != 0)
+                message = "Flag";
+        }
 
-    if (x >= 771 && x <= 821 && y >= 796 && y <= 798) {
-        if(inv.checkItem("Flag") != 0)
-            message = "Flag";
-    }
+        if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
+            if(inv.checkItem("Tape") != 0)
+                message = Scene1::actionStatement + " Ape Tape";
+        }
+        if (x >= 764 && x <= 815 && y >= 695 && y <= 753) {
+            if (inv.checkItem("Battery Lantern") != 0)
+                message = Scene1::actionStatement + " Battery Lantern";
+        }
 
-    if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
-        if(inv.checkItem("Tape") != 0)
-            message = Scene1::actionStatement + " Ape Tape";
-    }
-    if (x >= 764 && x <= 815 && y >= 695 && y <= 753) {
-        if (inv.checkItem("Battery Lantern") != 0)
-            message = Scene1::actionStatement + " Battery Lantern";
-    }
+        if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
+            if(inv.checkItem("Pipe") != 0)
+                message = Scene1::actionStatement + " Pipe";
+        }
 
-    if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
-        if(inv.checkItem("Pipe") != 0)
-            message = Scene1::actionStatement + " Pipe";
-    }
-
-    if (x >= 753 && x <= 827 && y >= 699 && y <= 788) {
-        if (inv.checkItem("Disc") != 0)
-            message = Scene1::actionStatement + " Disc";
-    }
+        if (x >= 753 && x <= 827 && y >= 699 && y <= 788) {
+            if (inv.checkItem("Disc") != 0)
+                message = Scene1::actionStatement + " Disc";
+        }
 
  
-    //Scene Hover Messages
+        //Scene Hover Messages
 
-    if (Scene1::SceneBackground == "4a" && x <= 442 && x >= 319 && y < 198 && y > 127) {
-        message = Scene1::actionStatement + " Mound";
-    }
+        if (Scene1::SceneBackground == "4a" && x <= 442 && x >= 319 && y < 198 && y > 127) {
+            message = Scene1::actionStatement + " Mound";
+        }
 
+        if (Scene1::SceneBackground == "4a" && x <= 837 && x >= 699 && y < 504 && y > 483 && Scene1::secretTrigger < 5) {
+            message = Scene1::actionStatement + " Markings";
+        }
 
-    if (Scene1::SceneBackground == "4a" && x <= 837 && x >= 699 && y < 504 && y > 483 && Scene1::secretTrigger < 5) {
-        message = Scene1::actionStatement + " Markings";
-    }
-
-
-    if (Scene1::SceneBackground == "4a" && x <= 851 && x >= 729 && y < 470 && y > 406) {
-        message = Scene1::actionStatement + " Entrance";
-    }
+        if (Scene1::SceneBackground == "4a" && x <= 851 && x >= 729 && y < 470 && y > 406) {
+            message = Scene1::actionStatement + " Entrance";
+        }
    
-    if (Scene1::SceneBackground == "3d" && Scene1::secretTrigger > 2 && x <= 1000 && x >= 959 && y < 402 && y > 292) {
+        if (Scene1::SceneBackground == "3d" && Scene1::secretTrigger > 2 && x <= 1000 && x >= 959 && y < 402 && y > 292) {
             message = Scene1::actionStatement + " Drawing";
-    }
+        }
 
-    if (Scene1::SceneBackground == "3d" && x <= 1009 && x >= 948 && y < 457 && y > 409) {
-        message = Scene1::actionStatement + " Strange peg";
-    }
+        if (Scene1::SceneBackground == "3d" && x <= 1009 && x >= 948 && y < 457 && y > 409) {
+            message = Scene1::actionStatement + " Strange peg";
+        }
 
-    if (Scene1::SceneBackground == "1da" && x <= 971 && x >= 843 && y < 231 && y > 142) {
-        message = Scene1::actionStatement + " Spaceflix";
-    }
+        if (Scene1::SceneBackground == "1da" && x <= 971 && x >= 843 && y < 231 && y > 142) {
+            message = Scene1::actionStatement + " Spaceflix";
+        }
 
-    if (Scene1::SceneBackground == "1da" && x <= 411 && x >= 364 && y < 402 && y > 396) {
-        message = Scene1::actionStatement + " Pot plant";
-    }
+        if (Scene1::SceneBackground == "1da" && x <= 411 && x >= 364 && y < 402 && y > 396) {
+            message = Scene1::actionStatement + " Pot plant";
+        }
 
-    if (Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2 && inv.checkItem("Disc") != 1) {
-        message = Scene1::actionStatement + " Sparkling object";
-    }
-    if (Scene1::SceneBackground == "3f" && x <= 560 && x >=483 && y < 262 && y > 202 && Scene1::secretTrigger <2) {
-        message = Scene1::actionStatement + " Loose rocks";
-    }
+        if (Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2 && inv.checkItem("Disc") != 1) {
+            message = Scene1::actionStatement + " Sparkling object";
+        }
+        if (Scene1::SceneBackground == "3f" && x <= 560 && x >=483 && y < 262 && y > 202 && Scene1::secretTrigger <2) {
+            message = Scene1::actionStatement + " Loose rocks";
+        }
 
-    if (Scene1::SceneBackground == "3f" && x <= 20 && y < 414 && y > 250 ) {
-        message = Scene1::actionStatement + " Leave crator";
-    }
+        if (Scene1::SceneBackground == "3f" && x <= 20 && y < 414 && y > 250 ) {
+            message = Scene1::actionStatement + " Leave crator";
+        }
 
-    if (Scene1::SceneBackground == "3a" && x >= 878 && x <= 919 && y < 148 && y > 121 && Scene1::secretTrigger > 0) {
-        message = Scene1::actionStatement + " Point of interest";
-    }
+        if (Scene1::SceneBackground == "3a" && x >= 878 && x <= 919 && y < 148 && y > 121 && Scene1::secretTrigger > 0) {
+            message = Scene1::actionStatement + " Point of interest";
+        }
 
-    if (Scene1::SceneBackground == "3e" && x >= 183 && x <= 236 && y < 429 && y > 382) {
-        message = Scene1::actionStatement + " Big X";
-    }
+        if (Scene1::SceneBackground == "3e" && x >= 183 && x <= 236 && y < 429 && y > 382) {
+            message = Scene1::actionStatement + " Big X";
+        }
 
-    if (Scene1::SceneBackground == "3e" && x >= 753 && x <= 904 && y < 341 && y > 230) {
-        message = Scene1::actionStatement + " Location of interest";
-    }
+        if (Scene1::SceneBackground == "3e" && x >= 753 && x <= 904 && y < 341 && y > 230) {
+            message = Scene1::actionStatement + " Location of interest";
+        }
 
-    if (Scene1::SceneBackground == "3e" && x >= 548 && x <= 716 && y < 306 && y > 213) {
-        message = Scene1::actionStatement + " Odd formation";
-    }
+        if (Scene1::SceneBackground == "3e" && x >= 548 && x <= 716 && y < 306 && y > 213) {
+            message = Scene1::actionStatement + " Odd formation";
+        }
 
-    if (Scene1::SceneBackground == "3d" && x >= 561 && x <=627 && y < 512 && y > 496) {
-        message = Scene1::actionStatement + " Marks in dirt";
-    }
+        if (Scene1::SceneBackground == "3d" && x >= 561 && x <=627 && y < 512 && y > 496) {
+            message = Scene1::actionStatement + " Marks in dirt";
+        }
 
-    if (Scene1::SceneBackground == "3b" && x >= 860 && y < 500 && y > 400) {
-        message = "Leave Rocky Cliff";
-    }
-    if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
-        message = "Exit Cave";
-    }
+        if (Scene1::SceneBackground == "3b" && x >= 860 && y < 500 && y > 400) {
+            message = "Leave Rocky Cliff";
+        }
+        if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
+            message = "Exit Cave";
+        }
 
-    if (Scene1::SceneBackground == "3c" && x <= 37 && y >= 376 && y <= 432) {
-        message = "Exit Cave";
-    }
+        if (Scene1::SceneBackground == "3c" && x <= 37 && y >= 376 && y <= 432) {
+            message = "Exit Cave";
+        }
 
-    if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
-        message = "Exit Cave";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 557 && x <= 618 && y >= 404 && y <= 476) {
-        message = Scene1::actionStatement + " Human remains";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 431 && x <= 527 && y >= 102 && y <= 125) {
-        message = Scene1::actionStatement + " Flying saucer drawing";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 579 && x <= 619 && y >= 96 && y <= 133) {
-        message = Scene1::actionStatement + " Planet drawing";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 677 && x <= 738 && y >= 78 && y <= 192) {
-        message = Scene1::actionStatement + " Large Alien drawing";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 768 && x <= 810 && y >= 154 && y <= 212) {
-        message = Scene1::actionStatement + " Human drawing";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 722 && x <= 942 && y >= 25 && y <= 83) {
-        message = Scene1::actionStatement + " Alien solar system drawing";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 788 && x <= 820 && y >= 258 && y <= 285) {
-        message = Scene1::actionStatement + " Artifact drawing";
-    }
-    if (Scene1::SceneBackground == "3d" && x >= 837 && x <= 910 && y >= 179 && y <= 254) {
-        message = Scene1::actionStatement + " Cave door drawing";
-    }
-
-
-    if (Scene1::SceneBackground == "3c" && x >= 107 && x <= 201 && y >= 400 && y <= 473) {
-        message = Scene1::actionStatement + " Smooth surface";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && inv.checkItem("Battery Lantern") != 1) {
-        message = Scene1::actionStatement + " Battery Lantern";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 554 && x < 591 && y >= 515 && y <= 572 && inv.checkItem("Pipe") != 1 && boxOpened ==1) {
-        message = Scene1::actionStatement + " Plastic Pipe";
-    }
-
-    if (Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92) {
-        message = "Enter cave";
-    }
-
-    if (Scene1::SceneBackground == "3a" && x <= 268 && y >= 347) {
-        message = "Rock face";
-    }
-
-    if (Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369) {
-        message = "Camp";
-    }
-    
-    if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174) {
-        message = Scene1::actionStatement + " Crash site";
-    }
-
-
-    if (Scene1::SceneBackground == "1fb" && x >= 1000 && y >= 390 && y <= 586) {
-        message = "Head East";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 0 && x <= 100 && y >= 390 && y <= 586) {
-        message = "Leave camp";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
-        message = Scene1::actionStatement + " Stuffed toy";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && boxOpened !=1) {
-        message = Scene1::actionStatement + " Cardboard box";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482) {
-        message = Scene1::actionStatement + " Oxygenator 5000";
-    }
-
-    if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {
-        message = "Leave Sofa";
-    }
-
-    if (Scene1::SceneBackground == "1da" && x >= 245 && x <= 295 && y >= 353 && y <= 414) {
-        message = "Sofa";
-    }
-
-    if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283) {
-        message = Scene1::actionStatement + " Sandy clearing";
-    }
-
-    if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248) {
-        message = "Enter Tent";
-    }
-
-    if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582) {
-        message = "Go west";
-        Scene1::SceneTransitionStatement = "West";
-    }
-
-    if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482) {
-        message = "Go back to wreckage";
-        Scene1::SceneTransitionStatement = "Wreckage";
-    }
-
-    if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409) {
-        message = Scene1::actionStatement + " Rocks";
-        
-    }
-
-    if (Scene1::SceneBackground == "1e" && x >= 994  && y >= 0 && y <= 570) {
-        message = "Head east";   
-        Scene1::SceneTransitionStatement = "East";
-    }
-
-    if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111) {
-        message = Scene1::actionStatement + " The moon";
-        
-    }
-
-    if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
-        message = "Enter Wreckage";
-        Scene1::SceneTransitionStatement = "Wreckage";
-        
-    }
-
-    if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
-        message = Scene1::actionStatement + " Wreckage";
-           
-    }
-
-    if (Scene1::SceneBackground == "1" && x >= 609 && x <= 719 && y >= 515 && y <= 542 && inv.checkItem("PDA") != 1) {
-        message = Scene1::actionStatement + " White plastic thingy";             
-    }
-
-
-    if (Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1) {
-        message = Scene1::actionStatement + " Flag";
-    }
-
-    if (Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && inv.checkItem("Tent") != 1) {
-        message = Scene1::actionStatement +  " Self Inflating Tent";
-    }
-
-
-
-    if (Scene1::SceneBackground == "1" && x > 0 && x <= 500 && y > 220 && y < 340 ) {
-        message = "Head North";
-        Scene1::SceneTransitionStatement = "Head North";
-    }
-
-    if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
-        message = "Exit Wreckage";
-        Scene1::SceneTransitionStatement = "Exit Wreckage";
-    }
-
-    if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391) {
-        message = "Computer Screen";
-    }
-
-    if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Inventory::inv.find("3") == std::string::npos){
-        message = Scene1::actionStatement + " Ape Tape";
-    }
-   
-    if (Scene1::SceneBackground == "3a" && x > 662 && x <= 812 && y <= 71){
-        message = Scene1::actionStatement + " Crators";
-    }
-
+        if (Scene1::SceneBackground == "3d" && x <= 37 && y >= 376 && y <= 432) {
+            message = "Exit Cave";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 557 && x <= 618 && y >= 404 && y <= 476) {
+            message = Scene1::actionStatement + " Human remains";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 431 && x <= 527 && y >= 102 && y <= 125) {
+            message = Scene1::actionStatement + " Flying saucer drawing";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 579 && x <= 619 && y >= 96 && y <= 133) {
+            message = Scene1::actionStatement + " Planet drawing";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 677 && x <= 738 && y >= 78 && y <= 192) {
+            message = Scene1::actionStatement + " Large Alien drawing";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 768 && x <= 810 && y >= 154 && y <= 212) {
+            message = Scene1::actionStatement + " Human drawing";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 722 && x <= 942 && y >= 25 && y <= 83) {
+            message = Scene1::actionStatement + " Alien solar system drawing";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 788 && x <= 820 && y >= 258 && y <= 285) {
+            message = Scene1::actionStatement + " Artifact drawing";
+        }
+        if (Scene1::SceneBackground == "3d" && x >= 837 && x <= 910 && y >= 179 && y <= 254) {
+            message = Scene1::actionStatement + " Cave door drawing";
+        }
+        if (Scene1::SceneBackground == "3c" && x >= 107 && x <= 201 && y >= 400 && y <= 473) {
+            message = Scene1::actionStatement + " Smooth surface";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 421 && x < 437 && y >= 373 && y <= 410 && inv.checkItem("Battery Lantern") != 1) {
+            message = Scene1::actionStatement + " Battery Lantern";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 554 && x < 591 && y >= 515 && y <= 572 && inv.checkItem("Pipe") != 1 && boxOpened ==1) {
+            message = Scene1::actionStatement + " Plastic Pipe";
+        }
+        if (Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92) {
+            message = "Enter cave";
+        }
+        if (Scene1::SceneBackground == "3a" && x <= 268 && y >= 347) {
+            message = "Rock face";
+        }
+        if (Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369) {
+            message = "Camp";
+        }
+        if (Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174) {
+            message = Scene1::actionStatement + " Crash site";
+        }
+        if (Scene1::SceneBackground == "1fb" && x >= 1000 && y >= 390 && y <= 586) {
+            message = "Head East";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 0 && x <= 100 && y >= 390 && y <= 586) {
+            message = "Leave camp";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 613 && x <= 640 && y >= 335 && y <= 378) {
+            message = Scene1::actionStatement + " Stuffed toy";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 523 && x <= 616 && y >= 502 && y <= 586 && boxOpened !=1) {
+            message = Scene1::actionStatement + " Cardboard box";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 850 && x <= 958 && y >= 391 && y <= 482) {
+            message = Scene1::actionStatement + " Oxygenator 5000";
+        }
+        if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {
+            message = "Leave Sofa";
+        }
+        if (Scene1::SceneBackground == "1da" && x >= 245 && x <= 295 && y >= 353 && y <= 414) {
+            message = "Sofa";
+        }
+        if (Scene1::SceneBackground == "1f" && x >= 370 && x <= 916 && y >= 220 && y <= 283) {
+            message = Scene1::actionStatement + " Sandy clearing";
+        }
+        if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248) {
+            message = "Enter Tent";
+        }
+        if (Scene1::SceneBackground == "1f" && x >= 0 && x <= 6 && y >= 139 && y <= 582) {
+            message = "Go west";
+            Scene1::SceneTransitionStatement = "West";
+        }
+        if (Scene1::SceneBackground == "1e" && x >= 9 && x <= 51 && y >= 311 && y <= 482) {
+            message = "Go back to wreckage";
+            Scene1::SceneTransitionStatement = "Wreckage";
+        }
+        if (Scene1::SceneBackground == "1e" && x >= 661 && x <= 742 && y >= 365 && y <= 409) {
+            message = Scene1::actionStatement + " Rocks"; 
+        }
+        if (Scene1::SceneBackground == "1e" && x >= 994  && y >= 0 && y <= 570) {
+            message = "Head east";   
+            Scene1::SceneTransitionStatement = "East";
+        }
+        if (Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111) {
+            message = Scene1::actionStatement + " The moon";
+        }
+        if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
+            message = "Enter Wreckage";
+            Scene1::SceneTransitionStatement = "Wreckage"; 
+        }
+        if (Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350) {
+            message = Scene1::actionStatement + " Wreckage";
+        }
+        if (Scene1::SceneBackground == "1" && x >= 609 && x <= 719 && y >= 515 && y <= 542 && inv.checkItem("PDA") != 1) {
+            message = Scene1::actionStatement + " White plastic thingy";             
+        }
+        if (Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1) {
+            message = Scene1::actionStatement + " Flag";
+        }
+        if (Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && inv.checkItem("Tent") != 1) {
+            message = Scene1::actionStatement +  " Self Inflating Tent";
+        }
+        if (Scene1::SceneBackground == "1" && x > 0 && x <= 500 && y > 220 && y < 340 ) {
+            message = "Head North";
+            Scene1::SceneTransitionStatement = "Head North";
+        }
+        if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
+            message = "Exit Wreckage";
+            Scene1::SceneTransitionStatement = "Exit Wreckage";
+        }
+        if (Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391) {
+            message = "Computer Screen";
+        }
+        if (Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Inventory::inv.find("3") == std::string::npos){
+            message = Scene1::actionStatement + " Ape Tape";
+        }
+        if (Scene1::SceneBackground == "3a" && x > 662 && x <= 812 && y <= 71){
+            message = Scene1::actionStatement + " Crators";
+        }
+}
 
     return message;
 }
