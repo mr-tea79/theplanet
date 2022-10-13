@@ -308,9 +308,10 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {                                                  
+                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {      
+                        
                             playerMessage = false;
-                            hoverHold = 1;
+                            //hoverHold = 1;  //This was causing a very strange behavior with the hover over the exit game button (13/10/22)
                             playerIsMoving = 0;
                             sceneHalt = 0; // Fixes issue where hover text appears in speech area.
                            
