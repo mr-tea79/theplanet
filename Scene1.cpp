@@ -382,8 +382,7 @@ int Scene1::scene1() {
 
             //Prevents memory leak
             SDL_DestroyTexture(Textures::spriteTexture);
-           // Textures::spriteTexture = nullptr;
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering. 
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
             
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
                   
