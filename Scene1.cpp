@@ -308,8 +308,8 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                        //event.motion.y > 589 && event.motion.x < 289 || BUG
-                        if ( event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {      
+                       // if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {
+                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {
                         
                             playerMessage = false;
                             playerIsMoving = 0;
@@ -334,7 +334,8 @@ int Scene1::scene1() {
                                     PlayerMovement::blink = true;                                  
                             }
                            
-                                interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);                            
+                                interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);    
+
                         } 
                        
                         if (interactionMessage != "" && playerIsMoving !=1) {                      
@@ -378,6 +379,11 @@ int Scene1::scene1() {
             mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
+
+            //Prevents memory leak
+            SDL_DestroyTexture(Textures::spriteTexture);
+           // Textures::spriteTexture = nullptr;
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering. 
             
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
                   
