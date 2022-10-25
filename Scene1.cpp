@@ -308,13 +308,13 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                        if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {      
+                        //event.motion.y > 589 && event.motion.x < 289 || BUG
+                        if ( event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {      
                         
                             playerMessage = false;
-                            //hoverHold = 1;  //This was causing a very strange behavior with the hover over the exit game button (13/10/22)
                             playerIsMoving = 0;
-                            sceneHalt = 0; // Fixes issue where hover text appears in speech area.
-                           
+                            sceneHalt = 0; // Fixes issue where hover text appears in speech area.                           
+                          
                         }
                        
 
@@ -329,7 +329,7 @@ int Scene1::scene1() {
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
-                                    Textures::spriteTexture = nullptr;
+                                    Textures::spriteTexture = nullptr; 
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
                                     PlayerMovement::blink = true;                                  
                             }
@@ -341,6 +341,7 @@ int Scene1::scene1() {
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
                             PlayerMovement::blink = false;
+                         
                            
                         }  
                         else {
@@ -503,8 +504,8 @@ int Scene1::scene1() {
                 Textures::spriteTexture = nullptr; //Prevents memory leak.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
-            else{           
-               // DoAction();  //THIS SEEMS TO CAUSE SPRITE FLICKER (22/08/2022)
+            else{   
+               
             }
            
             if (sceneHalt == 0 ) {
