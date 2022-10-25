@@ -207,6 +207,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369 ? message = "Camp" : "";
         Scene1::SceneBackground == "3a" && x >= 433 && x < 463 && y >= 158 && y <= 174 ? message = Scene1::actionStatement + " Crash site" : "";
         Scene1::SceneBackground == "3a" && x >= 878 && x <= 919 && y < 148 && y > 121 && Scene1::secretTrigger > 0 ? message = Scene1::actionStatement + " Point of interest" : "";
+        Scene1::SceneBackground == "3a" && x > 662 && x <= 812 && y <= 71 ? message = Scene1::actionStatement + " Crators" : "";
       
         /////////////////////////////////////////// Scene 3b Rock Face //////////////////////////////////////////////////////
         Scene1::SceneBackground == "3b" && x >= 756 && x < 830 && y >= 28 && y <= 92 ? message = "Enter cave" : "";
@@ -250,22 +251,6 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         Scene1::SceneBackground == "3f" && x <= 510 && x >= 490 && y < 262 && y > 247 && Scene1::secretTrigger == 2 && inv.checkItem("Disc") != 1 ? message = Scene1::actionStatement + " Sparkling object" : "";
         Scene1::SceneBackground == "3f" && x <= 560 && x >= 483 && y < 262 && y > 202 && Scene1::secretTrigger < 2 ? message = Scene1::actionStatement + " Loose rocks" : "";
         Scene1::SceneBackground == "3f" && x <= 20 && y < 414 && y > 250 ? message = Scene1::actionStatement + " Leave crator" : "";
-        
-     
-    
-   
-        
-   
-       
-        
-        
-       
-   
-        Scene1::SceneBackground == "3a" && x > 662 && x <= 812 && y <= 71 ? message = Scene1::actionStatement + " Crators" : "";
-
-
-       
-      
   
   
 }
