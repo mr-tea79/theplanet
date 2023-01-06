@@ -21,6 +21,7 @@ This document will help you get started in adding objects to the game.
 #include "SDL_mixer.h"
 #include "Sound.h"
 #include "AI.h"
+#include "ObjectPositions.h"
 
 
 using namespace brightland;
@@ -99,7 +100,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Inventory Hover Messages 
     if(Scene1::SceneBackground !="0") {
-        if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
+        if (x >= ObjectPositions::PDA_X && y >= ObjectPositions::PDA_Y) {
             if(inv.checkItem("PDA") != 0)
                 message = Scene1::actionStatement + " PDA";
         }
@@ -140,7 +141,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
         Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 ? message = Scene1::actionStatement + " The moon" : "";
         Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
-        Scene1::SceneBackground == "1" && x >= 609 && x <= 719 && y >= 515 && y <= 542 && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
+        Scene1::SceneBackground == "1" && x >= ObjectPositions::PDA_X && y >= ObjectPositions::PDA_Y && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
         
         ////////////////////////////////////// Scene 1 Transitions  ///////////////////////////////////////////////////////////////////////////////
         if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
@@ -306,7 +307,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
 
     std::string message;
 
-    if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= 609 && playerCurrentLocationX <= 719) {
+    if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= ObjectPositions::PDA_X - 70 ) {
         message = "PDA";
     }
 
@@ -396,14 +397,33 @@ The returned values are: (Number of sprites in the iamge, x position of the obje
 If you set number of sprites to 1, that means its not animated. If you increase the number of sprites value it will assume there are multiple sprites in the image.
 
 */
-std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
 
+
+float CalcObjectYPosition(float position, std::string objectName) {
+    int result;
+    result = position * Scene1::HEIGHT;
+    objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
+    
+    return result;
+}
+
+float CalcObjectXPosition(float position, std::string objectName) {
+    int result;
+    result = position * Scene1::WIDTH;
+    objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
+
+    return result;
+}
+
+std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
+    
     //EXAMPLE:
     //Return std::make_tuple(Number of animation sprites (1) means no animation, Location X, Location Y, Image width, Image Height)
 
     if (scene == 1 && objectID == 1) {
         //PDA
-        return  std::make_tuple(1, 685, 523, 20, 14);
+       // return  std::make_tuple(1, 685, 523, 20, 14);
+        return  std::make_tuple(1, CalcObjectXPosition(0.6,"PDA_X"), CalcObjectYPosition(0.6, "PDA_Y"), 20, 14);
     }
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up   

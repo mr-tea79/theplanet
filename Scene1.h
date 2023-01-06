@@ -11,8 +11,7 @@ namespace brightland {
 	class Scene1
 	{
 	private:
-		const int WIDTH = 1024;
-		const int HEIGHT = 768;
+		
 
 		const Uint8* keystate;
 		int gameover = 0;
@@ -21,6 +20,8 @@ namespace brightland {
 		int texW;
 		int texH;
 	public:
+		static int WIDTH;
+		static int HEIGHT;
 		static int secretTrigger;
 		static int SPRITE_SIZE;
 		static std::string useStatement;

@@ -23,6 +23,7 @@
 #include "Sound.h"
 #include <vector>
 #include "SceneInteraction.h"
+#include "ObjectPositions.h"
 
 using namespace std;
 using namespace brightland;
@@ -45,6 +46,10 @@ TTF_Font* Scene1::font;
 SDL_Surface* Scene1::fsurface;
 SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
+
+//Screen Dimensions.
+int Scene1::HEIGHT = 768;
+int Scene1::WIDTH = 1024;
 
 //Player variables
 int Scene1::xPosition;
@@ -221,6 +226,8 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+       // std::cout << "PDA X Position:" << ObjectPositions::PDA_X << std::endl;
+       // std::cout << "PDA Y Position:" << ObjectPositions::PDA_Y << std::endl;
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
@@ -380,6 +387,7 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
 
+            
             //Prevents memory leak
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 

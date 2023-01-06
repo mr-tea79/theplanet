@@ -88,6 +88,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AI.cpp" />
+    <ClCompile Include="ObjectPositions.cpp" />
     <ClCompile Include="ObjectRender.cpp" />
     <ClCompile Include="PlayerInteraction.cpp" />
     <ClCompile Include="Scene1.cpp" />
@@ -103,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h" />
+    <ClInclude Include="ObjectPositions.h" />
     <ClInclude Include="ObjectRender.h" />
     <ClInclude Include="PlayerInteraction.h" />
     <ClInclude Include="Inventory.h" />

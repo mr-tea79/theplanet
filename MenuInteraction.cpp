@@ -7,6 +7,7 @@
 #include "PlayerInteraction.h"
 #include "Sound.h"
 #include "AI.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 
@@ -17,7 +18,6 @@ static std::string lookStatement;
 static std::string pickUpStatement;
 static std::string actionStatement;
 static std::string pullStatement;
-
 
 //These 2 lines will deal when the player uses the wrong item.
 int MenuInteraction::wrongAction = 0;
@@ -659,11 +659,18 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
 
 
 std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteraction) {
-
+  
     std::string gameObject;
     Textures tex;
     PlayerObjects pob;
     Inventory inv;
+
+ 
+
+    if (gd >= ObjectPositions::PDA_X - 70 && (gy >= ObjectPositions::PDA_Y - 70 || gy <= ObjectPositions::PDA_Y +70)) {
+       // std::cout << "X MARKS THE SPOT" << std::endl;
+
+    }
 
     int i = 0;
     int items = 0;
@@ -675,13 +682,14 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
     gameObject = menuMessages;
     items = inv.checkItem(gameObject);
-
+ 
     //If user clicks on the location of the pickup button.
     if (Scene1::actionStatement == "Pick up") {
        
         if (items < 1) {          
-
-            if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" && gd >= 622 && gd <= 691 && gy > 425) {
+         
+            if (menuMessages == "PDA" && pickUpStatement == "Pick up White plastic thingy" ) {
+              
                 tex.TextureUpdater(Textures::spritePick, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
