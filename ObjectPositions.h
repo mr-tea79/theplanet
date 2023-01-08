@@ -9,6 +9,8 @@ namespace brightland {
 	public:
 		static int PDA_X;
 		static int PDA_Y;
+		static int ATAPE_X;
+		static int ATAPE_Y;
 
 	};
 }

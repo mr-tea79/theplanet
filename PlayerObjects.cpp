@@ -100,7 +100,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Inventory Hover Messages 
     if(Scene1::SceneBackground !="0") {
-        if (x >= ObjectPositions::PDA_X && y >= ObjectPositions::PDA_Y) {
+        if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
             if(inv.checkItem("PDA") != 0)
                 message = Scene1::actionStatement + " PDA";
         }
@@ -158,7 +158,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
         Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
         Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 ? message = "Computer Screen" : "";
-        Scene1::SceneBackground == "1b" && x > 323 && x <= 360 && y >= 433 && y <= 474 && inv.checkItem("Tape") != 1 && Inventory::inv.find("3") == std::string::npos ? message = Scene1::actionStatement + " Ape Tape" : "";
+        Scene1::SceneBackground == "1b" && x >= ObjectPositions::ATAPE_X && y >= ObjectPositions::ATAPE_Y && inv.checkItem("Tape") != 1 && Inventory::inv.find("3") == std::string::npos ? message = Scene1::actionStatement + " Ape Tape" : "";
 
         /////////////////////////////////////////// Scene 1b Transitions  ///////////////////////////////////////////////////////////////////
         if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
@@ -314,7 +314,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 503 && playerCurrentLocationX <= 719) {
         message = "Flag";
     }
-    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 310 && playerCurrentLocationX <= 394) {
+    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X - 70) {
         message = "Tape";
     }
 
@@ -398,11 +398,14 @@ If you set number of sprites to 1, that means its not animated. If you increase 
 
 */
 
+//The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
+//make the objects still be in the correct positions and not hard coded for each different resoluion.
 
 float CalcObjectYPosition(float position, std::string objectName) {
     int result;
     result = position * Scene1::HEIGHT;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
+    objectName == "ATAPE_Y" ? ObjectPositions::PDA_Y = result : 0;
     
     return result;
 }
@@ -411,6 +414,7 @@ float CalcObjectXPosition(float position, std::string objectName) {
     int result;
     result = position * Scene1::WIDTH;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
+    objectName == "ATAPE_X" ? ObjectPositions::PDA_Y = result : 0;
 
     return result;
 }
@@ -434,7 +438,8 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         return  std::make_tuple(3, 400, 30, 8, 40);
     }
     if (scene == 1 && objectID == 4) {
-        return  std::make_tuple(1, 300, 430, 60, 60);
+        //return  std::make_tuple(1, 300, 430, 60, 60);
+        return  std::make_tuple(1, CalcObjectXPosition(0.35, "ATAPE_X"), CalcObjectYPosition(0.6, "ATAPE_Y"),60, 60);
     }
     if (scene == 1 && objectID == 5) {     
         return  std::make_tuple(1, 520, 300, 97, 149);

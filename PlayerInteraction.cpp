@@ -75,8 +75,8 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     playerMessage == 13 ? interactionMessage = "That's my PDA, doesn't look damaged!!" : "";
     playerMessage == 14 ? interactionMessage = "" : "";
     playerMessage == 15 ? interactionMessage = "I wonder what mysteries there are on that moon" : "";
-  //  playerMessage == 16 ? interactionMessage = "BEEEP" : "";
-   // playerMessage == 17 ? interactionMessage = "BEEEEEEP" : "";
+    playerMessage == 16 ? interactionMessage = "BEEEP" : "";
+    playerMessage == 17 ? interactionMessage = "BEEEEEEP" : "";
     playerMessage == 18 ? interactionMessage = "TOAD1000: Bonita your oxygen is very low" : "";
     playerMessage == 19 ? interactionMessage = "Wow, this planet is very..erm.. Purple." : "";
     playerMessage == 20 ? interactionMessage = "This is a self inflatable habitat." : "";
