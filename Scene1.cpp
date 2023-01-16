@@ -624,7 +624,7 @@ int Scene1::scene1() {
 
             //Set the player speed a bit faster if you are using a slow computer. Also, don't do this if you are continuing a game because you already had set it how you wanted.
             if (t > 5.000000 && doPerfCheck == true) {
-                PlayerMovement::hspeed = 5.0;
+                PlayerMovement::hspeed = 7.0;
          
                 std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
                 std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
