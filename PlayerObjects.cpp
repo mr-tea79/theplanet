@@ -136,12 +136,12 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
         //Scene Hover Messages
-       
-        //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
+              
+       //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
 
         Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 ? message = Scene1::actionStatement + " The moon" : "";
         Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
-        Scene1::SceneBackground == "1" && (x >= ObjectPositions::PDA_X && x <= ObjectPositions::PDA_X + 20) && inv.checkItem("PDA") != 1 || (y >= ObjectPositions::PDA_Y + 10 && y <= ObjectPositions::PDA_Y) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
+        Scene1::SceneBackground == "1" && (x >= ObjectPositions::PDA_X && x <= ObjectPositions::PDA_X + 40 && y >=ObjectPositions::PDA_Y -50 && y <=ObjectPositions::PDA_Y +50) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
         
         ////////////////////////////////////// Scene 1 Transitions  ///////////////////////////////////////////////////////////////////////////////
         if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
@@ -158,7 +158,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
         Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
         Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 ? message = "Computer Screen" : "";
-        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X +20) && inv.checkItem("Tape") != 1 && Inventory::inv.find("3") == std::string::npos ? message = Scene1::actionStatement + " Ape Tape" : "";
+        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X + 40 && y >= ObjectPositions::ATAPE_Y - 50 && y <= ObjectPositions::ATAPE_Y + 50) && inv.checkItem("Tape") != 1 || Scene1::SceneBackground == "1b" && (y >= ObjectPositions::ATAPE_Y +10 && y <= ObjectPositions::ATAPE_Y + 10) && inv.checkItem("Tape") != 1 ? message = Scene1::actionStatement + " Ape Tape" : "";
 
         /////////////////////////////////////////// Scene 1b Transitions  ///////////////////////////////////////////////////////////////////
         if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
