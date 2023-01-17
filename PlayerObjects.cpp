@@ -136,7 +136,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
         //Scene Hover Messages
-              
+
        //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
 
         Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 ? message = Scene1::actionStatement + " The moon" : "";
@@ -156,7 +156,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
         ////////////////////////////////// Scene 1b Inside Wreakage //////////////////////////////////////////////////////////////////////////////////////////
         Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
-        Scene1::SceneBackground == "1b" && x >= 538 && x <= 580 && y >= 313 && y <= 441 && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
+        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::TENT_X && x<= ObjectPositions::TENT_X + 40 && y >= ObjectPositions::TENT_Y - 50 && y<= ObjectPositions::TENT_Y + 50) && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
         Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 ? message = "Computer Screen" : "";
         Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X + 40 && y >= ObjectPositions::ATAPE_Y - 50 && y <= ObjectPositions::ATAPE_Y + 50) && inv.checkItem("Tape") != 1 || Scene1::SceneBackground == "1b" && (y >= ObjectPositions::ATAPE_Y +10 && y <= ObjectPositions::ATAPE_Y + 10) && inv.checkItem("Tape") != 1 ? message = Scene1::actionStatement + " Ape Tape" : "";
 
@@ -318,7 +318,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
         message = "Tape";
     }
 
-    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 406 && playerCurrentLocationX <= 500) {
+    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70) {
         message = "Tent";
     }
 
@@ -406,6 +406,7 @@ float CalcObjectYPosition(float position, std::string objectName) {
     result = position * Scene1::HEIGHT;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
     objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
+    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
     
     return result;
 }
@@ -415,6 +416,7 @@ float CalcObjectXPosition(float position, std::string objectName) {
     result = position * Scene1::WIDTH;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
+    objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
 
     return result;
 }
@@ -442,7 +444,8 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         return  std::make_tuple(1, CalcObjectXPosition(0.35, "ATAPE_X"), CalcObjectYPosition(0.6, "ATAPE_Y"),60, 60);
     }
     if (scene == 1 && objectID == 5) {     
-        return  std::make_tuple(1, 520, 300, 97, 149);
+        return  std::make_tuple(1, CalcObjectXPosition(0.50, "TENT_X"), CalcObjectYPosition(0.4, "TENT_Y"), 97, 149);
+       // return  std::make_tuple(1, 300, 97, 149);
     }
     if (scene == 1 && objectID == 6) {
         //Closed Box
