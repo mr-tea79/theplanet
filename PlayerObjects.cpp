@@ -158,7 +158,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
         Scene1::SceneBackground == "1b" && (x >= ObjectPositions::TENT_X && x<= ObjectPositions::TENT_X + 40 && y >= ObjectPositions::TENT_Y - 50 && y<= ObjectPositions::TENT_Y + 50) && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
         Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 ? message = "Computer Screen" : "";
-        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X + 40 && y >= ObjectPositions::ATAPE_Y - 50 && y <= ObjectPositions::ATAPE_Y + 50) && inv.checkItem("Tape") != 1 || Scene1::SceneBackground == "1b" && (y >= ObjectPositions::ATAPE_Y +10 && y <= ObjectPositions::ATAPE_Y + 10) && inv.checkItem("Tape") != 1 ? message = Scene1::actionStatement + " Ape Tape" : "";
+        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X + 40 && y >= ObjectPositions::ATAPE_Y - 50 && y <= ObjectPositions::ATAPE_Y + 50) && inv.checkItem("Tape") != 1  ? message = Scene1::actionStatement + " Ape Tape" : "";
 
         /////////////////////////////////////////// Scene 1b Transitions  ///////////////////////////////////////////////////////////////////
         if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
