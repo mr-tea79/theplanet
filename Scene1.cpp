@@ -388,7 +388,7 @@ int Scene1::scene1() {
             playerMessage = false;
 
             
-            //Prevents memory leak
+            //Prevents memory leak          
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
             
@@ -514,7 +514,7 @@ int Scene1::scene1() {
           
             if(action !=1 ){
                 SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = nullptr; //Prevents memory leak.
+           //     Textures::spriteTexture = nullptr; //Prevents memory leak.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{   
