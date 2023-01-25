@@ -616,7 +616,7 @@ int Scene1::scene1() {
         if(timerStop !=3000){          
             timerStop++;
         }
-        else if(timerStop == 3000) {        
+        else if(timerStop == 3000 ) {
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
             std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
            
@@ -631,7 +631,8 @@ int Scene1::scene1() {
             }
             else {
                 std::cout << "You are running on a good spec pc." << std::endl;
-                PlayerMovement::hspeed = 2.12;
+                if(continueGame == true || newGame == true)
+                    PlayerMovement::hspeed = 3.12;
             
                 std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
