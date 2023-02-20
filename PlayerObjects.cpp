@@ -57,6 +57,31 @@ SDL_Rect PlayerObjects::srcrect10;
 SDL_Rect PlayerObjects::dstrect10;
 
 
+//The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
+//make the objects still be in the correct positions and not hard coded for each different resoluion.
+
+float CalcObjectYPosition(float position, std::string objectName) {
+    int result;
+    result = position * Scene1::HEIGHT;
+    objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
+    objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
+    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
+    objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
+
+    return result;
+}
+
+float CalcObjectXPosition(float position, std::string objectName) {
+    int result;
+    result = position * Scene1::WIDTH;
+    objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
+    objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
+    objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
+    objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
+
+    return result;
+}
+
 
 void PlayerObjects::SetSpritePosition(int x, int y) {
    
@@ -136,10 +161,17 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
  
         //Scene Hover Messages
+        
+        //Set Hover boundries for Hover interactions.
+        CalcObjectXPosition(0.02, "MOON_X"), CalcObjectYPosition(0.1, "MOON_Y");
+
+       // std::cout << "MOON X POSITION IS: " << ObjectPositions::MOON_X << std::endl;
+        //std::cout << "MOON y POSITION IS: " << ObjectPositions::MOON_Y << std::endl;
+
 
        //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
-
-        Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 ? message = Scene1::actionStatement + " The moon" : "";
+        Scene1::SceneBackground == "1" && x >= ObjectPositions::MOON_X && x <= ObjectPositions::MOON_X + 200 && y>= ObjectPositions::MOON_Y -50 && y <= ObjectPositions::MOON_Y + 50 ? message = Scene1::actionStatement + " The moon" : "";
+        //Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 ? message = Scene1::actionStatement + " The moon" : "";
         Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
         Scene1::SceneBackground == "1" && (x >= ObjectPositions::PDA_X && x <= ObjectPositions::PDA_X + 40 && y >=ObjectPositions::PDA_Y -50 && y <=ObjectPositions::PDA_Y +50) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
         
@@ -398,28 +430,6 @@ If you set number of sprites to 1, that means its not animated. If you increase 
 
 */
 
-//The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
-//make the objects still be in the correct positions and not hard coded for each different resoluion.
-
-float CalcObjectYPosition(float position, std::string objectName) {
-    int result;
-    result = position * Scene1::HEIGHT;
-    objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
-    objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
-    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
-    
-    return result;
-}
-
-float CalcObjectXPosition(float position, std::string objectName) {
-    int result;
-    result = position * Scene1::WIDTH;
-    objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
-    objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
-    objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
-
-    return result;
-}
 
 std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int objectID, int b, int c, int d) {
     
