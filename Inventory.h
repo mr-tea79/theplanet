@@ -21,23 +21,23 @@ public:
 	static SDL_Rect inv7;
 
 
-	int Inventory::SQLInsertInventory(std::string itemName, int itemUsed);
+	int SQLInsertInventory(std::string itemName, int itemUsed);
 
-	int Inventory::SQLCreateGameSave(std::string scene);
+	int SQLCreateGameSave(std::string scene);
 
-	int Inventory::checkItem(std::string itemName);
+	int checkItem(std::string itemName);
 
-	void Inventory::ContinueGame();
+	void ContinueGame();
 
-	int Inventory::useItem(std::string itemName);
+	int useItem(std::string itemName);
 
-	int Inventory::gameSave(std::string currentScene);
+	int gameSave(std::string currentScene);
 
-	int Inventory::gameSpeedSave();
+	int gameSpeedSave();
 
-	int Inventory::purgeDatabase();
+	int purgeDatabase();
 
-	void Inventory::continueGameCheck();
+	void continueGameCheck();
 };
 
 

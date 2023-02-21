@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 
 namespace brightland {
 	class ObjectPositions
@@ -19,6 +19,9 @@ namespace brightland {
 		//Hover Interactions
 		static int MOON_X;
 		static int MOON_Y;
+
+		float CalcObjectYPosition(float position, std::string objectName);
+		float CalcObjectXPosition(float position, std::string objectName);
 
 	};
 }

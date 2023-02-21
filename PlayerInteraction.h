@@ -18,15 +18,15 @@ namespace brightland {
 
 	public:
 		void textDimensions(int messageLength);
-		std::string PlayerInteraction::PlayerMessage(int msgNumber);
-		void PlayerInteraction::InteractionControllerHover(std::string interactionMessage);
-		void PlayerInteraction::InteractionControllerObject(std::string interactionMessage,std::string gameObject);
-		void PlayerInteraction::InteractionControllerUse(std::string useMessage,std::string gameObject);
-		void PlayerInteraction::InteractionControllerOpen(std::string openMessage,std::string gameObject);
-		void PlayerInteraction::InteractionControllerLook(std::string lookMessage, std::string gameObject);
-		void PlayerInteraction::InteractionControllerPull(std::string lookMessage, std::string gameObject);
-		void PlayerInteraction::InteractionControllerAction(std::string actionMessage, std::string gameObject);
-		std::string PlayerInteraction::DisplayPlayerMessages();	
+		std::string PlayerMessage(int msgNumber);
+		void InteractionControllerHover(std::string interactionMessage);
+		void InteractionControllerObject(std::string interactionMessage,std::string gameObject);
+		void InteractionControllerUse(std::string useMessage,std::string gameObject);
+		void InteractionControllerOpen(std::string openMessage,std::string gameObject);
+		void InteractionControllerLook(std::string lookMessage, std::string gameObject);
+		void InteractionControllerPull(std::string lookMessage, std::string gameObject);
+		void InteractionControllerAction(std::string actionMessage, std::string gameObject);
+		std::string DisplayPlayerMessages();	
 	};
 
 }

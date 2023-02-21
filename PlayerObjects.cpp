@@ -56,31 +56,7 @@ SDL_Rect PlayerObjects::dstrect9;
 SDL_Rect PlayerObjects::srcrect10;
 SDL_Rect PlayerObjects::dstrect10;
 
-
-//The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
-//make the objects still be in the correct positions and not hard coded for each different resoluion.
-
-float CalcObjectYPosition(float position, std::string objectName) {
-    int result;
-    result = position * Scene1::HEIGHT;
-    objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
-    objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
-    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
-    objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
-
-    return result;
-}
-
-float CalcObjectXPosition(float position, std::string objectName) {
-    int result;
-    result = position * Scene1::WIDTH;
-    objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
-    objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
-    objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
-    objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
-
-    return result;
-}
+ObjectPositions op;  
 
 
 void PlayerObjects::SetSpritePosition(int x, int y) {
@@ -163,7 +139,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         //Scene Hover Messages
         
         //Set Hover boundries for Hover interactions.
-        CalcObjectXPosition(0.02, "MOON_X"), CalcObjectYPosition(0.1, "MOON_Y");
+       op.CalcObjectXPosition(0.02, "MOON_X"), op.CalcObjectYPosition(0.1, "MOON_Y");
 
        // std::cout << "MOON X POSITION IS: " << ObjectPositions::MOON_X << std::endl;
         //std::cout << "MOON y POSITION IS: " << ObjectPositions::MOON_Y << std::endl;
@@ -439,7 +415,7 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     if (scene == 1 && objectID == 1) {
         //PDA
        // return  std::make_tuple(1, 685, 523, 20, 14);
-        return  std::make_tuple(1, CalcObjectXPosition(0.6,"PDA_X"), CalcObjectYPosition(0.6, "PDA_Y"), 20, 14);
+        return  std::make_tuple(1, op.CalcObjectXPosition(0.6,"PDA_X"), op.CalcObjectYPosition(0.6, "PDA_Y"), 20, 14);
     }
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up   
@@ -451,10 +427,10 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     }
     if (scene == 1 && objectID == 4) {
         //return  std::make_tuple(1, 300, 430, 60, 60);
-        return  std::make_tuple(1, CalcObjectXPosition(0.35, "ATAPE_X"), CalcObjectYPosition(0.6, "ATAPE_Y"),60, 60);
+        return  std::make_tuple(1, op.CalcObjectXPosition(0.35, "ATAPE_X"), op.CalcObjectYPosition(0.6, "ATAPE_Y"),60, 60);
     }
     if (scene == 1 && objectID == 5) {     
-        return  std::make_tuple(1, CalcObjectXPosition(0.50, "TENT_X"), CalcObjectYPosition(0.4, "TENT_Y"), 97, 149);
+        return  std::make_tuple(1, op.CalcObjectXPosition(0.50, "TENT_X"), op.CalcObjectYPosition(0.4, "TENT_Y"), 97, 149);
        // return  std::make_tuple(1, 300, 97, 149);
     }
     if (scene == 1 && objectID == 6) {
