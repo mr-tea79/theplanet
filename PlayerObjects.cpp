@@ -78,7 +78,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     std::string message;
 
     //Menu Hover Messages
-
+    op.CalcObjectXPosition(0.02, "USE_X"), op.CalcObjectYPosition(0.1, "USE_Y"); //Set Moon hover position.
     if (x > 190 && x < 227 && y > 676 && y < 690 && Scene1::SceneBackground != "0") {       
         message = "Use";
     }
@@ -135,19 +135,12 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
                 message = Scene1::actionStatement + " Disc";
         }
 
- 
-        //Scene Hover Messages
-        
-        //Set Hover boundries for Hover interactions.
-       op.CalcObjectXPosition(0.02, "MOON_X"), op.CalcObjectYPosition(0.1, "MOON_Y");
-
-       // std::cout << "MOON X POSITION IS: " << ObjectPositions::MOON_X << std::endl;
-        //std::cout << "MOON y POSITION IS: " << ObjectPositions::MOON_Y << std::endl;
 
 
        //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
+        op.CalcObjectXPosition(0.02, "MOON_X"), op.CalcObjectYPosition(0.1, "MOON_Y"); //Set Moon hover position.
         Scene1::SceneBackground == "1" && x >= ObjectPositions::MOON_X && x <= ObjectPositions::MOON_X + 200 && y>= ObjectPositions::MOON_Y -50 && y <= ObjectPositions::MOON_Y + 50 ? message = Scene1::actionStatement + " The moon" : "";
-        //Scene1::SceneBackground == "1" && x >= 52 && x <= 148 && y >= 14 && y <= 111 ? message = Scene1::actionStatement + " The moon" : "";
+        
         Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
         Scene1::SceneBackground == "1" && (x >= ObjectPositions::PDA_X && x <= ObjectPositions::PDA_X + 40 && y >=ObjectPositions::PDA_Y -50 && y <=ObjectPositions::PDA_Y +50) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
         

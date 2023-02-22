@@ -19,6 +19,10 @@ namespace brightland {
 		//Hover Interactions
 		static int MOON_X;
 		static int MOON_Y;
+		
+		//Menu
+		static int USE_X;
+		static int USE_Y;
 
 		float CalcObjectYPosition(float position, std::string objectName);
 		float CalcObjectXPosition(float position, std::string objectName);
