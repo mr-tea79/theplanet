@@ -226,6 +226,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+        
        // std::cout << "PDA X Position:" << ObjectPositions::PDA_X << std::endl;
        // std::cout << "PDA Y Position:" << ObjectPositions::PDA_Y << std::endl;
         checkFScreenStatus(fullScreenTrigger);
@@ -612,13 +613,10 @@ int Scene1::scene1() {
         }
 
 
-        //This is a timer to test speed of system - work in progress.
-        if(timerStop !=3000){          
-            timerStop++;
-        }
-        else if(timerStop == 3000 ) {
+        //This is a contant timer that will keep the framerate steady on slower computers
+      
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-            std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
+          //  std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
            
             float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
 
@@ -626,20 +624,17 @@ int Scene1::scene1() {
             if (t > 5.000000 && doPerfCheck == true) {
                 PlayerMovement::hspeed = 7.0;
          
-                std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
-                std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
+               // std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
+              //  std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
             else {
-                std::cout << "You are running on a good spec pc." << std::endl;
+               // std::cout << "You are running on a good spec pc." << std::endl;
                 if(continueGame == true || newGame == true)
                     PlayerMovement::hspeed = 3.12;
             
-                std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
+              //  std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
 
-            timerStop++;
-        }
-    
 
     }
 

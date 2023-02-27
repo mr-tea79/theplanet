@@ -42,7 +42,7 @@ float ObjectPositions::CalcObjectXPosition(float position, std::string objectNam
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
     objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
     objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
-    objectName == "USE_X" ? ObjectPositions::USE_Y = result : 0;
+    objectName == "USE_X" ? ObjectPositions::USE_X = result : 0;
 
     return result;
 }

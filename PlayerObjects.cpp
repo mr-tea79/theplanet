@@ -78,8 +78,8 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     std::string message;
 
     //Menu Hover Messages
-    op.CalcObjectXPosition(0.02, "USE_X"), op.CalcObjectYPosition(0.1, "USE_Y"); //Set Moon hover position.
-    if (x > 190 && x < 227 && y > 676 && y < 690 && Scene1::SceneBackground != "0") {       
+    op.CalcObjectXPosition(0.185, "USE_X"), op.CalcObjectYPosition(0.87, "USE_Y"); //Set Moon hover position.
+    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 50 && y <= ObjectPositions::USE_Y + 50 && Scene1::SceneBackground != "0") {
         message = "Use";
     }
 
