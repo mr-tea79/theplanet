@@ -79,7 +79,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Menu Hover Messages
     op.CalcObjectXPosition(0.185, "USE_X"), op.CalcObjectYPosition(0.87, "USE_Y"); //Set Moon hover position.
-    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 50 && y <= ObjectPositions::USE_Y + 50 && Scene1::SceneBackground != "0") {
+    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
         message = "Use";
     }
 
@@ -87,8 +87,9 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         Scene1::hoverSound = 1;
         message = "Pick up";
     }
-
-    if (x > 178 && x < 232 && y > 723 && y < 744 && Scene1::SceneBackground != "0") {
+   
+    op.CalcObjectXPosition(0.185, "OPEN_X"), op.CalcObjectYPosition(0.97, "OPEN_Y"); //Set Moon hover position.
+    if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 100 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
         message = "Open";
     }
 

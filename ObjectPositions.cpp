@@ -18,6 +18,8 @@ int ObjectPositions::MOON_Y;
 //Menu 
 int ObjectPositions::USE_X;
 int ObjectPositions::USE_Y;
+int ObjectPositions::OPEN_X;
+int ObjectPositions::OPEN_Y;
 
 
 //The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
@@ -31,6 +33,7 @@ float ObjectPositions::CalcObjectYPosition(float position, std::string objectNam
     objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
     objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
     objectName == "USE_Y" ? ObjectPositions::USE_Y = result : 0;
+    objectName == "OPEN_Y" ? ObjectPositions::OPEN_Y = result : 0;
 
     return result;
 }
@@ -43,6 +46,7 @@ float ObjectPositions::CalcObjectXPosition(float position, std::string objectNam
     objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
     objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
     objectName == "USE_X" ? ObjectPositions::USE_X = result : 0;
+    objectName == "OPEN_X" ? ObjectPositions::OPEN_X = result : 0;
 
     return result;
 }

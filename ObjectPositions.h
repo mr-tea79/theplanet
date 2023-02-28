@@ -23,6 +23,8 @@ namespace brightland {
 		//Menu
 		static int USE_X;
 		static int USE_Y;
+		static int OPEN_X;
+		static int OPEN_Y;
 
 		float CalcObjectYPosition(float position, std::string objectName);
 		float CalcObjectXPosition(float position, std::string objectName);

@@ -86,7 +86,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
         Scene1::menuSound = 1;
         Scene1::newGame = false;
-        Scene1::continueGame = true;
+        Scene1::continueGame = true;     
         s.loadSounds(sceneBackground);
     }
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
