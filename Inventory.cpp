@@ -5,6 +5,7 @@
 #include <sstream>
 #include "Textures.h"
 #include "Sound.h"
+#include "AI.h"
 
 using namespace brightland;
 
@@ -51,9 +52,7 @@ int Inventory::purgeDatabase() {
 }
 
 //Save the speed of the character movement.
-int Inventory::gameSpeedSave() {
-
-	
+int Inventory::gameSpeedSave() {	
 	sqlite3* db;
 	char* zErrMsg = 0;
 	int rc;
@@ -109,7 +108,6 @@ int Inventory::gameSpeedSave() {
 
 //Save player progress.
 int Inventory::gameSave(std::string currentScene) {
-
 	sqlite3* db;
 	char* zErrMsg = 0;
 	int rc;
@@ -201,7 +199,6 @@ int Inventory::SQLCreateGameSave(std::string scene) {
 
 //Update the database if item is used by the player.
 int Inventory::useItem(std::string itemName) {
-
 	sqlite3* db;
 	char* zErrMsg = 0;
 	int rc;
@@ -258,7 +255,6 @@ void Inventory::continueGameCheck() {
 
 		//Need to put these in a separate method. This loads in the correct texture packs for the given scene.
 
-
 		if (Scene1::SceneBackground.find("1f") != std::string::npos) {
 			if (Scene1::inGame < 1) {
 				tex.Scene2Textures();
@@ -275,7 +271,6 @@ void Inventory::continueGameCheck() {
 			tex.Scene3Textures();
 			Scene1::inGame = 1;
 		}
-
 
 		if (Scene1::SceneBackground.find("3") != std::string::npos) {
 			if (Scene1::inGame < 1) {
@@ -295,8 +290,6 @@ void Inventory::continueGameCheck() {
 
 }
 
-
-
 //Load in player progress.
 void Inventory::ContinueGame() {
 
@@ -314,8 +307,7 @@ void Inventory::ContinueGame() {
 	rc = sqlite3_open("Inventory.db", &db);
 
 	if (rc) {
-		scene = "1";
-		
+		scene = "1";	
 	}
 	else {
 	}

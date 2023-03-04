@@ -32,6 +32,16 @@ void MenuInteraction::doAction() {
     Scene1::actionStatement = "";
 }
 
+//Clear interaction statement variables
+void MenuInteraction::clearMessages() {
+    useStatement = "";
+    openStatement = "";
+    lookStatement = "";
+    pickUpStatement = "";
+    pullStatement = "";
+    actionStatement = "";
+}
+
 //This deals with the items being used wrong. For example, you try and use a tent with the tape.. This is not essential but it allows you to customize the message when using the wrong item.
 void MenuInteraction::useChecker(int gd, int gy) {
 
@@ -64,25 +74,20 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
 
     std::string actionMessage;
     
-  
-
     if (x > 57 && x < 145 && y > 621 && y < 647) {
         Scene1::menuSound = 1;
         useStatement = "";  //Important
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
-        lookStatement = "";
-        
+        lookStatement = "";        
     }
 
-    if (x > 61 && x < 146 && y > 643 && y < 690) {
-            
+    if (x > 61 && x < 146 && y > 643 && y < 690) {            
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pick up";
         actionMessage = "Pick up what?";
-        pickUpStatement = "";
-      
+        pickUpStatement = "";     
     }
 
     if (x > 190 && x < 227 && y > 676 && y < 690) {
@@ -110,7 +115,6 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     }
 
 
-
     return actionMessage;
 }
 
@@ -124,52 +128,48 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     int n = lookStatement.length();
 
-    if (n < 8) { //Don't override hover if a pick up statement has been selected. This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
+    if (n < 8) { 
+        //Don't override hover if a pick up statement has been selected. 
+        //This is important, otherwise player will pick up anything within range no matter what you chose to pick up.
         lookStatement = pob.HoverObjects(x, y, 1, gd, gy);
     }
 
     if (lookStatement == "Look at Mound" && Scene1::SceneBackground == "4a") {
         lookMessage = "Hmmmm very unusual.";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-       
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");      
     }
 
     if (gd > 650 && lookStatement == "Look at Markings" && Scene1::SceneBackground == "4a") {
         lookMessage = "TOAD1000: will need more examples to translate, use personal computer to record.";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-      
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");    
     }
 
     if (gd > 650 && lookStatement == "Look at Entrance") {
         lookMessage = "Looks like a stairwell, this is crazy!";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-    
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");  
     }
 
     if (gd > 800 && lookStatement == "Look at Drawing") {
         lookMessage = "That's Earth and the Solar System, strange..";
         Scene1::secretTrigger = 4;
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-     
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");    
     }
 
 
     if (gd > 800 && lookStatement == "Look at Strange peg") {
         lookMessage = "It's a peg with a latch on it, hmmmm";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-   
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");  
     }
 
     if (lookStatement == "Look at Disc") {
         lookMessage = "A gold disc with markings on it and a small hole in the middle";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteDown1, "Action");
-       
+        tex.TextureUpdater(Textures::spriteDown1, "Action");       
     }
 
     if (lookStatement == "Look at Spaceflix") {
@@ -191,15 +191,13 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         AI::dialogNumber = 18;
         AI::playerTalk = true;
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-    
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");   
     }
 
     if (lookStatement == "Look at Oxygenator 5000" && gd > 700 ) {
         lookMessage = "It's for topping up oxygen in my suit!";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-     
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");    
     }
 
     if (lookStatement == "Look at Cardboard box") {
@@ -215,31 +213,27 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
     if (gy < 260 && gd > 300 && lookStatement == "Look at Loose rocks") {
         lookMessage = "Hmmmm what's this?";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteBack1a, "Action");
-   
+        tex.TextureUpdater(Textures::spriteBack1a, "Action"); 
     }
 
 
     if (lookStatement == "Look at Big X") {
         lookMessage = "I think this is where I am.. I think this is a map.";
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteDown1, "Action");
-  
+        tex.TextureUpdater(Textures::spriteDown1, "Action"); 
     }
 
     if (lookStatement == "Look at Odd formation") {
         lookMessage = "Not sure what this is supposed to be?";
         lookStatement = "";
         tex.TextureUpdater(Textures::spriteDown1, "Action");
-
     }
 
     if (lookStatement == "Look at Location of interest") {
         lookMessage = "Whatever this is, it has to be significant.";
         Scene1::secretTrigger = 1; //Unlock hidden area.
         lookStatement = "";
-        tex.TextureUpdater(Textures::spriteDown1, "Action");
-     
+        tex.TextureUpdater(Textures::spriteDown1, "Action");   
     }
 
 

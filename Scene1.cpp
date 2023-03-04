@@ -317,12 +317,10 @@ int Scene1::scene1() {
                         }
 
                        // if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {
-                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {
-                        
+                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                     
                             playerMessage = false;
                             playerIsMoving = 0;
-                            sceneHalt = 0; // Fixes issue where hover text appears in speech area.                           
-                          
+                            sceneHalt = 0; // Fixes issue where hover text appears in speech area.                                                   
                         }
                        
 
@@ -349,9 +347,7 @@ int Scene1::scene1() {
                         if (interactionMessage != "" && playerIsMoving !=1) {                      
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
-                            PlayerMovement::blink = false;
-                         
-                           
+                            PlayerMovement::blink = false;                                    
                         }  
                         else {
                            
@@ -433,8 +429,7 @@ int Scene1::scene1() {
             interactionMessage = si.sceneTransitions(x, y, gd, gy);
            
             actionMessage = mob.MenuAction(x, y, gd, gy, mInteraction);
-
-          
+         
 
             //Do not remove this if statement or you will get memory leaks when holding down the mouse button.
             if(mouseClick == true && mouseHold <10 && AI::aiStop !=1){
@@ -461,7 +456,7 @@ int Scene1::scene1() {
         gy = gdSprite.y;
 
         //These messages are displayed to help tell the story.
-        gameMessage = pi.DisplayPlayerMessages();
+            gameMessage = pi.DisplayPlayerMessages();
       
         if (gameMessage != "") {
             interactionMessage = gameMessage;
@@ -575,6 +570,7 @@ int Scene1::scene1() {
 
     
         //This needs to go here, don't move it!
+        //Hide the player interaction menu on main menu screen.
         if(SceneBackground !="0")
             SDL_RenderCopy(renderer, Textures::menuTexture, NULL, &menu);   
  
@@ -588,13 +584,11 @@ int Scene1::scene1() {
             //Render main character
             SDL_RenderCopy(renderer, Textures::spriteTexture, NULL, &gdSprite);
         }
-     
-    
+        
         sr.sceneRenderOverlay(event.motion.x, event.motion.y); //Render objects in front of sprite.
 
         SDL_RenderCopy(renderer, Textures::ftexture, NULL, &textRect); //Renders the text that appears on the screen.
-     
-       
+           
         interactionMessage = ""; // Clear the interaction message on every loop.
         gameMessage = "";
         useMessage = "";
@@ -612,34 +606,26 @@ int Scene1::scene1() {
             break;
         }
 
-
-        //This is a contant timer that will keep the framerate steady on slower computers
+            //This is a contant timer that will keep the framerate at a reasonable pace on slower computers
       
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-          //  std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
+            //std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
            
             float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
 
             //Set the player speed a bit faster if you are using a slow computer. Also, don't do this if you are continuing a game because you already had set it how you wanted.
             if (t > 5.000000 && doPerfCheck == true) {
-                PlayerMovement::hspeed = 7.0;
-         
+                PlayerMovement::hspeed = 7.0;        
                // std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
-              //  std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
+               // std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
             else {
                // std::cout << "You are running on a good spec pc." << std::endl;
                 if(continueGame == true || newGame == true)
                     PlayerMovement::hspeed = 3.12;
-            
-              //  std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
+                    //  std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
             }
-
-
     }
-
-
-  
         
     //Clean up after yourself!
     SDL_DestroyRenderer(renderer); //Destroy Renderer should destroy ALL textures.
@@ -648,7 +634,6 @@ int Scene1::scene1() {
     s.freeMusic();
  
     //Close down game.
- 
     return 0;
 
     TTF_Quit();

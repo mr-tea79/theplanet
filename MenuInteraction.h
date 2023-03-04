@@ -25,6 +25,7 @@ public:
 
 	void doAction();
 	void useChecker(int gd, int gy);
+	void clearMessages();
 	
 	std::string PickUp(int x, int y, int gd, int gy, int mInteraction);
 	std::string Pull(int x, int y, int gd, int gy, int mInteraction);
