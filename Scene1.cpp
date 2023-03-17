@@ -615,8 +615,8 @@ int Scene1::scene1() {
         // Print delta time to console
        // std::cout << "Delta time: " << delta_time << "ms" << std::endl;
         if (delta_time < 5.5000) {
-            PlayerMovement::hspeed = 2.12;
-            std::cout << "True" << std::endl;
+            PlayerMovement::hspeed = 2.5;
+          //  std::cout << "True" << std::endl;
         }
         else {
             PlayerMovement::hspeed = 7.0;
