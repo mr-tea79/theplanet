@@ -612,19 +612,14 @@ int Scene1::scene1() {
         float delta_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - start_time).count();
         start_time = current_time;
 
-        // Print delta time to console
-       // std::cout << "Delta time: " << delta_time << "ms" << std::endl;
+   
         if (delta_time < 5.5000) {
             PlayerMovement::hspeed = 2.5;
-          //  std::cout << "True" << std::endl;
+   
         }
         else {
             PlayerMovement::hspeed = 7.0;
-        }
-        
-              
-         
-           
+        }   
     }
         
     //Clean up after yourself!
