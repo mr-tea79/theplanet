@@ -216,8 +216,9 @@ int Scene1::scene1() {
     AI::aiPlayMessages = true;
     PlayerInteraction::playerMessage = 15;
 
+    auto start_time = std::chrono::high_resolution_clock::now();
     //Start the timer.
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+   // std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
    
 
     //Create a game save (Only needed to use this once to create the game save record)
@@ -606,25 +607,24 @@ int Scene1::scene1() {
             break;
         }
 
-            //This is a contant timer that will keep the framerate at a reasonable pace on slower computers
-      
-            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-            //std::cout << "Game loop speed check: = " << (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) / 1000000.0 << "S" << std::endl;
-           
-            float t = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
 
-            //Set the player speed a bit faster if you are using a slow computer. Also, don't do this if you are continuing a game because you already had set it how you wanted.
-            if (t > 5.000000 && doPerfCheck == true) {
-                PlayerMovement::hspeed = 7.0;        
-               // std::cout << "Increased player speed to compensate for slower hardware" << std::endl;
-               // std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
-            }
-            else {
-               // std::cout << "You are running on a good spec pc." << std::endl;
-                if(continueGame == true || newGame == true)
-                    PlayerMovement::hspeed = 3.12;
-                    //  std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
-            }
+        auto current_time = std::chrono::high_resolution_clock::now();
+        float delta_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - start_time).count();
+        start_time = current_time;
+
+        // Print delta time to console
+       // std::cout << "Delta time: " << delta_time << "ms" << std::endl;
+        if (delta_time < 5.5000) {
+            PlayerMovement::hspeed = 2.12;
+            std::cout << "True" << std::endl;
+        }
+        else {
+            PlayerMovement::hspeed = 7.0;
+        }
+        
+              
+         
+           
     }
         
     //Clean up after yourself!
