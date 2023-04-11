@@ -78,7 +78,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     std::string message;
 
     //Menu Hover Messages
-    op.CalcObjectXPosition(0.185, "USE_X"), op.CalcObjectYPosition(0.87, "USE_Y"); //Set Use hover position.
+    op.CalcObjectXPositionPercentage(0.185, "USE_X"), op.CalcObjectYPositionPercentage(0.87, "USE_Y"); //Set Use hover position.
     if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
         message = "Use";
     }
@@ -88,7 +88,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
         message = "Pick up";
     }
    
-    op.CalcObjectXPosition(0.185, "OPEN_X"), op.CalcObjectYPosition(0.97, "OPEN_Y"); //Set open hover position.
+    op.CalcObjectXPositionPercentage(0.185, "OPEN_X"), op.CalcObjectYPositionPercentage(0.97, "OPEN_Y"); //Set open hover position.
     if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 100 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
         message = "Open";
     }
@@ -139,14 +139,16 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
 
        //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
-        op.CalcObjectXPosition(0.02, "MOON_X"), op.CalcObjectYPosition(0.1, "MOON_Y"); //Set Moon hover position.
+       
         Scene1::SceneBackground == "1" && x >= ObjectPositions::MOON_X && x <= ObjectPositions::MOON_X + 200 && y>= ObjectPositions::MOON_Y -50 && y <= ObjectPositions::MOON_Y + 50 ? message = Scene1::actionStatement + " The moon" : "";
-        
-        Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
+        Scene1::SceneBackground == "1" && x >= ObjectPositions::ENGINE_X && x <= ObjectPositions::ENGINE_X + 200 && y >= ObjectPositions::ENGINE_Y - 50 && y <= ObjectPositions::ENGINE_Y + 50 ? message = Scene1::actionStatement + " Wreckage" : "";
+        // Scene1::SceneBackground == "1" && x >= ObjectPositions::WREAKAGEDOOR_X && x <= ObjectPositions::WREAKAGEDOOR_X + 200 && y >= ObjectPositions::WREAKAGEDOOR_Y - 50 && y <= ObjectPositions::WREAKAGEDOOR_Y + 50 ? message = Scene1::actionStatement + " Wreakage" : "";
+
+       // Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
         Scene1::SceneBackground == "1" && (x >= ObjectPositions::PDA_X && x <= ObjectPositions::PDA_X + 40 && y >=ObjectPositions::PDA_Y -50 && y <=ObjectPositions::PDA_Y +50) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
         
         ////////////////////////////////////// Scene 1 Transitions  ///////////////////////////////////////////////////////////////////////////////
-        if (Scene1::SceneBackground == "1" && x >= 759 && x <= 771 && y >= 325 && y <= 375) {
+        if (Scene1::SceneBackground == "1" && x >= ObjectPositions::WREAKAGEDOOR_X && x <= ObjectPositions::WREAKAGEDOOR_X + 200 && y >= ObjectPositions::WREAKAGEDOOR_Y - 50 && y <= ObjectPositions::WREAKAGEDOOR_Y + 50) {
             message = "Enter Wreckage";
             Scene1::SceneTransitionStatement = "Wreckage";
         }
@@ -318,8 +320,8 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     }
     if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X - 70) {
         message = "Tape";
+    
     }
-
     if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70) {
         message = "Tent";
     }
@@ -409,7 +411,7 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     if (scene == 1 && objectID == 1) {
         //PDA
        // return  std::make_tuple(1, 685, 523, 20, 14);
-        return  std::make_tuple(1, op.CalcObjectXPosition(0.6,"PDA_X"), op.CalcObjectYPosition(0.6, "PDA_Y"), 20, 14);
+        return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(55,"PDA_X"), op.CalcObjectYAbsolutePosition(66, "PDA_Y"), 20, 14);
     }
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up   
@@ -421,10 +423,10 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     }
     if (scene == 1 && objectID == 4) {
         //return  std::make_tuple(1, 300, 430, 60, 60);
-        return  std::make_tuple(1, op.CalcObjectXPosition(0.35, "ATAPE_X"), op.CalcObjectYPosition(0.6, "ATAPE_Y"),60, 60);
+        return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(35, "ATAPE_X"), op.CalcObjectYAbsolutePosition(62, "ATAPE_Y"),60, 60);
     }
     if (scene == 1 && objectID == 5) {     
-        return  std::make_tuple(1, op.CalcObjectXPosition(0.50, "TENT_X"), op.CalcObjectYPosition(0.4, "TENT_Y"), 97, 149);
+        return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(54, "TENT_X"), op.CalcObjectYAbsolutePosition(41, "TENT_Y"), 97, 149);
        // return  std::make_tuple(1, 300, 97, 149);
     }
     if (scene == 1 && objectID == 6) {

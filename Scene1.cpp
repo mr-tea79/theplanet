@@ -77,6 +77,17 @@ bool Scene1::doPerfCheck = true; //This is to inform the system to do a performa
 bool Scene1::quitGame = false;
 //int Scene1::soundCount = 0;
 
+int moveX;
+int moveY;
+int moveXA;
+int moveXY;
+int Scene1::xp;
+int Scene1::yp;
+int Scene1::playerXP;
+int Scene1::playerYP;
+int xpc;
+int ypc;
+
 static int mouseHold = 0;
 int Scene1::hoverHold = 0;
 
@@ -203,6 +214,9 @@ int Scene1::scene1() {
 
     //Load sound class
     Sound s;
+
+    //Placing objects in the game.
+    ObjectPositions op;
     
     //Load in some sounds!
     s.loadMovementSounds();
@@ -212,6 +226,8 @@ int Scene1::scene1() {
 
     //Init the TOAD1000 AI Thread.
     ai.ToadTalk();
+
+   
 
     AI::aiPlayMessages = true;
     PlayerInteraction::playerMessage = 15;
@@ -227,7 +243,8 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-        
+        //Calculate positions of hover objects.
+      
        // std::cout << "PDA X Position:" << ObjectPositions::PDA_X << std::endl;
        // std::cout << "PDA Y Position:" << ObjectPositions::PDA_Y << std::endl;
         checkFScreenStatus(fullScreenTrigger);
@@ -247,6 +264,9 @@ int Scene1::scene1() {
             //Purge the Inventory for a new game. SAVE GAME feature will be added at the end of the project.   
             inv.purgeDatabase();
             newGame = false;
+        }
+        else {
+            AI::aiPlayMessages = false;
         }
 
         //Check what textures and player invetory is required when continuing a game.
@@ -301,6 +321,18 @@ int Scene1::scene1() {
                         gy = gdSprite.y;
                         menuSound = 0;
                         mouseHold = 0;  
+                        op.PlaceHoverObjects();
+                        Scene1::xp = op.CalcObjectXPositionPercentage(x, "X");
+                        Scene1::yp = op.CalcObjectYPositionPercentage(y, "Y");
+                        xpc = op.CalcObjectXAbsolutePosition(xp, "XPC");
+                        ypc = op.CalcObjectYAbsolutePosition(yp, "YPC");
+
+
+                        moveX = op.CalcObjectXPositionPercentage(x, "X");
+                        moveY = op.CalcObjectYPositionPercentage(y, "Y");
+                      
+                        std::cout << "Mouse X Position: " << moveX << "%" << std::endl;
+                        std::cout << "Mouse Y Position: " << moveY << "%" << std::endl;
                    
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
@@ -318,7 +350,7 @@ int Scene1::scene1() {
                         }
 
                        // if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {
-                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {                     
+                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {    
                             playerMessage = false;
                             playerIsMoving = 0;
                             sceneHalt = 0; // Fixes issue where hover text appears in speech area.                                                   
@@ -337,10 +369,11 @@ int Scene1::scene1() {
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr; 
-                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.   
+                                    playerIsMoving = 0;
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                     PlayerMovement::blink = true;                                  
                             }
-                           
+                         
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);    
 
                         } 
@@ -384,12 +417,15 @@ int Scene1::scene1() {
             mouseHold++; //Important because it stops a memory leak.
             playerIsMoving = 0;
             playerMessage = false;
-
+            interactionMessage = "";
             
+     
             //Prevents memory leak          
             SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = nullptr;
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
-            
+           
+
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
                   
             mob.useChecker(gd,gy); //Deals with wrong use actions. Pain to figure out!
@@ -406,12 +442,19 @@ int Scene1::scene1() {
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
             gy = gdSprite.y;
+           
+
+        
+
+           
 
             //Show coordinates in console for object placement.
             cout << string(100, '\n');
-            std::cout << "Mouse Click X Location = " << x << std::endl;
+            std::cout << "Mouse Click X Location = " << xp <<"%" << std::endl;
+            std::cout << "Mouse Click Converted X position is: " << xpc << "" << std::endl;
             std::cout << "" << std::endl;
-            std::cout << "Mouse Click Y Location = " << y << std::endl;
+            std::cout << "Mouse Click Y Location = " << yp <<"%" <<  std::endl;
+            std::cout << "Mouse Click Converted Y position is: " << ypc << "" << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Player X Position is: " << gdSprite.x << std::endl;
             std::cout << "" << std::endl;
@@ -425,6 +468,10 @@ int Scene1::scene1() {
             std::cout << "Current Sound Status: " << Sound::soundOn << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
+
+
+            std::cout << "Player Current X Position % is: " << Scene1::playerXP << endl;
+            std::cout << "Player Current Y Position % is: " << Scene1::playerYP << endl;
         
             //Get interaction message.         
             interactionMessage = si.sceneTransitions(x, y, gd, gy);
@@ -511,7 +558,7 @@ int Scene1::scene1() {
           
             if(action !=1 ){
                 SDL_DestroyTexture(Textures::spriteTexture);
-           //     Textures::spriteTexture = nullptr; //Prevents memory leak.
+                Textures::spriteTexture = nullptr; //Prevents memory leak.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{   
@@ -568,7 +615,9 @@ int Scene1::scene1() {
         SDL_RenderClear(renderer);
        
         sr.sceneRender();  //Render the game scene backgrounds.
-
+        moveXA = op.CalcObjectXAbsolutePosition(moveX, "PlayerLocationX");
+        moveXY = op.CalcObjectYAbsolutePosition(moveY, "PlayerLocationY");
+       
     
         //This needs to go here, don't move it!
         //Hide the player interaction menu on main menu screen.
@@ -596,7 +645,7 @@ int Scene1::scene1() {
         //Make something appear!    
         SDL_RenderPresent(renderer);
         mouseClick = false;    
-
+ 
         //Monitor for quit game
         if (quitGame == true) {
             if (Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {

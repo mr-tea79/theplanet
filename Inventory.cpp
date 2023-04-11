@@ -245,13 +245,11 @@ void Inventory::continueGameCheck() {
 
 	if (Scene1::continueGame == true) {
 		Scene1::doPerfCheck = false;
-		//  AI::continueGame = true; //What was I thinking here?!
-		inv.ContinueGame();
+	    inv.ContinueGame();
 		Scene1::continueGame = false;
 		pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
 		s.loadSounds(Scene1::SceneBackground);
-		std::cout << "Player speed is now: " << PlayerMovement::hspeed << std::endl;
-
+	
 
 		//Need to put these in a separate method. This loads in the correct texture packs for the given scene.
 

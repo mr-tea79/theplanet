@@ -24,6 +24,10 @@ namespace brightland {
 		static int HEIGHT;
 		static int secretTrigger;
 		static int SPRITE_SIZE;
+		static int xp;
+		static int yp;
+		static int playerXP;
+		static int playerYP;
 		static std::string useStatement;
 		static std::string openStatement;
 		static std::string lookStatement;

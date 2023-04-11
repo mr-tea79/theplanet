@@ -373,7 +373,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
    
     }
 
-    if (gy > 300 && gy < 340 && lookStatement == "Look at Wreckage") {     
+    if (Scene1::playerXP >= 40 && Scene1::playerYP <= 50 && lookStatement == "Look at Wreckage") {     
       //  lookMessage = "That's one of the engines.";
         AI::aiPlayMessages = true;
         AI::dialogNumber = 4;
@@ -675,6 +675,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
 
     std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
     gameObject = menuMessages;
+   // std::cout << gameObject << std::endl;
     items = inv.checkItem(gameObject);
  
     //If user clicks on the location of the pickup button.
@@ -711,6 +712,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 Scene1::objectToDestroy.append(object);
             }
             if (menuMessages == "Tape" && pickUpStatement == "Pick up Ape Tape") {
+                printf("Got here!!!");
                 tex.TextureUpdater(Textures::spriteBack1a, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);

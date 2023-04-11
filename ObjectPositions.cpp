@@ -2,6 +2,18 @@
 #include "Scene1.h"
 
 using namespace brightland;
+// X and Y
+int ObjectPositions::x;
+int ObjectPositions::y;
+
+int ObjectPositions::PlayerLocationX;
+int ObjectPositions::PlayerLocationY;
+
+//Scene Areas
+int ObjectPositions::WREAKAGEDOOR_X;
+int ObjectPositions::WREAKAGEDOOR_Y;
+int ObjectPositions::ENGINE_X;
+int ObjectPositions::ENGINE_Y;
 
 //Pick up objects
 int ObjectPositions::PDA_X;
@@ -22,31 +34,72 @@ int ObjectPositions::OPEN_X;
 int ObjectPositions::OPEN_Y;
 
 
+
 //The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
 //make the objects still be in the correct positions and not hard coded for each different resoluion.
 
-float ObjectPositions::CalcObjectYPosition(float position, std::string objectName) {
+void ObjectPositions::PlaceHoverObjects() {
+    CalcObjectXAbsolutePosition(10, "MOON_X"), CalcObjectYAbsolutePosition(9, "MOON_Y"); //Set Moon hover position.
+    CalcObjectXAbsolutePosition(74, "WREACKDOOR_X"), CalcObjectYAbsolutePosition(46, "WREACKDOOR_Y"); //Set Door entrance position.
+    CalcObjectXAbsolutePosition(56, "ENGINE_X"), CalcObjectYAbsolutePosition(40, "ENGINE_Y"); //Set Door entrance position.
+}
+
+
+float ObjectPositions::CalcObjectYPositionPercentage(float position, std::string objectName) {
     int result;
-    result = position * Scene1::HEIGHT;
-    objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
-    objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
-    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
-    objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
+    result = position / Scene1::HEIGHT * 100;
+  
+    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;   
     objectName == "USE_Y" ? ObjectPositions::USE_Y = result : 0;
     objectName == "OPEN_Y" ? ObjectPositions::OPEN_Y = result : 0;
+    objectName == "Y" ? ObjectPositions::x = result : 0;
+    objectName == "PlayerLocationY" ? ObjectPositions::PlayerLocationY = result : 0;
+    objectName == "PLAYERYP" ? Scene1::playerYP = result : 0;
+
+    
 
     return result;
 }
 
-float ObjectPositions::CalcObjectXPosition(float position, std::string objectName) {
+float ObjectPositions::CalcObjectXPositionPercentage(float position, std::string objectName) {
     int result;
-    result = position * Scene1::WIDTH;
-    objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
-    objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
-    objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
-    objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
+    result = position / Scene1::WIDTH * 100;
+  
+   
     objectName == "USE_X" ? ObjectPositions::USE_X = result : 0;
     objectName == "OPEN_X" ? ObjectPositions::OPEN_X = result : 0;
+    objectName == "X" ? ObjectPositions::x = result : 0;
+    objectName == "PlayerLocationX" ? ObjectPositions::PlayerLocationX = result : 0;
+    objectName == "PLAYERXP" ? Scene1::playerXP = result : 0;
+    return result;
+}
+
+float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string objectName) {
+    int result;
+
+    result = position * Scene1::WIDTH / 100;
+    objectName == "WREACKDOOR_X" ? ObjectPositions::WREAKAGEDOOR_X = result : 0;
+    objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
+    objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
+    objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
+    objectName == "XPC" ? ObjectPositions::x = result : 0;
+    objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
+    objectName == "ENGINE_X" ? ObjectPositions::ENGINE_X = result : 0;
+
+    return result;
+}
+
+float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string objectName) {
+    int result;
+
+    result = position * Scene1::HEIGHT / 100;
+    objectName == "WREACKDOOR_Y" ? ObjectPositions::WREAKAGEDOOR_Y = result : 0;
+    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
+    objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
+    objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
+    objectName == "YPC" ? ObjectPositions::y = result : 0;
+    objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
+    objectName == "ENGINE_Y" ? ObjectPositions::ENGINE_Y = result : 0;
 
     return result;
 }

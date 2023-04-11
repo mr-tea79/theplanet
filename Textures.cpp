@@ -551,11 +551,12 @@ void Textures::Scene4Textures() {
 //sprite does not flicker.
 
 void Textures::TextureUpdater(SDL_Surface* texture, std::string action) { 
-    MenuInteraction mi;
+   
     SDL_DestroyTexture(spriteTexture);
     SDL_CreateTextureFromSurface(Scene1::renderer, texture);
+      
     if (action == "Action") {
-        std::cout << "ACTION" << std::endl;
+        MenuInteraction mi;
         mi.doAction();
     }
     

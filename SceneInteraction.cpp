@@ -291,7 +291,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     }
     /* Outside wreckage */
-    if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= 665 && playerCurrentLocationX < 771 && playerCurrentLocationY <= 365 && Scene1::SceneTransitionStatement == "Wreckage") {
+    if (Scene1::SceneBackground == "1" && Scene1::playerXP >=65 && Scene1::SceneTransitionStatement == "Wreckage") {
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
         SetSpritePosition(400,400,160);

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <SDL.h>
 #include "Scene1.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 using namespace std;
@@ -15,10 +16,11 @@ float PlayerMovement::vspeed = 2.5;
 
 bool PlayerMovement::blink;
 
-
 int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
     
     Textures tex;
+    ObjectPositions op;
+    Scene1::playerXP = op.CalcObjectXPositionPercentage(Scene1::gdSprite.x, "PLAYERXP");
 
     blink = false;
     if (position == 0) {
@@ -54,6 +56,8 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
 int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
     
     Textures tex;
+    ObjectPositions op;
+    Scene1::playerXP = op.CalcObjectXPositionPercentage(Scene1::gdSprite.x, "PLAYERXP");
 
     blink = false;
     if (position == 0) {
@@ -89,7 +93,8 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
 int PlayerMovement::doYWalkUp(int gy) {
 
     Textures tex;
-
+    ObjectPositions op;
+    Scene1::playerYP = op.CalcObjectYPositionPercentage(Scene1::gdSprite.y, "PLAYERYP");
     blink = false;
     if (position == 0) {
         tex.TextureUpdater(Textures::spriteBack1a, "Movement");
@@ -117,7 +122,8 @@ int PlayerMovement::doYWalkUp(int gy) {
 int PlayerMovement::doYWalkDown(int gy) {
 
     Textures tex;
-
+    ObjectPositions op;
+    Scene1::playerYP = op.CalcObjectYPositionPercentage(Scene1::gdSprite.y, "PLAYERYP");
     blink = true;
     if (position == 0) {
         tex.TextureUpdater(Textures::spriteDown3a, "Movement");
@@ -148,6 +154,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     //Ternary operator
     //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
     //Used to reduce lots of IF statements.
+  
 
     ///////////////////// PLAYER OPTIONS ///////////////////////////////////////////////
     if (Scene1::SceneBackground == "01") {
