@@ -77,16 +77,16 @@ bool Scene1::doPerfCheck = true; //This is to inform the system to do a performa
 bool Scene1::quitGame = false;
 //int Scene1::soundCount = 0;
 
-int moveX;
-int moveY;
+int Scene1::moveX;
+int Scene1::moveY;
 int moveXA;
 int moveXY;
 int Scene1::xp;
 int Scene1::yp;
 int Scene1::playerXP;
 int Scene1::playerYP;
-int xpc;
-int ypc;
+int Scene1::xpc;
+int Scene1::ypc;
 
 static int mouseHold = 0;
 int Scene1::hoverHold = 0;
@@ -244,7 +244,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
         //Calculate positions of hover objects.
-      
+        std::cout << "Player is Moving=" << playerIsMoving << std::endl;
        // std::cout << "PDA X Position:" << ObjectPositions::PDA_X << std::endl;
        // std::cout << "PDA Y Position:" << ObjectPositions::PDA_Y << std::endl;
         checkFScreenStatus(fullScreenTrigger);
@@ -374,8 +374,9 @@ int Scene1::scene1() {
                                     PlayerMovement::blink = true;                                  
                             }
                          
-                                interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);    
-
+                            if (playerIsMoving != 1) {
+                                interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
+                            }
                         } 
                        
                         if (interactionMessage != "" && playerIsMoving !=1) {                      
@@ -418,8 +419,7 @@ int Scene1::scene1() {
             playerIsMoving = 0;
             playerMessage = false;
             interactionMessage = "";
-            
-     
+                       
             //Prevents memory leak          
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = nullptr;
@@ -468,10 +468,10 @@ int Scene1::scene1() {
             std::cout << "Current Sound Status: " << Sound::soundOn << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
+            
 
-
-            std::cout << "Player Current X Position % is: " << Scene1::playerXP << endl;
-            std::cout << "Player Current Y Position % is: " << Scene1::playerYP << endl;
+            std::cout << "Player Current X Position % is: " << moveX << endl;
+            std::cout << "Player Current Y Position % is: " << moveY << endl;
         
             //Get interaction message.         
             interactionMessage = si.sceneTransitions(x, y, gd, gy);
@@ -487,7 +487,7 @@ int Scene1::scene1() {
 
                 if (interactionMessage != "" && AI::aiStop !=1) {
                     pi.InteractionControllerObject(interactionMessage, gameObject);
-                    playerIsMoving = 1;
+                   // playerIsMoving = 1;
                 }
 
                 //Used for clicking sounds in game.
@@ -568,21 +568,26 @@ int Scene1::scene1() {
             if (sceneHalt == 0 ) {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
-                playerIsMoving = 1;
+                //playerIsMoving = 1;
                 SDL_Delay(1);
              
                 if (wy < gdSprite.y || wy > gdSprite.y) {
+                    
                     //The following 2 statements will allow the player to move across and then up or down.
                     if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
-                        playerIsMoving = 1;
+                        
                      
                     }
+                  
+                    
                     if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
+                     
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
-                        playerIsMoving = 1;
+                        
                       
                     }  
+                
                     SDL_Delay(1); 
                  
                 }
@@ -596,6 +601,7 @@ int Scene1::scene1() {
 
                     SDL_Delay(300);
                     sceneHalt = 0;
+                    playerIsMoving = 0;
             }
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
@@ -603,9 +609,7 @@ int Scene1::scene1() {
                 interactionMessage = si.sceneTransitions(x, y, gd, gy);
                 s.playMovementSounds();
             }
-            else{         
-                playerIsMoving = 0;  //Player is not moving.        
-            }
+         
        
     }
 

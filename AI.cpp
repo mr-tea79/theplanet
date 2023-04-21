@@ -22,6 +22,14 @@ void startDialog() {
     Scene1::sceneHalt = 1;
 }
 
+void stopDialog() {
+    std::this_thread::sleep_for(1s);
+    Scene1::sceneHalt = 0;
+    AI::aiStop = 0;
+    AI::aiPlayMessages = false;
+    AI::playerTalk = false;
+
+}
 
 void Messages() {
     while (!Scene1::threadRipper) {   
@@ -53,11 +61,7 @@ void Messages() {
                 Scene1::sceneHalt = 1;
 
                 PlayerInteraction::playerMessage = 4;
-                std::this_thread::sleep_for(1s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }     
@@ -72,11 +76,8 @@ void Messages() {
                     Scene1::sceneHalt = 1;
 
                     PlayerInteraction::playerMessage = 6;
-                    std::this_thread::sleep_for(1s);
-                    Scene1::sceneHalt = 0;
-                    AI::aiStop = 0;
-                    AI::aiPlayMessages = false;
-                    AI::playerTalk = false;
+                    stopDialog();
+
                 }            
 
         }
@@ -90,11 +91,7 @@ void Messages() {
                 Scene1::sceneHalt = 1;
 
                 PlayerInteraction::playerMessage = 8;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -108,11 +105,7 @@ void Messages() {
                 Scene1::sceneHalt = 1;
 
                 PlayerInteraction::playerMessage = 10;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
                 AI::beenThereAlready.append("5");
 
             }
@@ -127,41 +120,28 @@ void Messages() {
                 Scene1::sceneHalt = 1;
 
                 PlayerInteraction::playerMessage = 12;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
         if (Scene1::SceneBackground == "1f" && AI::playerTalk == true && AI::dialogNumber == 20) {
             startDialog();
             PlayerInteraction::playerMessage = 32;
-            std::this_thread::sleep_for(1.5s);
-            Scene1::sceneHalt = 0;
-            AI::aiStop = 0;
-            AI::aiPlayMessages = false;
-            AI::playerTalk = false;
+            stopDialog();
         }
 
         if(Scene1::SceneBackground == "1" && AI::continueGame == false && AI::aiPlayMessages == true) {
             if (AI::beenThereAlready.find("1") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else{
-                AI::aiStop = 1;
+            
                 PlayerInteraction::playerMessage = 18;
-                std::this_thread::sleep_for(1.5s);  
-                Scene1::sceneHalt = 1;                     
+                startDialog();
            
                 PlayerInteraction::playerMessage =16;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
+                startDialog();
                    
                 PlayerInteraction::playerMessage = 17;
-                std::this_thread::sleep_for(1s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
+                stopDialog();
                 AI::beenThereAlready.append("1");
             }
         }
@@ -170,16 +150,12 @@ void Messages() {
 
             if (AI::beenThereAlready.find("1e") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
-                AI::aiStop = 1;
+           
                 PlayerInteraction::playerMessage = 18;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
+                startDialog();
 
                 PlayerInteraction::playerMessage = 19;
-                std::this_thread::sleep_for(1s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
+                stopDialog();
                 AI::beenThereAlready.append("1e");
             }
            
@@ -190,11 +166,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 13;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -204,11 +176,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 15;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
             }
         }
 
@@ -217,11 +185,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 20;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();;
 
             }
         }
@@ -230,15 +194,10 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 21;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
+                           
 
                 PlayerInteraction::playerMessage = 22;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -248,11 +207,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 23;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -262,11 +217,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 24;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -276,11 +227,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 25;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -290,11 +237,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 26;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                stopDialog();
 
             }
         }
@@ -304,10 +247,7 @@ void Messages() {
             else {
                 startDialog();
                 PlayerInteraction::playerMessage = 27;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
+                stopDialog();
                 AI::beenThereAlready.append("15");
                
                
@@ -318,13 +258,10 @@ void Messages() {
         if (Scene1::SceneBackground == "1da" && AI::aiPlayMessages == true && AI::dialogNumber == 16) {
             if (AI::beenThereAlready.find("16") != std::string::npos) { PlayerInteraction::playerMessage = 1000; }
             else {
-                AI::aiStop = 1;
+                startDialog();
                 PlayerInteraction::playerMessage = 28;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
-
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
+                
+                stopDialog();
                 AI::beenThereAlready.append("16");
 
 
@@ -338,12 +275,8 @@ void Messages() {
 
                 startDialog();
                 PlayerInteraction::playerMessage = 29;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+                            
+                stopDialog();
 
 
             }
@@ -355,12 +288,8 @@ void Messages() {
 
                 startDialog();
                 PlayerInteraction::playerMessage = 30;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+               
+                stopDialog();
 
 
             }
@@ -372,12 +301,8 @@ void Messages() {
 
                 startDialog();
                 PlayerInteraction::playerMessage = 31;
-                std::this_thread::sleep_for(1.5s);
-                Scene1::sceneHalt = 1;
-                Scene1::sceneHalt = 0;
-                AI::aiStop = 0;
-                AI::aiPlayMessages = false;
-                AI::playerTalk = false;
+              
+                stopDialog();
 
 
             }
