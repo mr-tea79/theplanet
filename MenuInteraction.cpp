@@ -373,7 +373,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
    
     }
 
-    if (Scene1::playerXP >= 40 && Scene1::playerYP <= 50 && lookStatement == "Look at Wreckage") {     
+    if (Scene1::xp >= 40 && Scene1::yp <= 50 && lookStatement == "Look at Wreckage") {     
       //  lookMessage = "That's one of the engines.";
         AI::aiPlayMessages = true;
         AI::dialogNumber = 4;

@@ -20,7 +20,7 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
     Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
-    Scene1::playerXP = op.CalcObjectXPositionPercentage(Scene1::gdSprite.x, "PLAYERXP");
+ 
 
     blink = false;
     if (position == 0) {
@@ -57,7 +57,7 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
     Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
-    Scene1::playerXP = op.CalcObjectXPositionPercentage(Scene1::gdSprite.x, "PLAYERXP");
+
 
     blink = false;
     if (position == 0) {
@@ -156,7 +156,10 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     //Ternary operator
     //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
     //Used to reduce lots of IF statements.
-  
+    ObjectPositions op;
+    Scene1::xp = op.CalcObjectXPositionPercentage(Scene1::gdSprite.x, "X");
+  //  std::cout << Scene1::xp << std::endl;
+ 
 
     ///////////////////// PLAYER OPTIONS ///////////////////////////////////////////////
     if (Scene1::SceneBackground == "01") {
@@ -265,7 +268,9 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     //Ternary operator
     //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
     //Used to reduce lots of IF statements.
-
+    ObjectPositions op;
+    Scene1::yp = op.CalcObjectYPositionPercentage(Scene1::gdSprite.y, "Y");
+  //  std::cout << Scene1::yp << std::endl;
 
     //Check if player has put patch on their suit.
     if (Inventory::inv.find("3") != std::string::npos){

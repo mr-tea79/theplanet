@@ -20,16 +20,16 @@ namespace brightland {
 		int texW;
 		int texH;
 	public:
-		static int moveX;
-		static int moveY;
+		static int mouseMoveXPercent;
+		static int mouseMoveYPercent;
 		static int WIDTH;
 		static int HEIGHT;
 		static int secretTrigger;
 		static int SPRITE_SIZE;
 		static int xp;
 		static int yp;
-		static int ypc;
-		static int xpc;
+		static int yMousePositionPercent;
+		static int xMousePositionPercent;
 		static int playerXP;
 		static int playerYP;
 		static std::string useStatement;

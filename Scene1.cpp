@@ -77,16 +77,16 @@ bool Scene1::doPerfCheck = true; //This is to inform the system to do a performa
 bool Scene1::quitGame = false;
 //int Scene1::soundCount = 0;
 
-int Scene1::moveX;
-int Scene1::moveY;
+int Scene1::mouseMoveYPercent;
+int Scene1::mouseMoveXPercent;
 int moveXA;
-int moveXY;
+int moveYA;
 int Scene1::xp;
 int Scene1::yp;
 int Scene1::playerXP;
 int Scene1::playerYP;
-int Scene1::xpc;
-int Scene1::ypc;
+int Scene1::yMousePositionPercent;
+int Scene1::xMousePositionPercent;
 
 static int mouseHold = 0;
 int Scene1::hoverHold = 0;
@@ -244,7 +244,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
         //Calculate positions of hover objects.
-        std::cout << "Player is Moving=" << playerIsMoving << std::endl;
+      //  std::cout << "Player is Moving=" << playerIsMoving << std::endl;
        // std::cout << "PDA X Position:" << ObjectPositions::PDA_X << std::endl;
        // std::cout << "PDA Y Position:" << ObjectPositions::PDA_Y << std::endl;
         checkFScreenStatus(fullScreenTrigger);
@@ -322,17 +322,13 @@ int Scene1::scene1() {
                         menuSound = 0;
                         mouseHold = 0;  
                         op.PlaceHoverObjects();
-                        Scene1::xp = op.CalcObjectXPositionPercentage(x, "X");
-                        Scene1::yp = op.CalcObjectYPositionPercentage(y, "Y");
-                        xpc = op.CalcObjectXAbsolutePosition(xp, "XPC");
-                        ypc = op.CalcObjectYAbsolutePosition(yp, "YPC");
+                       
+                        mouseMoveXPercent = op.CalcObjectXPositionPercentage(x, "X");
+                        mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
 
-
-                        moveX = op.CalcObjectXPositionPercentage(x, "X");
-                        moveY = op.CalcObjectYPositionPercentage(y, "Y");
-                      
-                        std::cout << "Mouse X Position: " << moveX << "%" << std::endl;
-                        std::cout << "Mouse Y Position: " << moveY << "%" << std::endl;
+                        //UNCOMMENT THE 2 LINES BELOW TO GET CONSTANT UPDATE OF MOUSE POSITION IN SCREEN PERCENTAGE
+                        //std::cout << "Mouse X Position: " << Scene1::mouseMoveXPercent << "%" << std::endl;
+                        //std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
                    
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
@@ -375,6 +371,7 @@ int Scene1::scene1() {
                             }
                          
                             if (playerIsMoving != 1) {
+                              
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                             }
                         } 
@@ -416,7 +413,7 @@ int Scene1::scene1() {
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
             mouseHold++; //Important because it stops a memory leak.
-            playerIsMoving = 0;
+           // playerIsMoving = 0;
             playerMessage = false;
             interactionMessage = "";
                        
@@ -450,15 +447,16 @@ int Scene1::scene1() {
 
             //Show coordinates in console for object placement.
             cout << string(100, '\n');
+            
             std::cout << "Mouse Click X Location = " << xp <<"%" << std::endl;
-            std::cout << "Mouse Click Converted X position is: " << xpc << "" << std::endl;
+          //  std::cout << "Mouse Click Converted X position is: " << Scene1::xPlayerPositionPercent << "" << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Mouse Click Y Location = " << yp <<"%" <<  std::endl;
-            std::cout << "Mouse Click Converted Y position is: " << ypc << "" << std::endl;
+         //   std::cout << "Mouse Click Converted Y position is: " << Scene1::yPlayerPositionPercent << "" << std::endl;
             std::cout << "" << std::endl;
-            std::cout << "Current Player X Position is: " << gdSprite.x << std::endl;
+            std::cout << "Current Player X Position is: " << Scene1::xp << std::endl;
             std::cout << "" << std::endl;
-            std::cout << "Current Player Y Position is: " << gdSprite.y << std::endl;
+            std::cout << "Current Player Y Position is: " << Scene1::yp << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Scene is: " << SceneBackground << std::endl;
             std::cout << "Mouse Click is: " << mouseHold << std::endl;
@@ -470,9 +468,8 @@ int Scene1::scene1() {
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
             
 
-            std::cout << "Player Current X Position % is: " << moveX << endl;
-            std::cout << "Player Current Y Position % is: " << moveY << endl;
-        
+       
+
             //Get interaction message.         
             interactionMessage = si.sceneTransitions(x, y, gd, gy);
            
@@ -609,7 +606,7 @@ int Scene1::scene1() {
                 interactionMessage = si.sceneTransitions(x, y, gd, gy);
                 s.playMovementSounds();
             }
-         
+           
        
     }
 
@@ -619,9 +616,7 @@ int Scene1::scene1() {
         SDL_RenderClear(renderer);
        
         sr.sceneRender();  //Render the game scene backgrounds.
-        moveXA = op.CalcObjectXAbsolutePosition(moveX, "PlayerLocationX");
-        moveXY = op.CalcObjectYAbsolutePosition(moveY, "PlayerLocationY");
-       
+              
     
         //This needs to go here, don't move it!
         //Hide the player interaction menu on main menu screen.
