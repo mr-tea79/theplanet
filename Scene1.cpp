@@ -81,12 +81,10 @@ int Scene1::mouseMoveYPercent;
 int Scene1::mouseMoveXPercent;
 int moveXA;
 int moveYA;
-int Scene1::xp;
-int Scene1::yp;
-int Scene1::playerXP;
-int Scene1::playerYP;
-int Scene1::yMousePositionPercent;
-int Scene1::xMousePositionPercent;
+int Scene1::xp; // Player X position in percentage value %.
+int Scene1::yp; // Player Y position in percentage value %.
+int Scene1::yMousePositionPercent; //Mouse Y position in %.
+int Scene1::xMousePositionPercent; // Mouse X position in %.
 
 static int mouseHold = 0;
 int Scene1::hoverHold = 0;
@@ -112,6 +110,7 @@ bool Scene1::checkFScreenStatus(bool status) {
 
 int Scene1::scene1() {
   
+   
     cout << "Initialize" << endl;
     scene = 1; //Scene Number.
   
@@ -243,10 +242,6 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-        //Calculate positions of hover objects.
-      //  std::cout << "Player is Moving=" << playerIsMoving << std::endl;
-       // std::cout << "PDA X Position:" << ObjectPositions::PDA_X << std::endl;
-       // std::cout << "PDA Y Position:" << ObjectPositions::PDA_Y << std::endl;
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
@@ -345,7 +340,6 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                       // if (event.motion.y > 589 && event.motion.x < 289 || event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 && AI::aiStop !=1) {
                         if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {    
                             playerMessage = false;
                             playerIsMoving = 0;
@@ -430,10 +424,12 @@ int Scene1::scene1() {
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;
-         
+            
+            if(playerIsMoving == 0){
             //This fixes the bug where if you decide to not to commit to picking something up.
             if (interactionMessage == "") {
                 actionStatement = "";
+            }
             }
              
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
@@ -449,10 +445,8 @@ int Scene1::scene1() {
             cout << string(100, '\n');
             
             std::cout << "Mouse Click X Location = " << xp <<"%" << std::endl;
-          //  std::cout << "Mouse Click Converted X position is: " << Scene1::xPlayerPositionPercent << "" << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Mouse Click Y Location = " << yp <<"%" <<  std::endl;
-         //   std::cout << "Mouse Click Converted Y position is: " << Scene1::yPlayerPositionPercent << "" << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Player X Position is: " << Scene1::xp << std::endl;
             std::cout << "" << std::endl;
@@ -565,7 +559,6 @@ int Scene1::scene1() {
             if (sceneHalt == 0 ) {
                 playerMessage = false;
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
-                //playerIsMoving = 1;
                 SDL_Delay(1);
              
                 if (wy < gdSprite.y || wy > gdSprite.y) {
@@ -576,7 +569,7 @@ int Scene1::scene1() {
                         
                      
                     }
-                  
+               
                     
                     if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
                      
@@ -584,6 +577,7 @@ int Scene1::scene1() {
                         
                       
                     }  
+                 
                 
                     SDL_Delay(1); 
                  
@@ -595,7 +589,7 @@ int Scene1::scene1() {
                     y = gdSprite.y;
                     wx = gdSprite.x;
                     wy = gdSprite.y;
-
+              
                     SDL_Delay(300);
                     sceneHalt = 0;
                     playerIsMoving = 0;

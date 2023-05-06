@@ -95,7 +95,7 @@ int PlayerMovement::doYWalkUp(int gy) {
     Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
-    Scene1::playerYP = op.CalcObjectYPositionPercentage(Scene1::gdSprite.y, "PLAYERYP");
+ 
     blink = false;
     if (position == 0) {
         tex.TextureUpdater(Textures::spriteBack1a, "Movement");
@@ -125,7 +125,6 @@ int PlayerMovement::doYWalkDown(int gy) {
     Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
-    Scene1::playerYP = op.CalcObjectYPositionPercentage(Scene1::gdSprite.y, "PLAYERYP");
     blink = true;
     if (position == 0) {
         tex.TextureUpdater(Textures::spriteDown3a, "Movement");
@@ -393,15 +392,10 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
     ///////////////////////// SCENE 1 FIRST SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1") {
-        Scene1::playerYP < 50 ? Scene1::SPRITE_SIZE = 90 : move = 0;
-        Scene1::playerYP > 53 ? Scene1::SPRITE_SIZE = 100 : move = 0;
-        Scene1::playerYP > 55 ? Scene1::SPRITE_SIZE = 120 : move = 0;
-       // gy < 390 ? Scene1::SPRITE_SIZE = 90 : move = 0;
-        //gy < 400 ? Scene1::SPRITE_SIZE = 110 : move = 0;
-        //gy > 440 ? Scene1::SPRITE_SIZE = 120 : move = 0;
-     //   Scene1::playerYP >= Scene1::ypc && Scene1::ypc < 55 ? gy = doYWalkUp(gy), position++ : move = 0;
-        gy >= y && y < 575 && y >220 ? gy = doYWalkUp(gy), position++ : move = 0;
-       // Scene1::playerYP <= Scene1::ypc && Scene1::ypc < 55 ? gy = doYWalkDown(gy), position++ : move = 0;
+        Scene1::yp < 50 ? Scene1::SPRITE_SIZE = 90 : move = 0;
+        Scene1::yp > 53 ? Scene1::SPRITE_SIZE = 100 : move = 0;
+        Scene1::yp > 55 ? Scene1::SPRITE_SIZE = 120 : move = 0;
+        gy >= y && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : move = 0;
         gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
     }
 

@@ -54,7 +54,7 @@ float ObjectPositions::CalcObjectYPositionPercentage(float position, std::string
     objectName == "OPEN_Y" ? ObjectPositions::OPEN_Y = result : 0;
     objectName == "Y" ? ObjectPositions::x = result : 0;
     objectName == "PlayerLocationY" ? ObjectPositions::PlayerLocationY = result : 0;
-    objectName == "PLAYERYP" ? Scene1::playerYP = result : 0;
+  //  objectName == "PLAYERYP" ? Scene1::playerYP = result : 0;
 
     
 
@@ -70,7 +70,7 @@ float ObjectPositions::CalcObjectXPositionPercentage(float position, std::string
     objectName == "OPEN_X" ? ObjectPositions::OPEN_X = result : 0;
     objectName == "X" ? ObjectPositions::x = result : 0;
     objectName == "PlayerLocationX" ? ObjectPositions::PlayerLocationX = result : 0;
-    objectName == "PLAYERXP" ? Scene1::playerXP = result : 0;
+   // objectName == "PLAYERXP" ? Scene1::playerXP = result : 0;
     return result;
 }
 
