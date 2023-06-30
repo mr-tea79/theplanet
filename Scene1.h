@@ -63,8 +63,8 @@ namespace brightland {
 		static bool newGame;
 
 		//Set start position of main character.
-		static int xPosition;
-		static int yPosition;
+		//static int xPosition;
+		//static int yPosition;
 
 		static SDL_Color fcolor;
 		static SDL_Color bcolor;

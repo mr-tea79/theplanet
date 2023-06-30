@@ -85,6 +85,7 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "XPC" ? ObjectPositions::x = result : 0;
     objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
     objectName == "ENGINE_X" ? ObjectPositions::ENGINE_X = result : 0;
+   
 
     return result;
 }

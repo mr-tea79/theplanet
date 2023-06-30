@@ -116,8 +116,8 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_stmt* stmt = NULL;
 	int i = 0;
 	int size = Scene1::SPRITE_SIZE;
-	int y = Scene1::yPosition;
-	int x = Scene1::xPosition;
+	//int y = Scene1::yPosition;
+	//int x = Scene1::xPosition;
 	std::string invItems = inv;
 	std::string objectToDestroy = Scene1::objectToDestroy;
 	
@@ -136,8 +136,8 @@ int Inventory::gameSave(std::string currentScene) {
 	sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
 
 	sqlite3_bind_text(stmt, 1, currentScene.c_str(), strlen(currentScene.c_str()), 0);
-	sqlite3_bind_int(stmt, 2, x);
-	sqlite3_bind_int(stmt, 3, y);
+	//sqlite3_bind_int(stmt, 2, x);
+	//sqlite3_bind_int(stmt, 3, y);
 	sqlite3_bind_int(stmt, 4, size);
 	sqlite3_bind_text(stmt, 5, objectToDestroy.c_str(), strlen(objectToDestroy.c_str()), 0);
 	sqlite3_bind_text(stmt, 6, invItems.c_str(), strlen(invItems.c_str()), 0);
@@ -247,7 +247,7 @@ void Inventory::continueGameCheck() {
 		Scene1::doPerfCheck = false;
 	    inv.ContinueGame();
 		Scene1::continueGame = false;
-		pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+	//	pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
 		s.loadSounds(Scene1::SceneBackground);
 	
 
@@ -364,11 +364,11 @@ void Inventory::ContinueGame() {
 				}
 				if (columnName == "x") {					
 					std::cout << "x: " << sqlite3_column_int(stmt, i) << std::endl;
-					Scene1::xPosition = sqlite3_column_int(stmt, i);
+					//Scene1::xPosition = sqlite3_column_int(stmt, i);
 				}
 				if (columnName == "y") {
 					std::cout << "y: " << sqlite3_column_int(stmt, i) << std::endl;
-					Scene1::yPosition = sqlite3_column_int(stmt, i);
+					//Scene1::yPosition = sqlite3_column_int(stmt, i);
 				}
 				if (columnName == "secretCounter") {
 					std::cout << "secretCounter: " << sqlite3_column_int(stmt, i) << std::endl;

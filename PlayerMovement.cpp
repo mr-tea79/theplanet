@@ -17,7 +17,7 @@ float PlayerMovement::vspeed = 2.5;
 bool PlayerMovement::blink;
 
 int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
-    Scene1::playerIsMoving = 1;
+    //Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
  
@@ -54,7 +54,7 @@ int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
 }
 
 int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
-    Scene1::playerIsMoving = 1;
+    //Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
 
@@ -82,17 +82,17 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
     }
 
     //Prevent walking off the screen.
-    if (gd == 0) {
-        tex.TextureUpdater(Textures::spriteRight1a, "Movement");
-        gd += hspeed;
-    }
+   // if (gd == 0) {
+     //   tex.TextureUpdater(Textures::spriteRight1a, "Movement");
+      //  gd += hspeed;
+    //}
 
     return gd;
 }
 
 
 int PlayerMovement::doYWalkUp(int gy) {
-    Scene1::playerIsMoving = 1;
+  //  Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
  
@@ -122,7 +122,7 @@ int PlayerMovement::doYWalkUp(int gy) {
 
 int PlayerMovement::doYWalkDown(int gy) {
 
-    Scene1::playerIsMoving = 1;
+   // Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
     blink = true;
@@ -156,7 +156,10 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     //(expr) ? <true logic> : <false logic>  (IF TRUE ? DO THIS : ELSE DO THIS)
     //Used to reduce lots of IF statements.
     ObjectPositions op;
+   
     Scene1::xp = op.CalcObjectXPositionPercentage(Scene1::gdSprite.x, "X");
+    int mouseClickYPercent = op.CalcObjectYPositionPercentage(y, "Y"); //To stop player moving if you click in the menu area.
+    Scene1::playerIsMoving = 1;
   //  std::cout << Scene1::xp << std::endl;
  
 
@@ -252,9 +255,14 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     }
 
     ///////////////////////// SCENE 1 STARTING SCENE //////////////////////////////////////
-    if (Scene1::SceneBackground == "1") {
-        gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
-        gd >= x - 15 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+    if (Scene1::SceneBackground == "1" && mouseClickYPercent <75) {
+
+        gd <= x -60 && Scene1::xp <= 90 &&  Scene1::xp >= 2 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 10 && Scene1::xp <= 90 && Scene1::xp >= 2 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+       // gy <= y && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : move = 0;
+
+       // gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+    //    gd >= x - 10 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
     }
 
     return gd;
@@ -269,6 +277,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     //Used to reduce lots of IF statements.
     ObjectPositions op;
     Scene1::yp = op.CalcObjectYPositionPercentage(Scene1::gdSprite.y, "Y");
+    Scene1::playerIsMoving = 1;
   //  std::cout << Scene1::yp << std::endl;
 
     //Check if player has put patch on their suit.
@@ -318,6 +327,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         gy < 390 ? Scene1::SPRITE_SIZE = 90 : move = 0;
         gy < 400 ? Scene1::SPRITE_SIZE = 110 : move = 0;
         gy > 440 ? Scene1::SPRITE_SIZE = 120 : move = 0;
+
 
         gy >= y && y < 575 && y >238 ? gy = doYWalkUp(gy), position++ : move = 0;
         gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
@@ -395,8 +405,10 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         Scene1::yp < 50 ? Scene1::SPRITE_SIZE = 90 : move = 0;
         Scene1::yp > 53 ? Scene1::SPRITE_SIZE = 100 : move = 0;
         Scene1::yp > 55 ? Scene1::SPRITE_SIZE = 120 : move = 0;
-        gy >= y && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : move = 0;
-        gy <= y - 100 && y < 575 ? gy = doYWalkDown(gy), position++ : move = 0;
+        gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : move = 0;
+        gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : move = 0;
+    
+
     }
 
 

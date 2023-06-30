@@ -20,6 +20,15 @@ static std::string sceneBackground;
 
 
 void SceneInteraction::SetSpritePosition(int x, int y, int s) {
+   
+    Scene1::gdSprite.x = x * Scene1::WIDTH / 100;
+    Scene1::gdSprite.y = y * Scene1::HEIGHT / 100;
+    Scene1::SPRITE_SIZE = s;
+    Scene1::sceneHalt = 1;
+    // SDL_WarpMouseInWindow(Scene1::window, 400, 400);
+
+}
+void SceneInteraction::SetSpritePositionLegacy(int x, int y, int s) {
 
     Scene1::gdSprite.x = x;
     Scene1::gdSprite.y = y;
@@ -30,7 +39,7 @@ void SceneInteraction::SetSpritePosition(int x, int y, int s) {
 }
 
 std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLocationX, int playerCurrentLocationY) {
-
+    
     //Check database if item has been picked up.
     Inventory inv;
     Sound s;
@@ -78,7 +87,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";
-        SetSpritePosition(65,400,128);
+        SetSpritePosition(Scene1::xp = 14,Scene1::yp = 45,128);
         Scene1::newGame = true;
         s.loadSounds(sceneBackground);
     }
@@ -92,7 +101,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "01";
-        SetSpritePosition(65,400,50);
+        SetSpritePositionLegacy(65,400,50);
         s.loadSounds(sceneBackground);
 
     }
@@ -130,7 +139,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (playerCurrentLocationY < 90 && playerCurrentLocationX > 670 && Scene1::secretTrigger == 4 && Scene1::SceneBackground == "3a") {
         Textures tex;
         Scene1::SceneBackground = "4a";
-        SetSpritePosition(360,450,120);
+        SetSpritePositionLegacy(360,450,120);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
         //Load in the new textures for scene4
@@ -141,7 +150,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3f" && playerCurrentLocationX <= 34) {
         Scene1::SceneBackground = "3a";
-        SetSpritePosition(860,120,10);
+        SetSpritePositionLegacy(860,120,10);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
        
@@ -149,7 +158,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3a" && playerCurrentLocationX >= 862 && playerCurrentLocationX <= 918 && playerCurrentLocationY < 159 && playerCurrentLocationY > 107 && Scene1::secretTrigger > 0) {
         Scene1::SceneBackground = "3f";
-        SetSpritePosition(65,400,50);
+        SetSpritePositionLegacy(65,400,50);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
     }
@@ -158,14 +167,14 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3e" && x >= 866 && x <= 987 && y >= 536 && y <= 575) {
         Scene1::SceneBackground = "3d";
-        SetSpritePosition(645,448,128);
+        SetSpritePositionLegacy(645,448,128);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 900 && playerCurrentLocationY < 500 && playerCurrentLocationY > 400) {
         Scene1::SceneBackground = "3a";
-        SetSpritePosition(300,400,10);
+        SetSpritePositionLegacy(300,400,10);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
 
@@ -174,7 +183,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 750 && playerCurrentLocationY <= 120 && Inventory::inv.find("7") != std::string::npos) {
         Scene1::SceneBackground = "3d";
-        SetSpritePosition(65,400,120);
+        SetSpritePositionLegacy(65,400,120);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
 
@@ -183,21 +192,21 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3d" && playerCurrentLocationX < 37 && playerCurrentLocationY >346) {
         Scene1::SceneBackground = "3b";
-        SetSpritePosition(945,387,50);
+        SetSpritePositionLegacy(945,387,50);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "3c" && playerCurrentLocationX < 37 && playerCurrentLocationY >346) {
         Scene1::SceneBackground = "3b";
-        SetSpritePosition(945,387,50);
+        SetSpritePositionLegacy(945,387,50);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
     }
 
     if (Scene1::SceneBackground == "3a" && playerCurrentLocationX < 268 && playerCurrentLocationY > 347) {
         Scene1::SceneBackground = "3b";
-        SetSpritePosition(945,387,50);
+        SetSpritePositionLegacy(945,387,50);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
 
@@ -210,14 +219,14 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3a" && x >= 952 && x < 968 && y >= 353 && y <= 369 && playerCurrentLocationX > 900) {
         Scene1::SceneBackground = "1fb";
-        SetSpritePosition(945,387, 180);
+        SetSpritePositionLegacy(945,387, 180);
         s.loadSounds(sceneBackground);
     }
 
     /*Leaving sandy clearing and going to map */
     if (Scene1::SceneBackground == "1fb" && x >= 994 && y >= 0 && y <= 570 && playerCurrentLocationX > 900) {
         Scene1::SceneBackground = "3a";
-        SetSpritePosition(945,387, 10);
+        SetSpritePositionLegacy(945,387, 10);
         s.loadSounds(sceneBackground);
     }
 
@@ -233,14 +242,14 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     /* Leave sofa */
     if (Scene1::SceneBackground == "1db" && x >= 0 && x <= 800 && y >= 459 && y <= 570) {
         Scene1::SceneBackground = "1da";
-        SetSpritePosition(280,410, 180);
+        SetSpritePositionLegacy(280,410, 180);
         s.loadSounds(sceneBackground);
 
     }
     /* Entering tent from sandy clearing */
     if (Scene1::SceneBackground == "1fb" && x >= 581 && x <= 860 && y >= 117 && y <= 248 && playerCurrentLocationX >= 440 && playerCurrentLocationY <= 308) {
         Scene1::SceneBackground = "1da";
-        SetSpritePosition(106,360,170);
+        SetSpritePositionLegacy(106,360,170);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
         AI::aiPlayMessages = true;
@@ -251,7 +260,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
     if (Scene1::SceneBackground == "3b" && playerCurrentLocationX >= 750 && playerCurrentLocationY <= 120) {
         Scene1::SceneBackground = "3c";
-        SetSpritePosition(206,360,170);
+        SetSpritePositionLegacy(206,360,170);
         Scene1::SceneTransitionStatement = "";
         PlayerInteraction::playerMessage = 11;
         s.loadSounds(sceneBackground);
@@ -267,7 +276,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         else {
             Scene1::SceneBackground = "1fb";
             s.loadSounds(sceneBackground);
-            SetSpritePosition(106,390,120);
+            SetSpritePositionLegacy(106,390,120);
 
         }
 
@@ -283,7 +292,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
             Scene1::tLoader = 2;
         }
    
-        SetSpritePosition(106,376,120);
+        SetSpritePositionLegacy(106,376,120);
         Scene1::SceneTransitionStatement = "";
       //  Scene1::mouseClick = false;
         s.loadSounds(sceneBackground);
@@ -292,9 +301,10 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     }
     /* Outside wreckage */
     if (Scene1::SceneBackground == "1" && Scene1::xp >=65 && Scene1::SceneTransitionStatement == "Wreckage") {
+        std::cout << "HELLO" << std::endl;
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
-        SetSpritePosition(400,400,160);
+        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 48, 160);
         tex.TextureUpdater(Textures::spriteBack1a, "Action");
         Scene1::SceneTransitionStatement = "";
      //   Scene1::mouseClick = false;
@@ -308,14 +318,14 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         std::cout << "Going West" << std::endl;
         Scene1::SceneBackground = "1e";
         Scene1::SceneTransitionStatement = "";
-        SetSpritePosition(600,380,50);
+        SetSpritePositionLegacy(600,380,50);
         s.loadSounds(sceneBackground);
     }
     /* Inside wreakage */
     if (Scene1::SceneBackground == "1b" && Scene1::SceneTransitionStatement == "Exit Wreckage") {
         Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
-        SetSpritePosition(Scene1::xPosition, Scene1::yPosition,110);
+        SetSpritePosition(Scene1::xp = 61, Scene1::yp = 48,100);
         s.loadSounds(sceneBackground);
 
     }
@@ -335,20 +345,20 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     /* Leave computer screen, inside wreakage */
     if (Scene1::SceneBackground == "1c" && x > 36 && x <= 172 && y >= 544 && y <= 582) {
         Scene1::SceneBackground = "1b";
-        SetSpritePosition(400,400,160);
+        SetSpritePositionLegacy(400,400,160);
         s.loadSounds(sceneBackground);
     }
     /* Leave computer screen, inside wreakage */
     if (Scene1::SceneBackground == "1d" && x > 36 && x <= 172 && y >= 544 && y <= 582) {
         Scene1::SceneBackground = "1b";
-        SetSpritePosition(400,400,160);
+        SetSpritePositionLegacy(400,400,160);
         s.loadSounds(sceneBackground);
     }
 
     /* Leaving rocky path and going back to wreakage */
     if (Scene1::SceneBackground == "1e" && playerCurrentLocationX <= 150 && Scene1::SceneTransitionStatement == "Wreckage") {
         Scene1::SceneBackground = "1";
-        SetSpritePosition(400,400,120);
+        SetSpritePositionLegacy(400,400,120);
         Scene1::SceneTransitionStatement = "";
       
     }
@@ -356,11 +366,12 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     /* Heading North */
     if (Scene1::SceneBackground == "1" && Scene1::SceneTransitionStatement == "Head North") {
         if (Inventory::inv.find("3") == std::string::npos) {
-            tex.TextureUpdater(Textures::spriteDown1, "Action");
+         //   tex.TextureUpdater(Textures::spriteDown1, "Action");
             Scene1::sceneHalt = 1;
             AI::aiPlayMessages = true;
             AI::dialogNumber = 3;
             AI::playerTalk = true;
+            Scene1::SceneTransitionStatement = "";
         }
 
         else if (Scene1::objectToDestroy.find("1") == std::string::npos) {
@@ -372,7 +383,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         }
         else {
             Scene1::SceneBackground = "1e";
-            SetSpritePosition(10,400,50);
+            SetSpritePositionLegacy(10,400,50);
             Scene1::SceneTransitionStatement = "";
      //       Scene1::mouseClick = false;
             s.loadSounds(sceneBackground);
@@ -395,7 +406,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
             Scene1::tLoader = 1;
         }
 
-        SetSpritePosition(10, Scene1::yPosition,120);
+     //   SetSpritePosition(10, Scene1::yPosition,120);
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
     }

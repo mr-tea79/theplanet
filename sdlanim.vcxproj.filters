@@ -59,9 +59,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PlayerMovement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerObjects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -96,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ObjectPositions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

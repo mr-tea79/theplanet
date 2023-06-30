@@ -153,10 +153,18 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
             Scene1::SceneTransitionStatement = "Wreckage";
         }
 
-        if (Scene1::SceneBackground == "1" && x > 0 && x <= 500 && y > 220 && y < 340) {
+        if (Scene1::SceneBackground == "1" && Scene1::mouseMoveXPercent < 42 && Scene1::mouseMoveYPercent <37 && Scene1::mouseMoveYPercent > 28) {
             message = "Head North";
             Scene1::SceneTransitionStatement = "Head North";
+            
         }
+        else {
+            //This is important because otherwise it will override any look at actions.
+          //  Scene1::SceneTransitionStatement = "";
+            //JUNE 2023 I removed this because it was causing issues, keep an eye on this.
+        }
+ 
+
 
         ////////////////////////////////// Scene 1b Inside Wreakage //////////////////////////////////////////////////////////////////////////////////////////
         Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";

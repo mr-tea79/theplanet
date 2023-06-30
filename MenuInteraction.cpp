@@ -79,6 +79,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         useStatement = "";  //Important
         actionStatement = Scene1::actionStatement = "Look at";
         actionMessage = "Look at what?";
+        Scene1::SceneTransitionStatement = "";
         lookStatement = "";        
     }
 
@@ -239,7 +240,7 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
 
     if (lookStatement == "Look at Marks in dirt") {
         Scene1::SceneBackground = "3e";     
-        Scene1::xPosition = 545;
+      //  Scene1::xPosition = 545;
         PlayerInteraction::playerMessage = 12;
         Scene1::sceneHalt = 1;
         lookStatement = "";
@@ -599,10 +600,10 @@ std::string MenuInteraction::Use(int x, int y, int gd, int gy, int mInteraction)
         Inventory::inv.append("7");
         Scene1::actionStatement = "";
         Scene1::useStatement = ""; //Very Important or you will get a memory leak.
-        Scene1::xPosition = 606;
-        Scene1::yPosition = 460;
+       // Scene1::xPosition = 606;
+      //  Scene1::yPosition = 460;
         PlayerObjects pob;
-        pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
+     //   pob.SetSpritePosition(Scene1::xPosition, Scene1::yPosition);
     
          //Change scene.
         Scene1::SceneBackground = "3d";

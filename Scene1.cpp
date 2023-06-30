@@ -52,8 +52,8 @@ int Scene1::HEIGHT = 768;
 int Scene1::WIDTH = 1024;
 
 //Player variables
-int Scene1::xPosition;
-int Scene1::yPosition;
+//int Scene1::xPosition;
+//int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 
 int Scene1:: playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
@@ -75,6 +75,8 @@ int Scene1::tLoader = 0;  //Used to prevent the same textures being loaded in tw
 int Scene1::inGame = 0;
 bool Scene1::doPerfCheck = true; //This is to inform the system to do a performance check of hardware.
 bool Scene1::quitGame = false;
+int  mouseClickXPercent;
+int  mouseClickYPercent;
 //int Scene1::soundCount = 0;
 
 int Scene1::mouseMoveYPercent;
@@ -177,8 +179,12 @@ int Scene1::scene1() {
     SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
   
     //Place the player sprite in the chosen location.
-    gdSprite.x = xPosition;
-    gdSprite.y = yPosition;
+
+    gdSprite.x = 200;
+    gdSprite.y = 300;
+    yp < 50 ? SPRITE_SIZE = 90 :  0;
+    yp > 53 ? SPRITE_SIZE = 100 : 0;
+    yp > 55 ? SPRITE_SIZE = 120 : 0;
 
     //Initialize Textures
     Textures tex;
@@ -232,10 +238,7 @@ int Scene1::scene1() {
     PlayerInteraction::playerMessage = 15;
 
     auto start_time = std::chrono::high_resolution_clock::now();
-    //Start the timer.
-   // std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-   
-
+ 
     //Create a game save (Only needed to use this once to create the game save record)
     //inv.SQLCreateGameSave(SceneBackground);
     
@@ -246,9 +249,10 @@ int Scene1::scene1() {
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
-            
-        yPosition = gdSprite.y;
-        xPosition = gdSprite.x;
+           // std::cout << playerIsMoving << std::endl;
+        
+     //   yPosition = gdSprite.y;
+       // xPosition = gdSprite.x;
         gd = gdSprite.x;
         gy = gdSprite.y;
 
@@ -312,18 +316,19 @@ int Scene1::scene1() {
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
-                        gd = gdSprite.x;
-                        gy = gdSprite.y;
+                      //  gd = gdSprite.x;
+                    //    gy = gdSprite.y;
                         menuSound = 0;
                         mouseHold = 0;  
                         op.PlaceHoverObjects();
+                        playerIsMoving= 0;
                        
                         mouseMoveXPercent = op.CalcObjectXPositionPercentage(x, "X");
                         mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
 
                         //UNCOMMENT THE 2 LINES BELOW TO GET CONSTANT UPDATE OF MOUSE POSITION IN SCREEN PERCENTAGE
-                        //std::cout << "Mouse X Position: " << Scene1::mouseMoveXPercent << "%" << std::endl;
-                        //std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
+                     //   std::cout << "Mouse X Position: " << Scene1::mouseMoveXPercent << "%" << std::endl;
+                       // std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
                    
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-24,y-26,50,50 };
@@ -341,8 +346,7 @@ int Scene1::scene1() {
                         }
 
                         if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {    
-                            playerMessage = false;
-                            playerIsMoving = 0;
+                            playerMessage = false;                          
                             sceneHalt = 0; // Fixes issue where hover text appears in speech area.                                                   
                         }
                        
@@ -352,25 +356,24 @@ int Scene1::scene1() {
                             
                             //Prevents delay from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
-                               
+                             
                             }                         
                             else {              
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
-                                    Textures::spriteTexture = nullptr; 
-                                    playerIsMoving = 0;
+                                    Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                     PlayerMovement::blink = true;                                  
                             }
                          
-                            if (playerIsMoving != 1) {
-                              
+                            if (playerIsMoving == 0) {
+                               
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                             }
                         } 
                        
-                        if (interactionMessage != "" && playerIsMoving !=1) {                      
+                        if (interactionMessage != "" && playerIsMoving == 0) {                      
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
                             PlayerMovement::blink = false;                                    
@@ -408,6 +411,9 @@ int Scene1::scene1() {
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
             mouseHold++; //Important because it stops a memory leak.
            // playerIsMoving = 0;
+
+            mouseClickXPercent = op.CalcObjectXPositionPercentage(x, "X");
+            mouseClickYPercent = op.CalcObjectYPositionPercentage(y, "Y");
             playerMessage = false;
             interactionMessage = "";
                        
@@ -420,16 +426,17 @@ int Scene1::scene1() {
             SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
                   
             mob.useChecker(gd,gy); //Deals with wrong use actions. Pain to figure out!
-            
+            //Check if player is moving if not then do this. This is a test to see if this fixed the sprite flicking memory leak. Remove if not effective (May 2023)
+            if (playerIsMoving == 0) {
             //The following 2 lines will allow you to use an object with another object.
             interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
             useStatement = interactionMessage;
             
-            if(playerIsMoving == 0){
-            //This fixes the bug where if you decide to not to commit to picking something up.
-            if (interactionMessage == "") {
-                actionStatement = "";
-            }
+            
+                //This fixes the bug where if you decide to not to commit to picking something up.
+                if (interactionMessage == "") {
+                    actionStatement = "";
+                }
             }
              
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
@@ -444,9 +451,9 @@ int Scene1::scene1() {
             //Show coordinates in console for object placement.
             cout << string(100, '\n');
             
-            std::cout << "Mouse Click X Location = " << xp <<"%" << std::endl;
+            std::cout << "Mouse Click X Location = " << mouseClickXPercent <<"%" << std::endl;
             std::cout << "" << std::endl;
-            std::cout << "Mouse Click Y Location = " << yp <<"%" <<  std::endl;
+            std::cout << "Mouse Click Y Location = " << mouseClickYPercent <<"%" <<  std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Player X Position is: " << Scene1::xp << std::endl;
             std::cout << "" << std::endl;
@@ -460,7 +467,7 @@ int Scene1::scene1() {
             std::cout << "Current Sound Status: " << Sound::soundOn << std::endl;
             std::cout << "" << std::endl;
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
-            
+            std::cout << "Scene Transition Message is: " << Scene1::SceneTransitionStatement << std::endl;
 
        
 
@@ -545,7 +552,7 @@ int Scene1::scene1() {
         }
        
  
-        if (wx > gdSprite.x || wx < gdSprite.x) {
+        if (wx > gdSprite.x || wx < gdSprite.x  ) {
           
             if(action !=1 ){
                 SDL_DestroyTexture(Textures::spriteTexture);
@@ -564,20 +571,20 @@ int Scene1::scene1() {
                 if (wy < gdSprite.y || wy > gdSprite.y) {
                     
                     //The following 2 statements will allow the player to move across and then up or down.
-                    if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
+                    if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x ){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
                         
                      
                     }
-               
+                 
                     
-                    if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x){
+                    if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x ){
                      
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
                         
                       
                     }  
-                 
+                    
                 
                     SDL_Delay(1); 
                  
@@ -592,20 +599,25 @@ int Scene1::scene1() {
               
                     SDL_Delay(300);
                     sceneHalt = 0;
-                    playerIsMoving = 0;
+                  //  playerIsMoving = 0;
             }
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
-            if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy) {
+            if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy ) {
                 interactionMessage = si.sceneTransitions(x, y, gd, gy);
                 s.playMovementSounds();
             }
-           
+          
+            
+            else {
+            
+                playerIsMoving = 0; //std::cout << "Player has stopped" << std::endl;
+            }
        
     }
 
         ////////// RENDERING SECTION /////////
-        
+      
         //Render the window
         SDL_RenderClear(renderer);
        
