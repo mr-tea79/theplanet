@@ -48,15 +48,7 @@ void ObjectPositions::PlaceHoverObjects() {
 float ObjectPositions::CalcObjectYPositionPercentage(float position, std::string objectName) {
     int result;
     result = position / Scene1::HEIGHT * 100;
-  
-    objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;   
-    objectName == "USE_Y" ? ObjectPositions::USE_Y = result : 0;
-    objectName == "OPEN_Y" ? ObjectPositions::OPEN_Y = result : 0;
-    objectName == "Y" ? ObjectPositions::x = result : 0;
-    objectName == "PlayerLocationY" ? ObjectPositions::PlayerLocationY = result : 0;
-  //  objectName == "PLAYERYP" ? Scene1::playerYP = result : 0;
-
-    
+     
 
     return result;
 }
@@ -65,12 +57,6 @@ float ObjectPositions::CalcObjectXPositionPercentage(float position, std::string
     int result;
     result = position / Scene1::WIDTH * 100;
   
-   
-    objectName == "USE_X" ? ObjectPositions::USE_X = result : 0;
-    objectName == "OPEN_X" ? ObjectPositions::OPEN_X = result : 0;
-    objectName == "X" ? ObjectPositions::x = result : 0;
-    objectName == "PlayerLocationX" ? ObjectPositions::PlayerLocationX = result : 0;
-   // objectName == "PLAYERXP" ? Scene1::playerXP = result : 0;
     return result;
 }
 
