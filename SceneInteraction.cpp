@@ -87,7 +87,8 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";
-        SetSpritePosition(Scene1::xp = 14,Scene1::yp = 45,128);
+        SetSpritePosition(Scene1::xp = 14,Scene1::yp = 54,128);
+        Scene1::yp > 53 ? Scene1::SPRITE_SIZE = 100 : 0;
         Scene1::newGame = true;
         s.loadSounds(sceneBackground);
     }
@@ -101,7 +102,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "01";
-        SetSpritePositionLegacy(65,400,50);
+        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 50, 160);
         s.loadSounds(sceneBackground);
 
     }

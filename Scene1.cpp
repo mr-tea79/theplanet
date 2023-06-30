@@ -180,11 +180,7 @@ int Scene1::scene1() {
   
     //Place the player sprite in the chosen location.
 
-    gdSprite.x = 200;
-    gdSprite.y = 300;
-    yp < 50 ? SPRITE_SIZE = 90 :  0;
-    yp > 53 ? SPRITE_SIZE = 100 : 0;
-    yp > 55 ? SPRITE_SIZE = 120 : 0;
+   
 
     //Initialize Textures
     Textures tex;
@@ -207,6 +203,9 @@ int Scene1::scene1() {
 
     //Used for scene transitions of player.
     SceneInteraction si;
+
+    //si.SetSpritePosition(Scene1::xp = 50, Scene1::yp = 50, 160);
+ 
 
     //Load player message class.
     PlayerInteraction pi;
