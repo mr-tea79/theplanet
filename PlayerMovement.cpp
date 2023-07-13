@@ -257,8 +257,8 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     ///////////////////////// SCENE 1 STARTING SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1" && mouseClickYPercent <75) {
 
-        gd <= x -60 && Scene1::xp <= 90 &&  Scene1::xp >= 2 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
-        gd >= x - 10 && Scene1::xp <= 90 && Scene1::xp >= 2 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+        gd <= x -60 && Scene1::xp <= 100 &&  Scene1::xp >= -1 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 10 && Scene1::xp <= 100 && Scene1::xp >= -1 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
        // gy <= y && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : move = 0;
 
        // gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;

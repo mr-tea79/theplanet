@@ -347,7 +347,7 @@ int Scene1::scene1() {
                         if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {    
                             playerMessage = false;                          
                             sceneHalt = 0; // Fixes issue where hover text appears in speech area.     
-                            playerIsMoving = 1; //Added this and testing if it prevents sprite disappearing when hovering and walking at the same time.
+                            playerIsMoving = 1;
                         }
                        
 
