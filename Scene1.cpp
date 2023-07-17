@@ -248,8 +248,18 @@ int Scene1::scene1() {
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
-       // std::cout << playerIsMoving << std::endl;
-        
+        std::cout << playerIsMoving << std::endl;
+
+        //This is important (Added July 2023)
+        if (playerIsMoving == 0) {
+          
+            SDL_DestroyTexture(Textures::spriteTexture);
+            Textures::spriteTexture = nullptr;
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+            PlayerMovement::blink = true;
+        }
+
+
      //   yPosition = gdSprite.y;
        // xPosition = gdSprite.x;
         gd = gdSprite.x;
@@ -320,7 +330,7 @@ int Scene1::scene1() {
                         menuSound = 0;
                         mouseHold = 0;  
                         op.PlaceHoverObjects();
-                        playerIsMoving=0;
+                       // playerIsMoving=0;
                        
                         mouseMoveXPercent = op.CalcObjectXPositionPercentage(x, "X");
                         mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
@@ -330,7 +340,7 @@ int Scene1::scene1() {
                        // std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
                    
                         //Update custom cursor location when the mouse moves.
-                        Textures::RCursor = { x-24,y-26,50,50 };
+                        Textures::RCursor = { x-26,y-26,50,50 };
                      
                         checkHoverLocation = s.checkHoverLocation(x, y);
                         //This is an attempt to prevent hover sounds looping, a REAL brain teaser if I have saw one!
@@ -344,10 +354,11 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90) {    
+                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 ) {    
                             playerMessage = false;                          
                             sceneHalt = 0; // Fixes issue where hover text appears in speech area.     
-                            playerIsMoving = 1; //Added this and testing if it prevents sprite disappearing when hovering and walking at the same time.
+                            playerIsMoving = 0;
+                          
                         }
                        
 
@@ -356,25 +367,28 @@ int Scene1::scene1() {
                             
                             //Prevents delay from kicking in when walking to a target.
                             if (gdSprite.x < gd && gdSprite.y < y || gdSprite.x > gd && gdSprite.y > y) {   
-                             
+                                
                             }                         
-                            else {              
+                            else {            
+                                
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
-                                    PlayerMovement::blink = true;                                  
+                                    PlayerMovement::blink = true;   
+                                   
                             }
                          
                             if (playerIsMoving == 0) {
-                               
+
+                                
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                             }
                            
                         } 
                        
-                        if (interactionMessage != "" && playerIsMoving == 0) {                      
+                        if (interactionMessage != "" && playerIsMoving == 0) {                    
                             hoverHold++;
                             pi.InteractionControllerHover(interactionMessage);
                             PlayerMovement::blink = false;                                    
@@ -561,7 +575,7 @@ int Scene1::scene1() {
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{   
-               
+                
             }
            
             if (sceneHalt == 0 ) {
@@ -604,7 +618,7 @@ int Scene1::scene1() {
             }
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
-            if (gdSprite.x < gd || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy ) {
+            if (gdSprite.x < gd  || gdSprite.x > gd || gdSprite.y < gy || gdSprite.y >gy ) {
                 interactionMessage = si.sceneTransitions(x, y, gd, gy);
                 s.playMovementSounds();
             }
@@ -619,6 +633,7 @@ int Scene1::scene1() {
 
         ////////// RENDERING SECTION /////////
       
+
         //Render the window
         SDL_RenderClear(renderer);
        

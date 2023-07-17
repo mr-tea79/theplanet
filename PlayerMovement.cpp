@@ -63,22 +63,26 @@ int PlayerMovement::doXWalkLeft(int gd, int screenWidth) {
     if (position == 0) {
         tex.TextureUpdater(Textures::spriteLeft1a, "Movement");
         gd -= hspeed;
+       
 
     }
     if (position == 1) {
         tex.TextureUpdater(Textures::spriteLeft2a, "Movement");
         gd -= hspeed;
+      
      
     }
     if (position == 2) {
         tex.TextureUpdater(Textures::spriteLeft3a, "Movement");
         gd -= hspeed;
         position = 0; //This achieves the animation effect.
+       
     }
     if (position == 3) {
         tex.TextureUpdater(Textures::spriteLeft4a, "Movement");
         gd -= hspeed;
         position = 0; //This achieves the animation effect.
+        
     }
 
     //Prevent walking off the screen.
@@ -255,14 +259,11 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     }
 
     ///////////////////////// SCENE 1 STARTING SCENE //////////////////////////////////////
-    if (Scene1::SceneBackground == "1" && mouseClickYPercent <75) {
+    if (Scene1::SceneBackground == "1" && mouseClickYPercent <75 ) {
 
         gd <= x -60 && Scene1::xp <= 100 &&  Scene1::xp >= -1 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
-        gd >= x - 10 && Scene1::xp <= 100 && Scene1::xp >= -1 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
-       // gy <= y && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : move = 0;
-
-       // gd <= x - 60 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
-    //    gd >= x - 10 && y > 320 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+        gd >= x -10  && Scene1::xp <= 100 && Scene1::xp >= -1 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+      
     }
 
     return gd;
@@ -402,12 +403,13 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
     ///////////////////////// SCENE 1 FIRST SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1") {
+       
         Scene1::yp < 50 ? Scene1::SPRITE_SIZE = 90 : move = 0;
         Scene1::yp > 53 ? Scene1::SPRITE_SIZE = 100 : move = 0;
         Scene1::yp > 55 ? Scene1::SPRITE_SIZE = 120 : move = 0;
-        gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : move = 0;
-        gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : move = 0;
-    
+        gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
+        gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;
+        
 
     }
 
