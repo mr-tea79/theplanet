@@ -77,6 +77,7 @@ void Messages() {
 
                     PlayerInteraction::playerMessage = 6;
                     stopDialog();
+                  
 
                 }            
 

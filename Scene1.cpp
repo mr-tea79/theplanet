@@ -251,7 +251,7 @@ int Scene1::scene1() {
         std::cout << playerIsMoving << std::endl;
 
         //This is important (Added July 2023)
-        if (playerIsMoving == 0 && AI::playerTalk !=1) {
+        if (playerIsMoving == 0 && AI::playerTalk !=1 ) {
           
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = nullptr;
@@ -373,9 +373,9 @@ int Scene1::scene1() {
                                 
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
-                                 //   SDL_DestroyTexture(Textures::spriteTexture);
-                                  //  Textures::spriteTexture = nullptr;                          
-                                    //Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+                                    SDL_DestroyTexture(Textures::spriteTexture);
+                                    Textures::spriteTexture = nullptr;                          
+                                    Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                     PlayerMovement::blink = true;   
                                    
                             }
