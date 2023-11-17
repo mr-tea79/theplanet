@@ -248,7 +248,7 @@ int Scene1::scene1() {
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
-        std::cout << playerIsMoving << std::endl;
+        std::cout << SceneTransitionStatement << std::endl;
 
         //This is important (Added July 2023)
         if (playerIsMoving == 0 && AI::playerTalk !=1 ) {
@@ -354,10 +354,11 @@ int Scene1::scene1() {
                             hoverHold = 0;
                         }
 
-                        if (event.motion.y == gy + 90 || event.motion.y == gy - 90 || event.motion.x == gd + 90 || event.motion.x == gd - 90 ) {    
+                        
+                        if (event.motion.y >= gy + 90 || event.motion.y <= gy - 90 || event.motion.x >= gd + 90 || event.motion.x <= gd - 90) {
                             playerMessage = false;                          
                             sceneHalt = 0; // Fixes issue where hover text appears in speech area.     
-                         //   playerIsMoving = 0;
+                            playerIsMoving = 0;
                           
                         }
                        
@@ -377,6 +378,7 @@ int Scene1::scene1() {
                                     Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                     PlayerMovement::blink = true;   
+                                  //  playerIsMoving = 0; //causes flickering
                                    
                             }
                          
@@ -425,8 +427,7 @@ int Scene1::scene1() {
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
             mouseHold++; //Important because it stops a memory leak.
-           // playerIsMoving = 0;
-
+ 
             mouseClickXPercent = op.CalcObjectXPositionPercentage(x, "X");
             mouseClickYPercent = op.CalcObjectYPositionPercentage(y, "Y");
             playerMessage = false;
@@ -437,8 +438,10 @@ int Scene1::scene1() {
             Textures::spriteTexture = nullptr;
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
            
-
-            SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
+            if (playerIsMoving == 0) {
+                SceneTransitionStatement = "";  //Clear the static clicked location (The location you sent your player to).
+            }
+           
                   
             mob.useChecker(gd,gy); //Deals with wrong use actions. Pain to figure out!
             //Check if player is moving if not then do this. This is a test to see if this fixed the sprite flicking memory leak. Remove if not effective (May 2023)
