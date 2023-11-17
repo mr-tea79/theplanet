@@ -51,9 +51,6 @@ SDL_Color Scene1::bcolor;
 int Scene1::HEIGHT = 768;
 int Scene1::WIDTH = 1024;
 
-//Player variables
-//int Scene1::xPosition;
-//int Scene1::yPosition;
 int Scene1::SPRITE_SIZE;
 
 int Scene1:: playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
@@ -63,8 +60,6 @@ bool Scene1::newGame = false;
 static bool checkHoverLocation = false;
 int Scene1::threadRipper = 0; //Thread 2 stopper.
 bool Scene1::fullScreenTrigger = false;
-
-//Scene variables
 int Scene1::action; //Used to trigger action texture.
 int Scene1::sceneHalt = 0;  //sceneHalt is useful for displaying player messages and scene transitions. 
 int Scene1::secretTrigger = 0;  //This is used to tell the program that a secret has been found.
@@ -77,12 +72,11 @@ bool Scene1::doPerfCheck = true; //This is to inform the system to do a performa
 bool Scene1::quitGame = false;
 int  mouseClickXPercent;
 int  mouseClickYPercent;
-//int Scene1::soundCount = 0;
 
 int Scene1::mouseMoveYPercent;
 int Scene1::mouseMoveXPercent;
-int moveXA;
-int moveYA;
+//int moveXA; //NOT NEEDED
+//int moveYA; //NOT NEEDED
 int Scene1::xp; // Player X position in percentage value %.
 int Scene1::yp; // Player Y position in percentage value %.
 int Scene1::yMousePositionPercent; //Mouse Y position in %.
@@ -178,10 +172,6 @@ int Scene1::scene1() {
     //Something to do with the font texture.
     SDL_QueryTexture(Textures::ftexture, NULL, NULL, &texW, &texH);
   
-    //Place the player sprite in the chosen location.
-
-   
-
     //Initialize Textures
     Textures tex;
     Inventory inv;
@@ -230,12 +220,10 @@ int Scene1::scene1() {
 
     //Init the TOAD1000 AI Thread.
     ai.ToadTalk();
-
-   
-
     AI::aiPlayMessages = true;
     PlayerInteraction::playerMessage = 15;
 
+    //Set up chrono loop timer for framerate adjustment.
     auto start_time = std::chrono::high_resolution_clock::now();
  
     //Create a game save (Only needed to use this once to create the game save record)
@@ -248,20 +236,14 @@ int Scene1::scene1() {
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
 
-        std::cout << SceneTransitionStatement << std::endl;
-
-        //This is important (Added July 2023)
         if (playerIsMoving == 0 && AI::playerTalk !=1 ) {
           
             SDL_DestroyTexture(Textures::spriteTexture);
             Textures::spriteTexture = nullptr;
-            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
+            Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);  
             PlayerMovement::blink = true;
         }
-
-
-     //   yPosition = gdSprite.y;
-       // xPosition = gdSprite.x;
+ 
         gd = gdSprite.x;
         gy = gdSprite.y;
 
@@ -325,13 +307,11 @@ int Scene1::scene1() {
                         //Event Motion coordinates. Where the mouse moves on the screen.
                         x = event.motion.x;
                         y = event.motion.y;
-                      //  gd = gdSprite.x;
-                    //    gy = gdSprite.y;
+               
                         menuSound = 0;
                         mouseHold = 0;  
                         op.PlaceHoverObjects();
-                       // playerIsMoving=0;
-                       
+                                            
                         mouseMoveXPercent = op.CalcObjectXPositionPercentage(x, "X");
                         mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
 
@@ -343,10 +323,9 @@ int Scene1::scene1() {
                         Textures::RCursor = { x-26,y-26,50,50 };
                      
                         checkHoverLocation = s.checkHoverLocation(x, y);
-                        //This is an attempt to prevent hover sounds looping, a REAL brain teaser if I have saw one!
-                                       
+                        
+                        //This is an attempt to prevent hover sounds looping, a REAL brain teaser if I ever saw one!            
                         if (checkHoverLocation == 0 && hoverHold < 1){
-                            std::cout << "YES PLAY HOVER SOUND!" << std::endl;
                             s.playHoverSound();
                             hoverHold++;
                         }
@@ -377,14 +356,10 @@ int Scene1::scene1() {
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
-                                    PlayerMovement::blink = true;   
-                                  //  playerIsMoving = 0; //causes flickering
-                                   
+                                    PlayerMovement::blink = true;                               
                             }
                          
-                            if (playerIsMoving == 0) {
-
-                                
+                            if (playerIsMoving == 0) {                                                              
                                 interactionMessage = pob.HoverObjects(x, y, scene, gd, gy);
                             }
                            
@@ -395,10 +370,7 @@ int Scene1::scene1() {
                             pi.InteractionControllerHover(interactionMessage);
                             PlayerMovement::blink = false;                                    
                         }  
-                        else {
-                           
-                        }
-                 
+                                     
                         break;                    
                     
                 case SDL_KEYDOWN:
@@ -460,10 +432,6 @@ int Scene1::scene1() {
             Uint8 buttons = SDL_GetMouseState(&wx, &wy);
             gd = gdSprite.x;
             gy = gdSprite.y;
-           
-
-        
-
            
 
             //Show coordinates in console for object placement.
