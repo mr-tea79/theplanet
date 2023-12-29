@@ -3,6 +3,7 @@
 #include "Scene1.h"
 #include "MenuInteraction.h"
 #include "AI.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 
@@ -186,16 +187,20 @@ void Textures::MovementTextures() {
 }
 
 void Textures::Scene1Textures() {
+    ObjectPositions op;
+    op.SetBackgroundHeight();
+    op.PlaceSceneObjects();
 
+   
     //Background dimensions (x,y,width,height).
-    //Main background Rect
-    menuBackground = { 0, 0, 1200, 768 };
+    //Main Menu Rect
+    menuBackground = { 0, 0, Scene1::WIDTH, Scene1::HEIGHT };
 
     //Main background Rect
-    background = { 0, 0, 1024, 600 };
+    background = { 0, 0, Scene1::WIDTH, ObjectPositions::BACKGROUND_H };
 
-    //Background overlay Rects (Rocks in foreground etc)
-    background2 = { 0, 200, 1500, 400 };
+    //Background overlay Rects (Rocks in foreground etc) SX and SY are the size of the rocks within the rect.
+    background2 = { ObjectPositions::ROCKS_X, ObjectPositions::ROCKS_Y, ObjectPositions::ROCKS_SX, ObjectPositions::ROCKS_SY };
 
     //This is the hill on the rocky path scene.
     background3 = { 0, 310, 1100, 300 }; 

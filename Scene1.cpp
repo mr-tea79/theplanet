@@ -147,8 +147,13 @@ int Scene1::scene1() {
     //Text Dialog.
     fsurface =       NULL;
     
-    //Interaction Menu Rect
-    menu = { 0, 600, 1024, 568 };
+    //Placing objects in the game.
+    ObjectPositions op;
+   
+    op.PlaceMenuYPosition();
+
+    //Interaction Menu Rect (x,y,width,height)
+    menu = { 0, ObjectPositions::MENU_Y, WIDTH, ObjectPositions::MENU_HY };
   
     SDL_Surface* SDL_DisplayFormat(SDL_Surface * surface);
 
@@ -182,6 +187,8 @@ int Scene1::scene1() {
     //TOAD AI - For conversations and story dialog.
     AI ai;
   
+    
+
     //Menu Interaction USE, LOOK etc.
     MenuInteraction mob;
     
@@ -209,8 +216,7 @@ int Scene1::scene1() {
     //Load sound class
     Sound s;
 
-    //Placing objects in the game.
-    ObjectPositions op;
+   
     
     //Load in some sounds!
     s.loadMovementSounds();
@@ -232,6 +238,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+       // std::cout << ObjectPositions::MENU_HY << std::endl;
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);

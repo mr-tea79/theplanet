@@ -20,6 +20,10 @@ namespace brightland {
 		static int WREAKAGEDOOR_Y;
 		static int ENGINE_X;
 		static int ENGINE_Y;
+		static int ROCKS_X;
+		static int ROCKS_Y;
+		static int ROCKS_SX;
+		static int ROCKS_SY;
 
 		//Objects that can be picked up.
 		static int PDA_X;
@@ -38,12 +42,21 @@ namespace brightland {
 		static int USE_Y;
 		static int OPEN_X;
 		static int OPEN_Y;
+		static int MENU_Y;
+		static int MENU_HY;
+
+		//Background
+		static int BACKGROUND_H;
 
 		float CalcObjectYPositionPercentage(float position, std::string objectName);
 		float CalcObjectXPositionPercentage(float position, std::string objectName);
 		float CalcObjectXAbsolutePosition(float position, std::string objectName);
 		float CalcObjectYAbsolutePosition(float position, std::string objectName);
+		
+		void PlaceMenuYPosition();
 		void PlaceHoverObjects();
+		void SetBackgroundHeight();
+		void PlaceSceneObjects();
 
 	};
 }
