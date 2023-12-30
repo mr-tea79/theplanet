@@ -38,6 +38,8 @@ int ObjectPositions::OPEN_X;
 int ObjectPositions::OPEN_Y;
 int ObjectPositions::MENU_Y;
 int ObjectPositions::MENU_HY;
+int ObjectPositions::HOVERTEXT_X;
+int ObjectPositions::HOVERTEXT_Y;
 
 //Background
 int ObjectPositions::BACKGROUND_H;
@@ -67,6 +69,12 @@ void ObjectPositions::PlaceMenuYPosition() {
     CalcObjectYAbsolutePosition(78, "MENU_Y");
     CalcObjectYAbsolutePosition(75, "MENU_HY");
     
+
+}
+
+void ObjectPositions::SetHoverTextPosition() {
+    CalcObjectYAbsolutePosition(79, "HOVERTEXT_Y");
+    CalcObjectXAbsolutePosition(40, "HOVERTEXT_X");
 }
 
 //Set height of background image rect (Scene image)
@@ -103,6 +111,7 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "ENGINE_X" ? ObjectPositions::ENGINE_X = result : 0;
     objectName == "ROCKS_X" ? ObjectPositions::ROCKS_X = result : 0;
     objectName == "ROCKS_SX" ? ObjectPositions::ROCKS_SX = result : 0;
+    objectName == "HOVERTEXT_X" ? ObjectPositions::HOVERTEXT_X = result : 0;
    
 
     return result;
@@ -124,6 +133,7 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "BACKGROUND_H" ? ObjectPositions::BACKGROUND_H = result : 0;
     objectName == "ROCKS_Y" ? ObjectPositions::ROCKS_Y = result : 0;
     objectName == "ROCKS_SY" ? ObjectPositions::ROCKS_SY = result : 0;
+    objectName == "HOVERTEXT_Y" ? ObjectPositions::HOVERTEXT_Y = result : 0;
 
 
     return result;

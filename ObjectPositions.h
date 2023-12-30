@@ -44,6 +44,8 @@ namespace brightland {
 		static int OPEN_Y;
 		static int MENU_Y;
 		static int MENU_HY;
+		static int HOVERTEXT_X;
+		static int HOVERTEXT_Y;
 
 		//Background
 		static int BACKGROUND_H;
@@ -57,6 +59,7 @@ namespace brightland {
 		void PlaceHoverObjects();
 		void SetBackgroundHeight();
 		void PlaceSceneObjects();
+		void SetHoverTextPosition();
 
 	};
 }

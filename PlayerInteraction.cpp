@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Scene1.h"
 #include "Textures.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 
@@ -26,10 +27,14 @@ void PlayerInteraction::textDimensions(int messageLength) {
 
 
 void PlayerInteraction::InteractionControllerHover(std::string interactionMessage) {
+    ObjectPositions op;
+    op.SetHoverTextPosition();
+
     const char* im = interactionMessage.c_str();
     if (interactionMessage != "" ) {
         int interactionMessagelength = interactionMessage.length();
-        Scene1::textRect = { 500, 610, interactionMessagelength * 10, 20 };   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
+        //This is the hover message textbox that appears in the interaction menu within the game.
+        Scene1::textRect = { ObjectPositions::HOVERTEXT_X, ObjectPositions::HOVERTEXT_Y, interactionMessagelength * 10, 20};   // The * 10, 20 is a mathematical way of setting the text width depending on the length of the text.
         Scene1::fsurface = TTF_RenderText_Solid(Scene1::font, im, Scene1::fcolor);
         Textures::ftexture = SDL_CreateTextureFromSurface(Scene1::renderer, Scene1::fsurface);     
         SDL_FreeSurface(Scene1::fsurface);
