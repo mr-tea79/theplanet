@@ -50,17 +50,17 @@ Images used in making the scenes were to the best of my knowledge all from googl
 
 # Currently known problems
 
-When continuing a game, scene dialog is missing (FIXED).
+- When continuing a game, sprite location is wrong. This is something I am aware of and it is because I am currently changing over to percentages for locations of objects and simply need to update this part which I am working on doing.
 
-Occasionally the sprite appears in the text area ( I THINK THIS IS NOW SOLVED!)
+- Occasionally the sprite appears in the text area (SOLVED)
 
-Keeping text on the screen long enough for the player to see it. (MOSTLY SOLVED)
+- Keeping text on the screen long enough for the player to see it. (SOLVED)
 
-Occasional sprite flickering (SOLVED)
+- Occasional sprite flickering (SOLVED)
 
 # Things you should know
 
-1. The resolution for this game is set to 1024x768 (windowed) however you can stretch the screen by uncommenting the code that does this. However, if you change the resolution to something like 1080p, you will need to update all the coordinates of objects and menu interactions. If you are a mathematician, you could probably do something with this to scale the game and objects using maths to do so. I am planning to look at this myself further down the line.
+1. The resolution for this game is set to 1024x768 (windowed). You can change the resolution in the code (see scene1.cpp). If you change the resolution to something like 1080p (1920x1080), you will need to update all the coordinates of objects and menu interactions as originally they were hard coded based on 1024x768 resolution. I am currently implementing object locations based on percentages which solves this problem and slowly it is beginning to be updated. Remember, just updating object locations isn't enough, the sprites and object images also will need to be adusted to scale which is something I am also working on.
 
 # Coming soon
 
