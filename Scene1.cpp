@@ -1,7 +1,7 @@
 
-/* Adventure Game Creator Engine by Damian Baldry @ Brightland. Written in 2020
+/* Adventure Game Creator Engine by Damian Baldry @ Brightland. First version was written in 2020
    Very much a work in progress!
-   V3.05 (September 2022)
+   V3.06 (December 2023)
 
 */
 

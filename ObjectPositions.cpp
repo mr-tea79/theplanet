@@ -36,6 +36,12 @@ int ObjectPositions::USE_X;
 int ObjectPositions::USE_Y;
 int ObjectPositions::OPEN_X;
 int ObjectPositions::OPEN_Y;
+int ObjectPositions::LOOK_Y;
+int ObjectPositions::LOOK_X;
+int ObjectPositions::PICKUP_X;
+int ObjectPositions::PICKUP_Y;
+int ObjectPositions::PULL_X;
+int ObjectPositions::PULL_Y;
 int ObjectPositions::MENU_Y;
 int ObjectPositions::MENU_HY;
 int ObjectPositions::HOVERTEXT_X;
@@ -112,6 +118,11 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "ROCKS_X" ? ObjectPositions::ROCKS_X = result : 0;
     objectName == "ROCKS_SX" ? ObjectPositions::ROCKS_SX = result : 0;
     objectName == "HOVERTEXT_X" ? ObjectPositions::HOVERTEXT_X = result : 0;
+    objectName == "USE_X" ? ObjectPositions::USE_X = result : 0;
+    objectName == "OPEN_X" ? ObjectPositions::OPEN_X = result : 0;
+    objectName == "LOOK_X" ? ObjectPositions::LOOK_X = result : 0;
+    objectName == "PICKUP_X" ? ObjectPositions::PICKUP_X = result : 0;
+    objectName == "PULL_X" ? ObjectPositions::PULL_X = result : 0;
    
 
     return result;
@@ -134,7 +145,11 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "ROCKS_Y" ? ObjectPositions::ROCKS_Y = result : 0;
     objectName == "ROCKS_SY" ? ObjectPositions::ROCKS_SY = result : 0;
     objectName == "HOVERTEXT_Y" ? ObjectPositions::HOVERTEXT_Y = result : 0;
-
+    objectName == "USE_Y" ? ObjectPositions::USE_Y = result : 0;
+    objectName == "OPEN_Y" ? ObjectPositions::OPEN_Y = result : 0;
+    objectName == "LOOK_Y" ? ObjectPositions::LOOK_Y = result : 0;
+    objectName == "PICKUP_Y" ? ObjectPositions::PICKUP_Y = result : 0;
+    objectName == "PULL_Y" ? ObjectPositions::PULL_Y = result : 0;
 
     return result;
 }

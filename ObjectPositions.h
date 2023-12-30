@@ -42,6 +42,12 @@ namespace brightland {
 		static int USE_Y;
 		static int OPEN_X;
 		static int OPEN_Y;
+		static int LOOK_X;
+		static int LOOK_Y;
+		static int PICKUP_X;
+		static int PICKUP_Y;
+		static int PULL_X;
+		static int PULL_Y;
 		static int MENU_Y;
 		static int MENU_HY;
 		static int HOVERTEXT_X;

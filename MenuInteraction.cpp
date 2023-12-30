@@ -73,8 +73,10 @@ void MenuInteraction::useChecker(int gd, int gy) {
 std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInteraction) {
 
     std::string actionMessage;
+    ObjectPositions op;
     
-    if (x > 57 && x < 145 && y > 621 && y < 647) {
+    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
+    if (x >= ObjectPositions::LOOK_X && x <= ObjectPositions::LOOK_X + 100 && y >= ObjectPositions::LOOK_Y - 20 && y <= ObjectPositions::LOOK_Y + 20 && Scene1::SceneBackground != "0") {
         Scene1::menuSound = 1;
         useStatement = "";  //Important
         actionStatement = Scene1::actionStatement = "Look at";
@@ -83,15 +85,17 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         lookStatement = "";        
     }
 
-    if (x > 61 && x < 146 && y > 643 && y < 690) {            
+    op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88,"PICKUP_Y");
+    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 20 && y <= ObjectPositions::PICKUP_Y + 20 && Scene1::SceneBackground != "0") {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pick up";
         actionMessage = "Pick up what?";
         pickUpStatement = "";     
     }
-
-    if (x > 190 && x < 227 && y > 676 && y < 690) {
+   
+    op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
+    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Use";
@@ -99,7 +103,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         useStatement = "";
     }
 
-    if (x > 178 && x < 232 && y > 723 && y < 744) {
+    op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
+    if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 100 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Open";
@@ -107,7 +112,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         openStatement = "";
     }
 
-    if (x > 59 && x < 114 && y > 723 && y < 744 && Scene1::SceneBackground != "0") {
+    op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
+    if (x >= ObjectPositions::PULL_X && x <= ObjectPositions::PULL_X + 100 && y >= ObjectPositions::PULL_Y - 20 && y <= ObjectPositions::PULL_Y + 20 && Scene1::SceneBackground != "0") {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pull";

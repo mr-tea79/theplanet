@@ -3,6 +3,7 @@
 #include "Scene1.h"
 #include "PlayerMovement.h"
 #include "Sound.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 
@@ -22,6 +23,8 @@ void noBlinking() {
 
 //Returns hover trigger for buttons
 int SceneRender::HoverButtons(int x, int y) {
+
+    ObjectPositions op;
 
     //New game hover button (main menu)
     if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {  
@@ -56,27 +59,34 @@ int SceneRender::HoverButtons(int x, int y) {
         return 1;
     }
     //Pickup hover button (bottom menu)
-    if (x > 61 && x < 146 && y > 643 && y < 690) {
+    op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(92, "PICKUP_Y");
+    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 20 && y <= ObjectPositions::PICKUP_Y + 20 && Scene1::SceneBackground != "0") {
         buttonID = "Pickup";
         return 1;
     }
+      
+
     //Open hover button (bottom menu)
-    if (x > 178 && x < 232 && y > 723 && y < 744) {
+    op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
+    if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 50 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
         buttonID = "Open";
         return 1;
     }
     //Pull hover button (bottom menu)
-    if (x > 59 && x < 114 && y > 723 && y < 744) {
+    op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
+    if (x >= ObjectPositions::PULL_X && x <= ObjectPositions::PULL_X + 100 && y >= ObjectPositions::PULL_Y - 20 && y <= ObjectPositions::PULL_Y + 20 && Scene1::SceneBackground != "0") {
         buttonID = "Pull";
         return 1;
     }
     //Look hover button (bottom menu)
-    if (x > 57 && x < 145 && y > 621 && y < 647) {
+    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
+    if (x >= ObjectPositions::LOOK_X && x <= ObjectPositions::LOOK_X + 100 && y >= ObjectPositions::LOOK_Y - 20 && y <= ObjectPositions::LOOK_Y + 20 && Scene1::SceneBackground != "0") {
         buttonID = "Look";
         return 1;
     }
     //Use hover button (bottom menu)
-    if (x > 190 && x < 227 && y > 676 && y < 690) {
+    op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
+    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
         buttonID = "Use";
         return 1;
     }
