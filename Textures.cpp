@@ -191,7 +191,14 @@ void Textures::Scene1Textures() {
     op.SetBackgroundHeight();
     op.PlaceSceneObjects();
 
-   
+    //Set hover button locations depending on resolution. Adjusting size of image will need to be calculated also so that it scales properly.
+    op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88, "PICKUP_Y");
+    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
+    op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
+    op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
+    op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
+
+
     //Background dimensions (x,y,width,height).
     //Main Menu Rect
     menuBackground = { 0, 0, Scene1::WIDTH, Scene1::HEIGHT };
@@ -211,17 +218,17 @@ void Textures::Scene1Textures() {
     //This is the rock in the cave scene
     background5 = { 490, 200, 100, 60 };
 
-    //This is for the main menu hover buttons
+    //This is for the main menu hover buttons (x,y,width of image, height of image)
     RHoverNewGame = { 180, 480, 272, 61 };
     RHoverConinueGame = { 180, 376, 272, 61 };
     RHoverOptions = { 180,579,272,61 };
     RHoverPlus = { 600,139,104,54 };
     RHoverMinus = { 281,139,104,54 };
-    RHoverPickup = { 45,655,124,54 };
-    RHoverLook = { 45,610,100,50 };
-    RHoverOpen = { 160,710,100,44 };
-    RHoverUse = { 160,660,100,44 };
-    RHoverPull = { 45,710,100,44 };
+    RHoverPickup = { ObjectPositions::PICKUP_X - 50,ObjectPositions::PICKUP_Y - 18,124,54 };
+    RHoverLook = { ObjectPositions::LOOK_X - 50,ObjectPositions::LOOK_Y - 18,100,50 };
+    RHoverOpen = { ObjectPositions::OPEN_X -50,ObjectPositions::OPEN_Y -18,100,44 };
+    RHoverUse = { ObjectPositions::USE_X -50,ObjectPositions::USE_Y -18,100,44 };
+    RHoverPull = { ObjectPositions::PULL_X -50,ObjectPositions::PULL_Y -18,100,44 };
     RCursor = { 100, 310, 50, 50}; //Custom mouse cursor.
     rSecretDrawing = { 940,260,100,240 };
     RHoverLog = { 343,541,150,46 };
