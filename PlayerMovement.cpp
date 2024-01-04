@@ -411,7 +411,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         Scene1::yp > 55 && spriteSizeLock !=3 ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE,5),spriteSizeLock ++ : move = 0;
         Scene1::yp < 53 && spriteSizeLock >=0 ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE,3), spriteSizeLock-- : move = 0;
       
-        
+        //TEST
         
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
         gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;
