@@ -26,6 +26,7 @@ namespace brightland {
 		static int HEIGHT;
 		static int secretTrigger;
 		static int SPRITE_SIZE;
+		static int DEFAULT_SPRITE_SIZE;
 		
 		static int xp; // x position in percentage %
 		static int yp; // y position in percentage %

@@ -187,7 +187,7 @@ void Textures::MovementTextures() {
 }
 
 void Textures::Scene1Textures() {
-    ObjectPositions op;
+    ObjectPositions op; //ObjectPositions.cpp
     op.SetBackgroundHeight();
     op.PlaceSceneObjects();
 

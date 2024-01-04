@@ -23,7 +23,7 @@ void SceneInteraction::SetSpritePosition(int x, int y, int s) {
    
     Scene1::gdSprite.x = x * Scene1::WIDTH / 100;
     Scene1::gdSprite.y = y * Scene1::HEIGHT / 100;
-    Scene1::SPRITE_SIZE = s;
+  //  Scene1::SPRITE_SIZE = s;
     Scene1::sceneHalt = 1;
     // SDL_WarpMouseInWindow(Scene1::window, 400, 400);
 
@@ -88,7 +88,6 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";
         SetSpritePosition(Scene1::xp = 14,Scene1::yp = 54,128);
-        Scene1::yp > 53 ? Scene1::SPRITE_SIZE = 100 : 0;
         Scene1::newGame = true;
         s.loadSounds(sceneBackground);
     }

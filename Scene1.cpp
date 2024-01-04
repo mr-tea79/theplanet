@@ -52,6 +52,7 @@ int Scene1::HEIGHT = 768;
 int Scene1::WIDTH = 1024;
 
 int Scene1::SPRITE_SIZE;
+int Scene1::DEFAULT_SPRITE_SIZE;
 
 int Scene1:: playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
@@ -75,8 +76,7 @@ int  mouseClickYPercent;
 
 int Scene1::mouseMoveYPercent;
 int Scene1::mouseMoveXPercent;
-//int moveXA; //NOT NEEDED
-//int moveYA; //NOT NEEDED
+
 int Scene1::xp; // Player X position in percentage value %.
 int Scene1::yp; // Player Y position in percentage value %.
 int Scene1::yMousePositionPercent; //Mouse Y position in %.
@@ -108,12 +108,14 @@ int Scene1::scene1() {
   
    
     cout << "Initialize" << endl;
+
+    
     scene = 1; //Scene Number.
   
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "0";
 
-    //This is the size of the player sprite.
+    //This is the initial size of the player sprite for 1024x768 resolution.
     SPRITE_SIZE = 120;
 
     
@@ -151,6 +153,19 @@ int Scene1::scene1() {
     ObjectPositions op;
    
     op.PlaceMenuYPosition();
+
+    //Set player initial size depending on screen resolution.
+    if (HEIGHT == 1080) {
+       SPRITE_SIZE = op.CalcAssetSize(SPRITE_SIZE, 20);
+       DEFAULT_SPRITE_SIZE = SPRITE_SIZE;
+      
+    }
+    else if (HEIGHT == 768) {
+        SPRITE_SIZE = 120;
+        DEFAULT_SPRITE_SIZE = SPRITE_SIZE;
+    }
+
+    
 
     //Interaction Menu Rect (x,y,width,height)
     menu = { 0, ObjectPositions::MENU_Y, WIDTH, ObjectPositions::MENU_HY };
@@ -238,6 +253,9 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+       
+
+       // std::cout << "Sprite size is now at: " << SPRITE_SIZE << std::endl;
        // std::cout << ObjectPositions::MENU_HY << std::endl;
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
@@ -405,6 +423,8 @@ int Scene1::scene1() {
  
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
+            
+                        
             mouseHold++; //Important because it stops a memory leak.
  
             mouseClickXPercent = op.CalcObjectXPositionPercentage(x, "X");
@@ -461,7 +481,8 @@ int Scene1::scene1() {
             std::cout << "" << std::endl;
             std::cout << "Current Player Message is: " << PlayerInteraction::playerMessage << std::endl;
             std::cout << "Scene Transition Message is: " << Scene1::SceneTransitionStatement << std::endl;
-
+            std::cout << "Testing asset size calculations" << std::endl;
+      
        
 
             //Get interaction message.         

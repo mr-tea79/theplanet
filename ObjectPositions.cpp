@@ -2,6 +2,7 @@
 #include "Scene1.h"
 
 using namespace brightland;
+using namespace std;
 // X and Y
 int ObjectPositions::x;
 int ObjectPositions::y;
@@ -101,6 +102,25 @@ float ObjectPositions::CalcObjectXPositionPercentage(float position, std::string
     int result;
     result = position / Scene1::WIDTH * 100;
   
+    return result;
+}
+
+float ObjectPositions::CalcAssetSize(int size,int percentIncrease) {
+   
+    int result = size;
+    percentIncrease = size * 10 / 100;
+    result = result + percentIncrease;
+  
+
+    return result;
+}
+
+float ObjectPositions::CalcAssetDecreaseSize(int size, int percentDecrease) {
+    int result = size;
+    percentDecrease = size * 10 / 100;
+    result = result - percentDecrease;
+
+
     return result;
 }
 

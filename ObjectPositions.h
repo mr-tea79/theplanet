@@ -60,7 +60,9 @@ namespace brightland {
 		float CalcObjectXPositionPercentage(float position, std::string objectName);
 		float CalcObjectXAbsolutePosition(float position, std::string objectName);
 		float CalcObjectYAbsolutePosition(float position, std::string objectName);
-		
+		float CalcAssetSize(int size,int percentIncrease);
+		float CalcAssetDecreaseSize(int size, int percentDecrease);
+
 		void PlaceMenuYPosition();
 		void PlaceHoverObjects();
 		void SetBackgroundHeight();

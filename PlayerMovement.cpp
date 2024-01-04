@@ -11,6 +11,8 @@ using namespace brightland;
 using namespace std;
 
 static int position; //Used to update current position variable.
+static int spriteSizeLock = 0; //This is the control gradual increase in player size.
+
 float PlayerMovement::hspeed = 2.5;
 float PlayerMovement::vspeed = 2.5;
 
@@ -403,10 +405,14 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
     ///////////////////////// SCENE 1 FIRST SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1") {
-       
-        Scene1::yp < 50 ? Scene1::SPRITE_SIZE = 90 : move = 0;
-        Scene1::yp > 53 ? Scene1::SPRITE_SIZE = 100 : move = 0;
-        Scene1::yp > 55 ? Scene1::SPRITE_SIZE = 120 : move = 0;
+        ObjectPositions op;
+        
+        //Increase and decrease player size depending on location on screen.
+        Scene1::yp > 55 && spriteSizeLock !=3 ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE,5),spriteSizeLock ++ : move = 0;
+        Scene1::yp < 53 && spriteSizeLock >=0 ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE,3), spriteSizeLock-- : move = 0;
+      
+        
+        
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
         gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;
         
