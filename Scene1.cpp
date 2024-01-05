@@ -638,8 +638,9 @@ int Scene1::scene1() {
 
         ////////// RENDERING SECTION /////////
       
-       // std::cout << SPRITE_MAX_SIZE << std::endl;
-      //  std::cout << SPRITE_MIN_SIZE << std::endl;
+      //  std::cout << SPRITE_MAX_SIZE << std::endl;
+       // std::cout << SPRITE_MIN_SIZE << std::endl;
+       // std::cout << "Sprite size is: " << SPRITE_SIZE << std::endl;
 
         //Render the window
         SDL_RenderClear(renderer);

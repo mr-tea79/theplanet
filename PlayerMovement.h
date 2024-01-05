@@ -9,6 +9,9 @@
 namespace brightland{
 class PlayerMovement
 {
+
+private:
+	void checkPlayerSize();
 public:
 	static float hspeed;
 	static float vspeed;
@@ -19,7 +22,9 @@ public:
 	//Scene Surfaces.
 	SDL_Surface* imageSurface;
 
-	void LoadMovementTextures();
+	//void LoadMovementTextures();
+
+	
 		
 	int walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight);
 

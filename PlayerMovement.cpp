@@ -21,6 +21,21 @@ float PlayerMovement::vspeed = 2.5;
 
 bool PlayerMovement::blink;
 
+
+void PlayerMovement::checkPlayerSize() {
+
+    if (minPlayerSizeCounter <= 2) {
+        Scene1::SPRITE_MIN_SIZE = Scene1::SPRITE_SIZE;
+        minPlayerSizeCounter++;
+
+    }
+    else if (maxPlayerSizeCounter <= 2) {
+        Scene1::SPRITE_MAX_SIZE = Scene1::SPRITE_SIZE;
+        maxPlayerSizeCounter++;
+
+    }
+}
+
 int PlayerMovement::doXWalkRight(int gd, int screenWidth) {
     //Scene1::playerIsMoving = 1;
     Textures tex;
@@ -411,20 +426,11 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         
         
         //Increase and decrease player size depending on location on screen.
-        if (Scene1::SPRITE_SIZE != Scene1::SPRITE_MAX_SIZE) {
-            Scene1::yp > 55 && spriteSizeLock != 2 ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 5), spriteSizeLock++ : move = 0;
-            if (spriteSizeLock == 2 && maxPlayerSizeCounter !=2) {
-                Scene1::SPRITE_MAX_SIZE = Scene1::SPRITE_SIZE;
-                maxPlayerSizeCounter++;
-            }
-        }
-       if (Scene1::SPRITE_SIZE != Scene1::SPRITE_MIN_SIZE) {
-            Scene1::yp < 53 && spriteSizeLock != 0 ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 3), spriteSizeLock-- : move = 0;
-            if (spriteSizeLock == 0 && minPlayerSizeCounter !=2) {
-                Scene1::SPRITE_MIN_SIZE = Scene1::SPRITE_SIZE;
-                minPlayerSizeCounter++;
-            }
-        }
+        
+        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 5), spriteSizeLock++, checkPlayerSize() : move = 0;
+        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 3), spriteSizeLock--,checkPlayerSize() : move = 0;
+            
+        
          
        
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
@@ -432,6 +438,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         
 
     }
+
 
 
     return gy;
