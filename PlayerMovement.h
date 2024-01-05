@@ -14,6 +14,7 @@ public:
 	static float vspeed;
 	static bool blink;
 	int move;
+	static int spriteSizeLock;
 
 	//Scene Surfaces.
 	SDL_Surface* imageSurface;

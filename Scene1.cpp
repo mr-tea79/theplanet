@@ -52,7 +52,8 @@ int Scene1::HEIGHT = 768;
 int Scene1::WIDTH = 1024;
 
 int Scene1::SPRITE_SIZE;
-int Scene1::DEFAULT_SPRITE_SIZE;
+int Scene1::SPRITE_MIN_SIZE; //Fixed minium size of player.
+int Scene1::SPRITE_MAX_SIZE; //Fixed maximum size of player.
 
 int Scene1:: playerIsMoving = 0;  //This is used to prevent the sprite from stuttering when walking due to the _sleep which prevents a memory leak when repeatedly hovering over objects. You need to adjust values in the movement class which I'll mention in that class.
 bool playerMessage = false;  //Used to keep the player text on the screen long enough that you can actually read it!
@@ -157,12 +158,12 @@ int Scene1::scene1() {
     //Set player initial size depending on screen resolution.
     if (HEIGHT == 1080) {
        SPRITE_SIZE = op.CalcAssetSize(SPRITE_SIZE, 20);
-       DEFAULT_SPRITE_SIZE = SPRITE_SIZE;
+
       
     }
     else if (HEIGHT == 768) {
         SPRITE_SIZE = 120;
-        DEFAULT_SPRITE_SIZE = SPRITE_SIZE;
+     
     }
 
     
@@ -267,6 +268,7 @@ int Scene1::scene1() {
             Textures::spriteTexture = nullptr;
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);  
             PlayerMovement::blink = true;
+           
         }
  
         gd = gdSprite.x;
@@ -381,7 +383,8 @@ int Scene1::scene1() {
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                     Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
-                                    PlayerMovement::blink = true;                               
+                                    PlayerMovement::blink = true;       
+                                 
                             }
                          
                             if (playerIsMoving == 0) {                                                              
@@ -587,9 +590,10 @@ int Scene1::scene1() {
                     //The following 2 statements will allow the player to move across and then up or down.
                     if (y <= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x ){
                         gdSprite.y = player.walky(wx, wy, gd, gy, WIDTH, HEIGHT);
-                        
+                   
                      
                     }
+
                  
                     
                     if (y >= gdSprite.y && wx <= gdSprite.x + 75 && wx >= gdSprite.x ){
@@ -613,6 +617,7 @@ int Scene1::scene1() {
               
                     SDL_Delay(300);
                     sceneHalt = 0;
+                   
                   //  playerIsMoving = 0;
             }
             
@@ -626,12 +631,15 @@ int Scene1::scene1() {
             else {
             
                 playerIsMoving = 0; //std::cout << "Player has stopped" << std::endl;
+                
             }
        
     }
 
         ////////// RENDERING SECTION /////////
       
+       // std::cout << SPRITE_MAX_SIZE << std::endl;
+      //  std::cout << SPRITE_MIN_SIZE << std::endl;
 
         //Render the window
         SDL_RenderClear(renderer);

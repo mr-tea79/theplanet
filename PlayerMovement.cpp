@@ -11,7 +11,10 @@ using namespace brightland;
 using namespace std;
 
 static int position; //Used to update current position variable.
-static int spriteSizeLock = 0; //This is the control gradual increase in player size.
+static int maxPlayerSizeCounter = 0; //Used to fix the maximum size a player can be.
+static int minPlayerSizeCounter = 0; //Used to fix the miniumum size a player can be.
+
+int PlayerMovement::spriteSizeLock = 0; //This is the control gradual increase in player size.
 
 float PlayerMovement::hspeed = 2.5;
 float PlayerMovement::vspeed = 2.5;
@@ -128,7 +131,6 @@ int PlayerMovement::doYWalkUp(int gy) {
 
 int PlayerMovement::doYWalkDown(int gy) {
 
-   // Scene1::playerIsMoving = 1;
     Textures tex;
     ObjectPositions op;
     blink = true;
@@ -407,11 +409,24 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     if (Scene1::SceneBackground == "1") {
         ObjectPositions op;
         
+        
         //Increase and decrease player size depending on location on screen.
-        Scene1::yp > 55 && spriteSizeLock !=2 ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE,5),spriteSizeLock ++ : move = 0;
-        Scene1::yp < 53 && spriteSizeLock >=0 ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE,3), spriteSizeLock-- : move = 0;
-      
-              
+        if (Scene1::SPRITE_SIZE != Scene1::SPRITE_MAX_SIZE) {
+            Scene1::yp > 55 && spriteSizeLock != 2 ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 5), spriteSizeLock++ : move = 0;
+            if (spriteSizeLock == 2 && maxPlayerSizeCounter !=2) {
+                Scene1::SPRITE_MAX_SIZE = Scene1::SPRITE_SIZE;
+                maxPlayerSizeCounter++;
+            }
+        }
+       if (Scene1::SPRITE_SIZE != Scene1::SPRITE_MIN_SIZE) {
+            Scene1::yp < 53 && spriteSizeLock != 0 ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 3), spriteSizeLock-- : move = 0;
+            if (spriteSizeLock == 0 && minPlayerSizeCounter !=2) {
+                Scene1::SPRITE_MIN_SIZE = Scene1::SPRITE_SIZE;
+                minPlayerSizeCounter++;
+            }
+        }
+         
+       
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
         gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;
         

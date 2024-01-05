@@ -452,11 +452,11 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         return  std::make_tuple(1, 419, 372, 20, 41);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
     if (scene == 1 && objectID == 9) {
-        //Sparkly object
-        return  std::make_tuple(3, 499, 252, 8, 8);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
+        //Sparkly object        (Number of frames, x,y,w,h)
+        return  std::make_tuple(33, 499, 252, 8, 8);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
     if (scene == 1 && objectID == 10) {
-        //Sparkly object   
+       
         if (Scene1::SPRITE_SIZE >= 160 && Scene1::SPRITE_SIZE <170 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
             return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
         }
