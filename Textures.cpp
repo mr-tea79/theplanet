@@ -224,11 +224,11 @@ void Textures::Scene1Textures() {
     RHoverOptions = { 180,579,272,61 };
     RHoverPlus = { 600,139,104,54 };
     RHoverMinus = { 281,139,104,54 };
-    RHoverPickup = { ObjectPositions::PICKUP_X - 50,ObjectPositions::PICKUP_Y - 18,124,54 };
-    RHoverLook = { ObjectPositions::LOOK_X - 50,ObjectPositions::LOOK_Y - 18,100,50 };
-    RHoverOpen = { ObjectPositions::OPEN_X -50,ObjectPositions::OPEN_Y -18,100,44 };
-    RHoverUse = { ObjectPositions::USE_X -50,ObjectPositions::USE_Y -18,100,44 };
-    RHoverPull = { ObjectPositions::PULL_X -50,ObjectPositions::PULL_Y -18,100,44 };
+    RHoverPickup = { ObjectPositions::PICKUP_X - 70,ObjectPositions::PICKUP_Y - 18,op.CalcAssetSize(124,60),op.CalcAssetSize(54,40)};
+    RHoverLook = { ObjectPositions::LOOK_X - 50,ObjectPositions::LOOK_Y - 18,op.CalcAssetSize(100,60),op.CalcAssetSize(50,40) };
+    RHoverOpen = { ObjectPositions::OPEN_X -50,ObjectPositions::OPEN_Y -18,op.CalcAssetSize(100,60),op.CalcAssetSize(44,40) };
+    RHoverUse = { ObjectPositions::USE_X -50,ObjectPositions::USE_Y -18,op.CalcAssetSize(100,60),op.CalcAssetSize(44,40) };
+    RHoverPull = { ObjectPositions::PULL_X -50,ObjectPositions::PULL_Y -18,op.CalcAssetSize(100,60),op.CalcAssetSize(44,40) };
     RCursor = { 100, 310, 50, 50}; //Custom mouse cursor.
     rSecretDrawing = { 940,260,100,240 };
     RHoverLog = { 343,541,150,46 };

@@ -106,10 +106,11 @@ float ObjectPositions::CalcObjectXPositionPercentage(float position, std::string
 }
 
 int ObjectPositions::CalcAssetSize(int size,int percentIncrease) {
-   
-    int result = size;
-    percentIncrease = size * 10 / 100;
-    result = result + percentIncrease;
+   //Increased value = base + base * % increase / 100
+    int result;
+    result = size + size * percentIncrease / 100;
+    
+   // result = result + percentIncrease;
   
 
     return result;
