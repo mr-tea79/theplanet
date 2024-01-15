@@ -692,14 +692,18 @@ int Scene1::scene1() {
         auto current_time = std::chrono::high_resolution_clock::now();
         float delta_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - start_time).count();
         start_time = current_time;
-
+        std::cout << delta_time << std::endl;
    
         if (delta_time < 5.5000) {
-            PlayerMovement::hspeed = 2.5;
+            PlayerMovement::hspeed = 2.5; // Walk left and right speed.
+            PlayerMovement::vspeed = 2.5; // Walk up or down speed.
+            
    
         }
         else {
-            PlayerMovement::hspeed = 7.0;
+           
+            PlayerMovement::hspeed = 11.0;
+            PlayerMovement::vspeed = 6.5;
         }   
     }
         
