@@ -48,8 +48,8 @@ SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
 
 //Screen Dimensions.
-int Scene1::HEIGHT = 1080;
-int Scene1::WIDTH = 1920;
+int Scene1::HEIGHT = 768;
+int Scene1::WIDTH = 1024;
 
 int Scene1::SPRITE_SIZE;
 int Scene1::SPRITE_MIN_SIZE; //Fixed minium size of player.

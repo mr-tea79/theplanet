@@ -151,6 +151,8 @@ namespace brightland {
 		SDL_Surface* imageSurface;
 		static SDL_Surface* spriteSurface;
 
+	private:
+
 
 	public:
 		void Scene1Textures();
@@ -160,7 +162,8 @@ namespace brightland {
 		void MovementTextures();
 		void LoadActionTextures();
 		void TextureUpdater(SDL_Surface* texture, std::string action);
-
+		int AssetSizeCalc(std::string texture);
+		int AssetPosCalc(std::string texture);
 	};
 
 

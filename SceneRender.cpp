@@ -60,7 +60,7 @@ int SceneRender::HoverButtons(int x, int y) {
     }
     //Pickup hover button (bottom menu)
     op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(92, "PICKUP_Y");
-    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 20 && y <= ObjectPositions::PICKUP_Y + 20 && Scene1::SceneBackground != "0") {
+    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 50 && y <= ObjectPositions::PICKUP_Y + 20 && Scene1::SceneBackground != "0") {
         buttonID = "Pickup";
         return 1;
     }

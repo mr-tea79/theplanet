@@ -158,6 +158,47 @@ void Textures::LoadActionTextures() {
 
 }
 
+int Textures::AssetSizeCalc(std::string texture) {
+    int result = 0;
+    texture == "PLAYER_MENU_W" && Scene1::WIDTH == 1920 ? result = 72 : 0;
+    texture == "PLAYER_MENU_H" && Scene1::WIDTH == 1920 ? result = 40 : 0;
+    texture == "PLAYER_MENU_W" && Scene1::WIDTH == 1024 ? result = 0 : 0;
+    texture == "PLAYER_MENU_H" && Scene1::WIDTH == 1024 ? result = 0 : 0;
+
+    return result;
+}
+
+int Textures::AssetPosCalc(std::string texture) {
+    int result = 0;
+    //This function will recieve a texture name and then depending on the resolution, will alter the position.
+
+    //Resolution 1920x1080
+    texture == "PICKUP_X" && Scene1::WIDTH == 1920 ? result = 70 : 0;
+    texture == "PICKUP_Y" && Scene1::WIDTH == 1920 ? result = 25 : 0;
+    texture == "OPEN_X" && Scene1::WIDTH == 1920 ? result = 80 : 0;
+    texture == "OPEN_Y" && Scene1::WIDTH == 1920 ? result = 40 : 0;
+    texture == "USE_X" && Scene1::WIDTH == 1920 ? result = 70 : 0;
+    texture == "USE_Y" && Scene1::WIDTH == 1920 ? result = 28 : 0;
+    texture == "PULL_X" && Scene1::WIDTH == 1920 ? result = 80 : 0;
+    texture == "PULL_Y" && Scene1::WIDTH == 1920 ? result = 18 : 0;
+    texture == "LOOK_X" && Scene1::WIDTH == 1920 ? result = 80 : 0;
+    texture == "LOOK_Y" && Scene1::WIDTH == 1920 ? result = 18 : 0;
+
+    //Resolution 1024x768
+    texture == "PICKUP_X" && Scene1::WIDTH == 1024 ? result = 50 : 0;
+    texture == "PICKUP_Y" && Scene1::WIDTH == 1024 ? result = 25 : 0;
+    texture == "OPEN_X" && Scene1::WIDTH == 1024 ? result = 60 : 0;
+    texture == "OPEN_Y" && Scene1::WIDTH == 1024 ? result = 20 : 0;
+    texture == "USE_X" && Scene1::WIDTH == 1024 ? result = 50 : 0;
+    texture == "USE_Y" && Scene1::WIDTH == 1024 ? result = 28 : 0;
+    texture == "PULL_X" && Scene1::WIDTH == 1024 ? result = 60 : 0;
+    texture == "PULL_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
+    texture == "LOOK_X" && Scene1::WIDTH == 1024 ? result = 40 : 0;
+    texture == "LOOK_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
+
+    return result;
+}
+
 void Textures::MovementTextures() {
 
     spriteDownTape = IMG_Load("PlayerMovement/ThePlanet/spriteAction1.png");
@@ -193,7 +234,7 @@ void Textures::Scene1Textures() {
 
     //Set hover button locations depending on resolution. Adjusting size of image will need to be calculated also so that it scales properly.
     op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88, "PICKUP_Y");
-    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
+    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(82, "LOOK_Y");
     op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
     op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
     op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
@@ -224,11 +265,11 @@ void Textures::Scene1Textures() {
     RHoverOptions = { 180,579,272,61 };
     RHoverPlus = { 600,139,104,54 };
     RHoverMinus = { 281,139,104,54 };
-    RHoverPickup = { ObjectPositions::PICKUP_X - 70,ObjectPositions::PICKUP_Y - 18,op.CalcAssetSize(124,60),op.CalcAssetSize(54,40)};
-    RHoverLook = { ObjectPositions::LOOK_X - 50,ObjectPositions::LOOK_Y - 18,op.CalcAssetSize(100,60),op.CalcAssetSize(50,40) };
-    RHoverOpen = { ObjectPositions::OPEN_X -50,ObjectPositions::OPEN_Y -18,op.CalcAssetSize(100,60),op.CalcAssetSize(44,40) };
-    RHoverUse = { ObjectPositions::USE_X -50,ObjectPositions::USE_Y -18,op.CalcAssetSize(100,60),op.CalcAssetSize(44,40) };
-    RHoverPull = { ObjectPositions::PULL_X -50,ObjectPositions::PULL_Y -18,op.CalcAssetSize(100,60),op.CalcAssetSize(44,40) };
+    RHoverPickup = { ObjectPositions::PICKUP_X - AssetPosCalc("PICKUP_X"),ObjectPositions::PICKUP_Y - AssetPosCalc("PICKUP_Y"),op.CalcAssetSize(124,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(54,AssetSizeCalc("PLAYER_MENU_H"))};
+    RHoverLook = { ObjectPositions::LOOK_X - AssetPosCalc("LOOK_X"),ObjectPositions::LOOK_Y - AssetPosCalc("LOOK_Y"),op.CalcAssetSize(100,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(50,AssetSizeCalc("PLAYER_MENU_H"))};
+    RHoverOpen = { ObjectPositions::OPEN_X -AssetPosCalc("OPEN_X"),ObjectPositions::OPEN_Y - AssetPosCalc("OPEN_Y"),op.CalcAssetSize(100,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(50,AssetSizeCalc("PLAYER_MENU_H"))};
+    RHoverUse = { ObjectPositions::USE_X -AssetPosCalc("USE_X"),ObjectPositions::USE_Y - AssetPosCalc("USE_Y"),op.CalcAssetSize(100,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(44,AssetSizeCalc("PLAYER_MENU_H"))};
+    RHoverPull = { ObjectPositions::PULL_X -AssetPosCalc("PULL_X"),ObjectPositions::PULL_Y - AssetPosCalc("PULL_Y"),op.CalcAssetSize(100,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(44,AssetSizeCalc("PLAYER_MENU_H"))};
     RCursor = { 100, 310, 50, 50}; //Custom mouse cursor.
     rSecretDrawing = { 940,260,100,240 };
     RHoverLog = { 343,541,150,46 };

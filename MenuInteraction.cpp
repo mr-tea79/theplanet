@@ -86,7 +86,7 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     }
 
     op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88,"PICKUP_Y");
-    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 20 && y <= ObjectPositions::PICKUP_Y + 20 && Scene1::SceneBackground != "0") {
+    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 20 && y <= ObjectPositions::PICKUP_Y + 10 && Scene1::SceneBackground != "0") {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pick up";
