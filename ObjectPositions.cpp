@@ -105,23 +105,22 @@ float ObjectPositions::CalcObjectXPositionPercentage(float position, std::string
     return result;
 }
 
+//Increase or Decrease asset size by a percentage. This could be the player or items in the game.
+//USE CASE: This is used to deal with a change in the display resolution of the game.
+
 int ObjectPositions::CalcAssetSize(int size,int percentIncrease) {
    //Increased value = base + base * % increase / 100
     int result;
     result = size + size * percentIncrease / 100;
-    
-   // result = result + percentIncrease;
-  
-
     return result;
 }
 
+//Decrease asset size by a percentage.
 int ObjectPositions::CalcAssetDecreaseSize(int size, int percentDecrease) {
-    int result = size;
-    percentDecrease = size * 10 / 100;
-    result = result - percentDecrease;
-
-
+    //Percent Decrease = [(Old Value - New Value) / Old Value] × 100]
+   // number - (10 / 100) * number
+    int result;
+    result = size - size * percentDecrease / 100;
     return result;
 }
 

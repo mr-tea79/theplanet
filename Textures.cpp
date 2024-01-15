@@ -265,6 +265,7 @@ void Textures::Scene1Textures() {
     RHoverOptions = { 180,579,272,61 };
     RHoverPlus = { 600,139,104,54 };
     RHoverMinus = { 281,139,104,54 };
+
     RHoverPickup = { ObjectPositions::PICKUP_X - AssetPosCalc("PICKUP_X"),ObjectPositions::PICKUP_Y - AssetPosCalc("PICKUP_Y"),op.CalcAssetSize(124,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(54,AssetSizeCalc("PLAYER_MENU_H"))};
     RHoverLook = { ObjectPositions::LOOK_X - AssetPosCalc("LOOK_X"),ObjectPositions::LOOK_Y - AssetPosCalc("LOOK_Y"),op.CalcAssetSize(100,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(50,AssetSizeCalc("PLAYER_MENU_H"))};
     RHoverOpen = { ObjectPositions::OPEN_X -AssetPosCalc("OPEN_X"),ObjectPositions::OPEN_Y - AssetPosCalc("OPEN_Y"),op.CalcAssetSize(100,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(50,AssetSizeCalc("PLAYER_MENU_H"))};

@@ -427,8 +427,8 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         
         //Increase and decrease player size depending on location on screen.
         
-        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 5), spriteSizeLock++, checkPlayerSize() : move = 0;
-        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 3), spriteSizeLock--,checkPlayerSize() : move = 0;
+        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 18), spriteSizeLock++, checkPlayerSize() : move = 0;
+        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 15), spriteSizeLock--,checkPlayerSize() : move = 0;
             
         
          

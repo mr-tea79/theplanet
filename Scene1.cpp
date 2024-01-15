@@ -257,7 +257,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-        std::cout << op.CalcAssetSize(124, 10) << std::endl;
+       // std::cout << op.CalcAssetDecreaseSize(124, 10) << std::endl;
 
        // std::cout << "Sprite size is now at: " << SPRITE_SIZE << std::endl;
        // std::cout << ObjectPositions::MENU_HY << std::endl;
