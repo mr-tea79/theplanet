@@ -47,6 +47,8 @@ int ObjectPositions::MENU_Y;
 int ObjectPositions::MENU_HY;
 int ObjectPositions::HOVERTEXT_X;
 int ObjectPositions::HOVERTEXT_Y;
+int ObjectPositions::NEWGAME_X;
+int ObjectPositions::NEWGAME_Y;
 
 //Background
 int ObjectPositions::BACKGROUND_H;
@@ -143,6 +145,7 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "LOOK_X" ? ObjectPositions::LOOK_X = result : 0;
     objectName == "PICKUP_X" ? ObjectPositions::PICKUP_X = result : 0;
     objectName == "PULL_X" ? ObjectPositions::PULL_X = result : 0;
+    objectName == "NEWGAME_X" ? ObjectPositions::NEWGAME_X = result : 0;
    
 
     return result;
@@ -170,6 +173,7 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "LOOK_Y" ? ObjectPositions::LOOK_Y = result : 0;
     objectName == "PICKUP_Y" ? ObjectPositions::PICKUP_Y = result : 0;
     objectName == "PULL_Y" ? ObjectPositions::PULL_Y = result : 0;
+    objectName == "NEWGAME_Y" ? ObjectPositions::NEWGAME_Y = result : 0;
 
     return result;
 }

@@ -183,6 +183,8 @@ int Textures::AssetPosCalc(std::string texture) {
     texture == "PULL_Y" && Scene1::WIDTH == 1920 ? result = 18 : 0;
     texture == "LOOK_X" && Scene1::WIDTH == 1920 ? result = 80 : 0;
     texture == "LOOK_Y" && Scene1::WIDTH == 1920 ? result = 18 : 0;
+    texture == "NEWGAME_Y" && Scene1::WIDTH == 1920 ? result = 25 : 0;
+    texture == "NEWGAME_X" && Scene1::WIDTH == 1920 ? result = 85 : 0;
 
     //Resolution 1024x768
     texture == "PICKUP_X" && Scene1::WIDTH == 1024 ? result = 50 : 0;
@@ -195,6 +197,8 @@ int Textures::AssetPosCalc(std::string texture) {
     texture == "PULL_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
     texture == "LOOK_X" && Scene1::WIDTH == 1024 ? result = 40 : 0;
     texture == "LOOK_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
+    texture == "NEWGAME_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
+    texture == "NEWGAME_X" && Scene1::WIDTH == 1024 ? result = 40 : 0;
 
     return result;
 }
@@ -238,6 +242,7 @@ void Textures::Scene1Textures() {
     op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
     op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
     op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
+    op.CalcObjectXAbsolutePosition(20, "NEWGAME_X"), op.CalcObjectYAbsolutePosition(65, "NEWGAME_Y");
 
 
     //Background dimensions (x,y,width,height).
@@ -260,7 +265,7 @@ void Textures::Scene1Textures() {
     background5 = { 490, 200, 100, 60 };
 
     //This is for the main menu hover buttons (x,y,width of image, height of image)
-    RHoverNewGame = { 180, 480, 272, 61 };
+    RHoverNewGame = { ObjectPositions::NEWGAME_X - AssetPosCalc("NEWGAME_X"),ObjectPositions::NEWGAME_Y - AssetPosCalc("NEWGAME_Y"),op.CalcAssetSize(240,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(60,AssetSizeCalc("PLAYER_MENU_H"))};
     RHoverConinueGame = { 180, 376, 272, 61 };
     RHoverOptions = { 180,579,272,61 };
     RHoverPlus = { 600,139,104,54 };

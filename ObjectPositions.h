@@ -52,6 +52,8 @@ namespace brightland {
 		static int MENU_HY;
 		static int HOVERTEXT_X;
 		static int HOVERTEXT_Y;
+		static int NEWGAME_X;
+		static int NEWGAME_Y;
 
 		//Background
 		static int BACKGROUND_H;

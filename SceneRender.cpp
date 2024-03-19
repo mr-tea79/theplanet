@@ -27,10 +27,15 @@ int SceneRender::HoverButtons(int x, int y) {
     ObjectPositions op;
 
     //New game hover button (main menu)
-    if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {  
+    op.CalcObjectXAbsolutePosition(20, "NEWGAME_X"), op.CalcObjectYAbsolutePosition(65, "NEWGAME_Y");
+    if (x >= ObjectPositions::NEWGAME_X && x <= ObjectPositions::NEWGAME_X + 100 && y >= ObjectPositions::NEWGAME_Y - 50 && y <= ObjectPositions::NEWGAME_Y + 20 && Scene1::SceneBackground == "0") {
         buttonID = "New Game";
         return 1;
     }
+   // if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {  
+    //    buttonID = "New Game";
+    //    return 1;
+  //  }
     //Continue game hover button (main menu)
     if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
         buttonID = "Continue Game";

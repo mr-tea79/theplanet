@@ -1,6 +1,6 @@
 #include "Sound.h"
 #include "Scene1.h"
-
+#include "ObjectPositions.h"
 
 
 using namespace brightland;
@@ -28,7 +28,7 @@ void Sound::updateSoundStatus(bool status) {
 
 bool Sound::checkHoverLocation(int x, int y) {
 
-	if (x >= 159 && x <= 376 && y >= 480 && y <= 546 && Scene1::SceneBackground == "0") {
+	if (x >= ObjectPositions::NEWGAME_X && x <= ObjectPositions::NEWGAME_X + 100 && y >= ObjectPositions::NEWGAME_Y - 50 && y <= ObjectPositions::NEWGAME_Y + 20 && Scene1::SceneBackground == "0") {
 		return false;
 	}
 		
