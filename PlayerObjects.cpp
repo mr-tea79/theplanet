@@ -63,7 +63,7 @@ void PlayerObjects::SetSpritePosition(int x, int y) {
    
     Scene1::gdSprite.x = x;
     Scene1::gdSprite.y = y;
-   // SDL_WarpMouseInWindow(Scene1::window, 400, 400);
+  
 
 }
 
@@ -78,27 +78,27 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     std::string message;
 
     //Menu Hover Messages
-    op.CalcObjectXAbsolutePosition(20,"USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y"); //Set Use hover position.
-    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
+ 
+    if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 90 && Scene1::mouseMoveXPercent >= 18 && Scene1::mouseMoveXPercent <= 24) {
         message = "Use";
     }
 
-    op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88, "PICKUP_Y");
-    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 50 && y <= ObjectPositions::PICKUP_Y + 50 && Scene1::SceneBackground != "0") {
+
+    if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 89 && Scene1::mouseMoveXPercent >= 6 && Scene1::mouseMoveXPercent <= 16) {
         Scene1::hoverSound = 1;
         message = "Pick up";
     }
-    op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
-    if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 100 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
+  
+    if (Scene1::mouseMoveYPercent >= 94 && Scene1::mouseMoveYPercent <= 98 && Scene1::mouseMoveXPercent >= 17 && Scene1::mouseMoveXPercent <= 23) {
         message = "Open";
     }
 
-    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
-    if (x >= ObjectPositions::LOOK_X && x <= ObjectPositions::LOOK_X + 100 && y >= ObjectPositions::LOOK_Y - 20 && y <= ObjectPositions::LOOK_Y + 20 && Scene1::SceneBackground != "0") {
+
+    if (Scene1::mouseMoveYPercent >= 80 && Scene1::mouseMoveYPercent <= 83 && Scene1::mouseMoveXPercent >= 5 && Scene1::mouseMoveXPercent <= 14) {
         message = "Look";
     }
-    op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
-    if (x >= ObjectPositions::PULL_X && x <= ObjectPositions::PULL_X + 100 && y >= ObjectPositions::PULL_Y - 20 && y <= ObjectPositions::PULL_Y + 20 && Scene1::SceneBackground != "0") {
+
+    if (Scene1::mouseMoveYPercent >= 94 && Scene1::mouseMoveYPercent <= 97 && Scene1::mouseMoveXPercent >= 6 && Scene1::mouseMoveXPercent <= 16) {
         message = "Pull";
     }
 
@@ -456,12 +456,12 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         return  std::make_tuple(33, 499, 252, 8, 8);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.
     }
     if (scene == 1 && objectID == 10) {
-       
+       //Blinking eyes.
         if (Scene1::SPRITE_SIZE >= 160 && Scene1::SPRITE_SIZE <170 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
-            return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
+            return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  
         }
         if (Scene1::SPRITE_SIZE >= 170 && Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
-            return  std::make_tuple(40, Scene1::gdSprite.x + 52, Scene1::gdSprite.y + 48, 48, 25);  //HERE IS WHERE YOU SET DIMENSIONS AND POSITION OF THE OBJECT.5
+            return  std::make_tuple(40, Scene1::gdSprite.x + 52, Scene1::gdSprite.y + 48, 48, 25);  
         }
     }
 

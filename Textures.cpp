@@ -185,6 +185,10 @@ int Textures::AssetPosCalc(std::string texture) {
     texture == "LOOK_Y" && Scene1::WIDTH == 1920 ? result = 18 : 0;
     texture == "NEWGAME_Y" && Scene1::WIDTH == 1920 ? result = 25 : 0;
     texture == "NEWGAME_X" && Scene1::WIDTH == 1920 ? result = 85 : 0;
+    texture == "CONTINUE_Y" && Scene1::WIDTH == 1920 ? result = 25 : 0;
+    texture == "CONTINUE_X" && Scene1::WIDTH == 1920 ? result = 85 : 0;
+    texture == "OPTIONS_Y" && Scene1::WIDTH == 1920 ? result = 25 : 0;
+    texture == "OPTIONS_X" && Scene1::WIDTH == 1920 ? result = 85 : 0;
 
     //Resolution 1024x768
     texture == "PICKUP_X" && Scene1::WIDTH == 1024 ? result = 50 : 0;
@@ -199,6 +203,10 @@ int Textures::AssetPosCalc(std::string texture) {
     texture == "LOOK_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
     texture == "NEWGAME_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
     texture == "NEWGAME_X" && Scene1::WIDTH == 1024 ? result = 40 : 0;
+    texture == "CONTINUE_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
+    texture == "CONTINUE_X" && Scene1::WIDTH == 1024 ? result = 40 : 0;
+    texture == "OPTIONS_Y" && Scene1::WIDTH == 1024 ? result = 18 : 0;
+    texture == "OPTIONS_X" && Scene1::WIDTH == 1024 ? result = 40 : 0;
 
     return result;
 }
@@ -236,13 +244,15 @@ void Textures::Scene1Textures() {
     op.SetBackgroundHeight();
     op.PlaceSceneObjects();
 
-    //Set hover button locations depending on resolution. Adjusting size of image will need to be calculated also so that it scales properly.
+    //Set hover button placement locations depending on resolution. Adjusting size of image will need to be calculated also so that it scales properly.
     op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88, "PICKUP_Y");
     op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(82, "LOOK_Y");
     op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
     op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
     op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
     op.CalcObjectXAbsolutePosition(20, "NEWGAME_X"), op.CalcObjectYAbsolutePosition(65, "NEWGAME_Y");
+    op.CalcObjectXAbsolutePosition(20, "CONTINUE_X"), op.CalcObjectYAbsolutePosition(51.4, "CONTINUE_Y");
+    op.CalcObjectXAbsolutePosition(20, "OPTIONS_X"), op.CalcObjectYAbsolutePosition(77.8, "OPTIONS_Y");
 
 
     //Background dimensions (x,y,width,height).
@@ -266,8 +276,8 @@ void Textures::Scene1Textures() {
 
     //This is for the main menu hover buttons (x,y,width of image, height of image)
     RHoverNewGame = { ObjectPositions::NEWGAME_X - AssetPosCalc("NEWGAME_X"),ObjectPositions::NEWGAME_Y - AssetPosCalc("NEWGAME_Y"),op.CalcAssetSize(240,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(60,AssetSizeCalc("PLAYER_MENU_H"))};
-    RHoverConinueGame = { 180, 376, 272, 61 };
-    RHoverOptions = { 180,579,272,61 };
+    RHoverConinueGame = { ObjectPositions::CONTINUE_X - AssetPosCalc("CONTINUE_X"),ObjectPositions::CONTINUE_Y - AssetPosCalc("CONTINUE_Y"),op.CalcAssetSize(240,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(60,AssetSizeCalc("PLAYER_MENU_H")) };
+    RHoverOptions = { ObjectPositions::OPTIONS_X - AssetPosCalc("OPTIONS_X"),ObjectPositions::OPTIONS_Y - AssetPosCalc("OPTIONS_Y"),op.CalcAssetSize(240,AssetSizeCalc("PLAYER_MENU_W")),op.CalcAssetSize(60,AssetSizeCalc("PLAYER_MENU_H")) };
     RHoverPlus = { 600,139,104,54 };
     RHoverMinus = { 281,139,104,54 };
 

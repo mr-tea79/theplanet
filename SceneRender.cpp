@@ -27,25 +27,25 @@ int SceneRender::HoverButtons(int x, int y) {
     ObjectPositions op;
 
     //New game hover button (main menu)
-    op.CalcObjectXAbsolutePosition(20, "NEWGAME_X"), op.CalcObjectYAbsolutePosition(65, "NEWGAME_Y");
-    if (x >= ObjectPositions::NEWGAME_X && x <= ObjectPositions::NEWGAME_X + 100 && y >= ObjectPositions::NEWGAME_Y - 50 && y <= ObjectPositions::NEWGAME_Y + 20 && Scene1::SceneBackground == "0") {
+   // op.CalcObjectXAbsolutePosition(20, "NEWGAME_X"), op.CalcObjectYAbsolutePosition(65, "NEWGAME_Y");
+    if (Scene1::mouseMoveYPercent >= 62 && Scene1::mouseMoveYPercent <= 71 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36 && Scene1::SceneBackground == "0") {
         buttonID = "New Game";
         return 1;
     }
-   // if (x >= 159 && x <=376 && y >=480 && y <=546 && Scene1::SceneBackground == "0") {  
-    //    buttonID = "New Game";
-    //    return 1;
-  //  }
-    //Continue game hover button (main menu)
-    if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
+
+  //  op.CalcObjectXAbsolutePosition(20, "CONTINUE_X"), op.CalcObjectYAbsolutePosition(55, "CONTINUE_Y");
+    if (Scene1::mouseMoveYPercent >= 48 && Scene1::mouseMoveYPercent <= 56 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36 && Scene1::SceneBackground == "0") {
         buttonID = "Continue Game";
         return 1;
     }
+  
     //Player Options hover button (main menu)
-    if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
+    //op.CalcObjectXAbsolutePosition(20, "OPTIONS_X"), op.CalcObjectYAbsolutePosition(82, "OPTIONS_Y");
+    if (Scene1::mouseMoveYPercent >= 75 && Scene1::mouseMoveYPercent <= 83 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36 && Scene1::SceneBackground == "0") {
         buttonID = "Player Options";
         return 1;
     }
+
    
     if (x >= 17 && x <= 47 && y >= 704 && y <=  742 && Scene1::SceneBackground == "0") {      
         buttonID = "exitGame";
@@ -64,34 +64,34 @@ int SceneRender::HoverButtons(int x, int y) {
         return 1;
     }
     //Pickup hover button (bottom menu)
-    op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(92, "PICKUP_Y");
-    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 50 && y <= ObjectPositions::PICKUP_Y + 20 && Scene1::SceneBackground != "0") {
+
+    if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 89 && Scene1::mouseMoveXPercent >= 6 && Scene1::mouseMoveXPercent <= 16) {
         buttonID = "Pickup";
         return 1;
     }
       
 
     //Open hover button (bottom menu)
-    op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
-    if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 50 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
+ 
+    if (Scene1::mouseMoveYPercent >= 94 && Scene1::mouseMoveYPercent <= 98 && Scene1::mouseMoveXPercent >= 17 && Scene1::mouseMoveXPercent <= 23) {
         buttonID = "Open";
         return 1;
     }
     //Pull hover button (bottom menu)
-    op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
-    if (x >= ObjectPositions::PULL_X && x <= ObjectPositions::PULL_X + 100 && y >= ObjectPositions::PULL_Y - 20 && y <= ObjectPositions::PULL_Y + 20 && Scene1::SceneBackground != "0") {
+ 
+    if (Scene1::mouseMoveYPercent >= 94 && Scene1::mouseMoveYPercent <= 97 && Scene1::mouseMoveXPercent >= 6 && Scene1::mouseMoveXPercent <= 16) {
         buttonID = "Pull";
         return 1;
     }
     //Look hover button (bottom menu)
-    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
-    if (x >= ObjectPositions::LOOK_X && x <= ObjectPositions::LOOK_X + 100 && y >= ObjectPositions::LOOK_Y - 20 && y <= ObjectPositions::LOOK_Y + 20 && Scene1::SceneBackground != "0") {
+    
+    if (Scene1::mouseMoveYPercent >= 80 && Scene1::mouseMoveYPercent <= 83 && Scene1::mouseMoveXPercent >= 5 && Scene1::mouseMoveXPercent <= 14) {
         buttonID = "Look";
         return 1;
     }
     //Use hover button (bottom menu)
-    op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
-    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
+    //op. (20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
+    if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 90 && Scene1::mouseMoveXPercent >= 18 && Scene1::mouseMoveXPercent <= 24) {
         buttonID = "Use";
         return 1;
     }

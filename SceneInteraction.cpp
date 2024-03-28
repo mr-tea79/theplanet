@@ -9,6 +9,7 @@
 #include "AI.h"
 #include "PlayerObjects.h"
 #include "PlayerInteraction.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 using namespace std;
@@ -84,7 +85,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     ////////////////////////////////////////////////////////////////////////////////////////////////
   
 
-    if (Scene1::SceneBackground == "0" && x >= 159 && x <= 376 && y >= 480 && y <= 546) {
+    if (Scene1::SceneBackground == "0" && (Scene1::mouseMoveYPercent >= 62 && Scene1::mouseMoveYPercent <= 71 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36) ) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";
         SetSpritePosition(Scene1::xp = 14,Scene1::yp = 54,128);
@@ -92,7 +93,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         s.loadSounds(sceneBackground);
     }
 
-    if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 378 && y <= 438) {
+    if (Scene1::SceneBackground == "0" && (Scene1::mouseMoveYPercent >= 48 && Scene1::mouseMoveYPercent <= 56 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36)) {
         Scene1::menuSound = 1;
         Scene1::newGame = false;
         Scene1::continueGame = true;     

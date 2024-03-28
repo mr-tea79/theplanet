@@ -75,8 +75,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
     std::string actionMessage;
     ObjectPositions op;
     
-    op.CalcObjectXAbsolutePosition(9, "LOOK_X"), op.CalcObjectYAbsolutePosition(83, "LOOK_Y");
-    if (x >= ObjectPositions::LOOK_X && x <= ObjectPositions::LOOK_X + 100 && y >= ObjectPositions::LOOK_Y - 20 && y <= ObjectPositions::LOOK_Y + 20 && Scene1::SceneBackground != "0") {
+   
+    if (Scene1::mouseMoveYPercent >=80 && Scene1::mouseMoveYPercent<=83 && Scene1::mouseMoveXPercent >=5 && Scene1::mouseMoveXPercent <=14 ) {
         Scene1::menuSound = 1;
         useStatement = "";  //Important
         actionStatement = Scene1::actionStatement = "Look at";
@@ -85,8 +85,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         lookStatement = "";        
     }
 
-    op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88,"PICKUP_Y");
-    if (x >= ObjectPositions::PICKUP_X && x <= ObjectPositions::PICKUP_X + 100 && y >= ObjectPositions::PICKUP_Y - 20 && y <= ObjectPositions::PICKUP_Y + 10 && Scene1::SceneBackground != "0") {
+  
+    if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 89 && Scene1::mouseMoveXPercent >= 6 && Scene1::mouseMoveXPercent <= 16) {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pick up";
@@ -94,8 +94,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         pickUpStatement = "";     
     }
    
-    op.CalcObjectXAbsolutePosition(20, "USE_X"), op.CalcObjectYAbsolutePosition(89, "USE_Y");
-    if (x >= ObjectPositions::USE_X && x <= ObjectPositions::USE_X + 100 && y >= ObjectPositions::USE_Y - 20 && y <= ObjectPositions::USE_Y + 20 && Scene1::SceneBackground != "0") {
+   
+    if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 90 && Scene1::mouseMoveXPercent >= 18 && Scene1::mouseMoveXPercent <= 24) {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Use";
@@ -103,8 +103,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         useStatement = "";
     }
 
-    op.CalcObjectXAbsolutePosition(21, "OPEN_X"), op.CalcObjectYAbsolutePosition(95, "OPEN_Y");
-    if (x >= ObjectPositions::OPEN_X && x <= ObjectPositions::OPEN_X + 100 && y >= ObjectPositions::OPEN_Y - 20 && y <= ObjectPositions::OPEN_Y + 20 && Scene1::SceneBackground != "0") {
+
+    if (Scene1::mouseMoveYPercent >= 94 && Scene1::mouseMoveYPercent <= 98 && Scene1::mouseMoveXPercent >= 17 && Scene1::mouseMoveXPercent <= 23) {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Open";
@@ -112,8 +112,8 @@ std::string MenuInteraction::MenuAction(int x, int y, int gd, int gy, int mInter
         openStatement = "";
     }
 
-    op.CalcObjectXAbsolutePosition(9, "PULL_X"), op.CalcObjectYAbsolutePosition(95, "PULL_Y");
-    if (x >= ObjectPositions::PULL_X && x <= ObjectPositions::PULL_X + 100 && y >= ObjectPositions::PULL_Y - 20 && y <= ObjectPositions::PULL_Y + 20 && Scene1::SceneBackground != "0") {
+ 
+    if (Scene1::mouseMoveYPercent >= 94 && Scene1::mouseMoveYPercent <= 97 && Scene1::mouseMoveXPercent >= 6 && Scene1::mouseMoveXPercent <= 16) {
         Scene1::menuSound = 1;
         useStatement = "";
         actionStatement = Scene1::actionStatement = "Pull";

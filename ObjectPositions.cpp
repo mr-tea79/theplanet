@@ -17,8 +17,8 @@ int ObjectPositions::ENGINE_X;
 int ObjectPositions::ENGINE_Y;
 int ObjectPositions::ROCKS_X;
 int ObjectPositions::ROCKS_Y;
-int ObjectPositions::ROCKS_SX;
-int ObjectPositions::ROCKS_SY;
+int ObjectPositions::ROCKS_SX; //SX = WIDTH X
+int ObjectPositions::ROCKS_SY; //SY = HEIGHT Y
 
 //Pick up objects
 int ObjectPositions::PDA_X;
@@ -47,8 +47,18 @@ int ObjectPositions::MENU_Y;
 int ObjectPositions::MENU_HY;
 int ObjectPositions::HOVERTEXT_X;
 int ObjectPositions::HOVERTEXT_Y;
+
+//Main Menu buttons. They are referred to in: Textures.cpp, ObjectPositions.cpp, Sound.cpp, SceneRender.cpp, ObjectPositions.h, SceneInteraction.cpp
 int ObjectPositions::NEWGAME_X;
 int ObjectPositions::NEWGAME_Y;
+int ObjectPositions::CONTINUE_X;
+int ObjectPositions::CONTINUE_Y;
+int ObjectPositions::OPTIONS_X;
+int ObjectPositions::OPTIONS_Y;
+
+//Offset boundires
+int ObjectPositions::OFFSET_X;
+int ObjectPositions::OFFSET_Y;
 
 //Background
 int ObjectPositions::BACKGROUND_H;
@@ -146,6 +156,8 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "PICKUP_X" ? ObjectPositions::PICKUP_X = result : 0;
     objectName == "PULL_X" ? ObjectPositions::PULL_X = result : 0;
     objectName == "NEWGAME_X" ? ObjectPositions::NEWGAME_X = result : 0;
+    objectName == "CONTINUE_X" ? ObjectPositions::CONTINUE_X = result : 0;
+    objectName == "OPTIONS_X" ? ObjectPositions::OPTIONS_X = result : 0;
    
 
     return result;
@@ -174,6 +186,8 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "PICKUP_Y" ? ObjectPositions::PICKUP_Y = result : 0;
     objectName == "PULL_Y" ? ObjectPositions::PULL_Y = result : 0;
     objectName == "NEWGAME_Y" ? ObjectPositions::NEWGAME_Y = result : 0;
+    objectName == "CONTINUE_Y" ? ObjectPositions::CONTINUE_Y = result : 0;
+    objectName == "OPTIONS_Y" ? ObjectPositions::OPTIONS_Y = result : 0;
 
     return result;
 }

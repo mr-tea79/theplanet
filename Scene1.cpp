@@ -346,8 +346,8 @@ int Scene1::scene1() {
                         mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
 
                         //UNCOMMENT THE 2 LINES BELOW TO GET CONSTANT UPDATE OF MOUSE POSITION IN SCREEN PERCENTAGE
-                     //   std::cout << "Mouse X Position: " << Scene1::mouseMoveXPercent << "%" << std::endl;
-                       // std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
+                        std::cout << "Mouse X Position: " << Scene1::mouseMoveXPercent << "%" << std::endl;
+                        std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
                    
                         //Update custom cursor location when the mouse moves.
                         Textures::RCursor = { x-26,y-26,50,50 };

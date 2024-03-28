@@ -54,6 +54,15 @@ namespace brightland {
 		static int HOVERTEXT_Y;
 		static int NEWGAME_X;
 		static int NEWGAME_Y;
+		static int CONTINUE_X;
+		static int CONTINUE_Y;
+		static int OPTIONS_X;
+		static int OPTIONS_Y;
+
+		//Offset for click boundries. Depending on the resolution these boundries would need to be increased or decreased.
+		static int OFFSET_X;
+		static int OFFSET_Y;
+
 
 		//Background
 		static int BACKGROUND_H;

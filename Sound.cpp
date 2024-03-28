@@ -28,17 +28,16 @@ void Sound::updateSoundStatus(bool status) {
 
 bool Sound::checkHoverLocation(int x, int y) {
 
-	if (x >= ObjectPositions::NEWGAME_X && x <= ObjectPositions::NEWGAME_X + 100 && y >= ObjectPositions::NEWGAME_Y - 50 && y <= ObjectPositions::NEWGAME_Y + 20 && Scene1::SceneBackground == "0") {
+	if (Scene1::mouseMoveYPercent >= 62 && Scene1::mouseMoveYPercent <= 71 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36 && Scene1::SceneBackground == "0") {
 		return false;
 	}
-		
-	else if (x >= 159 && x <= 376 && y >= 378 && y <= 438 && Scene1::SceneBackground == "0") {
-		return false;
-	}		
-	//Player Options hover button (main menu)
-	else if (x >= 159 && x <= 376 && y >= 573 && y <= 644 && Scene1::SceneBackground == "0") {
+	else if (Scene1::mouseMoveYPercent >= 48 && Scene1::mouseMoveYPercent <= 56 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36 && Scene1::SceneBackground == "0") {
 		return false;
 	}
+	else if (Scene1::mouseMoveYPercent >= 75 && Scene1::mouseMoveYPercent <= 83 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36 && Scene1::SceneBackground == "0") {
+		return false;
+	}
+
 	else if (x > 27 && x < 77 && y > 28 && y < 77 && Scene1::SceneBackground == "0") {
 		return false;
 	}
