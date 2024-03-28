@@ -142,15 +142,13 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
        //////////////////////////////////// Scene 1 Outside Wreakage ////////////////////////////////////////////////////////////////////////
        
-        Scene1::SceneBackground == "1" && x >= ObjectPositions::MOON_X && x <= ObjectPositions::MOON_X + 200 && y>= ObjectPositions::MOON_Y -50 && y <= ObjectPositions::MOON_Y + 50 ? message = Scene1::actionStatement + " The moon" : "";
-        Scene1::SceneBackground == "1" && x >= ObjectPositions::ENGINE_X && x <= ObjectPositions::ENGINE_X + 200 && y >= ObjectPositions::ENGINE_Y - 50 && y <= ObjectPositions::ENGINE_Y + 50 ? message = Scene1::actionStatement + " Wreckage" : "";
-        // Scene1::SceneBackground == "1" && x >= ObjectPositions::WREAKAGEDOOR_X && x <= ObjectPositions::WREAKAGEDOOR_X + 200 && y >= ObjectPositions::WREAKAGEDOOR_Y - 50 && y <= ObjectPositions::WREAKAGEDOOR_Y + 50 ? message = Scene1::actionStatement + " Wreakage" : "";
-
-       // Scene1::SceneBackground == "1" && x >= 560 && x <= 612 && y >= 288 && y <= 350 ? message = Scene1::actionStatement + " Wreckage" : "";
-        Scene1::SceneBackground == "1" && (x >= ObjectPositions::PDA_X && x <= ObjectPositions::PDA_X + 40 && y >=ObjectPositions::PDA_Y -50 && y <=ObjectPositions::PDA_Y +50) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
+        Scene1::SceneBackground == "1" && Scene1::mouseMoveYPercent >= 1 && Scene1::mouseMoveYPercent <= 16 && Scene1::mouseMoveXPercent >= 5 && Scene1::mouseMoveXPercent <= 14 ? message = Scene1::actionStatement + " The moon" : "";
+        Scene1::SceneBackground == "1" && Scene1::mouseMoveYPercent >= 37 && Scene1::mouseMoveYPercent <= 48 && Scene1::mouseMoveXPercent >= 55 && Scene1::mouseMoveXPercent <= 68 ? message = Scene1::actionStatement + " Wreckage" : "";
+   
+        Scene1::SceneBackground == "1" && (Scene1::mouseMoveYPercent >= 64 && Scene1::mouseMoveYPercent <= 69 && Scene1::mouseMoveXPercent >= 54 && Scene1::mouseMoveXPercent <= 58) && inv.checkItem("PDA") != 1 ? message = Scene1::actionStatement + " White plastic thingy" : "";
         
         ////////////////////////////////////// Scene 1 Transitions  ///////////////////////////////////////////////////////////////////////////////
-        if (Scene1::SceneBackground == "1" && x >= ObjectPositions::WREAKAGEDOOR_X && x <= ObjectPositions::WREAKAGEDOOR_X + 200 && y >= ObjectPositions::WREAKAGEDOOR_Y - 50 && y <= ObjectPositions::WREAKAGEDOOR_Y + 50) {
+        if (Scene1::SceneBackground == "1" && Scene1::mouseMoveYPercent >= 42 && Scene1::mouseMoveYPercent <= 50 && Scene1::mouseMoveXPercent >= 73 && Scene1::mouseMoveXPercent <= 75) {
             message = "Enter Wreckage";
             Scene1::SceneTransitionStatement = "Wreckage";
         }

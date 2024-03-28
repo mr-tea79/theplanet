@@ -48,7 +48,7 @@ int ObjectPositions::MENU_HY;
 int ObjectPositions::HOVERTEXT_X;
 int ObjectPositions::HOVERTEXT_Y;
 
-//Main Menu buttons. They are referred to in: Textures.cpp, ObjectPositions.cpp, Sound.cpp, SceneRender.cpp, ObjectPositions.h, SceneInteraction.cpp
+//Main Menu buttons. They are referred to in: Textures.cpp,ObjectPositions.h
 int ObjectPositions::NEWGAME_X;
 int ObjectPositions::NEWGAME_Y;
 int ObjectPositions::CONTINUE_X;
