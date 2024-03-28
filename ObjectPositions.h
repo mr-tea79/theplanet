@@ -28,6 +28,8 @@ namespace brightland {
 		//Objects that can be picked up.
 		static int PDA_X;
 		static int PDA_Y;
+		static int PDA_SX;
+		static int PDA_SY;
 		static int ATAPE_X;
 		static int ATAPE_Y;
 		static int TENT_X;

@@ -23,6 +23,8 @@ int ObjectPositions::ROCKS_SY; //SY = HEIGHT Y
 //Pick up objects
 int ObjectPositions::PDA_X;
 int ObjectPositions::PDA_Y;
+int ObjectPositions::PDA_SX;
+int ObjectPositions::PDA_SY;
 int ObjectPositions::ATAPE_X;
 int ObjectPositions::ATAPE_Y;
 int ObjectPositions::TENT_X;
@@ -78,7 +80,9 @@ void ObjectPositions::PlaceHoverObjects() {
 //USED WHERE: in Textures.cpp.
 void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(0, "ROCKS_X"), CalcObjectYAbsolutePosition(38, "ROCKS_Y"); //Set rocks position.
-    CalcObjectXAbsolutePosition(80, "ROCKS_SX"), CalcObjectYAbsolutePosition(40, "ROCKS_SY"); //Set rocks position.
+    CalcObjectXAbsolutePosition(80, "ROCKS_SX"), CalcObjectYAbsolutePosition(40, "ROCKS_SY"); //Set rocks size.
+    CalcObjectXAbsolutePosition(0, "PDA_X"), CalcObjectYAbsolutePosition(38, "PDA_Y"); //Set PDA position.
+    CalcObjectXAbsolutePosition(80, "PDA_SX"), CalcObjectYAbsolutePosition(40, "PDA_SY"); //Set PDA size.
 }
 
 
@@ -144,6 +148,7 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
+    objectName == "PDA_SX" ? ObjectPositions::PDA_X = result : 0;
     objectName == "XPC" ? ObjectPositions::x = result : 0;
     objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
     objectName == "ENGINE_X" ? ObjectPositions::ENGINE_X = result : 0;
@@ -171,6 +176,7 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
     objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
+    objectName == "PDA_SY" ? ObjectPositions::PDA_Y = result : 0;
     objectName == "YPC" ? ObjectPositions::y = result : 0;
     objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
     objectName == "ENGINE_Y" ? ObjectPositions::ENGINE_Y = result : 0;

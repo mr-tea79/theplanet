@@ -15,7 +15,7 @@ void ObjectRender::objectRender() {
         }      
     }
 
-    else if (Scene1::SceneBackground == "1") { SDL_RenderCopy(Scene1::renderer, Textures::objectTexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect); }
+    else if (Scene1::SceneBackground == "1") { SDL_RenderCopy(Scene1::renderer, Textures::PDATexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect); }
 
     //Flag Inventory Item
     if (Scene1::objectToDestroy.find("2") != std::string::npos) {
