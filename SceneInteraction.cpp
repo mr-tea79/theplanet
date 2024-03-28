@@ -20,13 +20,12 @@ static std::string sceneBackground;
 
 
 
-void SceneInteraction::SetSpritePosition(int x, int y, int s) {
+void SceneInteraction::SetSpritePosition(int x, int y) {
    
     Scene1::gdSprite.x = x * Scene1::WIDTH / 100;
     Scene1::gdSprite.y = y * Scene1::HEIGHT / 100;
-  //  Scene1::SPRITE_SIZE = s;
     Scene1::sceneHalt = 1;
-    // SDL_WarpMouseInWindow(Scene1::window, 400, 400);
+   
 
 }
 void SceneInteraction::SetSpritePositionLegacy(int x, int y, int s) {
@@ -88,7 +87,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && (Scene1::mouseMoveYPercent >= 62 && Scene1::mouseMoveYPercent <= 71 && Scene1::mouseMoveXPercent >= 15 && Scene1::mouseMoveXPercent <= 36) ) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "1";
-        SetSpritePosition(Scene1::xp = 14,Scene1::yp = 54,128);
+        SetSpritePosition(Scene1::xp = 14,Scene1::yp = 54);
         Scene1::newGame = true;
         s.loadSounds(sceneBackground);
     }
@@ -102,7 +101,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "0" && x >= 163 && x <= 376 && y >= 573 && y <= 644) {
         Scene1::menuSound = 1;
         Scene1::SceneBackground = "01";
-        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 50, 160);
+        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 50);
         s.loadSounds(sceneBackground);
 
     }
@@ -302,10 +301,10 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     }
     /* Outside wreckage */
     if (Scene1::SceneBackground == "1" && Scene1::xp >=65 && Scene1::SceneTransitionStatement == "Wreckage") {
-        std::cout << "HELLO" << std::endl;
+
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
-        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 48, 160);
+        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 48);
         tex.TextureUpdater(Textures::spriteBack1a, "Action");
         Scene1::SceneTransitionStatement = "";
      //   Scene1::mouseClick = false;
@@ -326,7 +325,16 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     if (Scene1::SceneBackground == "1b" && Scene1::SceneTransitionStatement == "Exit Wreckage") {
         Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
-        SetSpritePosition(Scene1::xp = 61, Scene1::yp = 48,100);
+        ObjectPositions op;
+
+        //Set position of player and size of player.
+        SetSpritePosition(Scene1::xp = 61, Scene1::yp = 55);
+        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7) : 0;
+        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5) : 0;
+        
+
+      
+
         s.loadSounds(sceneBackground);
 
     }

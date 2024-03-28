@@ -115,10 +115,6 @@ int Scene1::scene1() {
   
     //Use this to jump to a scene. Comment the 4 lines below out and uncomment the SPRITE_SIZE =120 to return to normal.
     SceneBackground = "0";
-
-    //This is the initial size of the player sprite for 1024x768 resolution.
-    SPRITE_SIZE = 120;
-
     
     //Static variables that are updated while the program is running.
     static int position;
@@ -152,21 +148,19 @@ int Scene1::scene1() {
     
     //Placing objects in the game.
     ObjectPositions op;
-
-   
-
-   
+    
     op.PlaceMenuYPosition();
 
     //Set player initial size depending on screen resolution.
     if (HEIGHT == 1080) {
        SPRITE_SIZE = 180;
-
-      
+       Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7): 0;
+       Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5): 0;   
     }
     else if (HEIGHT == 768) {
         SPRITE_SIZE = 120;
-     
+        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7) : 0;
+        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5) : 0; 
     }
 
     
@@ -257,10 +251,7 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-       // std::cout << op.CalcAssetDecreaseSize(124, 10) << std::endl;
-
-       // std::cout << "Sprite size is now at: " << SPRITE_SIZE << std::endl;
-       // std::cout << ObjectPositions::MENU_HY << std::endl;
+      
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
