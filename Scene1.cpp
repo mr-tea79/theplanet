@@ -251,7 +251,6 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-      
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
@@ -331,12 +330,14 @@ int Scene1::scene1() {
                
                         menuSound = 0;
                         mouseHold = 0;  
-                        op.PlaceHoverObjects();
+                       // op.PlaceHoverObjects();
+                        
                                             
                         mouseMoveXPercent = op.CalcObjectXPositionPercentage(x, "X");
                         mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
 
                         //UNCOMMENT THE 2 LINES BELOW TO GET CONSTANT UPDATE OF MOUSE POSITION IN SCREEN PERCENTAGE
+                   
                         std::cout << "Mouse X Position: " << Scene1::mouseMoveXPercent << "%" << std::endl;
                         std::cout << "Mouse Y Position: " << Scene1::mouseMoveYPercent << "%" << std::endl;
                    

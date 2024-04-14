@@ -35,6 +35,12 @@ namespace brightland {
 		static int TENT_X;
 		static int TENT_Y;
 
+		//Inventory
+		static int INV1_X;
+		static int INV1_Y;
+		static int INV1_SX;
+		static int INV1_SY;
+
 		//Hover Interactions
 		static int MOON_X;
 		static int MOON_Y;
@@ -77,10 +83,11 @@ namespace brightland {
 		int CalcAssetDecreaseSize(int size, int percentDecrease);
 
 		void PlaceMenuYPosition();
-		void PlaceHoverObjects();
+		//void PlaceHoverObjects();
 		void SetBackgroundHeight();
 		void PlaceSceneObjects();
 		void SetHoverTextPosition();
+		void PlaceInventoryObjects();
 
 	};
 }

@@ -1,6 +1,7 @@
 #include "ObjectPositions.h"
 #include "Scene1.h"
 
+
 using namespace brightland;
 using namespace std;
 // X and Y
@@ -19,6 +20,12 @@ int ObjectPositions::ROCKS_X;
 int ObjectPositions::ROCKS_Y;
 int ObjectPositions::ROCKS_SX; //SX = WIDTH X
 int ObjectPositions::ROCKS_SY; //SY = HEIGHT Y
+
+//Inventory
+int ObjectPositions::INV1_X;
+int ObjectPositions::INV1_Y;
+int ObjectPositions::INV1_SX;
+int ObjectPositions::INV1_SY;
 
 //Pick up objects
 int ObjectPositions::PDA_X;
@@ -69,22 +76,21 @@ int ObjectPositions::BACKGROUND_H;
 //The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
 //make the objects still be in the correct positions and not hard coded for each different resoluion.
 
-//USED WHERE: in Scene1.cpp in SDL_MOUSEMOTION:
-void ObjectPositions::PlaceHoverObjects() {
-    CalcObjectXAbsolutePosition(10, "MOON_X"), CalcObjectYAbsolutePosition(9, "MOON_Y"); //Set Moon hover position.
-    CalcObjectXAbsolutePosition(74, "WREACKDOOR_X"), CalcObjectYAbsolutePosition(46, "WREACKDOOR_Y"); //Set Door entrance position.
-    CalcObjectXAbsolutePosition(56, "ENGINE_X"), CalcObjectYAbsolutePosition(40, "ENGINE_Y"); //Set Door entrance position.
-}
 
 //Place scene objects like rocks as an example.
 //USED WHERE: in Textures.cpp.
 void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(0, "ROCKS_X"), CalcObjectYAbsolutePosition(38, "ROCKS_Y"); //Set rocks position.
     CalcObjectXAbsolutePosition(80, "ROCKS_SX"), CalcObjectYAbsolutePosition(40, "ROCKS_SY"); //Set rocks size.
-    CalcObjectXAbsolutePosition(0, "PDA_X"), CalcObjectYAbsolutePosition(38, "PDA_Y"); //Set PDA position.
-    CalcObjectXAbsolutePosition(80, "PDA_SX"), CalcObjectYAbsolutePosition(40, "PDA_SY"); //Set PDA size.
+    CalcObjectXAbsolutePosition(54, "PDA_X"), CalcObjectYAbsolutePosition(65, "PDA_Y"); //Set PDA position.
+    CalcObjectXAbsolutePosition(4, "PDA_SX"), CalcObjectYAbsolutePosition(3, "PDA_SY"); //Set PDA size.
+  
 }
 
+void ObjectPositions::PlaceInventoryObjects() {
+    CalcObjectXAbsolutePosition(68, "INV1_X"), CalcObjectYAbsolutePosition(86, "INV1_Y"); //Set Inventory 1 position.
+    CalcObjectXAbsolutePosition(4, "INV1_SX"), CalcObjectYAbsolutePosition(3, "INV1_SY"); //Set Inventory 1 size.
+}
 
 //Place the Y position of the Menu
 //USED WHERE: Scene1.cpp just before setting up the player interaction menu rect.
@@ -148,7 +154,9 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
-    objectName == "PDA_SX" ? ObjectPositions::PDA_X = result : 0;
+    objectName == "PDA_SX" ? ObjectPositions::PDA_SX = result : 0;
+    objectName == "INV1_X" ? ObjectPositions::INV1_X = result : 0;
+    objectName == "INV1_SX" ? ObjectPositions::INV1_SX = result : 0;
     objectName == "XPC" ? ObjectPositions::x = result : 0;
     objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
     objectName == "ENGINE_X" ? ObjectPositions::ENGINE_X = result : 0;
@@ -176,7 +184,9 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
     objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
-    objectName == "PDA_SY" ? ObjectPositions::PDA_Y = result : 0;
+    objectName == "PDA_SY" ? ObjectPositions::PDA_SY = result : 0;
+    objectName == "INV1_Y" ? ObjectPositions::INV1_Y = result : 0;
+    objectName == "INV1_SY" ? ObjectPositions::INV1_SY = result : 0;
     objectName == "YPC" ? ObjectPositions::y = result : 0;
     objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
     objectName == "ENGINE_Y" ? ObjectPositions::ENGINE_Y = result : 0;

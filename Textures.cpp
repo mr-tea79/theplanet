@@ -4,6 +4,7 @@
 #include "MenuInteraction.h"
 #include "AI.h"
 #include "ObjectPositions.h"
+#include "Inventory.h"
 
 using namespace brightland;
 
@@ -241,8 +242,12 @@ void Textures::MovementTextures() {
 
 void Textures::Scene1Textures() {
     ObjectPositions op; //ObjectPositions.cpp
+    Inventory inv;
     op.SetBackgroundHeight();
     op.PlaceSceneObjects();
+    op.PlaceInventoryObjects();
+    inv.CalcInventoryPositions();
+
 
     //Set hover button placement locations depending on resolution. Adjusting size of image will need to be calculated also so that it scales properly.
     op.CalcObjectXAbsolutePosition(9, "PICKUP_X"), op.CalcObjectYAbsolutePosition(88, "PICKUP_Y");

@@ -1,5 +1,6 @@
 #include "ObjectRender.h"
 #include "Textures.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 
@@ -11,7 +12,9 @@ void ObjectRender::objectRender() {
     //PDA Inventory item.
     if (Scene1::objectToDestroy.find("1") != std::string::npos) {  
         if (Inventory::inv.find("1")) {
+            ObjectPositions op;
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture1, NULL, &Inventory::inv1);
+          
         }      
     }
 

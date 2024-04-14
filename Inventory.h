@@ -29,6 +29,8 @@ public:
 
 	void ContinueGame();
 
+	void CalcInventoryPositions();
+
 	int useItem(std::string itemName);
 
 	int gameSave(std::string currentScene);

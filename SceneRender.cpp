@@ -124,7 +124,7 @@ int SceneRender::HoverButtons(int x, int y) {
 
 //Renders the scene backgrounds for the game.
 void SceneRender::sceneRender() {
-
+  
     noBlinking(); //Used to prevent player blinking on overlay backgrounds where the player isn't visible.
 
     if (Scene1::SceneBackground == "01") {

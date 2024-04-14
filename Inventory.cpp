@@ -6,16 +6,25 @@
 #include "Textures.h"
 #include "Sound.h"
 #include "AI.h"
+#include "ObjectPositions.h"
 
 using namespace brightland;
 
 std::string Inventory::inv;
+SDL_Rect Inventory::inv1;
+SDL_Rect Inventory::inv2;
+SDL_Rect Inventory::inv3;
+SDL_Rect Inventory::inv4;
+SDL_Rect Inventory::inv7;
 
-SDL_Rect Inventory::inv1 = { 700, 650, 40, 40 };
-SDL_Rect Inventory::inv2 = { 760, 610, 60, 60 };
-SDL_Rect Inventory::inv3 = { 880, 650, 40, 40 };
-SDL_Rect Inventory::inv4 = { 760, 700, 60, 60 };
-SDL_Rect Inventory::inv7 = { 760, 700, 60, 60 };
+
+void Inventory::CalcInventoryPositions() {
+	inv1 = { ObjectPositions::INV1_X, ObjectPositions::INV1_Y, ObjectPositions::INV1_SX, ObjectPositions::INV1_SY };
+	inv2 = { 760, 610, 60, 60 };
+	inv3 = { 880, 650, 40, 40 };
+	inv4 = { 760, 700, 60, 60 };
+	inv7= { 760, 700, 60, 60 };
+}
 
 //Clears the game progress.
 int Inventory::purgeDatabase() {

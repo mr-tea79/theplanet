@@ -419,7 +419,8 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     if (scene == 1 && objectID == 1) {
         //PDA
        // return  std::make_tuple(1, 685, 523, 20, 14);
-        return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(55,"PDA_X"), op.CalcObjectYAbsolutePosition(66, "PDA_Y"), op.CalcObjectYAbsolutePosition(4, "PDA_SX"), op.CalcObjectYAbsolutePosition(4, "PDA_SY"));
+      
+        return  std::make_tuple(1, ObjectPositions::PDA_X, ObjectPositions::PDA_Y, ObjectPositions::PDA_SX, ObjectPositions::PDA_SY);
     }
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up   
