@@ -104,7 +104,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
     //Inventory Hover Messages 
     if(Scene1::SceneBackground !="0") {
-        if (x >= 696 && x <= 736 && y >= 653 && y <= 687) {
+        if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 88 && Scene1::mouseMoveXPercent >= 68 && Scene1::mouseMoveXPercent <=70) {
             if(inv.checkItem("PDA") != 0)
                 message = Scene1::actionStatement + " PDA";
         }

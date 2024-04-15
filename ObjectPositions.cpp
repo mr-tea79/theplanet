@@ -83,13 +83,13 @@ void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(0, "ROCKS_X"), CalcObjectYAbsolutePosition(38, "ROCKS_Y"); //Set rocks position.
     CalcObjectXAbsolutePosition(80, "ROCKS_SX"), CalcObjectYAbsolutePosition(40, "ROCKS_SY"); //Set rocks size.
     CalcObjectXAbsolutePosition(54, "PDA_X"), CalcObjectYAbsolutePosition(65, "PDA_Y"); //Set PDA position.
-    CalcObjectXAbsolutePosition(4, "PDA_SX"), CalcObjectYAbsolutePosition(3, "PDA_SY"); //Set PDA size.
+    CalcObjectXAbsolutePosition(3, "PDA_SX"), CalcObjectYAbsolutePosition(3, "PDA_SY"); //Set PDA size.
   
 }
 
 void ObjectPositions::PlaceInventoryObjects() {
     CalcObjectXAbsolutePosition(68, "INV1_X"), CalcObjectYAbsolutePosition(86, "INV1_Y"); //Set Inventory 1 position.
-    CalcObjectXAbsolutePosition(4, "INV1_SX"), CalcObjectYAbsolutePosition(3, "INV1_SY"); //Set Inventory 1 size.
+    CalcObjectXAbsolutePosition(5, "INV1_SX"), CalcObjectYAbsolutePosition(5, "INV1_SY"); //Set Inventory 1 size.
 }
 
 //Place the Y position of the Menu
