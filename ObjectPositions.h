@@ -79,7 +79,7 @@ namespace brightland {
 		float CalcObjectXPositionPercentage(float position, std::string objectName);
 		float CalcObjectXAbsolutePosition(float position, std::string objectName);
 		float CalcObjectYAbsolutePosition(float position, std::string objectName);
-		int CalcAssetSize(int size,int percentIncrease);
+		int CalcAssetSize(int size,float percentIncrease);
 		int CalcAssetDecreaseSize(int size, int percentDecrease);
 
 		void PlaceMenuYPosition();

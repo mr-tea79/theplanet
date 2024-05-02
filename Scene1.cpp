@@ -255,7 +255,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
         std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
-
+        player.checkPlayerSize();
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);

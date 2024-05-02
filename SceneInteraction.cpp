@@ -303,7 +303,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
 
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
-  
+       
         scene.setSceneSpriteSize(180);
         SetSpritePosition(Scene1::xp = 50, Scene1::yp = 48);
         tex.TextureUpdater(Textures::spriteBack1a, "Action");
@@ -312,6 +312,7 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         AI::aiPlayMessages = true;
         AI::dialogNumber = 5;
         AI::playerTalk = true;
+       
     }
     /* Sandy clearing returning to rocky path */
     if (Scene1::SceneBackground == "1f" && playerCurrentLocationX < 100 && Scene1::SceneTransitionStatement == "West") {
@@ -326,12 +327,11 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
         ObjectPositions op;
-        scene.setSceneSpriteSize(120);   
+
         //Set position of player and size of player.
+        scene.setSceneSpriteSize(120);   
         SetSpritePosition(Scene1::xp = 61, Scene1::yp = 55);
 
-        //This is important because otherwise the player size will be wrong when transitioning to another scene. Set the maximum size your player can be in that scene.
-        Scene1::SPRITE_MAX_SIZE = 120;
 
         s.loadSounds(sceneBackground);
 

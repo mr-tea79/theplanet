@@ -11,13 +11,12 @@ class PlayerMovement
 {
 
 private:
-	void checkPlayerSize();
+	
 public:
 	static float hspeed;
 	static float vspeed;
 	static bool blink;
 	int move;
-	static int spriteSizeLock;
 	static int minPlayerSizeCounter;
 	static int maxPlayerSizeCounter;
 
@@ -26,7 +25,7 @@ public:
 
 	//void LoadMovementTextures();
 
-	
+	void checkPlayerSize();
 		
 	int walk(int x, int y, int gd, int gy, int screenWidth, int screenHeight);
 
@@ -41,7 +40,7 @@ public:
 	int doYWalkDown(int gy);
 
 	void setSpriteSize(int increase, int decrease);
-
+	
 
 };
 }

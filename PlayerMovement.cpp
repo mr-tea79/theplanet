@@ -14,18 +14,20 @@ static int position; //Used to update current position variable.
 int PlayerMovement::maxPlayerSizeCounter = 0; //Used to fix the maximum size a player can be.
 int PlayerMovement::minPlayerSizeCounter = 0; //Used to fix the miniumum size a player can be.
 
-int PlayerMovement::spriteSizeLock = 0; //This is the control gradual increase in player size.
 
 float PlayerMovement::hspeed = 2.5;
 float PlayerMovement::vspeed = 2.5;
 
 bool PlayerMovement::blink;
 
+  
+
 void PlayerMovement::setSpriteSize(int increase, int decrease) {
     
     ObjectPositions op;
-    Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, increase), spriteSizeLock++, checkPlayerSize() : move = 0;
-    Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, decrease), spriteSizeLock--, checkPlayerSize() : move = 0;
+    
+    Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, increase), checkPlayerSize() : move = 0;
+    Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, decrease), checkPlayerSize() : move = 0;
 
 }
 
@@ -34,11 +36,13 @@ void PlayerMovement::setSpriteSize(int increase, int decrease) {
 void PlayerMovement::checkPlayerSize() {
 
     if (minPlayerSizeCounter <= 2) {
+   
         Scene1::SPRITE_MIN_SIZE = Scene1::SPRITE_SIZE;
         minPlayerSizeCounter++;
-
+      
     }
     else if (maxPlayerSizeCounter <= 2) {
+      
         Scene1::SPRITE_MAX_SIZE = Scene1::SPRITE_SIZE;
         maxPlayerSizeCounter++;
 
@@ -437,7 +441,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         ObjectPositions op;
       
         //Increase and decrease player size depending on location on screen.
-        setSpriteSize(7,5);
+        setSpriteSize(7,45 );
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
         gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;        
 
