@@ -9,6 +9,7 @@ namespace brightland {
 		std::string sceneTransitions(int, int, int, int);
 		void SetSpritePosition(int x, int y);
 		void SetSpritePositionLegacy(int x, int y, int s);
+		
 
 	};
 

@@ -98,8 +98,7 @@ namespace brightland {
 	public:
 		int scene1();
 		bool checkFScreenStatus(bool status);
-		
-
+		void setSceneSpriteSize(int size);
 		void DoAction();
 
 	};

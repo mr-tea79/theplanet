@@ -16,9 +16,7 @@ using namespace std;
 
 //Global
 static std::string sceneBackground;
-
-
-
+Scene1 scene;
 
 void SceneInteraction::SetSpritePosition(int x, int y) {
    
@@ -301,13 +299,15 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
     }
     /* Outside wreckage */
     if (Scene1::SceneBackground == "1" && Scene1::xp >=65 && Scene1::SceneTransitionStatement == "Wreckage") {
+        
 
         std::cout << "Entering Wreckage" << std::endl;
         Scene1::SceneBackground = "1b";
+  
+        scene.setSceneSpriteSize(180);
         SetSpritePosition(Scene1::xp = 50, Scene1::yp = 48);
         tex.TextureUpdater(Textures::spriteBack1a, "Action");
         Scene1::SceneTransitionStatement = "";
-     //   Scene1::mouseClick = false;
         s.loadSounds(sceneBackground);
         AI::aiPlayMessages = true;
         AI::dialogNumber = 5;
@@ -326,14 +326,12 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::SceneTransitionStatement = "";
         Scene1::SceneBackground = "1";
         ObjectPositions op;
-
+        scene.setSceneSpriteSize(120);   
         //Set position of player and size of player.
         SetSpritePosition(Scene1::xp = 61, Scene1::yp = 55);
-        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7) : 0;
-        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5) : 0;
-        
 
-      
+        //This is important because otherwise the player size will be wrong when transitioning to another scene. Set the maximum size your player can be in that scene.
+        Scene1::SPRITE_MAX_SIZE = 120;
 
         s.loadSounds(sceneBackground);
 

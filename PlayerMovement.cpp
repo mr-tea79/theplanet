@@ -11,8 +11,8 @@ using namespace brightland;
 using namespace std;
 
 static int position; //Used to update current position variable.
-static int maxPlayerSizeCounter = 0; //Used to fix the maximum size a player can be.
-static int minPlayerSizeCounter = 0; //Used to fix the miniumum size a player can be.
+int PlayerMovement::maxPlayerSizeCounter = 0; //Used to fix the maximum size a player can be.
+int PlayerMovement::minPlayerSizeCounter = 0; //Used to fix the miniumum size a player can be.
 
 int PlayerMovement::spriteSizeLock = 0; //This is the control gradual increase in player size.
 
@@ -20,6 +20,15 @@ float PlayerMovement::hspeed = 2.5;
 float PlayerMovement::vspeed = 2.5;
 
 bool PlayerMovement::blink;
+
+void PlayerMovement::setSpriteSize(int increase, int decrease) {
+    
+    ObjectPositions op;
+    Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, increase), spriteSizeLock++, checkPlayerSize() : move = 0;
+    Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, decrease), spriteSizeLock--, checkPlayerSize() : move = 0;
+
+}
+
 
 
 void PlayerMovement::checkPlayerSize() {
@@ -268,6 +277,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
     ///////////////////////// SCENE 1B INSIDE SHIP WRECKAGE //////////////////////////////////////////
     if (Scene1::SceneBackground == "1b") {
+   
         gd <= x - 40 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
         gd >= x - 15 && y > 300 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
         
@@ -279,7 +289,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
 
     ///////////////////////// SCENE 1 STARTING SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1" && mouseClickYPercent <75 ) {
-
+   
         gd <= x -60 && Scene1::xp <= 100 &&  Scene1::xp >= -1 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
         gd >= x -10  && Scene1::xp <= 100 && Scene1::xp >= -1 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
       
@@ -382,9 +392,11 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
 
     ///////////////////////// SCENE 1B INSIDE SPACE SHIP WRECKAGE //////////////////////////////////////
     if (Scene1::SceneBackground == "1b") {
-        gy >= y && y < 570 && y >330 ? gy = doYWalkUp(gy), position++ : move = 0;
-        gy <= y - 100 && y < 575 && y > gd && gy > 250 && gy < 445 ? gy = doYWalkDown(gy), position++ : move = 0;
-
+        Scene1 sc;
+       // sc.setSceneSpriteSize(180);
+        setSpriteSize(0,0);
+        gy >= y - 10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
+        gy <= y - 50 && Scene1::yp < 68 && Scene1::yp < 55 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;
     }
 
     ///////////////////////// SCENE 1F SANDY CLEARING //////////////////////////////////////
@@ -423,19 +435,11 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
     ///////////////////////// SCENE 1 FIRST SCENE //////////////////////////////////////
     if (Scene1::SceneBackground == "1") {
         ObjectPositions op;
-        
-        
+      
         //Increase and decrease player size depending on location on screen.
-        
-        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7), spriteSizeLock++, checkPlayerSize() : move = 0;
-        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5), spriteSizeLock--,checkPlayerSize() : move = 0;
-            
-        
-         
-       
+        setSpriteSize(7,5);
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
-        gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;
-        
+        gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;        
 
     }
 

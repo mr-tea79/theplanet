@@ -18,6 +18,8 @@ public:
 	static bool blink;
 	int move;
 	static int spriteSizeLock;
+	static int minPlayerSizeCounter;
+	static int maxPlayerSizeCounter;
 
 	//Scene Surfaces.
 	SDL_Surface* imageSurface;
@@ -37,6 +39,8 @@ public:
 	int doYWalkUp(int gy);
 
 	int doYWalkDown(int gy);
+
+	void setSpriteSize(int increase, int decrease);
 
 
 };

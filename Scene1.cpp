@@ -105,6 +105,20 @@ bool Scene1::checkFScreenStatus(bool status) {
     return status;
 }
 
+void Scene1::setSceneSpriteSize(int size) {
+    ObjectPositions op;
+   
+    //Set player initial size depending on screen resolution.
+    if (HEIGHT == 1080) {
+        SPRITE_SIZE = size + 20;
+     
+    }
+    else if (HEIGHT == 768) {
+        SPRITE_SIZE = size;
+         
+    }
+}
+
 int Scene1::scene1() {
   
    
@@ -151,18 +165,7 @@ int Scene1::scene1() {
     
     op.PlaceMenuYPosition();
 
-    //Set player initial size depending on screen resolution.
-    if (HEIGHT == 1080) {
-       SPRITE_SIZE = 180;
-       Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7): 0;
-       Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5): 0;   
-    }
-    else if (HEIGHT == 768) {
-        SPRITE_SIZE = 120;
-        Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, 7) : 0;
-        Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, 5) : 0; 
-    }
-
+    setSceneSpriteSize(120);
     
 
     //Interaction Menu Rect (x,y,width,height)
@@ -251,6 +254,8 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
+        std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
+
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
@@ -376,7 +381,7 @@ int Scene1::scene1() {
                                     SDL_DestroyTexture(Textures::ftexture);
                                     Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
                                     SDL_DestroyTexture(Textures::spriteTexture);
-                                    Textures::spriteTexture = nullptr;                          
+                                  //  Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                     PlayerMovement::blink = true;       
                                  
