@@ -255,7 +255,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
         std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
-        player.checkPlayerSize();
+      //  player.checkPlayerSize();
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
         Mix_VolumeMusic(MIX_MAX_VOLUME / 7);
@@ -427,7 +427,7 @@ int Scene1::scene1() {
         }
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT) && AI::aiStop !=1) {
             
-                        
+            player.checkPlayerSize(); // Don't remove this or you'll get some very strange behaviour.
             mouseHold++; //Important because it stops a memory leak.
  
             mouseClickXPercent = op.CalcObjectXPositionPercentage(x, "X");
@@ -617,8 +617,7 @@ int Scene1::scene1() {
               
                     SDL_Delay(300);
                     sceneHalt = 0;
-                   
-                  //  playerIsMoving = 0;
+                  
             }
             
             //This is where I am attempting to allow the player to walk directly to another scene after the user has chosen the destination. This is not perfect yet.
@@ -692,10 +691,8 @@ int Scene1::scene1() {
        // std::cout << delta_time << std::endl;
    
         if (delta_time < 5.5000) {
-            PlayerMovement::hspeed = 2.5; // Walk left and right speed.
-            PlayerMovement::vspeed = 2.5; // Walk up or down speed.
-            
-   
+            PlayerMovement::hspeed = 2.5;
+            PlayerMovement::vspeed = 2.5; 
         }
         else {
            
