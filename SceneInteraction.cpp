@@ -305,13 +305,14 @@ std::string SceneInteraction::sceneTransitions(int x, int y, int playerCurrentLo
         Scene1::SceneBackground = "1b";
        
         scene.setSceneSpriteSize(180);
-        SetSpritePosition(Scene1::xp = 50, Scene1::yp = 48);
+        SetSpritePosition(Scene1::xp = 38, Scene1::yp = 48);
         tex.TextureUpdater(Textures::spriteBack1a, "Action");
         Scene1::SceneTransitionStatement = "";
         s.loadSounds(sceneBackground);
         AI::aiPlayMessages = true;
         AI::dialogNumber = 5;
         AI::playerTalk = true;
+      
        
     }
     /* Sandy clearing returning to rocky path */

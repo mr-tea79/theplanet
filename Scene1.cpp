@@ -254,7 +254,8 @@ int Scene1::scene1() {
     //Game loop.
     while (!gameover)
     {        
-        std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
+      // std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
+      //  std::cout << "PLAYER IS MOVING" << playerIsMoving << std::endl;
       //  player.checkPlayerSize();
         checkFScreenStatus(fullScreenTrigger);
         s.checkSoundStatus(Sound::soundOn);
@@ -263,7 +264,7 @@ int Scene1::scene1() {
         if (playerIsMoving == 0 && AI::playerTalk !=1 ) {
           
             SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = nullptr;
+         //   Textures::spriteTexture = nullptr;
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);  
             PlayerMovement::blink = true;
            
@@ -335,9 +336,7 @@ int Scene1::scene1() {
                
                         menuSound = 0;
                         mouseHold = 0;  
-                       // op.PlaceHoverObjects();
-                        
-                                            
+                                  
                         mouseMoveXPercent = op.CalcObjectXPositionPercentage(x, "X");
                         mouseMoveYPercent = op.CalcObjectYPositionPercentage(y, "Y");
 
@@ -362,9 +361,11 @@ int Scene1::scene1() {
 
                         
                         if (event.motion.y >= gy + 90 || event.motion.y <= gy - 90 || event.motion.x >= gd + 90 || event.motion.x <= gd - 90) {
-                            playerMessage = false;                          
-                            sceneHalt = 0; // Fixes issue where hover text appears in speech area.     
-                            playerIsMoving = 0;
+                            playerMessage = false;     
+
+                            //Removed following on May 2024 to try and resolve flickering issues.
+                            //sceneHalt = 0; // Fixes issue where hover text appears in speech area.     
+                            //playerIsMoving = 0;
                           
                         }
                        
@@ -379,7 +380,7 @@ int Scene1::scene1() {
                             else {            
                                 
                                     SDL_DestroyTexture(Textures::ftexture);
-                                    Textures::ftexture = nullptr; //IF YOU REMOVE THIS YOU WILL GET THE PLAYER SPRITE POPPING INTO THE TEXT AREA!
+                                  //  Textures::ftexture = nullptr; //Removed in May 2024 to prevent flickering.
                                     SDL_DestroyTexture(Textures::spriteTexture);
                                   //  Textures::spriteTexture = nullptr;                          
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
@@ -429,7 +430,7 @@ int Scene1::scene1() {
             
             player.checkPlayerSize(); // Don't remove this or you'll get some very strange behaviour.
             mouseHold++; //Important because it stops a memory leak.
- 
+            playerIsMoving = 1;
             mouseClickXPercent = op.CalcObjectXPositionPercentage(x, "X");
             mouseClickYPercent = op.CalcObjectYPositionPercentage(y, "Y");
             playerMessage = false;
@@ -437,7 +438,7 @@ int Scene1::scene1() {
                        
             //Prevents memory leak          
             SDL_DestroyTexture(Textures::spriteTexture);
-            Textures::spriteTexture = nullptr;
+           // Textures::spriteTexture = nullptr;
             Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); 
            
             if (playerIsMoving == 0) {
@@ -572,8 +573,9 @@ int Scene1::scene1() {
         if (wx > gdSprite.x || wx < gdSprite.x  ) {
           
             if(action !=1 ){
+               
                 SDL_DestroyTexture(Textures::spriteTexture);
-                Textures::spriteTexture = nullptr; //Prevents memory leak.
+              //  Textures::spriteTexture = nullptr; //Prevents memory leak.
                 Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1);
             }
             else{   
@@ -582,6 +584,7 @@ int Scene1::scene1() {
            
             if (sceneHalt == 0 ) {
                 playerMessage = false;
+              
                 gdSprite.x = player.walk(wx, wy, gd, gy, WIDTH, HEIGHT);
                 SDL_Delay(1);
              
@@ -609,6 +612,7 @@ int Scene1::scene1() {
                 }
             }
             else {
+               
                 //This code prevents the character from continuing to walk when changing scenes.
                     x = gdSprite.x;
                     y = gdSprite.y;
@@ -617,6 +621,7 @@ int Scene1::scene1() {
               
                     SDL_Delay(300);
                     sceneHalt = 0;
+                  
                   
             }
             

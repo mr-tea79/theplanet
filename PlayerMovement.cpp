@@ -27,7 +27,7 @@ void PlayerMovement::setSpriteSize(int increase, int decrease) {
     ObjectPositions op;
       
     Scene1::yp > 55 && Scene1::SPRITE_SIZE <= Scene1::SPRITE_MAX_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetSize(Scene1::SPRITE_SIZE, increase) : move = 0;
-    Scene1::yp < 55 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, decrease) : move = 0;
+    Scene1::yp < 53 && Scene1::SPRITE_SIZE >= Scene1::SPRITE_MIN_SIZE ? Scene1::SPRITE_SIZE = op.CalcAssetDecreaseSize(Scene1::SPRITE_SIZE, decrease) : move = 0;
 
 }
 
@@ -283,12 +283,14 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     ///////////////////////// SCENE 1B INSIDE SHIP WRECKAGE //////////////////////////////////////////
     if (Scene1::SceneBackground == "1b") {
    
-        gd <= x - 40 && y > 320 && y < 575 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
-        gd >= x - 15 && y > 300 && y < 575 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
-        
+      
+        gd <= x - 60 && Scene1::xp <= 56 && Scene1::xp >= -1 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;
+        gd >= x - 10 && Scene1::xp >= 24 && Scene1::xp >= -1 ? gd = doXWalkLeft(gd, screenWidth), position++ : move = 0;
+
+
         //Custom boundries
-        gd < 200 ? Scene1::sceneHalt = 1 : move = 0;
-        gd > 560 ? Scene1::sceneHalt = 1 : move = 0;     
+       // gd < Scene1::xp >= 58 ? Scene1::sceneHalt = 1 : move = 0;
+       // gd > Scene1::xp <= 38 ? Scene1::sceneHalt = 1 : move = 0;
 
     }
 
@@ -442,7 +444,7 @@ int PlayerMovement::walky(int x, int y, int gd, int gy, int screenWidth, int scr
         ObjectPositions op;
       
         //Increase and decrease player size depending on location on screen.
-        setSpriteSize(7,25 );
+        setSpriteSize(7,29 );
         gy >= y -10 && Scene1::yp < 68 && Scene1::yp > 48 ? gy = doYWalkUp(gy), position++ : Scene1::playerIsMoving = 0;
         gy <= y -50 && Scene1::yp < 68 && Scene1::yp < 60 ? gy = doYWalkDown(gy), position++ : Scene1::playerIsMoving = 0;        
 
