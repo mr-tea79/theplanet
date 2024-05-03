@@ -430,11 +430,12 @@ int Scene1::scene1() {
             
             player.checkPlayerSize(); // Don't remove this or you'll get some very strange behaviour.
             mouseHold++; //Important because it stops a memory leak.
-            playerIsMoving = 1;
+          //  playerIsMoving = 1;
             mouseClickXPercent = op.CalcObjectXPositionPercentage(x, "X");
             mouseClickYPercent = op.CalcObjectYPositionPercentage(y, "Y");
             playerMessage = false;
             interactionMessage = "";
+        
                        
             //Prevents memory leak          
             SDL_DestroyTexture(Textures::spriteTexture);
