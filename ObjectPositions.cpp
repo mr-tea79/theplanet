@@ -36,6 +36,10 @@ int ObjectPositions::ATAPE_X;
 int ObjectPositions::ATAPE_Y;
 int ObjectPositions::TENT_X;
 int ObjectPositions::TENT_Y;
+int ObjectPositions::FLAG_X;
+int ObjectPositions::FLAG_Y;
+int ObjectPositions::FLAG_SX;
+int ObjectPositions::FLAG_SY;
 
 //Hover interactions
 int ObjectPositions::MOON_X;
@@ -84,6 +88,8 @@ void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(80, "ROCKS_SX"), CalcObjectYAbsolutePosition(40, "ROCKS_SY"); //Set rocks size.
     CalcObjectXAbsolutePosition(54, "PDA_X"), CalcObjectYAbsolutePosition(65, "PDA_Y"); //Set PDA position.
     CalcObjectXAbsolutePosition(3, "PDA_SX"), CalcObjectYAbsolutePosition(3, "PDA_SY"); //Set PDA size.
+    CalcObjectXAbsolutePosition(64, "FLAG_X"), CalcObjectYAbsolutePosition(35, "FLAG_Y"); 
+    CalcObjectXAbsolutePosition(9, "FLAG_SX"), CalcObjectYAbsolutePosition(25, "FLAG_SY"); 
   
 }
 
@@ -155,6 +161,8 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
     objectName == "PDA_SX" ? ObjectPositions::PDA_SX = result : 0;
+    objectName == "FLAG_X" ? ObjectPositions::FLAG_X = result : 0;
+    objectName == "FLAG_SX" ? ObjectPositions::FLAG_SX = result : 0;
     objectName == "INV1_X" ? ObjectPositions::INV1_X = result : 0;
     objectName == "INV1_SX" ? ObjectPositions::INV1_SX = result : 0;
     objectName == "XPC" ? ObjectPositions::x = result : 0;
@@ -185,6 +193,8 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
     objectName == "PDA_SY" ? ObjectPositions::PDA_SY = result : 0;
+    objectName == "FLAG_Y" ? ObjectPositions::FLAG_Y = result : 0;
+    objectName == "FLAG_SY" ? ObjectPositions::FLAG_SY = result : 0;
     objectName == "INV1_Y" ? ObjectPositions::INV1_Y = result : 0;
     objectName == "INV1_SY" ? ObjectPositions::INV1_SY = result : 0;
     objectName == "YPC" ? ObjectPositions::y = result : 0;

@@ -106,7 +106,7 @@ SDL_Texture* Textures::invTexture7;
 
 //Object Textures.
 SDL_Texture* Textures::PDATexture; //PDA
-SDL_Texture* Textures::objectTexture2;
+SDL_Texture* Textures::FlagTexture; //Flag
 SDL_Texture* Textures::objectTexture3;
 SDL_Texture* Textures::objectTexture4;
 SDL_Texture* Textures::objectTexture5;
@@ -433,7 +433,7 @@ void Textures::Scene1Textures() {
     
     imageSurface = IMG_Load("Objects/flagr.png");
     invTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
-    objectTexture2 = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
+    FlagTexture = SDL_CreateTextureFromSurface(Scene1::renderer, imageSurface);
     SDL_FreeSurface(imageSurface);
 
     imageSurface = IMG_Load("Objects/tape.png");

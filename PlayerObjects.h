@@ -34,6 +34,8 @@ namespace brightland {
         static SDL_Rect dstrect9;
         static SDL_Rect srcrect10;
         static SDL_Rect dstrect10;
+     
+        static std::string items;
        
 
         std::string HoverObjects(int x, int y, int scene, int gd, int gy);
@@ -43,6 +45,7 @@ namespace brightland {
         std::string ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY);
         void ObjectController();
         void SetSpritePosition(int x, int y);
+   
        
      
     };

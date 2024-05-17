@@ -44,7 +44,7 @@ namespace brightland {
 		static SDL_Texture* secretDrawing;
 		
 		static SDL_Texture* PDATexture;
-		static SDL_Texture* objectTexture2;
+		static SDL_Texture* FlagTexture;
 		static SDL_Texture* objectTexture3;
 		static SDL_Texture* objectTexture4;
 		static SDL_Texture* objectTexture5;

@@ -21,7 +21,7 @@ public:
 	
 	static int wrongAction;
 	static std::string wrongActionMessage;
-	
+	static std::string pickUpStatement;
 
 	void doAction();
 	void useChecker(int gd, int gy);
@@ -34,6 +34,7 @@ public:
 	std::string Open(int x, int y, int gd, int gy, int mInteraction);
 	std::string Look(int x, int y, int gd, int gy, int mInteraction);
 	std::string MenuAction(int x, int y, int gd, int gy, int mInteraction);
+	
 
 
 

@@ -32,6 +32,8 @@ static int SPRITE_SIZE;
 static int xPosition;
 static int yPosition;
 static int playerMessage;
+
+std::string PlayerObjects::items = "";
 //static int inv3Used;  //Duct Tape
 int PlayerObjects::boxOpened;
 
@@ -167,7 +169,7 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
 
         ////////////////////////////////// Scene 1b Inside Wreakage //////////////////////////////////////////////////////////////////////////////////////////
-        Scene1::SceneBackground == "1b" && x >= 696 && x <= 763 && y >= 324 && y <= 525 && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
+        Scene1::SceneBackground == "1b" && (Scene1::mouseMoveYPercent >= 36 && Scene1::mouseMoveYPercent <= 72 && Scene1::mouseMoveXPercent >= 64 && Scene1::mouseMoveXPercent <= 72) && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
         Scene1::SceneBackground == "1b" && (x >= ObjectPositions::TENT_X && x<= ObjectPositions::TENT_X + 40 && y >= ObjectPositions::TENT_Y - 50 && y<= ObjectPositions::TENT_Y + 50) && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
         Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 ? message = "Computer Screen" : "";
         Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X + 40 && y >= ObjectPositions::ATAPE_Y - 50 && y <= ObjectPositions::ATAPE_Y + 50) && inv.checkItem("Tape") != 1  ? message = Scene1::actionStatement + " Ape Tape" : "";
@@ -287,7 +289,7 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
     }
 
     if (gameObject == "Flag") {
-        SDL_DestroyTexture(Textures::objectTexture2);
+        SDL_DestroyTexture(Textures::FlagTexture);
         objectToDestroy = "2";
     }
 
@@ -315,33 +317,38 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
 
 
 //This is used for menu object interaction (Picking up).
+//1.Check which scene 
+//2.Check player current location is nearby object 
+//3.Check item hasn't already been picked up.
+//4. If item hasn't been already picked up, set message to the item.
 std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY) {
 
     std::string message;
+  
 
-    if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= ObjectPositions::PDA_X - 70 ) {
+    if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= ObjectPositions::PDA_X - 70 && items.find("PDA") == std::string::npos){
         message = "PDA";
     }
-
-    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= 503 && playerCurrentLocationX <= 719) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::FLAG_X - 190 && items.find("Flag") == std::string::npos) {
         message = "Flag";
+        
     }
-    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X - 70) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X - 70 && items.find("Tape") == std::string::npos) {
         message = "Tape";
-    
+       
     }
-    if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70 ) {
         message = "Tent";
     }
 
-    if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 530) {
+    else if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 530) {
         message = "Pipe";
     }
 
-    if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 411) {
+    else if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 411) {
         message = "Battery Lantern";
     }
-    if (Scene1::SceneBackground == "3f" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 511) {
+    else if (Scene1::SceneBackground == "3f" && playerCurrentLocationX >= 300 && playerCurrentLocationX <= 511) {
         message = "Disc";
     }
 
@@ -424,7 +431,7 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     }
     if (scene == 1 && objectID == 2) {
         //Flag Rolled up   
-        return  std::make_tuple(1, 685, 323, 80, 218);
+        return  std::make_tuple(1, ObjectPositions::FLAG_X, ObjectPositions::FLAG_Y, ObjectPositions::FLAG_SX, ObjectPositions::FLAG_SY);
     }
     if (scene == 1 && objectID == 3) {
         //Star

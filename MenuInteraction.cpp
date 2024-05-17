@@ -15,10 +15,11 @@ using namespace brightland;
 static std::string useStatement;
 static std::string openStatement;
 static std::string lookStatement;
-static std::string pickUpStatement;
+//static std::string pickUpStatement;
 static std::string actionStatement;
 static std::string pullStatement;
 
+std::string MenuInteraction::pickUpStatement;
 //These 2 lines will deal when the player uses the wrong item.
 int MenuInteraction::wrongAction = 0;
 std::string MenuInteraction::wrongActionMessage = "";  //Custom response to the player.
@@ -666,12 +667,8 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     PlayerObjects pob;
     Inventory inv;
 
- 
-
-    if (gd >= ObjectPositions::PDA_X - 70 && (gy >= ObjectPositions::PDA_Y - 70 || gy <= ObjectPositions::PDA_Y +70)) {
-       // std::cout << "X MARKS THE SPOT" << std::endl;
-
-    }
+    std::cout << pickUpStatement << std::endl;
+   
 
     int i = 0;
     int items = 0;
@@ -681,6 +678,9 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
         pickUpStatement = pob.HoverObjects(x, y, 1, gd, gy);
 
     std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
+    std::cout << menuMessages << std::endl;
+
+
     gameObject = menuMessages;
    // std::cout << gameObject << std::endl;
     items = inv.checkItem(gameObject);
@@ -695,6 +695,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 tex.TextureUpdater(Textures::spritePick, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+                PlayerObjects::items += " PDA";
              
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
@@ -705,6 +706,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
                 tex.TextureUpdater(Textures::spriteBack1a, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
+
              
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
@@ -712,20 +714,23 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
 
 
             if (menuMessages == "Flag" && pickUpStatement == "Pick up Flag") {
+            
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
              
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
+                PlayerObjects::items += " Flag";
             }
             if (menuMessages == "Tape" && pickUpStatement == "Pick up Ape Tape") {
-                printf("Got here!!!");
+               
                 tex.TextureUpdater(Textures::spriteBack1a, "Action");
                 pickUpStatement = "";
                 inv.SQLInsertInventory(gameObject, 0);
               
                 std::string object = pob.DestroyObjects(gameObject);
                 Scene1::objectToDestroy.append(object);
+                PlayerObjects::items += " Tape";
             }
 
             if (menuMessages == "Tent" && pickUpStatement == "Pick up Self Inflating Tent") {

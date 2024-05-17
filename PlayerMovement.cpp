@@ -281,7 +281,7 @@ int PlayerMovement::walk(int x, int y, int gd, int gy, int screenWidth, int scre
     }
 
     ///////////////////////// SCENE 1B INSIDE SHIP WRECKAGE //////////////////////////////////////////
-    if (Scene1::SceneBackground == "1b") {
+    if (Scene1::SceneBackground == "1b" && mouseClickYPercent < 75) {
    
       
         gd <= x - 60 && Scene1::xp <= 56 && Scene1::xp >= -1 ? gd = doXWalkRight(gd, screenWidth), position++ : move = 0;

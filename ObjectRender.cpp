@@ -25,7 +25,7 @@ void ObjectRender::objectRender() {
         SDL_RenderCopy(Scene1::renderer, Textures::invTexture2, NULL, &Inventory::inv2);
     }
     else if (Scene1::SceneBackground == "1b") {
-        SDL_RenderCopy(Scene1::renderer, Textures::objectTexture2, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
+        SDL_RenderCopy(Scene1::renderer, Textures::FlagTexture, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
     }
 
     //Ape Tape Inventory Item.

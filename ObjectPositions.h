@@ -34,6 +34,10 @@ namespace brightland {
 		static int ATAPE_Y;
 		static int TENT_X;
 		static int TENT_Y;
+		static int FLAG_X;
+		static int FLAG_Y;
+		static int FLAG_SX;
+		static int FLAG_SY;
 
 		//Inventory
 		static int INV1_X;
