@@ -48,8 +48,9 @@ SDL_Color Scene1::fcolor;
 SDL_Color Scene1::bcolor;
 
 //Screen Dimensions.
-int Scene1::HEIGHT = 768;
 int Scene1::WIDTH = 1024;
+int Scene1::HEIGHT = 768;
+
 
 int Scene1::SPRITE_SIZE;
 int Scene1::SPRITE_MIN_SIZE; //Fixed minium size of player.
@@ -110,7 +111,7 @@ void Scene1::setSceneSpriteSize(int size) {
    
     //Set player initial size depending on screen resolution.
     if (HEIGHT == 1080) {
-        SPRITE_SIZE = size + 20;
+        SPRITE_SIZE = size + 70;
      
     }
     else if (HEIGHT == 768) {
@@ -255,7 +256,7 @@ int Scene1::scene1() {
     while (!gameover)
     {        
        // std::cout << pickUpStatement << std::endl;
-      // std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
+       std::cout << "SPRITE SIZE IS: " << SPRITE_SIZE << std::endl;
       //  std::cout << "PLAYER IS MOVING" << playerIsMoving << std::endl;
       //  player.checkPlayerSize();
         checkFScreenStatus(fullScreenTrigger);
@@ -382,9 +383,9 @@ int Scene1::scene1() {
                             else {            
                                 
                                     SDL_DestroyTexture(Textures::ftexture);
-                                  //  Textures::ftexture = nullptr; //Removed in May 2024 to prevent flickering.
+                                    Textures::ftexture = nullptr; //If you take this out the player will appear in the text area sometimes. June 2024
                                     SDL_DestroyTexture(Textures::spriteTexture);
-                                  //  Textures::spriteTexture = nullptr;                          
+                                    Textures::spriteTexture = nullptr;   //If you take this out the player might disappear during certain movements. June 2024                       
                                     Textures::spriteTexture = SDL_CreateTextureFromSurface(renderer, Textures::spriteDown1); //Makes player face you when you are hovering.  
                                     PlayerMovement::blink = true;       
                                  

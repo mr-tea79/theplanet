@@ -55,6 +55,8 @@ SDL_Rect PlayerObjects::srcrect8;
 SDL_Rect PlayerObjects::dstrect8;
 SDL_Rect PlayerObjects::srcrect9;
 SDL_Rect PlayerObjects::dstrect9;
+
+//Player Blinking
 SDL_Rect PlayerObjects::srcrect10;
 SDL_Rect PlayerObjects::dstrect10;
 
@@ -464,10 +466,15 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
     if (scene == 1 && objectID == 10) {
        //Blinking eyes.
         if (Scene1::SPRITE_SIZE >= 160 && Scene1::SPRITE_SIZE <170 && Scene1::SceneBackground !="01" && Scene1::SceneBackground !="0"  ) {
-            return  std::make_tuple(40, Scene1::gdSprite.x + 50, Scene1::gdSprite.y + 44, 45, 25);  
+            return  std::make_tuple(40, Scene1::gdSprite.x + 90, Scene1::gdSprite.y + 44, 49, 25);  
         }
-        if (Scene1::SPRITE_SIZE >= 170 && Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
-            return  std::make_tuple(40, Scene1::gdSprite.x + 52, Scene1::gdSprite.y + 48, 48, 25);  
+        else if (Scene1::SPRITE_SIZE >= 170 && Scene1::SPRITE_SIZE <=240 && Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
+            return  std::make_tuple(40, Scene1::gdSprite.x + 70, Scene1::gdSprite.y + 56, 48, 25);  
+        }
+        else if (Scene1::SPRITE_SIZE > 240 && Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
+            std::cout << "YES" << std::endl; 
+            //                      delay                                           // y   w  d
+            return  std::make_tuple(40, Scene1::gdSprite.x + 75, Scene1::gdSprite.y + 71, 71, 38);
         }
     }
 
