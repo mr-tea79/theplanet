@@ -98,6 +98,7 @@ std::string PlayerInteraction::DisplayPlayerMessages() {
     playerMessage == 30 ? interactionMessage = "It's made of plastic." : "";
     playerMessage == 31 ? interactionMessage = "It's a box made of cardboard and unopened." : "";
     playerMessage == 32 ? interactionMessage = "Hmmm, it's very flat here.." : "";
+    playerMessage == 33 ? interactionMessage = "Hmmm, that's my personal computer TOAD 1000.." : "";
 
     return interactionMessage;
 

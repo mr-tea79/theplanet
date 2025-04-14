@@ -432,6 +432,14 @@ std::string MenuInteraction::Look(int x, int y, int gd, int gy, int mInteraction
         tex.TextureUpdater(Textures::spriteBack1a, "Action");
 
     }
+    if (lookStatement == "Look at White plastic thingy" && Scene1::xp >= 40 ) {
+        AI::aiPlayMessages = true;
+        AI::dialogNumber = 20;
+        AI::playerTalk = true;
+        lookStatement = "";
+        tex.TextureUpdater(Textures::spriteBack1a, "Action");
+
+    }
 
  
     /* Rocky path */
