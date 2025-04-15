@@ -34,6 +34,8 @@ namespace brightland {
 		static int ATAPE_Y;
 		static int TENT_X;
 		static int TENT_Y;
+		static int TENT_SX;
+		static int TENT_SY;
 		static int FLAG_X;
 		static int FLAG_Y;
 		static int FLAG_SX;

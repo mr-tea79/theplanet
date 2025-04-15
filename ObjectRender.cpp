@@ -45,6 +45,7 @@ void ObjectRender::objectRender() {
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture4, NULL, &Inventory::inv4);
         }
     }
+    //Render the tent object in the scene.
     else if (Scene1::SceneBackground == "1b") {
         SDL_RenderCopy(Scene1::renderer, Textures::objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
     }

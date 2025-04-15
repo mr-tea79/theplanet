@@ -339,7 +339,7 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
         message = "Tape";
        
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70 ) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70 && items.find("Tent") == std::string::npos) {
         message = "Tent";
     }
 
@@ -444,8 +444,8 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(35, "ATAPE_X"), op.CalcObjectYAbsolutePosition(62, "ATAPE_Y"),60, 60);
     }
     if (scene == 1 && objectID == 5) {     
-        return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(54, "TENT_X"), op.CalcObjectYAbsolutePosition(41, "TENT_Y"), 97, 149);
-       // return  std::make_tuple(1, 300, 97, 149);
+        return  std::make_tuple(1, ObjectPositions::TENT_X, ObjectPositions::TENT_Y, ObjectPositions::TENT_SX, ObjectPositions::TENT_SY);
+      
     }
     if (scene == 1 && objectID == 6) {
         //Closed Box

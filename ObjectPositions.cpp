@@ -35,7 +35,9 @@ int ObjectPositions::PDA_SY;
 int ObjectPositions::ATAPE_X;
 int ObjectPositions::ATAPE_Y;
 int ObjectPositions::TENT_X;
+int ObjectPositions::TENT_SX;
 int ObjectPositions::TENT_Y;
+int ObjectPositions::TENT_SY;
 int ObjectPositions::FLAG_X;
 int ObjectPositions::FLAG_Y;
 int ObjectPositions::FLAG_SX;
@@ -90,6 +92,8 @@ void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(3, "PDA_SX"), CalcObjectYAbsolutePosition(3, "PDA_SY"); //Set PDA size.
     CalcObjectXAbsolutePosition(64, "FLAG_X"), CalcObjectYAbsolutePosition(35, "FLAG_Y"); 
     CalcObjectXAbsolutePosition(9, "FLAG_SX"), CalcObjectYAbsolutePosition(25, "FLAG_SY"); 
+    CalcObjectXAbsolutePosition(58, "TENT_X"), CalcObjectYAbsolutePosition(35, "TENT_Y");
+    CalcObjectXAbsolutePosition(12, "TENT_SX"), CalcObjectYAbsolutePosition(25, "TENT_SY");
   
 }
 
@@ -158,6 +162,7 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     result = position * Scene1::WIDTH / 100;
     objectName == "WREACKDOOR_X" ? ObjectPositions::WREAKAGEDOOR_X = result : 0;
     objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
+    objectName == "TENT_SX" ? ObjectPositions::TENT_SX = result : 0;
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
     objectName == "PDA_SX" ? ObjectPositions::PDA_SX = result : 0;
@@ -190,6 +195,7 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     result = position * Scene1::HEIGHT / 100;
     objectName == "WREACKDOOR_Y" ? ObjectPositions::WREAKAGEDOOR_Y = result : 0;
     objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
+    objectName == "TENT_SY" ? ObjectPositions::TENT_SY = result : 0;
     objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
     objectName == "PDA_SY" ? ObjectPositions::PDA_SY = result : 0;
