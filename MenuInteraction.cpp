@@ -675,7 +675,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
     PlayerObjects pob;
     Inventory inv;
 
-    std::cout << pickUpStatement << std::endl;
+    //std::cout << pickUpStatement << std::endl;
    
 
     int i = 0;

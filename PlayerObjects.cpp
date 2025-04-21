@@ -331,15 +331,15 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= ObjectPositions::PDA_X - 70 && items.find("PDA") == std::string::npos){
         message = "PDA";
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 80 &&  items.find("Flag") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && Scene1::xp >= 56 &&  items.find("Flag") == std::string::npos) {
         message = "Flag";
         
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X -60 && playerCurrentLocationX <= ObjectPositions::ATAPE_X + 65 && items.find("Tape") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && Scene1::xp >=35 && items.find("Tape") == std::string::npos) {
         message = "Tape";
        
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X -15 && playerCurrentLocationX <= ObjectPositions::TENT_X +15 && items.find("Tent") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && Scene1::xp >=46 && items.find("Tent") == std::string::npos) {
         message = "Tent";
     }
 
