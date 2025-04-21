@@ -686,7 +686,7 @@ std::string MenuInteraction::PickUp(int x, int y, int gd, int gy, int mInteracti
         pickUpStatement = pob.HoverObjects(x, y, 1, gd, gy);
 
     std::string menuMessages = pob.ObjectInteractionM1(gd, gy);
-    std::cout << menuMessages << std::endl;
+    //std::cout << menuMessages << std::endl;
 
 
     gameObject = menuMessages;

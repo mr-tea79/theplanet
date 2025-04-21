@@ -80,7 +80,7 @@ int ObjectPositions::BACKGROUND_H;
 
 
 //The following 2 functions are used to place the objects that a player can interact with or pick up. This is new and will be done on percentages so the screen resolution changes would 
-//make the objects still be in the correct positions and not hard coded for each different resoluion.
+//make the objects still be in the correct positions and not hard coded for each different resolution.
 
 
 //Place scene objects like rocks as an example.
@@ -92,7 +92,7 @@ void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(3, "PDA_SX"), CalcObjectYAbsolutePosition(3, "PDA_SY"); //Set PDA size.
     CalcObjectXAbsolutePosition(64, "FLAG_X"), CalcObjectYAbsolutePosition(35, "FLAG_Y"); 
     CalcObjectXAbsolutePosition(9, "FLAG_SX"), CalcObjectYAbsolutePosition(25, "FLAG_SY"); 
-    CalcObjectXAbsolutePosition(58, "TENT_X"), CalcObjectYAbsolutePosition(35, "TENT_Y");
+    CalcObjectXAbsolutePosition(50, "TENT_X"), CalcObjectYAbsolutePosition(35, "TENT_Y");
     CalcObjectXAbsolutePosition(12, "TENT_SX"), CalcObjectYAbsolutePosition(25, "TENT_SY");
   
 }

@@ -172,9 +172,9 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
 
         ////////////////////////////////// Scene 1b Inside Wreakage //////////////////////////////////////////////////////////////////////////////////////////
         Scene1::SceneBackground == "1b" && (Scene1::mouseMoveYPercent >= 36 && Scene1::mouseMoveYPercent <= 72 && Scene1::mouseMoveXPercent >= 64 && Scene1::mouseMoveXPercent <= 72) && inv.checkItem("Flag") != 1 ? message = Scene1::actionStatement + " Flag" : "";
-        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::TENT_X && x<= ObjectPositions::TENT_X + 40 && y >= ObjectPositions::TENT_Y - 50 && y<= ObjectPositions::TENT_Y + 50) && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
-        Scene1::SceneBackground == "1b" && x > 126 && x <= 238 && y >= 306 && y <= 391 ? message = "Computer Screen" : "";
-        Scene1::SceneBackground == "1b" && (x >= ObjectPositions::ATAPE_X && x <= ObjectPositions::ATAPE_X + 40 && y >= ObjectPositions::ATAPE_Y - 50 && y <= ObjectPositions::ATAPE_Y + 50) && inv.checkItem("Tape") != 1  ? message = Scene1::actionStatement + " Ape Tape" : "";
+        Scene1::SceneBackground == "1b" && (Scene1::mouseMoveYPercent >= 35 && Scene1::mouseMoveYPercent <= 58 && Scene1::mouseMoveXPercent >= 51 && Scene1::mouseMoveXPercent <= 57) && inv.checkItem("Tent") != 1 ? message = Scene1::actionStatement + " Self Inflating Tent" : "";
+        Scene1::SceneBackground == "1b" && (Scene1::mouseMoveYPercent >= 36 && Scene1::mouseMoveYPercent <= 72 && Scene1::mouseMoveXPercent >= 64 && Scene1::mouseMoveXPercent <= 72);
+        Scene1::SceneBackground == "1b" && (Scene1::mouseMoveYPercent >= 36 && Scene1::mouseMoveYPercent <= 72 && Scene1::mouseMoveXPercent >= 36 && Scene1::mouseMoveXPercent <= 39) && inv.checkItem("Tape") != 1  ? message = Scene1::actionStatement + " Ape Tape" : "";
 
         /////////////////////////////////////////// Scene 1b Transitions  ///////////////////////////////////////////////////////////////////
         if (Scene1::SceneBackground == "1b" && x > 0 && x <= 771 && y >= 560 && y <= 595) {
@@ -331,15 +331,15 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= ObjectPositions::PDA_X - 70 && items.find("PDA") == std::string::npos){
         message = "PDA";
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::FLAG_X - 190 && items.find("Flag") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 80 &&  items.find("Flag") == std::string::npos) {
         message = "Flag";
         
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X - 70 && items.find("Tape") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::ATAPE_X -60 && playerCurrentLocationX <= ObjectPositions::ATAPE_X + 65 && items.find("Tape") == std::string::npos) {
         message = "Tape";
        
     }
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X - 70 && items.find("Tent") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::TENT_X -15 && playerCurrentLocationX <= ObjectPositions::TENT_X +15 && items.find("Tent") == std::string::npos) {
         message = "Tent";
     }
 
