@@ -20,9 +20,9 @@ SDL_Rect Inventory::inv7;
 
 void Inventory::CalcInventoryPositions() {
 	inv1 = { ObjectPositions::INV1_X, ObjectPositions::INV1_Y, ObjectPositions::INV1_SX, ObjectPositions::INV1_SY };
-	inv2 = { 760, 610, 60, 60 };
-	inv3 = { 880, 650, 40, 40 };
-	inv4 = { 760, 700, 60, 60 };
+	inv2 = { ObjectPositions::INV2_X, ObjectPositions::INV2_Y, ObjectPositions::INV2_SX, ObjectPositions::INV2_SY };
+	inv3 = { ObjectPositions::INV3_X, ObjectPositions::INV3_Y, ObjectPositions::INV3_SX, ObjectPositions::INV3_SY };
+	inv4 = { ObjectPositions::INV4_X, ObjectPositions::INV4_Y, ObjectPositions::INV4_SX, ObjectPositions::INV4_SY };
 	inv7= { 760, 700, 60, 60 };
 }
 

@@ -47,6 +47,21 @@ namespace brightland {
 		static int INV1_SX;
 		static int INV1_SY;
 
+		static int INV2_X;
+		static int INV2_Y;
+		static int INV2_SX;
+		static int INV2_SY;
+
+		static int INV3_X;
+		static int INV3_Y;
+		static int INV3_SX;
+		static int INV3_SY;
+
+		static int INV4_X;
+		static int INV4_Y;
+		static int INV4_SX;
+		static int INV4_SY;
+
 		//Hover Interactions
 		static int MOON_X;
 		static int MOON_Y;

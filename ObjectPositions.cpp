@@ -22,10 +22,29 @@ int ObjectPositions::ROCKS_SX; //SX = WIDTH X
 int ObjectPositions::ROCKS_SY; //SY = HEIGHT Y
 
 //Inventory
-int ObjectPositions::INV1_X;
+
+//PDA
+int ObjectPositions::INV1_X; 
 int ObjectPositions::INV1_Y;
 int ObjectPositions::INV1_SX;
 int ObjectPositions::INV1_SY;
+
+int ObjectPositions::INV2_X;
+int ObjectPositions::INV2_Y;
+int ObjectPositions::INV2_SX;
+int ObjectPositions::INV2_SY;
+
+int ObjectPositions::INV3_X;
+int ObjectPositions::INV3_Y;
+int ObjectPositions::INV3_SX;
+int ObjectPositions::INV3_SY;
+
+int ObjectPositions::INV4_X;
+int ObjectPositions::INV4_Y;
+int ObjectPositions::INV4_SX;
+int ObjectPositions::INV4_SY;
+
+
 
 //Pick up objects
 int ObjectPositions::PDA_X;
@@ -100,6 +119,12 @@ void ObjectPositions::PlaceSceneObjects() {
 void ObjectPositions::PlaceInventoryObjects() {
     CalcObjectXAbsolutePosition(68, "INV1_X"), CalcObjectYAbsolutePosition(86, "INV1_Y"); //Set Inventory 1 position.
     CalcObjectXAbsolutePosition(5, "INV1_SX"), CalcObjectYAbsolutePosition(5, "INV1_SY"); //Set Inventory 1 size.
+    CalcObjectXAbsolutePosition(78, "INV2_X"), CalcObjectYAbsolutePosition(86, "INV2_Y"); //Set Inventory 2 position.
+    CalcObjectXAbsolutePosition(5, "INV2_SX"), CalcObjectYAbsolutePosition(5, "INV2_SY"); //Set Inventory 2 size.
+    CalcObjectXAbsolutePosition(88, "INV3_X"), CalcObjectYAbsolutePosition(86, "INV3_Y"); //Set Inventory 3 position.
+    CalcObjectXAbsolutePosition(5, "INV3_SX"), CalcObjectYAbsolutePosition(5, "INV3_SY"); //Set Inventory 3 size.
+    CalcObjectXAbsolutePosition(68, "INV4_X"), CalcObjectYAbsolutePosition(95, "INV4_Y"); //Set Inventory 3 position.
+    CalcObjectXAbsolutePosition(5, "INV4_SX"), CalcObjectYAbsolutePosition(5, "INV4_SY"); //Set Inventory 3 size.
 }
 
 //Place the Y position of the Menu
@@ -170,6 +195,12 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "FLAG_SX" ? ObjectPositions::FLAG_SX = result : 0;
     objectName == "INV1_X" ? ObjectPositions::INV1_X = result : 0;
     objectName == "INV1_SX" ? ObjectPositions::INV1_SX = result : 0;
+    objectName == "INV2_X" ? ObjectPositions::INV2_X = result : 0;
+    objectName == "INV2_SX" ? ObjectPositions::INV2_SX = result : 0;
+    objectName == "INV3_X" ? ObjectPositions::INV3_X = result : 0;
+    objectName == "INV3_SX" ? ObjectPositions::INV3_SX = result : 0;
+    objectName == "INV4_X" ? ObjectPositions::INV4_X = result : 0;
+    objectName == "INV4_SX" ? ObjectPositions::INV4_SX = result : 0;
     objectName == "XPC" ? ObjectPositions::x = result : 0;
     objectName == "MOON_X" ? ObjectPositions::MOON_X = result : 0;
     objectName == "ENGINE_X" ? ObjectPositions::ENGINE_X = result : 0;
@@ -203,6 +234,12 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "FLAG_SY" ? ObjectPositions::FLAG_SY = result : 0;
     objectName == "INV1_Y" ? ObjectPositions::INV1_Y = result : 0;
     objectName == "INV1_SY" ? ObjectPositions::INV1_SY = result : 0;
+    objectName == "INV2_Y" ? ObjectPositions::INV2_Y = result : 0;
+    objectName == "INV2_SY" ? ObjectPositions::INV2_SY = result : 0;
+    objectName == "INV3_Y" ? ObjectPositions::INV3_Y = result : 0;
+    objectName == "INV3_SY" ? ObjectPositions::INV3_SY = result : 0;
+    objectName == "INV4_Y" ? ObjectPositions::INV4_Y = result : 0;
+    objectName == "INV4_SY" ? ObjectPositions::INV4_SY = result : 0;
     objectName == "YPC" ? ObjectPositions::y = result : 0;
     objectName == "MOON_Y" ? ObjectPositions::MOON_Y = result : 0;
     objectName == "ENGINE_Y" ? ObjectPositions::ENGINE_Y = result : 0;
