@@ -331,17 +331,25 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
     if (Scene1::SceneBackground == "1" && playerCurrentLocationX >= ObjectPositions::PDA_X - 70 && items.find("PDA") == std::string::npos){
         message = "PDA";
     }
-    else if (Scene1::SceneBackground == "1b" && Scene1::xp >= 56 &&  items.find("Flag") == std::string::npos) {
-        message = "Flag";
-        
-    }
-    else if (Scene1::SceneBackground == "1b" && Scene1::xp >=35 && items.find("Tape") == std::string::npos) {
+
+    else if (Scene1::SceneBackground == "1b" && Scene1::xp <= 38 && items.find("Tape") == std::string::npos) {
         message = "Tape";
+    }
+
+    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::FLAG_X - 70 && items.find("Flag") == std::string::npos) {
+        message = "Flag";
+    }
+   // else if (Scene1::SceneBackground == "1b" && Scene1::xp >= 56 &&  items.find("Flag") == std::string::npos) {
+     //   message = "Flag";
+        
+   // }
+  //  else if (Scene1::SceneBackground == "1b" && Scene1::xp >=35 && items.find("Tape") == std::string::npos) {
+    //    message = "Tape";
        
-    }
-    else if (Scene1::SceneBackground == "1b" && Scene1::xp >=46 && items.find("Tent") == std::string::npos) {
-        message = "Tent";
-    }
+    //}
+   // else if (Scene1::SceneBackground == "1b" && Scene1::xp >=46 && items.find("Tent") == std::string::npos) {
+     //   message = "Tent";
+    //}
 
     else if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 530) {
         message = "Pipe";
@@ -472,7 +480,7 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
             return  std::make_tuple(40, Scene1::gdSprite.x + 70, Scene1::gdSprite.y + 56, 48, 25);  
         }
         else if (Scene1::SPRITE_SIZE > 240 && Scene1::SceneBackground != "01" && Scene1::SceneBackground != "0") {
-            std::cout << "YES" << std::endl; 
+           // std::cout << "YES" << std::endl; 
             //                      delay                                           // y   w  d
             return  std::make_tuple(40, Scene1::gdSprite.x + 75, Scene1::gdSprite.y + 71, 71, 38);
         }
