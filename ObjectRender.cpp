@@ -46,7 +46,7 @@ void ObjectRender::objectRender() {
         SDL_RenderCopy(Scene1::renderer, Textures::objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);
     }
 
-    //-------------------------------------------------------------------------------------------------------------------
+    //-------------------------------- TENT --------------------------------------------------------------------------
 
 
     //Tent
@@ -60,6 +60,8 @@ void ObjectRender::objectRender() {
     else if (Scene1::SceneBackground == "1b") {
         SDL_RenderCopy(Scene1::renderer, Textures::objectTexture5, &PlayerObjects::srcrect5, &PlayerObjects::dstrect5);
     }
+
+    //--------------------------------------------------------------------------------------------------------------------
 
     //Pipe      
     if (Scene1::objectToDestroy.find("5") != std::string::npos) {

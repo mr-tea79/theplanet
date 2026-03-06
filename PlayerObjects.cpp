@@ -37,16 +37,16 @@ std::string PlayerObjects::items = "";
 //static int inv3Used;  //Duct Tape
 int PlayerObjects::boxOpened;
 
-SDL_Rect PlayerObjects::srcrect;
-SDL_Rect PlayerObjects::dstrect;
+SDL_Rect PlayerObjects::srcrect;  //PDA
+SDL_Rect PlayerObjects::dstrect;  //PDA
 SDL_Rect PlayerObjects::srcrect2; //FLag
 SDL_Rect PlayerObjects::dstrect2; //Flag
-SDL_Rect PlayerObjects::srcrect3;
-SDL_Rect PlayerObjects::dstrect3;
-SDL_Rect PlayerObjects::srcrect4;
-SDL_Rect PlayerObjects::dstrect4;
-SDL_Rect PlayerObjects::srcrect5;  //Temt
-SDL_Rect PlayerObjects::dstrect5;  //Tent
+SDL_Rect PlayerObjects::srcrect3; //Stars
+SDL_Rect PlayerObjects::dstrect3; //Stars
+SDL_Rect PlayerObjects::srcrect4; //Ape Tape
+SDL_Rect PlayerObjects::dstrect4; //Ape Tape
+SDL_Rect PlayerObjects::srcrect5; //Temt
+SDL_Rect PlayerObjects::dstrect5; //Tent
 SDL_Rect PlayerObjects::srcrect6;
 SDL_Rect PlayerObjects::dstrect6;
 SDL_Rect PlayerObjects::srcrect7;
@@ -113,6 +113,12 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
                 message = Scene1::actionStatement + " PDA";
         }
 
+        if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 90 && Scene1::mouseMoveXPercent >= 89 && Scene1::mouseMoveXPercent <= 92) {
+            if (inv.checkItem("Tape") != 0)
+                message = Scene1::actionStatement + " Ape Tape";
+        }
+
+
         if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {
             if(inv.checkItem("Tent") != 0)
                 message = Scene1::actionStatement + " Self Inflating Tent";
@@ -123,10 +129,10 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
                 message = "Flag";
         }
 
-        if (x >= 888 && x <= 915 && y >= 653 && y <= 684) {
-            if(inv.checkItem("Tape") != 0)
-                message = Scene1::actionStatement + " Ape Tape";
-        }
+      
+       
+
+
         if (x >= 764 && x <= 815 && y >= 695 && y <= 753) {
             if (inv.checkItem("Battery Lantern") != 0)
                 message = Scene1::actionStatement + " Battery Lantern";
