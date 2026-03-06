@@ -51,8 +51,12 @@ int ObjectPositions::PDA_X;
 int ObjectPositions::PDA_Y;
 int ObjectPositions::PDA_SX;
 int ObjectPositions::PDA_SY;
+
 int ObjectPositions::ATAPE_X;
+int ObjectPositions::ATAPE_SX;
 int ObjectPositions::ATAPE_Y;
+int ObjectPositions::ATAPE_SY;
+
 int ObjectPositions::TENT_X;
 int ObjectPositions::TENT_SX;
 int ObjectPositions::TENT_Y;
@@ -113,7 +117,10 @@ void ObjectPositions::PlaceSceneObjects() {
     CalcObjectXAbsolutePosition(9, "FLAG_SX"), CalcObjectYAbsolutePosition(25, "FLAG_SY"); 
     CalcObjectXAbsolutePosition(50, "TENT_X"), CalcObjectYAbsolutePosition(35, "TENT_Y");
     CalcObjectXAbsolutePosition(12, "TENT_SX"), CalcObjectYAbsolutePosition(25, "TENT_SY");
-  
+    CalcObjectXAbsolutePosition(20, "ATAPE_X"), CalcObjectYAbsolutePosition(35, "TENT_Y");
+    CalcObjectXAbsolutePosition(12, "TENT_SX"), CalcObjectYAbsolutePosition(25, "TENT_SY");
+    CalcObjectXAbsolutePosition(5, "ATAPE_SX"), CalcObjectYAbsolutePosition(5, "ATAPE_SY"); //Set Ape Tape size.
+    CalcObjectXAbsolutePosition(36, "ATAPE_X"), CalcObjectYAbsolutePosition(63, "ATAPE_Y"); //Set PDA size.
 }
 
 void ObjectPositions::PlaceInventoryObjects() {
@@ -189,6 +196,7 @@ float ObjectPositions::CalcObjectXAbsolutePosition(float position,std::string ob
     objectName == "TENT_X" ? ObjectPositions::TENT_X = result : 0;
     objectName == "TENT_SX" ? ObjectPositions::TENT_SX = result : 0;
     objectName == "ATAPE_X" ? ObjectPositions::ATAPE_X = result : 0;
+    objectName == "ATAPE_SX" ? ObjectPositions::ATAPE_SX = result : 0;
     objectName == "PDA_X" ? ObjectPositions::PDA_X = result : 0;
     objectName == "PDA_SX" ? ObjectPositions::PDA_SX = result : 0;
     objectName == "FLAG_X" ? ObjectPositions::FLAG_X = result : 0;
@@ -228,6 +236,7 @@ float ObjectPositions::CalcObjectYAbsolutePosition(float position,std::string ob
     objectName == "TENT_Y" ? ObjectPositions::TENT_Y = result : 0;
     objectName == "TENT_SY" ? ObjectPositions::TENT_SY = result : 0;
     objectName == "ATAPE_Y" ? ObjectPositions::ATAPE_Y = result : 0;
+    objectName == "ATAPE_SY" ? ObjectPositions::ATAPE_SY = result : 0;
     objectName == "PDA_Y" ? ObjectPositions::PDA_Y = result : 0;
     objectName == "PDA_SY" ? ObjectPositions::PDA_SY = result : 0;
     objectName == "FLAG_Y" ? ObjectPositions::FLAG_Y = result : 0;

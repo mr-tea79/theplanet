@@ -20,13 +20,19 @@ void ObjectRender::objectRender() {
 
     else if (Scene1::SceneBackground == "1") { SDL_RenderCopy(Scene1::renderer, Textures::PDATexture, &PlayerObjects::srcrect, &PlayerObjects::dstrect); }
 
-    //Flag Inventory Item
+    //----------------------------- FLAG OBJECT ----------------------------------------------------------------------
+    //Inventory
     if (Scene1::objectToDestroy.find("2") != std::string::npos) {
         SDL_RenderCopy(Scene1::renderer, Textures::invTexture2, NULL, &Inventory::inv2);
     }
+
+    //Scene object
     else if (Scene1::SceneBackground == "1b") {
         SDL_RenderCopy(Scene1::renderer, Textures::FlagTexture, &PlayerObjects::srcrect2, &PlayerObjects::dstrect2);
     }
+    //-----------------------------------------------------------------------------------------------------------------
+
+    //---------------------------- APE TAPE ----------------------------------------------------------------------------
 
     //Ape Tape Inventory Item.
     if (Scene1::objectToDestroy.find("3") != std::string::npos) {
@@ -34,9 +40,14 @@ void ObjectRender::objectRender() {
             SDL_RenderCopy(Scene1::renderer, Textures::invTexture3, NULL, &Inventory::inv3);
         }
     }
+
+    //Render the Ape Tape object in the scene.
     else if (Scene1::SceneBackground == "1b") {
         SDL_RenderCopy(Scene1::renderer, Textures::objectTexture4, &PlayerObjects::srcrect4, &PlayerObjects::dstrect4);
     }
+
+    //-------------------------------------------------------------------------------------------------------------------
+
 
     //Tent
     if (Scene1::objectToDestroy.find("4") != std::string::npos) {

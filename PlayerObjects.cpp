@@ -39,14 +39,14 @@ int PlayerObjects::boxOpened;
 
 SDL_Rect PlayerObjects::srcrect;
 SDL_Rect PlayerObjects::dstrect;
-SDL_Rect PlayerObjects::srcrect2;
-SDL_Rect PlayerObjects::dstrect2;
+SDL_Rect PlayerObjects::srcrect2; //FLag
+SDL_Rect PlayerObjects::dstrect2; //Flag
 SDL_Rect PlayerObjects::srcrect3;
 SDL_Rect PlayerObjects::dstrect3;
 SDL_Rect PlayerObjects::srcrect4;
 SDL_Rect PlayerObjects::dstrect4;
-SDL_Rect PlayerObjects::srcrect5;
-SDL_Rect PlayerObjects::dstrect5;
+SDL_Rect PlayerObjects::srcrect5;  //Temt
+SDL_Rect PlayerObjects::dstrect5;  //Tent
 SDL_Rect PlayerObjects::srcrect6;
 SDL_Rect PlayerObjects::dstrect6;
 SDL_Rect PlayerObjects::srcrect7;
@@ -317,12 +317,15 @@ std::string PlayerObjects::DestroyObjects(std::string gameObject) {
     return objectToDestroy;
 }
 
-
+//2026
 //This is used for menu object interaction (Picking up).
 //1.Check which scene 
 //2.Check player current location is nearby object 
 //3.Check item hasn't already been picked up.
 //4. If item hasn't been already picked up, set message to the item.
+
+//Note, use Scence::xp and not playercurrentLocationX
+
 std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int playerCurrentLocationY) {
 
     std::string message;
@@ -336,20 +339,13 @@ std::string PlayerObjects::ObjectInteractionM1(int playerCurrentLocationX, int p
         message = "Tape";
     }
 
-    else if (Scene1::SceneBackground == "1b" && playerCurrentLocationX >= ObjectPositions::FLAG_X - 70 && items.find("Flag") == std::string::npos) {
+    else if (Scene1::SceneBackground == "1b" && Scene1::xp >= 52 && items.find("Flag") == std::string::npos) {
         message = "Flag";
     }
-   // else if (Scene1::SceneBackground == "1b" && Scene1::xp >= 56 &&  items.find("Flag") == std::string::npos) {
-     //   message = "Flag";
-        
-   // }
-  //  else if (Scene1::SceneBackground == "1b" && Scene1::xp >=35 && items.find("Tape") == std::string::npos) {
-    //    message = "Tape";
-       
-    //}
-   // else if (Scene1::SceneBackground == "1b" && Scene1::xp >=46 && items.find("Tent") == std::string::npos) {
-     //   message = "Tent";
-    //}
+
+    else if (Scene1::SceneBackground == "1b" && Scene1::xp >= 50 && items.find("Tent") == std::string::npos) {
+        message = "Tent";
+    }
 
     else if (Scene1::SceneBackground == "1da" && playerCurrentLocationX >= 437 && playerCurrentLocationX <= 530) {
         message = "Pipe";
@@ -448,8 +444,9 @@ std::tuple<int, int, int, int, int> PlayerObjects::placeObject(int scene, int ob
         return  std::make_tuple(3, 400, 30, 8, 40);
     }
     if (scene == 1 && objectID == 4) {
-        //return  std::make_tuple(1, 300, 430, 60, 60);
-        return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(35, "ATAPE_X"), op.CalcObjectYAbsolutePosition(62, "ATAPE_Y"),60, 60);
+       
+        return  std::make_tuple(1, ObjectPositions::ATAPE_X, ObjectPositions::ATAPE_Y, ObjectPositions::ATAPE_SX, ObjectPositions::ATAPE_SY);
+       // return  std::make_tuple(1, op.CalcObjectXAbsolutePosition(35, "ATAPE_X"), op.CalcObjectYAbsolutePosition(62, "ATAPE_Y"),60, 60);
     }
     if (scene == 1 && objectID == 5) {     
         return  std::make_tuple(1, ObjectPositions::TENT_X, ObjectPositions::TENT_Y, ObjectPositions::TENT_SX, ObjectPositions::TENT_SY);
@@ -539,7 +536,7 @@ void PlayerObjects::ObjectController() {
     PlayerObjects::srcrect4 = { object3 * objectP1, objectP2, objectHeight, objectWidth };
     PlayerObjects::dstrect4 = { objectP3, objectP4, objectP5, objectP6 };
 
-    //Scene Object 5.......
+    //Scene Object 5 TENT
     std::tie(numberSprites, objectP1, objectP2, objectHeight, objectWidth) = pob.ObjectSettings(1, 5, NULL, NULL, NULL);
     std::tie(numberSprites, objectP3, objectP4, objectP5, objectP6) = pob.placeObject(1, 5, NULL, NULL, NULL);
 
