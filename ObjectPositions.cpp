@@ -130,8 +130,8 @@ void ObjectPositions::PlaceInventoryObjects() {
     CalcObjectXAbsolutePosition(5, "INV2_SX"), CalcObjectYAbsolutePosition(5, "INV2_SY"); //Set Inventory 2 size.
     CalcObjectXAbsolutePosition(88, "INV3_X"), CalcObjectYAbsolutePosition(86, "INV3_Y"); //Set Inventory 3 position.
     CalcObjectXAbsolutePosition(5, "INV3_SX"), CalcObjectYAbsolutePosition(5, "INV3_SY"); //Set Inventory 3 size.
-    CalcObjectXAbsolutePosition(68, "INV4_X"), CalcObjectYAbsolutePosition(95, "INV4_Y"); //Set Inventory 3 position.
-    CalcObjectXAbsolutePosition(5, "INV4_SX"), CalcObjectYAbsolutePosition(5, "INV4_SY"); //Set Inventory 3 size.
+    CalcObjectXAbsolutePosition(68, "INV4_X"), CalcObjectYAbsolutePosition(90, "INV4_Y"); //Set Inventory 3 position.
+    CalcObjectXAbsolutePosition(5, "INV4_SX"), CalcObjectYAbsolutePosition(10, "INV4_SY"); //Set Tent Size in inventory.
 }
 
 //Place the Y position of the Menu

@@ -107,6 +107,8 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
     }
 
     //Inventory Hover Messages 
+
+    // NEW 2026 VERSION ----------------------------------------------------------------------------------------------------------------------------------
     if(Scene1::SceneBackground !="0") {
         if (Scene1::mouseMoveYPercent >= 86 && Scene1::mouseMoveYPercent <= 88 && Scene1::mouseMoveXPercent >= 68 && Scene1::mouseMoveXPercent <=70) {
             if(inv.checkItem("PDA") != 0)
@@ -118,11 +120,15 @@ std::string PlayerObjects::HoverObjects(int x, int y, int scene,int gd, int gy) 
                 message = Scene1::actionStatement + " Ape Tape";
         }
 
-
-        if (x >= 764 && x <= 817 && y >= 695 && y <= 755) {
-            if(inv.checkItem("Tent") != 0)
+        if (Scene1::mouseMoveYPercent >= 91 && Scene1::mouseMoveYPercent <= 98 && Scene1::mouseMoveXPercent >= 69 && Scene1::mouseMoveXPercent <= 71) {
+            if (inv.checkItem("Tent") != 0)
                 message = Scene1::actionStatement + " Self Inflating Tent";
         }
+
+
+
+    // LEGACY -------------------------------------------------------------------------
+
 
         if (x >= 771 && x <= 821 && y >= 796 && y <= 798) {
             if(inv.checkItem("Flag") != 0)
